@@ -10,6 +10,7 @@ namespace wizm {
 
 	cube_sm_component::cube_sm_component()
 	{
+		component_type = eStaticMesh;
 		draw_data = new core_arr_vertex_buffer(vertices, indices);
 		draw_data->create_attrib_arr(0, 3, 5 * sizeof(float), 0);
 		draw_data->create_attrib_arr(1, 2, 5 * sizeof(float), (3 * sizeof(float)));
@@ -35,6 +36,7 @@ namespace wizm {
 	{
 		draw_data->bind_buffer();
 		draw_data->draw_buffer(5);
+		draw_data->unbind_buffer();
 	}
 
 

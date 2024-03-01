@@ -5,6 +5,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "system/tag.h"
 
+using namespace wizm;
+
 namespace lowlevelsys {
 
 
@@ -39,6 +41,8 @@ namespace lowlevelsys {
 
 
 	public:
+
+		eCompType component_type;
 
 		bool is_active;
 		bool is_visible;

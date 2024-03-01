@@ -32,7 +32,7 @@ namespace lowlevelsys {
 		glm::mat4 trans;
 		core_timer* timer;
 		core_grid* grid;
-		cube_sm_component* test_cube;
+		std::vector<cube_sm_component*> test_cubes;
 
 	public:
 		int w_width, w_height;

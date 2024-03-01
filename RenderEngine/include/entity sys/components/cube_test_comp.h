@@ -23,8 +23,8 @@ namespace wizm {
 
 
 	public:
-		
-		core_gl_shader* shdr;
+
+		std::string test;
 		core_arr_vertex_buffer* draw_data;
 		core_gl_texture* texture;
 

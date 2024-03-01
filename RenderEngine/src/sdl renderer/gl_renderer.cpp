@@ -52,12 +52,16 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 
 	grid2d = new core_grid(camera);
 
-	test_cube = new cube_sm_component;
+	test_cubes.emplace_back(new cube_sm_component);
+	test_cubes.emplace_back(new cube_sm_component);
 
-
-
-
-
+	test_cubes[1]->set_local_position(glm::vec3(.5f));
+	test_cubes[1]->set_local_scale(glm::vec3(.5f));
+	test_cubes[0]->set_local_position(glm::vec3(-1.5f));
+	test_cubes[0]->set_local_scale(glm::vec3(.5f));
+	
+	test_cubes[1]->test = "poes1";
+	test_cubes[0]->test = "poes0";
 
 
 
@@ -136,11 +140,9 @@ void lowlevelsys::gl_renderer::render()
 
 
 	view = camera->GetViewMatrix();
-
 	projection = glm::perspective(glm::radians(45.0f), (float)w_width / (float)w_height, 0.1f, 100.0f);
 	unsigned int modelLoc = glGetUniformLocation(shdr->get_shader_id(), "model");
 	unsigned int viewLoc = glGetUniformLocation(shdr->get_shader_id() , "view");
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
 	shdr->setMat4("projection", projection);
 
@@ -149,15 +151,22 @@ void lowlevelsys::gl_renderer::render()
 
 	shdr->use_shader();
 	grid2d->draw_grid();
-	test_cube->set_local_scale(glm::vec3(1.0f));
-	test_cube->component_update();
 
 	// Model Render
 
 	grid2d->update_grid_pos();
-	model = glm::translate(model, grid2d->get_grid_pos());
-	model = glm::scale(model, glm::vec3(2));
-	shdr->setMat4("model", model);
+	
+	for (auto& i : test_cubes) {
+		
+		if(i->component_type == eStaticMesh)
+		{
+			model = glm::mat4(1.f);
+			model = glm::translate(model, i->get_local_position());
+			model = glm::scale(model, i->get_local_scale());
+			shdr->setMat4("model", model);
+			i->component_update();
+		}
+	}
 
 
 	
