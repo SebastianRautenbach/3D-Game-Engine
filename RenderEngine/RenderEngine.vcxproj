@@ -152,6 +152,7 @@
     <ClCompile Include="src\3d_core_camera.cpp" />
     <ClCompile Include="src\grid2d.cpp" />
     <ClCompile Include="src\input.cpp" />
+    <ClCompile Include="src\material.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
     <ClCompile Include="src\tag.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
+    <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\tag.h" />
     <ClInclude Include="include\system\timer.h" />
     <ClInclude Include="include\Renderer.h" />

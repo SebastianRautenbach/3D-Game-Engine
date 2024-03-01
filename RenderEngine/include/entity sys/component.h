@@ -42,10 +42,10 @@ namespace lowlevelsys {
 
 	public:
 
-		eCompType component_type;
+		eCompType m_component_type;
 
-		bool is_active;
-		bool is_visible;
+		bool m_is_active;
+		bool m_is_visible;
 
 		wizm::core_tag* component_tags;
 		glm::vec3 m_position;

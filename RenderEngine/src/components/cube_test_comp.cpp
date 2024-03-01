@@ -10,18 +10,21 @@ namespace wizm {
 
 	cube_sm_component::cube_sm_component()
 	{
-		component_type = eStaticMesh;
-		draw_data = new core_arr_vertex_buffer(vertices, indices);
-		draw_data->create_attrib_arr(0, 3, 5 * sizeof(float), 0);
-		draw_data->create_attrib_arr(1, 2, 5 * sizeof(float), (3 * sizeof(float)));
-		draw_data->create_buffer();
+		m_component_type = eStaticMesh;
+
+		m_material = new core_material("missing_texture.png");
+
+		m_draw_data = new core_arr_vertex_buffer(vertices, indices);
+		m_draw_data->create_attrib_arr(0, 3, 5 * sizeof(float), 0);
+		m_draw_data->create_attrib_arr(1, 2, 5 * sizeof(float), (3 * sizeof(float)));
+		m_draw_data->create_buffer();
 	}
 
 
 
 	cube_sm_component::~cube_sm_component()
 	{
-		draw_data->destroy_buffer();
+		m_draw_data->destroy_buffer();
 	}
 
 	//-----------------------------------------------------------------------
@@ -34,9 +37,11 @@ namespace wizm {
 
 	void cube_sm_component::component_update()
 	{
-		draw_data->bind_buffer();
-		draw_data->draw_buffer(5);
-		draw_data->unbind_buffer();
+		m_material->update_material();
+		m_draw_data->bind_buffer();
+		m_draw_data->draw_buffer(5);
+		m_draw_data->unbind_buffer();
+		m_material->unbind_material();
 	}
 
 

@@ -81,6 +81,7 @@ class core_gl_texture {
 public:
 	core_gl_texture(const char* file_path);
 	void bind_texture();
+	void unbind_texture();
 
 public:
 	unsigned int texture_id;

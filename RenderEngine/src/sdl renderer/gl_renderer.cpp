@@ -50,8 +50,6 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 
 	shdr = new core_gl_shader("vrtx_shdr.txt", "frgmnt_shdr.txt");
 
-	grid2d = new core_grid(camera);
-
 	test_cubes.emplace_back(new cube_sm_component);
 	test_cubes.emplace_back(new cube_sm_component);
 
@@ -59,9 +57,6 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 	test_cubes[1]->set_local_scale(glm::vec3(.5f));
 	test_cubes[0]->set_local_position(glm::vec3(-1.5f));
 	test_cubes[0]->set_local_scale(glm::vec3(.5f));
-	
-	test_cubes[1]->test = "poes1";
-	test_cubes[0]->test = "poes0";
 
 
 
@@ -148,17 +143,14 @@ void lowlevelsys::gl_renderer::render()
 
 
 	// VBO & VAO's
-
 	shdr->use_shader();
-	grid2d->draw_grid();
+	
 
 	// Model Render
-
-	grid2d->update_grid_pos();
 	
 	for (auto& i : test_cubes) {
 		
-		if(i->component_type == eStaticMesh)
+		if(i->m_component_type == eStaticMesh)
 		{
 			model = glm::mat4(1.f);
 			model = glm::translate(model, i->get_local_position());

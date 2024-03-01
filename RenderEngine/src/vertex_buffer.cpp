@@ -82,7 +82,9 @@ void core_index_buffer::destroy_buffer()
 
 
 
-//-----------------------------------------------------------------------
+	//////////////////////////////////////////////////////////////////////////
+	// DEFAULT CONSTRUCTOR FOR VAO
+	//////////////////////////////////////////////////////////////////////////
 
 
 core_arr_vertex_buffer::core_arr_vertex_buffer( std::vector<float>& vertices, std::vector<unsigned int>& indices)

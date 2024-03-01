@@ -2,6 +2,7 @@
 #include "entity sys/component.h"
 #include "gl core/vertex_buffer.h"
 #include "gl core/core shader.h"
+#include "system/material.h"
 
 using namespace lowlevelsys;
 
@@ -24,9 +25,9 @@ namespace wizm {
 
 	public:
 
-		std::string test;
-		core_arr_vertex_buffer* draw_data;
-		core_gl_texture* texture;
+		core_arr_vertex_buffer* m_draw_data;
+		core_gl_texture* m_texture;
+		core_material* m_material;
 
 
 		std::vector<float> vertices = {

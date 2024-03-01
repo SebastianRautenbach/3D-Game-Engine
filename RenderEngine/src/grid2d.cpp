@@ -41,6 +41,7 @@ namespace wizm {
 		texture->bind_texture();
 		draw_data->bind_buffer();
 		draw_data->draw_buffer(5);
+		texture->unbind_texture();
 	}
 
 }
