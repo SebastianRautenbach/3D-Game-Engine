@@ -57,7 +57,7 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 	test_cubes[1]->set_local_scale(glm::vec3(.5f));
 	test_cubes[0]->set_local_position(glm::vec3(-1.5f));
 	test_cubes[0]->set_local_scale(glm::vec3(.5f));
-
+	test_cubes[0]->m_material->set_texture("wood.png");
 
 
 	glEnable(GL_DEPTH_TEST);

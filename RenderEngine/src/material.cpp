@@ -20,4 +20,9 @@ namespace wizm {
 		m_albedo_texture->unbind_texture();
 	}
 
+	void core_material::set_texture(std::string albedo_path)
+	{
+		m_albedo_texture->set_texture(albedo_path.c_str());
+	}
+
 }

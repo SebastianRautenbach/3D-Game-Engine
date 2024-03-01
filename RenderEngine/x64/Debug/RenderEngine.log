@@ -1,8 +1,4 @@
 ﻿  Scanning sources for module dependencies...
-  Renderer.cpp
-  app.cpp
-  cube_test_comp.cpp
-  material.cpp
   gl_renderer.cpp
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(8,12): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(9,13): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
@@ -14,9 +10,4 @@ C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_render
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(49,18): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(96,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(97,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  vertex_buffer.cpp
-C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\vertex_buffer.cpp(114,73): warning C4312: 'type cast': conversion from 'const int' to 'void *' of greater size
-C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\vertex_buffer.cpp(128,70): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   RenderEngine.vcxproj -> C:\Users\sebog\source\repos\RenderEngine\x64\Debug\RenderEngine.exe
