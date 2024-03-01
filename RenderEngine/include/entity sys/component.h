@@ -12,9 +12,6 @@ namespace lowlevelsys {
 		
 	public:
 
-		core_component();
-		~core_component();
-
 		virtual void component_preupdate() = 0;
 		virtual void component_update() = 0;
 		virtual void component_postupdate() = 0;
@@ -22,7 +19,6 @@ namespace lowlevelsys {
 		// default component shit
 
 		void remove_component();
-		core_component copy_component() { return this; }
 
 
 
@@ -43,7 +39,11 @@ namespace lowlevelsys {
 
 
 	public:
-		core_tag* component_tags;
+
+		bool is_active;
+		bool is_visible;
+
+		wizm::core_tag* component_tags;
 		glm::vec3 m_position;
 		glm::vec3 m_rotation;
 		glm::vec3 m_scale;

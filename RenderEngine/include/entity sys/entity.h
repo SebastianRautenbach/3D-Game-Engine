@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include "component.h"
+#include "system/tag.h"
 
 namespace wizm {
 
@@ -31,7 +32,7 @@ namespace wizm {
 	
 
 	public:
-
+		core_tag* entity_tags;
 		std::vector<core_component> m_components_list;
 
 		glm::vec3 m_position;
