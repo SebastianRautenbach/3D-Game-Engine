@@ -149,6 +149,7 @@ void lowlevelsys::gl_renderer::render()
 
 	shdr->use_shader();
 	grid2d->draw_grid();
+	test_cube->set_local_scale(glm::vec3(1.0f));
 	test_cube->component_update();
 
 	// Model Render

@@ -1,6 +1,7 @@
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\include\dependencies\glad.c;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\glad.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\include\system\3d_core_camera.h;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\3d_core_camera.h.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\app.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\app.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\components\component.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\component.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\components\cube_test_comp.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\cube_test_comp.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\core shader.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\core shader.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\3d_core_camera.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\3d_core_camera.obj

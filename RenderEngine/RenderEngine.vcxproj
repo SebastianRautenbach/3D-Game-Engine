@@ -146,6 +146,7 @@
     <ClCompile Include="include\dependencies\glad.c" />
     <ClCompile Include="include\system\3d_core_camera.h" />
     <ClCompile Include="src\app.cpp" />
+    <ClCompile Include="src\components\component.cpp" />
     <ClCompile Include="src\components\cube_test_comp.cpp" />
     <ClCompile Include="src\core shader.cpp" />
     <ClCompile Include="src\3d_core_camera.cpp" />
