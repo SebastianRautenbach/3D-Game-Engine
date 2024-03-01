@@ -1,0 +1,11 @@
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\include\dependencies\glad.c;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\glad.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\include\system\3d_core_camera.h;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\3d_core_camera.h.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\app.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\app.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\core shader.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\core shader.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\3d_core_camera.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\3d_core_camera.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\grid2d.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\grid2d.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\input.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\input.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\Renderer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\Renderer.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\gl_renderer.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\timer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\timer.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\vertex_buffer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\vertex_buffer.obj

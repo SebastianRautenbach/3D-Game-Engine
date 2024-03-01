@@ -1,0 +1,6 @@
+﻿  app.cpp
+  Renderer.cpp
+SDL2main.lib(SDL_windows_main.obj) : error LNK2001: unresolved external symbol SDL_main
+    Hint on symbols that are defined and could potentially match:
+      "int __cdecl SDL_main(void)" (?SDL_main@@YAHXZ)
+C:\Users\sebog\source\repos\RenderEngine\x64\Release\RenderEngine.exe : fatal error LNK1120: 1 unresolved externals
