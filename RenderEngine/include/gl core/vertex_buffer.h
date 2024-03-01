@@ -64,6 +64,7 @@ public:
 	core_arr_vertex_buffer(std::vector<float>& vertices, std::vector<unsigned int>& indices);
 	
 	void create_buffer();
+	void draw_buffer(unsigned int size_of_row);
 	void bind_buffer() override;
 	void unbind_buffer() override;
 	void destroy_buffer() override;

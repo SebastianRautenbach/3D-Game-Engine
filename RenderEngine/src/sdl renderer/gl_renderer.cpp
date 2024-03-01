@@ -52,7 +52,7 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 
 	grid2d = new core_grid(camera);
 
-	
+	test_cube = new cube_sm_component;
 
 
 
@@ -149,7 +149,7 @@ void lowlevelsys::gl_renderer::render()
 
 	shdr->use_shader();
 	grid2d->draw_grid();
-
+	test_cube->component_update();
 
 	// Model Render
 
@@ -158,9 +158,8 @@ void lowlevelsys::gl_renderer::render()
 	model = glm::scale(model, glm::vec3(2));
 	shdr->setMat4("model", model);
 
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-
+	
 	
 
 

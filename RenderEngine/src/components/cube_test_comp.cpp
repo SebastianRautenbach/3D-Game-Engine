@@ -20,6 +20,7 @@ namespace wizm {
 
 	cube_sm_component::~cube_sm_component()
 	{
+		draw_data->destroy_buffer();
 	}
 
 	//-----------------------------------------------------------------------
@@ -32,6 +33,8 @@ namespace wizm {
 
 	void cube_sm_component::component_update()
 	{
+		draw_data->bind_buffer();
+		draw_data->draw_buffer(5);
 	}
 
 

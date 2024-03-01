@@ -30,38 +30,45 @@ namespace wizm {
 
 
 		std::vector<float> vertices = {
-			// Back face
-			-1.0f, -1.0f, -1.0f, // Bottom-left
-			 1.0f, -1.0f, -1.0f, // Bottom-right
-			 1.0f,  1.0f, -1.0f, // Top-right
-			-1.0f,  1.0f, -1.0f, // Top-left 
-			// Front face
-			-1.0f, -1.0f,  1.0f, // Bottom-left
-			 1.0f, -1.0f,  1.0f, // Bottom-right
-			 1.0f,  1.0f,  1.0f, // Top-right
-			-1.0f,  1.0f,  1.0f  // Top-left
+			-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+			 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+			 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+			-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+
+			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+			 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+			 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+			-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+
+			-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+			-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+			 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+			 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+			 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+			 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+			-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+			 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+			 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+			-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+			-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+			 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+			 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+			-0.5f,  0.5f,  0.5f,  0.0f, 0.0f
 		};
 
 
 		std::vector<unsigned int> indices = {
-			// Back face
-			0, 1, 2, // First Triangle
-			2, 3, 0, // Second Triangle
-			// Front face
-			4, 5, 6, // First Triangle
-			6, 7, 4, // Second Triangle
-			// Left face
-			4, 7, 3, // First Triangle
-			3, 0, 4, // Second Triangle
-			// Right face
-			1, 5, 6, // First Triangle
-			6, 2, 1, // Second Triangle
-			// Bottom face
-			0, 1, 5, // First Triangle
-			5, 4, 0, // Second Triangle
-			// Top face
-			3, 2, 6, // First Triangle
-			6, 7, 3  // Second Triangle
+			0, 1, 2,  2, 3, 0,       // Back face
+			4, 5, 6,  6, 7, 4,       // Front face
+			8, 9, 10, 10, 11, 8,     // Left face
+			12, 13, 14, 14, 15, 12,  // Right face
+			16, 17, 18, 18, 19, 16,  // Bottom face
+			20, 21, 22, 22, 23, 20   // Top face
 		};
 
 
