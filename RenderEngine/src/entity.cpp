@@ -10,6 +10,7 @@
 wizm::core_entity::core_entity(std::string ent_ID)
 	:m_ent_ID(ent_ID)
 {
+
 }
 
 	//-----------------------------------------------------------------------
@@ -27,7 +28,7 @@ void wizm::core_entity::destroy_entity()
 {
 	for (auto& i : m_components_list)
 	{
-		i->component_preupdate();
+		
 	}
 }
 
@@ -56,6 +57,59 @@ void wizm::core_entity::entity_postupdate()
 	{
 		i->component_postupdate();
 	}
+}
+
+void wizm::core_entity::set_position(glm::vec3 position)
+{
+	m_position = position;
+
+	for (auto& i : m_components_list)
+	{
+		
+		i->set_local_position(glm::vec3(
+			i->get_local_position().x + m_position.x,
+			i->get_local_position().y + m_position.y,
+			i->get_local_position().z + m_position.z
+		));
+	}
+}
+
+void wizm::core_entity::set_rotation(glm::vec3 rotation)
+{
+	m_rotation = rotation;
+	
+	for (auto& i : m_components_list)
+	{
+		i->set_local_rotation(glm::vec3(
+			i->get_local_rotation().x + m_rotation.x,
+			i->get_local_rotation().y + m_rotation.y,
+			i->get_local_rotation().z + m_rotation.z
+		));
+
+	}
+
+
+
+	
+}
+
+void wizm::core_entity::set_scale(glm::vec3 scale)
+{
+	
+	m_scale = scale;
+	
+	for (auto& i : m_components_list)
+	{
+		i->set_local_scale(glm::vec3(
+			i->get_local_scale().x + m_scale.x,
+			i->get_local_scale().y + m_scale.y,
+			i->get_local_scale().z + m_scale.z
+		));
+	}
+
+
+
+	
 }
 
 	//////////////////////////////////////////////////////////////////////////

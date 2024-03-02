@@ -21,7 +21,6 @@ namespace wizm {
 		void component_preupdate() override;
 		void component_update() override;
 		void component_postupdate() override;
-		void test();
 
 	public:
 

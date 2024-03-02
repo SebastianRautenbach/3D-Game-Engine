@@ -38,9 +38,17 @@ namespace wizm {
 	void cube_sm_component::component_update()
 	{
 		m_material->update_material();
+		
+		glm::mat4 model = glm::mat4(1.f);
+		model = glm::translate(model, this->get_local_position());
+		model = glm::scale(model, this->get_local_scale());
+		m_material->m_shader->setMat4("model", model);
+		
+
 		m_draw_data->bind_buffer();
 		m_draw_data->draw_buffer(5);
 		m_draw_data->unbind_buffer();
+		
 		m_material->unbind_material();
 	}
 
@@ -51,9 +59,7 @@ namespace wizm {
 	{
 	}
 
-	void cube_sm_component::test()
-	{
-	}
+	
 
 	//-----------------------------------------------------------------------
 

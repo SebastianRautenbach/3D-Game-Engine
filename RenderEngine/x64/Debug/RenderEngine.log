@@ -8,6 +8,6 @@ C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_render
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(46,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(48,20): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(49,18): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(111,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(112,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(124,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(125,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   RenderEngine.vcxproj -> C:\Users\sebog\source\repos\RenderEngine\x64\Debug\RenderEngine.exe

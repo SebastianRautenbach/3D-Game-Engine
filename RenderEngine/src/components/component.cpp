@@ -22,12 +22,15 @@ void lowlevelsys::core_component::set_local_scale(glm::vec3 scale)
 
 void lowlevelsys::core_component::add_local_position(glm::vec3 position)
 {
+	m_position += position;
 }
 
 void lowlevelsys::core_component::add_local_rotation(glm::vec3 rotation)
 {
+	m_rotation += rotation;
 }
 
 void lowlevelsys::core_component::add_local_scale(glm::vec3 scale)
 {
+	m_scale += scale;
 }

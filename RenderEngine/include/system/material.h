@@ -7,7 +7,7 @@ namespace wizm {
 	class core_material {
 	
 	public:
-		core_material(/*core_gl_shader* shader,*/ std::string albedo_path);
+		core_material(std::string albedo_path);
 		void update_material();
 		void unbind_material();
 		void set_texture(std::string albedo_path);

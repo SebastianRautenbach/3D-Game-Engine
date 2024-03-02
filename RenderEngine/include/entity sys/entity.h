@@ -30,6 +30,10 @@ namespace wizm {
 		void entity_preupdate();
 		void entity_update();
 		void entity_postupdate();
+
+		void set_position(glm::vec3 position);
+		void set_rotation(glm::vec3 rotation);
+		void set_scale(glm::vec3 scale);
 		
 
 

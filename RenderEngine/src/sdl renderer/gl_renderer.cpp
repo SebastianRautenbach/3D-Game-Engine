@@ -55,24 +55,37 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 	m_scene->add_entity("cooler");
 	m_scene->m_entities[0]->add_component(std::make_shared<cube_sm_component>());
 	m_scene->m_entities[0]->m_components_list[0]->set_local_scale(glm::vec3(0.4f));
-	m_scene->m_entities[0]->m_components_list[0]->set_local_position(glm::vec3(1.2f));
+	m_scene->m_entities[0]->m_components_list[0]->set_local_position(glm::vec3(-0.0f));
+
 
 	m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
 	m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
 	m_scene->m_entities[1]->m_components_list[0]->set_local_scale(glm::vec3(0.4f));
-	m_scene->m_entities[1]->m_components_list[0]->set_local_position(glm::vec3(-0.5f));
+	m_scene->m_entities[1]->m_components_list[0]->set_local_position(glm::vec3(-0.0f));
 	m_scene->m_entities[1]->m_components_list[1]->set_local_scale(glm::vec3(0.4f));
-	m_scene->m_entities[1]->m_components_list[1]->set_local_position(glm::vec3(-0.6f));
+	m_scene->m_entities[1]->m_components_list[1]->set_local_position(glm::vec3(-0.1f));
+	m_scene->m_entities[1]->set_position(glm::vec3(2));
+	
 	
 	auto comp = std::dynamic_pointer_cast<cube_sm_component>(m_scene->m_entities[1]->m_components_list[0]);
 	if (comp) {
 		comp->m_material->set_texture("wood.png");
-		comp->set_local_position(glm::vec3(-0.8f));
 	}
-	else {
-		// Handle the case where the dynamic cast fails (comp is null)
-		std::cout << "oopsies";
+
+	for (auto& i : m_scene->m_entities)
+	{
+		for (auto& per_ent : i->m_components_list)
+		{
+			auto comp_per_ent = std::dynamic_pointer_cast<cube_sm_component>(per_ent);
+			
+			if (comp_per_ent) {
+				comp_per_ent->m_material->m_shader = shdr;
+			}
+
+		}
 	}
+
+
 
 
 	glEnable(GL_DEPTH_TEST);
@@ -108,8 +121,8 @@ void lowlevelsys::gl_renderer::render()
 		m_input_manager->set_hide_mouse_cursor(true);
 		
 		
-		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * timer->get_delta_time());
-		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * timer->get_delta_time());
+		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * /*timer->get_delta_time()*/ 0.001f);
+		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * /*timer->get_delta_time()*/ 0.001f);
 
 
 
@@ -168,15 +181,9 @@ void lowlevelsys::gl_renderer::render()
 
 			if (per_ent->m_component_type == eStaticMesh)
 			{
-				model = glm::mat4(1.f);
-				model = glm::translate(model, per_ent->get_local_position());
-				model = glm::scale(model, per_ent->get_local_scale());
-				shdr->setMat4("model", model);
 				per_ent->component_update();
-
 			}
 			
-			/*m_scene->scene_update();*/
 			
 		}
 

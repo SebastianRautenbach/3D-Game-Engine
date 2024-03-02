@@ -9,10 +9,13 @@ namespace wizm {
 	class core_scene {
 	public:
 		
+		// defualt scene updates
 		void scene_preupdate();
 		void scene_update();
 		void scene_postupdate();
 		
+
+
 		
 		// entity related
 		

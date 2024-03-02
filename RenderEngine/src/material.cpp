@@ -12,6 +12,7 @@ namespace wizm {
 
 	void core_material::update_material()
 	{
+		m_shader->use_shader();
 		m_albedo_texture->bind_texture();
 	}
 
