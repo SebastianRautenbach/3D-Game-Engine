@@ -150,16 +150,19 @@
     <ClCompile Include="src\components\cube_test_comp.cpp" />
     <ClCompile Include="src\core shader.cpp" />
     <ClCompile Include="src\3d_core_camera.cpp" />
+    <ClCompile Include="src\entity.cpp" />
     <ClCompile Include="src\grid2d.cpp" />
     <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\material.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
     <ClCompile Include="src\tag.cpp" />
     <ClCompile Include="src\timer.cpp" />
     <ClCompile Include="src\vertex_buffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\entity sys\components\all_components_list.h" />
     <ClInclude Include="include\entity sys\components\cube_test_comp.h" />
     <ClInclude Include="include\entity sys\component_types.h" />
     <ClInclude Include="include\entity sys\entity.h" />
@@ -170,6 +173,7 @@
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
+    <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\tag.h" />
     <ClInclude Include="include\system\timer.h" />

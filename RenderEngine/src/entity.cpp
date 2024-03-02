@@ -1,0 +1,101 @@
+#include "entity sys/entity.h"
+
+
+	//////////////////////////////////////////////////////////////////////////
+	// DEFAULT CONSTRUCTOR
+	//////////////////////////////////////////////////////////////////////////
+
+	//-----------------------------------------------------------------------
+
+wizm::core_entity::core_entity(std::string ent_ID)
+	:m_ent_ID(ent_ID)
+{
+}
+
+	//-----------------------------------------------------------------------
+
+wizm::core_entity::~core_entity()
+{
+}
+
+void wizm::core_entity::remame_entity(std::string name)
+{
+}
+
+void wizm::core_entity::destroy_entity()
+{
+	for (auto& i : m_components_list)
+	{
+		i->component_preupdate();
+	}
+}
+
+
+	//-----------------------------------------------------------------------
+
+void wizm::core_entity::entity_preupdate()
+{
+	for (auto& i : m_components_list)
+	{
+		i->component_preupdate();
+	}
+}
+
+void wizm::core_entity::entity_update()
+{
+	for (auto& i : m_components_list)
+	{
+		i->component_update();
+	}
+}
+
+void wizm::core_entity::entity_postupdate()
+{
+	for (auto& i : m_components_list)
+	{
+		i->component_postupdate();
+	}
+}
+
+	//////////////////////////////////////////////////////////////////////////
+	// COMPONENTS
+	//////////////////////////////////////////////////////////////////////////
+
+
+	//-----------------------------------------------------------------------
+
+void wizm::core_entity::add_component(std::shared_ptr<core_component> component)
+{
+	m_components_list.push_back(component);
+}
+
+
+std::shared_ptr<core_component> wizm::core_entity::get_component(eCompType comp_type)
+{
+
+	for (auto& i: m_components_list)
+	{
+		if (i->m_component_type == comp_type)
+		{
+			return i;
+		}
+	}
+
+
+	return nullptr;
+}
+
+
+void wizm::core_entity::remove_component(unsigned int index)
+{
+	m_components_list.erase(m_components_list.begin() + index);
+}
+
+
+void wizm::core_entity::set_component(unsigned int index, std::shared_ptr<core_component> component)
+{
+	m_components_list[index] = component;
+}
+
+
+	//-----------------------------------------------------------------------

@@ -5,10 +5,12 @@ C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\components\component.c
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\components\cube_test_comp.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\cube_test_comp.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\core shader.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\core shader.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\3d_core_camera.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\3d_core_camera.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\entity.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\entity.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\grid2d.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\grid2d.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\input.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\input.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\material.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\material.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\Renderer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\Renderer.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\scene.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\scene.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\gl_renderer.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\tag.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\tag.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\timer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\timer.obj
