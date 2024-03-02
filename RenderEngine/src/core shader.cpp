@@ -107,7 +107,6 @@ void core_gl_texture::unbind_texture()
 
 void core_gl_texture::set_texture(const char* file_path)
 {
-	glGenTextures(1, &texture_id);
 	glBindTexture(GL_TEXTURE_2D, texture_id);
 
 
