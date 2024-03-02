@@ -50,14 +50,17 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 
 	shdr = new core_gl_shader("vrtx_shdr.txt", "frgmnt_shdr.txt");
 
-	test_cubes.emplace_back(new cube_sm_component);
-	test_cubes.emplace_back(new cube_sm_component);
+	m_scene = new core_scene;
+	m_scene->add_entity("cool");
+	m_scene->add_entity("cooler");
+	m_scene->m_entities[0]->add_component(std::make_shared<cube_sm_component>());
+	m_scene->m_entities[0]->m_components_list[0]->set_local_scale(glm::vec3(0.4f));
+	m_scene->m_entities[0]->m_components_list[0]->set_local_position(glm::vec3(0.2f));
 
-	test_cubes[1]->set_local_position(glm::vec3(.5f));
-	test_cubes[1]->set_local_scale(glm::vec3(.5f));
-	test_cubes[0]->set_local_position(glm::vec3(-1.5f));
-	test_cubes[0]->set_local_scale(glm::vec3(.5f));
-	test_cubes[0]->m_material->set_texture("wood.png");
+	m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
+	m_scene->m_entities[1]->m_components_list[0]->set_local_scale(glm::vec3(0.4f));
+	m_scene->m_entities[1]->m_components_list[0]->set_local_position(glm::vec3(-0.2f));
+
 
 
 	glEnable(GL_DEPTH_TEST);
@@ -144,19 +147,26 @@ void lowlevelsys::gl_renderer::render()
 
 	// VBO & VAO's
 	shdr->use_shader();
-	
 
 	// Model Render
 	
-	for (auto& i : test_cubes) {
-		
-		if(i->m_component_type == eStaticMesh)
+
+	
+
+
+	for (auto& i : m_scene->m_entities)
+	{
+		for (auto& per_ent : i->m_components_list)
 		{
-			model = glm::mat4(1.f);
-			model = glm::translate(model, i->get_local_position());
-			model = glm::scale(model, i->get_local_scale());
-			shdr->setMat4("model", model);
-			i->component_update();
+			if (per_ent->m_component_type == eStaticMesh)
+			{
+				model = glm::mat4(1.f);
+				model = glm::translate(model, per_ent->get_local_position());
+				model = glm::scale(model, per_ent->get_local_scale());
+				shdr->setMat4("model", model);
+			}
+
+			m_scene->scene_update();
 		}
 	}
 

@@ -1,5 +1,17 @@
 ﻿  Scanning sources for module dependencies...
-  entity.cpp
-  scene.cpp
+  Renderer.cpp
+  app.cpp
+  gl_renderer.cpp
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(8,12): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(9,13): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(17,43): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(17,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(46,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(46,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(48,20): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(49,18): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(99,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(100,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   RenderEngine.vcxproj -> C:\Users\sebog\source\repos\RenderEngine\x64\Debug\RenderEngine.exe

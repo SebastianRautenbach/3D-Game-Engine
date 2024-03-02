@@ -10,7 +10,7 @@
 #include "system/3d_core_camera.h"
 #include "system/timer.h"
 #include "other utils/grid2d.h"
-#include "entity sys/components/cube_test_comp.h"
+#include "scene.h"
 
 using namespace wizm;
 
@@ -29,10 +29,9 @@ namespace lowlevelsys {
 		core_gl_shader* shdr;
 		core_grid* grid2d;
 		core_3d_camera* camera;
-		glm::mat4 trans;
 		core_timer* timer;
-		core_grid* grid;
-		std::vector<cube_sm_component*> test_cubes;
+		core_scene* m_scene;
+		
 
 	public:
 		int w_width, w_height;

@@ -37,6 +37,7 @@ namespace wizm {
 		
 		void add_component(std::shared_ptr<core_component> component);
 		std::shared_ptr<core_component> get_component(eCompType comp_type);
+		unsigned int get_component_index(eCompType comp_type);
 		void remove_component(unsigned int index);
 		void set_component(unsigned int index, std::shared_ptr<core_component> component);
 	
