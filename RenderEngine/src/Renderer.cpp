@@ -35,7 +35,22 @@ void default_renderer::render_setup(size_t window_size_x, size_t window_size_y, 
 		m_scene->m_entities[1]->m_components_list[1]->set_local_position(glm::vec3(-0.1f));
 		m_scene->m_entities[1]->set_position(glm::vec3(.5));
 
+		// cast to its actual class ensuring it's is the correct component by testing if it's not null
+		auto comp_change_test = std::dynamic_pointer_cast<cube_sm_component>(m_scene->m_entities[1]->m_components_list[0]);
+		if (comp_change_test)
+			comp_change_test->m_material->set_texture("wood.png");
+		
+		comp_change_test = std::dynamic_pointer_cast<cube_sm_component>(m_scene->m_entities[0]->m_components_list[0]);
+		
+		if (comp_change_test)
+			comp_change_test->m_material->set_texture("grid.png");
+
+
+
 		m_gl_renderer->update_draw_data();
+
+
+
 	}
 
 

@@ -84,13 +84,6 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 void lowlevelsys::gl_renderer::render(float deltaTime)
 {
 	
-	std::string fps = "fps:";
-	fps += std::to_string(1.f / deltaTime);
-	glfwSetWindowTitle(window, fps.c_str());
-
-
-
-
 	if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
 	{		
 
@@ -153,7 +146,6 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		for (auto& per_ent : i->m_components_list)
 		{
 			
-
 			if (per_ent->m_component_type == eStaticMesh)
 			{
 				per_ent->component_update();

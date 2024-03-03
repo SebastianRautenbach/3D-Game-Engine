@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\src\\entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\src\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\system\\material.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\system\\material.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\src\\entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\gl renderer\\gl_renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -21,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\entity sys\\entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\entity sys\\entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -38,11 +42,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "material.h",
+              "DocumentMoniker": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\system\\material.h",
+              "RelativeDocumentMoniker": "RenderEngine\\include\\system\\material.h",
+              "ToolTip": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\system\\material.h",
+              "RelativeToolTip": "RenderEngine\\include\\system\\material.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-03T22:51:14.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "entity.cpp",
               "DocumentMoniker": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\src\\entity.cpp",
               "RelativeDocumentMoniker": "RenderEngine\\src\\entity.cpp",
@@ -50,12 +67,11 @@
               "RelativeToolTip": "RenderEngine\\src\\entity.cpp",
               "ViewState": "AQIAAGkAAAAAAAAAAAAYwIMAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-03T20:42:12.07Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T20:42:12.07Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "entity.h",
               "DocumentMoniker": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\entity sys\\entity.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\entity sys\\entity.h",
@@ -63,8 +79,7 @@
               "RelativeToolTip": "RenderEngine\\include\\entity sys\\entity.h",
               "ViewState": "AQIAABUAAAAAAAAAAAAAACUAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-03T20:41:48.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T20:41:48.004Z"
             },
             {
               "$type": "Document",
@@ -74,14 +89,14 @@
               "RelativeDocumentMoniker": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
               "ToolTip": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
               "RelativeToolTip": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAowHcAAAAiAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAALsAAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-03T15:38:22.809Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "gl_renderer.h",
               "DocumentMoniker": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\gl renderer\\gl_renderer.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\gl renderer\\gl_renderer.h",
@@ -89,12 +104,11 @@
               "RelativeToolTip": "RenderEngine\\include\\gl renderer\\gl_renderer.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-03T15:38:27.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T15:38:27.768Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "scene.h",
               "DocumentMoniker": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\scene.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\scene.h",
@@ -102,12 +116,11 @@
               "RelativeToolTip": "RenderEngine\\include\\scene.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-03T15:36:03.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-03T15:36:03.716Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Renderer.h",
               "DocumentMoniker": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\include\\Renderer.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\Renderer.h",
@@ -120,13 +133,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Renderer.cpp",
               "DocumentMoniker": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\src\\Renderer.cpp",
               "RelativeDocumentMoniker": "RenderEngine\\src\\Renderer.cpp",
               "ToolTip": "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\src\\Renderer.cpp",
               "RelativeToolTip": "RenderEngine\\src\\Renderer.cpp",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACMAAAAyAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-03T15:35:35.284Z",
               "EditorCaption": ""
