@@ -17,10 +17,12 @@ using namespace wizm;
 namespace lowlevelsys {
 	class gl_renderer {
 	public:
-		void setup(size_t window_size_x, size_t window_size_y, const char* window_name);
+		void setup(size_t window_size_x, size_t window_size_y, const char* window_name, core_scene* scene);
+		
 		void pre_render(bool& is_running);
 		void render();
 		void post_render();
+		void update_draw_data();
 		void on_exit();
 
 	public:

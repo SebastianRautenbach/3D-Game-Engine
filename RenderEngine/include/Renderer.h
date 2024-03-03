@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "gl renderer/gl_renderer.h"
+#include "scene.h"
 
 namespace wizm {
 
@@ -12,6 +13,7 @@ namespace wizm {
 		void render();
 		void post_render();
 
+
 		inline default_renderer* get_renderer() {
 			return this;
 		}
@@ -19,6 +21,7 @@ namespace wizm {
 	public:
 		bool is_running = true;
 		lowlevelsys::gl_renderer* m_gl_renderer;
+		core_scene* m_scene;
 	};
 
 

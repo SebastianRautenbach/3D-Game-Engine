@@ -3,7 +3,7 @@
 
 
 
-void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y, const char* window_name)
+void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y, const char* window_name, core_scene* scene)
 {
 	w_width = window_size_x;
 	w_height = window_size_y;
@@ -37,8 +37,6 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 	m_input_manager = new input_manager(window, static_cast<float>(w_width), static_cast<float>(w_height));
 
 
-
-
 	// Testing -------------------------------------------------------------------------- /
 
 	timer = new core_timer;
@@ -50,40 +48,13 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 
 	shdr = new core_gl_shader("vrtx_shdr.txt", "frgmnt_shdr.txt");
 
-	m_scene = new core_scene;
-	m_scene->add_entity("cool");
-	m_scene->add_entity("cooler");
-	m_scene->m_entities[0]->add_component(std::make_shared<cube_sm_component>());
-	m_scene->m_entities[0]->m_components_list[0]->set_local_scale(glm::vec3(0.4f));
-	m_scene->m_entities[0]->m_components_list[0]->set_local_position(glm::vec3(-0.0f));
+	m_scene = scene;
 
-
-	m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
-	m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
-	m_scene->m_entities[1]->m_components_list[0]->set_local_scale(glm::vec3(0.4f));
-	m_scene->m_entities[1]->m_components_list[0]->set_local_position(glm::vec3(-0.0f));
-	m_scene->m_entities[1]->m_components_list[1]->set_local_scale(glm::vec3(0.4f));
-	m_scene->m_entities[1]->m_components_list[1]->set_local_position(glm::vec3(-0.1f));
-	m_scene->m_entities[1]->set_position(glm::vec3(2));
 	
 	
-	auto comp = std::dynamic_pointer_cast<cube_sm_component>(m_scene->m_entities[1]->m_components_list[0]);
-	if (comp) {
-		comp->m_material->set_texture("wood.png");
-	}
+	
 
-	for (auto& i : m_scene->m_entities)
-	{
-		for (auto& per_ent : i->m_components_list)
-		{
-			auto comp_per_ent = std::dynamic_pointer_cast<cube_sm_component>(per_ent);
-			
-			if (comp_per_ent) {
-				comp_per_ent->m_material->m_shader = shdr;
-			}
-
-		}
-	}
+	
 
 
 
@@ -203,11 +174,41 @@ void lowlevelsys::gl_renderer::render()
 
 }
 
+
+
+
 void lowlevelsys::gl_renderer::post_render()
 {
 	glfwSwapBuffers(window);
 	glfwPollEvents();
 }
+
+
+
+//-----------------------------------------------------------------------
+
+
+
+void lowlevelsys::gl_renderer::update_draw_data()
+{
+	for (auto& i : m_scene->m_entities)
+	{
+		for (auto& per_ent : i->m_components_list)
+		{
+			auto comp_per_ent = std::dynamic_pointer_cast<cube_sm_component>(per_ent);
+
+			if (comp_per_ent) {
+				comp_per_ent->m_material->m_shader = shdr;
+			}
+
+		}
+	}
+}
+
+
+
+//-----------------------------------------------------------------------
+
 
 void lowlevelsys::gl_renderer::on_exit()
 {
