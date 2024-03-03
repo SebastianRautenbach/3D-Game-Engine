@@ -118,7 +118,8 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
 			camera->MoveUp(-1 * deltaTime);
-		
+
+
  	}
 	else
 	{

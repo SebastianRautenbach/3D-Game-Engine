@@ -3,6 +3,7 @@
 #include "gl renderer/gl_renderer.h"
 #include "scene.h"
 #include "system/timer.h"
+#include "input.h"
 
 namespace wizm {
 
@@ -24,6 +25,7 @@ namespace wizm {
 		lowlevelsys::gl_renderer* m_gl_renderer;
 		core_scene* m_scene;
 		core_timer* m_timer;
+		input_manager* m_input_manager;
 	};
 
 

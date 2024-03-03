@@ -1,3 +1,18 @@
 ﻿  Scanning sources for module dependencies...
-  Renderer.cpp
+  gl_renderer.cpp
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(8,12): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(9,13): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(17,43): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(17,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(43,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(43,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(45,20): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(46,18): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(99,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(100,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(124,52): warning C4305: 'argument': truncation from 'double' to 'T'
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(124,52): warning C4305:         with
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(124,52): warning C4305:         [
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(124,52): warning C4305:             T=float
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(124,52): warning C4305:         ]
   RenderEngine.vcxproj -> C:\Users\sebog\source\repos\RenderEngine\x64\Debug\RenderEngine.exe

@@ -34,6 +34,10 @@ namespace wizm {
 		void set_position(glm::vec3 position);
 		void set_rotation(glm::vec3 rotation);
 		void set_scale(glm::vec3 scale);
+
+		void add_position(glm::vec3 position);
+		void add_rotation(glm::vec3 rotation);
+		void add_scale(glm::vec3 scale);
 		
 
 

@@ -18,7 +18,6 @@ void default_renderer::render_setup(size_t window_size_x, size_t window_size_y, 
 
 
 
-
 	{
 		// this is for testing the entity component system
 		m_scene->add_entity("cool");

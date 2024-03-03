@@ -59,36 +59,43 @@ void wizm::core_entity::entity_postupdate()
 	}
 }
 
+//-----------------------------------------------------------------------
+
+
 void wizm::core_entity::set_position(glm::vec3 position)
 {
+	
+
+ 	for (auto& i : m_components_list)
+ 	{
+ 		
+ 		i->set_local_position(glm::vec3(
+ 			i->get_local_position().x + position.x - m_position.x,
+ 			i->get_local_position().y + position.y - m_position.y,
+ 			i->get_local_position().z + position.z - m_position.z
+ 		));
+ 	}
+ 	
+	
 	m_position = position;
 
-	for (auto& i : m_components_list)
-	{
-		
-		i->set_local_position(glm::vec3(
-			i->get_local_position().x + m_position.x,
-			i->get_local_position().y + m_position.y,
-			i->get_local_position().z + m_position.z
-		));
-	}
 }
 
 void wizm::core_entity::set_rotation(glm::vec3 rotation)
 {
-	m_rotation = rotation;
+	
 	
 	for (auto& i : m_components_list)
 	{
 		i->set_local_rotation(glm::vec3(
-			i->get_local_rotation().x + m_rotation.x,
-			i->get_local_rotation().y + m_rotation.y,
-			i->get_local_rotation().z + m_rotation.z
+			i->get_local_rotation().x + rotation.x - m_rotation.x,
+			i->get_local_rotation().y + rotation.y - m_rotation.y,
+			i->get_local_rotation().z + rotation.z - m_rotation.z
 		));
 
 	}
 
-
+	m_rotation = rotation;
 
 	
 }
@@ -96,20 +103,59 @@ void wizm::core_entity::set_rotation(glm::vec3 rotation)
 void wizm::core_entity::set_scale(glm::vec3 scale)
 {
 	
-	m_scale = scale;
+	
 	
 	for (auto& i : m_components_list)
 	{
 		i->set_local_scale(glm::vec3(
-			i->get_local_scale().x + m_scale.x,
-			i->get_local_scale().y + m_scale.y,
-			i->get_local_scale().z + m_scale.z
+			i->get_local_scale().x + scale.x - m_scale.x,
+			i->get_local_scale().y + scale.y - m_scale.y,
+			i->get_local_scale().z + scale.z - m_scale.z
 		));
 	}
 
 
-
+	m_scale = scale;
 	
+}
+
+//-----------------------------------------------------------------------
+
+void wizm::core_entity::add_position(glm::vec3 position)
+{
+	for (auto& i : m_components_list)
+	{
+		i->set_local_position(i->get_local_position() + position);
+
+	}
+
+	m_position += position;
+}
+
+
+
+void wizm::core_entity::add_rotation(glm::vec3 rotation)
+{
+	for (auto& i : m_components_list)
+	{
+		i->set_local_rotation(i->get_local_rotation() + rotation);
+
+	}
+
+	m_rotation += rotation;
+}
+
+
+
+void wizm::core_entity::add_scale(glm::vec3 scale)
+{
+	for (auto& i : m_components_list)
+	{
+		i->set_local_scale(i->get_local_scale() + scale);
+	}
+
+
+	m_scale += scale;
 }
 
 	//////////////////////////////////////////////////////////////////////////
