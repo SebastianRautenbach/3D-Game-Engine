@@ -8,7 +8,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "system/3d_core_camera.h"
-#include "system/timer.h"
 #include "other utils/grid2d.h"
 #include "scene.h"
 
@@ -19,9 +18,9 @@ namespace lowlevelsys {
 	public:
 		void setup(size_t window_size_x, size_t window_size_y, const char* window_name, core_scene* scene);
 		
-		void pre_render(bool& is_running);
-		void render();
-		void post_render();
+		void pre_render(bool& is_running, float deltaTime);
+		void render(float deltaTime);
+		void post_render(float deltaTime);
 		void update_draw_data();
 		void on_exit();
 
@@ -31,7 +30,6 @@ namespace lowlevelsys {
 		core_gl_shader* shdr;
 		core_grid* grid2d;
 		core_3d_camera* camera;
-		core_timer* timer;
 		core_scene* m_scene;
 		
 

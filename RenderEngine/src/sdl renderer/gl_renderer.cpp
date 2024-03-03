@@ -39,7 +39,6 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 
 	// Testing -------------------------------------------------------------------------- /
 
-	timer = new core_timer;
 
 	camera = new core_3d_camera(w_width, w_height);
 	camera->SetPosition(glm::vec3(-1.76043, 1.11876, 1.69863));
@@ -68,7 +67,7 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 
 //-----------------------------------------------------------------------
 
-void lowlevelsys::gl_renderer::pre_render(bool& is_running)
+void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 {
 	is_running = !glfwWindowShouldClose(window);
 
@@ -82,12 +81,11 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running)
 
 //-----------------------------------------------------------------------
 
-void lowlevelsys::gl_renderer::render()
+void lowlevelsys::gl_renderer::render(float deltaTime)
 {
-	timer->update_delta_time();
-
+	
 	std::string fps = "fps:";
-	fps += std::to_string(1.f / timer->get_delta_time());
+	fps += std::to_string(1.f / deltaTime);
 	glfwSetWindowTitle(window, fps.c_str());
 
 
@@ -98,28 +96,28 @@ void lowlevelsys::gl_renderer::render()
 
 		m_input_manager->set_hide_mouse_cursor(true);
 		
-		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * timer->get_delta_time());
-		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * timer->get_delta_time());
+		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * deltaTime);
+		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * deltaTime);
 
 
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_W))
-			camera->MoveForward(1 * timer->get_delta_time());
+			camera->MoveForward(1 * deltaTime);
 		
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_S))
-			camera->MoveForward(-1 * timer->get_delta_time());
+			camera->MoveForward(-1 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_D))
-			camera->MoveRight(1 * timer->get_delta_time());
+			camera->MoveRight(1 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_A))
-			camera->MoveRight(-1 * timer->get_delta_time());
+			camera->MoveRight(-1 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_E))
-			camera->MoveUp(1 * timer->get_delta_time());
+			camera->MoveUp(1 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
-			camera->MoveUp(-1 * timer->get_delta_time());
+			camera->MoveUp(-1 * deltaTime);
 		
  	}
 	else
@@ -140,8 +138,7 @@ void lowlevelsys::gl_renderer::render()
 
 
 	view = camera->GetViewMatrix();
-	projection = glm::perspective(glm::radians(45.0f), (float)w_width / (float)w_height, 0.1f, 100.0f);
-	unsigned int modelLoc = glGetUniformLocation(shdr->get_shader_id(), "model");
+	projection = camera->GetProjectionMatrix();
 	unsigned int viewLoc = glGetUniformLocation(shdr->get_shader_id() , "view");
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
 	shdr->setMat4("projection", projection);
@@ -177,7 +174,7 @@ void lowlevelsys::gl_renderer::render()
 
 
 
-void lowlevelsys::gl_renderer::post_render()
+void lowlevelsys::gl_renderer::post_render(float deltaTime)
 {
 	glfwSwapBuffers(window);
 	glfwPollEvents();

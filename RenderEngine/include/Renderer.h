@@ -2,6 +2,7 @@
 #include <iostream>
 #include "gl renderer/gl_renderer.h"
 #include "scene.h"
+#include "system/timer.h"
 
 namespace wizm {
 
@@ -22,6 +23,7 @@ namespace wizm {
 		bool is_running = true;
 		lowlevelsys::gl_renderer* m_gl_renderer;
 		core_scene* m_scene;
+		core_timer* m_timer;
 	};
 
 
