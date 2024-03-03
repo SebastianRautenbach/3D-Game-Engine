@@ -5,7 +5,9 @@
 namespace lowlevelsys
 {
 	class core_timer {
+
 	public:
+
 		void update_delta_time();
 		float get_delta_time();
 

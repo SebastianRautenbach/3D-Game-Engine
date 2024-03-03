@@ -3,6 +3,7 @@
 
 namespace lowlevelsys {
 
+
 	void core_timer::update_delta_time()
 	{
 		auto currentFrame = static_cast<float>(glfwGetTime());

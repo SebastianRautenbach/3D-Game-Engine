@@ -23,7 +23,7 @@ namespace wizm {
 		mfPitch = 0;
 		mfYaw = 0;
 		mfRoll = 0;
-
+		mfSensitivity = 0.5f;
 
 		mbViewUpdated = true;
 		mbProjectionUpdated = true;
@@ -154,7 +154,7 @@ namespace wizm {
 
 	void core_3d_camera::AddPitch(float afAngle)
 	{
-		mfPitch += afAngle;
+		mfPitch += afAngle * mfSensitivity;
 
 		if (mvPitchLimits.x != 0 || mvPitchLimits.y != 0)
 		{
@@ -172,7 +172,7 @@ namespace wizm {
 
 	void core_3d_camera::AddYaw(float afAngle)
 	{
-		mfYaw += afAngle;
+		mfYaw += afAngle * mfSensitivity;
 
 		if (mvYawLimits.x != 0 || mvYawLimits.y != 0)
 		{
@@ -189,7 +189,7 @@ namespace wizm {
 
 	void core_3d_camera::AddRoll(float afAngle)
 	{
-		mfRoll += afAngle;
+		mfRoll += afAngle * mfSensitivity;
 		mbViewUpdated = true; mbMoveUpdated = true;
 	}
 

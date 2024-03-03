@@ -130,6 +130,7 @@ namespace wizm {
 		float mfPitch;
 		float mfYaw;
 		float mfRoll;
+		float mfSensitivity;
 		glm::vec2 mvPitchLimits;
 		glm::vec2 mvYawLimits;
 

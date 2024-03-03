@@ -115,14 +115,20 @@ void lowlevelsys::gl_renderer::render()
 {
 	timer->update_delta_time();
 
+	std::string fps = "fps:";
+	fps += std::to_string(1.f / timer->get_delta_time());
+	glfwSetWindowTitle(window, fps.c_str());
+
+
+
+
 	if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
 	{		
 
 		m_input_manager->set_hide_mouse_cursor(true);
 		
-		
-		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * /*timer->get_delta_time()*/ 0.001f);
-		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * /*timer->get_delta_time()*/ 0.001f);
+		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * timer->get_delta_time());
+		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * timer->get_delta_time());
 
 
 
