@@ -122,5 +122,8 @@
     <ClInclude Include="include\entity sys\components\all_components_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\system\mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

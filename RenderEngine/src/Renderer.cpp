@@ -5,7 +5,7 @@ using namespace wizm;
 
 //-----------------------------------------------------------------------
 
-void default_renderer::render_setup(size_t window_size_x, size_t window_size_y, const char* window_name)
+void default_renderer::render_setup(int window_size_x, int window_size_y, const char* window_name)
 {
 
 	m_scene = new core_scene;

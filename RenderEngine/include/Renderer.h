@@ -10,7 +10,7 @@ namespace wizm {
 	class default_renderer {
 	public:
 
-		void render_setup(size_t window_size_x, size_t window_size_y, const char* window_name);
+		void render_setup(int window_size_x, int window_size_y, const char* window_name);
 		void pre_render();
 		void render();
 		void post_render();

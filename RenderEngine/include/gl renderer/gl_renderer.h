@@ -16,7 +16,7 @@ using namespace wizm;
 namespace lowlevelsys {
 	class gl_renderer {
 	public:
-		void setup(size_t window_size_x, size_t window_size_y, const char* window_name, core_scene* scene);
+		void setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene);
 		
 		void pre_render(bool& is_running, float deltaTime);
 		void render(float deltaTime);

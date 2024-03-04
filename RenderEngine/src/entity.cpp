@@ -22,6 +22,7 @@ wizm::core_entity::~core_entity()
 
 void wizm::core_entity::remame_entity(std::string name)
 {
+	m_ent_ID = name;
 }
 
 void wizm::core_entity::destroy_entity()
@@ -186,13 +187,14 @@ std::shared_ptr<core_component> wizm::core_entity::get_component(eCompType comp_
 	return nullptr;
 }
 
-unsigned int wizm::core_entity::get_component_index(eCompType comp_type)
+int wizm::core_entity::get_component_index(eCompType comp_type)
 {
 	for (int i = 0; i < m_components_list.size(); i++)
 	{
 		if (m_components_list[i]->m_component_type == comp_type)
 			return i;
 	}
+	return -1;
 }
 
 

@@ -3,7 +3,7 @@
 
 
 
-void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y, const char* window_name, core_scene* scene)
+void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene)
 {
 	w_width = window_size_x;
 	w_height = window_size_y;
@@ -37,7 +37,6 @@ void lowlevelsys::gl_renderer::setup(size_t window_size_x, size_t window_size_y,
 	m_input_manager = new input_manager(window, static_cast<float>(w_width), static_cast<float>(w_height));
 
 
-	// Testing -------------------------------------------------------------------------- /
 
 
 	camera = new core_3d_camera(w_width, w_height);
@@ -84,6 +83,10 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 void lowlevelsys::gl_renderer::render(float deltaTime)
 {
 	
+	std::string fps = std::to_string(1.f / deltaTime);
+	glfwSetWindowTitle(window, fps.c_str());
+
+
 	if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
 	{		
 
@@ -126,7 +129,7 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 
 
-	glm::mat4 model = glm::mat4(1.0f);
+
 	glm::mat4 view = glm::mat4(1.0f);
 	glm::mat4 projection = glm::mat4(1.0f);
 
