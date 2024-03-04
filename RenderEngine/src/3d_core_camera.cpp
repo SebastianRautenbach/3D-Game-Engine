@@ -23,7 +23,7 @@ namespace wizm {
 		mfPitch = 0;
 		mfYaw = 0;
 		mfRoll = 0;
-		mfSensitivity = 0.5f;
+		mfSensitivity = 0.1f;
 
 		mbViewUpdated = true;
 		mbProjectionUpdated = true;

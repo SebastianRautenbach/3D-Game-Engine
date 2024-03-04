@@ -115,6 +115,8 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
 			camera->MoveUp(-1 * deltaTime);
 
+		if (m_input_manager->has_key_been_pressed(GLFW_KEY_I))
+			m_scene->m_entities[1]->add_rotation(glm::vec3(10));
 
  	}
 	else

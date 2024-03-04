@@ -13,6 +13,7 @@ namespace wizm {
 	void core_material::update_material()
 	{
 		m_shader->use_shader();
+		m_shader->setVec3("lightColor", 1.0f, 1.0f, 1.0f);
 		m_albedo_texture->bind_texture();
 	}
 

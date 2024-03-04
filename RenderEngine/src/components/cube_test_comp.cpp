@@ -15,8 +15,9 @@ namespace wizm {
 		m_material = new core_material("missing_texture.png");
 
 		m_draw_data = new core_arr_vertex_buffer(vertices, indices);
-		m_draw_data->create_attrib_arr(0, 3, 5 * sizeof(float), 0);
-		m_draw_data->create_attrib_arr(1, 2, 5 * sizeof(float), (3 * sizeof(float)));
+		m_draw_data->create_attrib_arr(0, 3, 8 * sizeof(float), 0);
+		m_draw_data->create_attrib_arr(1, 2, 8 * sizeof(float), (3 * sizeof(float)));
+		m_draw_data->create_attrib_arr(2, 3, 8 * sizeof(float), (5 * sizeof(float)));
 		m_draw_data->create_buffer();
 	}
 
@@ -41,12 +42,14 @@ namespace wizm {
 		
 		glm::mat4 model = glm::mat4(1.f);
 		model = glm::translate(model, this->get_local_position());
+		model = glm::rotate(model, 3.14f * static_cast<float>(glfwGetTime()), glm::vec3(1.0));
 		model = glm::scale(model, this->get_local_scale());
 		m_material->m_shader->setMat4("model", model);
+		m_material->m_shader->setVec3("lightPos", 0, .1, 0);
 		
 
 		m_draw_data->bind_buffer();
-		m_draw_data->draw_buffer(5);
+		m_draw_data->draw_buffer(8);
 		m_draw_data->unbind_buffer();
 		
 		m_material->unbind_material();

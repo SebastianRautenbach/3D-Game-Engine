@@ -9,6 +9,7 @@ C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\entity.cpp;C:\Users\se
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\grid2d.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\grid2d.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\input.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\input.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\material.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\material.obj
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\mesh.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\mesh.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\Renderer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\Renderer.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\scene.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\scene.obj
 C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp;C:\Users\sebog\source\repos\RenderEngine\RenderEngine\x64\Debug\gl_renderer.obj
