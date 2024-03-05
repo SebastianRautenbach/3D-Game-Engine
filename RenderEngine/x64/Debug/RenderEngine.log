@@ -1,4 +1,3 @@
 ﻿  Scanning sources for module dependencies...
   cube_test_comp.cpp
-C:\Users\sebog\source\repos\RenderEngine\RenderEngine\src\components\cube_test_comp.cpp(48,48): warning C4305: 'argument': truncation from 'double' to 'float'
   RenderEngine.vcxproj -> C:\Users\sebog\source\repos\RenderEngine\x64\Debug\RenderEngine.exe

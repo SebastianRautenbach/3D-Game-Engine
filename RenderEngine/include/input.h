@@ -21,6 +21,8 @@ public:
 	
 	static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
+	static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+
 	bool has_key_been_pressed(int key);
 
 	mouse_info get_mouse_offset() { return _mouse_info; }
@@ -42,5 +44,6 @@ private:
 	static glm::vec2 last_mouse_pos;
 	static mouse_info _mouse_info;
 	static std::unordered_map<int, bool> keys;
+	static std::unordered_map<int, bool> mouse_wheel;
 	GLFWwindow* m_window = nullptr;
 };

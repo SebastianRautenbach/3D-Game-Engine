@@ -42,10 +42,12 @@ namespace wizm {
 		
 		glm::mat4 model = glm::mat4(1.f);
 		model = glm::translate(model, this->get_local_position());
-		model = glm::rotate(model, 3.14f * static_cast<float>(glfwGetTime()), glm::vec3(1.0));
+		model = glm::rotate(model, 2.f * static_cast<float>(glfwGetTime()), glm::vec3(1.0));
 		model = glm::scale(model, this->get_local_scale());
 		m_material->m_shader->setMat4("model", model);
-		m_material->m_shader->setVec3("lightPos", 0, .1, 0);
+		
+		// this is a test
+		m_material->m_shader->setVec3("lightPos", 0, 1, 0);
 		
 
 		m_draw_data->bind_buffer();
