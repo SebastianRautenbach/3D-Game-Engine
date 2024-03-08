@@ -1,3 +1,16 @@
 ﻿  Scanning sources for module dependencies...
+  Renderer.cpp
+  app.cpp
+  component.cpp
   cube_test_comp.cpp
-  RenderEngine.vcxproj -> C:\Users\sebog\source\repos\RenderEngine\x64\Debug\RenderEngine.exe
+  entity.cpp
+  scene.cpp
+  gl_renderer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(42,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(42,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(44,20): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(45,18): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(95,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(96,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+LINK : fatal error LNK1168: cannot open C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe for writing

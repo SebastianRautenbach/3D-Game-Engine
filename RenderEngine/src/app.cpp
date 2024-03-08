@@ -6,7 +6,7 @@
 int main(int argc, char* args[]) {
 	
 	wizm::default_renderer* renderer = new wizm::default_renderer;
-	renderer->render_setup(800 , 600 , "Wizm");
+	renderer->render_setup(1920 , 1080 , "Wizm");
 
 	while (renderer->is_running)
 	{

@@ -5,14 +5,14 @@
         {
             "primary-output": "x64\\Debug\\3d_core_camera.h.obj",
             "outputs": [
-                "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\x64\\Debug\\vc143.pdb",
+                "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\x64\\Debug\\vc143.pdb",
                 "x64\\Debug\\",
-                "C:\\Users\\sebog\\source\\repos\\RenderEngine\\RenderEngine\\x64\\Debug\\3d_core_camera.h.ifc"
+                "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\x64\\Debug\\3d_core_camera.h.ifc"
             ],
             "provides": [
                 {
                     "logical-name": "include\\system\\3d_core_camera.h",
-                    "source-path": "c:\\users\\sebog\\source\\repos\\renderengine\\renderengine\\include\\system\\3d_core_camera.h",
+                    "source-path": "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\3d_core_camera.h",
                     "lookup-method": "absolute"
                 }
             ],
