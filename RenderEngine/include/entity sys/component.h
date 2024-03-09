@@ -28,6 +28,8 @@ namespace lowlevelsys {
 
 		// Transform shit
 
+		void set_model_mtx(glm::mat4& model);
+
 		void add_local_position(glm::vec3 posistion);
 		void add_local_rotation(glm::vec3 rotation);
 		void add_local_scale(glm::vec3 scale);
@@ -43,11 +45,11 @@ namespace lowlevelsys {
 		glm::vec3 get_local_position() { return m_position; }
 		glm::vec3 get_local_rotation() { return m_rotation; }
 		glm::vec3 get_local_scale() { return m_scale; }
-		
+		glm::mat4 get_model_mtx() { return m_model_mtx; }
 
 	public:
 
-		//------------------------- new solution
+		//-------------------------
 
 		glm::mat4 m_model_mtx;
 
@@ -59,9 +61,9 @@ namespace lowlevelsys {
 		bool m_is_visible;
 
 		wizm::core_tag* component_tags;
+
 		glm::vec3 m_position;
 		glm::vec3 m_rotation;
-		glm::quat m_rotation_quat;
 		glm::vec3 m_scale;
 	};
 }

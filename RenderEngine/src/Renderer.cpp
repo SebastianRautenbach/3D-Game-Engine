@@ -44,6 +44,8 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		if (comp_change_test)
 			comp_change_test->m_material->set_texture("wood.png");
 		
+		m_scene->m_entities[1]->add_rotation(glm::vec3(.2));
+		
 
 
 
@@ -82,6 +84,7 @@ void default_renderer::pre_render()
 
 void default_renderer::render()
 {
+	m_scene->m_entities[1]->add_rotation(glm::vec3(.2 * m_timer->get_delta_time()));
 	m_timer->update_delta_time();
 	m_gl_renderer->render(m_timer->get_delta_time());
 }

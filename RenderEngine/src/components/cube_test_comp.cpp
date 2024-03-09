@@ -39,12 +39,14 @@ namespace wizm {
 	void cube_sm_component::component_update()
 	{
 		m_material->update_material();
-		
-		glm::mat4 model = glm::mat4(1.f);
-		model = glm::translate(model, this->get_local_position());
-		model = glm::rotate(model, 2.f * static_cast<float>(glfwGetTime()), glm::vec3(1.0));
-		model = glm::scale(model, this->get_local_scale());
-		m_material->m_shader->setMat4("model", model);
+
+
+		m_model_mtx = glm::mat4(1);
+		set_local_position(m_position);
+		set_local_rotation(m_rotation);
+		set_local_scale(m_scale);
+
+		m_material->m_shader->setMat4("model", m_model_mtx);
 		
 		// this is a test
 		m_material->m_shader->setVec3("lightPos", 0, 1, 0);
