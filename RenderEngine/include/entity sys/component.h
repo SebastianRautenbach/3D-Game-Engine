@@ -28,24 +28,13 @@ namespace lowlevelsys {
 
 		// Transform shit
 
-		void set_local_position(glm::vec3 position);
-		void set_local_rotation(glm::vec3 rotation);
-		void set_local_scale(glm::vec3 scale);
-
-		void add_local_position(glm::vec3 position);
+		void add_local_position(glm::vec3 posistion);
 		void add_local_rotation(glm::vec3 rotation);
 		void add_local_scale(glm::vec3 scale);
 
-
-		//----------------------- new and better
-
-		void add_local_position_new(glm::vec3 posistion);
-		void add_local_rotation_new(glm::vec3 rotation);
-		void add_local_scale_new(glm::vec3 scale);
-
-		void set_local_rotation_new(glm::vec3 rotation);
-		void set_local_position_new(glm::vec3 position);
-		void set_local_scale_new(glm::vec3 scale);
+		void set_local_rotation(glm::vec3 rotation);
+		void set_local_position(glm::vec3 position);
+		void set_local_scale(glm::vec3 scale);
 
 		// rather then changing the way the whole engine works lets
 		// just change the var to a matrix and the function change it
