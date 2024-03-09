@@ -38,6 +38,11 @@ namespace lowlevelsys {
 		void set_local_position(glm::vec3 position);
 		void set_local_scale(glm::vec3 scale);
 
+		// temp single_rotation
+
+		void add_world_rotation( float angle);
+
+
 		// rather then changing the way the whole engine works lets
 		// just change the var to a matrix and the function change it
 		// acordingly 
@@ -62,6 +67,7 @@ namespace lowlevelsys {
 
 		wizm::core_tag* component_tags;
 
+		glm::vec3 center;
 		glm::vec3 m_position;
 		glm::vec3 m_rotation;
 		glm::vec3 m_scale;

@@ -22,11 +22,6 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		// this is for testing the entity component system
 		m_scene->add_entity("cool");
 		m_scene->add_entity("cooler");
-		m_scene->m_entities[0]->add_component(std::make_shared<cube_sm_component>());
-		m_scene->m_entities[0]->m_components_list[0]->set_local_scale(glm::vec3(0.4f));
-		m_scene->m_entities[0]->m_components_list[0]->set_local_position(glm::vec3(-0.0f));
-		m_scene->m_entities[0]->m_components_list[0]->set_local_rotation(glm::vec3(-0.0f));
-
 
 		m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
 		m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
@@ -37,14 +32,14 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		m_scene->m_entities[1]->m_components_list[1]->set_local_position(glm::vec3(-0.1f));
 		m_scene->m_entities[1]->m_components_list[1]->set_local_rotation(glm::vec3(-0.0f));
 
-		m_scene->m_entities[1]->set_position(glm::vec3(.5));
+		m_scene->m_entities[1]->set_position(glm::vec3(0));
 
 		// cast to its actual class ensuring it's is the correct component by testing if it's not null
 		auto comp_change_test = std::dynamic_pointer_cast<cube_sm_component>(m_scene->m_entities[1]->m_components_list[0]);
 		if (comp_change_test)
 			comp_change_test->m_material->set_texture("wood.png");
 		
-		m_scene->m_entities[1]->add_rotation(glm::vec3(.2));
+		m_scene->m_entities[1]->add_position(glm::vec3(1));
 		
 
 
@@ -84,7 +79,7 @@ void default_renderer::pre_render()
 
 void default_renderer::render()
 {
-	m_scene->m_entities[1]->add_rotation(glm::vec3(.2 * m_timer->get_delta_time()));
+	m_scene;
 	m_timer->update_delta_time();
 	m_gl_renderer->render(m_timer->get_delta_time());
 }

@@ -43,13 +43,13 @@ namespace wizm {
 
 		m_model_mtx = glm::mat4(1);
 		set_local_position(m_position);
-		set_local_rotation(m_rotation);
+		//set_local_rotation(m_rotation);
+		add_world_rotation(glfwGetTime() * 0.5f);
+
 		set_local_scale(m_scale);
 
 		m_material->m_shader->setMat4("model", m_model_mtx);
 		
-		// this is a test
-		m_material->m_shader->setVec3("lightPos", 0, 1, 0);
 		
 
 		m_draw_data->bind_buffer();

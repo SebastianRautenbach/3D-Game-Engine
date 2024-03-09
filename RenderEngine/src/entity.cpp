@@ -75,6 +75,8 @@ void wizm::core_entity::set_position(glm::vec3 position)
  			i->get_local_position().y + position.y - m_position.y,
  			i->get_local_position().z + position.z - m_position.z
  		));
+
+		i->center = position;
  	}
  	
 	
@@ -126,8 +128,8 @@ void wizm::core_entity::add_position(glm::vec3 position)
 {
 	for (auto& i : m_components_list)
 	{
-		i->set_local_position(i->get_local_position() + position);
-
+		i->add_local_position(position);
+		i->center = m_position + position;
 	}
 
 	m_position += position;
@@ -137,10 +139,9 @@ void wizm::core_entity::add_position(glm::vec3 position)
 
 void wizm::core_entity::add_rotation(glm::vec3 rotation)
 {
-	for (auto& i : m_components_list)
+	for (auto& i : m_components_list)	
 	{
 		i->set_local_rotation(i->get_local_rotation() + rotation);
-
 	}
 
 	m_rotation += rotation;
@@ -152,7 +153,7 @@ void wizm::core_entity::add_scale(glm::vec3 scale)
 {
 	for (auto& i : m_components_list)
 	{
-		i->set_local_scale(i->get_local_scale() + scale);
+		i->add_local_scale(scale);
 	}
 
 

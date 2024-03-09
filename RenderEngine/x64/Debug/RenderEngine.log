@@ -1,13 +1,17 @@
 ﻿  Scanning sources for module dependencies...
   Renderer.cpp
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(47,50): warning C4305: 'argument': truncation from 'double' to 'T'
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(47,50): warning C4305:         with
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(47,50): warning C4305:         [
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(47,50): warning C4305:             T=float
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(47,50): warning C4305:         ]
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(87,52): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(87,52): warning C4244:         with
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(87,52): warning C4244:         [
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(87,52): warning C4244:             T=float
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(87,52): warning C4244:         ]
+  app.cpp
+  component.cpp
+  cube_test_comp.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\cube_test_comp.cpp(47,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  entity.cpp
+  scene.cpp
+  gl_renderer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(42,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(42,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(44,20): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(45,18): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(95,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(96,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe
