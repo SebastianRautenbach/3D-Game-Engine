@@ -90,7 +90,9 @@ void wizm::core_entity::set_rotation(glm::vec3 rotation)
 	
 	for (auto& i : m_components_list)
 	{
-		i->set_local_rotation(glm::vec3(
+
+
+		i->set_world_rotation(glm::vec3(
 			i->get_local_rotation().x + rotation.x - m_rotation.x,
 			i->get_local_rotation().y + rotation.y - m_rotation.y,
 			i->get_local_rotation().z + rotation.z - m_rotation.z
