@@ -70,8 +70,10 @@ void lowlevelsys::core_component::set_world_rotation(glm::vec3 rotation)
 {
 	m_rotation = rotation;
 	glm::mat4 m4rotation = glm::mat4(1);
-	m4rotation = glm::rotate(glm::mat4(1.0f), m_rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-	m4rotation = glm::rotate(glm::mat4(1.0f), m_rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-	m4rotation = glm::rotate(glm::mat4(1.0f), m_rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+	
+	m4rotation = glm::rotate(m4rotation, m_rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
+	m4rotation = glm::rotate(m4rotation, m_rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
+	m4rotation = glm::rotate(m4rotation, m_rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+	
 	m_model_mtx = glm::translate(glm::mat4(1.0f), center) * m4rotation * glm::translate(glm::mat4(1.0f), -center) * m_model_mtx;
 }

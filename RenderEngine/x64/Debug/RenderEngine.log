@@ -5,9 +5,4 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(43,75
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(43,75): warning C4305:         [
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(43,75): warning C4305:             T=float
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(43,75): warning C4305:         ]
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(83,52): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(83,52): warning C4244:         with
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(83,52): warning C4244:         [
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(83,52): warning C4244:             T=float
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(83,52): warning C4244:         ]
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe
