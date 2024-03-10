@@ -141,7 +141,9 @@ void wizm::core_entity::add_rotation(glm::vec3 rotation)
 {
 	for (auto& i : m_components_list)	
 	{
-		i->set_local_rotation(i->get_local_rotation() + rotation);
+		i->set_world_rotation(i->get_local_rotation() + rotation);
+
+		//i->set_local_rotation(i->get_local_rotation() + rotation);
 	}
 
 	m_rotation += rotation;

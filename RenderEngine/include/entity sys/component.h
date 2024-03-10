@@ -40,7 +40,7 @@ namespace lowlevelsys {
 
 		// temp single_rotation
 
-		void add_world_rotation( float angle);
+		void set_world_rotation(glm::vec3 rotation);
 
 
 		// rather then changing the way the whole engine works lets

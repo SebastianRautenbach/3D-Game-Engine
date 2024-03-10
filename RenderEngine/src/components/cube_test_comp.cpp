@@ -44,7 +44,7 @@ namespace wizm {
 		m_model_mtx = glm::mat4(1);
 		set_local_position(m_position);
 		//set_local_rotation(m_rotation);
-		add_world_rotation(glfwGetTime() * 0.5f);
+		set_world_rotation(m_rotation);
 
 		set_local_scale(m_scale);
 
