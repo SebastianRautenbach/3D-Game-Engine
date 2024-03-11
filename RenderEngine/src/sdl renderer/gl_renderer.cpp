@@ -44,7 +44,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	camera->SetPitch(-0.438943);
 	camera->SetYaw(-0.769122);
 
-	shdr = new core_gl_shader("vrtx_shdr.txt", "frgmnt_shdr.txt");
+	shdr = new core_gl_shader("vrtx_shdr.glsl", "frgmnt_shdr.glsl");
 
 	m_scene = scene;
 

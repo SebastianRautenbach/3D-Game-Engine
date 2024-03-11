@@ -49,7 +49,19 @@ namespace wizm {
 
 		m_material->m_shader->setMat4("model", m_model_mtx);
 		
-		
+		// temp material layout
+		// not very happy with this
+
+		m_material->m_shader->setVec3("material.ambient", 1.0f, 1.0f, 1.0f);
+		m_material->m_shader->setVec3("material.diffuse", 1.0f, 1.0f, 1.0f);
+		m_material->m_shader->setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+		m_material->m_shader->setFloat("material.shininess", 32.0f);
+
+		m_material->m_shader->setVec3("light.position", 0, 0 ,0);
+		m_material->m_shader->setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+		m_material->m_shader->setVec3("light.diffuse", 1.f, 1.f, 1.f);
+		m_material->m_shader->setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
 
 		m_draw_data->bind_buffer();
 		m_draw_data->draw_buffer(8);
