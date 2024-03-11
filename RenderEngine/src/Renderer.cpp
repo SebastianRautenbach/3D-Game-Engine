@@ -17,7 +17,6 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 	m_timer = new core_timer;
 
 
-
 	{
 		// this is for testing the entity component system
 		m_scene->add_entity("cool");
@@ -37,7 +36,10 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		// cast to its actual class ensuring it's is the correct component by testing if it's not null
 		auto comp_change_test = std::dynamic_pointer_cast<cube_sm_component>(m_scene->m_entities[1]->m_components_list[0]);
 		if (comp_change_test)
-			comp_change_test->m_material->set_texture("wood.png");
+		{
+			comp_change_test->m_material->set_texture("wood.png", mDiffuse);
+			comp_change_test->m_material->set_texture("wood_spec.png", mSpecular);
+		}
 		
 		m_scene->m_entities[1]->add_position(glm::vec3(1));
 		m_scene->m_entities[1]->m_components_list[0]->add_local_scale(glm::vec3(.1));

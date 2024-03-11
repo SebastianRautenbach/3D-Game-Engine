@@ -116,7 +116,7 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 			camera->MoveUp(-1 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_I))
-			m_scene->m_entities[1]->add_rotation(glm::vec3(1 * deltaTime));
+			m_scene->m_entities[1]->add_position(glm::vec3(5 * deltaTime, 0, 0));
 
  	}
 	else
@@ -194,6 +194,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 			if (comp_per_ent) {
 				comp_per_ent->m_material->m_shader = shdr;
+				comp_per_ent->m_material->on_change_material();
 			}
 
 		}

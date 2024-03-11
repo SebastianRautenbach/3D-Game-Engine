@@ -12,7 +12,7 @@ namespace wizm {
 	{
 		m_component_type = eStaticMesh;
 
-		m_material = new core_material("missing_texture.png");
+		m_material = new core_material("missing_texture.png", "missing_texture.png");
 
 		m_draw_data = new core_arr_vertex_buffer(vertices, indices);
 		m_draw_data->create_attrib_arr(0, 3, 8 * sizeof(float), 0);
@@ -57,10 +57,15 @@ namespace wizm {
 		m_material->m_shader->setVec3("material.specular", 0.5f, 0.5f, 0.5f);
 		m_material->m_shader->setFloat("material.shininess", 32.0f);
 
-		m_material->m_shader->setVec3("light.position", 0, 0 ,0);
+		//m_material->m_shader->setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+		
+		m_material->m_shader->setVec3("light.position", 0.0f, 0.0f, 0.0f);
 		m_material->m_shader->setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
 		m_material->m_shader->setVec3("light.diffuse", 1.f, 1.f, 1.f);
 		m_material->m_shader->setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+		m_material->m_shader->setFloat("light.constant", 1.0f);
+		m_material->m_shader->setFloat("light.linear", 0.09f);
+		m_material->m_shader->setFloat("light.quadratic", 0.032f);
 
 
 		m_draw_data->bind_buffer();
