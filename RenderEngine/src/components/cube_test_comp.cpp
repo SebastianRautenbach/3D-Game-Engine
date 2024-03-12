@@ -12,7 +12,7 @@ namespace wizm {
 	{
 		m_component_type = eStaticMesh;
 
-		m_material = new core_material("missing_texture.png", "missing_texture.png");
+		m_material = new core_material("missing_texture.png", "missing_texture_specular.png");
 
 		m_draw_data = new core_arr_vertex_buffer(vertices, indices);
 		m_draw_data->create_attrib_arr(0, 3, 8 * sizeof(float), 0);
@@ -56,17 +56,8 @@ namespace wizm {
 		m_material->m_shader->setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
 		m_material->m_shader->setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
 		m_material->m_shader->setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
+		
 		m_material->m_shader->setFloat("material.shininess", 32.0f);
-
-
-		m_material->m_shader->setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
-		m_material->m_shader->setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
-		m_material->m_shader->setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
-		m_material->m_shader->setFloat("spotLight.constant", 1.0f);
-		m_material->m_shader->setFloat("spotLight.linear", 0.09f);
-		m_material->m_shader->setFloat("spotLight.quadratic", 0.032f);
-		m_material->m_shader->setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
-		m_material->m_shader->setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
 
 
 

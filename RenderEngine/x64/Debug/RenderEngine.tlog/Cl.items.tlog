@@ -3,6 +3,7 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\system\3d_core
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\app.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\app.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\component.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\component.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\cube_test_comp.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\cube_test_comp.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\pointlight_component.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\pointlight_component.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\core shader.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\core shader.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\3d_core_camera.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\3d_core_camera.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\entity.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\entity.obj

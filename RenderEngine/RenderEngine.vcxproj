@@ -144,10 +144,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\dependencies\glad.c" />
+    <ClCompile Include="include\entity sys\components\directionallight_component.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\components\component.cpp" />
     <ClCompile Include="src\components\cube_test_comp.cpp" />
+    <ClCompile Include="src\components\directionallight_component.cpp" />
+    <ClCompile Include="src\components\pointlight_component.cpp" />
     <ClCompile Include="src\core shader.cpp" />
     <ClCompile Include="src\3d_core_camera.cpp" />
     <ClCompile Include="src\entity.cpp" />
@@ -165,6 +168,7 @@
   <ItemGroup>
     <ClInclude Include="include\entity sys\components\all_components_list.h" />
     <ClInclude Include="include\entity sys\components\cube_test_comp.h" />
+    <ClInclude Include="include\entity sys\components\pointlight_component.h" />
     <ClInclude Include="include\entity sys\component_types.h" />
     <ClInclude Include="include\entity sys\entity.h" />
     <ClInclude Include="include\gl core\core shader.h" />

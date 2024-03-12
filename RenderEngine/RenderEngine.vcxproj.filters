@@ -69,6 +69,15 @@
     <ClCompile Include="src\mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\pointlight_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\entity sys\components\directionallight_component.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\directionallight_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Renderer.h">
@@ -129,6 +138,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\system\material_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity sys\components\pointlight_component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

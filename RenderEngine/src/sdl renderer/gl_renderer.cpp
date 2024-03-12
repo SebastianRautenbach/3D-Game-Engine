@@ -115,10 +115,9 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
 			camera->MoveUp(-1 * deltaTime);
 
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_I))
-			m_scene->m_entities[1]->add_position(glm::vec3(5 * deltaTime, 0, 0));
 
- 	}
+	
+	}
 	else
 	{
 		m_input_manager->set_hide_mouse_cursor(false);
@@ -144,33 +143,10 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 
 	shdr->setVec3("camPos", camera->GetPosition());
-	shdr->setVec3("spotLight.position", camera->GetPosition());
-	shdr->setVec3("spotLight.direction", camera->get_front_view());
 
 	
 	
 	shdr->use_shader();
-
-	for (auto& i : m_scene->m_entities)
-	{
-		for (auto& per_ent : i->m_components_list)
-		{
-			
-			if (per_ent->m_component_type == eStaticMesh)
-			{
-				per_ent->component_update();
-			}
-			
-			
-		}
-
-		
-	}
-
-
-	
-	
-
 
 }
 
@@ -200,6 +176,17 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			if (comp_per_ent) {
 				comp_per_ent->m_material->m_shader = shdr;
 				comp_per_ent->m_material->on_change_material();
+			}
+
+			// get all point lights 
+
+			auto light = std::dynamic_pointer_cast<pointlight_component>(per_ent);
+			if (light) {
+				static int amm_lights = 0;
+				light->shader = shdr;
+				light->light_index = amm_lights;
+				shdr->setInt("ammount_of_pointlights", amm_lights + 1);
+				++amm_lights;
 			}
 
 		}

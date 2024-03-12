@@ -21,6 +21,8 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		// this is for testing the entity component system
 		m_scene->add_entity("cool");
 		m_scene->add_entity("cooler");
+		m_scene->add_entity("pointlight");
+
 
 		m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
 		m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
@@ -31,7 +33,15 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		m_scene->m_entities[1]->m_components_list[1]->set_local_position(glm::vec3(-0.1f));
 		m_scene->m_entities[1]->m_components_list[1]->set_local_rotation(glm::vec3(-0.0f));
 
-		m_scene->m_entities[1]->set_position(glm::vec3(0));
+
+		m_scene->m_entities[2]->add_component(std::make_shared<pointlight_component>());
+		m_scene->m_entities[2]->add_component(std::make_shared<cube_sm_component>());
+		m_scene->m_entities[2]->m_components_list[0]->set_local_position(glm::vec3(-0.0f));
+		m_scene->m_entities[2]->m_components_list[1]->set_local_position(glm::vec3(-0.0f));
+		m_scene->m_entities[2]->m_components_list[1]->set_local_scale(glm::vec3(.1f));
+		m_scene->m_entities[2]->m_components_list[1]->set_local_rotation(glm::vec3(.0f));
+
+
 
 		// cast to its actual class ensuring it's is the correct component by testing if it's not null
 		auto comp_change_test = std::dynamic_pointer_cast<cube_sm_component>(m_scene->m_entities[1]->m_components_list[0]);
@@ -42,7 +52,6 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		}
 		
 		m_scene->m_entities[1]->add_position(glm::vec3(1));
-		m_scene->m_entities[1]->m_components_list[0]->add_local_scale(glm::vec3(.1));
 
 
 
@@ -69,6 +78,7 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 
 void default_renderer::pre_render()
 {	
+	m_scene->scene_preupdate();
 	m_gl_renderer->pre_render(is_running, m_timer->get_delta_time());
 }
 
@@ -82,6 +92,7 @@ void default_renderer::pre_render()
 void default_renderer::render()
 {
 	m_timer->update_delta_time();
+	m_scene->scene_update();
 	m_gl_renderer->render(m_timer->get_delta_time());
 }
 
@@ -92,6 +103,7 @@ void default_renderer::render()
 
 void default_renderer::post_render()
 {
+	m_scene->scene_postupdate();
 	m_gl_renderer->post_render(m_timer->get_delta_time());
 }
 
