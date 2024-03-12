@@ -189,6 +189,11 @@ void lowlevelsys::gl_renderer::update_draw_data()
 				++amm_lights;
 			}
 
+			auto directional_light = std::dynamic_pointer_cast<directionallight_component>(per_ent);
+			if (directional_light) {
+				directional_light->shader = shdr;
+			}
+
 		}
 	}
 }

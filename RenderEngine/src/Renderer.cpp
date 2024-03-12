@@ -24,6 +24,9 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		m_scene->add_entity("pointlight");
 
 
+		m_scene->m_entities[0]->add_component(std::make_shared<directionallight_component>());
+		m_scene->m_entities[0]->m_components_list[0]->set_local_rotation(glm::vec3(-0.2f, -1.0f, -0.3f));
+
 		m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
 		m_scene->m_entities[1]->add_component(std::make_shared<cube_sm_component>());
 		m_scene->m_entities[1]->m_components_list[0]->set_local_scale(glm::vec3(0.4f));

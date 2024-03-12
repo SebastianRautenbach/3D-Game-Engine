@@ -7,7 +7,8 @@ namespace wizm {
 		eSound3D,
 		eSprite,
 		ePointLight,
-		eSpotLight
+		eSpotLight,
+		eDirectionalLight
 	};
 
 }

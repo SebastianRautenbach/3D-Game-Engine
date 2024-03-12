@@ -52,11 +52,6 @@ namespace wizm {
 		// temp material layout
 		// not very happy with this
 
-		m_material->m_shader->setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-		m_material->m_shader->setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-		m_material->m_shader->setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-		m_material->m_shader->setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-		
 		m_material->m_shader->setFloat("material.shininess", 32.0f);
 
 
