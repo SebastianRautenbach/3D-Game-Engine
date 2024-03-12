@@ -25,6 +25,8 @@ core_gl_shader::core_gl_shader(const char* vertex_file_path, const char* fragmen
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
+	checkCompileErrors(fragmentShader, "FRAGMENT");
+
 
 	shader_id = glCreateProgram();
 	glAttachShader(shader_id, vertexShader);

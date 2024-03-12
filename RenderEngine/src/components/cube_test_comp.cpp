@@ -52,20 +52,22 @@ namespace wizm {
 		// temp material layout
 		// not very happy with this
 
-		m_material->m_shader->setVec3("material.ambient", 1.0f, 1.0f, 1.0f);
-		m_material->m_shader->setVec3("material.diffuse", 1.0f, 1.0f, 1.0f);
-		m_material->m_shader->setVec3("material.specular", 0.5f, 0.5f, 0.5f);
+		m_material->m_shader->setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
+		m_material->m_shader->setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
+		m_material->m_shader->setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+		m_material->m_shader->setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
 		m_material->m_shader->setFloat("material.shininess", 32.0f);
 
-		//m_material->m_shader->setVec3("light.direction", -0.2f, -1.0f, -0.3f);
-		
-		m_material->m_shader->setVec3("light.position", 0.0f, 0.0f, 0.0f);
-		m_material->m_shader->setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
-		m_material->m_shader->setVec3("light.diffuse", 1.f, 1.f, 1.f);
-		m_material->m_shader->setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-		m_material->m_shader->setFloat("light.constant", 1.0f);
-		m_material->m_shader->setFloat("light.linear", 0.09f);
-		m_material->m_shader->setFloat("light.quadratic", 0.032f);
+
+		m_material->m_shader->setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
+		m_material->m_shader->setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
+		m_material->m_shader->setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
+		m_material->m_shader->setFloat("spotLight.constant", 1.0f);
+		m_material->m_shader->setFloat("spotLight.linear", 0.09f);
+		m_material->m_shader->setFloat("spotLight.quadratic", 0.032f);
+		m_material->m_shader->setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
+		m_material->m_shader->setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+
 
 
 		m_draw_data->bind_buffer();
