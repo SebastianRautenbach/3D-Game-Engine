@@ -13,6 +13,7 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp;C:\User
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\input.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\material.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\mesh.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\mesh.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\model.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\model.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\Renderer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\scene.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\scene.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\gl_renderer.obj

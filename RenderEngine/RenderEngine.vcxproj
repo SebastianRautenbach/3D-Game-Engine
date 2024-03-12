@@ -119,7 +119,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc140-mt.dll;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -158,6 +158,7 @@
     <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\material.cpp" />
     <ClCompile Include="src\mesh.cpp" />
+    <ClCompile Include="src\model.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
     <ClInclude Include="include\system\mesh.h" />
+    <ClInclude Include="include\system\model.h" />
     <ClInclude Include="include\system\tag.h" />
     <ClInclude Include="include\system\timer.h" />
     <ClInclude Include="include\Renderer.h" />

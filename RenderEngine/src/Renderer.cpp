@@ -56,7 +56,7 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		
 		m_scene->m_entities[1]->add_position(glm::vec3(1));
 
-
+		test_model = new Model("test.fbx");
 
 		m_gl_renderer->update_draw_data();
 
@@ -97,6 +97,7 @@ void default_renderer::render()
 	m_timer->update_delta_time();
 	m_scene->scene_update();
 	m_gl_renderer->render(m_timer->get_delta_time());
+	test_model->Draw(*m_gl_renderer->shdr);
 }
 
 

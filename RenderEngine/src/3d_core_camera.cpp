@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "system/3d_core_camera.h"
+#include <iostream>
 
 namespace wizm {
 
@@ -32,7 +33,7 @@ namespace wizm {
 		mbInfFarPlane = true;
 
 		
- 		mvPitchLimits = glm::vec2(3.141592654f / 2.0f, -3.141592654f / 2.0f);
+ 		mvPitchLimits = glm::vec2(3.14f / 2.0f, -3.14f / 2.0f);
  		mvYawLimits = glm::vec2(0, 0);
 	}
 	
@@ -133,8 +134,10 @@ namespace wizm {
 
 		if (mvYawLimits.x != 0 || mvYawLimits.y != 0)
 		{
-			if (mfYaw > mvYawLimits.x)mfYaw = mvYawLimits.x;
-			if (mfYaw < mvYawLimits.y)mfYaw = mvYawLimits.y;
+			if (mfYaw > mvYawLimits.x)
+				mfYaw = mvYawLimits.x;
+			if (mfYaw < mvYawLimits.y)
+				mfYaw = mvYawLimits.y;
 		}
 
 		mbViewUpdated = true; mbMoveUpdated = true;
@@ -158,6 +161,7 @@ namespace wizm {
 
 		if (mvPitchLimits.x != 0 || mvPitchLimits.y != 0)
 		{
+
 			if (mfPitch > mvPitchLimits.x)
 				mfPitch = mvPitchLimits.x;
 			if (mfPitch < mvPitchLimits.y)
