@@ -121,11 +121,10 @@ void core_arr_vertex_buffer::create_buffer() {
 
 //-----------------------------------------------------------------------
 
-
 void core_arr_vertex_buffer::draw_buffer(unsigned int size_of_row)
 {
 	bind_buffer();
-	glDrawElements(GL_TRIANGLES, ((vbo->mvertices.size() / size_of_row) * 3), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, size_of_row, GL_UNSIGNED_INT, 0);
 	unbind_buffer();
 }
 

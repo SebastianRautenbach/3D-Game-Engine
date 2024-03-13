@@ -7,8 +7,8 @@ namespace wizm {
 
 	core_material::core_material(std::string albedo_path, std::string specular_path)
 	{
-		m_albedo_texture = new core_gl_texture(albedo_path.c_str());
-		m_specular_texture = new core_gl_texture(specular_path.c_str());
+		m_albedo_texture = new core_gl_texture(albedo_path.c_str(), albedo_path.c_str());
+		m_specular_texture = new core_gl_texture(specular_path.c_str(), specular_path.c_str());
 	}
 
 	void core_material::on_change_material()

@@ -17,9 +17,9 @@ namespace wizm {
 
 		/*shdr = new core_gl_shader("vrtx_shdr.txt", "frgmnt_shdr.txt");*/
 
-		texture = new core_gl_texture("grid.png");
+		//texture = new core_gl_texture("grid.png");
 
-		draw_data = new core_arr_vertex_buffer(vertices, indices);
+		//draw_data = new core_arr_vertex_buffer(vertices, indices);
 		draw_data->create_attrib_arr(0, 3, 5 * sizeof(float), 0);
 		draw_data->create_attrib_arr(1, 2, 5 * sizeof(float), (3 * sizeof(float)));
 		draw_data->create_buffer();

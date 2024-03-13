@@ -35,8 +35,7 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		
 		m_scene->m_entities[2]->add_position(glm::vec3(.8));
 		
-		test_model = new core_model("C:/Users/karat/Documents/GitHub/RenderEngine/RenderEngine/FinalBaseMesh.obj");
-
+		
 		m_gl_renderer->update_draw_data();
 
 
@@ -76,8 +75,6 @@ void default_renderer::render()
 	m_timer->update_delta_time();
 	m_scene->scene_update();
 	m_gl_renderer->render(m_timer->get_delta_time());
-	test_model->m_shader = m_gl_renderer->shdr;
-	test_model->render_model();
 }
 
 

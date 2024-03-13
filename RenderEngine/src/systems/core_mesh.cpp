@@ -35,6 +35,13 @@ void lowlevelsys::core_mesh::draw_mesh(core_gl_shader* shader)
         // and finally bind the texture
         glBindTexture(GL_TEXTURE_2D, textures[i].texture_id);
     }
+    
+
+    vertex_arr->draw_buffer(static_cast<unsigned int>(indices.size()));
+
+
+  
+    glActiveTexture(GL_TEXTURE0);
 }
 
 void lowlevelsys::core_mesh::setup_mesh()

@@ -141,13 +141,11 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
 	shdr->setMat4("projection", projection);
 
-
 	shdr->setVec3("camPos", camera->GetPosition());
 
 	
 	
 	shdr->use_shader();
-
 }
 
 
