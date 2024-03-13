@@ -65,7 +65,7 @@ void core_gl_shader::use_shader()
 
 
 
-core_gl_texture::core_gl_texture(const char* file_path)
+core_gl_texture::core_gl_texture(const char* file_path, const std::string& directory, bool gamma = false)
 {
 	glGenTextures(1, &texture_id);
 	glBindTexture(GL_TEXTURE_2D, texture_id);

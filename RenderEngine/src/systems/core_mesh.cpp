@@ -8,7 +8,7 @@ lowlevelsys::core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector
 	setup_mesh();
 }
 
-void lowlevelsys::core_mesh::draw_mesh()
+void lowlevelsys::core_mesh::draw_mesh(core_gl_shader* shader)
 {
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
@@ -31,7 +31,7 @@ void lowlevelsys::core_mesh::draw_mesh()
             number = std::to_string(heightNr++); // transfer unsigned int to string
 
         // now set the sampler to the correct texture unit
-        glUniform1i(glGetUniformLocation(m_shader->get_shader_id(), (name + number).c_str()), i);
+        glUniform1i(glGetUniformLocation(shader->get_shader_id(), (name + number).c_str()), i);
         // and finally bind the texture
         glBindTexture(GL_TEXTURE_2D, textures[i].texture_id);
     }

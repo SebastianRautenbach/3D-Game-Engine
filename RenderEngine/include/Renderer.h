@@ -4,7 +4,7 @@
 #include "scene.h"
 #include "system/timer.h"
 #include "input.h"
-#include "system/model.h"
+#include "system/core_model.h"
 
 namespace wizm {
 
@@ -27,7 +27,8 @@ namespace wizm {
 		core_scene* m_scene;
 		core_timer* m_timer;
 		input_manager* m_input_manager;
-		Model* test_model;
+		core_model* test_model;
+		
 	};
 
 

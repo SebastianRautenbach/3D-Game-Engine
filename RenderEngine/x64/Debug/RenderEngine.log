@@ -1,8 +1,135 @@
 ﻿  Scanning sources for module dependencies...
+  directionallight_component.h
+  Compiling...
+  directionallight_component.h
+  app.cpp
+  component.cpp
+  cube_test_comp.cpp
+  directionallight_component.cpp
+  pointlight_component.cpp
+  core shader.cpp
+  entity.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\core shader.cpp(68,100): error C2572: 'core_gl_texture::core_gl_texture': redefinition of default argument: parameter 1
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\gl core\core shader.h(114,2):
+  see declaration of 'core_gl_texture::core_gl_texture'
+  
+  grid2d.cpp
+  material.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(20,32): error C2665: 'core_gl_texture::core_gl_texture': no overloaded function could convert all the argument types
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\gl core\core shader.h(124,1):
+  could be 'core_gl_texture::core_gl_texture(core_gl_texture &&)'
+  	C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(20,32):
+  	'core_gl_texture::core_gl_texture(core_gl_texture &&)': cannot convert argument 1 from 'const char [9]' to 'core_gl_texture &&'
+  		C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(20,33):
+  		Reason: cannot convert from 'const char [9]' to 'core_gl_texture'
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\gl core\core shader.h(124,1):
+  or       'core_gl_texture::core_gl_texture(const core_gl_texture &)'
+  	C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(20,32):
+  	'core_gl_texture::core_gl_texture(const core_gl_texture &)': cannot convert argument 1 from 'const char [9]' to 'const core_gl_texture &'
+  		C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(20,33):
+  		Reason: cannot convert from 'const char [9]' to 'const core_gl_texture'
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(20,32):
+  while trying to match the argument list '(const char [9])'
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(22,41): error C2665: 'core_arr_vertex_buffer::core_arr_vertex_buffer': no overloaded function could convert all the argument types
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\gl core\vertex_buffer.h(77,2):
+  could be 'core_arr_vertex_buffer::core_arr_vertex_buffer(std::vector<vertex_data,std::allocator<vertex_data>> &,std::vector<unsigned int,std::allocator<unsigned int>> &)'
+  	C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(22,41):
+  	'core_arr_vertex_buffer::core_arr_vertex_buffer(std::vector<vertex_data,std::allocator<vertex_data>> &,std::vector<unsigned int,std::allocator<unsigned int>> &)': cannot convert argument 1 from 'std::vector<float,std::allocator<float>>' to 'std::vector<vertex_data,std::allocator<vertex_data>> &'
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp(22,41):
+  while trying to match the argument list '(std::vector<float,std::allocator<float>>, std::vector<unsigned int,std::allocator<unsigned int>>)'
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(10,41): error C2665: 'core_gl_texture::core_gl_texture': no overloaded function could convert all the argument types
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\gl core\core shader.h(124,1):
+  could be 'core_gl_texture::core_gl_texture(core_gl_texture &&)'
+  	C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(10,41):
+  	'core_gl_texture::core_gl_texture(core_gl_texture &&)': cannot convert argument 1 from 'const _Elem *' to 'core_gl_texture &&'
+          with
+          [
+              _Elem=char
+          ]
+  		C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(10,59):
+  		Reason: cannot convert from 'const _Elem *' to 'core_gl_texture'
+          with
+          [
+              _Elem=char
+          ]
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\gl core\core shader.h(124,1):
+  or       'core_gl_texture::core_gl_texture(const core_gl_texture &)'
+  	C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(10,41):
+  	'core_gl_texture::core_gl_texture(const core_gl_texture &)': cannot convert argument 1 from 'const _Elem *' to 'const core_gl_texture &'
+          with
+          [
+              _Elem=char
+          ]
+  		C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(10,59):
+  		Reason: cannot convert from 'const _Elem *' to 'const core_gl_texture'
+          with
+          [
+              _Elem=char
+          ]
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(10,41):
+  while trying to match the argument list '(const _Elem *)'
+          with
+          [
+              _Elem=char
+          ]
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(11,43): error C2665: 'core_gl_texture::core_gl_texture': no overloaded function could convert all the argument types
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\gl core\core shader.h(124,1):
+  could be 'core_gl_texture::core_gl_texture(core_gl_texture &&)'
+  	C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(11,43):
+  	'core_gl_texture::core_gl_texture(core_gl_texture &&)': cannot convert argument 1 from 'const _Elem *' to 'core_gl_texture &&'
+          with
+          [
+              _Elem=char
+          ]
+  		C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(11,63):
+  		Reason: cannot convert from 'const _Elem *' to 'core_gl_texture'
+          with
+          [
+              _Elem=char
+          ]
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\gl core\core shader.h(124,1):
+  or       'core_gl_texture::core_gl_texture(const core_gl_texture &)'
+  	C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(11,43):
+  	'core_gl_texture::core_gl_texture(const core_gl_texture &)': cannot convert argument 1 from 'const _Elem *' to 'const core_gl_texture &'
+          with
+          [
+              _Elem=char
+          ]
+  		C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(11,63):
+  		Reason: cannot convert from 'const _Elem *' to 'const core_gl_texture'
+          with
+          [
+              _Elem=char
+          ]
+  C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp(11,43):
+  while trying to match the argument list '(const _Elem *)'
+          with
+          [
+              _Elem=char
+          ]
+  
+  mesh.cpp
+  model.cpp
   Renderer.cpp
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(58,50): warning C4305: 'argument': truncation from 'double' to 'T'
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(58,50): warning C4305:         with
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(58,50): warning C4305:         [
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(58,50): warning C4305:             T=float
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(58,50): warning C4305:         ]
-  RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(36,50): warning C4305: 'argument': truncation from 'double' to 'T'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(36,50): warning C4305:         with
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(36,50): warning C4305:         [
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(36,50): warning C4305:             T=float
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp(36,50): warning C4305:         ]
+  scene.cpp
+  gl_renderer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(42,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(42,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(44,20): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(45,18): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(95,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(96,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  core_mesh.cpp
+  core_model.cpp
+  vertex_buffer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\vertex_buffer.cpp(113,73): warning C4312: 'type cast': conversion from 'const int' to 'void *' of greater size
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\vertex_buffer.cpp(128,70): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Generating Code...

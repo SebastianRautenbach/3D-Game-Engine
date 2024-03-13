@@ -14,7 +14,7 @@ namespace wizm {
 
 		m_material = new core_material("missing_texture.png", "missing_texture_specular.png");
 
-		m_draw_data = new core_arr_vertex_buffer(vertices, indices);
+		//m_draw_data = new core_arr_vertex_buffer(vertices, indices);
 		m_draw_data->create_attrib_arr(0, 3, 8 * sizeof(float), 0);
 		m_draw_data->create_attrib_arr(1, 2, 8 * sizeof(float), (3 * sizeof(float)));
 		m_draw_data->create_attrib_arr(2, 3, 8 * sizeof(float), (5 * sizeof(float)));

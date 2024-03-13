@@ -163,6 +163,7 @@
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
     <ClCompile Include="src\systems\core_mesh.cpp" />
+    <ClCompile Include="src\systems\core_model.cpp" />
     <ClCompile Include="src\tag.cpp" />
     <ClCompile Include="src\timer.cpp" />
     <ClCompile Include="src\vertex_buffer.cpp" />

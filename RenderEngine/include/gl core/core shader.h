@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
+#include <string>
 
 
 class core_gl_shader {
@@ -110,7 +111,7 @@ private:
 class core_gl_texture {
 
 public:
-	core_gl_texture(const char* file_path);
+	core_gl_texture(const char* file_path, const std::string& directory, bool gamma = false);
 	void bind_texture();
 	void unbind_texture();
 	void set_texture(const char* file_path);
