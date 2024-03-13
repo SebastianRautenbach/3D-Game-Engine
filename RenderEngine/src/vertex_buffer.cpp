@@ -14,14 +14,13 @@ void core_vertex_buffer::gen_buffer()
 
 
 
-
 //-----------------------------------------------------------------------
 
 
 void core_vertex_buffer::bind_buffer()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, this->buffer_id);
-	glBufferData(GL_ARRAY_BUFFER, this->mvertices.size() * sizeof(float), this->mvertices.data(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, this->mvertices.size() * sizeof(vertex_data), &this->mvertices[0], GL_STATIC_DRAW);
 }
 
 //-----------------------------------------------------------------------
@@ -87,7 +86,7 @@ void core_index_buffer::destroy_buffer()
 	//////////////////////////////////////////////////////////////////////////
 
 
-core_arr_vertex_buffer::core_arr_vertex_buffer( std::vector<float>& vertices, std::vector<unsigned int>& indices)
+core_arr_vertex_buffer::core_arr_vertex_buffer( std::vector<vertex_data>& vertices, std::vector<unsigned int>& indices)
 {
 
 	glGenVertexArrays(1, &this->buffer_id);
@@ -125,7 +124,9 @@ void core_arr_vertex_buffer::create_buffer() {
 
 void core_arr_vertex_buffer::draw_buffer(unsigned int size_of_row)
 {
+	bind_buffer();
 	glDrawElements(GL_TRIANGLES, ((vbo->mvertices.size() / size_of_row) * 3), GL_UNSIGNED_INT, 0);
+	unbind_buffer();
 }
 
 
@@ -172,3 +173,5 @@ void core_arr_vertex_buffer::create_attrib_arr(unsigned int layout, int size, in
 {
 	vertex_attribs.emplace_back(layout, size, stride, attrib_length);
 }
+
+

@@ -2,6 +2,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <vector>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 
 struct attrib_info {
@@ -43,10 +46,10 @@ public:
 	void destroy_buffer() override;
 
 	// default constructor 
-	core_vertex_buffer(std::vector<float>& vertices) : mvertices(vertices) {gen_buffer();}
+	core_vertex_buffer(std::vector<vertex_data>& vertices) : mvertices(vertices) {gen_buffer();}
 	
 public:
-	std::vector<float> mvertices;
+	std::vector<vertex_data> mvertices;
 
 };
 
@@ -71,7 +74,7 @@ class core_arr_vertex_buffer : public core_buffer_object {
 	
 public:
 	// default constructor
-	core_arr_vertex_buffer(std::vector<float>& vertices, std::vector<unsigned int>& indices);
+	core_arr_vertex_buffer(std::vector<vertex_data>& vertices, std::vector<unsigned int>& indices);
 	
 	void create_buffer();
 	void draw_buffer(unsigned int size_of_row);
@@ -86,3 +89,4 @@ public:
 	std::vector<attrib_info> vertex_attribs;
 	
 };
+

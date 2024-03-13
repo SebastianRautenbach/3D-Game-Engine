@@ -1,6 +1,6 @@
 #include "system/core_mesh.h"
 
-wizm::core_mesh::core_mesh(std::vector<vertex_draw_data> vertices, std::vector<unsigned int> indices, std::vector<core_gl_texture> textures)
+wizm::core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector<unsigned int> indices, std::vector<core_gl_texture> textures)
 {
 	this->vertices = vertices;
 	this->indices = indices;
@@ -10,38 +10,41 @@ wizm::core_mesh::core_mesh(std::vector<vertex_draw_data> vertices, std::vector<u
 
 void wizm::core_mesh::draw_mesh()
 {
+    unsigned int diffuseNr = 1;
+    unsigned int specularNr = 1;
+    unsigned int normalNr = 1;
+    unsigned int heightNr = 1;
+
+    for (unsigned int i = 0; i < textures.size(); i++)
+    {
+        glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
+        // retrieve texture number (the N in diffuse_textureN)
+        std::string number;
+        std::string name = textures[i].type;
+        if (name == "texture_diffuse")
+            number = std::to_string(diffuseNr++);
+        else if (name == "texture_specular")
+            number = std::to_string(specularNr++); // transfer unsigned int to string
+        else if (name == "texture_normal")
+            number = std::to_string(normalNr++); // transfer unsigned int to string
+        else if (name == "texture_height")
+            number = std::to_string(heightNr++); // transfer unsigned int to string
+
+        // now set the sampler to the correct texture unit
+        glUniform1i(glGetUniformLocation(m_shader->get_shader_id(), (name + number).c_str()), i);
+        // and finally bind the texture
+        glBindTexture(GL_TEXTURE_2D, textures[i].id);
+    }
 }
 
 void wizm::core_mesh::setup_mesh()
 {
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
+    vertex_arr = new core_arr_vertex_buffer(vertices, indices);
+    vertex_arr->bind_buffer();
+    
+    vertex_arr->create_attrib_arr(0, 3, sizeof(vertex_data), 0);
+    vertex_arr->create_attrib_arr(1, 3, sizeof(vertex_data), offsetof(vertex_data, Normal));
+    vertex_arr->create_attrib_arr(2, 2, sizeof(vertex_data), offsetof(vertex_data, TexCoords));
 
-    glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(vertex_draw_data), &vertices[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int),
-        &indices[0], GL_STATIC_DRAW);
-
-    // vertex positions
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex_draw_data), (void*)0);
-    // vertex normals
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex_draw_data), (void*)offsetof(vertex_draw_data, Normal));
-    // vertex texture coords
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vertex_draw_data), (void*)offsetof(vertex_draw_data, TexCoords));
-
-    glBindVertexArray(0);
-
-    vertec_arr = new core_arr_vertex_buffer(vertices[0], indices);
-    vertec_arr->create_attrib_arr(0, 3, 8 * sizeof(float), 0);
-    vertec_arr->create_attrib_arr(1, 2, 8 * sizeof(float), (3 * sizeof(float)));
-    vertec_arr->create_attrib_arr(2, 3, 8 * sizeof(float), (5 * sizeof(float)));
-    vertec_arr->create_buffer();
+    vertex_arr->create_buffer();
 }
