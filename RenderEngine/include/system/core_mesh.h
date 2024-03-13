@@ -9,7 +9,7 @@
 
 
 
-namespace wizm {
+namespace lowlevelsys {
 	class core_mesh {
 	
 	public:

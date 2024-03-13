@@ -1,6 +1,6 @@
 #include "system/core_mesh.h"
 
-wizm::core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector<unsigned int> indices, std::vector<core_gl_texture> textures)
+lowlevelsys::core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector<unsigned int> indices, std::vector<core_gl_texture> textures)
 {
 	this->vertices = vertices;
 	this->indices = indices;
@@ -8,7 +8,7 @@ wizm::core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector<unsign
 	setup_mesh();
 }
 
-void wizm::core_mesh::draw_mesh()
+void lowlevelsys::core_mesh::draw_mesh()
 {
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;
@@ -33,11 +33,11 @@ void wizm::core_mesh::draw_mesh()
         // now set the sampler to the correct texture unit
         glUniform1i(glGetUniformLocation(m_shader->get_shader_id(), (name + number).c_str()), i);
         // and finally bind the texture
-        glBindTexture(GL_TEXTURE_2D, textures[i].id);
+        glBindTexture(GL_TEXTURE_2D, textures[i].texture_id);
     }
 }
 
-void wizm::core_mesh::setup_mesh()
+void lowlevelsys::core_mesh::setup_mesh()
 {
     vertex_arr = new core_arr_vertex_buffer(vertices, indices);
     vertex_arr->bind_buffer();

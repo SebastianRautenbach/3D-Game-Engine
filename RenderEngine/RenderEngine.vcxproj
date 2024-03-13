@@ -182,6 +182,7 @@
     <ClInclude Include="include\entity sys\component.h" />
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\core_mesh.h" />
+    <ClInclude Include="include\system\core_model.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
     <ClInclude Include="include\system\mesh.h" />
