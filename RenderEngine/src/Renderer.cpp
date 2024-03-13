@@ -55,6 +55,7 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		}
 		
 		m_scene->m_entities[1]->add_position(glm::vec3(1));
+		m_scene->m_entities[2]->add_position(glm::vec3(.8));
 		
 		test_model = new Model("C:/Users/karat/Documents/GitHub/RenderEngine/RenderEngine/FinalBaseMesh.obj");
 

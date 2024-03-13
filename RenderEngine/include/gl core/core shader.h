@@ -117,5 +117,7 @@ public:
 
 public:
 	unsigned int texture_id;
+	std::string type;
+	std::string path;
 
 };

@@ -162,6 +162,7 @@
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
+    <ClCompile Include="src\systems\core_mesh.cpp" />
     <ClCompile Include="src\tag.cpp" />
     <ClCompile Include="src\timer.cpp" />
     <ClCompile Include="src\vertex_buffer.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
     <ClInclude Include="include\scene.h" />
+    <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
     <ClInclude Include="include\system\mesh.h" />
