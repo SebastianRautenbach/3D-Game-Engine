@@ -376,7 +376,9 @@
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\assimp\\material.inl",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\assimp\\anim.h",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\assimp\\metadata.h",
-            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\assimp\\postprocess.h"
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\assimp\\postprocess.h",
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\material.h",
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\material_types.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

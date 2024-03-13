@@ -9,7 +9,7 @@ namespace lowlevelsys {
 	class core_model {
 	public:
 		core_model(const char* file_path);
-		void render_model();
+		void render_model(core_gl_shader* shader);
 
 
 	public:
@@ -17,7 +17,6 @@ namespace lowlevelsys {
 		std::vector<core_mesh>    meshes;
 		std::string directory;
 		bool gammaCorrection;
-		core_gl_shader* m_shader;
 
 	private:
 

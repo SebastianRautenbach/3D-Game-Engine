@@ -5,10 +5,10 @@ lowlevelsys::core_model::core_model(const char* file_path)
     loadModel(file_path);
 }
 
-void lowlevelsys::core_model::render_model()
+void lowlevelsys::core_model::render_model(core_gl_shader* shader)
 {
 	for (unsigned int i = 0; i < meshes.size(); i++)
-		meshes[i].draw_mesh(m_shader);
+		meshes[i].draw_mesh(shader);
 }
 
 void lowlevelsys::core_model::loadModel(std::string path)
@@ -98,19 +98,19 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
             indices.push_back(face.mIndices[j]);
     }
     // process materials
-    aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
+    //aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 
-    std::vector<core_gl_texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
-    textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-
-    std::vector<core_gl_texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
-    textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-
-    std::vector<core_gl_texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
-    textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
-
-    std::vector<core_gl_texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
-    textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+    //std::vector<core_gl_texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+    //textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+    //
+    //std::vector<core_gl_texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+    //textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+    //
+    //std::vector<core_gl_texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+    //textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+    //
+    //std::vector<core_gl_texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
+    //textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
     return core_mesh(vertices, indices, textures);
 }
@@ -120,29 +120,29 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
 std::vector<core_gl_texture> lowlevelsys::core_model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
 {
     std::vector<core_gl_texture> textures;
-    for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
-    {
-        aiString str;
-        mat->GetTexture(type, i, &str);
-        // check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
-        bool skip = false;
-        for (unsigned int j = 0; j < textures_loaded.size(); j++)
-        {
-            if (std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
-            {
-                textures.push_back(textures_loaded[j]);
-                skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
-                break;
-            }
-        }
-        if (!skip)
-        {   // if texture hasn't been loaded already, load it
-            core_gl_texture texture(str.C_Str(), this->directory);
-            texture.type = typeName;
-            texture.path = str.C_Str();
-            textures.push_back(texture);
-            textures_loaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecessary load duplicate textures.
-        }
-    }
+    //for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
+    //{
+    //    aiString str;
+    //    mat->GetTexture(type, i, &str);
+    //    // check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
+    //    bool skip = false;
+    //    for (unsigned int j = 0; j < textures_loaded.size(); j++)
+    //    {
+    //        if (std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
+    //        {
+    //            textures.push_back(textures_loaded[j]);
+    //            skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
+    //            break;
+    //        }
+    //    }
+    //    if (!skip)
+    //    {   // if texture hasn't been loaded already, load it
+    //        core_gl_texture texture(str.C_Str(), this->directory);
+    //        texture.type = typeName;
+    //        texture.path = str.C_Str();
+    //        textures.push_back(texture);
+    //        textures_loaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecessary load duplicate textures.
+    //    }
+    //}
     return textures;
 }

@@ -5,10 +5,9 @@ namespace wizm {
 
 
 
-	core_material::core_material(std::string albedo_path, std::string specular_path)
+	core_material::core_material()
 	{
-		m_albedo_texture = new core_gl_texture(albedo_path.c_str(), albedo_path.c_str());
-		m_specular_texture = new core_gl_texture(specular_path.c_str(), specular_path.c_str());
+		// do nothing :(
 	}
 
 	void core_material::on_change_material()
@@ -20,34 +19,32 @@ namespace wizm {
 
 	void core_material::update_material()
 	{
-		m_shader->use_shader();
+		m_shader->setFloat("material.shininess", m_shininess);
 
-
-		glActiveTexture(GL_TEXTURE0);
-		m_albedo_texture->bind_texture();
-
-		glActiveTexture(GL_TEXTURE1);
-		m_specular_texture->bind_texture();
+		// loop through all the textures
+		for (int i = 0; i < m_texture.size(); i++) {
+			glActiveTexture(GL_TEXTURE0 + i);
+			m_texture[i].texture.bind_texture();
+		}
 	}
 
 	void core_material::unbind_material()
 	{
-		m_albedo_texture->unbind_texture();
-		m_specular_texture->unbind_texture();
+		for (int i = 0; i < m_texture.size(); i++) {
+			m_texture[i].texture.unbind_texture();
+		}
 	}
 
-	void core_material::set_texture(std::string texture_path, eMaterial_types type)
-	{
-		switch (type)
-		{
-		case mDiffuse:
-			m_albedo_texture->set_texture(texture_path.c_str());
-			break;
 
-		case mSpecular:
-			m_specular_texture->set_texture(texture_path.c_str());
-			break;
+	void core_material::set_texture(std::string texture_path, eTexture_types type)
+	{
+		bool does_texture_preexist = false;
+		for (const auto i : m_texture) {
+			if (i.path == texture_path)
+				does_texture_preexist = true;
 		}
+		if(!does_texture_preexist)
+			m_texture.emplace_back(texture_path.c_str(), type, texture_path);
 	}
 
 }

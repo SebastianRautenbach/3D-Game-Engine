@@ -2,23 +2,29 @@
 #include "gl core/core shader.h"
 #include "material_types.h"
 #include <string>
+#include <vector>
 
 namespace wizm {
+
+	struct texture_buffer {
+		core_gl_texture texture;
+		eTexture_types type;
+		std::string path;
+	};
 
 	class core_material {
 	
 	public:
-		core_material(std::string albedo_path, std::string specular_path);
+		core_material();
 		void update_material();
 		void unbind_material();
-		void set_texture(std::string texture_path, eMaterial_types type);
+		void set_texture(std::string texture_path, eTexture_types type);
 		void on_change_material();
 
 	public:
-		core_gl_texture* m_albedo_texture;
-		core_gl_texture* m_specular_texture;
+		std::vector<texture_buffer> m_texture;
 		core_gl_shader* m_shader;
-
+		float m_shininess = 32.f;
 	};
 
 

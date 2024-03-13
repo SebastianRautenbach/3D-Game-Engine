@@ -111,14 +111,11 @@ private:
 class core_gl_texture {
 
 public:
-	core_gl_texture(const char* file_path, const std::string& directory, bool gamma = false);
+	core_gl_texture(const char* file_path);
 	void bind_texture();
 	void unbind_texture();
 	void set_texture(const char* file_path);
 
 public:
 	unsigned int texture_id;
-	std::string type;
-	std::string path;
-
 };

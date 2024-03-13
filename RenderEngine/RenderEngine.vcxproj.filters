@@ -84,6 +84,9 @@
     <ClCompile Include="include\entity sys\components\staticmesh_component.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\staticmesh_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Renderer.h">

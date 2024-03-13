@@ -1,6 +1,7 @@
 #pragma once
 #include "entity sys/component.h"
 #include "system/core_model.h"
+#include "system/material.h"
 
 
 using namespace lowlevelsys;
@@ -20,5 +21,6 @@ namespace wizm {
 
 	public:
 		core_model* m_model;
+		core_material* m_material;
 	};
 }

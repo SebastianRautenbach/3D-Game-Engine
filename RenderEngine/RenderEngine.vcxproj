@@ -152,6 +152,7 @@
     <ClCompile Include="src\components\cube_test_comp.cpp" />
     <ClCompile Include="src\components\directionallight_component.cpp" />
     <ClCompile Include="src\components\pointlight_component.cpp" />
+    <ClCompile Include="src\components\staticmesh_component.cpp" />
     <ClCompile Include="src\core shader.cpp" />
     <ClCompile Include="src\3d_core_camera.cpp" />
     <ClCompile Include="src\entity.cpp" />

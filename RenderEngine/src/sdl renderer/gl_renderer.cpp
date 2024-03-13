@@ -115,6 +115,19 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
 			camera->MoveUp(-1 * deltaTime);
 
+		
+		if (m_input_manager->has_key_been_pressed(GLFW_KEY_UP))
+			m_scene->m_entities[2]->add_position(glm::vec3(1 * deltaTime, 0, 0));
+		if (m_input_manager->has_key_been_pressed(GLFW_KEY_DOWN))
+			m_scene->m_entities[2]->add_position(glm::vec3(-1 * deltaTime, 0, 0));
+		if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT))
+			m_scene->m_entities[2]->add_position(glm::vec3(0, 0, -1 * deltaTime));
+		if (m_input_manager->has_key_been_pressed(GLFW_KEY_RIGHT))
+			m_scene->m_entities[2]->add_position(glm::vec3(0, 0, 1 * deltaTime));
+		if (m_input_manager->has_key_been_pressed(GLFW_KEY_O))
+			m_scene->m_entities[2]->add_position(glm::vec3(0, 1 * deltaTime, 0));
+		if (m_input_manager->has_key_been_pressed(GLFW_KEY_L))
+			m_scene->m_entities[2]->add_position(glm::vec3(0, -1 * deltaTime, 0));
 
 	
 	}
@@ -169,10 +182,15 @@ void lowlevelsys::gl_renderer::update_draw_data()
 	{
 		for (auto& per_ent : i->m_components_list)
 		{
-			auto comp_per_ent = std::dynamic_pointer_cast<cube_sm_component>(per_ent);
+			auto comp_per_ent = std::dynamic_pointer_cast<staticmesh_component>(per_ent);
 
 			if (comp_per_ent) {
 				comp_per_ent->m_material->m_shader = shdr;
+				
+				comp_per_ent->m_material->m_shininess = 32;
+				comp_per_ent->m_material->set_texture("missing_texture.png", eDiffuse);
+				comp_per_ent->m_material->set_texture("missing_texture_specular.png", eSpecular);
+				
 				comp_per_ent->m_material->on_change_material();
 			}
 

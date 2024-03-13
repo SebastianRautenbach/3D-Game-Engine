@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Release\\directionallight_component.h.obj",
+            "outputs": [
+                "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\x64\\Release\\vc143.pdb",
+                "x64\\Release\\",
+                "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\x64\\Release\\directionallight_component.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "include\\entity sys\\components\\directionallight_component.h",
+                    "source-path": "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\entity sys\\components\\directionallight_component.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

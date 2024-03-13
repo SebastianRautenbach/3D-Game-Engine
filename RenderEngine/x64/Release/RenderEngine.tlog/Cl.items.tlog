@@ -1,0 +1,24 @@
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\glad.c;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\glad.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\entity sys\components\directionallight_component.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\directionallight_component.h.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\entity sys\components\staticmesh_component.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\staticmesh_component.h.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\system\3d_core_camera.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\3d_core_camera.h.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\app.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\app.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\component.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\component.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\cube_test_comp.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\cube_test_comp.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\directionallight_component.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\directionallight_component.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\pointlight_component.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\pointlight_component.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\staticmesh_component.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\staticmesh_component.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\core shader.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\core shader.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\3d_core_camera.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\3d_core_camera.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\entity.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\entity.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\grid2d.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\input.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\material.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\Renderer.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\scene.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\scene.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\gl_renderer.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\core_mesh.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\core_mesh.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\core_model.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\core_model.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\tag.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\tag.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\timer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\timer.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\vertex_buffer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Release\vertex_buffer.obj

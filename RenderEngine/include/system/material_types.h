@@ -1,8 +1,7 @@
 #pragma once
 
-
-enum eMaterial_types {
-	mDiffuse,
-	mSpecular,
-	mNormal
+enum eTexture_types {
+	eDiffuse,
+	eSpecular,
+	eNormal
 };
