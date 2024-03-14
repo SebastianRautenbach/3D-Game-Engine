@@ -33,7 +33,7 @@ void lowlevelsys::core_model::processNode(aiNode* node, const aiScene* scene)
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
         meshes.push_back(processMesh(mesh, scene));
     }
-    // then do the same for each of its children
+  
     for (unsigned int i = 0; i < node->mNumChildren; i++)
     {
         processNode(node->mChildren[i], scene);
@@ -50,7 +50,7 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
     for (unsigned int i = 0; i < mesh->mNumVertices; i++)
     {
         vertex_data vertex;
-        glm::vec3 vector; // we declare a placeholder vector since assimp uses its own vector class that doesn't directly convert to glm's vec3 class so we transfer the data to this placeholder glm::vec3 first.
+        glm::vec3 vector; 
         // positions
         vector.x = mesh->mVertices[i].x;
         vector.y = mesh->mVertices[i].y;
@@ -65,11 +65,10 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
             vertex.Normal = vector;
         }
         // texture coordinates
-        if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+        if (mesh->mTextureCoords[0]) 
         {
             glm::vec2 vec;
-            // a vertex can contain up to 8 different texture coordinates. We thus make the assumption that we won't 
-            // use models where a vertex can have multiple texture coordinates so we always take the first set (0).
+            
             vec.x = mesh->mTextureCoords[0][i].x;
             vec.y = mesh->mTextureCoords[0][i].y;
             vertex.TexCoords = vec;
@@ -93,7 +92,7 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
 
         vertices.push_back(vertex);
     }
-    // now wak through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex indices.
+ 
     for (unsigned int i = 0; i < mesh->mNumFaces; i++)
     {
         aiFace face = mesh->mFaces[i];

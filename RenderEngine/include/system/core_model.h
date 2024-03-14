@@ -13,7 +13,7 @@ namespace lowlevelsys {
 
 
 	public:
-		std::vector<core_gl_texture> textures_loaded;	// stores all the textures loaded so far, optimization to make sure textures aren't loaded more than once.
+		std::vector<core_gl_texture> textures_loaded;
 		std::vector<core_mesh>    meshes;
 		std::string directory;
 		bool gammaCorrection;

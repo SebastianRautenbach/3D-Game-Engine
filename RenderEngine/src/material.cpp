@@ -44,7 +44,10 @@ namespace wizm {
 				does_texture_preexist = true;
 		}
 		if(!does_texture_preexist)
-			m_texture.emplace_back(texture_path.c_str(), type, texture_path);
+		{
+			texture_buffer temp_text(texture_path.c_str(), type, texture_path);
+			m_texture.push_back(temp_text);
+		}
 	}
 
 }

@@ -187,9 +187,9 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			if (comp_per_ent) {
 				comp_per_ent->m_material->m_shader = shdr;
 				
-				comp_per_ent->m_material->m_shininess = 32;
-				comp_per_ent->m_material->set_texture("missing_texture.png", eDiffuse);
-				comp_per_ent->m_material->set_texture("missing_texture_specular.png", eSpecular);
+				//comp_per_ent->m_material->m_shininess = 32;
+				comp_per_ent->m_material->set_texture("backpack/diffuse.png", eDiffuse);
+				comp_per_ent->m_material->set_texture("backpack/specular.png", eSpecular);
 				
 				comp_per_ent->m_material->on_change_material();
 			}
