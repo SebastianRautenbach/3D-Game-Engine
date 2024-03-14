@@ -44,12 +44,10 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	camera->SetPitch(-0.438943);
 	camera->SetYaw(-0.769122);
 
-	shdr = new core_gl_shader("vrtx_shdr.glsl", "frgmnt_shdr.glsl");
+	shdr = new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
 
 	m_scene = scene;
 
-	
-	
 	
 
 	
@@ -156,8 +154,6 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 	shdr->setVec3("camPos", camera->GetPosition());
 
-	
-	
 	shdr->use_shader();
 }
 
@@ -178,6 +174,10 @@ void lowlevelsys::gl_renderer::post_render(float deltaTime)
 
 void lowlevelsys::gl_renderer::update_draw_data()
 {
+
+	
+
+
 	for (auto& i : m_scene->m_entities)
 	{
 		for (auto& per_ent : i->m_components_list)
@@ -212,6 +212,8 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		}
 	}
+	
+	
 }
 
 

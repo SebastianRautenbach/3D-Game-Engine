@@ -9,6 +9,7 @@ namespace wizm {
             float constant = 1.0f,
             float linear = 0.09f,
             float quadratic = 0.032f,
+            float radius = 3.f,
             glm::vec3 ambient = glm::vec3(0.05f, 0.05f, 0.05f), 
             glm::vec3 diffuse = glm::vec3(0.8f, 0.8f, 0.8f),
             glm::vec3 specular = glm::vec3(1.0f, 1.0f, 1.0f)
@@ -27,6 +28,7 @@ namespace wizm {
         float m_constant;
         float m_linear;
         float m_quadratic;
+        float m_radius;
 
         glm::vec3 m_ambient;
         glm::vec3 m_diffuse;

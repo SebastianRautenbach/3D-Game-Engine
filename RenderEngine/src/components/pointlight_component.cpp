@@ -1,6 +1,6 @@
 #include "entity sys/components/pointlight_component.h"
 
-wizm::pointlight_component::pointlight_component(float constant, float linear, float quadratic, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular)
+wizm::pointlight_component::pointlight_component(float constant, float linear, float quadratic, float radius, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular)
 {
     m_component_type = ePointLight;
 
@@ -12,7 +12,7 @@ wizm::pointlight_component::pointlight_component(float constant, float linear, f
     m_diffuse = diffuse;
     m_specular = specular;
 
-    
+    m_radius = radius;
 }
 
 void wizm::pointlight_component::component_preupdate()
@@ -27,12 +27,13 @@ void wizm::pointlight_component::component_update()
         + std::to_string(light_index) + "]";
     
     shader->setVec3(pointlightindex + ".position", m_position);
-    shader->setVec3(pointlightindex + ".ambient", 0.05f, 0.05f, 0.05f);
-    shader->setVec3(pointlightindex + ".diffuse", 0.8f, 0.8f, 0.8f);
-    shader->setVec3(pointlightindex + ".specular", 1.0f, 1.0f, 1.0f);
-    shader->setFloat(pointlightindex + ".constant", 1.0f);
-    shader->setFloat(pointlightindex + ".linear", 0.09f);
-    shader->setFloat(pointlightindex + ".quadratic", 0.032f);
+    shader->setVec3(pointlightindex + ".ambient", m_ambient);
+    shader->setVec3(pointlightindex + ".diffuse", m_diffuse);
+    shader->setVec3(pointlightindex + ".specular", m_specular);
+    shader->setFloat(pointlightindex + ".constant", m_constant);
+    shader->setFloat(pointlightindex + ".linear", m_linear);
+    shader->setFloat(pointlightindex + ".quadratic", m_quadratic);
+    shader->setFloat(pointlightindex + ".radius", m_radius);
 
 }
 

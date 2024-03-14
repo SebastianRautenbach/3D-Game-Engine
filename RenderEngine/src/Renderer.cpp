@@ -33,11 +33,11 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		m_scene->m_entities[1]->m_components_list[0]->set_local_scale(glm::vec3(.1));
 
 		m_scene->m_entities[2]->add_component(std::make_shared<pointlight_component>());;
-		m_scene->m_entities[2]->add_component(std::make_shared<staticmesh_component>("FinalBaseMesh.obj"));
+		m_scene->m_entities[2]->add_component(std::make_shared<staticmesh_component>("cube.fbx"));
+		m_scene->m_entities[2]->m_components_list[0]->set_local_position(glm::vec3(-0.0f));
 		m_scene->m_entities[2]->m_components_list[1]->set_local_position(glm::vec3(-0.0f));
-		m_scene->m_entities[2]->m_components_list[1]->set_local_position(glm::vec3(-.5));
 		m_scene->m_entities[2]->m_components_list[1]->set_world_rotation(glm::vec3(0));
-		m_scene->m_entities[2]->m_components_list[1]->set_local_scale(glm::vec3(.01));
+		m_scene->m_entities[2]->m_components_list[1]->set_local_scale(glm::vec3(.1));
 
 
 		
