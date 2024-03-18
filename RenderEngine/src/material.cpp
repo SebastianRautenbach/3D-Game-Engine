@@ -15,6 +15,9 @@ namespace wizm {
 		m_shader->use_shader();
 		m_shader->setInt("material.diffuse", 0);
 		m_shader->setInt("material.specular", 1);
+		
+		
+		wmatdata.read_file_cntx(mat_path);
 	}
 
 	void core_material::update_material()
@@ -40,12 +43,19 @@ namespace wizm {
 	{
 		bool does_texture_preexist = false;
 		for (const auto i : m_texture) {
-			if (i.path == texture_path)
+			if (i.path == texture_path && i.type == type)
 				does_texture_preexist = true;
 		}
 		if(!does_texture_preexist)
 		{
 			texture_buffer temp_text(texture_path.c_str(), type, texture_path);
+
+			for (int i = 0; i < m_texture.size(); i++)
+			{
+				if (m_texture[i].type == type)
+					m_texture.erase(m_texture.begin() + i);
+			}
+
 			m_texture.push_back(temp_text);
 		}
 	}

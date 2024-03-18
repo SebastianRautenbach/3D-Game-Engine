@@ -43,7 +43,14 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 		
 		m_scene->m_entities[2]->add_position(glm::vec3(.8));
 		
-		
+		auto back_back = std::dynamic_pointer_cast<staticmesh_component>(m_scene->m_entities[1]->m_components_list[0]);
+		if (back_back)
+		{
+			back_back->m_material->set_texture("backpack/diffuse.png", eDiffuse);
+			back_back->m_material->set_texture("backpack/specular.png", eSpecular);
+
+		}
+			
 		m_gl_renderer->update_draw_data();
 
 
@@ -51,10 +58,11 @@ void default_renderer::render_setup(int window_size_x, int window_size_y, const 
 	}
 
 
-
-
-
-	
+	asset_manager manager("/cool.db");
+	manager.add_asset(eImage, "c:/somewhere");
+	std::cout << "Asset: " << manager.get_asset_id(eImage, "c:/somewhere") << "\n";
+	std::cout << "Path: " << manager.get_asset_path(manager.get_asset_id(eImage, "c:/somewhere")) << "\n";
+	std::cout << "Type: " << manager.get_asset_type(manager.get_asset_id(eImage, "c:/somewhere")) << "\n";
 
 }
 

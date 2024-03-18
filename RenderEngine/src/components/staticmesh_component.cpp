@@ -28,6 +28,8 @@ void wizm::staticmesh_component::component_update()
 	m_material->m_shader->setMat4("model", m_model_mtx);
 
 	m_model->render_model(m_material->m_shader);
+
+	m_material->unbind_material();
 }
 
 void wizm::staticmesh_component::component_postupdate()

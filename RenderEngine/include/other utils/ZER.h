@@ -413,7 +413,7 @@ namespace filedata
 		}
 
 		// retrieve the name on the left side just before the '\n'
-		std::string retrieve_property_name(const std::string& data, size_t starting_index) {
+		std::string retrieve_property_name(const std::string& data, unsigned int starting_index) {
 			int ittr = starting_index - 1;
 			std::string constructed_name;
 			std::string reconstructed_name;
@@ -424,7 +424,7 @@ namespace filedata
 				if (ittr == -1)
 					break;
 			}
-			for (size_t i = constructed_name.size() - 1; i + 1 > 0; i--)
+			for (unsigned int i = constructed_name.size() - 1; i + 1 > 0; i--)
 			{
 				reconstructed_name += constructed_name[i];
 			}

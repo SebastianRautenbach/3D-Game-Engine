@@ -5,6 +5,8 @@
 #include "system/timer.h"
 #include "input.h"
 
+#include "system/asset_manager.h"
+
 
 namespace wizm {
 

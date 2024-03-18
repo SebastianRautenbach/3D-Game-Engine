@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\dependencies\glad.c" />
+    <ClCompile Include="include\dependencies\sqlite3.c" />
     <ClCompile Include="include\entity sys\components\directionallight_component.h" />
     <ClCompile Include="include\entity sys\components\staticmesh_component.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
+    <ClCompile Include="src\systems\asset_manager.cpp" />
     <ClCompile Include="src\systems\core_mesh.cpp" />
     <ClCompile Include="src\systems\core_model.cpp" />
     <ClCompile Include="src\tag.cpp" />
@@ -169,6 +171,7 @@
     <ClCompile Include="src\vertex_buffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\dependencies\sqlite3.h" />
     <ClInclude Include="include\entity sys\components\all_components_list.h" />
     <ClInclude Include="include\entity sys\components\cube_test_comp.h" />
     <ClInclude Include="include\entity sys\components\pointlight_component.h" />
@@ -182,6 +185,8 @@
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
     <ClInclude Include="include\scene.h" />
+    <ClInclude Include="include\system\assettypes.h" />
+    <ClInclude Include="include\system\asset_manager.h" />
     <ClInclude Include="include\system\core_material.h" />
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />

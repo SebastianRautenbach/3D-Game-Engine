@@ -1,4 +1,5 @@
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\glad.c;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\glad.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\sqlite3.c;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\sqlite3.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\entity sys\components\directionallight_component.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\directionallight_component.h.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\entity sys\components\staticmesh_component.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\staticmesh_component.h.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\system\3d_core_camera.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\3d_core_camera.h.obj
@@ -17,6 +18,7 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp;C:\Us
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\Renderer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\scene.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\scene.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\gl_renderer.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\asset_manager.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\asset_manager.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\core_mesh.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\core_mesh.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\core_model.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\core_model.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\tag.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\tag.obj

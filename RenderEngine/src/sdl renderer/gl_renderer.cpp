@@ -185,12 +185,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			auto comp_per_ent = std::dynamic_pointer_cast<staticmesh_component>(per_ent);
 
 			if (comp_per_ent) {
-				comp_per_ent->m_material->m_shader = shdr;
-				
-				//comp_per_ent->m_material->m_shininess = 32;
-				comp_per_ent->m_material->set_texture("backpack/diffuse.png", eDiffuse);
-				comp_per_ent->m_material->set_texture("backpack/specular.png", eSpecular);
-				
+				comp_per_ent->m_material->m_shader = shdr;	
 				comp_per_ent->m_material->on_change_material();
 			}
 
