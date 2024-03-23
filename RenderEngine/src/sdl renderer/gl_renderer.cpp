@@ -10,8 +10,8 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	window = glfwCreateWindow(window_size_x, window_size_y, window_name, NULL, NULL);
@@ -23,6 +23,8 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 	glfwMakeContextCurrent(window);
+	glfwSwapInterval(1);
+
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -48,7 +50,6 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 	m_scene = scene;
 
-	
 
 	
 
@@ -68,9 +69,14 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 {
 	is_running = !glfwWindowShouldClose(window);
 
+
+	glfwGetFramebufferSize(window, &w_width, &w_height);
+	glViewport(0, 0, w_width, w_height);
 	glClearColor(0.77f, 0.839f, 0.968f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
+	
 }
 
 
@@ -162,8 +168,8 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 void lowlevelsys::gl_renderer::post_render(float deltaTime)
 {
-	glfwSwapBuffers(window);
 	glfwPollEvents();
+	glfwSwapBuffers(window);
 }
 
 
@@ -176,7 +182,6 @@ void lowlevelsys::gl_renderer::update_draw_data()
 {
 
 	
-
 
 	for (auto& i : m_scene->m_entities)
 	{

@@ -1,4 +1,4 @@
-#pragma once
+#pragma once 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -10,6 +10,7 @@
 #include "system/3d_core_camera.h"
 #include "other utils/grid2d.h"
 #include "scene.h"
+
 
 using namespace wizm;
 
@@ -31,6 +32,7 @@ namespace lowlevelsys {
 		core_grid* grid2d;
 		core_3d_camera* camera;
 		core_scene* m_scene;
+		
 		
 
 	public:

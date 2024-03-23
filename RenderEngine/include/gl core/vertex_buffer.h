@@ -90,3 +90,24 @@ public:
 	
 };
 
+class core_framebuffer : public core_buffer_object {
+public:
+	core_framebuffer(int32_t width, int32_t height);
+	~core_framebuffer();
+
+	unsigned int get_tex_id() { return m_tex_id; }
+
+	void create_fbuffer(int32_t width, int32_t height);
+
+	void gen_buffer() override;
+	void bind_buffer() override;
+	void unbind_buffer() override;
+	void destroy_buffer() override;
+
+private:
+	int32_t m_width;
+	int32_t m_height;
+	unsigned int m_tex_id;
+	unsigned int m_depth_id;
+
+};

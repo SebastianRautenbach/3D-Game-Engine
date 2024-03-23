@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
-#include "Renderer.h"
+#include "update_manager.h"
+#include "imgui/imgui.h"
+
 
 
 int main(int argc, char* args[]) {
 	
-	wizm::default_renderer* renderer = new wizm::default_renderer;
+	wizm::update_manager* renderer = new wizm::update_manager;
 	renderer->render_setup(1920 , 1080 , "Wizm");
 
 	while (renderer->is_running)

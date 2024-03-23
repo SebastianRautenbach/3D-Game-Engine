@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\imgui\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -144,6 +144,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\dependencies\glad.c" />
+    <ClCompile Include="include\dependencies\imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="include\dependencies\imgui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="include\dependencies\imgui\imgui.cpp" />
+    <ClCompile Include="include\dependencies\imgui\imgui_demo.cpp" />
+    <ClCompile Include="include\dependencies\imgui\imgui_draw.cpp" />
+    <ClCompile Include="include\dependencies\imgui\imgui_tables.cpp" />
+    <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
     <ClCompile Include="include\entity sys\components\directionallight_component.h" />
     <ClCompile Include="include\entity sys\components\staticmesh_component.h" />
@@ -159,8 +166,9 @@
     <ClCompile Include="src\entity.cpp" />
     <ClCompile Include="src\grid2d.cpp" />
     <ClCompile Include="src\input.cpp" />
+    <ClCompile Include="src\layers\gui_layer.cpp" />
     <ClCompile Include="src\material.cpp" />
-    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\update_manager.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
     <ClCompile Include="src\systems\asset_manager.cpp" />
@@ -171,6 +179,15 @@
     <ClCompile Include="src\vertex_buffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\dependencies\imgui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="include\dependencies\imgui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="include\dependencies\imgui\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="include\dependencies\imgui\imconfig.h" />
+    <ClInclude Include="include\dependencies\imgui\imgui.h" />
+    <ClInclude Include="include\dependencies\imgui\imgui_internal.h" />
+    <ClInclude Include="include\dependencies\imgui\imstb_rectpack.h" />
+    <ClInclude Include="include\dependencies\imgui\imstb_textedit.h" />
+    <ClInclude Include="include\dependencies\imgui\imstb_truetype.h" />
     <ClInclude Include="include\dependencies\sqlite3.h" />
     <ClInclude Include="include\entity sys\components\all_components_list.h" />
     <ClInclude Include="include\entity sys\components\cube_test_comp.h" />
@@ -181,11 +198,13 @@
     <ClInclude Include="include\gl core\core_camera.h" />
     <ClInclude Include="include\input.h" />
     <ClInclude Include="include\input_types.h" />
+    <ClInclude Include="include\layers\gui_layer.h" />
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assettypes.h" />
+    <ClInclude Include="include\system\asset_class.h" />
     <ClInclude Include="include\system\asset_manager.h" />
     <ClInclude Include="include\system\core_material.h" />
     <ClInclude Include="include\system\core_mesh.h" />
@@ -194,7 +213,7 @@
     <ClInclude Include="include\system\material_types.h" />
     <ClInclude Include="include\system\tag.h" />
     <ClInclude Include="include\system\timer.h" />
-    <ClInclude Include="include\Renderer.h" />
+    <ClInclude Include="include\update_manager.h" />
     <ClInclude Include="include\gl renderer\gl_renderer.h" />
     <ClInclude Include="include\gl core\vertex_buffer.h" />
   </ItemGroup>

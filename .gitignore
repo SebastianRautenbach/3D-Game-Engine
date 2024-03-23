@@ -1,1 +1,3 @@
 *.ipch
+x64/
+x64/Debug/RenderEngine.pdb

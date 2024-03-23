@@ -1,4 +1,11 @@
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\glad.c;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\glad.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui\backends\imgui_impl_glfw.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\imgui_impl_glfw.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui\backends\imgui_impl_opengl3.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\imgui_impl_opengl3.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui\imgui.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\imgui.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui\imgui_demo.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\imgui_demo.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui\imgui_draw.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\imgui_draw.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui\imgui_tables.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\imgui_tables.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui\imgui_widgets.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\imgui_widgets.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\sqlite3.c;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\sqlite3.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\entity sys\components\directionallight_component.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\directionallight_component.h.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\entity sys\components\staticmesh_component.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\staticmesh_component.h.obj
@@ -14,8 +21,9 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\3d_core_camera.cpp
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\entity.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\entity.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\grid2d.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\input.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\gui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\gui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\material.obj
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\Renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\Renderer.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\update_manager.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\update_manager.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\scene.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\scene.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\gl_renderer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\asset_manager.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\asset_manager.obj
