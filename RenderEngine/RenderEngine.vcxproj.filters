@@ -117,6 +117,18 @@
     <ClCompile Include="include\dependencies\imgui\backends\imgui_impl_opengl3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\layers\layerstack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\layers\viewport_layer.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\layers\viewport_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\layers\scene_ui_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\update_manager.h">
@@ -200,7 +212,7 @@
     <ClInclude Include="include\system\asset_class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\layers\gui_layer.h">
+    <ClInclude Include="include\layers\gui_cntx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\dependencies\imgui\backends\imgui_impl_opengl3_loader.h">
@@ -228,6 +240,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\dependencies\imgui\backends\imgui_impl_opengl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\viewport\viewport_gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\layers\layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\layers\layerstack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\layers\scene_ui_layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

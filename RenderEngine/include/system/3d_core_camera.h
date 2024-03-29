@@ -64,6 +64,8 @@ namespace wizm {
 		void SetNearClipPlane(float afX) { mfNearClipPlane = afX; mbProjectionUpdated = true; }
 		float GetNearClipPlane() { return mfNearClipPlane; }
 
+		void SetCameraWindowSize(float x, float y);
+
 
 		//////////////////////////////////////////////////
 		////////// EULER ANGLES ROTATION /////////////////

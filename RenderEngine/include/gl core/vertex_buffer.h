@@ -34,7 +34,7 @@ public:
 	virtual void destroy_buffer() {};
 
 public:
-	GLuint buffer_id;
+	unsigned int buffer_id = 0;
 };
 
 

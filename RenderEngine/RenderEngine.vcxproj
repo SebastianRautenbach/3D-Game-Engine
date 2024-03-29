@@ -154,6 +154,7 @@
     <ClCompile Include="include\dependencies\sqlite3.c" />
     <ClCompile Include="include\entity sys\components\directionallight_component.h" />
     <ClCompile Include="include\entity sys\components\staticmesh_component.h" />
+    <ClCompile Include="include\layers\viewport_layer.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\components\component.cpp" />
@@ -167,6 +168,9 @@
     <ClCompile Include="src\grid2d.cpp" />
     <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\layers\gui_layer.cpp" />
+    <ClCompile Include="src\layers\layerstack.cpp" />
+    <ClCompile Include="src\layers\scene_ui_layer.cpp" />
+    <ClCompile Include="src\layers\viewport_layer.cpp" />
     <ClCompile Include="src\material.cpp" />
     <ClCompile Include="src\update_manager.cpp" />
     <ClCompile Include="src\scene.cpp" />
@@ -198,7 +202,8 @@
     <ClInclude Include="include\gl core\core_camera.h" />
     <ClInclude Include="include\input.h" />
     <ClInclude Include="include\input_types.h" />
-    <ClInclude Include="include\layers\gui_layer.h" />
+    <ClInclude Include="include\layers\gui_cntx.h" />
+    <ClInclude Include="include\layers\layerstack.h" />
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
@@ -216,6 +221,9 @@
     <ClInclude Include="include\update_manager.h" />
     <ClInclude Include="include\gl renderer\gl_renderer.h" />
     <ClInclude Include="include\gl core\vertex_buffer.h" />
+    <ClInclude Include="include\viewport\viewport_gui.h" />
+    <ClInclude Include="include\layers\layer.h" />
+    <ClInclude Include="include\layers\scene_ui_layer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

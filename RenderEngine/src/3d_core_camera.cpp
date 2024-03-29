@@ -114,6 +114,12 @@ namespace wizm {
 	//-----------------------------------------------------------------------
 
 
+	void core_3d_camera::SetCameraWindowSize(float x, float y)
+	{
+		mfScreenWidth = x;
+		mfScreenHeight = y;
+	}
+
 	void core_3d_camera::SetPitch(float afAngle)
 	{
 		mfPitch = afAngle;
@@ -209,7 +215,9 @@ namespace wizm {
 
 	const glm::mat4& core_3d_camera::GetProjectionMatrix()
 	{
-		return glm::perspective(glm::radians(45.0f), mfScreenWidth / mfScreenHeight, 0.1f, 100.0f);
+		//return glm::perspective(glm::radians(45.0f), mfScreenWidth / mfScreenHeight, 0.1f, 100.0f);
+
+		return glm::perspective(glm::radians(45.0f), mfAspect, 0.1f, 100.0f);
 	}
 
 

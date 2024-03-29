@@ -5,9 +5,10 @@
 #include "system/timer.h"
 #include "input.h"
 #include "system/asset_manager.h"
-#include "layers/gui_layer.h"
-
-
+#include "layers/gui_cntx.h"
+#include "layers/layerstack.h"
+#include "layers/viewport_layer.h"
+#include "layers/scene_ui_layer.h"
 
 namespace wizm {
 
@@ -32,6 +33,9 @@ namespace wizm {
 		input_manager* m_input_manager;
 		gui_layer* layer;
 		core_framebuffer* m_framebuffer;
+		layer_stack* m_layer_stack;
+
+		// new system
 	};
 
 

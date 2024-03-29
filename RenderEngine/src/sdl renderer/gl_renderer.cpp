@@ -23,7 +23,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 	glfwMakeContextCurrent(window);
-	glfwSwapInterval(1);
+	
 
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -86,15 +86,11 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 
 void lowlevelsys::gl_renderer::render(float deltaTime)
 {
-	
-	std::string fps = std::to_string(1.f / deltaTime);
-	glfwSetWindowTitle(window, fps.c_str());
-
 
 	if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
 	{		
 
-		m_input_manager->set_hide_mouse_cursor(true);
+		//m_input_manager->set_hide_mouse_cursor(true);
 		
 		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * deltaTime);
 		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * deltaTime);
@@ -118,20 +114,6 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
 			camera->MoveUp(-1 * deltaTime);
-
-		
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_UP))
-			m_scene->m_entities[2]->add_position(glm::vec3(1 * deltaTime, 0, 0));
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_DOWN))
-			m_scene->m_entities[2]->add_position(glm::vec3(-1 * deltaTime, 0, 0));
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT))
-			m_scene->m_entities[2]->add_position(glm::vec3(0, 0, -1 * deltaTime));
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_RIGHT))
-			m_scene->m_entities[2]->add_position(glm::vec3(0, 0, 1 * deltaTime));
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_O))
-			m_scene->m_entities[2]->add_position(glm::vec3(0, 1 * deltaTime, 0));
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_L))
-			m_scene->m_entities[2]->add_position(glm::vec3(0, -1 * deltaTime, 0));
 
 	
 	}
@@ -177,6 +159,8 @@ void lowlevelsys::gl_renderer::post_render(float deltaTime)
 //-----------------------------------------------------------------------
 
 
+//-----------------------------------------------------------------------
+// Set all objects that are renderable with the shader
 
 void lowlevelsys::gl_renderer::update_draw_data()
 {
@@ -226,3 +210,5 @@ void lowlevelsys::gl_renderer::on_exit()
 	glfwTerminate();
 	
 }
+
+//-----------------------------------------------------------------------

@@ -17,8 +17,14 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_timer = new core_timer;
 
 	layer = new gui_layer(m_gl_renderer->window);
+	m_layer_stack = new layer_stack();
+
+	m_layer_stack->PushLayer(layer);
 
 	m_framebuffer = new core_framebuffer(window_size_x, window_size_y);
+
+	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer->buffer_id ,m_gl_renderer->camera));
+	m_layer_stack->PushLayer(new scene_ui_layer(m_scene));
 
 	{
 		// this is for testing the entity component system
@@ -43,9 +49,9 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 		m_scene->m_entities[2]->m_components_list[1]->set_local_scale(glm::vec3(.1));
 
 
-		
+
 		m_scene->m_entities[2]->add_position(glm::vec3(.8));
-		
+
 		auto back_back = std::dynamic_pointer_cast<staticmesh_component>(m_scene->m_entities[1]->m_components_list[0]);
 		if (back_back)
 		{
@@ -53,14 +59,12 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 			back_back->m_material->set_texture("backpack/specular.png", eSpecular);
 
 		}
-			
+
 		m_gl_renderer->update_draw_data();
 
 
 
 	}
-
-
 }
 
 
@@ -73,12 +77,9 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 void update_manager::pre_render()
 {	
 	m_scene->scene_preupdate();
-	
-	
 
 	m_gl_renderer->pre_render(is_running, m_timer->get_delta_time());
 
-	layer->pre_update();
 	
 	
 }
@@ -97,7 +98,7 @@ void update_manager::render()
 	
 	m_gl_renderer->render(m_timer->get_delta_time());
 	
-	// my dumn ass thought wrong but the m_scene is actually where the draw calls are being called not 
+	// my dumb ass thought wrong but the m_scene is actually where the draw calls are being called not 
 	// the gl_renderer. Dont ask me why, I though I was being clever
 
 	m_framebuffer->bind_buffer();
@@ -105,7 +106,10 @@ void update_manager::render()
 	m_framebuffer->unbind_buffer();
 	
 	
-	layer->render_viewport(m_framebuffer->get_tex_id(), m_gl_renderer->w_width, m_gl_renderer->w_height);
+	layer->begin();
+	for (core_layer* layer : m_layer_stack->m_Layers)
+		layer->update();
+	layer->end();
 }
 
 
@@ -115,7 +119,7 @@ void update_manager::render()
 
 void update_manager::post_render()
 {
-	layer->post_update();
+	
 	m_scene->scene_postupdate();
 
 	m_gl_renderer->post_render(m_timer->get_delta_time());

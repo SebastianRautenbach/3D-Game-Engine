@@ -3,21 +3,29 @@
 #include "imgui/backends/imgui_impl_glfw.h"
 #include "imgui/backends/imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
+#include "system/3d_core_camera.h"
+#include "layer.h"
 
 namespace wizm {
 
-	class gui_layer {
+	class gui_layer : public core_layer
+	{
 	public:
 		gui_layer(GLFWwindow* window);
 		~gui_layer();
-		void pre_update();
-		void update();
-		void post_update();
-		void render_viewport(uint64_t textureID, unsigned int width, unsigned int height);
+
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+
+
+		void begin();
+		void end();
+		
 	
 	private:
 		bool show_demo_window = true;
 		ImVec2 m_window_size;
+		GLFWwindow* m_window;
 	};
 
 
