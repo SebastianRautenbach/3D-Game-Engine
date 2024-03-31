@@ -17,27 +17,75 @@ void wizm::scene_ui_layer::OnDetach()
 {
 }
 
+/*
+
+
+				THIS IS ONLY TESTING PURPOSES
+
+*/
+
 void wizm::scene_ui_layer::update()
 {
+	static bool add_ent = false;
+
 	ImGui::Begin("scene view");
 
 
+	
 	for (auto ents : m_scene->m_entities)
-	{
-		ImGui::Text("Pos:");
-		
-		float pos[3] = { ents->m_position.x, ents->m_position .y, ents->m_position.z};
-		std::string trans_id = ents->m_ent_ID + "pos";
-		ImGui::DragFloat3(trans_id.c_str(), pos, 0.1);
-		ents->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+		{
+			if (ImGui::CollapsingHeader(ents->m_ent_ID.c_str()))
+			{
+				m_scene->set_crnt_entity(ents);
 
-		ImGui::Text("Rot:");
-		float rot[3] = { ents->m_rotation.x, ents->m_rotation.y, ents->m_rotation.z };
-		trans_id = ents->m_ent_ID + "rot";
-		ImGui::DragFloat3(trans_id.c_str(), rot, 0.1);
-		ents->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+				
 
-		ImGui::Text("-------------------------------------");
+
+
+				
+
+			}
+		}
+	if (!add_ent) {
+		if (ImGui::Button("+##add_ent")) {
+
+			add_ent = true;
+		}
+	}
+	
+	else {
+		ImGui::Begin("add entity");
+
+		ImGui::Text("Name enitity");
+		static char ent_name[255] = "Enter name";
+		std::string _ent_str;
+		ImGui::InputText("##ENTNAME", ent_name, 255);
+		_ent_str = ent_name;
+		if (ImGui::Button("Add Entity") && !_ent_str.empty())
+		{
+			bool does_ent_name_exist = false;
+			for (const auto y : m_scene->m_entities)
+			{
+				if (_ent_str == y->m_ent_ID)
+				{
+					does_ent_name_exist = true;
+					break;
+				}
+			}
+			if (!does_ent_name_exist)
+			{
+				m_scene->add_entity(_ent_str);
+				add_ent = false;
+			}
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Cancel"))
+		{
+			add_ent = false;
+		}
+
+
+		ImGui::End();
 	}
 
 	ImGui::End();

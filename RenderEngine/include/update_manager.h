@@ -7,8 +7,7 @@
 #include "system/asset_manager.h"
 #include "layers/gui_cntx.h"
 #include "layers/layerstack.h"
-#include "layers/viewport_layer.h"
-#include "layers/scene_ui_layer.h"
+#include "layers/layers_define.h"
 
 namespace wizm {
 

@@ -13,16 +13,27 @@ namespace wizm {
 		void scene_preupdate();
 		void scene_update();
 		void scene_postupdate();
+
 		
-
-
 		
 		// entity related
 		
 		void add_entity(std::string entity_name);
 
+
+		// modifying only one entity
+
+		core_entity* get_crnt_entity() {
+			return m_selected_entity ? m_selected_entity : nullptr;
+		}
+
+		void set_crnt_entity(core_entity* ent) { m_selected_entity = ent; };
+
 	public:
 		std::vector<core_entity*> m_entities;
+
+	private:
+		core_entity* m_selected_entity;
 	};
 
 

@@ -24,6 +24,8 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp;C:\User
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\input.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\gui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\gui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\layerstack.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\layerstack.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\performance_ui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\performance_ui_layer.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_ui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\properties_ui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\scene_ui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\scene_ui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\viewport_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\viewport_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\material.obj
