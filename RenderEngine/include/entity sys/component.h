@@ -68,8 +68,8 @@ namespace lowlevelsys {
 		wizm::core_tag* component_tags;
 
 		glm::vec3 center;
-		glm::vec3 m_position;
-		glm::vec3 m_rotation;
-		glm::vec3 m_scale;
+		glm::vec3 m_position = glm::vec3(0.);
+		glm::vec3 m_rotation = glm::vec3(0.);
+		glm::vec3 m_scale = glm::vec3(1.);
 	};
 }

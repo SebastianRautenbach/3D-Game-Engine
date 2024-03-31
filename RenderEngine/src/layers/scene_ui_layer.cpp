@@ -33,36 +33,32 @@ void wizm::scene_ui_layer::update()
 
 	
 	for (auto ents : m_scene->m_entities)
+	{
+		if (ImGui::Button(ents->m_ent_ID.c_str()))
 		{
-			if (ImGui::CollapsingHeader(ents->m_ent_ID.c_str()))
-			{
-				m_scene->set_crnt_entity(ents);
-
-				
-
-
-
-				
-
-			}
-		}
-	if (!add_ent) {
-		if (ImGui::Button("+##add_ent")) {
-
-			add_ent = true;
+			m_scene->set_crnt_entity(ents);
 		}
 	}
 	
-	else {
-		ImGui::Begin("add entity");
+	if (ImGui::Button("Add Entity"))
+		ImGui::OpenPopup("AddEntityPopup");
 
-		ImGui::Text("Name enitity");
-		static char ent_name[255] = "Enter name";
-		std::string _ent_str;
-		ImGui::InputText("##ENTNAME", ent_name, 255);
-		_ent_str = ent_name;
-		if (ImGui::Button("Add Entity") && !_ent_str.empty())
-		{
+	if (ImGui::BeginPopup("AddEntityPopup")) {
+		ImGui::Text("Add Entity");
+		ImGui::Separator();
+		
+		static char enity_name[128] = "Component Name";
+	
+		if (ImGui::IsPopupOpen("AddEntityPopup")) {
+			ImGui::SetKeyboardFocusHere(0);
+		}
+
+
+		if (ImGui::InputText("##name", enity_name, IM_ARRAYSIZE(enity_name))) {}
+		
+		if (ImGui::MenuItem("Add Entity")) {
+			std::string _ent_str;
+			_ent_str = enity_name;
 			bool does_ent_name_exist = false;
 			for (const auto y : m_scene->m_entities)
 			{
@@ -75,18 +71,17 @@ void wizm::scene_ui_layer::update()
 			if (!does_ent_name_exist)
 			{
 				m_scene->add_entity(_ent_str);
-				add_ent = false;
 			}
 		}
-		ImGui::SameLine();
-		if (ImGui::Button("Cancel"))
-		{
-			add_ent = false;
-		}
-
-
-		ImGui::End();
+		
+		ImGui::EndPopup();
 	}
+
+
+
+	
+
+
 
 	ImGui::End();
 }

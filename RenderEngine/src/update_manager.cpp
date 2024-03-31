@@ -26,7 +26,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer->buffer_id ,m_gl_renderer->camera));
 	m_layer_stack->PushLayer(new scene_ui_layer(m_scene));
 	m_layer_stack->PushLayer(new performace_ui_layer());
-	m_layer_stack->PushLayer(new properties_ui_layer(m_scene));
+	m_layer_stack->PushLayer(new properties_ui_layer(m_scene, m_gl_renderer));
 
 	{
 		// this is for testing the entity component system

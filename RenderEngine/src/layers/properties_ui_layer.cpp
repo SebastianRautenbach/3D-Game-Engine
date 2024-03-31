@@ -1,7 +1,7 @@
 #include "layers/properties_ui_layer.h"
 
-wizm::properties_ui_layer::properties_ui_layer(core_scene* scene)
-	:m_scene(scene)
+wizm::properties_ui_layer::properties_ui_layer(core_scene* scene, gl_renderer* renderer)
+	:m_scene(scene), m_renderer(renderer)
 {
 }
 
@@ -117,7 +117,43 @@ void wizm::properties_ui_layer::update()
 
 		}
 
+
+
+		component_add_popup(select_ent);
+
 	}
 
 	ImGui::End();
+}
+
+void wizm::properties_ui_layer::component_add_popup(core_entity* select_ent)
+{
+	if (ImGui::Button("Add Component")) {
+		ImGui::OpenPopup("AddComponentPopup");
+	}
+
+	if (ImGui::BeginPopup("AddComponentPopup")) {
+		ImGui::Text("Select Component to Add");
+		ImGui::Separator();
+
+		if (ImGui::MenuItem("Static Mesh")) {
+			
+		}
+		if (ImGui::MenuItem("Point Light")) {
+			select_ent->add_component(std::make_shared<pointlight_component>());
+			m_renderer->update_draw_data();
+		}
+		if (ImGui::MenuItem("Spot Light")) {
+			
+		}
+		if (ImGui::MenuItem("Directional Light")) {
+			select_ent->add_component(std::make_shared<directionallight_component>());
+			m_renderer->update_draw_data();
+		}
+		if (ImGui::MenuItem("Sound")) {
+			
+		}
+
+		ImGui::EndPopup();
+	}
 }
