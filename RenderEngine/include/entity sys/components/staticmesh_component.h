@@ -18,6 +18,8 @@ namespace wizm {
 		void component_update() override;
 		void component_postupdate() override;
 
+		void change_mesh(const char* file_path);
+
 
 	public:
 		core_model* m_model;

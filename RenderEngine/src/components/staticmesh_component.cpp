@@ -35,3 +35,8 @@ void wizm::staticmesh_component::component_update()
 void wizm::staticmesh_component::component_postupdate()
 {
 }
+
+void wizm::staticmesh_component::change_mesh(const char* file_path)
+{
+	m_model = new core_model(file_path);
+}

@@ -137,7 +137,8 @@ void wizm::properties_ui_layer::component_add_popup(core_entity* select_ent)
 		ImGui::Separator();
 
 		if (ImGui::MenuItem("Static Mesh")) {
-			
+			select_ent->add_component(std::make_shared<staticmesh_component>("resources/models/backpack.obj"));
+			m_renderer->update_draw_data();
 		}
 		if (ImGui::MenuItem("Point Light")) {
 			select_ent->add_component(std::make_shared<pointlight_component>());
