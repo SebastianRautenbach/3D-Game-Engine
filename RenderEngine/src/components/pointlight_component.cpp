@@ -15,6 +15,11 @@ wizm::pointlight_component::pointlight_component(float constant, float linear, f
     m_radius = radius;
 }
 
+wizm::pointlight_component::~pointlight_component()
+{
+ 
+}
+
 void wizm::pointlight_component::component_preupdate()
 {
 

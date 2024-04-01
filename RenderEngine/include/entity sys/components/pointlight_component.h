@@ -14,6 +14,8 @@ namespace wizm {
             glm::vec3 diffuse = glm::vec3(0.8f, 0.8f, 0.8f),
             glm::vec3 specular = glm::vec3(1.0f, 1.0f, 1.0f)
         );
+
+        ~pointlight_component();
 	    
 
         void component_preupdate();

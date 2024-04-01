@@ -1,7 +1,7 @@
 #include "layers/scene_ui_layer.h"
 
-wizm::scene_ui_layer::scene_ui_layer(core_scene* scene)
-	:core_layer("scene ui layer"), m_scene(scene)
+wizm::scene_ui_layer::scene_ui_layer(core_scene* scene, gl_renderer* renderer)
+	:core_layer("scene ui layer"), m_scene(scene), m_renderer(renderer)
 {
 }
 
@@ -32,13 +32,37 @@ void wizm::scene_ui_layer::update()
 
 
 	
+	//for (auto ents : m_scene->m_entities)
+	//{
+	//	if (ImGui::Button(ents->m_ent_ID.c_str()))
+	//	{
+	//		ImGui::OpenPopup("ModEnt");
+	//		m_scene->set_crnt_entity(ents);
+	//	}
+	//}
+
+
 	for (auto ents : m_scene->m_entities)
 	{
-		if (ImGui::Button(ents->m_ent_ID.c_str()))
+		if (ImGui::TreeNodeEx(ents->m_ent_ID.c_str(), 
+			ImGuiTreeNodeFlags_OpenOnArrow 
+			| ImGuiTreeNodeFlags_OpenOnDoubleClick 
+			| ImGuiTreeNodeFlags_SpanAvailWidth)) 
 		{
+			
+			// open next list _>> BLAH BLAH
+			ImGui::TreePop();
+		}
+		if (ImGui::IsItemClicked(ImGuiMouseButton_Right))
+		{
+			m_scene->set_crnt_entity(ents);
 			ImGui::OpenPopup("ModEnt");
+		}
+		if (ImGui::IsItemClicked())
+		{
 			m_scene->set_crnt_entity(ents);
 		}
+
 	}
 
 
@@ -51,6 +75,10 @@ void wizm::scene_ui_layer::update()
 		}
 		if (ImGui::MenuItem("Delete")) {
 			m_scene->m_entities.erase(std::find(m_scene->m_entities.begin(), m_scene->m_entities.end(), m_scene->get_crnt_entity()));
+			
+			delete m_scene->get_crnt_entity();
+			m_renderer->update_draw_data();
+			
 			for (auto ents : m_scene->m_entities)
 				m_scene->set_crnt_entity(ents);
 		}
@@ -58,9 +86,10 @@ void wizm::scene_ui_layer::update()
 		ImGui::EndPopup();
 	}
 
+	//---------------------------------------------------------------------------------------------------------
 
 
-
+	ImGui::Separator();
 
 
 	//---------------------------------------------------------------------------------------------------------
@@ -72,7 +101,7 @@ void wizm::scene_ui_layer::update()
 		ImGui::Text("Add Entity");
 		ImGui::Separator();
 		
-		static char enity_name[128] = "Component Name";
+		static char enity_name[128] = "Entity Name";
 	
 		if (ImGui::IsPopupOpen("AddEntityPopup")) {
 			ImGui::SetKeyboardFocusHere(0);
