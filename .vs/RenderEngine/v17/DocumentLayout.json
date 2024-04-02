@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\entity sys\\entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\entity sys\\entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\viewport_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\viewport_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\update_manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -15,20 +19,32 @@
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\components\\pointlight_component.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\viewport_layer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\layers\\viewport_layer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\gui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\gui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\gui_cntx.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\layers\\gui_cntx.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\properties_ui_layer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\layers\\properties_ui_layer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\scene_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\properties_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\properties_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\scene_ui_layer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\layers\\scene_ui_layer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\entity sys\\components\\pointlight_component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\entity sys\\components\\pointlight_component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +54,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "entity.h",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\entity sys\\entity.h",
+              "RelativeDocumentMoniker": "RenderEngine\\include\\entity sys\\entity.h",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\entity sys\\entity.h",
+              "RelativeToolTip": "RenderEngine\\include\\entity sys\\entity.h",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACEAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-01T23:31:09.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "viewport_layer.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\viewport_layer.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\viewport_layer.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\viewport_layer.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\layers\\viewport_layer.cpp",
+              "ViewState": "AQIAACEAAAAAAAAAAAAWwC4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-01T22:57:22.57Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "viewport_layer.h",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\viewport_layer.h",
+              "RelativeDocumentMoniker": "RenderEngine\\include\\layers\\viewport_layer.h",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\viewport_layer.h",
+              "RelativeToolTip": "RenderEngine\\include\\layers\\viewport_layer.h",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-01T22:57:20.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "gui_layer.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\gui_layer.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\gui_layer.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\gui_layer.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\layers\\gui_layer.cpp",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADYAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-01T22:55:40.704Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "gui_cntx.h",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\gui_cntx.h",
+              "RelativeDocumentMoniker": "RenderEngine\\include\\layers\\gui_cntx.h",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\gui_cntx.h",
+              "RelativeToolTip": "RenderEngine\\include\\layers\\gui_cntx.h",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-04-01T22:55:03.079Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "properties_ui_layer.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\properties_ui_layer.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\properties_ui_layer.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\properties_ui_layer.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\layers\\properties_ui_layer.cpp",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAHAAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-04-01T22:35:34.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "scene_ui_layer.h",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\scene_ui_layer.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\layers\\scene_ui_layer.h",
@@ -54,20 +143,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "gl_renderer.cpp",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
               "RelativeDocumentMoniker": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
               "RelativeToolTip": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
-              "ViewState": "AQIAAJ4AAAAAAAAAAAAIwK0AAAADAAAA",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAqwK4AAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-01T16:39:35.899Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-01T16:39:35.899Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "pointlight_component.cpp",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\components\\pointlight_component.cpp",
               "RelativeDocumentMoniker": "RenderEngine\\src\\components\\pointlight_component.cpp",
@@ -75,59 +163,31 @@
               "RelativeToolTip": "RenderEngine\\src\\components\\pointlight_component.cpp",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAABMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-04-01T16:20:04.913Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-01T16:20:04.913Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "properties_ui_layer.h",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\properties_ui_layer.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\layers\\properties_ui_layer.h",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\layers\\properties_ui_layer.h",
               "RelativeToolTip": "RenderEngine\\include\\layers\\properties_ui_layer.h",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAEwA0AAAAIAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAEwBcAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-31T21:36:45.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T21:36:45.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "update_manager.cpp",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\update_manager.cpp",
               "RelativeDocumentMoniker": "RenderEngine\\src\\update_manager.cpp",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\update_manager.cpp",
               "RelativeToolTip": "RenderEngine\\src\\update_manager.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAABPAAAA",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAcwBYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-31T19:59:27.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "scene_ui_layer.cpp",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp",
-              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\scene_ui_layer.cpp",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp",
-              "RelativeToolTip": "RenderEngine\\src\\layers\\scene_ui_layer.cpp",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAE8AAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-31T21:53:12.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "pointlight_component.h",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\entity sys\\components\\pointlight_component.h",
-              "RelativeDocumentMoniker": "RenderEngine\\include\\entity sys\\components\\pointlight_component.h",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\include\\entity sys\\components\\pointlight_component.h",
-              "RelativeToolTip": "RenderEngine\\include\\entity sys\\components\\pointlight_component.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-04-01T16:20:09.285Z"
+              "WhenOpened": "2024-03-31T19:59:27.446Z"
             }
           ]
         }

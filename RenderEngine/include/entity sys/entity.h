@@ -57,6 +57,7 @@ namespace wizm {
 		core_tag* entity_tags;
 		std::vector<std::shared_ptr<core_component>> m_components_list;
 
+		glm::mat4 m_transform;
 		glm::vec3 m_position;
 		glm::vec3 m_rotation;
 		glm::vec3 m_scale;

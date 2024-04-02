@@ -52,7 +52,7 @@ void wizm::gui_layer::begin()
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
-
+    ImGuizmo::BeginFrame();
 
     // Create the docking environment
     ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoTitleBar |

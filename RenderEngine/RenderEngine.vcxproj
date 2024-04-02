@@ -144,6 +144,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\dependencies\glad.c" />
+    <ClCompile Include="include\dependencies\ImGuizmo\ImCurveEdit.cpp" />
+    <ClCompile Include="include\dependencies\ImGuizmo\ImGradient.cpp" />
+    <ClCompile Include="include\dependencies\ImGuizmo\ImGuizmo.cpp" />
+    <ClCompile Include="include\dependencies\ImGuizmo\ImSequencer.cpp" />
     <ClCompile Include="include\dependencies\imgui\backends\imgui_impl_glfw.cpp" />
     <ClCompile Include="include\dependencies\imgui\backends\imgui_impl_opengl3.cpp" />
     <ClCompile Include="include\dependencies\imgui\imgui.cpp" />
@@ -186,6 +190,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core_application.h" />
+    <ClInclude Include="include\dependencies\ImGuizmo\ImCurveEdit.h" />
+    <ClInclude Include="include\dependencies\ImGuizmo\ImGradient.h" />
+    <ClInclude Include="include\dependencies\ImGuizmo\ImGuizmo.h" />
+    <ClInclude Include="include\dependencies\ImGuizmo\ImSequencer.h" />
     <ClInclude Include="include\dependencies\imgui\backends\imgui_impl_glfw.h" />
     <ClInclude Include="include\dependencies\imgui\backends\imgui_impl_opengl3.h" />
     <ClInclude Include="include\dependencies\imgui\backends\imgui_impl_opengl3_loader.h" />

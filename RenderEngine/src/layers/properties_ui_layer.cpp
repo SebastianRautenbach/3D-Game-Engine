@@ -110,9 +110,25 @@ void wizm::properties_ui_layer::update()
 				{
 					trans_id = "Radius ##" + select_ent->m_ent_ID + std::to_string(comps->m_component_type);
 					auto pointlight = std::dynamic_pointer_cast<pointlight_component>(comps);
+					
 					ImGui::InputFloat(trans_id.c_str(), &pointlight->m_radius);
+					
+					float test[3] = { pointlight->m_diffuse.x, pointlight->m_diffuse.y, pointlight->m_diffuse.z};
+					
+					ImGui::ColorPicker3("test", test);
+					pointlight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
 				}
 
+
+				if (comp_type == "DirectionalLight")
+				{
+					auto directionallight = std::dynamic_pointer_cast<directionallight_component>(comps);
+
+					float test[3] = { directionallight->m_diffuse.x, directionallight->m_diffuse.y, directionallight->m_diffuse.z };
+
+					ImGui::ColorPicker3("test", test);
+					directionallight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
+				}
 			}
 
 		}

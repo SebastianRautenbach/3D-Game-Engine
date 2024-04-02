@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include "system/3d_core_camera.h"
 #include "layer.h"
+#include "ImGuizmo/ImGuizmo.h"
 
 namespace wizm {
 

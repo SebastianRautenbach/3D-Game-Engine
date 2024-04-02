@@ -9,6 +9,7 @@ wizm::staticmesh_component::staticmesh_component(const char* file_path)
 
 wizm::staticmesh_component::~staticmesh_component()
 {
+	std::cout << "";
 }
 
 void wizm::staticmesh_component::component_preupdate()
