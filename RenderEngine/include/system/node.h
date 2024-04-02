@@ -42,7 +42,15 @@ namespace wizm {
 		const glm::vec3& get_position() const { return m_translation; }
 		const glm::vec3& get_rotation() const { return m_rotation; }
 		const glm::vec3& get_scale() const { return m_scale; }
+
 		glm::mat4 get_transform();
+
+		glm::vec3 get_world_position() {
+			glm::mat4 worldTransform = get_transform();
+			return glm::vec3(worldTransform[3]);
+		}
+
+		
 
 	private:
 		glm::vec3 m_translation;
