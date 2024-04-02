@@ -222,6 +222,7 @@
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
+    <ClInclude Include="include\other utils\matrix_math.h" />
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assettypes.h" />
     <ClInclude Include="include\system\asset_class.h" />

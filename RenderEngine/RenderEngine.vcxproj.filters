@@ -302,5 +302,8 @@
     <ClInclude Include="include\system\node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\other utils\matrix_math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

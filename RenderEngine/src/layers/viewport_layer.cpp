@@ -1,4 +1,5 @@
 #include "layers/viewport_layer.h"
+#include "other utils/matrix_math.h"
 
 wizm::viewport_layer::viewport_layer(unsigned int fbID, core_3d_camera* camera, core_scene* scene)
     : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene)
@@ -44,16 +45,24 @@ void wizm::viewport_layer::update()
         ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, wWidth, wHeight);
        
         
-        glm::mat4 transform = glm::mat4(1.0);
-        transform = glm::translate(transform, ent->m_position);
-        transform = glm::rotate(transform, ent->m_rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
-        transform = glm::rotate(transform, ent->m_rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-        transform = glm::rotate(transform, ent->m_rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-        transform = glm::scale(transform, ent->m_scale);
+        glm::mat4 transform = ent->get_transform();
         
-        ImGuizmo::Manipulate(glm::value_ptr(m_camera->GetViewMatrix()),
-            glm::value_ptr(m_camera->GetProjectionMatrix()), ImGuizmo::OPERATION::TRANSLATE, ImGuizmo::LOCAL,
-            glm::value_ptr(transform));
+        if(ImGuizmo::Manipulate(glm::value_ptr(m_camera->GetViewMatrix()),
+            glm::value_ptr(m_camera->GetProjectionMatrix()), ImGuizmo::OPERATION::SCALE, ImGuizmo::LOCAL,
+            glm::value_ptr(transform)))
+        {
+            glm::vec3 position = glm::vec3(0);
+            glm::vec3 rotation = glm::vec3(0);
+            glm::vec3 scale = glm::vec3(0);
+
+            lowlevelsys::decompose_transform(transform, position, rotation, scale);
+           // ent->set_position(position);
+           // ent->add_rotation(rotation);
+            ent->set_scale(scale);
+        
+        }
+
+       
     }
 
 

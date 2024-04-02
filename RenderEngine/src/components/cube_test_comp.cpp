@@ -41,13 +41,13 @@ namespace wizm {
 		m_material->update_material();
 
 
-		m_model_mtx = glm::mat4(1);
-		
-		set_local_position(m_position);
-		set_world_rotation(m_rotation);
-		set_local_scale(m_scale);
+		//m_model_mtx = glm::mat4(1);
+		//
+		//set_local_position(m_position);
+		//set_world_rotation(m_rotation);
+		//set_local_scale(m_scale);
 
-		m_material->m_shader->setMat4("model", m_model_mtx);
+		//m_material->m_shader->setMat4("model", m_model_mtx);
 		
 		// temp material layout
 		// not very happy with this

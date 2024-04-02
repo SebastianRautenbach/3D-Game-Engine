@@ -28,27 +28,25 @@ void wizm::properties_ui_layer::update()
 
 
 		std::string trans_id;
+
 		ImGui::Text("Position:");
-		float pos[3] = { select_ent->m_position.x, select_ent->m_position.y, select_ent->m_position.z };
+		float pos[3] = { select_ent->get_position().x, select_ent->get_position().y, select_ent->get_position().z };
 		trans_id = select_ent->m_ent_ID + "pos";
-		ImGui::DragFloat3(trans_id.c_str(), pos, 0.01);
-		select_ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+		if (ImGui::DragFloat3(trans_id.c_str(), pos, 0.01))
+			select_ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
 
 		ImGui::Text("Rotation:");
-		float rot[3] = { select_ent->m_rotation.x, select_ent->m_rotation.y, select_ent->m_rotation.z };
+		float rot[3] = { select_ent->get_rotation().x, select_ent->get_rotation().y, select_ent->get_rotation().z };
 		trans_id = select_ent->m_ent_ID + "rot";
-		ImGui::DragFloat3(trans_id.c_str(), rot, 0.01);
-		select_ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+		if (ImGui::DragFloat3(trans_id.c_str(), rot, 0.01))
+			select_ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
 
 
 		ImGui::Text("Scale:");
-		float sca[3] = { select_ent->m_scale.x, select_ent->m_scale.y, select_ent->m_scale.z };
+		float sca[3] = { select_ent->get_scale().x, select_ent->get_scale().y, select_ent->get_scale().z };
 		trans_id = select_ent->m_ent_ID + "sca";
-		ImGui::DragFloat3(trans_id.c_str(), sca, 0.01);
-		select_ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
-
-
-
+		if (ImGui::DragFloat3(trans_id.c_str(), sca, 0.01))
+			select_ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
 
 
 		ImGui::Text("Components");
@@ -86,23 +84,25 @@ void wizm::properties_ui_layer::update()
 				{
 
 					ImGui::Text("Position:");
-					float pos[3] = { comps->m_position.x, comps->m_position.y, comps->m_position.z };
+					float pos[3] = { comps->get_position().x, comps->get_position().y, comps->get_position().z};
 					std::string trans_id = select_ent->m_ent_ID + "c pos" + std::to_string(comps->m_component_type);
-					ImGui::DragFloat3(trans_id.c_str(), pos, 0.01);
-					comps->set_local_position(glm::vec3(pos[0], pos[1], pos[2]));
-
+					if(ImGui::DragFloat3(trans_id.c_str(), pos, 0.01))
+						comps->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+					
 					ImGui::Text("Rotation:");
-					float rot[3] = { comps->m_rotation.x, comps->m_rotation.y, comps->m_rotation.z };
+					float rot[3] = { comps->get_rotation().x, comps->get_rotation().y, comps->get_rotation().z };
 					trans_id = select_ent->m_ent_ID + "c rot" + std::to_string(comps->m_component_type);
-					ImGui::DragFloat3(trans_id.c_str(), rot, 0.01);
-					comps->set_local_rotation(glm::vec3(rot[0], rot[1], rot[2]));
-
-
+					if(ImGui::DragFloat3(trans_id.c_str(), rot, 0.01))
+						comps->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+					
+					
 					ImGui::Text("Scale:");
-					float sca[3] = { comps->m_scale.x, comps->m_scale.y, comps->m_scale.z };
+					float sca[3] = { comps->get_scale().x, comps->get_scale().y, comps->get_scale().z};
 					trans_id = select_ent->m_ent_ID + "c sca" + std::to_string(comps->m_component_type);
-					ImGui::DragFloat3(trans_id.c_str(), sca, 0.01);
-					comps->set_local_scale(glm::vec3(sca[0], sca[1], sca[2]));
+					if(ImGui::DragFloat3(trans_id.c_str(), sca, 0.01))
+						comps->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
+
+
 				}
 				ImGui::Unindent(20.0f);
 
