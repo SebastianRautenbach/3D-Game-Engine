@@ -124,6 +124,52 @@ void wizm::core_entity::set_scale(glm::vec3 scale)
 	
 }
 
+//----------------------------------------------------------------------------
+// NEWER SYSTEM
+
+void wizm::core_entity::set_pos(glm::vec3 position)
+{
+	m_transform = glm::translate(m_transform, position);
+
+}
+
+void wizm::core_entity::set_rot(glm::vec3 rotation)
+{
+	m_transform = glm::rotate(m_transform, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+	m_transform = glm::rotate(m_transform, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
+	m_transform = glm::rotate(m_transform, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
+}
+
+void wizm::core_entity::set_sca(glm::vec3 scale)
+{
+	m_transform = glm::scale(m_transform, scale);
+}
+
+glm::vec3 wizm::core_entity::get_pos()
+{
+	return glm::vec3(m_transform[3]);
+}
+
+glm::quat wizm::core_entity::get_rot()
+{
+	glm::mat4 rotationMatrix = m_transform;
+	rotationMatrix[0] /= get_sca().x;
+	rotationMatrix[1] /= get_sca().y;
+	rotationMatrix[2] /= get_sca().z;
+
+	glm::quat rotation = glm::quat_cast(rotationMatrix);
+	return rotation;
+}
+
+glm::vec3 wizm::core_entity::get_sca()
+{
+	glm::vec3 scaleX = glm::vec3(m_transform[0][0], m_transform[1][0], m_transform[2][0]);
+	glm::vec3 scaleY = glm::vec3(m_transform[0][1], m_transform[1][1], m_transform[2][1]);
+	glm::vec3 scaleZ = glm::vec3(m_transform[0][2], m_transform[1][2], m_transform[2][2]);
+
+	return glm::vec3(glm::length(scaleX), glm::length(scaleY), glm::length(scaleZ));
+}
+
 //-----------------------------------------------------------------------
 
 void wizm::core_entity::add_position(glm::vec3 position)

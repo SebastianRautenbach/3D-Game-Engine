@@ -35,10 +35,26 @@ namespace wizm {
 		void set_rotation(glm::vec3 rotation);
 		void set_scale(glm::vec3 scale);
 
+		//-------------------------------------------- newer system
+
+		void set_pos(glm::vec3 position);
+		void set_rot(glm::vec3 rotation);
+		void set_sca(glm::vec3 scale);
+
+
+		glm::vec3 get_pos();
+		glm::quat get_rot();
+		glm::vec3 get_sca();
+
+
+		//-------------------------------------------- 
+
+
 		void add_position(glm::vec3 position);
 		void add_rotation(glm::vec3 rotation);
 		void add_scale(glm::vec3 scale);
 		
+
 
 
 		// component

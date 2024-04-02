@@ -178,6 +178,7 @@
     <ClCompile Include="src\layers\scene_ui_layer.cpp" />
     <ClCompile Include="src\layers\viewport_layer.cpp" />
     <ClCompile Include="src\material.cpp" />
+    <ClCompile Include="src\systems\node.cpp" />
     <ClCompile Include="src\update_manager.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
@@ -238,6 +239,7 @@
     <ClInclude Include="include\viewport\viewport_gui.h" />
     <ClInclude Include="include\layers\layer.h" />
     <ClInclude Include="include\layers\scene_ui_layer.h" />
+    <ClInclude Include="include\system\node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
