@@ -52,8 +52,6 @@ namespace wizm {
 	{
 		mvPosition = avPos;
 		mbViewUpdated = true;
-
-		/*mNode.SetPosition(mvPosition);*/
 	}
 
 	//-----------------------------------------------------------------------
@@ -68,7 +66,6 @@ namespace wizm {
 
 		return front;
 	}
-
 
 
 
@@ -119,6 +116,7 @@ namespace wizm {
 		mfScreenWidth = x;
 		mfScreenHeight = y;
 	}
+
 
 	void core_3d_camera::SetPitch(float afAngle)
 	{

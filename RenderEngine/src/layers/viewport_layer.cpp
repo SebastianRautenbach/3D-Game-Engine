@@ -22,6 +22,8 @@ void wizm::viewport_layer::OnDetach()
 void wizm::viewport_layer::update()
 {
     ImGui::Begin("Viewport");
+     
+    
     ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
     ImVec2 mSize = { viewportPanelSize.x, viewportPanelSize.y };
     m_camera->SetAspect(mSize.x / mSize.y);
@@ -31,38 +33,39 @@ void wizm::viewport_layer::update()
 
 
     // GIZMO
-    
-    if (m_scene->get_crnt_entity())
+
+
+    if(m_scene->get_crnt_entity())
     {
         auto ent = m_scene->get_crnt_entity();
+        glm::mat4 mat = ent->get_transform();
 
-        ImGuizmo::SetOrthographic(false);
-        ImGuizmo::SetDrawlist();
+    
+        float windowWidth = (float)ImGui::GetWindowWidth();
+        float windowHeight = (float)ImGui::GetWindowHeight();
+        ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
 
-        float wWidth = (float)ImGui::GetWindowWidth();
-        float wHeight = (float)ImGui::GetWindowHeight();
-
-        ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, wWidth, wHeight);
-       
+        glm::mat4 viewMatrix = m_camera->GetViewMatrix();
         
-        glm::mat4 transform = ent->get_transform();
-        
-        if(ImGuizmo::Manipulate(glm::value_ptr(m_camera->GetViewMatrix()),
-            glm::value_ptr(m_camera->GetProjectionMatrix()), ImGuizmo::OPERATION::SCALE, ImGuizmo::LOCAL,
-            glm::value_ptr(transform)))
+        glm::mat4 projectionMatrix = m_camera->GetProjectionMatrix();
+
+        ImGuizmo::Manipulate(glm::value_ptr(viewMatrix), glm::value_ptr(projectionMatrix),
+            ImGuizmo::OPERATION::TRANSLATE,
+            ImGuizmo::LOCAL, glm::value_ptr(mat));
+
+        if (ImGuizmo::IsUsing())
         {
             glm::vec3 position = glm::vec3(0);
             glm::vec3 rotation = glm::vec3(0);
             glm::vec3 scale = glm::vec3(0);
 
-            lowlevelsys::decompose_transform(transform, position, rotation, scale);
-           // ent->set_position(position);
-           // ent->add_rotation(rotation);
+            lowlevelsys::decompose_transform(mat, position, rotation, scale);
+            ent->set_position(position);
+            ent->set_rotation(rotation);
             ent->set_scale(scale);
-        
+
         }
 
-       
     }
 
 

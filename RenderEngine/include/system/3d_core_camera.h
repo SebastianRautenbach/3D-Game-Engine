@@ -115,9 +115,6 @@ namespace wizm {
 		glm::vec3 GetEyePosition() { return glm::vec3(0.0f); }
 
 
-
-
-
 	private:
 
 		glm::vec3 mvPosition;

@@ -39,7 +39,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 		m_scene->m_entities[0]->m_components_list[0]->set_rotation(glm::vec3(-0.2f, -1.0f, -0.3f));
 
 		m_scene->m_entities[1]->add_component(std::make_shared<staticmesh_component>("resources/models/backpack.obj"));
-		m_scene->m_entities[1]->m_components_list[0]->set_position(glm::vec3(-.5));
+		m_scene->m_entities[1]->m_components_list[0]->set_position(glm::vec3(0.0));
 		m_scene->m_entities[1]->m_components_list[0]->set_rotation(glm::vec3(0));
 		m_scene->m_entities[1]->m_components_list[0]->set_scale(glm::vec3(.1));
 
