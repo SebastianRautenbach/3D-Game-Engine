@@ -38,7 +38,7 @@ void wizm::properties_ui_layer::update()
 		ImGui::Text("Rotation:");
 		float rot[3] = { select_ent->get_rotation().x, select_ent->get_rotation().y, select_ent->get_rotation().z };
 		trans_id = select_ent->m_ent_ID + "rot";
-		if (ImGui::DragFloat3(trans_id.c_str(), rot, 0.01))
+		if (ImGui::DragFloat3(trans_id.c_str(), rot, 0.1))
 			select_ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
 
 
@@ -92,7 +92,7 @@ void wizm::properties_ui_layer::update()
 					ImGui::Text("Rotation:");
 					float rot[3] = { comps->get_rotation().x, comps->get_rotation().y, comps->get_rotation().z };
 					trans_id = select_ent->m_ent_ID + "c rot" + std::to_string(comps->m_component_type);
-					if(ImGui::DragFloat3(trans_id.c_str(), rot, 0.01))
+					if(ImGui::DragFloat3(trans_id.c_str(), rot, 0.1))
 						comps->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
 					
 					

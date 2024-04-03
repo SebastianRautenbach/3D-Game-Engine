@@ -14,6 +14,7 @@ struct mouse_info {
 };
 
 
+
 class input_manager {
 public:
 	
@@ -47,3 +48,8 @@ private:
 	static std::unordered_map<int, bool> mouse_wheel;
 	GLFWwindow* m_window = nullptr;
 };
+
+
+namespace wizm {
+	static input_manager* m_input_manager;
+}

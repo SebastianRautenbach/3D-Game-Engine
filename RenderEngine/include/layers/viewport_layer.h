@@ -22,6 +22,8 @@ namespace wizm {
 	private:
 		unsigned int m_fbID;
 		core_3d_camera* m_camera;
+		float m_snap_value = 0.5f;
+		bool m_should_snap = false;
 
 		// needs to be a better way :(
 		core_scene* m_scene;

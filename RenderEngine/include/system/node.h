@@ -39,9 +39,9 @@ namespace wizm {
 
 
 		// Getters
-		const glm::vec3& get_position() const { return m_translation; }
-		const glm::vec3& get_rotation() const { return m_rotation; }
-		const glm::vec3& get_scale() const { return m_scale; }
+		const glm::vec3& get_position() const { return m_translation; }		   // <<  These are local transforms
+		const glm::vec3& get_rotation() const { return m_rotation; }		   // <<  These are local transforms
+		const glm::vec3& get_scale() const { return m_scale; }				   // <<  These are local transforms
 
 		glm::mat4 get_transform();
 
@@ -49,7 +49,12 @@ namespace wizm {
 			glm::mat4 worldTransform = get_transform();
 			return glm::vec3(worldTransform[3]);
 		}
-
+		glm::vec3 get_world_rotation() {
+			if (m_parent_node)
+				return m_parent_node->get_rotation();
+			else
+				return glm::vec3(0.0);
+		}
 		
 
 	private:
