@@ -2,7 +2,6 @@
 #include "entity sys/component.h"
 #include "gl core/core shader.h"
 
-
 namespace wizm {
     class directionallight_component : public lowlevelsys::core_component {
     public:
@@ -18,7 +17,6 @@ namespace wizm {
         void component_postupdate();
 
     public:
-
         core_gl_shader* shader;
 
         glm::vec3 m_ambient;

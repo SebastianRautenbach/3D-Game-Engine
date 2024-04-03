@@ -104,36 +104,40 @@ void wizm::properties_ui_layer::update()
 
 
 				}
+				
+
+
 				ImGui::Unindent(20.0f);
 
-				if (comp_type == "PointLight")
-				{
-					trans_id = "Radius ##" + select_ent->m_ent_ID + std::to_string(comps->m_component_type);
-					auto pointlight = std::dynamic_pointer_cast<pointlight_component>(comps);
-					
-					ImGui::InputFloat(trans_id.c_str(), &pointlight->m_radius);
-					
-					float test[3] = { pointlight->m_diffuse.x, pointlight->m_diffuse.y, pointlight->m_diffuse.z};
-					
-					ImGui::ColorPicker3("test", test);
-					pointlight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
-				}
+				
+				modify_component_attrib(comp_type, comps);
 
 
-				if (comp_type == "DirectionalLight")
-				{
-					auto directionallight = std::dynamic_pointer_cast<directionallight_component>(comps);
-
-					float test[3] = { directionallight->m_diffuse.x, directionallight->m_diffuse.y, directionallight->m_diffuse.z };
-
-					ImGui::ColorPicker3("test", test);
-					directionallight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
-				}
+				
+			}
+			if (ImGui::IsItemClicked(1))
+			{
+				ImGui::OpenPopup("ModComp");
+				m_scene->get_crnt_entity()->set_selected_comp(comps);
 			}
 
+			
 		}
 
+		if (ImGui::BeginPopup("ModComp")) {
+			ImGui::Text("Modify Component");
+			ImGui::Separator();
 
+			if (ImGui::MenuItem("Delete")) {
+
+				select_ent->m_components_list.erase(std::find(select_ent->m_components_list.begin(),
+					select_ent->m_components_list.end(), m_scene->get_crnt_entity()->get_selected_comp()));
+
+				m_renderer->update_draw_data();
+			}
+
+			ImGui::EndPopup();
+		}
 
 		component_add_popup(select_ent);
 
@@ -172,5 +176,34 @@ void wizm::properties_ui_layer::component_add_popup(core_entity* select_ent)
 		}
 
 		ImGui::EndPopup();
+	}
+}
+
+void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::shared_ptr<core_component> component)
+{
+	auto select_ent = m_scene->get_crnt_entity();
+	std::string trans_id;
+	if (type == "PointLight")
+	{
+		trans_id = "Radius ##" + select_ent->m_ent_ID + std::to_string(component->m_component_type);
+		auto pointlight = std::dynamic_pointer_cast<pointlight_component>(component);
+
+		ImGui::InputFloat(trans_id.c_str(), &pointlight->m_radius);
+
+		float test[3] = { pointlight->m_diffuse.x, pointlight->m_diffuse.y, pointlight->m_diffuse.z };
+
+		ImGui::ColorPicker3("test", test);
+		pointlight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
+	}
+
+
+	if (type == "DirectionalLight")
+	{
+		auto directionallight = std::dynamic_pointer_cast<directionallight_component>(component);
+
+		float test[3] = { directionallight->m_diffuse.x, directionallight->m_diffuse.y, directionallight->m_diffuse.z };
+
+		ImGui::ColorPicker3("test", test);
+		directionallight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
 	}
 }

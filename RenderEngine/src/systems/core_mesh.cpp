@@ -15,28 +15,7 @@ void lowlevelsys::core_mesh::draw_mesh(core_gl_shader* shader)
     unsigned int normalNr = 1;
     unsigned int heightNr = 1;
 
-    //for (unsigned int i = 0; i < textures.size(); i++)
-    //{
-    //    glActiveTexture(GL_TEXTURE0 + i); 
-    //
-    //    std::string number;
-    //    std::string name = textures[i].type;
-    //    if (name == "texture_diffuse")
-    //        number = std::to_string(diffuseNr++);
-    //    else if (name == "texture_specular")
-    //        number = std::to_string(specularNr++); // transfer unsigned int to string
-    //    else if (name == "texture_normal")
-    //        number = std::to_string(normalNr++); // transfer unsigned int to string
-    //    else if (name == "texture_height")
-    //        number = std::to_string(heightNr++); // transfer unsigned int to string
-    //
-    //    // now set the sampler to the correct texture unit
-    //    glUniform1i(glGetUniformLocation(shader->get_shader_id(), (name + number).c_str()), i);
-    //    // and finally bind the texture
-    //    glBindTexture(GL_TEXTURE_2D, textures[i].texture_id);
-    //}
     
-
     vertex_arr->draw_buffer(static_cast<unsigned int>(indices.size()));
 
 

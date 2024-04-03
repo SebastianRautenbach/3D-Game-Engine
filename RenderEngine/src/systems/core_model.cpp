@@ -89,7 +89,7 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
         }
         else
             vertex.TexCoords = glm::vec2(0.0f, 0.0f);
-
+        
         vertices.push_back(vertex);
     }
  
@@ -100,20 +100,6 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
         for (unsigned int j = 0; j < face.mNumIndices; j++)
             indices.push_back(face.mIndices[j]);
     }
-    // process materials
-    //aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-
-    //std::vector<core_gl_texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
-    //textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-    //
-    //std::vector<core_gl_texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
-    //textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-    //
-    //std::vector<core_gl_texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
-    //textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
-    //
-    //std::vector<core_gl_texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
-    //textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
     return core_mesh(vertices, indices, textures);
 }

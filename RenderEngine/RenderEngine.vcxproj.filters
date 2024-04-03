@@ -150,6 +150,9 @@
     <ClCompile Include="src\systems\node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\systems\billboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\update_manager.h">
@@ -303,6 +306,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\other utils\matrix_math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\billboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

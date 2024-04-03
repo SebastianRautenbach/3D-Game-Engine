@@ -37,7 +37,9 @@ namespace wizm {
 		int get_component_index(eCompType comp_type);
 		void remove_component(unsigned int index);
 		void set_component(unsigned int index, std::shared_ptr<core_component> component);
-	
+		
+		std::shared_ptr<core_component> get_selected_comp() { return m_selected_comp; }
+		void set_selected_comp(std::shared_ptr<core_component> component) { m_selected_comp = component; }
 
 	public:
 
@@ -45,6 +47,9 @@ namespace wizm {
 
 		core_tag* entity_tags;
 		std::vector<std::shared_ptr<core_component>> m_components_list;
+
+	private:
+		std::shared_ptr<core_component> m_selected_comp;
 	};
 
 

@@ -56,14 +56,6 @@ void wizm::viewport_layer::update()
         guizmo_type = ImGuizmo::OPERATION::SCALE;
         m_snap_value = 0.5f;
     }
-    ImGui::SameLine();
-    buttonSize = ImVec2(ImGui::CalcTextSize(" [Snap] ").x, 25);
-    if (ImGui::Button("[Snap]", buttonSize))
-        m_should_snap = !m_should_snap;
-
-
-    // GIZMO
-
 
     
 
@@ -81,7 +73,7 @@ void wizm::viewport_layer::update()
         
         glm::mat4 projectionMatrix = m_camera->GetProjectionMatrix();
 
-  
+        m_should_snap = false;
         if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_CONTROL))
             m_should_snap = true;
 

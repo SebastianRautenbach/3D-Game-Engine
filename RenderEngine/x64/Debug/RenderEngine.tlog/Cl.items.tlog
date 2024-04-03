@@ -33,6 +33,7 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\scene_ui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\scene_ui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\viewport_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\viewport_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\material.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\material.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\billboard.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\billboard.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\node.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\node.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\update_manager.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\update_manager.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\scene.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\scene.obj

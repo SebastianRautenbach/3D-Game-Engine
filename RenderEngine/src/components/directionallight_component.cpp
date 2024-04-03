@@ -10,10 +10,12 @@ wizm::directionallight_component::directionallight_component( glm::vec3 ambient,
 
 void wizm::directionallight_component::component_preupdate()
 {
+
 }
 
 void wizm::directionallight_component::component_update()
 {
+	
 	shader->setVec3("dirLight.direction", get_world_rotation());
 	shader->setVec3("dirLight.ambient", m_ambient);
 	shader->setVec3("dirLight.diffuse", m_diffuse);

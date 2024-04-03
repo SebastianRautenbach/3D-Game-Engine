@@ -30,7 +30,7 @@ void wizm::pointlight_component::component_update()
     
     pointlightindex = "pointLights["
         + std::to_string(light_index) + "]";
-    //std::cout << get_world_position().x << "," << get_world_position().y << "," << get_world_position().z << "\n";
+  
     shader->setVec3(pointlightindex + ".position", get_world_position());
     shader->setVec3(pointlightindex + ".ambient", m_ambient);
     shader->setVec3(pointlightindex + ".diffuse", m_diffuse);

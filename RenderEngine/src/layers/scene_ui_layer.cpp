@@ -31,16 +31,6 @@ void wizm::scene_ui_layer::update()
 	ImGui::Begin("scene view");
 
 
-	
-	//for (auto ents : m_scene->m_entities)
-	//{
-	//	if (ImGui::Button(ents->m_ent_ID.c_str()))
-	//	{
-	//		ImGui::OpenPopup("ModEnt");
-	//		m_scene->set_crnt_entity(ents);
-	//	}
-	//}
-
 
 	for (auto ents : m_scene->m_entities)
 	{
@@ -69,10 +59,17 @@ void wizm::scene_ui_layer::update()
 	if (ImGui::BeginPopup("ModEnt")) {
 		ImGui::Text("Modify Entity");
 		ImGui::Separator();
+		
+		
+		char entity_name[256];
+		strncpy_s(entity_name, sizeof(entity_name), m_scene->get_crnt_entity()->m_ent_ID.c_str(), _TRUNCATE);
 
-		if (ImGui::MenuItem("Rename")) {
-			
-		}
+
+
+		if (ImGui::InputText("##name", entity_name, IM_ARRAYSIZE(entity_name)))
+			m_scene->get_crnt_entity()->m_ent_ID = entity_name;
+
+
 		if (ImGui::MenuItem("Delete")) {
 			m_scene->m_entities.erase(std::find(m_scene->m_entities.begin(), m_scene->m_entities.end(), m_scene->get_crnt_entity()));
 			
@@ -81,6 +78,9 @@ void wizm::scene_ui_layer::update()
 			
 			for (auto ents : m_scene->m_entities)
 				m_scene->set_crnt_entity(ents);
+			
+			if (m_scene->m_entities.empty())
+				m_scene->set_crnt_entity(nullptr);
 		}
 
 		ImGui::EndPopup();

@@ -9,7 +9,7 @@ namespace wizm {
 	{
 		// do nothing :(
 	}
-
+	
 	void core_material::on_change_material()
 	{
 		m_shader->use_shader();

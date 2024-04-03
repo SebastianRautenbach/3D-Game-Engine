@@ -178,6 +178,7 @@
     <ClCompile Include="src\layers\scene_ui_layer.cpp" />
     <ClCompile Include="src\layers\viewport_layer.cpp" />
     <ClCompile Include="src\material.cpp" />
+    <ClCompile Include="src\systems\billboard.cpp" />
     <ClCompile Include="src\systems\node.cpp" />
     <ClCompile Include="src\update_manager.cpp" />
     <ClCompile Include="src\scene.cpp" />
@@ -227,6 +228,7 @@
     <ClInclude Include="include\system\assettypes.h" />
     <ClInclude Include="include\system\asset_class.h" />
     <ClInclude Include="include\system\asset_manager.h" />
+    <ClInclude Include="include\system\billboard.h" />
     <ClInclude Include="include\system\core_material.h" />
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />
