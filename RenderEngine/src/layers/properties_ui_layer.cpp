@@ -17,7 +17,7 @@ void wizm::properties_ui_layer::OnDetach()
 {
 }
 
-void wizm::properties_ui_layer::update()
+void wizm::properties_ui_layer::update(float delta_time)
 {
 	ImGui::Begin("Properties");
 	
@@ -29,32 +29,161 @@ void wizm::properties_ui_layer::update()
 
 		std::string trans_id;
 
+
+		
+		
+
 		ImGui::Text("Position:");
-		float pos[3] = { select_ent->get_position().x, select_ent->get_position().y, select_ent->get_position().z };
-		trans_id = select_ent->m_ent_ID + "pos";
-		if (ImGui::DragFloat3(trans_id.c_str(), pos, 0.01))
-			select_ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+		
+		{
+			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+			float pos[3] = { select_ent->get_position().x, select_ent->get_position().y, select_ent->get_position().z };
+			ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize(" X ").x, ImGui::GetFrameHeight());
+			float dragWidth = 100.0f;
+			
+
+
+
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "posX";
+			ImGui::Button("X", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &pos[0], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+			ImGui::PopStyleColor(3);
+
+
+
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.2f, 0.7f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "posY";
+			ImGui::SameLine();
+			ImGui::Button("Y", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &pos[1], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+			ImGui::PopStyleColor(3);
+
+
+
+
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.2f, 0.5f, 0.9f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "posZ";
+			ImGui::SameLine();
+			ImGui::Button("Z", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &pos[2], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+			ImGui::PopStyleColor(3);
+
+			ImGui::PopStyleVar();
+		}
+
 
 		ImGui::Text("Rotation:");
-		float rot[3] = { select_ent->get_rotation().x, select_ent->get_rotation().y, select_ent->get_rotation().z };
-		trans_id = select_ent->m_ent_ID + "rot";
-		if (ImGui::DragFloat3(trans_id.c_str(), rot, 0.1))
-			select_ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+		{
+			
 
+			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+			float rot[3] = { select_ent->get_rotation().x, select_ent->get_rotation().y, select_ent->get_rotation().z };
+			ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize(" X ").x, ImGui::GetFrameHeight());
+			float dragWidth = 100.0f;
+
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "rotX";
+			ImGui::Button("P", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &rot[0], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+			ImGui::PopStyleColor(3);
+
+			
+			
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.2f, 0.7f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "rotY";
+			ImGui::SameLine();
+			ImGui::Button("Y", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &rot[1], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+			ImGui::PopStyleColor(3);
+
+
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.2f, 0.5f, 0.9f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "rotZ";
+			ImGui::SameLine();
+			ImGui::Button("R", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &rot[2], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+			ImGui::PopStyleColor(3);
+
+			
+			ImGui::PopStyleVar();
+		}
 
 		ImGui::Text("Scale:");
-		float sca[3] = { select_ent->get_scale().x, select_ent->get_scale().y, select_ent->get_scale().z };
-		trans_id = select_ent->m_ent_ID + "sca";
-		if (ImGui::DragFloat3(trans_id.c_str(), sca, 0.01))
-			select_ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
 
+		{
+			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
+			float sca[3] = { select_ent->get_scale().x, select_ent->get_scale().y, select_ent->get_scale().z };
+			ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize(" X ").x, ImGui::GetFrameHeight());
+			float dragWidth = 100.0f;
+
+
+
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "scaX";
+			ImGui::Button("X", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &sca[0], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
+			ImGui::PopStyleColor(3);
+
+
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.2f, 0.7f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "scaY";
+			ImGui::SameLine();
+			ImGui::Button("Y", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &sca[1], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
+			ImGui::PopStyleColor(3);
+
+
+
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.2f, 0.5f, 0.9f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f });
+			trans_id = "##" + select_ent->m_ent_ID + "scaZ";
+			ImGui::SameLine();
+			ImGui::Button("Z", buttonSize);
+			ImGui::SameLine();
+			ImGui::SetNextItemWidth(dragWidth);
+			if (ImGui::DragFloat(trans_id.c_str(), &sca[2], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
+				select_ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
+			ImGui::PopStyleColor(3);
+
+			ImGui::PopStyleVar();
+		}
+
+
+
+		
 
 		ImGui::Text("Components");
 		ImGui::Separator();
 
-
-		for (auto comps : select_ent->m_components_list)
+		for (int i = 0; i < select_ent->m_components_list.size(); i++)
 		{
+			auto comps = select_ent->m_components_list[i];
+
+
 			std::string comp_type;
 
 			switch (comps->m_component_type)
@@ -73,47 +202,46 @@ void wizm::properties_ui_layer::update()
 				break;
 			}
 
-			
 
-			trans_id = comp_type + "##" + select_ent->m_ent_ID + std::to_string(comps->m_component_type);
+			trans_id = comp_type + "##" + select_ent->m_ent_ID + std::to_string(comps->m_component_type) + std::to_string(i);
 			if (ImGui::CollapsingHeader(trans_id.c_str()))
 			{
-				trans_id = "transfrom ##" + select_ent->m_ent_ID + std::to_string(comps->m_component_type);
+				trans_id = "transfrom ##" + select_ent->m_ent_ID + std::to_string(comps->m_component_type) + std::to_string(i);
 				ImGui::Indent(20.0f);
 				if (ImGui::CollapsingHeader("transform"))
 				{
 
 					ImGui::Text("Position:");
-					float pos[3] = { comps->get_position().x, comps->get_position().y, comps->get_position().z};
-					std::string trans_id = select_ent->m_ent_ID + "c pos" + std::to_string(comps->m_component_type);
-					if(ImGui::DragFloat3(trans_id.c_str(), pos, 0.01))
+					float pos[3] = { comps->get_position().x, comps->get_position().y, comps->get_position().z };
+					std::string trans_id = select_ent->m_ent_ID + "c pos" + std::to_string(comps->m_component_type) + std::to_string(i);
+					if (ImGui::DragFloat3(trans_id.c_str(), pos, 0.01))
 						comps->set_position(glm::vec3(pos[0], pos[1], pos[2]));
-					
+
 					ImGui::Text("Rotation:");
 					float rot[3] = { comps->get_rotation().x, comps->get_rotation().y, comps->get_rotation().z };
-					trans_id = select_ent->m_ent_ID + "c rot" + std::to_string(comps->m_component_type);
-					if(ImGui::DragFloat3(trans_id.c_str(), rot, 0.1))
+					trans_id = select_ent->m_ent_ID + "c rot" + std::to_string(comps->m_component_type) + std::to_string(i);
+					if (ImGui::DragFloat3(trans_id.c_str(), rot, 0.1))
 						comps->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
-					
-					
+
+
 					ImGui::Text("Scale:");
-					float sca[3] = { comps->get_scale().x, comps->get_scale().y, comps->get_scale().z};
-					trans_id = select_ent->m_ent_ID + "c sca" + std::to_string(comps->m_component_type);
-					if(ImGui::DragFloat3(trans_id.c_str(), sca, 0.01))
+					float sca[3] = { comps->get_scale().x, comps->get_scale().y, comps->get_scale().z };
+					trans_id = select_ent->m_ent_ID + "c sca" + std::to_string(comps->m_component_type) + std::to_string(i);
+					if (ImGui::DragFloat3(trans_id.c_str(), sca, 0.01))
 						comps->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
 
 
 				}
-				
+
 
 
 				ImGui::Unindent(20.0f);
 
-				
+
 				modify_component_attrib(comp_type, comps);
 
 
-				
+
 			}
 			if (ImGui::IsItemClicked(1))
 			{
@@ -121,8 +249,9 @@ void wizm::properties_ui_layer::update()
 				m_scene->get_crnt_entity()->set_selected_comp(comps);
 			}
 
-			
 		}
+
+		
 
 		if (ImGui::BeginPopup("ModComp")) {
 			ImGui::Text("Modify Component");

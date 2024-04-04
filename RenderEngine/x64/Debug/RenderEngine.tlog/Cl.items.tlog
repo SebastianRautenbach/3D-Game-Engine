@@ -26,6 +26,7 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\3d_core_camera.cpp
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\entity.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\entity.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\grid2d.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\grid2d.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\input.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\content_browser_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\content_browser_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\gui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\gui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\layerstack.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\layerstack.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\performance_ui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\performance_ui_layer.obj

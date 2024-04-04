@@ -1,4 +1,5 @@
 #include "system/asset_manager.h"
+#include "other utils/IDGEN.h"
 
 wizm::asset_manager::asset_manager(std::string location)
 {
@@ -27,7 +28,7 @@ wizm::asset_manager::asset_manager(std::string location)
 
     const char* sqlCreateTable =
         "CREATE TABLE IF NOT EXISTS Assets("
-        "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+        "ID INT UNSIGNED PRIMARY KEY, "
         "Type INT, "
         "Location TEXT UNIQUE);";
     char* errorMessage = nullptr;
@@ -40,11 +41,13 @@ wizm::asset_manager::asset_manager(std::string location)
 
 void wizm::asset_manager::add_asset(eAssetType type, std::string location)
 {
-    std::string sqlInsert = "INSERT OR IGNORE INTO Assets(Type, Location) VALUES (?, ?);";
+    std::string sqlInsert = "INSERT OR IGNORE INTO Assets(ID, Type, Location) VALUES (?, ?, ?);";
     sqlite3_stmt* statement;
     if (sqlite3_prepare_v2(database, sqlInsert.c_str(), -1, &statement, nullptr) == SQLITE_OK) {
-        sqlite3_bind_int(statement, 1, static_cast<int>(type));
-        sqlite3_bind_text(statement, 2, location.c_str(), -1, SQLITE_TRANSIENT);
+        
+        sqlite3_bind_int(statement, 1, lowlevelsys::generate_unique_id());
+        sqlite3_bind_int(statement, 2, static_cast<int>(type));
+        sqlite3_bind_text(statement, 3, location.c_str(), -1, SQLITE_TRANSIENT);
 
         if (sqlite3_step(statement) != SQLITE_DONE) {
             std::cerr << "Error inserting asset: " << sqlite3_errmsg(database) << std::endl;

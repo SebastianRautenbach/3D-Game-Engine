@@ -6,7 +6,8 @@
 #include <iostream>
 #include <sstream>
 #include <filesystem>
-#include <fstream> 
+#include <fstream>
+#include "asset_class.h"
 
 namespace wizm {
 

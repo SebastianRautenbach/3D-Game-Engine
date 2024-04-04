@@ -15,7 +15,7 @@ namespace wizm {
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
-		virtual void update() override;
+		virtual void update(float delta_time) override;
 
 	private:
 

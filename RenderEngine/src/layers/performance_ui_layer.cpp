@@ -17,7 +17,7 @@ void wizm::performace_ui_layer::OnDetach()
 {
 }
 
-void wizm::performace_ui_layer::update()
+void wizm::performace_ui_layer::update(float delta_time)
 {
 	ImGui::Begin("Performance");
 	ImGuiIO& io = ImGui::GetIO();

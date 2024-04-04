@@ -24,7 +24,7 @@ void wizm::scene_ui_layer::OnDetach()
 
 */
 
-void wizm::scene_ui_layer::update()
+void wizm::scene_ui_layer::update(float delta_time)
 {
 	static bool add_ent = false;
 

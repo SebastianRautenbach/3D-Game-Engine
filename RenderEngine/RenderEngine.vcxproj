@@ -171,6 +171,7 @@
     <ClCompile Include="src\entity.cpp" />
     <ClCompile Include="src\grid2d.cpp" />
     <ClCompile Include="src\input.cpp" />
+    <ClCompile Include="src\layers\content_browser_layer.cpp" />
     <ClCompile Include="src\layers\gui_layer.cpp" />
     <ClCompile Include="src\layers\layerstack.cpp" />
     <ClCompile Include="src\layers\performance_ui_layer.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="include\gl core\core_camera.h" />
     <ClInclude Include="include\input.h" />
     <ClInclude Include="include\input_types.h" />
+    <ClInclude Include="include\layers\content_browser_layer.h" />
     <ClInclude Include="include\layers\gui_cntx.h" />
     <ClInclude Include="include\layers\layerstack.h" />
     <ClInclude Include="include\layers\layers_define.h" />
@@ -223,6 +225,7 @@
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
+    <ClInclude Include="include\other utils\IDGEN.h" />
     <ClInclude Include="include\other utils\matrix_math.h" />
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assettypes.h" />

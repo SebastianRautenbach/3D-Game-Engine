@@ -1,24 +1,27 @@
 ﻿  Scanning sources for module dependencies...
-  scene_ui_layer.cpp
+  properties_ui_layer.cpp
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(282,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(309,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(336,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(427,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
   
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_ui_layer.cpp(217,51): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_ui_layer.cpp(223,51): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_ui_layer.cpp(230,51): warning C4305: 'argument': truncation from 'double' to 'float'
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe
