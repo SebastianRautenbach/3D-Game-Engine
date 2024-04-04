@@ -113,6 +113,7 @@ class core_gl_texture {
 public:
 	core_gl_texture(const char* file_path);
 	void bind_texture();
+	void delete_texture();
 	void unbind_texture();
 	void set_texture(const char* file_path);
 

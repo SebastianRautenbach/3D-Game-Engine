@@ -335,4 +335,19 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 		ImGui::ColorPicker3("test", test);
 		directionallight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
 	}
+
+
+	if (type == "StaticMesh")
+	{
+		auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(component);
+		
+		static char text[256] = "path";
+		ImGui::InputText("AlbedoPath", text, IM_ARRAYSIZE(text));
+		if(ImGui::Button("Change Albedo"))
+		{
+			staticmesh->m_material->set_texture(text, eDiffuse);
+			staticmesh->m_material->on_change_material();
+
+		}
+	}
 }

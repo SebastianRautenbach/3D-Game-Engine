@@ -102,6 +102,11 @@ void core_gl_texture::bind_texture()
 	glBindTexture(GL_TEXTURE_2D, texture_id);
 }
 
+void core_gl_texture::delete_texture()
+{
+	glDeleteTextures(1, &texture_id);
+}
+
 void core_gl_texture::unbind_texture()
 {
 	glBindTexture(GL_TEXTURE_2D, 0);
