@@ -330,10 +330,10 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	{
 		auto directionallight = std::dynamic_pointer_cast<directionallight_component>(component);
 
-		float test[3] = { directionallight->m_diffuse.x, directionallight->m_diffuse.y, directionallight->m_diffuse.z };
+		float test[3] = { directionallight->m_ambient.x, directionallight->m_ambient.y, directionallight->m_ambient.z };
 
 		ImGui::ColorPicker3("test", test);
-		directionallight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
+		directionallight->m_ambient = glm::vec3(test[0], test[1], test[2]);
 	}
 
 

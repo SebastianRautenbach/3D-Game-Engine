@@ -10,7 +10,7 @@ namespace wizm {
             glm::vec3 diffuse = glm::vec3(0.4f, 0.4f, 0.4f),
             glm::vec3 specular = glm::vec3(0.5f, 0.5f, 0.5f)
         );
-
+        ~directionallight_component();
 
         void component_preupdate();
         void component_update();

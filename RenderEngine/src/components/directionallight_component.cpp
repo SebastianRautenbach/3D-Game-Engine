@@ -8,6 +8,15 @@ wizm::directionallight_component::directionallight_component( glm::vec3 ambient,
 		m_specular = specular;
 }
 
+wizm::directionallight_component::~directionallight_component()
+{
+	// the light doesnt actually get deleted
+	// we fake the suns gone effect.
+	shader->setVec3("dirLight.ambient", glm::vec3(0));
+	shader->setVec3("dirLight.diffuse", glm::vec3(0));
+	shader->setVec3("dirLight.specular", glm::vec3(0));
+}
+
 void wizm::directionallight_component::component_preupdate()
 {
 

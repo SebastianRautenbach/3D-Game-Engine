@@ -7,8 +7,8 @@ namespace wizm {
 
 	core_material::core_material()
 	{
-		texture_buffer diffuse_in("", eDiffuse, "");
-		texture_buffer specular_in("", eSpecular, "");
+		texture_buffer diffuse_in("resources/images/missing_texture.png", eDiffuse, "resources/images/missing_texture.png");
+		texture_buffer specular_in("resources/images/missing_texture.png", eSpecular, "resources/images/missing_texture.png");
 		m_texture.emplace_back(diffuse_in);
 		m_texture.emplace_back(specular_in);
 	}
