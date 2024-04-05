@@ -349,5 +349,11 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 			staticmesh->m_material->on_change_material();
 
 		}
+		if (ImGui::Button("Change Specular"))
+		{
+			staticmesh->m_material->set_texture(text, eSpecular);
+			staticmesh->m_material->on_change_material();
+
+		}
 	}
 }

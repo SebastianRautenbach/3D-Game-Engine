@@ -5,10 +5,10 @@
 wizm::content_browser_layer::content_browser_layer()
 	:asset_manager("asset info")
 {
-	std::string path = "backpack/diffuse.png";
-	asset_manager.add_asset(eImage, path);
-	asset_manager.add_asset(eImage, "sdff/sdfdfs");
-	texture_test = new core_gl_texture(path.c_str());
+	//std::string path = "backpack/diffuse.png";
+	//asset_manager.add_asset(eImage, path);
+	//asset_manager.add_asset(eImage, "sdff/sdfdfs");
+	//texture_test = new core_gl_texture(path.c_str());
 	
 }
 

@@ -60,7 +60,6 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 		{
 			back_back->m_material->set_texture("backpack/diffuse.png", eDiffuse);
 			back_back->m_material->set_texture("backpack/specular.png", eSpecular);
-
 		}
 
 		m_gl_renderer->update_draw_data();

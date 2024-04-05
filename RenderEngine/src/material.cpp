@@ -7,7 +7,10 @@ namespace wizm {
 
 	core_material::core_material()
 	{
-		// do nothing :(
+		texture_buffer diffuse_in("", eDiffuse, "");
+		texture_buffer specular_in("", eSpecular, "");
+		m_texture.emplace_back(diffuse_in);
+		m_texture.emplace_back(specular_in);
 	}
 	
 	void core_material::on_change_material()
@@ -26,8 +29,17 @@ namespace wizm {
 
 		// loop through all the textures
 		for (int i = 0; i < m_texture.size(); i++) {
-			glActiveTexture(GL_TEXTURE0 + i);
-			m_texture[i].texture.bind_texture();
+			
+			if (m_texture[i].type == eDiffuse) {
+				glActiveTexture(GL_TEXTURE0);
+				m_texture[i].texture.bind_texture();
+			}
+			if (m_texture[i].type == eSpecular) {
+				glActiveTexture(GL_TEXTURE0 + 1);
+				m_texture[i].texture.bind_texture();
+			}
+			
+		
 		}
 	}
 
@@ -41,6 +53,7 @@ namespace wizm {
 
 	void core_material::set_texture(std::string texture_path, eTexture_types type)
 	{
+
 		bool does_texture_preexist = false;
 		for (const auto i : m_texture) {
 			if (i.path == texture_path && i.type == type)
@@ -48,24 +61,29 @@ namespace wizm {
 		}
 		if(!does_texture_preexist)
 		{
-
+		
 			for (auto& i : m_texture)
 			{
 				if (i.type == type)
 					i.texture.delete_texture();
 			}
 
-			texture_buffer temp_text(texture_path.c_str(), type, texture_path);
+			switch (type) {
+				case eDiffuse:
+				{
+					texture_buffer temp_text(texture_path.c_str(), type, texture_path);
+					m_texture[0] = temp_text;
+					break;
+				}
 
-			for (int i = 0; i < m_texture.size(); i++)
-			{
-				if (m_texture[i].type == type)
-					m_texture.erase(m_texture.begin() + i);
+				case eSpecular:
+				{
+					texture_buffer temp_text(texture_path.c_str(), type, texture_path);
+					m_texture[1] = temp_text;
+					break;
+				}
 			}
-
-			m_texture.push_back(temp_text);
 		}
-		//on_change_material();
 	}
 
 }
