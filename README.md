@@ -1,3 +1,5 @@
+![](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/Screenshot%202024-05-06%20212317.png)
+
 **Current state**
 The current state of this game engine reflects its early developmental phase, with ongoing refinement anticipated. 
 This endeavor serves primarily as an educational journey for myself. The engine boasts support for an Entity-Component-System (ECS), 
