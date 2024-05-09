@@ -1,10 +1,10 @@
 ![](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/Screenshot%202024-05-06%20212317.png)
 
 **Current state**
-The current state of this game engine reflects its early developmental phase, with ongoing refinement anticipated. 
-This endeavor serves primarily as an educational journey for myself. The engine boasts support for an Entity-Component-System (ECS), 
-Renderer, scene management functionality, and comprehensive 3D model importing capabilities. In the event of malfunctions, 
-it's important to note that accountability does not rest solely upon my shoulders.
+The engine is still in it's very early state but it is "functional". The engine does feature a component based entity system similar to Unity and Unreal. The engine has a basic render capable to render 3D and lighting.
+
+**What is inprogress**
+I am busy with the asset management system allowing sor more efficient memory allocation and a dynamic garbage collector.
 
 **Whats to come**
 I want the engine to support a layer system where all scenes can be layered ontop of each other making it more modular.
