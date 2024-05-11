@@ -24,7 +24,7 @@ namespace wizm {
 	public:
 
 		core_gl_texture* texture_test;
-		asset_manager asset_manager;
+		//asset_manager asset_manager;
 	}; 
 
 

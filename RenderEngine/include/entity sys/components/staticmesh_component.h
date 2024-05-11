@@ -2,7 +2,7 @@
 #include "entity sys/component.h"
 #include "system/core_model.h"
 #include "system/material.h"
-
+#include "system/assets/mesh_asset.h"
 
 using namespace lowlevelsys;
 
@@ -12,6 +12,7 @@ namespace wizm {
 	public:
 		
 		staticmesh_component(const char* file_path);
+		staticmesh_component(std::shared_ptr<staticmesh_asset> mesh);
 		~staticmesh_component();
 		
 		void component_preupdate() override;
@@ -22,7 +23,7 @@ namespace wizm {
 
 
 	public:
-		core_model* m_model;
+		std::shared_ptr<staticmesh_asset> m_model;
 		core_material* m_material;
 	};
 }

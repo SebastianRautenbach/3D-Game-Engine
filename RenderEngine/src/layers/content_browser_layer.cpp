@@ -3,7 +3,6 @@
 
 
 wizm::content_browser_layer::content_browser_layer()
-	:asset_manager("asset info")
 {
 	//std::string path = "backpack/diffuse.png";
 	//asset_manager.add_asset(eImage, path);

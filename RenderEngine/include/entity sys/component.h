@@ -4,6 +4,7 @@
 #include "system/node.h"
 #include "system/tag.h"
 #include "gl core/core shader.h"
+#include <memory>
 
 using namespace wizm;
 
@@ -18,6 +19,9 @@ namespace lowlevelsys {
 		virtual void component_preupdate() = 0;
 		virtual void component_update() = 0;
 		virtual void component_postupdate() = 0;
+		
+		// semi-copy
+		//virtual std::shared_ptr<core_component> copy() = 0;
 
 		// default component shit
 

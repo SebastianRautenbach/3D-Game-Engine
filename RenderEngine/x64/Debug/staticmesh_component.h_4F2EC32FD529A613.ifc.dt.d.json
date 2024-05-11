@@ -384,7 +384,9 @@
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\fstream",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\__msvc_filebuf.hpp",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\map",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\xtree"
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\xtree",
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\assets\\mesh_asset.h",
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\assets.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -39,7 +39,6 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\node.cpp;C
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\update_manager.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\update_manager.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\scene.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\scene.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\gl_renderer.obj
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\asset_manager.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\asset_manager.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\core_mesh.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\core_mesh.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\core_model.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\core_model.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\tag.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\tag.obj

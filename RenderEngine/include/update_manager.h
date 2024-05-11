@@ -33,6 +33,8 @@ namespace wizm {
 		core_framebuffer* m_framebuffer;
 		layer_stack* m_layer_stack;
 
+		// testing
+		asset_manager* m_asset_manager;
 		// new system
 	};
 

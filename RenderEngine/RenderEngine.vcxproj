@@ -184,7 +184,6 @@
     <ClCompile Include="src\update_manager.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
-    <ClCompile Include="src\systems\asset_manager.cpp" />
     <ClCompile Include="src\systems\core_mesh.cpp" />
     <ClCompile Include="src\systems\core_model.cpp" />
     <ClCompile Include="src\tag.cpp" />
@@ -227,7 +226,10 @@
     <ClInclude Include="include\entity sys\component.h" />
     <ClInclude Include="include\other utils\IDGEN.h" />
     <ClInclude Include="include\other utils\matrix_math.h" />
+    <ClInclude Include="include\other utils\ZER.h" />
     <ClInclude Include="include\scene.h" />
+    <ClInclude Include="include\system\assets.h" />
+    <ClInclude Include="include\system\assets\mesh_asset.h" />
     <ClInclude Include="include\system\assettypes.h" />
     <ClInclude Include="include\system\asset_class.h" />
     <ClInclude Include="include\system\asset_manager.h" />
