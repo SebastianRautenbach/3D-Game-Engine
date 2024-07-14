@@ -1,21 +1,40 @@
 ﻿  Scanning sources for module dependencies...
   directionallight_component.h
-  viewport_layer.h
   staticmesh_component.h
+  viewport_layer.h
   Compiling...
-  directionallight_component.h
-  staticmesh_component.h
   viewport_layer.h
+  staticmesh_component.h
+  directionallight_component.h
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(282,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(282,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(282,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(309,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(336,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
   
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
+  
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(309,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(427,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
   (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
@@ -29,6 +48,7 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZE
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(427,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
   (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
   
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(282,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'include/layers/viewport_layer.h')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
@@ -48,26 +68,6 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZE
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(427,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
   (compiling source file 'include/layers/viewport_layer.h')
-  
-  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(309,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(336,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(427,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'include/entity%20sys/components/directionallight_component.h')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\assimp\defs.h(293,19): warning C5260: the constant variable 'ai_epsilon' has internal linkage in an included header file context, but external linkage in imported header unit context; consider declaring it 'inline' as well if it will be shared across translation units, or 'static' to express intent to use it local to this translation unit
   (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
@@ -346,6 +346,7 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ma
   (compiling source file 'src/layers/viewport_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\viewport_layer.cpp(33,18): warning C4312: 'reinterpret_cast': conversion from 'unsigned int' to 'void *' of greater size
+  material.cpp
   scene.cpp
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(282,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'src/scene.cpp')
@@ -435,5 +436,4 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\update_manager.cpp
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\update_manager.cpp(63,50): warning C4305:             T=float
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\update_manager.cpp(63,50): warning C4305:         ]
   Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe
+LINK : fatal error LNK1000: Internal error during IncrBuildImage

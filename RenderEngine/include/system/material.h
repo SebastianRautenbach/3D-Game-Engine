@@ -3,7 +3,6 @@
 #include "material_types.h"
 #include <string>
 #include <vector>
-#include "other utils/ZER.h"
 
 namespace wizm {
 
@@ -25,7 +24,6 @@ namespace wizm {
 	public:
 		std::vector<texture_buffer> m_texture;
 		core_gl_shader* m_shader;
-		filedata::ZER wmatdata;
 		std::string mat_path;
 		float m_shininess = 32.f;
 	};
