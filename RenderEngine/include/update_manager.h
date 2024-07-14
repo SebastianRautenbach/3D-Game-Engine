@@ -29,7 +29,7 @@ namespace wizm {
 		lowlevelsys::gl_renderer* m_gl_renderer;
 		core_scene* m_scene;
 		core_timer* m_timer;
-		gui_layer* layer;
+		gui_layer* base_layer;
 		core_framebuffer* m_framebuffer;
 		layer_stack* m_layer_stack;
 

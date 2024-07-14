@@ -3,11 +3,21 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <vector>
+#include "other utils/ZER.h"
 
 
 namespace wizm {
 
-	class core_node {
+	class save_node {
+		
+		virtual void save_data(std::string parent_name) const = 0;
+	};
+	// ZER is my own serialization class
+	// if you want to save a variable you do:
+	// filedata::ZER saver;
+	// saver.c_class_struct("ent name").c_class_struct("comp name").set_string("name of variable", { "variable data" });
+
+	class core_node : public save_node{
 
 
 	public:
@@ -55,6 +65,8 @@ namespace wizm {
 			else
 				return glm::vec3(0.0);
 		}
+
+		void save_data(std::string parent_name) const override {}
 		
 
 	private:

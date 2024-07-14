@@ -3,6 +3,7 @@
 #include "system/core_model.h"
 #include "system/material.h"
 #include "system/assets/mesh_asset.h"
+#include "system/asset_manager.h"
 
 using namespace lowlevelsys;
 
@@ -25,5 +26,9 @@ namespace wizm {
 	public:
 		std::shared_ptr<staticmesh_asset> m_model;
 		core_material* m_material;
+		
+		
+		// test
+		asset_manager* m_manager;
 	};
 }

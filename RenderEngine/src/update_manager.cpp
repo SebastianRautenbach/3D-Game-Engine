@@ -16,10 +16,10 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 
 	m_timer = new core_timer;
 
-	layer = new gui_layer(m_gl_renderer->window);
+	base_layer = new gui_layer(m_gl_renderer->window);
 	m_layer_stack = new layer_stack();
 
-	m_layer_stack->PushLayer(layer);
+	m_layer_stack->PushLayer(base_layer);
 
 	m_framebuffer = new core_framebuffer(window_size_x, window_size_y);
 
@@ -28,6 +28,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_layer_stack->PushLayer(new performace_ui_layer(m_scene));
 	m_layer_stack->PushLayer(new properties_ui_layer(m_scene, m_gl_renderer));
 	m_layer_stack->PushLayer(new content_browser_layer());
+	m_layer_stack->PushLayer(new project_modifier(m_scene));
 
 	{
 		// this is for testing the entity component system
@@ -111,10 +112,10 @@ void update_manager::render()
 	m_framebuffer->unbind_buffer();
 
 	// I want to involve this to a bigger system but this only handles GUI so far
-	layer->begin();
-	for (core_layer* layer : m_layer_stack->m_Layers)
-		layer->update(m_timer->get_delta_time());
-	layer->end();
+	base_layer->begin();
+	for (auto layer = m_layer_stack->begin(); layer != m_layer_stack->end(); layer++)
+		(*layer)->update(m_timer->get_delta_time());
+	base_layer->end();
 }
 
 

@@ -30,6 +30,7 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\content_bro
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\gui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\gui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\layerstack.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\layerstack.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\performance_ui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\performance_ui_layer.obj
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\project_modifiers_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\project_modifiers_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_ui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\properties_ui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\scene_ui_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\scene_ui_layer.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\viewport_layer.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\viewport_layer.obj

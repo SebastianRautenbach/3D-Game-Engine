@@ -16,6 +16,8 @@ namespace wizm {
 		void draw(core_gl_shader* shader) {
 			m_model->render_model(shader);
 		}
+
+	private:
 		core_model* m_model;
 	};
 

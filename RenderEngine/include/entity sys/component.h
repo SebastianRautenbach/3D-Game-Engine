@@ -20,12 +20,24 @@ namespace lowlevelsys {
 		virtual void component_update() = 0;
 		virtual void component_postupdate() = 0;
 		
-		// semi-copy
-		//virtual std::shared_ptr<core_component> copy() = 0;
-
-		// default component shit
 
 		void remove_component();
+
+
+		void save_data(std::string parent_name) const override {
+			
+			filedata::ZER save_;
+			save_.read_file_cntx();
+
+			save_[parent_name][std::to_string(m_component_type)].set_float("x", { get_position().x });
+			save_[parent_name][std::to_string(m_component_type)].set_float("y", { get_position().y });
+			save_[parent_name][std::to_string(m_component_type)].set_float("z", { get_position().z });
+			
+			
+			save_.save_file(save_);
+
+
+		}
 
 
 	public:

@@ -41,6 +41,19 @@ namespace wizm {
 		std::shared_ptr<core_component> get_selected_comp() { return m_selected_comp; }
 		void set_selected_comp(std::shared_ptr<core_component> component) { m_selected_comp = component; }
 
+		void save_data(std::string parent_name) const override {
+			for (const auto& c : m_components_list) {
+				filedata::ZER save_;
+				save_.read_file_cntx();
+				save_[m_ent_ID]["position"].set_float("x", { get_position().x });
+				save_[m_ent_ID]["position"].set_float("y", { get_position().y });
+				save_[m_ent_ID]["position"].set_float("z", { get_position().z });
+				save_.save_file(save_);
+				c->save_data(m_ent_ID);
+				
+			}
+		}
+
 	public:
 
 		std::string m_ent_ID;
