@@ -1,3 +1,4 @@
+![](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/res/Picture1.png)
 ![](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/Screenshot%202024-05-06%20212317.png)
 
 **Current state**
