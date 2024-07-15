@@ -9,7 +9,7 @@
 /*
 				  ____________ _____
 				 |___  /  ____|  __ \
-				    / /| |__  | |__) |
+					/ /| |__  | |__) |
 				   / / |  __| |  _  /
 				_ / /__| |____| | \ \
 			   (_)_____|______|_|  \_\
@@ -86,6 +86,9 @@ namespace filedata
 
 		}
 		~ZER() {
+			for (auto& i : class_properties) {
+				delete i.second;
+			}
 		}
 
 		ZER& c_class_struct(std::string id) {
@@ -99,7 +102,7 @@ namespace filedata
 		// Remove the varname 
 
 		void remove_var(ZER& property_ref, std::string var_name) {
-			
+
 			for (const auto& i : property_ref.variables)
 			{
 				if (i.find(var_name) != -1)
@@ -356,19 +359,19 @@ namespace filedata
 			{
 				return return_val;
 			}
-			
+
 			return return_val;
 		}
 
 	public:
 		// iterate through this class's properties and variables
 		void read_class_properties(ZER& property_ref, std::string& file_save_data, int& crnt_indentation) {
-	
+
 			for (const auto& i : property_ref.variables)
 			{
 				// give correct indentation
 				for (int i = 0; i < crnt_indentation + 1; i++)
- 					file_save_data += "\t";
+					file_save_data += "\t";
 
 				file_save_data += i + "\n";
 			}
@@ -446,7 +449,7 @@ namespace filedata
 
 
 
-		void construct_class_from_file( std::string& data, ZER& root, int& starting_index) {
+		void construct_class_from_file(std::string& data, ZER& root, int& starting_index) {
 
 			// make sure to clear all indentation
 			std::erase(data, 9);

@@ -10,7 +10,7 @@
 wizm::core_entity::core_entity(std::string ent_ID)
 	:m_ent_ID(ent_ID)
 {
-
+	entity_tags = new core_tag();
 }
 
 	//-----------------------------------------------------------------------
@@ -31,6 +31,7 @@ void wizm::core_entity::destroy_entity()
 	{
 		
 	}
+	delete entity_tags;
 }
 
 

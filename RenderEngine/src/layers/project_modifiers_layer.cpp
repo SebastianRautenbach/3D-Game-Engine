@@ -26,7 +26,7 @@ void wizm::project_modifier::update(float delta_time)
 	if (ImGui::Button("Save")) {
 		
 		for (const auto& e : m_scene->m_entities) {
-			e->save_data("");
+			e->save_data("","");
 		}
 	}
 

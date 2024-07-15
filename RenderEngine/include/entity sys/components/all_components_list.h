@@ -1,5 +1,5 @@
 #pragma once
-#include "cube_test_comp.h"
+//#include "cube_test_comp.h"
 #include "pointlight_component.h"
 #include "directionallight_component.h"
 #include "staticmesh_component.h"

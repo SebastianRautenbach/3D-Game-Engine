@@ -16,6 +16,39 @@ namespace wizm {
         void component_update();
         void component_postupdate();
 
+
+        //////////////////////////////////////////////////
+        //////////  SERIALIZATION METHOD /////////////////
+        //////////////////////////////////////////////////
+
+
+        void save_data(std::string parent_name, std::string index) const override {
+
+            filedata::ZER save_;
+            save_.read_file_cntx();
+
+            save_[parent_name]["directionallight" + index]["transform"]["position"].set_float("x", { get_position().x });
+            save_[parent_name]["directionallight" + index]["transform"]["position"].set_float("y", { get_position().y });
+            save_[parent_name]["directionallight" + index]["transform"]["position"].set_float("z", { get_position().z });
+
+            save_[parent_name]["directionallight" + index]["transform"]["rotation"].set_float("x", { get_rotation().x });
+            save_[parent_name]["directionallight" + index]["transform"]["rotation"].set_float("y", { get_rotation().y });
+            save_[parent_name]["directionallight" + index]["transform"]["rotation"].set_float("z", { get_rotation().z });
+
+            save_[parent_name]["directionallight" + index]["transform"]["scale"].set_float("x", { get_scale().x });
+            save_[parent_name]["directionallight" + index]["transform"]["scale"].set_float("y", { get_scale().y });
+            save_[parent_name]["directionallight" + index]["transform"]["scale"].set_float("z", { get_scale().z });
+
+            save_[parent_name]["directionallight" + index]["light"].set_float("m_ambient", { m_ambient.x,m_ambient.y,m_ambient.z });
+            save_[parent_name]["directionallight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
+            save_[parent_name]["directionallight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
+
+
+            save_.save_file(save_);
+
+
+        }
+
     public:
         core_gl_shader* shader;
 

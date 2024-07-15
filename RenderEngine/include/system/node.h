@@ -10,7 +10,7 @@ namespace wizm {
 
 	class save_node {
 		
-		virtual void save_data(std::string parent_name) const = 0;
+		virtual void save_data(std::string parent_name, std::string index) const = 0;
 	};
 	// ZER is my own serialization class
 	// if you want to save a variable you do:
@@ -66,7 +66,7 @@ namespace wizm {
 				return glm::vec3(0.0);
 		}
 
-		void save_data(std::string parent_name) const override {}
+		void save_data(std::string parent_name, std::string index) const override {}
 		
 
 	private:
