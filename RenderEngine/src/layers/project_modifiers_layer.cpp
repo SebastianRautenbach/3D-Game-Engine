@@ -24,10 +24,11 @@ void wizm::project_modifier::update(float delta_time)
 
 
 	if (ImGui::Button("Save")) {
-		
-		for (const auto& e : m_scene->m_entities) {
-			e->save_data("","");
-		}
+		m_scene->save_map_data();
+	}
+
+	if (ImGui::Button("read")) {
+		m_scene->read_map_data();
 	}
 
 	ImGui::End();

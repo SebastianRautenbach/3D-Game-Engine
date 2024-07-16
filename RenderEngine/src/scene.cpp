@@ -31,4 +31,28 @@ namespace wizm {
 	{
 		m_entities.push_back(new core_entity(entity_name));
 	}
+
+	//--------------------------------------------------------- SERIALIZATION METHODS
+
+	void core_scene::read_map_data() {
+		
+		filedata::ZER read;
+		read.read_file_cntx();
+
+		for (const auto& i : read.class_properties) {
+			add_entity(i.first);
+		}
+		
+		for (const auto& e : m_entities) {
+			e->read_saved_data("","");
+		}
+
+	}
+
+
+	void core_scene::save_map_data() {
+		for (const auto& e : m_entities) {
+			e->save_data("", "");
+		}
+	}
 }

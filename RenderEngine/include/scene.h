@@ -14,6 +14,9 @@ namespace wizm {
 		void scene_update();
 		void scene_postupdate();
 
+		// serialization
+		void read_map_data();
+		void save_map_data();
 		
 		
 		// entity related

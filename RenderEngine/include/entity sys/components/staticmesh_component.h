@@ -28,6 +28,9 @@ namespace wizm {
 		//////////////////////////////////////////////////
 
 
+		void read_saved_data(std::string parent_name, std::string index) const override {};
+
+
 		void save_data(std::string parent_name, std::string index) const override {
 
 			filedata::ZER save_;
