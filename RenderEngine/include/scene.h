@@ -21,7 +21,7 @@ namespace wizm {
 		
 		// entity related
 		
-		void add_entity(std::string entity_name);
+		core_entity& add_entity(std::string entity_name);
 
 
 		// modifying only one entity

@@ -28,7 +28,51 @@ namespace wizm {
         //////////////////////////////////////////////////
 
 
-        void read_saved_data(std::string parent_name, std::string index) const override {};
+        void read_saved_data(std::string parent_name, std::string index) override {
+            filedata::ZER save_;
+            save_.read_file_cntx();
+
+            set_position(glm::vec3(save_[parent_name][index]["transform"]["position"].get_float("x")[0],
+                save_[parent_name][index]["transform"]["position"].get_float("y")[0],
+                save_[parent_name][index]["transform"]["position"].get_float("z")[0]
+                ));
+        
+            set_rotation(glm::vec3(save_[parent_name][index]["transform"]["rotation"].get_float("x")[0],
+                save_[parent_name][index]["transform"]["rotation"].get_float("y")[0],
+                save_[parent_name][index]["transform"]["rotation"].get_float("z")[0]
+            ));
+
+            set_scale(glm::vec3(save_[parent_name][index]["transform"]["scale"].get_float("x")[0],
+                save_[parent_name][index]["transform"]["scale"].get_float("y")[0],
+                save_[parent_name][index]["transform"]["scale"].get_float("z")[0]
+            ));
+
+            m_constant = save_[parent_name][index]["light"].get_float("m_constant")[0];
+            m_linear = save_[parent_name][index]["light"].get_float("linear")[0];
+            m_quadratic = save_[parent_name][index]["light"].get_float("m_quadratic")[0];
+            m_radius = save_[parent_name][index]["light"].get_float("m_radius")[0];
+
+
+            m_ambient = glm::vec3(save_[parent_name][index]["light"].get_float("m_ambient")[0],
+                save_[parent_name][index]["light"].get_float("m_ambient")[1],
+                save_[parent_name][index]["light"].get_float("m_ambient")[2]
+                );
+
+            m_diffuse = glm::vec3(save_[parent_name][index]["light"].get_float("m_diffuse")[0],
+                save_[parent_name][index]["light"].get_float("m_diffuse")[1],
+                save_[parent_name][index]["light"].get_float("m_diffuse")[2]
+            );
+
+            m_specular = glm::vec3(save_[parent_name][index]["light"].get_float("m_specular")[0],
+                save_[parent_name][index]["light"].get_float("m_specular")[1],
+                save_[parent_name][index]["light"].get_float("m_specular")[2]
+            );
+
+
+            pointlightindex = save_[parent_name][index]["light"].get_string("pointlightindex")[0];
+
+            light_index = static_cast<unsigned int>(save_[parent_name][index]["light"].get_int("light_index")[0]);
+        }
 
 
         void save_data(std::string parent_name, std::string index) const override {

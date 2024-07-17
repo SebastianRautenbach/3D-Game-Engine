@@ -11,7 +11,7 @@ namespace wizm {
 	class save_node {
 		
 		virtual void save_data(std::string parent_name, std::string index) const = 0;
-		virtual void read_saved_data(std::string parent_name, std::string index) const = 0;
+		virtual void read_saved_data(std::string parent_name, std::string index) = 0;
 	};
 	// ZER is my own serialization class
 	// if you want to save a variable you do:
@@ -68,7 +68,7 @@ namespace wizm {
 		}
 
 		void save_data(std::string parent_name, std::string index) const override {}
-		void read_saved_data(std::string parent_name, std::string index) const override {};
+		void read_saved_data(std::string parent_name, std::string index) override {};
 		
 
 	private:

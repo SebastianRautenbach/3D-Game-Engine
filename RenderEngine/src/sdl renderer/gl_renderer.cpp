@@ -165,48 +165,53 @@ void lowlevelsys::gl_renderer::post_render(float deltaTime)
 
 void lowlevelsys::gl_renderer::update_draw_data()
 {
-	std::vector<std::shared_ptr<pointlight_component>> pointlights;
-	std::vector<std::shared_ptr<staticmesh_component>> meshes;
-	std::vector<std::shared_ptr<directionallight_component>> dirlights;
 
-	for (auto& i : m_scene->m_entities) {
-		for (auto& per_ent : i->m_components_list)
+	if (m_scene->m_entities.size() > shader_count) {
+		std::vector<std::shared_ptr<pointlight_component>> pointlights;
+		std::vector<std::shared_ptr<staticmesh_component>> meshes;
+		std::vector<std::shared_ptr<directionallight_component>> dirlights;
+
+		for (auto& i : m_scene->m_entities) {
+			for (auto& per_ent : i->m_components_list)
+			{
+				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(per_ent);
+				if (mesh_comps)
+					meshes.push_back(mesh_comps);
+
+				auto light_comps = std::dynamic_pointer_cast<pointlight_component>(per_ent);
+				if (light_comps)
+					pointlights.push_back(light_comps);
+
+				auto directional_comps = std::dynamic_pointer_cast<directionallight_component>(per_ent);
+				if (directional_comps)
+					dirlights.push_back(directional_comps);
+
+			}
+		}
+
+
+		for (int i = 0; i < pointlights.size(); i++)
 		{
-			auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(per_ent);
-			if (mesh_comps)
-				meshes.push_back(mesh_comps);
-
-			auto light_comps = std::dynamic_pointer_cast<pointlight_component>(per_ent);
-			if (light_comps)
-				pointlights.push_back(light_comps);
-
-			auto directional_comps = std::dynamic_pointer_cast<directionallight_component>(per_ent);
-			if (directional_comps)
-				dirlights.push_back(directional_comps);
+			pointlights[i]->shader = shdr;
+			pointlights[i]->light_index = i;
 
 		}
+
+
+		for (auto& i : meshes) {
+			i->m_material->m_shader = shdr;
+			i->m_material->on_change_material();
+		}
+
+		for (auto& i : dirlights) {
+			i->shader = shdr;
+		}
+
+
+		shdr->setInt("ammount_of_pointlights", pointlights.size());
+
+		shader_count = m_scene->m_entities.size();
 	}
-
-
-	for (int i = 0; i < pointlights.size(); i++)
-	{
-		pointlights[i]->shader = shdr;
-		pointlights[i]->light_index = i;
-		
-	}
-
-
-	for (auto& i : meshes) {
-		i->m_material->m_shader = shdr;
-		i->m_material->on_change_material();
-	}
-	
-	for (auto& i : dirlights) {
-		i->shader = shdr;
-	}
-
-
-	shdr->setInt("ammount_of_pointlights", pointlights.size());
 }
 
 

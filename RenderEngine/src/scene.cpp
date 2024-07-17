@@ -27,9 +27,11 @@ namespace wizm {
 		}
 	}
 	
-	void core_scene::add_entity(std::string entity_name)
+	core_entity& core_scene::add_entity(std::string entity_name)
 	{
-		m_entities.push_back(new core_entity(entity_name));
+		auto ptr = new core_entity(entity_name);
+		m_entities.push_back(ptr);
+		return *ptr;
 	}
 
 	//--------------------------------------------------------- SERIALIZATION METHODS
@@ -40,13 +42,18 @@ namespace wizm {
 		read.read_file_cntx();
 
 		for (const auto& i : read.class_properties) {
-			add_entity(i.first);
+			
+			bool does_exist = false;
+			for (auto& y : m_entities) {
+				if (y->m_ent_ID == i.first)
+					does_exist = true;
+			}
+			if(!does_exist)
+			{
+				auto& ent = add_entity(i.first);
+				ent.read_saved_data("","");
+			}
 		}
-		
-		for (const auto& e : m_entities) {
-			e->read_saved_data("","");
-		}
-
 	}
 
 

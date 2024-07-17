@@ -32,7 +32,7 @@ namespace wizm {
 
 		// component
 		
-		void add_component(std::shared_ptr<core_component> component);
+		std::shared_ptr<core_component> add_component(std::shared_ptr<core_component> component);
 		std::shared_ptr<core_component> get_component(eCompType comp_type);
 		int get_component_index(eCompType comp_type);
 		void remove_component(unsigned int index);
@@ -46,8 +46,24 @@ namespace wizm {
 		//////////  SERIALIZATION METHOD /////////////////
 		//////////////////////////////////////////////////
 
-		void read_saved_data(std::string parent_name, std::string index) const override {
-		
+		void read_saved_data(std::string parent_name, std::string index) override {
+			filedata::ZER save_;
+			save_.read_file_cntx();
+
+
+			for (auto& i : save_[m_ent_ID].class_properties) {
+				
+				//--- POINT LIGHT
+				
+				if (i.first.find("pointlight") != -1) {
+					auto c = add_component(std::make_shared<pointlight_component>());
+					c->read_saved_data(m_ent_ID, i.first);
+				}
+
+
+			
+			}
+
 		};
 
 

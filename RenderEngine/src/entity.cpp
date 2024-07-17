@@ -69,10 +69,11 @@ void wizm::core_entity::entity_postupdate()
 
 	//-----------------------------------------------------------------------
 
-void wizm::core_entity::add_component(std::shared_ptr<core_component> component)
+std::shared_ptr<core_component> wizm::core_entity::add_component(std::shared_ptr<core_component> component)
 {
 	component->add_parent(this);
 	m_components_list.push_back(component);
+	return component;
 }
 
 

@@ -91,7 +91,7 @@ pointlight{
 			m_quadratic:0.032000;
 			m_radius:3.000000;
 			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:0.800000,0.800000,0.800000;
+			m_diffuse:1.000000,0.000000,0.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
 			light_index:0;
@@ -137,9 +137,9 @@ pointlight{
 	}
 	transform{
 		position{
-			x:0.800000;
-			y:0.800000;
-			z:0.800000;
+			x:0.000000;
+			y:0.000000;
+			z:0.000000;
 		}
 		rotation{
 			x:0.000000;

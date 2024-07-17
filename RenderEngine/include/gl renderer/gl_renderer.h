@@ -39,5 +39,8 @@ namespace lowlevelsys {
 
 	public:
 		int w_width, w_height;
+
+	private:
+		unsigned int shader_count = 0;
 	};
 }
