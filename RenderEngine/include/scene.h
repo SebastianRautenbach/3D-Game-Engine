@@ -13,6 +13,7 @@ namespace wizm {
 		void scene_preupdate();
 		void scene_update();
 		void scene_postupdate();
+		unsigned int total_component_count();
 
 		// serialization
 		void read_map_data();

@@ -26,7 +26,6 @@ namespace lowlevelsys {
 		void on_exit();
 		void set_camera_aspect(float x, float y);
 
-
 	public:
 		GLFWwindow* window;
 		input_manager* m_input_manager;

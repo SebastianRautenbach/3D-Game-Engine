@@ -262,7 +262,7 @@ void wizm::properties_ui_layer::update(float delta_time)
 				select_ent->m_components_list.erase(std::find(select_ent->m_components_list.begin(),
 					select_ent->m_components_list.end(), m_scene->get_crnt_entity()->get_selected_comp()));
 
-				m_renderer->update_draw_data();
+				
 			}
 
 			ImGui::EndPopup();
@@ -303,18 +303,18 @@ void wizm::properties_ui_layer::component_add_popup(core_entity* select_ent)
 			}
 			
 			
-			m_renderer->update_draw_data();
+			
 		}
 		if (ImGui::MenuItem("Point Light")) {
 			select_ent->add_component(std::make_shared<pointlight_component>());
-			m_renderer->update_draw_data();
+			
 		}
 		if (ImGui::MenuItem("Spot Light")) {
 			
 		}
 		if (ImGui::MenuItem("Directional Light")) {
 			select_ent->add_component(std::make_shared<directionallight_component>());
-			m_renderer->update_draw_data();
+			
 		}
 		if (ImGui::MenuItem("Sound")) {
 			

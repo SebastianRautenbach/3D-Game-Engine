@@ -166,7 +166,7 @@ void lowlevelsys::gl_renderer::post_render(float deltaTime)
 void lowlevelsys::gl_renderer::update_draw_data()
 {
 
-	if (m_scene->m_entities.size() > shader_count) {
+	if (m_scene->total_component_count() != shader_count) {
 		std::vector<std::shared_ptr<pointlight_component>> pointlights;
 		std::vector<std::shared_ptr<staticmesh_component>> meshes;
 		std::vector<std::shared_ptr<directionallight_component>> dirlights;
@@ -210,7 +210,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		shdr->setInt("ammount_of_pointlights", pointlights.size());
 
-		shader_count = m_scene->m_entities.size();
+		shader_count = m_scene->total_component_count();
 	}
 }
 

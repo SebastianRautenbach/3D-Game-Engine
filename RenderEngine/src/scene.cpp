@@ -26,6 +26,15 @@ namespace wizm {
 			i->entity_postupdate();
 		}
 	}
+
+	unsigned int core_scene::total_component_count()
+	{
+		unsigned int total = 0;
+		for (auto& i : m_entities)
+			total += i->m_components_list.size();
+	
+		return total;
+	}
 	
 	core_entity& core_scene::add_entity(std::string entity_name)
 	{
