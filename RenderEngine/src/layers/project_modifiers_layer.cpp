@@ -27,6 +27,8 @@ void wizm::project_modifier::update(float delta_time)
 		m_scene->save_map_data();
 	}
 
+	ImGui::SameLine();
+
 	if (ImGui::Button("read")) {
 		m_scene->read_map_data();
 	}

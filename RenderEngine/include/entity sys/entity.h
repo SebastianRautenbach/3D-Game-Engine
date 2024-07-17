@@ -46,53 +46,9 @@ namespace wizm {
 		//////////  SERIALIZATION METHOD /////////////////
 		//////////////////////////////////////////////////
 
-		void read_saved_data(std::string parent_name, std::string index) override {
-			filedata::ZER save_;
-			save_.read_file_cntx();
+		void read_saved_data(std::string parent_name, std::string index) override;
 
-
-			for (auto& i : save_[m_ent_ID].class_properties) {
-				
-				//--- POINT LIGHT
-				
-				if (i.first.find("pointlight") != -1) {
-					auto c = add_component(std::make_shared<pointlight_component>());
-					c->read_saved_data(m_ent_ID, i.first);
-				}
-
-
-			
-			}
-
-		};
-
-
-		void save_data(std::string parent_name, std::string index) const override {
-
-			filedata::ZER save_;
-			save_.read_file_cntx();
-
-			save_[m_ent_ID]["transform"]["position"].set_float("x", { get_position().x });
-			save_[m_ent_ID]["transform"]["position"].set_float("y", { get_position().y });
-			save_[m_ent_ID]["transform"]["position"].set_float("z", { get_position().z });
-
-			save_[m_ent_ID]["transform"]["rotation"].set_float("x", { get_rotation().x });
-			save_[m_ent_ID]["transform"]["rotation"].set_float("y", { get_rotation().y });
-			save_[m_ent_ID]["transform"]["rotation"].set_float("z", { get_rotation().z });
-
-			save_[m_ent_ID]["transform"]["scale"].set_float("x", { get_scale().x });
-			save_[m_ent_ID]["transform"]["scale"].set_float("y", { get_scale().y });
-			save_[m_ent_ID]["transform"]["scale"].set_float("z", { get_scale().z });
-
-
-
-			save_[m_ent_ID]["tags"].set_string("tags", entity_tags->tags);
-			save_.save_file(save_);
-
-			for (int i = 0; i < m_components_list.size(); i++) {
-				m_components_list[i]->save_data(m_ent_ID, std::to_string(i));
-			}
-		}
+		void save_data(std::string parent_name, std::string index) const override;
 
 	public:
 

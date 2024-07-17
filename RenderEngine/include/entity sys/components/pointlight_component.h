@@ -32,19 +32,20 @@ namespace wizm {
             filedata::ZER save_;
             save_.read_file_cntx();
 
-            set_position(glm::vec3(save_[parent_name][index]["transform"]["position"].get_float("x")[0],
-                save_[parent_name][index]["transform"]["position"].get_float("y")[0],
-                save_[parent_name][index]["transform"]["position"].get_float("z")[0]
-                ));
-        
-            set_rotation(glm::vec3(save_[parent_name][index]["transform"]["rotation"].get_float("x")[0],
-                save_[parent_name][index]["transform"]["rotation"].get_float("y")[0],
-                save_[parent_name][index]["transform"]["rotation"].get_float("z")[0]
+            set_position(glm::vec3(
+                save_[parent_name][index]["transform"].get_float("position")[0],
+                save_[parent_name][index]["transform"].get_float("position")[1],
+                save_[parent_name][index]["transform"].get_float("position")[2]
             ));
-
-            set_scale(glm::vec3(save_[parent_name][index]["transform"]["scale"].get_float("x")[0],
-                save_[parent_name][index]["transform"]["scale"].get_float("y")[0],
-                save_[parent_name][index]["transform"]["scale"].get_float("z")[0]
+            set_rotation(glm::vec3(
+                save_[parent_name][index]["transform"].get_float("rotation")[0],
+                save_[parent_name][index]["transform"].get_float("rotation")[1],
+                save_[parent_name][index]["transform"].get_float("rotation")[2]
+            ));
+            set_scale(glm::vec3(
+                save_[parent_name][index]["transform"].get_float("scale")[0],
+                save_[parent_name][index]["transform"].get_float("scale")[1],
+                save_[parent_name][index]["transform"].get_float("scale")[2]
             ));
 
             m_constant = save_[parent_name][index]["light"].get_float("m_constant")[0];
@@ -80,17 +81,9 @@ namespace wizm {
             filedata::ZER save_;
             save_.read_file_cntx();
 
-            save_[parent_name]["pointlight" + index]["transform"]["position"].set_float("x", {get_position().x});
-            save_[parent_name]["pointlight" + index]["transform"]["position"].set_float("y", { get_position().y });
-            save_[parent_name]["pointlight" + index]["transform"]["position"].set_float("z", { get_position().z });
-
-            save_[parent_name]["pointlight" + index]["transform"]["rotation"].set_float("x", { get_rotation().x });
-            save_[parent_name]["pointlight" + index]["transform"]["rotation"].set_float("y", { get_rotation().y });
-            save_[parent_name]["pointlight" + index]["transform"]["rotation"].set_float("z", { get_rotation().z });
-
-            save_[parent_name]["pointlight" + index]["transform"]["scale"].set_float("x", { get_scale().x });
-            save_[parent_name]["pointlight" + index]["transform"]["scale"].set_float("y", { get_scale().y });
-            save_[parent_name]["pointlight" + index]["transform"]["scale"].set_float("z", { get_scale().z });
+            save_[parent_name]["pointlight" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+            save_[parent_name]["pointlight" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+            save_[parent_name]["pointlight" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z});
             
             save_[parent_name]["pointlight" + index]["light"].set_float("m_constant", { m_constant });
             save_[parent_name]["pointlight" + index]["light"].set_float("linear", { m_linear });
