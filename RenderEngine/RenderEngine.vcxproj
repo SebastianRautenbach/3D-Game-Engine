@@ -160,6 +160,7 @@
     <ClCompile Include="include\entity sys\components\staticmesh_component.h" />
     <ClCompile Include="include\layers\viewport_layer.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
+    <ClCompile Include="src\systems\asset_manager.cpp" />
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\components\component.cpp" />
     <ClCompile Include="src\components\cube_test_comp.cpp" />

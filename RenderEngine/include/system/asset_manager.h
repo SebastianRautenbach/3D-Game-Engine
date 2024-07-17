@@ -13,16 +13,24 @@
 
 
 
+
+
 namespace wizm {
 
-
-
+    class core_entity;
 
 	class asset_manager {
     private:
         std::unordered_map<std::string, std::shared_ptr<core_asset>> m_assets;
+        std::vector<core_entity*>* m_entities;
 
     public:
+        asset_manager(std::vector<core_entity*>* entities);
+
+
+    public:
+
+        void assign_assets();
 
         template <typename T>
         std::shared_ptr<T> load(const std::string& asset_id, const std::string& path) {
@@ -36,6 +44,9 @@ namespace wizm {
             m_assets[asset_id] = asset;
             return asset;
         }
+
+    private:
+        unsigned int total_entities = 0;
 		
 
 	};
