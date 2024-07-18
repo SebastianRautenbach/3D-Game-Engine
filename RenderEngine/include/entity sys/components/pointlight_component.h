@@ -76,28 +76,23 @@ namespace wizm {
         }
 
 
-        void save_data(std::string parent_name, std::string index) const override {
+        void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {
 
-            filedata::ZER save_;
-            save_.read_file_cntx();
 
-            save_[parent_name]["pointlight" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
-            save_[parent_name]["pointlight" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
-            save_[parent_name]["pointlight" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z});
+            save_t[parent_name]["pointlight" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+            save_t[parent_name]["pointlight" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+            save_t[parent_name]["pointlight" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z});
             
-            save_[parent_name]["pointlight" + index]["light"].set_float("m_constant", { m_constant });
-            save_[parent_name]["pointlight" + index]["light"].set_float("linear", { m_linear });
-            save_[parent_name]["pointlight" + index]["light"].set_float("m_quadratic", { m_quadratic });
-            save_[parent_name]["pointlight" + index]["light"].set_float("m_radius", { m_radius });
+            save_t[parent_name]["pointlight" + index]["light"].set_float("m_constant", { m_constant });
+            save_t[parent_name]["pointlight" + index]["light"].set_float("linear", { m_linear });
+            save_t[parent_name]["pointlight" + index]["light"].set_float("m_quadratic", { m_quadratic });
+            save_t[parent_name]["pointlight" + index]["light"].set_float("m_radius", { m_radius });
 
-            save_[parent_name]["pointlight" + index]["light"].set_float("m_ambient", { m_ambient.x,m_ambient.y,m_ambient.z });
-            save_[parent_name]["pointlight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
-            save_[parent_name]["pointlight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
-            save_[parent_name]["pointlight" + index]["light"].set_string("pointlightindex", {pointlightindex});
-            save_[parent_name]["pointlight" + index]["light"].set_int("light_index", { static_cast<int>(light_index)});
-
-
-            save_.save_file(save_);
+            save_t[parent_name]["pointlight" + index]["light"].set_float("m_ambient", { m_ambient.x,m_ambient.y,m_ambient.z });
+            save_t[parent_name]["pointlight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
+            save_t[parent_name]["pointlight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
+            save_t[parent_name]["pointlight" + index]["light"].set_string("pointlightindex", {pointlightindex});
+            save_t[parent_name]["pointlight" + index]["light"].set_int("light_index", { static_cast<int>(light_index)});
 
 
         }

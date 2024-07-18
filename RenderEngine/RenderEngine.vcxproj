@@ -233,6 +233,7 @@
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assets.h" />
     <ClInclude Include="include\system\assets\mesh_asset.h" />
+    <ClInclude Include="include\system\assets\texture_asset.h" />
     <ClInclude Include="include\system\assettypes.h" />
     <ClInclude Include="include\system\asset_class.h" />
     <ClInclude Include="include\system\asset_importer.h" />

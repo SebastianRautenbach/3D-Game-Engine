@@ -163,22 +163,19 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 	}
 }
 
-void wizm::core_entity::save_data(std::string parent_name, std::string index) const
+void wizm::core_entity::save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const
 {
-	filedata::ZER save_;
-	save_.read_file_cntx();
 
-	save_[m_ent_ID]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
-	save_[m_ent_ID]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
-	save_[m_ent_ID]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
+	save_t[m_ent_ID]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+	save_t[m_ent_ID]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+	save_t[m_ent_ID]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 
 
 
-	save_[m_ent_ID]["tags"].set_string("tags", entity_tags->tags);
-	save_.save_file(save_);
+	save_t[m_ent_ID]["tags"].set_string("tags", entity_tags->tags);
 
 	for (int i = 0; i < m_components_list.size(); i++) {
-		m_components_list[i]->save_data(m_ent_ID, std::to_string(i));
+		m_components_list[i]->save_data(m_ent_ID, std::to_string(i), save_t);
 	}
 }
 

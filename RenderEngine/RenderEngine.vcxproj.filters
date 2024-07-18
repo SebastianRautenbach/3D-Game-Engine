@@ -338,5 +338,8 @@
     <ClInclude Include="include\layers\project_modifiers_layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\system\assets\texture_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

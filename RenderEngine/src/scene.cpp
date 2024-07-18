@@ -67,8 +67,12 @@ namespace wizm {
 
 
 	void core_scene::save_map_data() {
+		filedata::ZER read;
+
 		for (const auto& e : m_entities) {
-			e->save_data("", "");
+			e->save_data("", "", read);
 		}
+
+		read.save_file(read);
 	}
 }

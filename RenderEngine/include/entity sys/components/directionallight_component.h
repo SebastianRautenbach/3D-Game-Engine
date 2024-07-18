@@ -60,22 +60,18 @@ namespace wizm {
         };
 
 
-        void save_data(std::string parent_name, std::string index) const override {
+        void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {
 
-            filedata::ZER save_;
-            save_.read_file_cntx();
+            save_t[parent_name]["directionallight" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+            save_t[parent_name]["directionallight" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+            save_t[parent_name]["directionallight" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 
-            save_[parent_name]["directionallight" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
-            save_[parent_name]["directionallight" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
-            save_[parent_name]["directionallight" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
-
-            save_[parent_name]["directionallight" + index]["light"].set_float("m_ambient", { m_ambient.x,m_ambient.y,m_ambient.z });
-            save_[parent_name]["directionallight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
-            save_[parent_name]["directionallight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
+            save_t[parent_name]["directionallight" + index]["light"].set_float("m_ambient", { m_ambient.x,m_ambient.y,m_ambient.z });
+            save_t[parent_name]["directionallight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
+            save_t[parent_name]["directionallight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
 
 
-            save_.save_file(save_);
-
+ 
 
         }
 

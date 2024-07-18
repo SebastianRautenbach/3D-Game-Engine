@@ -50,24 +50,17 @@ namespace wizm {
 			));
 
 			m_asset_id = save_[parent_name][index].get_string("asset id")[0];
-
-			save_.save_file(save_);
 		
 		};
 
 
-		void save_data(std::string parent_name, std::string index) const override {
+		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {
 
-			filedata::ZER save_;
-			save_.read_file_cntx();
-
-			save_[parent_name]["staticmesh" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
-			save_[parent_name]["staticmesh" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
-			save_[parent_name]["staticmesh" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
+			save_t[parent_name]["staticmesh" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+			save_t[parent_name]["staticmesh" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+			save_t[parent_name]["staticmesh" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 			
-			save_[parent_name]["staticmesh" + index].set_string("asset id", { m_asset_id });
-
-			save_.save_file(save_);
+			save_t[parent_name]["staticmesh" + index].set_string("asset id", { m_asset_id });
 
 
 		}
