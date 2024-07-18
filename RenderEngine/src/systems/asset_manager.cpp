@@ -1,17 +1,17 @@
 #include "system/asset_manager.h"
-#include "entity sys/entity.h"
+#include "scene.h"
 
-wizm::asset_manager::asset_manager(std::vector<core_entity*>* entities)
-	:	m_entities(entities)
+wizm::asset_manager::asset_manager(core_scene* scene)
+	:	m_scene(scene)
 {
 }
 
 void wizm::asset_manager::assign_assets()
 {
 
-	if(total_entities < m_entities->size())
+	if(total_entities < m_scene->m_entities.size() || m_scene->m_reloaded)
 	{
-		for (auto& ent : *m_entities) {
+		for (auto& ent : m_scene->m_entities) {
 			for (auto& comp : ent->m_components_list)
 			{
 				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(comp);
@@ -22,7 +22,7 @@ void wizm::asset_manager::assign_assets()
 			}
 		}
 
-		total_entities = m_entities->size();
+		total_entities = m_scene->m_entities.size();
 	}
 
 

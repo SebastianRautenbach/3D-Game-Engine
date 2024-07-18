@@ -31,7 +31,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_layer_stack->PushLayer(new project_modifier(m_scene));
 
 
-	m_asset_manager = new asset_manager(&m_scene->m_entities);
+	m_asset_manager = new asset_manager(m_scene);
 	
 	m_asset_manager->load<staticmesh_asset>("001", "resources/models/backpack.obj");
 	m_asset_manager->load<staticmesh_asset>("002", "resources/models/cube.obj");

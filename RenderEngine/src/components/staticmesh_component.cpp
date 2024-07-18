@@ -17,7 +17,7 @@ wizm::staticmesh_component::staticmesh_component(std::shared_ptr<staticmesh_asse
 
 wizm::staticmesh_component::~staticmesh_component()
 {
-
+	delete m_material;
 }
 
 void wizm::staticmesh_component::component_preupdate()

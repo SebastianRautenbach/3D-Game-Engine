@@ -33,8 +33,16 @@ namespace wizm {
 
 		void set_crnt_entity(core_entity* ent) { m_selected_entity = ent; };
 
+
+	private:
+
+		// remove all entities
+
+		void clear_entities();
+
 	public:
 		std::vector<core_entity*> m_entities;
+		bool m_reloaded = false;
 
 	private:
 		core_entity* m_selected_entity;

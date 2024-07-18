@@ -17,7 +17,7 @@ wizm::pointlight_component::pointlight_component(float constant, float linear, f
 
 wizm::pointlight_component::~pointlight_component()
 {
- 
+   
 }
 
 void wizm::pointlight_component::component_preupdate()

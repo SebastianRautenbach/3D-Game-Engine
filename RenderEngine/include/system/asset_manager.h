@@ -17,15 +17,15 @@
 
 namespace wizm {
 
-    class core_entity;
+    class core_scene;
 
 	class asset_manager {
     private:
         std::unordered_map<std::string, std::shared_ptr<core_asset>> m_assets;
-        std::vector<core_entity*>* m_entities;
+        core_scene* m_scene;
 
     public:
-        asset_manager(std::vector<core_entity*>* entities);
+        asset_manager(core_scene* scene);
 
 
     public:

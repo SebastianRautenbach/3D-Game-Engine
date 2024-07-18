@@ -59,6 +59,7 @@ namespace wizm {
 
 	private:
 		std::shared_ptr<core_component> m_selected_comp;
+
 	};
 
 

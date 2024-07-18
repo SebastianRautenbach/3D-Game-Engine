@@ -36,6 +36,33 @@ backpack{
 		scale:1.000000,1.000000,1.000000;
 	}
 }
+keegan{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.000000,0.089635,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-0.872635,0.000000,-0.927250;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 pointlight{
 	pointlight0{
 		light{
@@ -47,7 +74,7 @@ pointlight{
 			m_diffuse:1.000000,0.000000,0.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
-			light_index:0;
+			light_index:1;
 		}
 		transform{
 			position:-0.000000,-0.000000,-0.000000;
@@ -66,8 +93,8 @@ pointlight{
 	tags{
 	}
 	transform{
-		position:-0.477156,0.296921,-1.486598;
+		position:-1.132898,0.264139,0.957277;
 		rotation:0.000000,0.000000,0.000000;
-		scale:5.330000,5.330000,5.330000;
+		scale:0.533000,0.533000,0.533000;
 	}
 }

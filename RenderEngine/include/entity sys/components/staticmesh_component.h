@@ -70,8 +70,5 @@ namespace wizm {
 		std::shared_ptr<staticmesh_asset> m_model;
 		core_material* m_material;
 		std::string m_asset_id;
-		
-		// test
-		asset_manager* m_manager;
 	};
 }

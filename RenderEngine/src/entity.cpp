@@ -27,10 +27,6 @@ void wizm::core_entity::remame_entity(std::string name)
 
 void wizm::core_entity::destroy_entity()
 {
-	for (auto& i : m_components_list)
-	{
-		
-	}
 	delete entity_tags;
 }
 

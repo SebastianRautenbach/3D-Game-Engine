@@ -9,10 +9,14 @@ namespace wizm {
 		{
 			i->entity_preupdate();
 		}
+
+		
 	}
 	
 	void core_scene::scene_update()
 	{
+		m_reloaded = false;
+
 		for (auto& i : m_entities)
 		{
 			i->entity_update();
@@ -25,6 +29,8 @@ namespace wizm {
 		{
 			i->entity_postupdate();
 		}
+
+
 	}
 
 	unsigned int core_scene::total_component_count()
@@ -43,6 +49,15 @@ namespace wizm {
 		return *ptr;
 	}
 
+	void core_scene::clear_entities()
+	{
+		m_reloaded = true;
+		for (auto& ent : m_entities)
+			delete ent;
+		m_entities.clear();
+		set_crnt_entity(nullptr);
+	}
+
 	//--------------------------------------------------------- SERIALIZATION METHODS
 
 	void core_scene::read_map_data() {
@@ -50,18 +65,11 @@ namespace wizm {
 		filedata::ZER read;
 		read.read_file_cntx();
 
+		clear_entities();
+
 		for (const auto& i : read.class_properties) {
-			
-			bool does_exist = false;
-			for (auto& y : m_entities) {
-				if (y->m_ent_ID == i.first)
-					does_exist = true;
-			}
-			if(!does_exist)
-			{
-				auto& ent = add_entity(i.first);
-				ent.read_saved_data("","");
-			}
+			auto& ent = add_entity(i.first);
+			ent.read_saved_data("","");
 		}
 	}
 
