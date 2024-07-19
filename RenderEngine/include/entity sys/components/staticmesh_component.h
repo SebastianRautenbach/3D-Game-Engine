@@ -12,7 +12,7 @@ namespace wizm {
 	
 	public:
 		
-		staticmesh_component(const char* file_path);
+		staticmesh_component();
 		staticmesh_component(std::shared_ptr<staticmesh_asset> mesh);
 		~staticmesh_component();
 		
@@ -68,7 +68,8 @@ namespace wizm {
 
 	public:
 		std::shared_ptr<staticmesh_asset> m_model;
-		core_material* m_material;
+		std::unique_ptr<core_material> m_material;
+		//core_material* m_material;
 		std::string m_asset_id;
 	};
 }

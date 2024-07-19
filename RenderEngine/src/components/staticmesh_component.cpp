@@ -1,23 +1,21 @@
 #include "entity sys/components/staticmesh_component.h"
 
-wizm::staticmesh_component::staticmesh_component(const char* file_path)
+wizm::staticmesh_component::staticmesh_component()
 {
 	m_component_type = eStaticMesh;
-	m_model = std::make_shared<staticmesh_asset>();
-	m_model->load(file_path);
-	m_material = new core_material();
+	m_material = std::make_unique<core_material>();
 }
 
 wizm::staticmesh_component::staticmesh_component(std::shared_ptr<staticmesh_asset> mesh)
 {
 	m_component_type = eStaticMesh;
 	m_model = mesh;
-	m_material = new core_material();
+	m_material = std::make_unique<core_material>();
 }
 
 wizm::staticmesh_component::~staticmesh_component()
 {
-	delete m_material;
+	
 }
 
 void wizm::staticmesh_component::component_preupdate()

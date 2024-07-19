@@ -18,6 +18,7 @@ wizm::core_entity::core_entity(std::string ent_ID)
 wizm::core_entity::~core_entity()
 {
 	destroy_entity();
+	
 }
 
 void wizm::core_entity::remame_entity(std::string name)
@@ -28,6 +29,8 @@ void wizm::core_entity::remame_entity(std::string name)
 void wizm::core_entity::destroy_entity()
 {
 	delete entity_tags;
+	m_components_list.clear();
+	entity_tags = nullptr;
 }
 
 
@@ -152,7 +155,7 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 		//--- MESH COMPONENT
 
 		if (i.first.find("staticmesh") != -1) {
-			auto c = add_component(std::make_shared<staticmesh_component>(""));
+			auto c = add_component(std::make_shared<staticmesh_component>());
 			c->read_saved_data(m_ent_ID, i.first);
 		}
 

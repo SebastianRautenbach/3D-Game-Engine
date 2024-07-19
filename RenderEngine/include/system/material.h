@@ -16,6 +16,7 @@ namespace wizm {
 	
 	public:
 		core_material();
+		~core_material();
 		void update_material();
 		void unbind_material();
 		void set_texture(std::string texture_path, eTexture_types type);

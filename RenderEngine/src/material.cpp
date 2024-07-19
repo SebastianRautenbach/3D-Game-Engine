@@ -12,6 +12,13 @@ namespace wizm {
 		m_texture.emplace_back(diffuse_in);
 		m_texture.emplace_back(specular_in);
 	}
+
+	core_material::~core_material()
+	{
+		for (auto& tex : m_texture) {
+			tex.texture.delete_texture();
+		}
+	}
 	
 	void core_material::on_change_material()
 	{

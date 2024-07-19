@@ -96,6 +96,10 @@ core_arr_vertex_buffer::core_arr_vertex_buffer( std::vector<vertex_data>& vertic
 	
 }
 
+core_arr_vertex_buffer::~core_arr_vertex_buffer()
+{
+}
+
 
 
 

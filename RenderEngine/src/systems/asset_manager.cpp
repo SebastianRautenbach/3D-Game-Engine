@@ -6,6 +6,11 @@ wizm::asset_manager::asset_manager(core_scene* scene)
 {
 }
 
+/*
+	We basicly check if the component has an asset ID and if it does apply that asset 
+	to the neccasary variable.
+*/
+
 void wizm::asset_manager::assign_assets()
 {
 
