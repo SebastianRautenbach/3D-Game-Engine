@@ -417,12 +417,7 @@
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\xlocmon",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\iomanip",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\asset_class.h",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\unordered_map",
-            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\asset_importer.h",
-            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\sqlite3.h",
-            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\other utils\\idgen.h",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\random",
-            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\__msvc_int128.hpp"
+            "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\unordered_map"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

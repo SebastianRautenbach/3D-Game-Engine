@@ -4,25 +4,6 @@
 wizm::asset_manager::asset_manager(core_scene* scene)
 	:	m_scene(scene)
 {
-	load_assets();
-}
-
-
-void wizm::asset_manager::load_assets() {
-	asset_importer m_asset;
-
-	auto assets = m_asset.retrieve_all_assets();
-	
-	for (const auto& asset : assets) {
-		if (asset.type == "mesh")
-		{
-			load<staticmesh_asset>(asset.id, asset.path);
-		}
-		else if (asset.type == "texture")
-		{
-		}
-	}
-
 }
 
 /*

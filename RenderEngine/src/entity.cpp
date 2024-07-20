@@ -113,48 +113,50 @@ void wizm::core_entity::set_component(unsigned int index, std::shared_ptr<core_c
 	m_components_list[index] = component;
 }
 
-void wizm::core_entity::read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t)
+void wizm::core_entity::read_saved_data(std::string parent_name, std::string index)
 {
+	filedata::ZER save_;
+	save_.read_file_cntx();
 
 	set_position(glm::vec3(
-		save_t[m_ent_ID]["transform"].get_float("position")[0],
-		save_t[m_ent_ID]["transform"].get_float("position")[1],
-		save_t[m_ent_ID]["transform"].get_float("position")[2]));
+		save_[m_ent_ID]["transform"].get_float("position")[0],
+		save_[m_ent_ID]["transform"].get_float("position")[1],
+		save_[m_ent_ID]["transform"].get_float("position")[2]));
 
 	set_rotation(glm::vec3(
-		save_t[m_ent_ID]["transform"].get_float("rotation")[0],
-		save_t[m_ent_ID]["transform"].get_float("rotation")[1],
-		save_t[m_ent_ID]["transform"].get_float("rotation")[2]));
+		save_[m_ent_ID]["transform"].get_float("rotation")[0],
+		save_[m_ent_ID]["transform"].get_float("rotation")[1],
+		save_[m_ent_ID]["transform"].get_float("rotation")[2]));
 
 	set_scale(glm::vec3(
-		save_t[m_ent_ID]["transform"].get_float("scale")[0],
-		save_t[m_ent_ID]["transform"].get_float("scale")[1],
-		save_t[m_ent_ID]["transform"].get_float("scale")[2]));
+		save_[m_ent_ID]["transform"].get_float("scale")[0],
+		save_[m_ent_ID]["transform"].get_float("scale")[1],
+		save_[m_ent_ID]["transform"].get_float("scale")[2]));
 
 
 
 	//-------------------------------------------------------------------------------- COMPONENTS
-	for (auto& i : save_t[m_ent_ID].class_properties) {
+	for (auto& i : save_[m_ent_ID].class_properties) {
 
 		//--- POINT LIGHT
 
 		if (i.first.find("pointlight") != -1) {
 			auto c = add_component(std::make_shared<pointlight_component>());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_ent_ID, i.first);
 		}
 
 		//--- DIRECTIONAL LIGHT
 
 		if (i.first.find("directionallight") != -1) {
 			auto c = add_component(std::make_shared<directionallight_component>());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_ent_ID, i.first);
 		}
 
 		//--- MESH COMPONENT
 
 		if (i.first.find("staticmesh") != -1) {
 			auto c = add_component(std::make_shared<staticmesh_component>());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_ent_ID, i.first);
 		}
 
 	}

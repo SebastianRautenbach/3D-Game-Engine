@@ -46,7 +46,7 @@ namespace wizm {
 		//////////  SERIALIZATION METHOD /////////////////
 		//////////////////////////////////////////////////
 
-		void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) override;
+		void read_saved_data(std::string parent_name, std::string index) override;
 
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override;
 

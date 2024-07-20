@@ -5,7 +5,7 @@
 
 
 namespace lowlevelsys {
-    inline std::string generate_unique_id() {
+    uint64_t generate_unique_id() {
       
         auto now = std::chrono::high_resolution_clock::now();
         auto duration = now.time_since_epoch();
@@ -20,8 +20,7 @@ namespace lowlevelsys {
       
         uint64_t unique_id = (nanoseconds << 32) | random_number;
 
-        
-        return std::to_string(unique_id);
+        return unique_id;
     }
 }
 

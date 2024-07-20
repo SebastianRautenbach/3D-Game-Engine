@@ -1,0 +1,100 @@
+Dir light{
+	directionallight0{
+		light{
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.400000,0.400000,0.400000;
+			m_specular:0.500000,0.500000,0.500000;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:-0.200000,-1.000000,-0.300000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.305929,-0.443179,0.719256;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+backpack{
+	staticmesh0{
+		asset id:001;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:0.100000,0.100000,0.100000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-0.147883,0.245144,-0.318258;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+keegan{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.000000,0.089635,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-0.872635,0.000000,-0.927250;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+pointlight{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:1.000000,0.000000,0.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			light_index:1;
+		}
+		transform{
+			position:-0.000000,-0.000000,-0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	staticmesh1{
+		asset id:002;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:0.100000,0.100000,0.100000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-1.132898,0.264139,0.957277;
+		rotation:0.000000,0.000000,0.000000;
+		scale:0.533000,0.533000,0.533000;
+	}
+}
