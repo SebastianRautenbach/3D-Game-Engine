@@ -10,7 +10,7 @@
 #include "asset_class.h"
 #include <unordered_map>
 #include "system/assets.h"
-
+#include "system/asset_importer.h"
 
 
 
@@ -26,6 +26,8 @@ namespace wizm {
 
     public:
         asset_manager(core_scene* scene);
+
+        void load_assets();
 
 
     public:

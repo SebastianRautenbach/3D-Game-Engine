@@ -3,12 +3,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "other utils/IDGEN.h"
 
 
 struct asset_details {
 
-	std::string path;
 	std::string id;
+	std::string path;
+	std::string type;
 
 };
 
@@ -16,86 +18,92 @@ struct asset_details {
 class asset_importer {
 
 public:
-	std::vector<asset_details> m_all_assets;
-	
-public:
-	asset_importer() {
-		m_all_assets.emplace_back("","");
-	
-	}
+    std::vector<asset_details> m_all_assets;
 
-	void insert_asset(std::string ID, std::string location) {
-	
-		sql = "insert into ASSETS(ID, LOCATION) values (?,?);";
+    asset_importer() {
+        initialize_db();
+    }
 
-		sqlite3_stmt* stmt;
-		
-		rc = sqlite3_prepare_v2(db, sql, -1, &stmt, 0);
-		if (rc != SQLITE_OK) {
-			std::cout << "Failed to prepare statement: %s\n", sqlite3_errmsg(db);
-			sqlite3_close(db);
-			return;
-		}
+    ~asset_importer() {
+        sqlite3_close(db);
+    }
 
-		sqlite3_bind_text(stmt, 1, ID.c_str(), -1, SQLITE_STATIC);
-		sqlite3_bind_text(stmt, 1, location.c_str(), -1, SQLITE_STATIC);
+    void insert_asset(const asset_details& asset) {
+        std::string n_id = lowlevelsys::generate_unique_id();
+        std::string sql = "INSERT INTO assets (id, path, type) VALUES ('" + n_id + "', '" + asset.path + "', '" + asset.type + "');";
+        rc = sqlite3_exec(db, sql.c_str(), nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+        }
+    }
 
-		rc = sqlite3_step(stmt);
-		if (rc != SQLITE_DONE) {
-			std::cout << "Execution failed: %s\n", sqlite3_errmsg(db);
-		}
-		else {
-			std::cout<< "Records inserted successfully\n";
-		}
+    void remove_asset(const std::string ID) {
+        std::string sql = "DELETE FROM assets WHERE id='" + ID + "';"; // DELETE FROM assets WHERE id='ID';
+        rc = sqlite3_exec(db, sql.c_str(), nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+        }
+    }
 
-		sqlite3_finalize(stmt);
-	
-	}
-
-	void import_list(const char* path) {
-		rc = sqlite3_open(path, &db);
-		if (rc) {
-			std::cout << "cant open database";
-			return;
-		}
-		else {
-			std::cout << "open database with success";
-		}
-
-
-		sql = "CREATE TABLE ASSETS(ID INT PRIMARY KEY NOT NULL, LOCATION TEXT NOT NULL);";
-		rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-
-
-		if (rc != SQLITE_OK) {
-			fprintf(stderr, "SQL error: %s\n", zErrMsg);
-			sqlite3_free(zErrMsg);
-		}
-		else {
-			fprintf(stdout, "Table created successfully\n");
-		}
-		sqlite3_close(db);
-
-		return;
-	}
-
-	static int callback(void* NotUsed, int argc, char** argv, char** azColName) {
-		int i;
-		for (i = 0; i < argc; i++) {
-			printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-		}
-		printf("\n");
-		return 0;
-	}
-
-
+    std::vector<asset_details> retrieve_all_assets() {
+        m_all_assets.clear();
+        std::string sql = "SELECT id, path, type FROM assets;";
+        rc = sqlite3_exec(db, sql.c_str(), callback, this, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+        }
+        return m_all_assets;
+    }
 
 private:
-	sqlite3* db;
-	char* zErrMsg = 0;
-	int rc;
-	const char* sql;
-	const char* check_table_sql = "SELECT name FROM sqlite_master WHERE type='table' AND name='ASSETS';";
+    sqlite3* db;
+    char* zErrMsg = nullptr;
+    int rc;
 
+    static int callback(void* data, int argc, char** argv, char** azColName) {
+        auto* importer = static_cast<asset_importer*>(data);
+        asset_details asset;
+        for (int i = 0; i < argc; i++) {
+            std::string colName = azColName[i];
+            if (colName == "id") {
+                asset.id = argv[i] ? argv[i] : "";
+            }
+            else if (colName == "path") {
+                asset.path = argv[i] ? argv[i] : "";
+            }
+            else if (colName == "type") {
+                asset.type = argv[i] ? argv[i] : "";
+            }
+        }
+        importer->m_all_assets.push_back(asset);
+        return 0;
+    }
+
+    void initialize_db() {
+        rc = sqlite3_open("assets.db", &db);
+        if (rc) {
+            std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
+            return;
+        }
+        else {
+            std::cout << "Opened database successfully" << std::endl;
+        }
+
+        const char* sql = "CREATE TABLE IF NOT EXISTS assets ("
+            "id TEXT PRIMARY KEY NOT NULL, "
+            "path TEXT NOT NULL, "
+            "type TEXT NOT NULL);";
+        rc = sqlite3_exec(db, sql, nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+        }
+        else {
+            std::cout << "Table created successfully" << std::endl;
+        }
+    }
 
 };
