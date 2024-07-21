@@ -69,7 +69,6 @@ namespace wizm {
 	public:
 		std::shared_ptr<staticmesh_asset> m_model;
 		std::unique_ptr<core_material> m_material;
-		//core_material* m_material;
 		std::string m_asset_id;
 	};
 }
