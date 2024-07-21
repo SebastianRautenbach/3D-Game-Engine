@@ -11,7 +11,7 @@ namespace wizm {
 	class save_node {
 		
 		virtual void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const = 0;
-		virtual void read_saved_data(std::string parent_name, std::string index) = 0;
+		virtual void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) = 0;
 	};
 	
 
@@ -66,7 +66,7 @@ namespace wizm {
 		}
 
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {}
-		void read_saved_data(std::string parent_name, std::string index) override {};
+		void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) override {};
 		
 
 	private:

@@ -63,13 +63,13 @@ namespace wizm {
 	void core_scene::read_map_data() {
 		
 		filedata::ZER read;
-		read.read_file_cntx();
+		read.read_file_cntx("GAME/Content/levels/level1.zer");
 
 		clear_entities();
 
 		for (const auto& i : read.class_properties) {
 			auto& ent = add_entity(i.first);
-			ent.read_saved_data("","");
+			ent.read_saved_data("","", read);
 		}
 	}
 
@@ -81,6 +81,6 @@ namespace wizm {
 			e->save_data("", "", read);
 		}
 
-		read.save_file(read);
+		read.save_file(read, "GAME/Content/levels/level1.zer");
 	}
 }
