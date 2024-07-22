@@ -10,8 +10,8 @@
 #include "asset_class.h"
 #include <unordered_map>
 #include "system/assets.h"
-
-
+#include "asset_importer.h"
+#include "system/assets/assettypes.h"
 
 
 
@@ -32,6 +32,8 @@ namespace wizm {
 
         void assign_assets();
 
+        void load_assets_db();
+
         template <typename T>
         std::shared_ptr<T> load(const std::string& asset_id, const std::string& path) {
             auto it = m_assets.find(asset_id);
@@ -47,7 +49,7 @@ namespace wizm {
 
     private:
         unsigned int total_entities = 0;
-		
+        asset_importer asset_import;
 
 	};
 }

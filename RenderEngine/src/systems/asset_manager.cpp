@@ -4,6 +4,7 @@
 wizm::asset_manager::asset_manager(core_scene* scene)
 	:	m_scene(scene)
 {
+	load_assets_db();
 }
 
 /*
@@ -31,4 +32,15 @@ void wizm::asset_manager::assign_assets()
 	}
 
 
+}
+
+void wizm::asset_manager::load_assets_db()
+{
+	auto assets = asset_import.retrieve_all_assets();
+
+	for (const auto& asset : assets) {
+		if (asset.type == tMESH) {
+			load<staticmesh_asset>(asset.id, asset.path);
+		}
+	}
 }

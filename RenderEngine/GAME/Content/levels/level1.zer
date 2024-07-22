@@ -21,7 +21,7 @@ Dir light{
 }
 backpack{
 	staticmesh0{
-		asset id:001;
+		asset id:9061207173737292744;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -56,7 +56,7 @@ pointlight{
 		}
 	}
 	staticmesh1{
-		asset id:002;
+		asset id:18410409422620930561;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;

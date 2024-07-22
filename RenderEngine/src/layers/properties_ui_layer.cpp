@@ -1,7 +1,7 @@
 #include "layers/properties_ui_layer.h"
 
-wizm::properties_ui_layer::properties_ui_layer(core_scene* scene, gl_renderer* renderer)
-	:m_scene(scene), m_renderer(renderer)
+wizm::properties_ui_layer::properties_ui_layer(core_scene* scene, gl_renderer* renderer, asset_manager* manager)
+	:m_scene(scene), m_renderer(renderer), m_asset_manager(manager)
 {
 }
 
@@ -357,19 +357,13 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	{
 		auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(component);
 		
-		static char text[256] = "path";
-		ImGui::InputText("AlbedoPath", text, IM_ARRAYSIZE(text));
-		if(ImGui::Button("Change Albedo"))
+		static char text[256] = "mesh ID";
+		ImGui::InputText("##mesh", text, IM_ARRAYSIZE(text));
+		if(ImGui::Button("change mesh"))
 		{
-			staticmesh->m_material->set_texture(text, eDiffuse);
-			staticmesh->m_material->on_change_material();
-
-		}
-		if (ImGui::Button("Change Specular"))
-		{
-			staticmesh->m_material->set_texture(text, eSpecular);
-			staticmesh->m_material->on_change_material();
-
+			staticmesh->m_asset_id = text;
+			m_asset_manager->assign_assets();
+			m_scene->m_reloaded = true;
 		}
 	}
 }
