@@ -1,6 +1,5 @@
 #include "layers/content_browser_layer.h"
-
-
+#include "other utils/strconvr.h"
 
 wizm::content_browser_layer::content_browser_layer()
 {
@@ -34,19 +33,21 @@ void wizm::content_browser_layer::update(float delta_time)
 	}
 	
 	for (auto asset : assets) {
-		ImGui::Text("%s", asset.path.c_str());
-		ImGui::SameLine();
-		ImGui::Text("%s", asset.id.c_str());
+		ImGui::Button(asset.path.c_str());
 
-		char buff[255];
-		strncpy_s(buff, asset.id.c_str(), sizeof(buff));
-		buff[sizeof(buff) - 1] = '\0';  // Ensure null-termination
+		if (ImGui::BeginDragDropSource()) {
 
-		std::string label = "##" + asset.id;
-		ImGui::InputText(label.c_str(), buff, sizeof(buff));
+			
+			std::wstring nine = string_to_wstring(asset.id).c_str();
+			const wchar_t* wstr = nine.c_str();
+
+
+			ImGui::SetDragDropPayload("CONTENT_BROWSER_ITEM", wstr, (wcslen(wstr) + 1) * sizeof(wchar_t));
+			ImGui::EndDragDropSource();
+		}
 
 	}
-
+	
 	
 	
 	

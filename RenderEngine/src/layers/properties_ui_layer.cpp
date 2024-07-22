@@ -1,4 +1,5 @@
 #include "layers/properties_ui_layer.h"
+#include "other utils/strconvr.h"
 
 wizm::properties_ui_layer::properties_ui_layer(core_scene* scene, gl_renderer* renderer, asset_manager* manager)
 	:m_scene(scene), m_renderer(renderer), m_asset_manager(manager)
@@ -286,7 +287,6 @@ void wizm::properties_ui_layer::component_add_popup(core_entity* select_ent)
 		ImGui::Separator();
 
 		if (ImGui::MenuItem("Static Mesh")) {
-			//select_ent->add_component(std::make_shared<staticmesh_component>("resources/models/backpack.obj"));
 			
 			//test 
 			for (const auto& i : m_scene->m_entities)
@@ -357,13 +357,21 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	{
 		auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(component);
 		
-		static char text[256] = "mesh ID";
-		ImGui::InputText("##mesh", text, IM_ARRAYSIZE(text));
-		if(ImGui::Button("change mesh"))
-		{
-			staticmesh->m_asset_id = text;
-			m_asset_manager->assign_assets();
-			m_scene->m_reloaded = true;
+		ImGui::Button("change mesh", ImVec2(125, 125));
+		if (ImGui::BeginDragDropTarget()) {
+		
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+
+				const wchar_t* id = (const wchar_t*)payload->Data;
+
+				
+				staticmesh->m_asset_id = wstring_to_string(id);
+				m_asset_manager->assign_assets();
+				m_scene->m_reloaded = true;
+			}
+
+			ImGui::EndDragDropTarget();
 		}
+		
 	}
 }
