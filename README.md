@@ -1,5 +1,6 @@
 ![](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/res/Picture1.png)
-![](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/Screenshot%202024-05-06%20212317.png)
+![](https://github.com/SebastianRautenbach/3D-Game-Engine/blob/main/RenderEngine/res/Screenshot%202024-07-22%20184532.png)
+
 
 **Current state**
 The engine is still in it's very early state but it is "functional". The engine does feature a component based entity system similar to Unity and Unreal. The engine has a basic renderer capable to render 3D and lighting.
