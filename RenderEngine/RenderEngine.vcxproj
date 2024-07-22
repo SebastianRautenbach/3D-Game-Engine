@@ -194,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core_application.h" />
+    <ClInclude Include="include\dependencies\filetypes.h" />
     <ClInclude Include="include\dependencies\ImGuizmo\ImCurveEdit.h" />
     <ClInclude Include="include\dependencies\ImGuizmo\ImGradient.h" />
     <ClInclude Include="include\dependencies\ImGuizmo\ImGuizmo.h" />
@@ -232,6 +233,7 @@
     <ClInclude Include="include\other utils\ZER.h" />
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assets.h" />
+    <ClInclude Include="include\system\assets\assettypes.h" />
     <ClInclude Include="include\system\assets\mesh_asset.h" />
     <ClInclude Include="include\system\assets\texture_asset.h" />
     <ClInclude Include="include\system\assettypes.h" />
@@ -242,6 +244,7 @@
     <ClInclude Include="include\system\core_material.h" />
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />
+    <ClInclude Include="include\system\filewatcher.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
     <ClInclude Include="include\system\tag.h" />

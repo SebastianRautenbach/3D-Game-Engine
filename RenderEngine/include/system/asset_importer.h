@@ -26,6 +26,14 @@ public:
         sqlite3_close(db);
     }
 
+    void add_to_database(const asset_details& asset) {
+        for (auto a : retrieve_all_assets()) {
+            if (asset.path == a.path)
+                return;
+        }
+        insert_asset(asset);
+    }
+
     void insert_asset(const asset_details& asset) {
         std::string sql = "INSERT INTO assets (id, path, type) VALUES ('" + asset.id + "', '" + asset.path + "', '" + asset.type + "');";
         rc = sqlite3_exec(db, sql.c_str(), nullptr, 0, &zErrMsg);

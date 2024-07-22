@@ -341,5 +341,14 @@
     <ClInclude Include="include\system\assets\texture_asset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\system\filewatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\assets\assettypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\dependencies\filetypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
