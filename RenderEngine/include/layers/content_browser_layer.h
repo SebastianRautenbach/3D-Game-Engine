@@ -20,14 +20,15 @@ namespace wizm {
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void update(float delta_time) override;
-
+		
+		std::vector<std::filesystem::path> get_directory_content(const std::filesystem::path& path);
 
 	public:
 
 		filewatcher* watcher;
 		asset_importer asset_import;
 		std::vector<asset_details> assets;
-		//asset_manager asset_manager;
+		std::filesystem::path current_directory = "Game";
 	}; 
 
 

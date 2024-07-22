@@ -20,8 +20,6 @@ namespace wizm {
 		void component_update() override;
 		void component_postupdate() override;
 
-		void change_mesh(const char* file_path);
-
 
 		//////////////////////////////////////////////////
 		//////////  SERIALIZATION METHOD /////////////////
