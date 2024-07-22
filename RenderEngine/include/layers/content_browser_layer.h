@@ -28,7 +28,7 @@ namespace wizm {
 		filewatcher* watcher;
 		asset_importer asset_import;
 		std::vector<asset_details> assets;
-		std::filesystem::path current_directory = "Game";
+		std::filesystem::path current_directory = "GAME";
 	}; 
 
 
