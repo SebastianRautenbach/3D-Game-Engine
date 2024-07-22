@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "other utils/IDGEN.h"
 
 
 struct asset_details {
@@ -35,7 +36,7 @@ public:
     }
 
     void insert_asset(const asset_details& asset) {
-        std::string sql = "INSERT INTO assets (id, path, type) VALUES ('" + asset.id + "', '" + asset.path + "', '" + asset.type + "');";
+        std::string sql = "INSERT INTO assets (id, path, type) VALUES ('" + lowlevelsys::generate_unique_id() + "', '" + asset.path + "', '" + asset.type + "');";
         rc = sqlite3_exec(db, sql.c_str(), nullptr, 0, &zErrMsg);
         if (rc != SQLITE_OK) {
             std::cerr << "SQL error: " << zErrMsg << std::endl;

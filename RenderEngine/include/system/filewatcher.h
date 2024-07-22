@@ -16,20 +16,29 @@ public:
     void refresh() {
 
         asset_importer ai;
-        auto paths = get_files_in_dir("C:/Users/karat/Documents/GitHub/RenderEngine/RenderEngine/GAME/Content");
+        auto paths = get_files_in_dir("GAME/Content/Assets");
 
         for (auto p : paths)
         {
             auto e = get_extension(p);
 
             if (is_mesh_file(e))
+            {
                 ai.add_to_database(asset_details(p, "", tMESH));
+                continue;
+            }
 
             if (is_sound_file(e))
+            {
                 ai.add_to_database(asset_details(p, "", tSOUND));
+                continue;
+            }
 
             if (is_texture_file(e))
+            {
                 ai.add_to_database(asset_details(p, "", tTEXTURE));
+                continue;
+            }
         }
     }
 

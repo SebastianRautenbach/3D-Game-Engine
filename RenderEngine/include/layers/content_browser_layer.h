@@ -5,6 +5,8 @@
 #include "layer.h"
 #include "gl core/core shader.h"
 #include "system/asset_manager.h"
+#include "system/filewatcher.h"
+#include "system/asset_importer.h"
 
 namespace wizm { 
 	
@@ -23,7 +25,9 @@ namespace wizm {
 
 	public:
 
-		core_gl_texture* texture_test;
+		filewatcher* watcher;
+		asset_importer asset_import;
+		std::vector<asset_details> assets;
 		//asset_manager asset_manager;
 	}; 
 

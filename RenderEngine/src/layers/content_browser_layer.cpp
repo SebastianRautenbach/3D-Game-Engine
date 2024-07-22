@@ -4,15 +4,13 @@
 
 wizm::content_browser_layer::content_browser_layer()
 {
-	//std::string path = "backpack/diffuse.png";
-	//asset_manager.add_asset(eImage, path);
-	//asset_manager.add_asset(eImage, "sdff/sdfdfs");
-	//texture_test = new core_gl_texture(path.c_str());
+	watcher = new filewatcher();
 	
 }
 
 wizm::content_browser_layer::~content_browser_layer()
 {
+	delete watcher;
 }
 
 void wizm::content_browser_layer::OnAttach()
@@ -30,9 +28,16 @@ void wizm::content_browser_layer::update(float delta_time)
 	ImGui::Begin("Content Browser");
 	
 	
-	static float time = 0.0;
+	if (ImGui::Button("import")) {
+		watcher->refresh();
+		assets = asset_import.retrieve_all_assets();
+	}
 	
-
+	for (auto asset : assets) {
+		ImGui::Text(asset.path.c_str());
+		ImGui::SameLine();
+		ImGui::Text(asset.id.c_str());
+	}
 	
 	
 	ImGui::End();
