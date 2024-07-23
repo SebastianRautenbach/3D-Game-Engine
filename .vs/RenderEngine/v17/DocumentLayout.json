@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\content_browser_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\content_browser_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\input.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\input.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\update_manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\update_manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\scene_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,15 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "content_browser_layer.cpp",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\content_browser_layer.cpp",
-              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\content_browser_layer.cpp",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\content_browser_layer.cpp",
-              "RelativeToolTip": "RenderEngine\\src\\layers\\content_browser_layer.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAVAAAA",
+              "Title": "input.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\input.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\input.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\input.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\input.cpp",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAFoAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-07-22T18:33:04.937Z",
+              "WhenOpened": "2024-07-23T07:24:34.256Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "gl_renderer.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAiwHkAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-23T07:17:22.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "update_manager.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\update_manager.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\update_manager.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\update_manager.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\update_manager.cpp",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEIAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-23T07:15:53.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "scene_ui_layer.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\scene_ui_layer.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\RenderEngine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\layers\\scene_ui_layer.cpp",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowEcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-22T21:49:07.865Z"
             }
           ]
         }

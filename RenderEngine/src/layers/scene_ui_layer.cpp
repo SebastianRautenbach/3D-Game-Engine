@@ -82,6 +82,11 @@ void wizm::scene_ui_layer::update(float delta_time)
 			if (m_scene->m_entities.empty())
 				m_scene->set_crnt_entity(nullptr);
 		}
+		if (ImGui::MenuItem("Duplicate")) {
+			m_scene->get_crnt_entity();
+			core_entity* crnt = &m_scene->add_entity(m_scene->get_crnt_entity()->m_ent_ID + "1");
+			m_scene->set_crnt_entity(crnt);
+		}
 
 		ImGui::EndPopup();
 	}
@@ -130,10 +135,6 @@ void wizm::scene_ui_layer::update(float delta_time)
 		
 		ImGui::EndPopup();
 	}
-
-
-
-	
 
 
 

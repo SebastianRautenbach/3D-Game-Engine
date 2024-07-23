@@ -1,3 +1,23 @@
 ﻿  Scanning sources for module dependencies...
-  content_browser_layer.cpp
+  input.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(100,22): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(100,22): warning C4244:         with
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(100,22): warning C4244:         [
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(100,22): warning C4244:             T=float
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(100,22): warning C4244:         ]
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(101,22): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(101,22): warning C4244:         with
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(101,22): warning C4244:         [
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(101,22): warning C4244:             T=float
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(101,22): warning C4244:         ]
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(114,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(114,21): warning C4244:         with
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(114,21): warning C4244:         [
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(114,21): warning C4244:             T=float
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(114,21): warning C4244:         ]
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(115,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(115,21): warning C4244:         with
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(115,21): warning C4244:         [
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(115,21): warning C4244:             T=float
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\input.cpp(115,21): warning C4244:         ]
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe

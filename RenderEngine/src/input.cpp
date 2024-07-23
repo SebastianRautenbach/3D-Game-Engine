@@ -1,5 +1,12 @@
 #include "input.h"
 #include "iostream"
+#define GLM_ENABLE_EXPERIMENTAL
+#include<glm/glm.hpp>
+#include<glm/gtc/matrix_transform.hpp>
+#include<glm/gtc/type_ptr.hpp>
+#include<glm/gtx/rotate_vector.hpp>
+#include<glm/gtx/vector_angle.hpp>
+
 
 //////////////////////////////////////////////////////////////////////////
 // DEFAULT CONSTRUCTOR
@@ -72,15 +79,6 @@ bool input_manager::has_key_been_pressed(int key)
 
 
 
-// bool input_manager::has_mouse_wheel_moved(int motion) {
-// 
-// 	auto it = mouse_wheel.find(motion);
-// 	if (it != mouse_wheel.end()) {
-// 		return it->second;
-// 	}
-// 	return false;
-// }
-
 
 
 //-----------------------------------------------------------------------
@@ -92,12 +90,11 @@ mouse_info input_manager::get_mouse_offset_new()
 	double mouse_x, mouse_y;
 	mouse_info return_info;
 
-	
-	
 
+	
 	if (!_mouse_info.mousemoved)
 	{
-		set_mouse_cursor_pos(0, 0);
+		set_mouse_cursor_pos(w_width / 2, w_height / 2);
 		glfwGetCursorPos(m_window, &mouse_x, &mouse_y);
 		
 		last_mouse_pos.x = mouse_x;
@@ -106,17 +103,18 @@ mouse_info input_manager::get_mouse_offset_new()
 	}
 	else
 	{
+		
 		glfwGetCursorPos(m_window, &mouse_x, &mouse_y);
 	}
-
-
+	
+	
 	return_info.x_offset = mouse_x - last_mouse_pos.x;
 	return_info.y_offset = -last_mouse_pos.y + mouse_y;
-
+	
 	last_mouse_pos.x = mouse_x;
 	last_mouse_pos.y = mouse_y;
-
-	set_mouse_cursor_pos(0, 0);
+	
+	set_mouse_cursor_pos(w_width / 2, w_height / 2);
 
 	return return_info;
 

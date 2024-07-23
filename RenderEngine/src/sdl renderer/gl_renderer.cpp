@@ -89,11 +89,10 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 	if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
 	{		
-
-		//m_input_manager->set_hide_mouse_cursor(true);
+		m_input_manager->set_hide_mouse_cursor(true);
 		
-		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * deltaTime);
-		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * deltaTime);
+		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * .01);
+		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * .01);
 
 
 

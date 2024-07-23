@@ -52,7 +52,7 @@ void wizm::content_browser_layer::update(float delta_time)
 			if (ImGui::Button(entry.filename().string().c_str())) {
 			}
 			if (ImGui::BeginDragDropSource()) {
-				ImGui::SetTooltip("%s", entry.string().c_str());
+				ImGui::SetTooltip("%s", entry.filename().string().c_str());
 
 				std::wstring asset_id;
 				for (const auto& asset : assets) {
