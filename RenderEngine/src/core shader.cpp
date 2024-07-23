@@ -66,7 +66,7 @@ void core_gl_shader::use_shader()
 
 
 
-core_gl_texture::core_gl_texture(const char* file_path)
+core_gl_texture::core_gl_texture(const char* file_path, bool vert_on_load)
 {
 	glGenTextures(1, &texture_id);
 	glBindTexture(GL_TEXTURE_2D, texture_id);
@@ -82,7 +82,7 @@ core_gl_texture::core_gl_texture(const char* file_path)
 
 
 	int width, height, nrChannels;
-	stbi_set_flip_vertically_on_load(true);
+	stbi_set_flip_vertically_on_load(vert_on_load);
 
 	unsigned char* data = stbi_load(file_path, &width, &height, &nrChannels, 0);
 	if (data)
@@ -113,7 +113,7 @@ void core_gl_texture::unbind_texture()
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void core_gl_texture::set_texture(const char* file_path)
+void core_gl_texture::set_texture(const char* file_path, bool vert_on_load)
 {
 	glBindTexture(GL_TEXTURE_2D, texture_id);
 
@@ -128,7 +128,7 @@ void core_gl_texture::set_texture(const char* file_path)
 
 
 	int width, height, nrChannels;
-	stbi_set_flip_vertically_on_load(true);
+	stbi_set_flip_vertically_on_load(vert_on_load);
 
 	unsigned char* data = stbi_load(file_path, &width, &height, &nrChannels, 0);
 	if (data)
