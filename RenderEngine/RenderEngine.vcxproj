@@ -242,7 +242,6 @@
     <ClInclude Include="include\system\asset_importer.h" />
     <ClInclude Include="include\system\asset_manager.h" />
     <ClInclude Include="include\system\billboard.h" />
-    <ClInclude Include="include\system\core_material.h" />
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />
     <ClInclude Include="include\system\filewatcher.h" />

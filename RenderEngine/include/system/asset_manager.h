@@ -7,7 +7,6 @@
 #include <sstream>
 #include <filesystem>
 #include <fstream>
-#include "asset_class.h"
 #include <unordered_map>
 #include "system/assets.h"
 #include "asset_importer.h"

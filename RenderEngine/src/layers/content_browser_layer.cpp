@@ -1,7 +1,7 @@
 #include "layers/content_browser_layer.h"
 #include "other utils/strconvr.h"
 #include "IconsFontAwesome5.h"
-
+#include "filetypes.h"
 
 wizm::content_browser_layer::content_browser_layer()
 {
@@ -76,15 +76,11 @@ void wizm::content_browser_layer::update(float delta_time)
             //---------------------------------------------------------------------------------------------------------------	FILE
             ImTextureID final_texture_icon = (ImTextureID)file_texture->texture_id;
             
-            if(file_name.find_last_of(".obj") == file_name.size() - 1 ||
-                file_name.find_last_of(".fbx") == file_name.size() - 1
-                )
+            if(is_mesh_file(file_name))
                 final_texture_icon = (ImTextureID)mesh_file_icon->texture_id;
-            else if(file_name.find_last_of(".jpg") == file_name.size() - 1 ||
-                file_name.find_last_of(".png") == file_name.size() - 1
-                )
+            else if(is_texture_file(file_name))
                 final_texture_icon = (ImTextureID)image_file_icon->texture_id;
-            else if (file_name.find_last_of(".zer") == file_name.size() - 1)
+            else if (is_map_file(file_name))
                 final_texture_icon = (ImTextureID)map_file_icon->texture_id;
 
                

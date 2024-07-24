@@ -342,7 +342,8 @@
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\glad\\glad.h",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\khr\\khrplatform.h",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\glfw\\glfw3.h",
-            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\stb_image.h"
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\stb_image.h",
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\material_types.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

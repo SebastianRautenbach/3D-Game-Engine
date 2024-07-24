@@ -341,7 +341,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	{
 		auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(component);
 		
-		ImGui::Button("change mesh", ImVec2(125, 125));
+		ImGui::Button("Change Mesh", ImVec2(125, 125));
 		if (ImGui::BeginDragDropTarget()) {
 		
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
@@ -350,6 +350,38 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 				
 				staticmesh->m_asset_id = wstring_to_string(id);
+				m_asset_manager->assign_assets();
+				m_scene->m_reloaded = true;
+			}
+
+			ImGui::EndDragDropTarget();
+		}
+
+		ImGui::Button("Change Diffuse Texture", ImVec2(125, 125));
+		if (ImGui::BeginDragDropTarget()) {
+
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+
+				const wchar_t* id = (const wchar_t*)payload->Data;
+
+
+				staticmesh->m_material->diffuse_asset_id = wstring_to_string(id);
+				m_asset_manager->assign_assets();
+				m_scene->m_reloaded = true;
+			}
+
+			ImGui::EndDragDropTarget();
+		}
+
+		ImGui::Button("Change Specular Texture", ImVec2(125, 125));
+		if (ImGui::BeginDragDropTarget()) {
+
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+
+				const wchar_t* id = (const wchar_t*)payload->Data;
+
+
+				staticmesh->m_material->specular_asset_id = wstring_to_string(id);
 				m_asset_manager->assign_assets();
 				m_scene->m_reloaded = true;
 			}

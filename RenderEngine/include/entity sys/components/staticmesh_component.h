@@ -46,6 +46,8 @@ namespace wizm {
 			));
 
 			m_asset_id = save_t[parent_name][index].get_string("asset id")[0];
+			m_material->diffuse_asset_id = save_t[parent_name][index]["material"].get_string("diffuse_asset_id")[0];
+			m_material->specular_asset_id = save_t[parent_name][index]["material"].get_string("specular_asset_id")[0];
 		
 		};
 
@@ -57,6 +59,8 @@ namespace wizm {
 			save_t[parent_name]["staticmesh" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 			
 			save_t[parent_name]["staticmesh" + index].set_string("asset id", { m_asset_id });
+			save_t[parent_name]["staticmesh" + index]["material"].set_string("diffuse_asset_id", { m_material->diffuse_asset_id});
+			save_t[parent_name]["staticmesh" + index]["material"].set_string("specular_asset_id", { m_material->specular_asset_id});
 
 
 		}

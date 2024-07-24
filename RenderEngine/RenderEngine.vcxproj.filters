@@ -230,9 +230,6 @@
     <ClInclude Include="include\system\core_model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\system\core_material.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\system\asset_manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>

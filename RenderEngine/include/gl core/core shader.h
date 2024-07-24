@@ -7,6 +7,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include <string>
+#include "system/material_types.h"
+
 
 
 class core_gl_shader {
@@ -112,7 +114,7 @@ class core_gl_texture {
 
 public:
 
-	core_gl_texture(const char* file_path, bool vert_on_load = true);
+	core_gl_texture(const char* file_path, bool vert_on_load = true, unsigned int format = GL_RGBA);
 	void bind_texture();
 	void delete_texture();
 	void unbind_texture();
