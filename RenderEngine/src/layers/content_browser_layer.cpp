@@ -8,14 +8,20 @@ wizm::content_browser_layer::content_browser_layer()
 	watcher = new filewatcher();
 	assets = asset_import.retrieve_all_assets();
 
-	folder_texture = new core_gl_texture("resources/images/folder_icon.png");
+    folder_file_texture = new core_gl_texture("resources/images/folder_icon.png");
 	file_texture = new core_gl_texture("resources/images/file_icon.png");
+    mesh_file_icon = new core_gl_texture("resources/images/mesh_file_icon.png");
+    image_file_icon = new core_gl_texture("resources/images/image_file_icon.png");
+    map_file_icon = new core_gl_texture("resources/images/map_file_icon.png");
 }
 
 wizm::content_browser_layer::~content_browser_layer()
 {
 	delete watcher;
-	delete folder_texture;
+	delete folder_file_texture;
+    delete mesh_file_icon;
+    delete image_file_icon;
+    delete map_file_icon;
 }
 
 void wizm::content_browser_layer::OnAttach()
@@ -60,7 +66,7 @@ void wizm::content_browser_layer::update(float delta_time)
         ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
         if (std::filesystem::is_directory(entry)) {
             //---------------------------------------------------------------------------------------------------------------	FOLDER
-            ImGui::ImageButton((ImTextureID)folder_texture->texture_id, { thumdnail_size / 2, thumdnail_size / 2 }, { 0,1 }, { 1,0 });
+            ImGui::ImageButton((ImTextureID)folder_file_texture->texture_id, { thumdnail_size / 2, thumdnail_size / 2 }, { 0,1 }, { 1,0 });
             if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
                 current_directory = entry;
             }
@@ -68,7 +74,23 @@ void wizm::content_browser_layer::update(float delta_time)
         }
         else {
             //---------------------------------------------------------------------------------------------------------------	FILE
-            ImGui::ImageButton((ImTextureID)file_texture->texture_id, { thumdnail_size / 2, thumdnail_size / 2 }, { 0,1 }, { 1,0 });
+            ImTextureID final_texture_icon = (ImTextureID)file_texture->texture_id;
+            
+            if(file_name.find_last_of(".obj") == file_name.size() - 1 ||
+                file_name.find_last_of(".fbx") == file_name.size() - 1
+                )
+                final_texture_icon = (ImTextureID)mesh_file_icon->texture_id;
+            else if(file_name.find_last_of(".jpg") == file_name.size() - 1 ||
+                file_name.find_last_of(".png") == file_name.size() - 1
+                )
+                final_texture_icon = (ImTextureID)image_file_icon->texture_id;
+            else if (file_name.find_last_of(".zer") == file_name.size() - 1)
+                final_texture_icon = (ImTextureID)map_file_icon->texture_id;
+
+               
+
+            ImGui::ImageButton(final_texture_icon, { thumdnail_size / 2, thumdnail_size / 2 }, { 0,1 }, { 1,0 });
+            
             if (ImGui::BeginDragDropSource()) {
                 ImGui::SetTooltip("%s", entry.filename().string().c_str());
 
