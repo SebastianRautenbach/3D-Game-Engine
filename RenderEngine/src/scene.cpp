@@ -82,7 +82,7 @@ namespace wizm {
 			e->save_data("", "", read);
 		}
 
-		if(current_scene.empty())
+		if(current_scene.empty() || !path.empty())
 		{
 			read.save_file(read, path);
 			current_scene = path;

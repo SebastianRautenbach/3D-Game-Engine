@@ -21,13 +21,17 @@ void wizm::project_modifier::OnDetach()
 void wizm::project_modifier::update(float delta_time)
 {
     static bool show_save_popup = false;
-    static char map_name[128] = "";
+    static char map_name[128] = "GAME/new_save.zer";
 
 
 	ImGui::Begin("file");
 
-    if (ImGui::Button("Save")) {
+    if (ImGui::Button("Save As")) {
         show_save_popup = true;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Save")) {
+        m_scene->save_map_data("");
     }
 
     if (show_save_popup) {
@@ -39,20 +43,11 @@ void wizm::project_modifier::update(float delta_time)
         ImGui::InputText("##map_name", map_name, IM_ARRAYSIZE(map_name));
 
         if (ImGui::Button("OK", ImVec2(120, 0))) {
-            
-            std::string new_map_name = map_name;
+           
 
-            if (new_map_name.size() > 3) {
-                new_map_name = "GAME/";
-                new_map_name += map_name;
-                new_map_name += ".zer";
+            m_scene->save_map_data(map_name);
 
-                m_scene->save_map_data(new_map_name);
-
-                show_save_popup = false;
-            }
-
-            
+            show_save_popup = false;
 
             
             ImGui::CloseCurrentPopup();
