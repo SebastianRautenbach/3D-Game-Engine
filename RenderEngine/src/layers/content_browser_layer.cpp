@@ -3,7 +3,8 @@
 #include "IconsFontAwesome5.h"
 #include "filetypes.h"
 
-wizm::content_browser_layer::content_browser_layer()
+wizm::content_browser_layer::content_browser_layer(asset_manager* p_asset_manager)
+    :m_asset_manager(p_asset_manager)
 {
 	watcher = new filewatcher();
 	assets = asset_import.retrieve_all_assets();
@@ -58,6 +59,8 @@ void wizm::content_browser_layer::update(float delta_time)
 	auto contents = get_directory_content(current_directory);
 	ImGui::Columns(static_cast<int>(panel_width), 0, false);
 	
+    static std::string new_file_name;
+    static std::string selected_file_path;
 	
     for (const auto& entry : get_directory_content(current_directory)) {
         auto file_name = entry.filename().string();
@@ -67,6 +70,11 @@ void wizm::content_browser_layer::update(float delta_time)
         if (std::filesystem::is_directory(entry)) {
             //---------------------------------------------------------------------------------------------------------------	FOLDER
             ImGui::ImageButton((ImTextureID)folder_file_texture->texture_id, { thumdnail_size / 2, thumdnail_size / 2 }, { 0,1 }, { 1,0 });
+            
+            if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
+                ImGui::OpenPopup("FilePopup");
+            }
+
             if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
                 current_directory = entry;
             }
@@ -86,11 +94,54 @@ void wizm::content_browser_layer::update(float delta_time)
                
 
             ImGui::ImageButton(final_texture_icon, { thumdnail_size / 2, thumdnail_size / 2 }, { 0,1 }, { 1,0 });
+
+            if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
+                ImGui::OpenPopup("FilePopup");
+                selected_file_path = entry.string();
+                new_file_name = file_name;
+            }
+
+            if (ImGui::BeginPopup("FilePopup")) {
+                if (ImGui::MenuItem("Delete")) {
+                    // Code to delete the file
+                    std::filesystem::remove(entry);
+                    std::cout << "File deleted: " << entry << std::endl; // For demonstration
+                }
+                if (ImGui::MenuItem("Rename")) {
+                    // Set focus to the text input field
+                    ImGui::SetKeyboardFocusHere();
+                }
+
+                // Text input for renaming
+                ImGui::InputText("##RenameFile", &new_file_name[0], new_file_name.size() + 1);
+                if (ImGui::IsItemDeactivatedAfterEdit()) {
+                    // If the user presses Enter or the input loses focus, rename the file
+                    if (!new_file_name.empty()) {
+                        std::filesystem::path new_path = entry.parent_path() / new_file_name;
+                        if(new_path.string().find(".zer") != -1)
+                            std::filesystem::rename(entry, new_path);
+                        std::cout << "File renamed to: " << new_path << std::endl; // For demonstration
+                    }
+                    ImGui::CloseCurrentPopup();
+                }
+
+                ImGui::EndPopup();
+            }
+
             
             if (ImGui::BeginDragDropSource()) {
                 ImGui::SetTooltip("%s", entry.filename().string().c_str());
 
                 std::wstring asset_id;
+                const wchar_t* wstr = L"";
+                
+                if (entry.filename().string().find(".zer") != -1) {
+                    
+                    asset_id = string_to_wstring(entry.string());
+                    wstr = asset_id.c_str();
+                }
+
+
                 for (const auto& asset : assets) {
                     auto asset_path = std::filesystem::directory_entry(asset.path).path().string();
                     std::replace(asset_path.begin(), asset_path.end(), '/', '\\');
@@ -98,23 +149,56 @@ void wizm::content_browser_layer::update(float delta_time)
 
                     if (asset_path == entry_path) {
                         asset_id = string_to_wstring(asset.id);
+                        wstr = asset_id.c_str();
                     }
                 }
-
-                const wchar_t* wstr = asset_id.c_str();
 
                 ImGui::SetDragDropPayload("CONTENT_BROWSER_ITEM", wstr, (wcslen(wstr) + 1) * sizeof(wchar_t));
                 ImGui::EndDragDropSource();
             }
             ImGui::Text(file_name.c_str());
         }
+
+
+
+
+
         ImGui::PopStyleColor();
         ImGui::NextColumn();
         ImGui::PopID();
     }
 
 	
+    update_add_content_ui(current_directory);
+
 	ImGui::End();
+}
+
+void wizm::content_browser_layer::update_add_content_ui(const std::filesystem::path& path) {
+    //if (ImGui::IsMouseClicked(ImGuiMouseButton_Right) && ImGui::IsWindowHovered(ImGuiHoveredFlags_RootAndChildWindows)) {
+    //    ImGui::OpenPopup("RightClickPopup");
+    //}
+    //
+    //if (ImGui::BeginPopup("RightClickPopup")) {
+    //    if (ImGui::MenuItem("Create Map (.zer)")) {
+    //        // Code to create a file with the ".zer" extension
+    //        std::filesystem::path new_map_path = path / "new_map.zer";
+    //        std::ofstream file(new_map_path);
+    //        if (file.is_open()) {
+    //            // Write initial content to the file if needed
+    //            file.close();
+    //        }
+    //    }
+    //
+    //    // Add more options here as needed
+    //    // if (ImGui::MenuItem("Another Option")) {
+    //    //     // Handle another option
+    //    // }
+    //
+    //    ImGui::EndPopup();
+    //}
+
+
 }
 
 std::vector<std::filesystem::path> wizm::content_browser_layer::get_directory_content(const std::filesystem::path& path)
@@ -124,6 +208,4 @@ std::vector<std::filesystem::path> wizm::content_browser_layer::get_directory_co
 		contents.push_back(entry.path());
 	}
 	return contents;
-
-
 }

@@ -29,6 +29,15 @@ namespace wizm {
 
     public:
 
+        asset_details get_asset_details_from_id(std::string ID) {
+            auto assets = asset_import.retrieve_all_assets();
+            for (const auto& asset : assets) {
+                if (asset.id == ID)
+                    return asset;
+            }
+            return asset_details("", "", "");
+        }
+
         void assign_assets();
 
         void load_assets_db();

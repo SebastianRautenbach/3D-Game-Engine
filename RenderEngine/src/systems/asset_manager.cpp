@@ -25,22 +25,22 @@ void wizm::asset_manager::assign_assets()
 				{
 					if (m_assets[mesh_comps->m_asset_id])
 					{
-						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_asset_id, "");
-						mesh_comps->m_material->m_texture_n.clear();
+						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_asset_id, "");		
 						
-						if(!mesh_comps->m_material->diffuse_asset_id.empty())
-							mesh_comps->m_material->m_texture_n.emplace_back(load<texture_asset>(mesh_comps->m_material->diffuse_asset_id, ""));
-						if(!mesh_comps->m_material->specular_asset_id.empty())
-							mesh_comps->m_material->m_texture_n.emplace_back(load<texture_asset>(mesh_comps->m_material->specular_asset_id, ""));
-					}
-					else {                            		//---------------------------------------------- I DONT LIKE THIS APPROACH
-															//---------------------------------------------- 
-						for (auto& asset : m_assets) {
-							if (asset.second == mesh_comps->m_model) {
-								mesh_comps->m_asset_id = asset.first;
-							}
+						if(!mesh_comps->m_material->diffuse_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).type == tTEXTURE &&
+							!get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).path.empty()
+							)
+						{
+							mesh_comps->m_material->m_texture_n[0] = load<texture_asset>(mesh_comps->m_material->diffuse_asset_id, "");
 						}
-					}
+							
+						if (!mesh_comps->m_material->specular_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->specular_asset_id).type == tTEXTURE &&
+							!get_asset_details_from_id(mesh_comps->m_material->specular_asset_id).path.empty()
+							)
+						{
+							mesh_comps->m_material->m_texture_n[1] = load<texture_asset>(mesh_comps->m_material->specular_asset_id, "");
+						}
+					}					
 				}
 			}
 		}

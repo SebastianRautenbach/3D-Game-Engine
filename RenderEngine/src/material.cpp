@@ -7,6 +7,8 @@ namespace wizm {
 
 	core_material::core_material()
 	{
+		m_texture_n.emplace_back();
+		m_texture_n.emplace_back();
 	}
 
 	core_material::~core_material()
@@ -24,13 +26,13 @@ namespace wizm {
 	{
 		m_shader->setFloat("material.shininess", m_shininess);
 
-		if(!diffuse_asset_id.empty())
+		if(m_texture_n[0])
 		{
 			glActiveTexture(GL_TEXTURE0);
 			m_texture_n[0]->draw(nullptr);
 		}
 
-		if(!specular_asset_id.empty())
+		if(m_texture_n[1])
 		{
 			glActiveTexture(GL_TEXTURE0 + 1);
 			m_texture_n[1]->draw(nullptr);
@@ -41,7 +43,8 @@ namespace wizm {
 	void core_material::unbind_material()
 	{
 		for (int i = 0; i < m_texture_n.size(); i++) {
-			m_texture_n[i]->unbind();
+			if(m_texture_n[i])
+				m_texture_n[i]->unbind();
 		}
 	}
 

@@ -16,8 +16,8 @@ namespace wizm {
 		unsigned int total_component_count();
 
 		// serialization
-		void read_map_data();
-		void save_map_data();
+		void read_map_data(std::string file_path);
+		void save_map_data(std::string path);
 		
 		
 		// entity related
@@ -43,6 +43,7 @@ namespace wizm {
 	public:
 		std::vector<core_entity*> m_entities;
 		bool m_reloaded = false;
+		std::string current_scene = "";
 
 	private:
 		core_entity* m_selected_entity;

@@ -114,7 +114,7 @@ class core_gl_texture {
 
 public:
 
-	core_gl_texture(const char* file_path, bool vert_on_load = true, unsigned int format = GL_RGBA);
+	core_gl_texture(const char* file_path, bool vert_on_load = true);
 	void bind_texture();
 	void delete_texture();
 	void unbind_texture();

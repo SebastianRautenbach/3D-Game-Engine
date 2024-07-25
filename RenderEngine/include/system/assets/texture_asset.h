@@ -14,10 +14,7 @@ namespace wizm {
 		}
 
 		void load(const std::string& path) override {
-			if(path.find("png") != -1)
-				texture = new core_gl_texture(path.c_str(),true, GL_RGBA);
-			else
-				texture = new core_gl_texture(path.c_str(),true, GL_RGB);
+			texture = new core_gl_texture(path.c_str(),true);
 		}
 
 		void unbind() {

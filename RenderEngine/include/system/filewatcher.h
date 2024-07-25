@@ -44,10 +44,12 @@ public:
 
 private:
 
+
+
     std::vector<std::string> get_files_in_dir(const std::string& directoryPath) {
         std::vector<std::string> files;
         try {
-            for (const auto& entry : std::filesystem::directory_iterator(directoryPath)) {
+            for (const auto& entry : std::filesystem::recursive_directory_iterator(directoryPath)) {
                 if (entry.is_regular_file()) {
                     files.push_back(entry.path().string());
                 }
@@ -61,5 +63,6 @@ private:
         }
         return files;
     }
+
 
 };

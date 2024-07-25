@@ -341,49 +341,57 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	{
 		auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(component);
 		
-		ImGui::Button("Change Mesh", ImVec2(125, 125));
+		ImGui::Text("Change Mesh");
+		ImGui::Button("Drag and Drop", ImVec2(125, 125));
 		if (ImGui::BeginDragDropTarget()) {
 		
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
 
 				const wchar_t* id = (const wchar_t*)payload->Data;
 
+				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tMESH)
+				{
+					staticmesh->m_asset_id = wstring_to_string(id);
+					m_asset_manager->assign_assets();
+					m_scene->m_reloaded = true;
+				}
+			}
+
+			ImGui::EndDragDropTarget();
+		}
+		ImGui::Text("Change Diffuse Texture");
+		ImGui::Button("Drag and Drop", ImVec2(125, 125));
+		if (ImGui::BeginDragDropTarget()) {
+
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+
+				const wchar_t* id = (const wchar_t*)payload->Data;
+
+				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tTEXTURE)
+				{
+					staticmesh->m_material->diffuse_asset_id = wstring_to_string(id);
+					m_asset_manager->assign_assets();
+					m_scene->m_reloaded = true;
+				}
+			}
+
+			ImGui::EndDragDropTarget();
+		}
+
+		ImGui::Text("Change Specular Texture");
+		ImGui::Button("Drag and Drop", ImVec2(125, 125));
+		if (ImGui::BeginDragDropTarget()) {
+
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+
+				const wchar_t* id = (const wchar_t*)payload->Data;
+
+				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tTEXTURE) {
+					staticmesh->m_material->specular_asset_id = wstring_to_string(id);
+					m_asset_manager->assign_assets();
+					m_scene->m_reloaded = true;
+				}
 				
-				staticmesh->m_asset_id = wstring_to_string(id);
-				m_asset_manager->assign_assets();
-				m_scene->m_reloaded = true;
-			}
-
-			ImGui::EndDragDropTarget();
-		}
-
-		ImGui::Button("Change Diffuse Texture", ImVec2(125, 125));
-		if (ImGui::BeginDragDropTarget()) {
-
-			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
-
-				const wchar_t* id = (const wchar_t*)payload->Data;
-
-
-				staticmesh->m_material->diffuse_asset_id = wstring_to_string(id);
-				m_asset_manager->assign_assets();
-				m_scene->m_reloaded = true;
-			}
-
-			ImGui::EndDragDropTarget();
-		}
-
-		ImGui::Button("Change Specular Texture", ImVec2(125, 125));
-		if (ImGui::BeginDragDropTarget()) {
-
-			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
-
-				const wchar_t* id = (const wchar_t*)payload->Data;
-
-
-				staticmesh->m_material->specular_asset_id = wstring_to_string(id);
-				m_asset_manager->assign_assets();
-				m_scene->m_reloaded = true;
 			}
 
 			ImGui::EndDragDropTarget();

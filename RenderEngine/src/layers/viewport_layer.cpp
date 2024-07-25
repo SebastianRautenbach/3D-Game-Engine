@@ -1,6 +1,7 @@
 #include "layers/viewport_layer.h"
 #include "other utils/matrix_math.h"
 #include "input.h"
+#include "other utils/strconvr.h"
 
 wizm::viewport_layer::viewport_layer(unsigned int fbID, core_3d_camera* camera, core_scene* scene)
     : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene)
@@ -31,6 +32,23 @@ void wizm::viewport_layer::update(float delta_time)
 
 
     ImGui::Image(reinterpret_cast<void*>(m_fbID), ImVec2{ mSize.x, mSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+    if (ImGui::BeginDragDropTarget()) {
+
+        if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+
+            const wchar_t* id = (const wchar_t*)payload->Data;
+            if(wstring_to_string(id).find(".zer") != -1)
+            {
+                m_scene->read_map_data(wstring_to_string(id));
+                m_scene->m_reloaded = true;
+            }
+
+
+            
+        }
+
+        ImGui::EndDragDropTarget();
+    }
 
 
     ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize(" [T] ").x, 25); 

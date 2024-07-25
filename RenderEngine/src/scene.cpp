@@ -60,10 +60,11 @@ namespace wizm {
 
 	//--------------------------------------------------------- SERIALIZATION METHODS
 
-	void core_scene::read_map_data() {
+	void core_scene::read_map_data(std::string file_path) {
 		
 		filedata::ZER read;
-		read.read_file_cntx("GAME/Content/levels/level1.zer");
+		read.read_file_cntx(file_path);
+		current_scene = file_path;
 
 		clear_entities();
 
@@ -74,13 +75,19 @@ namespace wizm {
 	}
 
 
-	void core_scene::save_map_data() {
+	void core_scene::save_map_data(std::string path) {
 		filedata::ZER read;
 
 		for (const auto& e : m_entities) {
 			e->save_data("", "", read);
 		}
 
-		read.save_file(read, "GAME/Content/levels/level1.zer");
+		if(current_scene.empty())
+		{
+			read.save_file(read, path);
+			current_scene = path;
+		}
+		else
+			read.save_file(read, current_scene);
 	}
 }
