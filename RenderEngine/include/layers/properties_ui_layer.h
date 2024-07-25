@@ -23,7 +23,7 @@ namespace wizm {
 
 		// properties panel specific
 		
-		void component_add_popup(core_entity* select_ent);
+		void component_add_popup(std::shared_ptr<core_entity> select_ent);
 		void modify_component_attrib(std::string& type, std::shared_ptr<core_component> component);
 
 	private:

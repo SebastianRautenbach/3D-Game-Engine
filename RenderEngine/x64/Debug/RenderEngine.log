@@ -1,25 +1,8 @@
 ﻿  Scanning sources for module dependencies...
-  scene.cpp
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/scene.cpp')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/scene.cpp')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/scene.cpp')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/scene.cpp')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/scene.cpp')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/scene.cpp')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'src/scene.cpp')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\scene.cpp(40,38): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  content_browser_layer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\content_browser_layer.cpp(74,32): warning C4312: 'type cast': conversion from 'unsigned int' to 'ImTextureID' of greater size
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\content_browser_layer.cpp(87,46): warning C4312: 'type cast': conversion from 'unsigned int' to 'ImTextureID' of greater size
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\content_browser_layer.cpp(90,38): warning C4312: 'type cast': conversion from 'unsigned int' to 'ImTextureID' of greater size
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\content_browser_layer.cpp(92,38): warning C4312: 'type cast': conversion from 'unsigned int' to 'ImTextureID' of greater size
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\content_browser_layer.cpp(94,38): warning C4312: 'type cast': conversion from 'unsigned int' to 'ImTextureID' of greater size
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe

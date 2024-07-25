@@ -276,7 +276,7 @@ void wizm::properties_ui_layer::update(float delta_time)
 	ImGui::End();
 }
 
-void wizm::properties_ui_layer::component_add_popup(core_entity* select_ent)
+void wizm::properties_ui_layer::component_add_popup(std::shared_ptr<core_entity> select_ent)
 {
 	if (ImGui::Button("Add Component")) {
 		ImGui::OpenPopup("AddComponentPopup");

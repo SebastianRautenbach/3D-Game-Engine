@@ -22,16 +22,16 @@ namespace wizm {
 		
 		// entity related
 		
-		core_entity& add_entity(std::string entity_name);
+		std::shared_ptr<core_entity> add_entity(std::string entity_name);
 
 
 		// modifying only one entity
 
-		core_entity* get_crnt_entity() {
+		std::shared_ptr<core_entity> get_crnt_entity() {
 			return m_selected_entity ? m_selected_entity : nullptr;
 		}
 
-		void set_crnt_entity(core_entity* ent) { m_selected_entity = ent; };
+		void set_crnt_entity(std::shared_ptr<core_entity> ent) { m_selected_entity = ent; };
 
 
 	private:
@@ -41,12 +41,12 @@ namespace wizm {
 		void clear_entities();
 
 	public:
-		std::vector<core_entity*> m_entities;
+		std::vector<std::shared_ptr<core_entity>> m_entities;
 		bool m_reloaded = false;
 		std::string current_scene = "";
 
 	private:
-		core_entity* m_selected_entity;
+		std::shared_ptr<core_entity> m_selected_entity;
 	};
 
 

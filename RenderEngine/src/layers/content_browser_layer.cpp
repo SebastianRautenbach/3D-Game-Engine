@@ -56,6 +56,8 @@ void wizm::content_browser_layer::update(float delta_time)
 	float thumdnail_size = 256;
 	float panel_width = ImGui::GetContentRegionAvail().x / thumdnail_size * 2;
 
+    if (panel_width < 1) { panel_width = 1; }
+
 	auto contents = get_directory_content(current_directory);
 	ImGui::Columns(static_cast<int>(panel_width), 0, false);
 	

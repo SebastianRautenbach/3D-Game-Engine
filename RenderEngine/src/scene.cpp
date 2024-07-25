@@ -42,18 +42,16 @@ namespace wizm {
 		return total;
 	}
 	
-	core_entity& core_scene::add_entity(std::string entity_name)
+	std::shared_ptr<core_entity> core_scene::add_entity(std::string entity_name)
 	{
-		auto ptr = new core_entity(entity_name);
+		auto ptr = std::make_shared<core_entity>(entity_name);
 		m_entities.push_back(ptr);
-		return *ptr;
+		return ptr;
 	}
 
 	void core_scene::clear_entities()
 	{
 		m_reloaded = true;
-		for (auto& ent : m_entities)
-			delete ent;
 		m_entities.clear();
 		set_crnt_entity(nullptr);
 	}
@@ -69,8 +67,8 @@ namespace wizm {
 		clear_entities();
 
 		for (const auto& i : read.class_properties) {
-			auto& ent = add_entity(i.first);
-			ent.read_saved_data("","", read);
+			auto ent = add_entity(i.first);
+			ent->read_saved_data("","", read);
 		}
 	}
 

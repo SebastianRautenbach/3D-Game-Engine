@@ -77,14 +77,12 @@ glm::mat4 wizm::core_node::get_transform()
     glm::mat4 localTransform = glm::translate(glm::mat4(1.0f), m_translation) * rotation * 
         glm::scale(glm::mat4(1.0f), m_scale);
 
-
-    if (m_parent_node != nullptr) {
-        
+    
+    if (m_parent_node) {
         glm::mat4 parentTransform = m_parent_node->get_transform();
         return parentTransform * localTransform;
     }
     else {
-       
         return localTransform;
     }
 }

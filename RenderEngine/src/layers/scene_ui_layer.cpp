@@ -73,7 +73,6 @@ void wizm::scene_ui_layer::update(float delta_time)
 		if (ImGui::MenuItem("Delete")) {
 			m_scene->m_entities.erase(std::find(m_scene->m_entities.begin(), m_scene->m_entities.end(), m_scene->get_crnt_entity()));
 			
-			delete m_scene->get_crnt_entity();
 			m_renderer->update_draw_data();
 			
 			for (auto ents : m_scene->m_entities)
@@ -84,7 +83,7 @@ void wizm::scene_ui_layer::update(float delta_time)
 		}
 		if (ImGui::MenuItem("Duplicate")) {
 			m_scene->get_crnt_entity();
-			core_entity* crnt = &m_scene->add_entity(m_scene->get_crnt_entity()->m_ent_ID + "1");
+			auto crnt = m_scene->add_entity(m_scene->get_crnt_entity()->m_ent_ID + "1");
 			m_scene->set_crnt_entity(crnt);
 		}
 
