@@ -122,6 +122,34 @@ void wizm::viewport_layer::update(float delta_time)
 
     }
 
+    if(!ImGuizmo::IsUsing())
+    {
+        static ImVec2 rectStart(-1, -1);
+        static ImVec2 rectEnd(-1, -1);
+
+ 
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+            rectStart = ImGui::GetMousePos();
+            rectEnd = rectStart;             
+        }
+
+        if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
+            rectEnd = ImGui::GetMousePos(); 
+        }
+
+       
+        if (rectStart.x >= 0 && rectStart.y >= 0 && rectEnd.x >= 0 && rectEnd.y >= 0) {
+            ImDrawList* draw_list = ImGui::GetWindowDrawList();
+            draw_list->AddRectFilled(rectStart, rectEnd, IM_COL32(0, 0, 255, 100)); 
+        }
+
+
+        if (ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
+            rectStart = ImVec2(-1, -1);
+            rectEnd = ImVec2(-1, -1);
+        }
+    }
+
 
     ImGui::End();
 }
