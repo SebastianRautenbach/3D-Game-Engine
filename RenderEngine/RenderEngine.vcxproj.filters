@@ -162,6 +162,9 @@
     <ClCompile Include="include\other utils\strconvr.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\system\core_renderable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\update_manager.h">
@@ -348,6 +351,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\dependencies\filetypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\core_renderable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\bounding_volume.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

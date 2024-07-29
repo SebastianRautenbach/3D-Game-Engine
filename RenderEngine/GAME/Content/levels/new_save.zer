@@ -1,6 +1,6 @@
 Entity Name{
 	staticmesh0{
-		asset id:18410409422620930561;
+		asset id:9222971600701724741;
 		material{
 			diffuse_asset_id:15546425226244383279;
 			specular_asset_id:18302487994969663584;
@@ -14,9 +14,9 @@ Entity Name{
 	tags{
 	}
 	transform{
-		position:0.288996,0.000000,-3.710696;
+		position:0.288996,0.000000,0.000000;
 		rotation:0.000000,0.000000,0.000000;
-		scale:0.350000,0.350000,0.350000;
+		scale:1.000000,1.000000,1.000000;
 	}
 }
 Entity Name(1){
@@ -59,7 +59,34 @@ light{
 	tags{
 	}
 	transform{
-		position:0.717276,0.000000,-2.527900;
+		position:0.717276,1.874040,-1.826655;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+light(1){
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.800000,0.800000,0.800000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			light_index:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.717276,-0.154471,-1.826655;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}

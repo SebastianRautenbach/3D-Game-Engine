@@ -22,6 +22,9 @@ namespace wizm {
 		std::shared_ptr<core_component> _copy() const;
 
 
+		std::pair<glm::vec3, glm::vec3> get_bounding_box() const;
+
+
 		//////////////////////////////////////////////////
 		//////////  SERIALIZATION METHOD /////////////////
 		//////////////////////////////////////////////////

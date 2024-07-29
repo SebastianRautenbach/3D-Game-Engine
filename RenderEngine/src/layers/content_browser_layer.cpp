@@ -77,7 +77,7 @@ void wizm::content_browser_layer::update(float delta_time)
                 ImGui::OpenPopup("FilePopup");
             }
 
-            if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left)) {
+            if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
                 current_directory = entry;
             }
             ImGui::Text(file_name.c_str());

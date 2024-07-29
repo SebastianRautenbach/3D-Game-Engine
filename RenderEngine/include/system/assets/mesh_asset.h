@@ -22,6 +22,17 @@ namespace wizm {
 			return m_model->total_triangles;
 		}
 
+
+		std::vector<vertex_data> retrieve_all_vertices() {
+			std::vector<vertex_data> vertices;
+			for (const auto& mesh : m_model->meshes) {
+				for (const auto& i : mesh.vertices) {
+					vertices.emplace_back();
+				}
+			}
+			return vertices;
+		}
+
 	private:
 		core_model* m_model;
 	};
