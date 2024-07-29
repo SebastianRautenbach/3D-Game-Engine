@@ -99,33 +99,43 @@ void wizm::content_browser_layer::update(float delta_time)
 
             if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
                 ImGui::OpenPopup("FilePopup");
-                selected_file_path = entry.string();
+                //selected_file_path = entry.string();
                 new_file_name = file_name;
             }
 
             if (ImGui::BeginPopup("FilePopup")) {
                 if (ImGui::MenuItem("Delete")) {
-                    // Code to delete the file
+                   
                     std::filesystem::remove(entry);
-                    std::cout << "File deleted: " << entry << std::endl; // For demonstration
+                    std::cout << "File deleted: " << entry << std::endl; 
                 }
                 if (ImGui::MenuItem("Rename")) {
-                    // Set focus to the text input field
+                    
                     ImGui::SetKeyboardFocusHere();
                 }
 
-                // Text input for renaming
-                ImGui::InputText("##RenameFile", &new_file_name[0], new_file_name.size() + 1);
+               
+                ImGui::InputText("##RenameFile", &new_file_name[0], ImGuiInputTextFlags_EnterReturnsTrue);
                 if (ImGui::IsItemDeactivatedAfterEdit()) {
-                    // If the user presses Enter or the input loses focus, rename the file
-                    if (!new_file_name.empty()) {
-                        std::filesystem::path new_path = entry.parent_path() / new_file_name;
-                        if(new_path.string().find(".zer") != -1)
-                            std::filesystem::rename(entry, new_path);
-                        std::cout << "File renamed to: " << new_path << std::endl; // For demonstration
+                    if (new_file_name.c_str()) {
+                        std::filesystem::path parent_path = entry.parent_path();
+                        std::filesystem::path new_path = parent_path / new_file_name.c_str();                  
+                        if (new_path.extension() == ".zer") {
+                            try {                                
+                                std::filesystem::rename(entry, new_path);
+                                std::cout << "File renamed to: " << new_path << std::endl;
+                            }
+                            catch (const std::filesystem::filesystem_error& e) {
+                                std::cerr << "Error renaming file: " << e.what() << std::endl;
+                            }
+                        }
+                        else {
+                            std::cerr << "New file name must end with .zer" << std::endl;
+                        }
                     }
                     ImGui::CloseCurrentPopup();
                 }
+
 
                 ImGui::EndPopup();
             }

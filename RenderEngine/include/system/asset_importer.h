@@ -27,6 +27,15 @@ public:
         sqlite3_close(db);
     }
 
+    void remove_from_database(std::string id) {
+        std::string sql = "DELETE FROM assets WHERE id ='" + id + "';";
+        rc = sqlite3_exec(db, sql.c_str(), nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+        }
+    }
+
     void add_to_database(const asset_details& asset) {
         for (auto a : retrieve_all_assets()) {
             if (asset.path == a.path)

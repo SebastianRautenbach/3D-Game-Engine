@@ -18,6 +18,18 @@ public:
         asset_importer ai;
         auto paths = get_files_in_dir("GAME/Content/Assets");
 
+        /*
+            Remove all non existing files from the database
+        */
+
+        for (auto f : ai.retrieve_all_assets()) {
+            if (!std::filesystem::exists(f.path))
+                ai.remove_from_database(f.id);
+        }
+
+        
+
+
         for (auto p : paths)
         {
             auto e = get_extension(p);

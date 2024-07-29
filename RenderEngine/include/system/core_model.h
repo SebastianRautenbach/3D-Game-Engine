@@ -17,7 +17,7 @@ namespace lowlevelsys {
 		std::vector<core_mesh>    meshes;
 		std::string directory;
 		bool gammaCorrection;
-		unsigned int total_vertices = 0;
+		unsigned int total_triangles = 0;
 
 	private:
 

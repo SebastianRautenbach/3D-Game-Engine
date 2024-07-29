@@ -25,7 +25,7 @@ void wizm::performace_ui_layer::update(float delta_time)
 	
 	
 	static unsigned int amm_verts = 0;
-	if(ImGui::Button("Get total vertices in scene"))
+	if(ImGui::Button("Get total triangles in scene"))
 	{
 		amm_verts = 0;
 		for (const auto& ent : m_scene->m_entities)
@@ -33,12 +33,12 @@ void wizm::performace_ui_layer::update(float delta_time)
 			for (const auto& comp : ent->m_components_list)
 			{
 				auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(comp);
-			//	if (staticmesh)
-			//		amm_verts += staticmesh->m_model->total_vertices;
+				if (staticmesh)
+					amm_verts += staticmesh->m_model->get_triangles();
 			}
 		}
 	}
-	std::string tot_vert_str = "total vertices:" + std::to_string(amm_verts);
+	std::string tot_vert_str = "total triangles:" + std::to_string(amm_verts);
 	ImGui::Text(tot_vert_str.c_str());
 	
 	ImGui::End();

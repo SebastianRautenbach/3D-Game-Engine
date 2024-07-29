@@ -18,6 +18,10 @@ namespace wizm {
 			m_model->render_model(shader);
 		}
 
+		unsigned int get_triangles() {
+			return m_model->total_triangles;
+		}
+
 	private:
 		core_model* m_model;
 	};

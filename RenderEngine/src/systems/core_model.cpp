@@ -46,7 +46,8 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
     std::vector<unsigned int> indices;
     std::vector<core_gl_texture> textures;
 
-    total_vertices = mesh->mNumVertices;
+    total_triangles += mesh->mNumFaces;
+
     for (unsigned int i = 0; i < mesh->mNumVertices; i++)
     {
         vertex_data vertex;
