@@ -388,6 +388,8 @@
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\assets\\texture_asset.h",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\assets.h",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\assets\\mesh_asset.h",
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\core_renderable.h",
+            "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\bounding_volume.h",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\system\\asset_manager.h",
             "c:\\users\\karat\\documents\\github\\renderengine\\renderengine\\include\\dependencies\\sqlite3.h",
             "c:\\program files\\microsoft visual studio\\2022\\community\\vc\\tools\\msvc\\14.39.33519\\include\\stdarg.h",

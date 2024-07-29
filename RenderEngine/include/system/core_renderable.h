@@ -15,15 +15,6 @@ namespace wizm {
         
 
     public:
-        std::unique_ptr<wizm::core_3d_camera> m_camera;
-        
-        //void updateBoundingBox() {
-        //    for (const auto& vertex : vertices) {
-        //        glm::vec3 transformedPos = glm::vec3(modelMatrix * glm::vec4(vertex.position, 1.0f));
-        //        boundingBox.expandToInclude(transformedPos);
-        //    }
-        //}
-
-
+        wizm::core_3d_camera* m_camera;
 	};
 }

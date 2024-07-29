@@ -1,14 +1,14 @@
 #pragma once
 #include "system/assets.h"
 #include "system/core_model.h"
-
+#include "system/core_renderable.h"
 
 using namespace lowlevelsys;
 
 
 namespace wizm {
 
-	class staticmesh_asset : public core_asset {
+	class staticmesh_asset : public core_asset, public core_renderable {
 	public:
 		void load(const std::string& path) override {
 			if(!path.empty())

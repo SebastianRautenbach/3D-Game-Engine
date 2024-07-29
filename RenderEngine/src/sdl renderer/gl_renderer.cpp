@@ -176,7 +176,10 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			{
 				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(per_ent);
 				if (mesh_comps)
+				{
+					mesh_comps->m_model->m_camera = camera;
 					meshes.push_back(mesh_comps);
+				}
 
 				auto light_comps = std::dynamic_pointer_cast<pointlight_component>(per_ent);
 				if (light_comps)

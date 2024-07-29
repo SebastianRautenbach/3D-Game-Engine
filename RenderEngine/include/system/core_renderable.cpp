@@ -6,6 +6,6 @@ void wizm::core_renderable::update_boundingvolume(std::vector<vertex_data> verti
 {
         for (const auto& mvertex : vertices) {
             glm::vec3 transformedPos = glm::vec3(m_camera->GetProjectionMatrix() * glm::vec4(mvertex.Position, 1.0f));
-            this->expandToInclude(transformedPos);
+            expand_to_include(transformedPos);
         }
 }

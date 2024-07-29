@@ -17,21 +17,21 @@ namespace wizm
         bounding_volume(const glm::vec3& minPoint, const glm::vec3& maxPoint)
             : minPoint(minPoint), maxPoint(maxPoint) {}
 
-        void expandToInclude(const glm::vec3& point) {
+        void expand_to_include(const glm::vec3& point) {
             minPoint = glm::min(minPoint, point);
             maxPoint = glm::max(maxPoint, point);
         }
 
-        void expandToInclude(const bounding_volume& other) {
-            expandToInclude(other.minPoint);
-            expandToInclude(other.maxPoint);
+        void expand_to_include(const bounding_volume& other) {
+            expand_to_include(other.minPoint);
+            expand_to_include(other.maxPoint);
         }
 
-        glm::vec3 getCenter() const {
+        glm::vec3 get_center() const {
             return (minPoint + maxPoint) / 2.0f;
         }
 
-        glm::vec3 getSize() const {
+        glm::vec3 get_size() const {
             return maxPoint - minPoint;
         }
 

@@ -54,5 +54,7 @@ std::shared_ptr<core_component> wizm::staticmesh_component::_copy() const
 	}
 	new_sc_comp->m_model = this->m_model;
 
+
+
 	return new_sc_comp;
 }
