@@ -20,8 +20,8 @@ namespace wizm {
 		void save_map_data(std::string path);
 		
 		
-		// entity related
-		
+		// entity related 
+		std::shared_ptr<core_entity> add_entity(std::shared_ptr<core_entity> entity);
 		std::shared_ptr<core_entity> add_entity(std::string entity_name);
 
 

@@ -19,11 +19,12 @@ namespace lowlevelsys {
 		virtual void component_preupdate() = 0;
 		virtual void component_update() = 0;
 		virtual void component_postupdate() = 0;
+
+		
+		void remove_component();
 		
 		core_component();
 		~core_component();
-
-		void remove_component();
 
 		
 

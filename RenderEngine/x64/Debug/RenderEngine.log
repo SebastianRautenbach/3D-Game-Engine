@@ -1,28 +1,24 @@
 ﻿  Scanning sources for module dependencies...
-  viewport_layer.cpp
+  entity.cpp
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/viewport_layer.cpp')
+  (compiling source file 'src/entity.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/viewport_layer.cpp')
+  (compiling source file 'src/entity.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/viewport_layer.cpp')
+  (compiling source file 'src/entity.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/viewport_layer.cpp')
+  (compiling source file 'src/entity.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/viewport_layer.cpp')
+  (compiling source file 'src/entity.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/layers/viewport_layer.cpp')
+  (compiling source file 'src/entity.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'src/layers/viewport_layer.cpp')
+  (compiling source file 'src/entity.cpp')
   
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\matrix_math.h(39,16): warning C4101: 'Pdum3': unreferenced local variable
-  (compiling source file 'src/layers/viewport_layer.cpp')
-  
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\viewport_layer.cpp(34,18): warning C4312: 'reinterpret_cast': conversion from 'unsigned int' to 'void *' of greater size
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe

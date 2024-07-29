@@ -60,6 +60,87 @@ void wizm::core_entity::entity_postupdate()
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////
+// COPY
+//////////////////////////////////////////////////////////////////////////
+
+
+//-----------------------------------------------------------------------
+
+std::shared_ptr<core_entity> wizm::core_entity::copy_() const
+{
+	std::string new_ent_ID = m_ent_ID + "(1)";
+	std::shared_ptr<core_entity> new_entity = std::make_shared<core_entity>(new_ent_ID);
+	
+	new_entity->set_position(get_position());
+	new_entity->set_rotation(get_rotation());
+	new_entity->set_scale(get_scale());
+
+	if (entity_tags) {
+		new_entity->entity_tags->tags = this->entity_tags->tags;
+	}
+
+
+	for (const auto& component : m_components_list)
+	{
+		auto pc_comp = std::dynamic_pointer_cast<pointlight_component>(component);
+		if (pc_comp) {
+			auto new_pc_comp = std::make_shared<pointlight_component>();
+			
+			new_pc_comp->set_position(pc_comp->get_position());
+			new_pc_comp->set_rotation(pc_comp->get_rotation());
+			new_pc_comp->set_scale(pc_comp->get_scale());
+
+			new_pc_comp->light_index = pc_comp->light_index + 1;
+			new_pc_comp->m_ambient = pc_comp->m_ambient;
+			new_pc_comp->m_constant = pc_comp->m_constant;
+			new_pc_comp->m_diffuse = pc_comp->m_diffuse;
+			new_pc_comp->m_is_active = pc_comp->m_is_active;
+			new_pc_comp->m_is_visible = pc_comp->m_is_visible;
+			new_pc_comp->m_linear = pc_comp->m_linear;
+			new_pc_comp->m_quadratic = pc_comp->m_quadratic;
+			new_pc_comp->m_radius = pc_comp->m_radius;
+			new_pc_comp->m_specular = pc_comp->m_specular;
+			new_pc_comp->shader = pc_comp->shader;
+
+
+			new_entity->add_component(new_pc_comp);
+			break;
+		}
+		auto sc_comp = std::dynamic_pointer_cast<staticmesh_component>(component);
+		if (sc_comp) {
+			auto new_sc_comp = std::make_shared<staticmesh_component>();
+
+
+			new_sc_comp->set_position(sc_comp->get_position());
+			new_sc_comp->set_rotation(sc_comp->get_rotation());
+			new_sc_comp->set_scale(sc_comp->get_scale());
+
+
+			new_sc_comp->m_asset_id = sc_comp->m_asset_id;
+			new_sc_comp->m_is_active = sc_comp->m_is_active;
+			*new_sc_comp->m_material = *sc_comp->m_material;
+
+			new_sc_comp->m_model = sc_comp->m_model;
+
+			new_entity->add_component(new_sc_comp);
+
+			break;
+		}
+		auto dl_comp = std::dynamic_pointer_cast<directionallight_component>(component);
+		if (dl_comp) {
+			std::cout << "dupe directionallight_component\n";
+			break;
+		}
+		
+		//std::shared_ptr<core_component> cloned_component = component->copy_();
+		//new_entity->add_component(cloned_component);
+	}
+
+
+	return new_entity;
+}
+
 
 	//////////////////////////////////////////////////////////////////////////
 	// COMPONENTS

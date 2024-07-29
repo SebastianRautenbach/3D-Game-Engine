@@ -19,6 +19,24 @@ Entity Name{
 		scale:0.350000,0.350000,0.350000;
 	}
 }
+Entity Name(1){
+	tags{
+	}
+	transform{
+		position:3.618584,0.000000,-9.088266;
+		rotation:0.000000,0.000000,0.000000;
+		scale:0.350000,0.350000,0.350000;
+	}
+}
+Entity Name(1)(1){
+	tags{
+	}
+	transform{
+		position:-1.389415,0.000000,-0.697382;
+		rotation:0.000000,0.000000,0.000000;
+		scale:0.350000,0.350000,0.350000;
+	}
+}
 light{
 	pointlight0{
 		light{

@@ -122,7 +122,7 @@ void wizm::viewport_layer::update(float delta_time)
 
     }
 
-    if(!ImGuizmo::IsUsing())
+    if(!ImGuizmo::IsUsing() && ImGui::IsWindowHovered())
     {
         static ImVec2 rectStart(-1, -1);
         static ImVec2 rectEnd(-1, -1);

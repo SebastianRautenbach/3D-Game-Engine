@@ -23,8 +23,8 @@ floor{
 	staticmesh0{
 		asset id:18410409422620930561;
 		material{
-			diffuse_asset_id:;
-			specular_asset_id:;
+			diffuse_asset_id:18302487994969663584;
+			specular_asset_id:18302487994969663584;
 		}
 		transform{
 			position:0.000000,0.000000,0.000000;
@@ -37,16 +37,16 @@ floor{
 	transform{
 		position:0.000000,-1.587679,0.000000;
 		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
+		scale:4.980761,1.000000,4.980000;
 	}
 }
-sun{
+light{
 	pointlight0{
 		light{
 			m_constant:1.000000;
 			linear:0.090000;
 			m_quadratic:0.032000;
-			m_radius:3.000000;
+			m_radius:30.000000;
 			m_ambient:0.050000,0.050000,0.050000;
 			m_diffuse:1.000000,0.999990,0.999990;
 			m_specular:1.000000,1.000000,1.000000;
@@ -63,6 +63,27 @@ sun{
 	}
 	transform{
 		position:0.000000,0.000000,1.925147;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+sun{
+	directionallight0{
+		light{
+			m_ambient:0.119048,0.119046,0.119046;
+			m_diffuse:0.400000,0.400000,0.400000;
+			m_specular:0.500000,0.500000,0.500000;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,0.000000,0.000000;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}

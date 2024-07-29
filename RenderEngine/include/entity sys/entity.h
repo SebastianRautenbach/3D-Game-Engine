@@ -30,6 +30,13 @@ namespace wizm {
 		void entity_update();
 		void entity_postupdate();
 
+
+		// duplication
+		
+		std::shared_ptr<core_entity> copy_() const;
+
+
+
 		// component
 		
 		std::shared_ptr<core_component> add_component(std::shared_ptr<core_component> component);

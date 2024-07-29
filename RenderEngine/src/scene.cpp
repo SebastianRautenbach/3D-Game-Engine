@@ -41,6 +41,11 @@ namespace wizm {
 	
 		return total;
 	}
+
+	std::shared_ptr<core_entity> core_scene::add_entity(std::shared_ptr<core_entity> entity) {
+		m_entities.push_back(entity);
+		return entity;
+	}
 	
 	std::shared_ptr<core_entity> core_scene::add_entity(std::string entity_name)
 	{

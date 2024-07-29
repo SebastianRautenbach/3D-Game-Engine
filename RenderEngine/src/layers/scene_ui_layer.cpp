@@ -82,8 +82,8 @@ void wizm::scene_ui_layer::update(float delta_time)
 				m_scene->set_crnt_entity(nullptr);
 		}
 		if (ImGui::MenuItem("Duplicate")) {
-			m_scene->get_crnt_entity();
-			auto crnt = m_scene->add_entity(m_scene->get_crnt_entity()->m_ent_ID + "1");
+			auto crnt = m_scene->get_crnt_entity()->copy_();
+			m_scene->add_entity(crnt);
 			m_scene->set_crnt_entity(crnt);
 		}
 
