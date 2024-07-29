@@ -59,3 +59,26 @@ void wizm::pointlight_component::component_update()
 void wizm::pointlight_component::component_postupdate()
 {
 }
+
+std::shared_ptr<lowlevelsys::core_component> wizm::pointlight_component::_copy() const
+{
+    auto new_pc_comp = std::make_shared<pointlight_component>();
+
+    new_pc_comp->set_position(this->get_position());
+    new_pc_comp->set_rotation(this->get_rotation());
+    new_pc_comp->set_scale(this->get_scale());
+
+    new_pc_comp->light_index = this->light_index + 1;
+    new_pc_comp->m_ambient = this->m_ambient;
+    new_pc_comp->m_constant = this->m_constant;
+    new_pc_comp->m_diffuse = this->m_diffuse;
+    new_pc_comp->m_is_active = this->m_is_active;
+    new_pc_comp->m_is_visible = this->m_is_visible;
+    new_pc_comp->m_linear = this->m_linear;
+    new_pc_comp->m_quadratic = this->m_quadratic;
+    new_pc_comp->m_radius = this->m_radius;
+    new_pc_comp->m_specular = this->m_specular;
+    new_pc_comp->shader = this->shader;
+
+    return new_pc_comp;
+}

@@ -34,3 +34,21 @@ void wizm::directionallight_component::component_update()
 void wizm::directionallight_component::component_postupdate()
 {
 }
+
+std::shared_ptr<core_component> wizm::directionallight_component::_copy() const
+{
+	auto new_dl_comp = std::make_shared<directionallight_component>();
+
+	new_dl_comp->set_position(this->get_position());
+	new_dl_comp->set_rotation(this->get_rotation());
+	new_dl_comp->set_scale(this->get_scale());
+	
+	new_dl_comp->m_ambient = this->m_ambient;
+	new_dl_comp->m_diffuse = this->m_diffuse;
+	new_dl_comp->m_is_active = this->m_is_active;
+	new_dl_comp->m_is_visible = this->m_is_visible;
+	new_dl_comp->m_specular = this->m_specular;
+	new_dl_comp->shader = this->shader;
+
+	return new_dl_comp;
+}

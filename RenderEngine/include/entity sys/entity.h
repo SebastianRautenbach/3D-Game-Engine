@@ -33,7 +33,7 @@ namespace wizm {
 
 		// duplication
 		
-		std::shared_ptr<core_entity> copy_() const;
+		std::shared_ptr<core_entity> copy_(std::string name) const;
 
 
 

@@ -14,6 +14,7 @@ namespace wizm {
 		void scene_update();
 		void scene_postupdate();
 		unsigned int total_component_count();
+		bool does_ent_name_exist(std::string name);
 
 		// serialization
 		void read_map_data(std::string file_path);

@@ -42,6 +42,16 @@ namespace wizm {
 		return total;
 	}
 
+	bool core_scene::does_ent_name_exist(std::string name)
+	{
+		bool does_exist = false;
+		for (auto& i : m_entities)
+			if (i->m_ent_ID == name) 
+				does_exist = true;
+		
+		return does_exist;
+	}
+
 	std::shared_ptr<core_entity> core_scene::add_entity(std::shared_ptr<core_entity> entity) {
 		m_entities.push_back(entity);
 		return entity;

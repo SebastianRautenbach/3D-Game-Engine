@@ -2,6 +2,8 @@
 #include "entity sys/component.h"
 #include "gl core/core shader.h"
 
+using namespace lowlevelsys;
+
 namespace wizm {
     class directionallight_component : public lowlevelsys::core_component {
     public:
@@ -15,6 +17,7 @@ namespace wizm {
         void component_preupdate();
         void component_update();
         void component_postupdate();
+        std::shared_ptr<core_component> _copy() const;
 
 
         //////////////////////////////////////////////////

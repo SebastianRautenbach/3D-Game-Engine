@@ -38,3 +38,21 @@ void wizm::staticmesh_component::component_update()
 void wizm::staticmesh_component::component_postupdate()
 {
 }
+
+std::shared_ptr<core_component> wizm::staticmesh_component::_copy() const
+{
+	auto new_sc_comp = std::make_shared<staticmesh_component>();
+
+	new_sc_comp->set_position(this->get_position());
+	new_sc_comp->set_rotation(this->get_rotation());
+	new_sc_comp->set_scale(this->get_scale());
+
+	new_sc_comp->m_asset_id = this->m_asset_id;
+	new_sc_comp->m_is_active = this->m_is_active;
+	if (this->m_material) {
+		*new_sc_comp->m_material = *this->m_material;
+	}
+	new_sc_comp->m_model = this->m_model;
+
+	return new_sc_comp;
+}
