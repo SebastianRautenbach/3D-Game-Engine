@@ -23,10 +23,11 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_layer_stack->PushLayer(base_layer);
 
 	framebuffer_spec main_spec;
-	main_spec.attachment = { framebuffer_texture_format::DEPTH24STENCIL8, framebuffer_texture_format::RGBA8 };
+	main_spec.attachment = { framebuffer_texture_format::DEPTH24STENCIL8, framebuffer_texture_format::RGBA8};
 	main_spec.Width = window_size_x;
 	main_spec.Height = window_size_y;
 	m_framebuffer = new core_framebuffer(main_spec);
+
 
 	m_asset_manager = new asset_manager(m_scene);
 
@@ -70,11 +71,14 @@ void update_manager::render()
 
 	m_gl_renderer->render(m_timer->get_delta_time());
 
-	//I though I was being clever
-
 	m_framebuffer->bind_buffer();
 	m_scene->scene_update();
 	m_framebuffer->unbind_buffer();
+
+
+		
+	
+
 
 	// I want to involve this to a bigger system but this only handles GUI so far
 	base_layer->begin();

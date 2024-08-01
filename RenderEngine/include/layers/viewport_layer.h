@@ -19,6 +19,8 @@ namespace wizm {
 		virtual void OnDetach() override;
 		virtual void update(float delta_time) override;
 
+		int checkPixelColor(GLuint fboTexID, int x, int y, int expectedCode);
+
 	private:
 		unsigned int m_fbID;
 		core_3d_camera* m_camera;
@@ -27,6 +29,7 @@ namespace wizm {
 
 		// needs to be a better way :(
 		core_scene* m_scene;
+		core_framebuffer* m_fbo;
 	};
 
 }

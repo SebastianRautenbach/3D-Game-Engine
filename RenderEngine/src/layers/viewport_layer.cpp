@@ -3,9 +3,20 @@
 #include "input.h"
 #include "other utils/strconvr.h"
 
+
 wizm::viewport_layer::viewport_layer(unsigned int fbID, core_3d_camera* camera, core_scene* scene)
     : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene)
 {
+
+    auto _io = &ImGui::GetIO(); (void)_io;
+    ImGuiIO& io = *_io;
+
+    framebuffer_spec main_spec;
+    main_spec.attachment = { framebuffer_texture_format::DEPTH24STENCIL8, framebuffer_texture_format::RED_INTEGER, framebuffer_texture_format::Depth };
+    main_spec.Width = _io->DisplaySize.x;
+    main_spec.Height = _io->DisplaySize.y;
+
+    m_fbo = new core_framebuffer(main_spec);
 }
 
 wizm::viewport_layer::~viewport_layer()
@@ -76,23 +87,6 @@ void wizm::viewport_layer::update(float delta_time)
         guizmo_type = ImGuizmo::OPERATION::SCALE;
         m_snap_value = 0.5f;
     }
-    ImGui::SameLine();
-    if (ImGui::Button("[SWITCH VIEW]", ImVec2(ImGui::CalcTextSize(" [SWITCH VIEW] ").x, 25)))
-    {
-        int index = 0;
-        for (auto& i : m_scene->m_entities) {
-            for (auto& y : i->m_components_list) {
-                
-                auto comp = std::dynamic_pointer_cast<staticmesh_component>(y);
-                if (comp)
-                {
-                    comp->m_material->set_shader(1);               
-                    comp->m_material->select_model_id = index * 50;
-                    ++index;
-                }
-            }
-        }
-    }
 
     
 
@@ -141,6 +135,62 @@ void wizm::viewport_layer::update(float delta_time)
 
     }
 
+
+    if (!ImGuizmo::IsUsing() && ImGui::IsWindowHovered()) {
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+            auto _io = &ImGui::GetIO(); (void)_io;
+            ImGuiIO& io = *_io;
+
+            
+
+   
+            int index = 0;
+
+            for (auto& i : m_scene->m_entities) {
+                for (auto& y : i->m_components_list) {
+
+                    auto comp = std::dynamic_pointer_cast<staticmesh_component>(y);
+                    if (comp)
+                    {
+                        comp->m_material->set_shader(1);
+                        comp->m_material->select_model_id = index;
+                        comp->component_update();
+                        ++index;
+                    }
+                }
+            }
+
+
+
+            
+            int mouseX = static_cast<int>(_io->MousePos.x);
+            int mouseY = static_cast<int>(_io->DisplaySize.y - _io->MousePos.y - 1);
+
+            unsigned char pixelColor[3];
+            glReadPixels(mouseX, mouseY, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixelColor);
+            int readCode = (pixelColor[0]) | (pixelColor[1] << 8) | (pixelColor[2] << 16);
+
+
+            
+
+            for (auto& i : m_scene->m_entities) {
+                for (auto& y : i->m_components_list) {
+            
+                    auto comp = std::dynamic_pointer_cast<staticmesh_component>(y);
+                    if (comp)
+                    {                   
+                        if (comp->m_material->select_model_id == readCode) {
+                            m_scene->set_crnt_entity(i);
+                        }
+                    }
+                }
+            }
+
+        }
+    
+    }
+
+
     if(!ImGuizmo::IsUsing() && ImGui::IsWindowHovered())
     {
         static ImVec2 rectStart(-1, -1);
@@ -172,3 +222,5 @@ void wizm::viewport_layer::update(float delta_time)
 
     ImGui::End();
 }
+
+

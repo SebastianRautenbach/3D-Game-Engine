@@ -41,7 +41,6 @@ namespace lowlevelsys {
 		input_manager* m_input_manager;
 
 		std::vector<std::shared_ptr<core_gl_shader>> m_shaders;
-		//std::shared_ptr<core_gl_shader> shdr;
 		
 		core_grid* grid2d;
 		core_3d_camera* camera;
