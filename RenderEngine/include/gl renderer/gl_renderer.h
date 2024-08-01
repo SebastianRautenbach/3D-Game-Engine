@@ -25,18 +25,29 @@ namespace lowlevelsys {
 		void update_draw_data();
 		void on_exit();
 
+		// uniform location
+
+		int get_uniform_location(const std::string& name, unsigned int id) {
+			if (uniformLocations.find(name) != uniformLocations.end())
+				return uniformLocations[name];
+			int location = glGetUniformLocation(id, name.c_str());
+			uniformLocations[name] = location;
+			return location;
+		}
+
+
 	public:
 		GLFWwindow* window;
 		input_manager* m_input_manager;
 
 		std::vector<std::shared_ptr<core_gl_shader>> m_shaders;
-		std::shared_ptr<core_gl_shader> shdr;
+		//std::shared_ptr<core_gl_shader> shdr;
 		
 		core_grid* grid2d;
 		core_3d_camera* camera;
 		core_scene* m_scene;
 
-
+		std::unordered_map<std::string, int> uniformLocations;
 
 	public:
 		int w_width, w_height;

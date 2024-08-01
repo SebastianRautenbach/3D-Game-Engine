@@ -46,10 +46,10 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	camera->SetPitch(-0.438943);
 	camera->SetYaw(-0.769122);
 
-	shdr = std::make_shared<core_gl_shader>("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
+	auto shdr_y = std::make_shared<core_gl_shader>("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
 	auto shdr_x = std::make_shared<core_gl_shader>("shaders/click_color_vrtx.glsl", "shaders/click_color_frgment.glsl");
 
-	m_shaders.emplace_back(shdr);
+	m_shaders.emplace_back(shdr_y);
 	m_shaders.emplace_back(shdr_x);
 
 	m_scene = scene;
@@ -142,10 +142,9 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 	
 	for(auto& shader : m_shaders)
 	{
-		unsigned int viewLoc = glGetUniformLocation(shader->get_shader_id(), "view");
+		unsigned int viewLoc = get_uniform_location("view", shader->get_shader_id());;
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
 		shader->setMat4("projection", projection);
-
 		shader->setVec3("camPos", camera->GetPosition());
 	}
 }
@@ -198,7 +197,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		for (int i = 0; i < pointlights.size(); i++)
 		{
-			pointlights[i]->shader = shdr;
+			pointlights[i]->shader = m_shaders[0];
 			pointlights[i]->light_index = i;
 
 		}
@@ -210,11 +209,11 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		}
 
 		for (auto& i : dirlights) {
-			i->shader = shdr;
+			i->shader = m_shaders[0];
 		}
 
 
-		shdr->setInt("ammount_of_pointlights", pointlights.size());
+		m_shaders[0]->setInt("ammount_of_pointlights", pointlights.size());
 
 
 

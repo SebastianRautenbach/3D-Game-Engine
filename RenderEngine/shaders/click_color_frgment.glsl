@@ -1,7 +1,7 @@
 #version 460 core
 
 out vec4 FragColor;
-int code = 2 * 20;
+uniform int code;
 
 void main() {
     // Encode the object ID as a color

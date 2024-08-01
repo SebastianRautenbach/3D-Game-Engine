@@ -38,7 +38,7 @@ namespace wizm {
 
 	void cube_sm_component::component_update()
 	{
-		m_material->update_material();
+		//m_material->update_material();
 
 
 		//m_model_mtx = glm::mat4(1);

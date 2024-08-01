@@ -25,9 +25,8 @@ void wizm::staticmesh_component::component_preupdate()
 void wizm::staticmesh_component::component_update()
 {
 	if (m_model) {
-		m_material->update_material();
 
-		m_material->m_shader->setMat4("model", get_transform());
+		m_material->update_material(get_transform());
 
 		m_model->draw();
 

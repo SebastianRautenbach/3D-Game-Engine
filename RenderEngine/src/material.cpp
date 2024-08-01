@@ -22,9 +22,12 @@ namespace wizm {
 		m_shader->setInt("material.specular", 1);
 	}
 
-	void core_material::update_material()
+	void core_material::update_material(glm::mat4 model)
 	{
+		m_shader->use_shader();
+
 		m_shader->setFloat("material.shininess", m_shininess);
+		m_shader->setInt("code", select_model_id);
 
 		if (m_texture_n[0])
 		{
@@ -37,6 +40,9 @@ namespace wizm {
 			glActiveTexture(GL_TEXTURE0 + 1);
 			m_texture_n[1]->draw(nullptr);
 		}
+
+
+		m_shader->setMat4("model", model);
 
 	}
 

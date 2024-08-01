@@ -76,6 +76,23 @@ void wizm::viewport_layer::update(float delta_time)
         guizmo_type = ImGuizmo::OPERATION::SCALE;
         m_snap_value = 0.5f;
     }
+    ImGui::SameLine();
+    if (ImGui::Button("[SWITCH VIEW]", ImVec2(ImGui::CalcTextSize(" [SWITCH VIEW] ").x, 25)))
+    {
+        int index = 0;
+        for (auto& i : m_scene->m_entities) {
+            for (auto& y : i->m_components_list) {
+                
+                auto comp = std::dynamic_pointer_cast<staticmesh_component>(y);
+                if (comp)
+                {
+                    comp->m_material->set_shader(1);               
+                    comp->m_material->select_model_id = index * 50;
+                    ++index;
+                }
+            }
+        }
+    }
 
     
 

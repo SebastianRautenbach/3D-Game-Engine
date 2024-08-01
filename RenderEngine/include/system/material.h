@@ -11,7 +11,7 @@ namespace wizm {
 	public:
 		core_material();
 		~core_material();
-		void update_material();
+		void update_material(glm::mat4 model);
 		void unbind_material();
 		void on_change_material();
 
@@ -31,7 +31,8 @@ namespace wizm {
 		// current shader running
 		std::shared_ptr<core_gl_shader> m_shader;
 
-
+		// temp
+		unsigned int select_model_id = 0;
 
 
 		std::string mat_path;

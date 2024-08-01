@@ -1,4 +1,286 @@
 ﻿  Scanning sources for module dependencies...
+  staticmesh_component.h
+  viewport_layer.h
+  Compiling...
+  viewport_layer.h
+  staticmesh_component.h
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/layers/viewport_layer.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/layers/viewport_layer.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/layers/viewport_layer.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/layers/viewport_layer.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/layers/viewport_layer.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'include/layers/viewport_layer.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'include/layers/viewport_layer.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\assimp\defs.h(293,19): warning C5260: the constant variable 'ai_epsilon' has internal linkage in an included header file context, but external linkage in imported header unit context; consider declaring it 'inline' as well if it will be shared across translation units, or 'static' to express intent to use it local to this translation unit
+  (compiling source file 'include/entity%20sys/components/staticmesh_component.h')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\assimp\defs.h(293,19): warning C5260: the constant variable 'ai_epsilon' has internal linkage in an included header file context, but external linkage in imported header unit context; consider declaring it 'inline' as well if it will be shared across translation units, or 'static' to express intent to use it local to this translation unit
+  (compiling source file 'include/layers/viewport_layer.h')
+  
+  app.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/app.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/app.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/app.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/app.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/app.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/app.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/app.cpp')
+  
+  cube_test_comp.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/cube_test_comp.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/cube_test_comp.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/cube_test_comp.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/cube_test_comp.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/cube_test_comp.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/cube_test_comp.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/components/cube_test_comp.cpp')
+  
+  staticmesh_component.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/staticmesh_component.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/staticmesh_component.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/staticmesh_component.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/staticmesh_component.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/staticmesh_component.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/components/staticmesh_component.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/components/staticmesh_component.cpp')
+  
+  entity.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/entity.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/entity.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/entity.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/entity.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/entity.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/entity.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/entity.cpp')
+  
+  performance_ui_layer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/performance_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/performance_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/performance_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/performance_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/performance_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/performance_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/layers/performance_ui_layer.cpp')
+  
+  project_modifiers_layer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/project_modifiers_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/project_modifiers_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/project_modifiers_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/project_modifiers_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/project_modifiers_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/project_modifiers_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/layers/project_modifiers_layer.cpp')
+  
+  properties_ui_layer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/layers/properties_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_ui_layer.cpp(218,51): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_ui_layer.cpp(224,51): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\properties_ui_layer.cpp(231,51): warning C4305: 'argument': truncation from 'double' to 'float'
+  scene_ui_layer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/layers/scene_ui_layer.cpp')
+  
+  viewport_layer.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/viewport_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/viewport_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/viewport_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/viewport_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/viewport_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/layers/viewport_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/layers/viewport_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\matrix_math.h(39,16): warning C4101: 'Pdum3': unreferenced local variable
+  (compiling source file 'src/layers/viewport_layer.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\layers\viewport_layer.cpp(36,18): warning C4312: 'reinterpret_cast': conversion from 'unsigned int' to 'void *' of greater size
+  material.cpp
+  scene.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/scene.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/scene.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/scene.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/scene.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/scene.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/scene.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/scene.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\scene.cpp(40,38): warning C4267: '+=': conversion from 'size_t' to 'unsigned int', possible loss of data
   gl_renderer.cpp
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
@@ -27,5 +309,52 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_re
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(47,18): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(98,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(99,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(217,58): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(216,66): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  asset_manager.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/systems/asset_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/systems/asset_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/systems/asset_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/systems/asset_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/systems/asset_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/systems/asset_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/systems/asset_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\asset_manager.cpp(48,44): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  update_manager.cpp
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/update_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/update_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/update_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/update_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/update_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'src/update_manager.cpp')
+  
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/update_manager.cpp')
+  
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe
