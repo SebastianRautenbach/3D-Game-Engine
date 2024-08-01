@@ -15,7 +15,7 @@ wizm::staticmesh_component::staticmesh_component(std::shared_ptr<staticmesh_asse
 
 wizm::staticmesh_component::~staticmesh_component()
 {
-	
+
 }
 
 void wizm::staticmesh_component::component_preupdate()
@@ -29,7 +29,7 @@ void wizm::staticmesh_component::component_update()
 
 		m_material->m_shader->setMat4("model", get_transform());
 
-		m_model->draw(m_material->m_shader);
+		m_model->draw();
 
 		m_material->unbind_material();
 	}

@@ -14,7 +14,7 @@ namespace wizm {
 	core_material::~core_material()
 	{
 	}
-	
+
 	void core_material::on_change_material()
 	{
 		m_shader->use_shader();
@@ -26,13 +26,13 @@ namespace wizm {
 	{
 		m_shader->setFloat("material.shininess", m_shininess);
 
-		if(m_texture_n[0])
+		if (m_texture_n[0])
 		{
 			glActiveTexture(GL_TEXTURE0);
 			m_texture_n[0]->draw(nullptr);
 		}
 
-		if(m_texture_n[1])
+		if (m_texture_n[1])
 		{
 			glActiveTexture(GL_TEXTURE0 + 1);
 			m_texture_n[1]->draw(nullptr);
@@ -43,9 +43,16 @@ namespace wizm {
 	void core_material::unbind_material()
 	{
 		for (int i = 0; i < m_texture_n.size(); i++) {
-			if(m_texture_n[i])
+			if (m_texture_n[i])
 				m_texture_n[i]->unbind();
 		}
+	}
+
+	void core_material::set_shader(unsigned int shader_index)
+	{
+		if(m_shader_library.size() - 1 >= shader_index)
+			m_shader = m_shader_library[shader_index];
+		on_change_material();
 	}
 
 

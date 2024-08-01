@@ -77,7 +77,7 @@ namespace wizm {
         }
 
     public:
-        core_gl_shader* shader;
+        std::shared_ptr<core_gl_shader> shader;
 
         glm::vec3 m_ambient;
         glm::vec3 m_diffuse;

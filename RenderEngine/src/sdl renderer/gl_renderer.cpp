@@ -23,7 +23,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 	glfwMakeContextCurrent(window);
-	
+
 
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -32,7 +32,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 		return;
 	}
 
-	
+
 
 
 	// manage input --------------------------------------------------------------------- /
@@ -46,12 +46,16 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	camera->SetPitch(-0.438943);
 	camera->SetYaw(-0.769122);
 
-	shdr = new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
+	shdr = std::make_shared<core_gl_shader>("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
+	auto shdr_x = std::make_shared<core_gl_shader>("shaders/click_color_vrtx.glsl", "shaders/click_color_frgment.glsl");
+
+	m_shaders.emplace_back(shdr);
+	m_shaders.emplace_back(shdr_x);
 
 	m_scene = scene;
 
 
-	
+
 
 
 
@@ -76,7 +80,7 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-	
+
 }
 
 
@@ -88,9 +92,9 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 {
 
 	if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
-	{		
+	{
 		m_input_manager->set_hide_mouse_cursor(true);
-		
+
 		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * .01);
 		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * .01);
 
@@ -98,7 +102,7 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_W))
 			camera->MoveForward(1 * deltaTime);
-		
+
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_S))
 			camera->MoveForward(-1 * deltaTime);
 
@@ -114,14 +118,14 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
 			camera->MoveUp(-1 * deltaTime);
 
-	
+
 	}
 	else
 	{
 		m_input_manager->set_hide_mouse_cursor(false);
 		m_input_manager->mouse_stop_move();
 	}
-	
+
 
 
 
@@ -135,13 +139,15 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 	view = camera->GetViewMatrix();
 	projection = camera->GetProjectionMatrix();
-	unsigned int viewLoc = glGetUniformLocation(shdr->get_shader_id() , "view");
-	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-	shdr->setMat4("projection", projection);
+	
+	for(auto& shader : m_shaders)
+	{
+		unsigned int viewLoc = glGetUniformLocation(shader->get_shader_id(), "view");
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+		shader->setMat4("projection", projection);
 
-	shdr->setVec3("camPos", camera->GetPosition());
-
-	shdr->use_shader();
+		shader->setVec3("camPos", camera->GetPosition());
+	}
 }
 
 
@@ -176,10 +182,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			{
 				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(per_ent);
 				if (mesh_comps)
-				{
-					mesh_comps->m_model->m_camera = camera;
 					meshes.push_back(mesh_comps);
-				}
 
 				auto light_comps = std::dynamic_pointer_cast<pointlight_component>(per_ent);
 				if (light_comps)
@@ -202,8 +205,8 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 
 		for (auto& i : meshes) {
-			i->m_material->m_shader = shdr;
-			i->m_material->on_change_material();
+			i->m_material->m_shader_library = m_shaders;
+			i->m_material->set_shader(0);
 		}
 
 		for (auto& i : dirlights) {
@@ -216,7 +219,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 
 		shader_count = m_scene->total_component_count();
-		
+
 	}
 }
 
@@ -228,7 +231,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 void lowlevelsys::gl_renderer::on_exit()
 {
 	glfwTerminate();
-	
+
 }
 
 //-----------------------------------------------------------------------

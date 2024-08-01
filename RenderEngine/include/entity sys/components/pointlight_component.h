@@ -26,6 +26,8 @@ namespace wizm {
         std::shared_ptr<core_component> _copy() const;
 
 
+
+
         //////////////////////////////////////////////////
         //////////  SERIALIZATION METHOD /////////////////
         //////////////////////////////////////////////////
@@ -103,7 +105,7 @@ namespace wizm {
     public:
 
         unsigned int light_index = 0;
-        core_gl_shader* shader;
+        std::shared_ptr<core_gl_shader> shader;
 
         float m_constant;
         float m_linear;

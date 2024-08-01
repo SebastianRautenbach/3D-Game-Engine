@@ -17,7 +17,7 @@ wizm::pointlight_component::pointlight_component(float constant, float linear, f
 
 wizm::pointlight_component::~pointlight_component()
 {
-   
+
 }
 
 void wizm::pointlight_component::component_preupdate()
@@ -27,10 +27,10 @@ void wizm::pointlight_component::component_preupdate()
 
 void wizm::pointlight_component::component_update()
 {
-    
+
     const std::string base_index = "pointLights[" + std::to_string(light_index) + "]";
 
-    
+
     const std::string position_property = base_index + ".position";
     const std::string ambient_property = base_index + ".ambient";
     const std::string diffuse_property = base_index + ".diffuse";
@@ -40,10 +40,10 @@ void wizm::pointlight_component::component_update()
     const std::string quadratic_property = base_index + ".quadratic";
     const std::string radius_property = base_index + ".radius";
 
-    
+
     const glm::vec3 world_position = get_world_position();
 
-    
+
     shader->setVec3(position_property, world_position);
     shader->setVec3(ambient_property, m_ambient);
     shader->setVec3(diffuse_property, m_diffuse);

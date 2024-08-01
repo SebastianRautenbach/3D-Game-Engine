@@ -16,7 +16,7 @@ namespace lowlevelsys {
 		core_mesh(std::vector<vertex_data> vertices, std::vector<unsigned int> indices, std::vector<core_gl_texture> textures);
 		core_mesh(core_mesh&& other) noexcept;
 		
-		void draw_mesh(core_gl_shader* shader);
+		void draw_mesh();
 		~core_mesh();
 
 

@@ -52,7 +52,7 @@ namespace wizm {
 		// temp material layout
 		// not very happy with this
 
-		m_material->m_shader->setFloat("material.shininess", 32.0f);
+		//m_material->m_shader->setFloat("material.shininess", 32.0f);
 
 
 

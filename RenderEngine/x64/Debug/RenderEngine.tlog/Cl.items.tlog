@@ -16,7 +16,6 @@ C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\entity sys\com
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\layers\viewport_layer.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\viewport_layer.h.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\strconvr.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\strconvr.h.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\system\3d_core_camera.h;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\3d_core_camera.h.obj
-C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\system\core_renderable.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\core_renderable.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\systems\asset_manager.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\asset_manager.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\app.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\app.obj
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\components\component.cpp;C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\x64\Debug\component.obj

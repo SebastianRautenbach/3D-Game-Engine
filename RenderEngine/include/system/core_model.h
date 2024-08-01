@@ -9,7 +9,7 @@ namespace lowlevelsys {
 	class core_model {
 	public:
 		core_model(const char* file_path);
-		void render_model(core_gl_shader* shader);
+		void render_model();
 
 
 	public:

@@ -1,6 +1,6 @@
 Entity Name{
 	staticmesh0{
-		asset id:9222971600701724741;
+		asset id:12951080906860349681;
 		material{
 			diffuse_asset_id:15546425226244383279;
 			specular_asset_id:18302487994969663584;
@@ -16,7 +16,7 @@ Entity Name{
 	transform{
 		position:0.288996,0.000000,0.000000;
 		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
+		scale:0.037200,0.037200,0.037200;
 	}
 }
 Entity Name(1){

@@ -24,6 +24,8 @@ void wizm::viewport_layer::OnDetach()
 void wizm::viewport_layer::update(float delta_time)
 {
     ImGui::Begin("Viewport");
+
+    
      
     
     ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();

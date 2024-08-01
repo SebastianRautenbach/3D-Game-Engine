@@ -1,27 +1,31 @@
 ﻿  Scanning sources for module dependencies...
-  core_renderable.cpp
-  update_manager.cpp
+  gl_renderer.cpp
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/update_manager.cpp')
+  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/update_manager.cpp')
+  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/update_manager.cpp')
+  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/update_manager.cpp')
+  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/update_manager.cpp')
+  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/update_manager.cpp')
+  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
   
 C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'src/update_manager.cpp')
+  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
   
-  Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(44,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(44,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(46,20): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(47,18): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(98,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(99,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\src\sdl renderer\gl_renderer.cpp(217,58): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\RenderEngine\x64\Debug\RenderEngine.exe

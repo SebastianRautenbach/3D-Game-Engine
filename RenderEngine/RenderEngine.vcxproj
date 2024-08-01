@@ -161,7 +161,6 @@
     <ClCompile Include="include\layers\viewport_layer.h" />
     <ClCompile Include="include\other utils\strconvr.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
-    <ClCompile Include="include\system\core_renderable.cpp" />
     <ClCompile Include="src\systems\asset_manager.cpp" />
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\components\component.cpp" />
@@ -236,7 +235,6 @@
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assets.h" />
     <ClInclude Include="include\system\assets\assettypes.h" />
-    <ClInclude Include="include\system\bounding_volume.h" />
     <ClInclude Include="include\system\assets\mesh_asset.h" />
     <ClInclude Include="include\system\assets\texture_asset.h" />
     <ClInclude Include="include\system\assettypes.h" />
@@ -246,7 +244,6 @@
     <ClInclude Include="include\system\billboard.h" />
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />
-    <ClInclude Include="include\system\core_renderable.h" />
     <ClInclude Include="include\system\filewatcher.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
