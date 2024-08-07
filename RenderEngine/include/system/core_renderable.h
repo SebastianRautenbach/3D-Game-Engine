@@ -11,19 +11,12 @@ namespace wizm {
 	class core_renderable : public bounding_volume {
 
     public:
-        void update_boundingvolume(std::vector<vertex_data> vertices);
+        core_renderable() = default;
         
+        void init_boundingvolume(std::vector<vertex_data> vertices, const  glm::mat4& model_mtx);
+        void update_boundingvolume(const glm::vec3& world_pos, const glm::vec3& world_rot, const glm::vec3& world_scale);
 
     public:
-        std::unique_ptr<wizm::core_3d_camera> m_camera;
-        
-        //void updateBoundingBox() {
-        //    for (const auto& vertex : vertices) {
-        //        glm::vec3 transformedPos = glm::vec3(modelMatrix * glm::vec4(vertex.position, 1.0f));
-        //        boundingBox.expandToInclude(transformedPos);
-        //    }
-        //}
-
-
+        std::shared_ptr<wizm::core_3d_camera> m_camera;
 	};
 }

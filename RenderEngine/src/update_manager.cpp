@@ -1,4 +1,5 @@
 #include "update_manager.h"
+#include "system/mouse_picking.h"
 
 using namespace wizm;
 
@@ -66,8 +67,7 @@ void update_manager::render()
 
 	m_gl_renderer->render(m_timer->get_delta_time());
 
-	// my dumb ass thought wrong but the m_scene is actually where the draw calls are being called not 
-	// the gl_renderer. Dont ask me why, I though I was being clever
+	// Dont ask me why, I though I was being clever
 
 	m_framebuffer->bind_buffer();
 	m_scene->scene_update();

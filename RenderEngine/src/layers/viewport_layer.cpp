@@ -2,8 +2,9 @@
 #include "other utils/matrix_math.h"
 #include "input.h"
 #include "other utils/strconvr.h"
+#include "system/mouse_picking.h"
 
-wizm::viewport_layer::viewport_layer(unsigned int fbID, core_3d_camera* camera, core_scene* scene)
+wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene)
     : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene)
 {
 }
@@ -129,6 +130,27 @@ void wizm::viewport_layer::update(float delta_time)
 
  
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+            ImVec2 pos = ImGui::GetMousePos();
+            ImVec2 wpos = ImVec2(1920, 1080);
+            
+            auto ray_dir = ray::ray_cast(glm::vec2(pos.x, pos.y),glm::vec2(wpos.x, wpos.y), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
+            auto ray_pos = ray::ray_origin(m_camera->GetViewMatrix());       
+            
+            
+            for (const auto& ent : m_scene->m_entities) {
+                for (const auto& comp : ent->m_components_list) {
+                    auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
+                    if (sm_comp) {
+                        sm_comp->m_model->update_boundingvolume(sm_comp->get_world_position(), 
+                            sm_comp->get_world_rotation(), sm_comp->get_world_scale());
+                        if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos)) {
+                            m_scene->set_crnt_entity(ent);
+                            std::cout << "intersected" << "\n";
+                        }
+                    }
+                }
+            }
+            
             rectStart = ImGui::GetMousePos();
             rectEnd = rectStart;             
         }

@@ -12,7 +12,7 @@ namespace wizm {
 
 	class viewport_layer : public core_layer {
 	public:
-		viewport_layer(unsigned int fbID, core_3d_camera* camera, core_scene* scene);
+		viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene);
 		~viewport_layer();
 
 		virtual void OnAttach() override;
@@ -21,7 +21,7 @@ namespace wizm {
 
 	private:
 		unsigned int m_fbID;
-		core_3d_camera* m_camera;
+		std::shared_ptr<core_3d_camera> m_camera;
 		float m_snap_value = 0.5f;
 		bool m_should_snap = false;
 

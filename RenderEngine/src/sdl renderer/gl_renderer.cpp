@@ -41,7 +41,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 
-	camera = new core_3d_camera(w_width, w_height);
+	camera = std::make_shared<core_3d_camera>(w_width, w_height);
 	camera->SetPosition(glm::vec3(-1.76043, 1.11876, 1.69863));
 	camera->SetPitch(-0.438943);
 	camera->SetYaw(-0.769122);
@@ -201,6 +201,20 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		for (auto& i : meshes) {
 			i->m_material->m_shader = shdr;
 			i->m_material->on_change_material();
+			i->m_model->m_camera = camera;
+			i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices(),
+				i->get_transform()
+			);
+		}
+
+		for (auto& i : meshes) {
+			auto y = i->m_model->get_size();
+
+			/*
+				I need to reconstruct it by its size and not it vertices
+			*/
+
+			std::cout << "x:" << y.x << ", y:" << y.y << ", z:" << y.z << "\n";
 		}
 
 		for (auto& i : dirlights) {

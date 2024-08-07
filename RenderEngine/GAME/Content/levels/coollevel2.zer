@@ -19,6 +19,48 @@ Entity Name{
 		scale:1.000000,1.000000,1.000000;
 	}
 }
+Entity Name(1){
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:15546425226244383279;
+			specular_asset_id:18302487994969663584;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-13.385798,0.000000,4.826742;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+Entity Name(1)(1){
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:15546425226244383279;
+			specular_asset_id:18302487994969663584;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-7.459822,0.000000,12.023370;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 light{
 	pointlight0{
 		light{
