@@ -8,8 +8,8 @@ namespace wizm
 {
 	class bounding_volume {
     public:
-        glm::vec3 min_point;
-        glm::vec3 max_point;
+        glm::vec3 min_point, min_point_local;
+        glm::vec3 max_point, max_point_local;
 
         bounding_volume() : min_point(glm::vec3(std::numeric_limits<float>::max())),
             max_point(glm::vec3(std::numeric_limits<float>::lowest())) {}
@@ -17,15 +17,6 @@ namespace wizm
         bounding_volume(const glm::vec3& min_point, const glm::vec3& max_point)
             : min_point(min_point), max_point(max_point) {}
 
-        void expand_to_include(const glm::vec3& point) {
-            min_point = glm::min(min_point, point);
-            max_point = glm::max(max_point, point);
-        }
-
-        void expand_to_include(const bounding_volume& other) {
-            expand_to_include(other.min_point);
-            expand_to_include(other.max_point);
-        }
 
         glm::vec3 get_center() const {
             return (min_point + max_point) / 2.0f;

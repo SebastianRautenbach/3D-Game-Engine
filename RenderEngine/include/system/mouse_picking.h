@@ -5,6 +5,7 @@
 
 namespace ray {
 	static glm::vec3 ray_cast(glm::vec2 mouse_pos, glm::vec2 screen_size, glm::mat4 projection_mtx, glm::mat4 view_mtx) {
+        
         float x = (2.0f * mouse_pos.x) / screen_size.x - 1.0f;
         float y = 1.0f - (2.0f * mouse_pos.y) / screen_size.y;
         float z = 1.0f;

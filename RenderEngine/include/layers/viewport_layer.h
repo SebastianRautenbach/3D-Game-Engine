@@ -6,18 +6,20 @@
 #include "imgui/backends/imgui_impl_opengl3.h"
 #include "ImGuizmo/ImGuizmo.h"
 #include "scene.h"
+#include "system/draw_ray.h"
 
 namespace wizm {
 
 
 	class viewport_layer : public core_layer {
 	public:
-		viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene);
+		viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene ,/*temp delete*/draw_ray* ray);
 		~viewport_layer();
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void update(float delta_time) override;
+		void get_mouse_pick();
 
 	private:
 		unsigned int m_fbID;
@@ -27,6 +29,9 @@ namespace wizm {
 
 		// needs to be a better way :(
 		core_scene* m_scene;
+
+		// testing
+		draw_ray* m_ray;
 	};
 
 }

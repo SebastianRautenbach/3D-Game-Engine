@@ -46,7 +46,10 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	camera->SetPitch(-0.438943);
 	camera->SetYaw(-0.769122);
 
-	shdr = new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
+	//shdr = new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
+
+	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl"));
+	m_shdrs.emplace_back(new core_gl_shader("shaders/ray_vrtx.glsl", "shaders/ray_frgmnt.glsl"));
 
 	m_scene = scene;
 
@@ -135,13 +138,15 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 	view = camera->GetViewMatrix();
 	projection = camera->GetProjectionMatrix();
-	unsigned int viewLoc = glGetUniformLocation(shdr->get_shader_id() , "view");
-	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-	shdr->setMat4("projection", projection);
-
-	shdr->setVec3("camPos", camera->GetPosition());
-
-	shdr->use_shader();
+	for(const auto& shdr : m_shdrs)
+	{
+		shdr->use_shader();
+		unsigned int viewLoc = glGetUniformLocation(shdr->get_shader_id(), "view");
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+		shdr->setMat4("projection", projection);
+		shdr->setVec3("camPos", camera->GetPosition());
+	}
+	glUseProgram(0);
 }
 
 
@@ -192,19 +197,17 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		for (int i = 0; i < pointlights.size(); i++)
 		{
-			pointlights[i]->shader = shdr;
+			pointlights[i]->shader = m_shdrs[0];
 			pointlights[i]->light_index = i;
 
 		}
 
 
 		for (auto& i : meshes) {
-			i->m_material->m_shader = shdr;
+			i->m_material->m_shader = m_shdrs[0];
 			i->m_material->on_change_material();
 			i->m_model->m_camera = camera;
-			i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices(),
-				i->get_transform()
-			);
+			i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());
 		}
 
 		for (auto& i : meshes) {
@@ -218,11 +221,12 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		}
 
 		for (auto& i : dirlights) {
-			i->shader = shdr;
+			i->shader = m_shdrs[0];
 		}
 
 
-		shdr->setInt("ammount_of_pointlights", pointlights.size());
+
+		m_shdrs[0]->setInt("ammount_of_pointlights", pointlights.size());
 
 
 

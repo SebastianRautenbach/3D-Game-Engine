@@ -362,5 +362,8 @@
     <ClInclude Include="include\system\bounding_volume.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\system\draw_ray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

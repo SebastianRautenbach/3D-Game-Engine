@@ -29,7 +29,7 @@ namespace lowlevelsys {
         // No need to manually delete unique_ptr
     }
 
-    void core_mesh::draw_mesh(core_gl_shader* shader) {
+    void core_mesh::draw_mesh() {
         unsigned int diffuseNr = 1;
         unsigned int specularNr = 1;
         unsigned int normalNr = 1;

@@ -1,6 +1,9 @@
 #include "update_manager.h"
 #include "system/mouse_picking.h"
 
+
+
+
 using namespace wizm;
 
 
@@ -26,14 +29,14 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_framebuffer = new core_framebuffer(window_size_x, window_size_y);
 
 	m_asset_manager = new asset_manager(m_scene);
+	m_test_ray = new draw_ray(glm::vec3(0, 0, 0), glm::vec3(1, 0, 0));
 
-	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer->buffer_id ,m_gl_renderer->camera, m_scene));
+	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer->buffer_id ,m_gl_renderer->camera, m_scene, m_test_ray));
 	m_layer_stack->PushLayer(new scene_ui_layer(m_scene, m_gl_renderer));
 	m_layer_stack->PushLayer(new performace_ui_layer(m_scene));
 	m_layer_stack->PushLayer(new properties_ui_layer(m_scene, m_gl_renderer, m_asset_manager));
 	m_layer_stack->PushLayer(new content_browser_layer(m_asset_manager));
 	m_layer_stack->PushLayer(new project_modifier(m_scene));
-
 
 	
 }
@@ -67,10 +70,20 @@ void update_manager::render()
 
 	m_gl_renderer->render(m_timer->get_delta_time());
 
-	// Dont ask me why, I though I was being clever
+	// Dont ask me why, I thought I was being clever
 
 	m_framebuffer->bind_buffer();
+	
+	
+	m_gl_renderer->m_shdrs[0]->use_shader();
 	m_scene->scene_update();
+
+	
+	m_gl_renderer->m_shdrs[1]->use_shader();
+	m_test_ray->on_update();
+	
+	
+	
 	m_framebuffer->unbind_buffer();
 
 	// I want to involve this to a bigger system but this only handles GUI so far

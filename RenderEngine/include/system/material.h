@@ -22,7 +22,7 @@ namespace wizm {
 		std::string specular_asset_id = "";
 
 
-		core_gl_shader* m_shader;
+		std::shared_ptr<core_gl_shader> m_shader;
 		std::string mat_path;
 		float m_shininess = 32.f;
 	};

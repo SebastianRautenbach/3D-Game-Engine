@@ -13,9 +13,9 @@ namespace wizm {
     public:
         core_renderable() = default;
         
-        void init_boundingvolume(std::vector<vertex_data> vertices, const  glm::mat4& model_mtx);
+        void init_boundingvolume(std::vector<vertex_data> vertices);
         void update_boundingvolume(const glm::vec3& world_pos, const glm::vec3& world_rot, const glm::vec3& world_scale);
-
+     
     public:
         std::shared_ptr<wizm::core_3d_camera> m_camera;
 	};

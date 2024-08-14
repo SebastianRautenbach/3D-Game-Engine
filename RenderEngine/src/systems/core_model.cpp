@@ -5,10 +5,10 @@ lowlevelsys::core_model::core_model(const char* file_path)
     loadModel(file_path);
 }
 
-void lowlevelsys::core_model::render_model(core_gl_shader* shader)
+void lowlevelsys::core_model::render_model()
 {
 	for (unsigned int i = 0; i < meshes.size(); i++)
-		meshes[i].draw_mesh(shader);
+		meshes[i].draw_mesh();
 }
 
 void lowlevelsys::core_model::loadModel(std::string path)

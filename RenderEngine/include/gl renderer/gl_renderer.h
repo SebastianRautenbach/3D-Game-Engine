@@ -29,7 +29,10 @@ namespace lowlevelsys {
 	public:
 		GLFWwindow* window;
 		input_manager* m_input_manager;
-		core_gl_shader* shdr;
+		
+		std::vector<std::shared_ptr<core_gl_shader>> m_shdrs;
+		//core_gl_shader* shdr;
+
 		core_grid* grid2d;
 		std::shared_ptr<core_3d_camera> camera;
 		core_scene* m_scene;

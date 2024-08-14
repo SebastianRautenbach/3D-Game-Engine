@@ -248,6 +248,7 @@
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />
     <ClInclude Include="include\system\core_renderable.h" />
+    <ClInclude Include="include\system\draw_ray.h" />
     <ClInclude Include="include\system\filewatcher.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
