@@ -20,8 +20,6 @@ void wizm::core_renderable::init_boundingvolume(std::vector<vertex_data> vertice
 
 void wizm::core_renderable::update_boundingvolume(const glm::vec3& world_pos, const glm::vec3& world_rot, const glm::vec3& world_scale)
 {
-
-
     glm::mat4 transform = glm::mat4(1.0f);
     transform = glm::translate(transform, world_pos);
     transform = glm::rotate(transform, glm::radians(world_rot.x), glm::vec3(1, 0, 0));
@@ -41,8 +39,8 @@ void wizm::core_renderable::update_boundingvolume(const glm::vec3& world_pos, co
     };
 
     
-    min_point = glm::vec3(std::numeric_limits<float>::lowest());
-    max_point = glm::vec3(std::numeric_limits<float>::max());
+    min_point = glm::vec3(0);
+    max_point = glm::vec3(0);
 
 
     for (const auto& corner : corners) {

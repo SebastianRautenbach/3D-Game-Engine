@@ -4,8 +4,8 @@
 #include "other utils/strconvr.h"
 #include "system/mouse_picking.h"
 
-wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, draw_ray* ray)
-    : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene), m_ray(ray)
+wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, draw_ray* ray, gl_renderer* renderer)
+    : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene), m_ray(ray), m_renderer(renderer)
 {
 }
 
@@ -137,6 +137,12 @@ void wizm::viewport_layer::update(float delta_time)
             
             rectStart = ImGui::GetMousePos();
             rectEnd = rectStart;             
+        
+           
+        }
+
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Right)) {
+            properties_mouse_pick();
         }
 
         if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
@@ -155,7 +161,42 @@ void wizm::viewport_layer::update(float delta_time)
             rectEnd = ImVec2(-1, -1);
         }
     }
+    
+    
+    
+    
+    if (ImGui::BeginPopup("ModEnt") && m_scene->get_crnt_entity() != nullptr) {
 
+        ImGui::Text("Modify Entity");
+        ImGui::Separator();
+        
+        if (ImGui::MenuItem("Delete")) {
+            m_scene->m_entities.erase(std::find(m_scene->m_entities.begin(), m_scene->m_entities.end(), m_scene->get_crnt_entity()));
+
+            m_renderer->update_draw_data();
+
+            for (auto ents : m_scene->m_entities)
+                m_scene->set_crnt_entity(ents);
+
+            if (m_scene->m_entities.empty())
+                m_scene->set_crnt_entity(nullptr);
+        }
+        if (ImGui::MenuItem("Duplicate")) {
+
+            auto name = m_scene->get_crnt_entity()->m_ent_ID;
+
+            while (m_scene->does_ent_name_exist(name)) {
+                name += "(1)";
+            }
+
+
+            auto crnt = m_scene->get_crnt_entity()->copy_(name);
+            m_scene->add_entity(crnt);
+            m_scene->set_crnt_entity(crnt);
+        }
+
+        ImGui::EndPopup();
+    }
 
     ImGui::End();
 }
@@ -177,22 +218,45 @@ void wizm::viewport_layer::get_mouse_pick()
 
     m_ray->re_draw(ray_pos, ray_dir);
 
+    m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
+}
 
+void wizm::viewport_layer::properties_mouse_pick()
+{
+    ImVec2 crnt_mouse_pos = ImGui::GetMousePos();
+    ImVec2 window_pos = ImGui::GetWindowPos();
+    ImVec2 window_size = ImGui::GetWindowSize();
+
+
+    glm::vec2 rel_mouse_pos(crnt_mouse_pos.x - window_pos.x, crnt_mouse_pos.y - window_pos.y);
+    glm::vec2 norm_mouse_pos(rel_mouse_pos.x / window_size.x, rel_mouse_pos.y / window_size.y);
+
+
+    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
+    glm::vec3 ray_pos = ray::ray_origin(m_camera->GetViewMatrix());
+
+    m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
+    if (m_scene->get_crnt_entity() != nullptr) { ImGui::OpenPopup("ModEnt"); }
+
+   
+}
+
+std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos)
+{
     for (const auto& ent : m_scene->m_entities) {
         for (const auto& comp : ent->m_components_list) {
             auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
             if (sm_comp) {
 
 
-                sm_comp->m_model->update_boundingvolume( sm_comp->get_world_position(),
-                    sm_comp->get_world_rotation(), sm_comp->get_world_scale());
+                sm_comp->m_model->update_boundingvolume(sm_comp->get_world_position(), sm_comp->get_world_rotation(), sm_comp->get_world_scale());
 
 
                 if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos)) {
-                    m_scene->set_crnt_entity(ent);
-                    return;
+                    return ent;
                 }
             }
         }
     }
+    return nullptr;
 }

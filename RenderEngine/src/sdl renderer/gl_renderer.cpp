@@ -217,7 +217,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 				I need to reconstruct it by its size and not it vertices
 			*/
 
-			std::cout << "x:" << y.x << ", y:" << y.y << ", z:" << y.z << "\n";
+			//std::cout << "x:" << y.x << ", y:" << y.y << ", z:" << y.z << "\n";
 		}
 
 		for (auto& i : dirlights) {
