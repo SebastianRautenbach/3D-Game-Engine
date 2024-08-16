@@ -206,12 +206,17 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		for (auto& i : meshes) {
 			i->m_material->m_shader = m_shdrs[0];
 			i->m_material->on_change_material();
-			i->m_model->m_camera = camera;
-			i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());
+			
+			if (i->m_model) {
+				i->m_model->m_camera = camera;
+				i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());
+			}
+			
 		}
 
 		for (auto& i : meshes) {
-			auto y = i->m_model->get_size();
+			if (i->m_model)
+				auto y = i->m_model->get_size();
 
 			/*
 				I need to reconstruct it by its size and not it vertices

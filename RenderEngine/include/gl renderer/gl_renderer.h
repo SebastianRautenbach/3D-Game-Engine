@@ -34,7 +34,7 @@ namespace lowlevelsys {
 		//core_gl_shader* shdr;
 
 		core_grid* grid2d;
-		std::shared_ptr<core_3d_camera> camera;
+		std::shared_ptr<core_3d_camera> camera = nullptr;
 		core_scene* m_scene;
 		
 		
