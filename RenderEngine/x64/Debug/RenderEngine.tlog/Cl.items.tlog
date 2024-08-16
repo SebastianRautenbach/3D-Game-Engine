@@ -16,12 +16,12 @@ C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\c
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\viewport_layer.h;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\viewport_layer.h.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\strconvr.h;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\strconvr.h.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\3d_core_camera.h;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\3d_core_camera.h.obj
-C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\core_renderable.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\core_renderable.obj
+C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\boxvolume_component.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\boxvolume_component.obj
+C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\core_renderable.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\core_renderable.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\mouse_picking.h;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\mouse_picking.h.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\asset_manager.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\asset_manager.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\app.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\app.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\component.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\component.obj
-C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\cube_test_comp.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\cube_test_comp.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\directionallight_component.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\directionallight_component.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\pointlight_component.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\pointlight_component.obj
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\staticmesh_component.cpp;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\x64\Debug\staticmesh_component.obj

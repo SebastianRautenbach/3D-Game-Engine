@@ -29,6 +29,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_framebuffer = new core_framebuffer(window_size_x, window_size_y);
 
 	m_asset_manager = new asset_manager(m_scene);
+
 	m_test_ray = new draw_ray(glm::vec3(0, 0, 0), glm::vec3(1, 0, 0));
 
 	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer->buffer_id ,m_gl_renderer->camera, m_scene, m_test_ray, m_gl_renderer));

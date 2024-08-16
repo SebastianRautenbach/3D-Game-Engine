@@ -100,22 +100,22 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_W))
-			camera->MoveForward(1 * deltaTime);
+			camera->MoveForward(2 * deltaTime);
 		
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_S))
-			camera->MoveForward(-1 * deltaTime);
+			camera->MoveForward(-2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_D))
-			camera->MoveRight(1 * deltaTime);
+			camera->MoveRight(2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_A))
-			camera->MoveRight(-1 * deltaTime);
+			camera->MoveRight(-2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_E))
-			camera->MoveUp(1 * deltaTime);
+			camera->MoveUp(2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
-			camera->MoveUp(-1 * deltaTime);
+			camera->MoveUp(-2 * deltaTime);
 
 	
 	}

@@ -161,12 +161,12 @@
     <ClCompile Include="include\layers\viewport_layer.h" />
     <ClCompile Include="include\other utils\strconvr.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
-    <ClCompile Include="include\system\core_renderable.cpp" />
+    <ClCompile Include="src\components\boxvolume_component.cpp" />
+    <ClCompile Include="src\systems\core_renderable.cpp" />
     <ClCompile Include="include\system\mouse_picking.h" />
     <ClCompile Include="src\systems\asset_manager.cpp" />
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\components\component.cpp" />
-    <ClCompile Include="src\components\cube_test_comp.cpp" />
     <ClCompile Include="src\components\directionallight_component.cpp" />
     <ClCompile Include="src\components\pointlight_component.cpp" />
     <ClCompile Include="src\components\staticmesh_component.cpp" />
@@ -213,7 +213,7 @@
     <ClInclude Include="include\dependencies\imgui\imstb_truetype.h" />
     <ClInclude Include="include\dependencies\sqlite3.h" />
     <ClInclude Include="include\entity sys\components\all_components_list.h" />
-    <ClInclude Include="include\entity sys\components\cube_test_comp.h" />
+    <ClInclude Include="include\entity sys\components\boxvolume_component.h" />
     <ClInclude Include="include\entity sys\components\pointlight_component.h" />
     <ClInclude Include="include\entity sys\component_types.h" />
     <ClInclude Include="include\entity sys\entity.h" />
