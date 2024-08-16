@@ -1,5 +1,5 @@
-![](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/res/Picture1.png)
-![](https://github.com/SebastianRautenbach/3D-Game-Engine/blob/main/RenderEngine/res/Screenshot%202024-07-22%20184532.png)
+![](https://github.com/SebastianRautenbach/3D-Game-Engine/blob/v1.2/RenderEngine/res/Picture1.png)
+![](https://github.com/SebastianRautenbach/3D-Game-Engine/blob/v1.2/RenderEngine/res/Screenshot%202024-07-22%20184532.png)
 
 
 **Current state**
