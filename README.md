@@ -7,7 +7,7 @@ The engine is still in it's very early state but it is "functional". The engine 
 It does feature a serializer to save levels.
 
 **Inprogress**
-I am busy with the asset management system allowing for more efficient memory allocation and a dynamic garbage collector.
+I am busy with the asset management system allowing for more efficient memory allocation and a dynamic garbage collector. The engine being developed with a ray-cast mouse picking method
 
 **Whats to come**
 I want the engine to support a layer system where all scenes can be layered ontop of each other making it more modular.
