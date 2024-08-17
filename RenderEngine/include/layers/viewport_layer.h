@@ -8,13 +8,14 @@
 #include "scene.h"
 #include "system/draw_ray.h"
 #include "gl renderer/gl_renderer.h"
+#include "layers/UI/popup_window.h"
 
 namespace wizm {
 
 
 	class viewport_layer : public core_layer {
 	public:
-		viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene ,/*temp delete*/draw_ray* ray, gl_renderer* renderer);
+		viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, gl_renderer* renderer);
 		~viewport_layer();
 
 		virtual void OnAttach() override;
@@ -34,9 +35,6 @@ namespace wizm {
 
 		// needs to be a better way :(
 		core_scene* m_scene;
-
-		// testing
-		draw_ray* m_ray;
 	};
 
 }

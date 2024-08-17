@@ -261,6 +261,7 @@
     <ClInclude Include="include\layers\layer.h" />
     <ClInclude Include="include\layers\scene_ui_layer.h" />
     <ClInclude Include="include\system\node.h" />
+    <ClInclude Include="include\layers\UI\popup_window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

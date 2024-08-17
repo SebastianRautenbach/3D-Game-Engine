@@ -4,8 +4,8 @@
 #include "other utils/strconvr.h"
 #include "system/mouse_picking.h"
 
-wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, draw_ray* ray, gl_renderer* renderer)
-    : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene), m_ray(ray), m_renderer(renderer)
+wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, gl_renderer* renderer)
+    : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene), m_renderer(renderer)
 {
 }
 
@@ -175,11 +175,7 @@ void wizm::viewport_layer::update(float delta_time)
 
             m_renderer->update_draw_data();
 
-            for (auto ents : m_scene->m_entities)
-                m_scene->set_crnt_entity(ents);
-
-            if (m_scene->m_entities.empty())
-                m_scene->set_crnt_entity(nullptr);
+            m_scene->set_crnt_entity(nullptr);
         }
         if (ImGui::MenuItem("Duplicate")) {
 
@@ -214,9 +210,6 @@ void wizm::viewport_layer::get_mouse_pick()
 
     glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
     glm::vec3 ray_pos = ray::ray_origin(m_camera->GetViewMatrix());
-
-
-    m_ray->re_draw(ray_pos, ray_dir);
 
     m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
 }

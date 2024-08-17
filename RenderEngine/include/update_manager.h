@@ -39,8 +39,6 @@ namespace wizm {
 
 		// testing
 		asset_manager* m_asset_manager;
-		// new system
-		draw_ray* m_test_ray;
 	};
 
 

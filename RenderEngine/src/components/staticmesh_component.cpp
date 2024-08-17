@@ -54,7 +54,5 @@ std::shared_ptr<core_component> wizm::staticmesh_component::_copy() const
 	}
 	new_sc_comp->m_model = this->m_model;
 
-	new_sc_comp->m_model->has_bounding_volume = false;
-
 	return new_sc_comp;
 }

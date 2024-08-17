@@ -365,5 +365,8 @@
     <ClInclude Include="include\entity sys\components\boxvolume_component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\layers\UI\popup_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -27,6 +27,14 @@ namespace wizm
         }
 
         bool ray_intersect(glm::vec3 ray_dir, glm::vec3 ray_origin) const {
+            
+            if (ray_origin.x >= min_point.x && ray_origin.x <= max_point.x &&
+                ray_origin.y >= min_point.y && ray_origin.y <= max_point.y &&
+                ray_origin.z >= min_point.z && ray_origin.z <= max_point.z) {
+                return false;
+            }
+
+            
             float tmin = (min_point.x - ray_origin.x) / ray_dir.x;
             float tmax = (max_point.x - ray_origin.x) / ray_dir.x;
 

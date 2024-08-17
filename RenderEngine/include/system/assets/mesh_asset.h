@@ -11,6 +11,10 @@ namespace wizm {
 
 	class staticmesh_asset : public core_asset, public core_renderable {
 	public:
+
+		void set_mesh(core_model* model) { m_model = model; }
+		core_model* get_mesh() { return m_model; }
+		
 		void load(const std::string& path) override {
 			if(!path.empty())
 				m_model = new core_model(path.c_str());
