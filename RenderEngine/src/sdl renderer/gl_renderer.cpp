@@ -215,7 +215,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 				}
 			}
 		}
-		if(!meshes.empty())
+		if(!meshes.empty() && meshes[meshes.size() - 1]->m_model)
 			meshes[meshes.size() - 1]->m_model->init_boundingvolume(meshes[meshes.size() - 1]->m_model->retrieve_all_vertices());
 
 		for (auto& i : meshes) {
