@@ -150,9 +150,6 @@
     <ClCompile Include="src\layers\content_browser_layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\layers\project_modifiers_layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\systems\asset_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -336,9 +333,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\system\asset_importer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\layers\project_modifiers_layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\system\assets\texture_asset.h">

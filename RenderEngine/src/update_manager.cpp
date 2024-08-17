@@ -21,7 +21,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 
 	m_timer = new core_timer;
 
-	base_layer = new gui_layer(m_gl_renderer->window);
+	base_layer = new gui_layer(m_gl_renderer->window, m_scene);
 	m_layer_stack = new layer_stack();
 
 	m_layer_stack->PushLayer(base_layer);
@@ -35,7 +35,6 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_layer_stack->PushLayer(new performace_ui_layer(m_scene));
 	m_layer_stack->PushLayer(new properties_ui_layer(m_scene, m_gl_renderer, m_asset_manager));
 	m_layer_stack->PushLayer(new content_browser_layer(m_asset_manager));
-	m_layer_stack->PushLayer(new project_modifier(m_scene));
 
 	
 }

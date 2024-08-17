@@ -179,7 +179,6 @@
     <ClCompile Include="src\layers\gui_layer.cpp" />
     <ClCompile Include="src\layers\layerstack.cpp" />
     <ClCompile Include="src\layers\performance_ui_layer.cpp" />
-    <ClCompile Include="src\layers\project_modifiers_layer.cpp" />
     <ClCompile Include="src\layers\properties_ui_layer.cpp" />
     <ClCompile Include="src\layers\scene_ui_layer.cpp" />
     <ClCompile Include="src\layers\viewport_layer.cpp" />
@@ -226,7 +225,6 @@
     <ClInclude Include="include\layers\layerstack.h" />
     <ClInclude Include="include\layers\layers_define.h" />
     <ClInclude Include="include\layers\performance_ui_layer.h" />
-    <ClInclude Include="include\layers\project_modifiers_layer.h" />
     <ClInclude Include="include\layers\properties_ui_layer.h" />
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />

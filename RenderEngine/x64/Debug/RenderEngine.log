@@ -1,70 +1,24 @@
 ﻿  Scanning sources for module dependencies...
-  gl_renderer.cpp
+  gui_layer.cpp
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\ZER.h(285,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
+  (compiling source file 'src/layers/gui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\ZER.h(288,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
+  (compiling source file 'src/layers/gui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\ZER.h(312,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
+  (compiling source file 'src/layers/gui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\ZER.h(315,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
+  (compiling source file 'src/layers/gui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\ZER.h(339,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
+  (compiling source file 'src/layers/gui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\ZER.h(342,37): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
+  (compiling source file 'src/layers/gui_layer.cpp')
   
 C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\ZER.h(430,24): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
-  
-C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\sdl renderer\gl_renderer.cpp(46,20): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\sdl renderer\gl_renderer.cpp(47,18): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\sdl renderer\gl_renderer.cpp(97,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\sdl renderer\gl_renderer.cpp(98,69): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\sdl renderer\gl_renderer.cpp(238,64): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(241,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
-  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(241,76):
-  the template instantiation context (the oldest one first) is
-  	C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\sdl renderer\gl_renderer.cpp(44,16):
-  	see reference to function template instantiation 'std::shared_ptr<wizm::core_3d_camera> std::make_shared<wizm::core_3d_camera,int&,int&>(int &,int &)' being compiled
-  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(2738,46):
-  	see reference to function template instantiation 'std::_Ref_count_obj2<wizm::core_3d_camera>::_Ref_count_obj2<int&,int&>(int &,int &)' being compiled
-  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(2062,18):
-  	see reference to function template instantiation 'void std::_Construct_in_place<_Ty,int&,int&>(_Ty &,int &,int &) noexcept(false)' being compiled
-          with
-          [
-              _Ty=wizm::core_3d_camera
-          ]
-  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(251,14):
-  	see reference to function template instantiation '_Ty *std::construct_at<_Ty,int&,int&,0x0>(_Ty *const ,int &,int &) noexcept(<expr>)' being compiled
-          with
-          [
-              _Ty=wizm::core_3d_camera
-          ]
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(255,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
-  
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(242,90): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/sdl%20renderer/gl_renderer.cpp')
-  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(242,90):
-  the template instantiation context (the oldest one first) is
-  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\memory(2062,18):
-  	see reference to function template instantiation 'void std::_Construct_in_place<_Ty,int&,int&>(_Ty &,int &,int &) noexcept(false)' being compiled
-          with
-          [
-              _Ty=wizm::core_3d_camera
-          ]
-  	C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include\xutility(251,14):
-  	see reference to function template instantiation '_Ty *std::construct_at<_Ty,int&,int&,0x0>(_Ty *const ,int &,int &) noexcept(false)' being compiled
-          with
-          [
-              _Ty=wizm::core_3d_camera
-          ]
+  (compiling source file 'src/layers/gui_layer.cpp')
   
   RenderEngine.vcxproj -> C:\Users\karat\Documents\GitHub\3D-Game-Engine\x64\Debug\RenderEngine.exe
