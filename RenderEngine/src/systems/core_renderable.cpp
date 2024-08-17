@@ -6,7 +6,8 @@
 
 void wizm::core_renderable::init_boundingvolume(std::vector<vertex_data> vertices)
 {        
-
+    has_bounding_volume = true;
+    
     for (const auto& vertex : vertices) {
         min_point_local.x = std::min(min_point_local.x, vertex.Position.x);
         min_point_local.y = std::min(min_point_local.y, vertex.Position.y);

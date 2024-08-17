@@ -209,7 +209,8 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			
 			if (i->m_model) {
 				i->m_model->m_camera = camera;
-				i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());
+				if(!i->m_model->has_bounding_volume)
+					i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());
 			}
 			
 		}

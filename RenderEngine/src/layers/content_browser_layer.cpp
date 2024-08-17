@@ -44,8 +44,11 @@ void wizm::content_browser_layer::update(float delta_time)
 	
 	
 	if (ImGui::Button("refresh")) {
-		watcher->refresh();
+		
+        watcher->refresh();
+        m_asset_manager->load_assets_db();
 		assets = asset_import.retrieve_all_assets();
+        
 	}
 
 	if (ImGui::Button("...##back")) {
