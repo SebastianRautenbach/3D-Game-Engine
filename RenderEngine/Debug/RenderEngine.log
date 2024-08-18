@@ -1,0 +1,10 @@
+﻿  app.cpp
+  Renderer.cpp
+  Generating Code...
+app.obj : error LNK2019: unresolved external symbol _SDL_GetError referenced in function "int __cdecl SDL_main(void)" (?SDL_main@@YAHXZ)
+app.obj : error LNK2019: unresolved external symbol _SDL_Init referenced in function "int __cdecl SDL_main(void)" (?SDL_main@@YAHXZ)
+app.obj : error LNK2019: unresolved external symbol _SDL_Quit referenced in function "int __cdecl SDL_main(void)" (?SDL_main@@YAHXZ)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol _main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\lib\SDL2.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\sebog\source\repos\RenderEngine\RenderEngine\lib\SDL2main.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+C:\Users\sebog\source\repos\RenderEngine\Debug\RenderEngine.exe : fatal error LNK1120: 4 unresolved externals
