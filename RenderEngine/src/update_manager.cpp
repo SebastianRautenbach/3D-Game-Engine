@@ -80,7 +80,7 @@ void update_manager::render()
 	
 	m_framebuffer->unbind_buffer();
 
-	// I want to involve this to a bigger system but this only handles GUI so far
+	// I want to evolve this to a bigger system but this only handles GUI so far
 	base_layer->begin();
 	for (auto layer = m_layer_stack->begin(); layer != m_layer_stack->end(); layer++)
 		(*layer)->update(m_timer->get_delta_time());

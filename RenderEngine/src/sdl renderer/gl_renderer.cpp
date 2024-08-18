@@ -215,19 +215,14 @@ void lowlevelsys::gl_renderer::update_draw_data()
 				}
 			}
 		}
+		/*
+		* I am a IDIOT
+		* This will be updated because luckly for now only one object can be copied so only the last mesh will be updated
+		* this is bad because if later there is a way to paste multiple meshes this will only update the last one
+		*/
 		if(!meshes.empty() && meshes[meshes.size() - 1]->m_model)
 			meshes[meshes.size() - 1]->m_model->init_boundingvolume(meshes[meshes.size() - 1]->m_model->retrieve_all_vertices());
 
-		for (auto& i : meshes) {
-			if (i->m_model)
-				auto y = i->m_model->get_size();
-
-			/*
-				I need to reconstruct it by its size and not it vertices
-			*/
-
-			//std::cout << "x:" << y.x << ", y:" << y.y << ", z:" << y.z << "\n";
-		}
 
 		for (auto& i : dirlights) {
 			i->shader = m_shdrs[0];

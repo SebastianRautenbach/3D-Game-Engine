@@ -83,10 +83,15 @@ void wizm::viewport_layer::update(float delta_time)
         auto ent = m_scene->get_crnt_entity();
         glm::mat4 mat = ent->get_transform();
 
+
+        ImGuizmo::SetOrthographic(false);
+        ImGuizmo::SetDrawlist();
     
         float windowWidth = (float)ImGui::GetWindowWidth();
         float windowHeight = (float)ImGui::GetWindowHeight();
         ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
+
+
 
         glm::mat4 viewMatrix = m_camera->GetViewMatrix();
         

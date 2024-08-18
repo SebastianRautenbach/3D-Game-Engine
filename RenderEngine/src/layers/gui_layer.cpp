@@ -65,6 +65,7 @@ void wizm::gui_layer::begin()
     ImGui::SetNextWindowSize(viewport->Size);
     ImGui::SetNextWindowViewport(viewport->ID);
 
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4.0f, 12.0f));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
@@ -103,7 +104,7 @@ void wizm::gui_layer::begin()
         }
         ImGui::EndMenuBar();
     }
-
+    ImGui::PopStyleVar();
 
     if (show_save_popup) {
         ImGui::OpenPopup("Save Map As");

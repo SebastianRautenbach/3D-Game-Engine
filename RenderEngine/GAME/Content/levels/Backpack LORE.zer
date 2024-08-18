@@ -653,7 +653,7 @@ floor{
 	staticmesh0{
 		asset id:18410409422620930561;
 		material{
-			diffuse_asset_id:18302487994969663584;
+			diffuse_asset_id:8574774509872314517;
 			specular_asset_id:18302487994969663584;
 		}
 		transform{
@@ -665,9 +665,9 @@ floor{
 	tags{
 	}
 	transform{
-		position:0.000000,-1.587679,0.000000;
+		position:0.000000,-0.665816,0.000000;
 		rotation:0.000000,0.000000,0.000000;
-		scale:4.980761,1.000000,9.000000;
+		scale:4.980761,0.145421,9.000000;
 	}
 }
 light{
