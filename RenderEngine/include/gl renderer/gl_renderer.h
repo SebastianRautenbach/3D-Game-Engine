@@ -18,35 +18,26 @@ namespace lowlevelsys {
 	class gl_renderer {
 	public:
 		void setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene);
-
+		
 		void pre_render(bool& is_running, float deltaTime);
 		void render(float deltaTime);
 		void post_render(float deltaTime);
 		void update_draw_data();
 		void on_exit();
-
-		// uniform location
-
-		int get_uniform_location(const std::string& name, unsigned int id) {
-			if (uniformLocations.find(name) != uniformLocations.end())
-				return uniformLocations[name];
-			int location = glGetUniformLocation(id, name.c_str());
-			uniformLocations[name] = location;
-			return location;
-		}
-
+		void set_camera_aspect(float x, float y);
 
 	public:
 		GLFWwindow* window;
 		input_manager* m_input_manager;
-
-		std::vector<std::shared_ptr<core_gl_shader>> m_shaders;
 		
-		core_grid* grid2d;
-		core_3d_camera* camera;
-		core_scene* m_scene;
+		std::vector<std::shared_ptr<core_gl_shader>> m_shdrs;
+		//core_gl_shader* shdr;
 
-		std::unordered_map<std::string, int> uniformLocations;
+		core_grid* grid2d;
+		std::shared_ptr<core_3d_camera> camera = nullptr;
+		core_scene* m_scene;
+		
+		
 
 	public:
 		int w_width, w_height;

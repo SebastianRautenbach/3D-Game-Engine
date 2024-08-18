@@ -36,6 +36,7 @@ namespace wizm {
 		std::shared_ptr<core_entity> copy_(std::string name) const;
 
 
+
 		// component
 		
 		std::shared_ptr<core_component> add_component(std::shared_ptr<core_component> component);

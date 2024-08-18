@@ -2,21 +2,11 @@
 #include "other utils/matrix_math.h"
 #include "input.h"
 #include "other utils/strconvr.h"
+#include "system/mouse_picking.h"
 
-
-wizm::viewport_layer::viewport_layer(unsigned int fbID, core_3d_camera* camera, core_scene* scene)
-    : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene)
+wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, gl_renderer* renderer)
+    : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene), m_renderer(renderer)
 {
-
-    auto _io = &ImGui::GetIO(); (void)_io;
-    ImGuiIO& io = *_io;
-
-    framebuffer_spec main_spec;
-    main_spec.attachment = { framebuffer_texture_format::DEPTH24STENCIL8, framebuffer_texture_format::RED_INTEGER, framebuffer_texture_format::Depth };
-    main_spec.Width = _io->DisplaySize.x;
-    main_spec.Height = _io->DisplaySize.y;
-
-    m_fbo = new core_framebuffer(main_spec);
 }
 
 wizm::viewport_layer::~viewport_layer()
@@ -35,8 +25,6 @@ void wizm::viewport_layer::OnDetach()
 void wizm::viewport_layer::update(float delta_time)
 {
     ImGui::Begin("Viewport");
-
-    
      
     
     ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
@@ -95,10 +83,15 @@ void wizm::viewport_layer::update(float delta_time)
         auto ent = m_scene->get_crnt_entity();
         glm::mat4 mat = ent->get_transform();
 
+
+        ImGuizmo::SetOrthographic(false);
+        ImGuizmo::SetDrawlist();
     
         float windowWidth = (float)ImGui::GetWindowWidth();
         float windowHeight = (float)ImGui::GetWindowHeight();
         ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
+
+
 
         glm::mat4 viewMatrix = m_camera->GetViewMatrix();
         
@@ -135,62 +128,6 @@ void wizm::viewport_layer::update(float delta_time)
 
     }
 
-
-    if (!ImGuizmo::IsUsing() && ImGui::IsWindowHovered()) {
-        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
-            auto _io = &ImGui::GetIO(); (void)_io;
-            ImGuiIO& io = *_io;
-
-            
-
-   
-            int index = 0;
-
-            for (auto& i : m_scene->m_entities) {
-                for (auto& y : i->m_components_list) {
-
-                    auto comp = std::dynamic_pointer_cast<staticmesh_component>(y);
-                    if (comp)
-                    {
-                        comp->m_material->set_shader(1);
-                        comp->m_material->select_model_id = index;
-                        comp->component_update();
-                        ++index;
-                    }
-                }
-            }
-
-
-
-            
-            int mouseX = static_cast<int>(_io->MousePos.x);
-            int mouseY = static_cast<int>(_io->DisplaySize.y - _io->MousePos.y - 1);
-
-            unsigned char pixelColor[3];
-            glReadPixels(mouseX, mouseY, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixelColor);
-            int readCode = (pixelColor[0]) | (pixelColor[1] << 8) | (pixelColor[2] << 16);
-
-
-            
-
-            for (auto& i : m_scene->m_entities) {
-                for (auto& y : i->m_components_list) {
-            
-                    auto comp = std::dynamic_pointer_cast<staticmesh_component>(y);
-                    if (comp)
-                    {                   
-                        if (comp->m_material->select_model_id == readCode) {
-                            m_scene->set_crnt_entity(i);
-                        }
-                    }
-                }
-            }
-
-        }
-    
-    }
-
-
     if(!ImGuizmo::IsUsing() && ImGui::IsWindowHovered())
     {
         static ImVec2 rectStart(-1, -1);
@@ -198,8 +135,19 @@ void wizm::viewport_layer::update(float delta_time)
 
  
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+            
+            
+            
+            get_mouse_pick();
+            
             rectStart = ImGui::GetMousePos();
             rectEnd = rectStart;             
+        
+           
+        }
+
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Right)) {
+            properties_mouse_pick();
         }
 
         if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
@@ -218,9 +166,95 @@ void wizm::viewport_layer::update(float delta_time)
             rectEnd = ImVec2(-1, -1);
         }
     }
+    
+    
+    
+    
+    if (ImGui::BeginPopup("ModEnt") && m_scene->get_crnt_entity() != nullptr) {
 
+        ImGui::Text("Modify Entity");
+        ImGui::Separator();
+        
+        if (ImGui::MenuItem("Delete")) {
+            m_scene->m_entities.erase(std::find(m_scene->m_entities.begin(), m_scene->m_entities.end(), m_scene->get_crnt_entity()));
+
+            m_renderer->update_draw_data();
+
+            m_scene->set_crnt_entity(nullptr);
+        }
+        if (ImGui::MenuItem("Duplicate")) {
+
+            auto name = m_scene->get_crnt_entity()->m_ent_ID;
+
+            while (m_scene->does_ent_name_exist(name)) {
+                name += "(1)";
+            }
+
+
+            auto crnt = m_scene->get_crnt_entity()->copy_(name);
+            m_scene->add_entity(crnt);
+            m_scene->set_crnt_entity(crnt);
+        }
+
+        ImGui::EndPopup();
+    }
 
     ImGui::End();
 }
 
+void wizm::viewport_layer::get_mouse_pick()
+{
+    ImVec2 crnt_mouse_pos = ImGui::GetMousePos();
+    ImVec2 window_pos = ImGui::GetWindowPos();
+    ImVec2 window_size = ImGui::GetWindowSize();
 
+
+    glm::vec2 rel_mouse_pos(crnt_mouse_pos.x - window_pos.x, crnt_mouse_pos.y - window_pos.y);
+    glm::vec2 norm_mouse_pos(rel_mouse_pos.x / window_size.x, rel_mouse_pos.y / window_size.y);
+
+
+    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
+    glm::vec3 ray_pos = ray::ray_origin(m_camera->GetViewMatrix());
+
+    m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
+}
+
+void wizm::viewport_layer::properties_mouse_pick()
+{
+    ImVec2 crnt_mouse_pos = ImGui::GetMousePos();
+    ImVec2 window_pos = ImGui::GetWindowPos();
+    ImVec2 window_size = ImGui::GetWindowSize();
+
+
+    glm::vec2 rel_mouse_pos(crnt_mouse_pos.x - window_pos.x, crnt_mouse_pos.y - window_pos.y);
+    glm::vec2 norm_mouse_pos(rel_mouse_pos.x / window_size.x, rel_mouse_pos.y / window_size.y);
+
+
+    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
+    glm::vec3 ray_pos = ray::ray_origin(m_camera->GetViewMatrix());
+
+    m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
+    if (m_scene->get_crnt_entity() != nullptr) { ImGui::OpenPopup("ModEnt"); }
+
+   
+}
+
+std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos)
+{
+    for (const auto& ent : m_scene->m_entities) {
+        for (const auto& comp : ent->m_components_list) {
+            auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
+            if (sm_comp) {
+
+                
+                sm_comp->m_model->update_boundingvolume(sm_comp->get_world_position(), sm_comp->get_world_rotation(), sm_comp->get_world_scale());
+
+
+                if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos)) {
+                    return ent;
+                }
+            }
+        }
+    }
+    return nullptr;
+}

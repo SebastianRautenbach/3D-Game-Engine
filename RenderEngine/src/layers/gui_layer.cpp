@@ -1,7 +1,8 @@
 #include "layers/gui_cntx.h"
+#include "scene.h"
 
-wizm::gui_layer::gui_layer(GLFWwindow* window)
-    : core_layer("gui_layer")
+wizm::gui_layer::gui_layer(GLFWwindow* window, core_scene* scene)
+    : core_layer("gui_layer"), m_scene(scene)
 {
     m_window = window;
 }
@@ -54,27 +55,92 @@ void wizm::gui_layer::begin()
     ImGui::NewFrame();
     ImGuizmo::BeginFrame();
 
-    // Create the docking environment
-    ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoTitleBar |
+    ImGuiWindowFlags windowFlags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoTitleBar |
         ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove |
-        ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus |
-        ImGuiWindowFlags_NoBackground;
+        ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+
 
     ImGuiViewport* viewport = ImGui::GetMainViewport();
     ImGui::SetNextWindowPos(viewport->Pos);
     ImGui::SetNextWindowSize(viewport->Size);
     ImGui::SetNextWindowViewport(viewport->ID);
 
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4.0f, 12.0f));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
     ImGui::Begin("InvisibleWindow", nullptr, windowFlags);
     ImGui::PopStyleVar(3);
 
-    ImGuiID dockSpaceId = ImGui::GetID("InvisibleWindowDockSpace");
+    static bool show_save_popup = false;
+    static char map_name[128] = "GAME/new_save.zer";
 
-    ImGui::DockSpace(dockSpaceId, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_PassthruCentralNode);
+
+    if (ImGui::BeginMenuBar())
+    {
+        if (ImGui::BeginMenu("File"))
+        {
+            if (ImGui::MenuItem("Save-as"))
+            {
+                show_save_popup = true;
+            }
+            if (ImGui::MenuItem("Save"))
+            {
+                m_scene->save_map_data("");
+            }
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Edit"))
+        {
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Tools"))
+        {
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Window"))
+        {
+            ImGui::EndMenu();
+        }
+        ImGui::EndMenuBar();
+    }
+    ImGui::PopStyleVar();
+
+    if (show_save_popup) {
+        ImGui::OpenPopup("Save Map As");
+    }
+
+
+    if (ImGui::BeginPopupModal("Save Map As", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
+        ImGui::Text("Enter the map name:");
+        ImGui::InputText("##map_name", map_name, IM_ARRAYSIZE(map_name));
+
+        if (ImGui::Button("OK", ImVec2(120, 0))) {
+
+
+            m_scene->save_map_data(map_name);
+
+            show_save_popup = false;
+
+
+            ImGui::CloseCurrentPopup();
+        }
+
+        ImGui::SameLine();
+
+        if (ImGui::Button("Cancel", ImVec2(120, 0))) {
+            show_save_popup = false;
+            ImGui::CloseCurrentPopup();
+        }
+
+        ImGui::EndPopup();
+    }
+
+    ImGuiID dockSpaceId = ImGui::GetID("InvisibleWindowDockSpace");
+    ImGui::DockSpace(dockSpaceId, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None);
+
     ImGui::End();
+
 
 }
 

@@ -51,9 +51,6 @@
     <ClCompile Include="src\tag.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\cube_test_comp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\components\component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -153,13 +150,19 @@
     <ClCompile Include="src\layers\content_browser_layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\layers\project_modifiers_layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\systems\asset_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="include\other utils\strconvr.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\core_renderable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\system\mouse_picking.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\boxvolume_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -204,9 +207,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\system\tag.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entity sys\components\cube_test_comp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\system\material.h">
@@ -335,9 +335,6 @@
     <ClInclude Include="include\system\asset_importer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\layers\project_modifiers_layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\system\assets\texture_asset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -348,6 +345,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\dependencies\filetypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\core_renderable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\bounding_volume.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\draw_ray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity sys\components\boxvolume_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\layers\UI\popup_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

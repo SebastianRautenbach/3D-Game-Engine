@@ -3,3 +3,4 @@
 #include "pointlight_component.h"
 #include "directionallight_component.h"
 #include "staticmesh_component.h"
+#include "boxvolume_component.h"

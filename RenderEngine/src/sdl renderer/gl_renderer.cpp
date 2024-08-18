@@ -23,7 +23,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 	glfwMakeContextCurrent(window);
-
+	
 
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -32,7 +32,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 		return;
 	}
 
-
+	
 
 
 	// manage input --------------------------------------------------------------------- /
@@ -41,21 +41,20 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 
-	camera = new core_3d_camera(w_width, w_height);
+	camera = std::make_shared<core_3d_camera>(w_width, w_height);
 	camera->SetPosition(glm::vec3(-1.76043, 1.11876, 1.69863));
 	camera->SetPitch(-0.438943);
 	camera->SetYaw(-0.769122);
 
-	auto shdr_y = std::make_shared<core_gl_shader>("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
-	auto shdr_x = std::make_shared<core_gl_shader>("shaders/click_color_vrtx.glsl", "shaders/click_color_frgment.glsl");
+	//shdr = new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
 
-	m_shaders.emplace_back(shdr_y);
-	m_shaders.emplace_back(shdr_x);
+	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl"));
+	m_shdrs.emplace_back(new core_gl_shader("shaders/ray_vrtx.glsl", "shaders/ray_frgmnt.glsl"));
 
 	m_scene = scene;
 
 
-
+	
 
 
 
@@ -80,7 +79,7 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-
+	
 }
 
 
@@ -92,40 +91,40 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 {
 
 	if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
-	{
+	{		
 		m_input_manager->set_hide_mouse_cursor(true);
-
+		
 		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * .01);
 		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * .01);
 
 
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_W))
-			camera->MoveForward(1 * deltaTime);
-
+			camera->MoveForward(2 * deltaTime);
+		
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_S))
-			camera->MoveForward(-1 * deltaTime);
+			camera->MoveForward(-2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_D))
-			camera->MoveRight(1 * deltaTime);
+			camera->MoveRight(2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_A))
-			camera->MoveRight(-1 * deltaTime);
+			camera->MoveRight(-2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_E))
-			camera->MoveUp(1 * deltaTime);
+			camera->MoveUp(2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
-			camera->MoveUp(-1 * deltaTime);
+			camera->MoveUp(-2 * deltaTime);
 
-
+	
 	}
 	else
 	{
 		m_input_manager->set_hide_mouse_cursor(false);
 		m_input_manager->mouse_stop_move();
 	}
-
+	
 
 
 
@@ -139,14 +138,15 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 	view = camera->GetViewMatrix();
 	projection = camera->GetProjectionMatrix();
-	
-	for(auto& shader : m_shaders)
+	for(const auto& shdr : m_shdrs)
 	{
-		unsigned int viewLoc = get_uniform_location("view", shader->get_shader_id());;
+		shdr->use_shader();
+		unsigned int viewLoc = glGetUniformLocation(shdr->get_shader_id(), "view");
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-		shader->setMat4("projection", projection);
-		shader->setVec3("camPos", camera->GetPosition());
+		shdr->setMat4("projection", projection);
+		shdr->setVec3("camPos", camera->GetPosition());
 	}
+	glUseProgram(0);
 }
 
 
@@ -197,28 +197,45 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		for (int i = 0; i < pointlights.size(); i++)
 		{
-			pointlights[i]->shader = m_shaders[0];
+			pointlights[i]->shader = m_shdrs[0];
 			pointlights[i]->light_index = i;
 
 		}
 
 
 		for (auto& i : meshes) {
-			i->m_material->m_shader_library = m_shaders;
-			i->m_material->set_shader(0);
+			i->m_material->m_shader = m_shdrs[0];
+			i->m_material->on_change_material();
+			
+			if (i->m_model) {
+				i->m_model->m_camera = camera;
+				if(!i->m_model->has_boundvolume)
+				{
+					i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());
+				}
+			}
 		}
+		/*
+		* I am a IDIOT
+		* This will be updated because luckly for now only one object can be copied so only the last mesh will be updated
+		* this is bad because if later there is a way to paste multiple meshes this will only update the last one
+		*/
+		if(!meshes.empty() && meshes[meshes.size() - 1]->m_model)
+			meshes[meshes.size() - 1]->m_model->init_boundingvolume(meshes[meshes.size() - 1]->m_model->retrieve_all_vertices());
+
 
 		for (auto& i : dirlights) {
-			i->shader = m_shaders[0];
+			i->shader = m_shdrs[0];
 		}
 
 
-		m_shaders[0]->setInt("ammount_of_pointlights", pointlights.size());
+
+		m_shdrs[0]->setInt("ammount_of_pointlights", pointlights.size());
 
 
 
 		shader_count = m_scene->total_component_count();
-
+		
 	}
 }
 
@@ -230,7 +247,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 void lowlevelsys::gl_renderer::on_exit()
 {
 	glfwTerminate();
-
+	
 }
 
 //-----------------------------------------------------------------------

@@ -303,6 +303,19 @@ void wizm::properties_ui_layer::component_add_popup(std::shared_ptr<core_entity>
 		if (ImGui::MenuItem("Sound")) {
 			
 		}
+		if (ImGui::MenuItem("box volume")) {
+			
+			for (const auto& comp : select_ent->m_components_list) {
+				auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
+				if (sm_comp) {
+					auto box = std::dynamic_pointer_cast<boxvolume>(select_ent->add_component(std::make_shared<boxvolume>(sm_comp->m_model->min_point, sm_comp->m_model->max_point)));
+					box->m_shader = sm_comp->m_material->m_shader;
+					break;
+				}
+			}
+
+			
+		}
 
 		ImGui::EndPopup();
 	}

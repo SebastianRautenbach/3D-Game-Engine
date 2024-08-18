@@ -161,10 +161,12 @@
     <ClCompile Include="include\layers\viewport_layer.h" />
     <ClCompile Include="include\other utils\strconvr.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
+    <ClCompile Include="src\components\boxvolume_component.cpp" />
+    <ClCompile Include="src\systems\core_renderable.cpp" />
+    <ClCompile Include="include\system\mouse_picking.h" />
     <ClCompile Include="src\systems\asset_manager.cpp" />
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\components\component.cpp" />
-    <ClCompile Include="src\components\cube_test_comp.cpp" />
     <ClCompile Include="src\components\directionallight_component.cpp" />
     <ClCompile Include="src\components\pointlight_component.cpp" />
     <ClCompile Include="src\components\staticmesh_component.cpp" />
@@ -177,7 +179,6 @@
     <ClCompile Include="src\layers\gui_layer.cpp" />
     <ClCompile Include="src\layers\layerstack.cpp" />
     <ClCompile Include="src\layers\performance_ui_layer.cpp" />
-    <ClCompile Include="src\layers\project_modifiers_layer.cpp" />
     <ClCompile Include="src\layers\properties_ui_layer.cpp" />
     <ClCompile Include="src\layers\scene_ui_layer.cpp" />
     <ClCompile Include="src\layers\viewport_layer.cpp" />
@@ -211,7 +212,7 @@
     <ClInclude Include="include\dependencies\imgui\imstb_truetype.h" />
     <ClInclude Include="include\dependencies\sqlite3.h" />
     <ClInclude Include="include\entity sys\components\all_components_list.h" />
-    <ClInclude Include="include\entity sys\components\cube_test_comp.h" />
+    <ClInclude Include="include\entity sys\components\boxvolume_component.h" />
     <ClInclude Include="include\entity sys\components\pointlight_component.h" />
     <ClInclude Include="include\entity sys\component_types.h" />
     <ClInclude Include="include\entity sys\entity.h" />
@@ -224,7 +225,6 @@
     <ClInclude Include="include\layers\layerstack.h" />
     <ClInclude Include="include\layers\layers_define.h" />
     <ClInclude Include="include\layers\performance_ui_layer.h" />
-    <ClInclude Include="include\layers\project_modifiers_layer.h" />
     <ClInclude Include="include\layers\properties_ui_layer.h" />
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />
@@ -235,6 +235,7 @@
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assets.h" />
     <ClInclude Include="include\system\assets\assettypes.h" />
+    <ClInclude Include="include\system\bounding_volume.h" />
     <ClInclude Include="include\system\assets\mesh_asset.h" />
     <ClInclude Include="include\system\assets\texture_asset.h" />
     <ClInclude Include="include\system\assettypes.h" />
@@ -244,6 +245,8 @@
     <ClInclude Include="include\system\billboard.h" />
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />
+    <ClInclude Include="include\system\core_renderable.h" />
+    <ClInclude Include="include\system\draw_ray.h" />
     <ClInclude Include="include\system\filewatcher.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
@@ -256,6 +259,7 @@
     <ClInclude Include="include\layers\layer.h" />
     <ClInclude Include="include\layers\scene_ui_layer.h" />
     <ClInclude Include="include\system\node.h" />
+    <ClInclude Include="include\layers\UI\popup_window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

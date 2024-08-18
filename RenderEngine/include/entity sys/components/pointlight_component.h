@@ -1,6 +1,7 @@
 #pragma once
 #include "entity sys/component.h"
 #include "gl core/core shader.h"
+#include "system/core_renderable.h"
 
 using namespace lowlevelsys;
 
@@ -24,8 +25,6 @@ namespace wizm {
         void component_update();
         void component_postupdate();
         std::shared_ptr<core_component> _copy() const;
-
-
 
 
         //////////////////////////////////////////////////

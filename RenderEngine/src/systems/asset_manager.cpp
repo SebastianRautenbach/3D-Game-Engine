@@ -25,7 +25,9 @@ void wizm::asset_manager::assign_assets()
 				{
 					if (m_assets[mesh_comps->m_asset_id])
 					{
-						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_asset_id, "");		
+					
+						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_asset_id, "");
+			
 						
 						if(!mesh_comps->m_material->diffuse_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).type == tTEXTURE &&
 							!get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).path.empty()

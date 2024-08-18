@@ -54,24 +54,26 @@ namespace wizm {
 
 		glm::mat4 get_transform();
 
-		glm::vec3 get_world_position() {
-			glm::mat4 worldTransform = get_transform();
-			return glm::vec3(worldTransform[3]);
-		}
-		glm::vec3 get_world_rotation() {
-			if (m_parent_node)
-				return m_parent_node->get_rotation();
-			else
-				return glm::vec3(0.0);
-		}
-
-
-
-
-
-		//---------------------------------------------------------------------------------- SERILIZATION
-
-
+		glm::vec3 get_world_position() {																	
+			if (m_parent_node)																				
+				return glm::vec3(m_parent_node->get_transform() * glm::vec4(get_position(), 1.0f));			
+			else																							
+				return get_position();																		
+		}																									
+		glm::vec3 get_world_rotation() {																	
+			if (m_parent_node)																				
+				return m_parent_node->get_rotation() * get_rotation();										
+			else																							
+				return get_rotation();																		
+		}																									
+		glm::vec3 get_world_scale() {																		
+			if (m_parent_node) {																			
+				return m_parent_node->get_scale() * get_scale();											
+			}																								
+			else {																							
+				return get_scale();																			
+			}																								
+		}																									
 
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {}
 		void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) override {};

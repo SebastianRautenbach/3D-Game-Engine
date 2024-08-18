@@ -9,6 +9,10 @@
 #include "layers/layerstack.h"
 #include "layers/layers_define.h"
 
+
+// DELETE
+#include "system/draw_ray.h"
+
 namespace wizm {
 
 	class update_manager {
@@ -35,7 +39,6 @@ namespace wizm {
 
 		// testing
 		asset_manager* m_asset_manager;
-		// new system
 	};
 
 

@@ -1,6 +1,6 @@
 Entity Name{
 	staticmesh0{
-		asset id:12951080906860349681;
+		asset id:9222971600701724741;
 		material{
 			diffuse_asset_id:15546425226244383279;
 			specular_asset_id:18302487994969663584;
@@ -14,9 +14,9 @@ Entity Name{
 	tags{
 	}
 	transform{
-		position:0.288996,0.000000,0.000000;
+		position:-0.465628,0.000000,0.561786;
 		rotation:0.000000,0.000000,0.000000;
-		scale:0.037200,0.037200,0.037200;
+		scale:1.680000,1.680000,1.680000;
 	}
 }
 Entity Name(1){
@@ -39,7 +39,7 @@ Entity Name(1)(1){
 }
 Entity Name(1)(1)(1){
 	staticmesh0{
-		asset id:12951080906860349681;
+		asset id:9222971600701724741;
 		material{
 			diffuse_asset_id:15546425226244383279;
 			specular_asset_id:18302487994969663584;
@@ -53,9 +53,9 @@ Entity Name(1)(1)(1){
 	tags{
 	}
 	transform{
-		position:0.288996,0.271326,0.736336;
-		rotation:0.000000,0.000000,0.000000;
-		scale:0.037200,0.037200,0.037200;
+		position:1.875357,0.000000,-0.515265;
+		rotation:0.000000,0.799543,0.000000;
+		scale:1.680000,1.680000,1.680000;
 	}
 }
 light{
