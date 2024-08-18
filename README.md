@@ -1,4 +1,4 @@
-![](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/res/Picture1.png)
+![Wizm logo](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/res/Picture1.png 'Wizm logo')
 ![](https://github.com/SebastianRautenbach/3D-Game-Engine/blob/main/RenderEngine/res/Screenshot%202024-07-22%20184532.png)
 
 
