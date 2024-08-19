@@ -61,10 +61,18 @@ namespace wizm {
 				return get_position();																		
 		}																									
 		glm::vec3 get_world_rotation() {																	
-			if (m_parent_node)																				
-				return m_parent_node->get_rotation() * get_rotation();										
-			else																							
-				return get_rotation();																		
+			glm::mat4 combined_transform = glm::mat4(1.0f);
+			if (m_parent_node) {
+				combined_transform = m_parent_node->get_transform() * get_transform();
+			}
+			else {
+				combined_transform = get_transform();
+			}
+			glm::mat3 normal_matrix = glm::mat3(combined_transform); 
+			glm::vec3 euler_angles = glm::eulerAngles(glm::quat_cast(glm::mat4(normal_matrix)));
+
+			return glm::degrees(euler_angles);
+
 		}																									
 		glm::vec3 get_world_scale() {																		
 			if (m_parent_node) {																			

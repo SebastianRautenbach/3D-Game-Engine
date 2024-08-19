@@ -246,8 +246,8 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
             auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
             if (sm_comp) {
 
-                
-                sm_comp->m_model->update_boundingvolume(sm_comp->get_world_position(), sm_comp->get_world_rotation(), sm_comp->get_world_scale());
+                std::cout << "ent:" << ent->m_ent_ID << ": rotation (x:" << sm_comp->get_world_rotation().x << ", y:" << sm_comp->get_world_rotation().y << ", z:" << sm_comp->get_world_rotation().z << ")\n";
+                sm_comp->m_model->update_boundingvolume(sm_comp->get_transform());
 
 
                 if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos)) {

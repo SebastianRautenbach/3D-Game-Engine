@@ -15,6 +15,7 @@ namespace wizm {
         
         void init_boundingvolume(std::vector<vertex_data> vertices);
         void update_boundingvolume(const glm::vec3& world_pos, const glm::vec3& world_rot, const glm::vec3& world_scale);
+        void update_boundingvolume(const glm::mat4& model_matrix);
      
     public:
         bool has_boundvolume = false;

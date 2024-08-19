@@ -24,6 +24,8 @@ void lowlevelsys::core_model::loadModel(std::string path)
     directory = path.substr(0, path.find_last_of('/'));
 
     processNode(scene->mRootNode, scene);
+
+    
 }
 
 void lowlevelsys::core_model::processNode(aiNode* node, const aiScene* scene)
@@ -102,6 +104,19 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
             indices.push_back(face.mIndices[j]);
     }
 
+
+     
+    for (unsigned int i = 0; i < scene->mNumMaterials; ++i) {
+        int textureChannelCount = 0;
+        aiMaterial* material = scene->mMaterials[i];
+        for (int type = aiTextureType_NONE; type <= aiTextureType_UNKNOWN; ++type) {
+            if (material->GetTextureCount(static_cast<aiTextureType>(type)) > 0) {
+                textureChannelCount++;
+            }
+        }
+        std::cout << "mat:" << i << "; texture count" << textureChannelCount << "\n";
+    }
+
     return core_mesh(vertices, indices, textures);
 }
 
@@ -110,6 +125,9 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
 std::vector<core_gl_texture> lowlevelsys::core_model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
 {
     std::vector<core_gl_texture> textures;
+    for (unsigned int i = 0; i < mat->GetTextureCount(type); i++) {
+        std::cout << "texture count:" << typeName << "\n";
+    }
     //for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
     //{
     //    aiString str;
