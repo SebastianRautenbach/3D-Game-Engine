@@ -244,8 +244,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
     for (const auto& ent : m_scene->m_entities) {
         for (const auto& comp : ent->m_components_list) {
             auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
-            if (sm_comp) {
-               //sm_comp->m_model->update_boundingvolume(sm_comp->get_transform());
+            if (sm_comp) {        
                 sm_comp->m_model->update_boundingvolume(ent->get_position(), ent->get_rotation(), ent->get_scale());
 
 

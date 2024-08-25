@@ -1,13 +1,11 @@
 #pragma once
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include "node.h"
 #include "gl core/core shader.h"
 #include <string>
 #include <vector>
 
 namespace wizm {
+
+	class core_3d_camera;
 
 	enum eBillboardType {
 		eLight,
@@ -20,32 +18,15 @@ namespace wizm {
 		core_gl_shader shader;
 	};
 
-	class billboard_core : public core_node {
+	class billboard_core {
 	public:
-		billboard_core();
-		void pre_update();
-		void update();
-		void post_update();
+		billboard_core(eBillboardType type, std::shared_ptr<core_gl_shader> shader, std::shared_ptr<core_3d_camera> camera);
+		void draw();
 
 
-
-	public:
-		std::vector<billboard_s> m_billboards;
-
-		float vertices[20] = {
-			// Positions       // Texture Coords
-			 0.5f,  0.5f, 0.0f,  1.0f, 1.0f,   // Top Right
-			 0.5f, -0.5f, 0.0f,  1.0f, 0.0f,   // Bottom Right
-			-0.5f, -0.5f, 0.0f,  0.0f, 0.0f,   // Bottom Left
-			-0.5f,  0.5f, 0.0f,  0.0f, 1.0f    // Top Left 
-		};
-		unsigned int indices[6] = {
-			0, 1, 3,   // First triangle
-			1, 2, 3    // Second triangle
-		};
-
-		unsigned int VBO, VAO, EBO;
-
+	private:
+		std::shared_ptr<core_3d_camera> m_camera;
+		std::shared_ptr<core_gl_shader> m_shader;
 	};
 
 
