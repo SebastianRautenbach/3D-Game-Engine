@@ -1,31 +1,35 @@
 #include "entity sys/components/boxvolume_component.h"
 
-wizm::boxvolume::boxvolume(glm::vec3 min, glm::vec3 max)
+wizm::boxvolume::boxvolume(const glm::vec3& center, const glm::vec3& extents, const glm::vec3 axes[3])
 {
+    // Calculate the corners of the OOBB using center, extents, and axes
+    glm::vec3 corners[8];
+    glm::vec3 axis0 = axes[0] * extents.x;
+    glm::vec3 axis1 = axes[1] * extents.y;
+    glm::vec3 axis2 = axes[2] * extents.z;
 
-    glm::vec3 corners[8] = {
-            glm::vec3(min.x, min.y, min.z),
-            glm::vec3(min.x, min.y, max.z),
-            glm::vec3(min.x, max.y, min.z),
-            glm::vec3(min.x, max.y, max.z),
-            glm::vec3(max.x, min.y, min.z),
-            glm::vec3(max.x, min.y, max.z),
-            glm::vec3(max.x, max.y, min.z),
-            glm::vec3(max.x, max.y, max.z)
-    };
+    corners[0] = center - axis0 - axis1 - axis2;
+    corners[1] = center - axis0 - axis1 + axis2;
+    corners[2] = center - axis0 + axis1 - axis2;
+    corners[3] = center - axis0 + axis1 + axis2;
+    corners[4] = center + axis0 - axis1 - axis2;
+    corners[5] = center + axis0 - axis1 + axis2;
+    corners[6] = center + axis0 + axis1 - axis2;
+    corners[7] = center + axis0 + axis1 + axis2;
 
+    // Convert corners to vertices
     std::vector<vertex_data> vertices;
-
     for (const auto& corner : corners) {
         vertices.emplace_back(corner);
     }
 
+    // Initialize the vertex buffer with vertices and indices
     vertex_buffer = new core_arr_vertex_buffer(vertices, indices);
-
-	vertex_buffer->bind_buffer();
+    vertex_buffer->bind_buffer();
     vertex_buffer->create_attrib_arr(0, 3, sizeof(vertex_data), 0);
-	vertex_buffer->create_buffer();
+    vertex_buffer->create_buffer();
 }
+
 
 void wizm::boxvolume::component_preupdate()
 {

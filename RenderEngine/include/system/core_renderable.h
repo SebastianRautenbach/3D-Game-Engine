@@ -20,5 +20,6 @@ namespace wizm {
     public:
         bool has_boundvolume = false;
         std::shared_ptr<wizm::core_3d_camera> m_camera = nullptr;
+      
 	};
 }

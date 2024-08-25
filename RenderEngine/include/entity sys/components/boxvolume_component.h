@@ -9,7 +9,7 @@ namespace wizm {
 	class boxvolume : public lowlevelsys::core_component {
 	public:
 
-		boxvolume(glm::vec3 min, glm::vec3 max);
+		boxvolume(const glm::vec3& center, const glm::vec3& extents, const glm::vec3 axes[3]);
 		
 		
 		void component_preupdate();

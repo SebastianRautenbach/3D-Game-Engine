@@ -4,12 +4,19 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <array>
 
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtx/matrix_decompose.hpp>
+#include <glm/gtx/rotate_vector.hpp>
+
 namespace wizm
 {
 	class bounding_volume {
     public:
         glm::vec3 min_point, min_point_local;
         glm::vec3 max_point, max_point_local;
+        glm::vec3 extents, init_extents , center;
+        glm::vec3 axes[3], init_axes[3];
 
         bounding_volume() : min_point(glm::vec3(std::numeric_limits<float>::max())),
             max_point(glm::vec3(std::numeric_limits<float>::lowest())) {}
@@ -28,47 +35,43 @@ namespace wizm
 
         bool ray_intersect(glm::vec3 ray_dir, glm::vec3 ray_origin) const {
             
-            if (ray_origin.x >= min_point.x && ray_origin.x <= max_point.x &&
-                ray_origin.y >= min_point.y && ray_origin.y <= max_point.y &&
-                ray_origin.z >= min_point.z && ray_origin.z <= max_point.z) {
-                return false;
+            float tmin = -FLT_MAX;
+            float tmax = FLT_MAX;
+            
+            
+            for (int i = 0; i < 3; ++i) {
+               
+                float axis_dot_ray_dir = glm::dot(axes[i], ray_dir);
+                float axis_dot_origin = glm::dot(axes[i], ray_origin - center);
+            
+                if (glm::epsilonNotEqual(axis_dot_ray_dir, 0.0f, glm::epsilon<float>())) {
+                 
+                    float t1 = (-axis_dot_origin - extents[i]) / axis_dot_ray_dir;
+                    float t2 = (-axis_dot_origin + extents[i]) / axis_dot_ray_dir;
+            
+                    
+                    if (t1 > t2) std::swap(t1, t2);
+            
+                    
+                    tmin = glm::max(tmin, t1);
+                    tmax = glm::min(tmax, t2);
+            
+                    
+                    if (tmin > tmax) {
+                        return false;
+                    }
+                }
+                else {
+                    
+                    if (axis_dot_origin < -extents[i] || axis_dot_origin > extents[i]) {
+                        return false;
+                    }
+                }
             }
 
             
-            float tmin = (min_point.x - ray_origin.x) / ray_dir.x;
-            float tmax = (max_point.x - ray_origin.x) / ray_dir.x;
-
-            if (tmin > tmax) std::swap(tmin, tmax);
-
-            float tymin = (min_point.y - ray_origin.y) / ray_dir.y;
-            float tymax = (max_point.y - ray_origin.y) / ray_dir.y;
-
-            if (tymin > tymax) std::swap(tymin, tymax);
-
-            if ((tmin > tymax) || (tymin > tmax))
-                return false;
-
-            if (tymin > tmin)
-                tmin = tymin;
-
-            if (tymax < tmax)
-                tmax = tymax;
-
-            float tzmin = (min_point.z - ray_origin.z) / ray_dir.z;
-            float tzmax = (max_point.z - ray_origin.z) / ray_dir.z;
-
-            if (tzmin > tzmax) std::swap(tzmin, tzmax);
-
-            if ((tmin > tzmax) || (tzmin > tmax))
-                return false;
-
-            if (tzmin > tmin)
-                tmin = tzmin;
-
-            if (tzmax < tmax)
-                tmax = tzmax;
-
             return true;
+
 
 
 
