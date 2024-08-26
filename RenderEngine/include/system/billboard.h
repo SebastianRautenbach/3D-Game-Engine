@@ -1,11 +1,10 @@
 #pragma once
 #include "gl core/core shader.h"
-#include <string>
-#include <vector>
+#include "gl core/vertex_buffer.h"
 
 namespace wizm {
 
-	class core_3d_camera;
+
 
 	enum eBillboardType {
 		eLight,
@@ -20,13 +19,19 @@ namespace wizm {
 
 	class billboard_core {
 	public:
-		billboard_core(eBillboardType type, std::shared_ptr<core_gl_shader> shader, std::shared_ptr<core_3d_camera> camera);
-		void draw();
+		billboard_core(eBillboardType type, std::shared_ptr<core_gl_shader> shader);
+		void draw(glm::mat4 transform);
+		~billboard_core();
 
 
 	private:
-		std::shared_ptr<core_3d_camera> m_camera;
 		std::shared_ptr<core_gl_shader> m_shader;
+		std::vector<vertex_data> m_verices;
+		core_arr_vertex_buffer* vertex_buffer;
+		std::vector<unsigned int> m_indices = {
+			0, 1, 2,
+			2, 3, 0 
+		};
 	};
 
 

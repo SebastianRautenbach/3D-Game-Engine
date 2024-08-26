@@ -30,6 +30,11 @@ wizm::boxvolume::boxvolume(const glm::vec3& center, const glm::vec3& extents, co
     vertex_buffer->create_buffer();
 }
 
+wizm::boxvolume::~boxvolume()
+{
+    delete vertex_buffer;
+}
+
 
 void wizm::boxvolume::component_preupdate()
 {

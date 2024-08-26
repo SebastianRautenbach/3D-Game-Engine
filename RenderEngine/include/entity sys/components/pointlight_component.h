@@ -3,6 +3,7 @@
 #include "gl core/core shader.h"
 #include "system/core_renderable.h"
 
+
 using namespace lowlevelsys;
 
 namespace wizm {
@@ -105,6 +106,7 @@ namespace wizm {
 
         unsigned int light_index = 0;
         std::shared_ptr<core_gl_shader> shader;
+    
 
         float m_constant;
         float m_linear;

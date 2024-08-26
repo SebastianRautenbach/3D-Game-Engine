@@ -10,6 +10,7 @@ namespace wizm {
 	public:
 
 		boxvolume(const glm::vec3& center, const glm::vec3& extents, const glm::vec3 axes[3]);
+		~boxvolume();
 		
 		
 		void component_preupdate();
