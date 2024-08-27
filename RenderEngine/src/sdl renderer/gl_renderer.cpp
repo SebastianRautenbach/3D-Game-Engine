@@ -180,7 +180,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		std::vector<std::shared_ptr<light_component>> lights;
 		std::vector<std::shared_ptr<staticmesh_component>> meshes;
-		//std::vector<std::shared_ptr<directionallight_component>> dirlights;
+		
 
 		for (auto& i : m_scene->m_entities) {
 			for (auto& per_ent : i->m_components_list)

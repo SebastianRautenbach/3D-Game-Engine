@@ -1,6 +1,7 @@
 #pragma once
 #include "gl core/core shader.h"
 #include "gl core/vertex_buffer.h"
+#include <unordered_map>
 
 
 namespace wizm {
@@ -9,6 +10,7 @@ namespace wizm {
 
 	enum eBillboardType {
 		eLight,
+		eDirLight,
 		ePartical
 	};
 
@@ -20,12 +22,13 @@ namespace wizm {
 
 	class billboard_core {
 	public:
-		billboard_core(eBillboardType type, std::shared_ptr<core_gl_shader> shader);
-		void draw(glm::mat4 transform);
+		billboard_core(std::shared_ptr<core_gl_shader> shader);
+		void draw(glm::mat4 transform, eBillboardType type);
 		~billboard_core();
 
 
 	private:
+		std::unordered_map<eBillboardType, std::shared_ptr<core_gl_texture>> texture_atlas;
 		std::shared_ptr<core_gl_shader> m_shader;
 		std::vector<vertex_data> m_verices;
 		core_arr_vertex_buffer* vertex_buffer;
@@ -33,7 +36,6 @@ namespace wizm {
 			0, 1, 2,
 			2, 3, 0 
 		};
-		core_gl_texture* texture;
 	};
 
 

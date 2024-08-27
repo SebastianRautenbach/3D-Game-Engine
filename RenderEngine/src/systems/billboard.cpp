@@ -1,6 +1,6 @@
 #include "system/billboard.h"
 
-wizm::billboard_core::billboard_core(eBillboardType type, std::shared_ptr<core_gl_shader> shader)
+wizm::billboard_core::billboard_core(std::shared_ptr<core_gl_shader> shader)
 	:m_shader(shader)
 {
 	m_verices.emplace_back(vertex_data(glm::vec3(-0.5f, 0.5f, 0.0f), glm::vec3(0.0)	, glm::vec2(0.0, 1)		));
@@ -14,19 +14,20 @@ wizm::billboard_core::billboard_core(eBillboardType type, std::shared_ptr<core_g
 	vertex_buffer->create_attrib_arr(1, 2, sizeof(vertex_data), offsetof(vertex_data, TexCoords));
 	vertex_buffer->create_buffer();
 
-	texture = new core_gl_texture("resources/images/light.png");
+	texture_atlas[eLight] = std::make_shared<core_gl_texture>("resources/images/light.png");
+	texture_atlas[eDirLight] = std::make_shared<core_gl_texture>("resources/images/dirlight.png");
 }
 
 wizm::billboard_core::~billboard_core()
 {
 	delete vertex_buffer;
-	texture->delete_texture();
 }
 
-void wizm::billboard_core::draw(glm::mat4 transform)
+void wizm::billboard_core::draw(glm::mat4 transform, eBillboardType type)
 {
-	//glActiveTexture(GL_TEXTURE0);
-	texture->bind_texture();
+	texture_atlas[type]->bind_texture();
+	
+	
 	
 	m_shader->use_shader();
 
@@ -34,5 +35,6 @@ void wizm::billboard_core::draw(glm::mat4 transform)
 	vertex_buffer->bind_buffer();
 	vertex_buffer->draw_buffer(m_indices.size());
 	vertex_buffer->unbind_buffer();
-	texture->unbind_texture();
+
+	texture_atlas[type]->unbind_texture();
 }
