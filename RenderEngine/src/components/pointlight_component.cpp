@@ -9,10 +9,6 @@ wizm::pointlight_component::pointlight_component(float constant, float linear, f
     m_linear = linear;
     m_quadratic = quadratic;
 
-    m_ambient = ambient;
-    m_diffuse = diffuse;
-    m_specular = specular;
-
     m_radius = radius;
 }
 

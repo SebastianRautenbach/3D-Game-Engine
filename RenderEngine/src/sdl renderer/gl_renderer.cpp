@@ -178,7 +178,9 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 	if (m_scene->total_component_count() != shader_count || m_scene->m_reloaded) {
 
-		std::vector<std::shared_ptr<light_component>> lights;
+		std::vector<std::shared_ptr<pointlight_component>> point_lights;
+		std::vector<std::shared_ptr<directionallight_component>> directional_lights;
+		std::vector<std::shared_ptr<light_component>> all_lights;
 		std::vector<std::shared_ptr<staticmesh_component>> meshes;
 		
 
@@ -189,42 +191,47 @@ void lowlevelsys::gl_renderer::update_draw_data()
 				if (mesh_comps)
 					meshes.push_back(mesh_comps);
 
-				auto light_comp = std::dynamic_pointer_cast<light_component>(per_ent);
-				if (light_comp)
-					lights.push_back(light_comp);
+				auto light_comps = std::dynamic_pointer_cast<pointlight_component>(per_ent);
+				if (light_comps)
+				{
+					point_lights.push_back(light_comps);
+					all_lights.push_back(light_comps);
+				}
+
+				auto directional_comps = std::dynamic_pointer_cast<directionallight_component>(per_ent);
+				if (directional_comps)
+				{
+					directional_lights.push_back(directional_comps);
+					all_lights.push_back(directional_comps);
+				}
 
 			}
 		}
 
-		int pointlightindex = 0;
-		for (int i = 0; i < lights.size(); i++)
+		for (int i = 0; i < point_lights.size(); i++)
 		{
-			auto point_light = std::dynamic_pointer_cast<pointlight_component>(lights[i]);
-			auto direction_light = std::dynamic_pointer_cast<directionallight_component>(lights[i]);
-			
-			if(point_light)
-			{
-				point_light->shader = m_shdrs[0];
-				point_light->light_index = i;
-				++pointlightindex;
-			}
-			else if (direction_light)
-			{
-				direction_light->shader = m_shdrs[0];
-			}
-			std::vector<vertex_data> cube = {
-				vertex_data(glm::vec3(-.2,-.2,-.2)),
-				vertex_data(glm::vec3(-.2,-.2,.2)),
-				vertex_data(glm::vec3(-.2,.2,-.2)),
-				vertex_data(glm::vec3(-.2,.2,.2)),
-				vertex_data(glm::vec3(.2,-.2,-.2)),
-				vertex_data(glm::vec3(.2,-.2,.2)),
-				vertex_data(glm::vec3(.2,.2,-.2)),
-				vertex_data(glm::vec3(.2,.2,.2))
-			};
-			
-			lights[i]->init_boundingvolume(cube);
+			point_lights[i]->shader = m_shdrs[0];
+			point_lights[i]->light_index = i;
 
+		}
+
+		for (auto& i : directional_lights) {
+			i->shader = m_shdrs[0];
+		}
+
+		for (auto& i : all_lights) {
+			std::vector<vertex_data> cube = {
+					vertex_data(glm::vec3(-.2,-.2,-.2)),
+					vertex_data(glm::vec3(-.2,-.2,.2)),
+					vertex_data(glm::vec3(-.2,.2,-.2)),
+					vertex_data(glm::vec3(-.2,.2,.2)),
+					vertex_data(glm::vec3(.2,-.2,-.2)),
+					vertex_data(glm::vec3(.2,-.2,.2)),
+					vertex_data(glm::vec3(.2,.2,-.2)),
+					vertex_data(glm::vec3(.2,.2,.2))
+			};
+
+			i->init_boundingvolume(cube);
 		}
 
 
@@ -250,7 +257,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 
 
-		m_shdrs[0]->setInt("ammount_of_pointlights", pointlightindex);
+		m_shdrs[0]->setInt("ammount_of_pointlights", point_lights.size());
 
 
 

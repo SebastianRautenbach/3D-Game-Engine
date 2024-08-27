@@ -255,7 +255,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
             }
             if (li_comp)
             {
-                li_comp->update_boundingvolume(ent->get_position(), ent->get_rotation(), glm::vec3(1.0));
+                li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0), glm::vec3(1.0));
                 if (li_comp->ray_intersect(ray_dir, ray_pos))
                     touched_ents.emplace_back(ent);
             }
