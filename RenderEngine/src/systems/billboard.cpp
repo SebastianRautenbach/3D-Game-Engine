@@ -23,13 +23,15 @@ wizm::billboard_core::~billboard_core()
 	delete vertex_buffer;
 }
 
-void wizm::billboard_core::draw(glm::mat4 transform, eBillboardType type)
+void wizm::billboard_core::draw(glm::mat4 transform, eBillboardType type, glm::vec3 tint)
 {
-	texture_atlas[type]->bind_texture();
-	
 	
 	
 	m_shader->use_shader();
+
+	m_shader->setVec3("tint", tint);
+	
+	texture_atlas[type]->bind_texture();
 
 	m_shader->setMat4("model", transform);
 	vertex_buffer->bind_buffer();

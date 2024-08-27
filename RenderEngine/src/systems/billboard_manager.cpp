@@ -10,13 +10,19 @@ void wizm::billboard_manager::render()
 {
 	for (const auto& ent : m_scene->m_entities) {
 		for (const auto& comp : ent->m_components_list) {
-			if (std::dynamic_pointer_cast<pointlight_component>(comp)) {
-				m_billboard_core->draw(comp->get_transform(), eLight);
-			}
-			else if (std::dynamic_pointer_cast<directionallight_component>(comp))
-			{
-				m_billboard_core->draw(comp->get_transform(), eDirLight);
 
+			m_shader->setVec3("tint", glm::vec3(1.0f));
+			
+			auto point_light = std::dynamic_pointer_cast<pointlight_component>(comp);
+			auto directional_light = std::dynamic_pointer_cast<directionallight_component>(comp);
+			
+			if (point_light) {
+			//	std::cout << ent->m_ent_ID << ":" << point_light->m_diffuse.x << "," << point_light->m_diffuse.y << "," << point_light->m_diffuse.z << std::endl;
+				m_billboard_core->draw(comp->get_transform(), eLight, point_light->m_diffuse);
+			}
+			else if (directional_light)
+			{
+				m_billboard_core->draw(comp->get_transform(), eDirLight, directional_light->m_ambient);
 			}
 		}
 	}

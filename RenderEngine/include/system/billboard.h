@@ -23,7 +23,7 @@ namespace wizm {
 	class billboard_core {
 	public:
 		billboard_core(std::shared_ptr<core_gl_shader> shader);
-		void draw(glm::mat4 transform, eBillboardType type);
+		void draw(glm::mat4 transform, eBillboardType type, glm::vec3 tint = glm::vec3(1.0));
 		~billboard_core();
 
 
