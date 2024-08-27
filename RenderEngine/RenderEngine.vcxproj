@@ -162,6 +162,8 @@
     <ClCompile Include="include\other utils\strconvr.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
     <ClCompile Include="src\components\boxvolume_component.cpp" />
+    <ClCompile Include="src\components\light_component.cpp" />
+    <ClCompile Include="src\systems\billboard_manager.cpp" />
     <ClCompile Include="src\systems\core_renderable.cpp" />
     <ClCompile Include="include\system\mouse_picking.h" />
     <ClCompile Include="src\systems\asset_manager.cpp" />
@@ -235,6 +237,7 @@
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assets.h" />
     <ClInclude Include="include\system\assets\assettypes.h" />
+    <ClInclude Include="include\system\billboard_manager.h" />
     <ClInclude Include="include\system\bounding_volume.h" />
     <ClInclude Include="include\system\assets\mesh_asset.h" />
     <ClInclude Include="include\system\assets\texture_asset.h" />

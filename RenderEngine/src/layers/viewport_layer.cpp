@@ -241,18 +241,44 @@ void wizm::viewport_layer::properties_mouse_pick()
 
 std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos)
 {
+    std::vector<std::shared_ptr<core_entity>> touched_ents;
+
     for (const auto& ent : m_scene->m_entities) {
         for (const auto& comp : ent->m_components_list) {
             auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
+            auto li_comp = std::dynamic_pointer_cast<light_component>(comp);
             if (sm_comp) {        
                 sm_comp->m_model->update_boundingvolume(ent->get_position(), ent->get_rotation(), ent->get_scale());
-
-
-                if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos)) {
-                    return ent;
-                }
+                if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos)) 
+                    touched_ents.emplace_back(ent);
+                
+            }
+            if (li_comp)
+            {
+                li_comp->update_boundingvolume(ent->get_position(), ent->get_rotation(), ent->get_scale());
+                if (li_comp->ray_intersect(ray_dir, ray_pos))
+                    touched_ents.emplace_back(ent);
             }
         }
     }
-    return nullptr;
+    
+
+    if (touched_ents.empty())
+        return nullptr;
+
+
+
+    auto close_ent = touched_ents[0];
+    for(const auto ent : touched_ents) {
+        float distance = glm::distance(close_ent->get_position(), m_camera->GetPosition());
+        float crnt_distnace = glm::distance(ent->get_position(), m_camera->GetPosition());
+        if (distance > crnt_distnace) {
+            close_ent = ent;
+        }
+    }
+
+    if (close_ent)
+        return close_ent;
+    else
+        return nullptr;
 }

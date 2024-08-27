@@ -2,6 +2,7 @@
 #include "gl core/core shader.h"
 #include "gl core/vertex_buffer.h"
 
+
 namespace wizm {
 
 
@@ -32,6 +33,7 @@ namespace wizm {
 			0, 1, 2,
 			2, 3, 0 
 		};
+		core_gl_texture* texture;
 	};
 
 

@@ -7,8 +7,21 @@
     uniform mat4 model;
     uniform mat4 view;
     uniform mat4 projection;
+    //uniform vec3 camera_position;
 
     void main() {
-        gl_Position = projection * view * model * vec4(aPos, 1.0);
+
+        vec3 camera_right = vec3(view[0][0], view[1][0], view[2][0]);
+        vec3 camera_up = vec3(view[0][1], view[1][1], view[2][1]);
+
+        vec3 billboard_center = vec3(model[3]);
+
+        vec3 vertex_position = billboard_center +
+                           aPos.x * camera_right + // Align the quad horizontally
+                           aPos.y * camera_up;
+
+        gl_Position = projection * view * vec4(vertex_position , 1.0);
+
+
         TexCoord = aTexCoord;
     }

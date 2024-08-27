@@ -1,11 +1,10 @@
 #pragma once
-#include "entity sys/component.h"
-#include "gl core/core shader.h"
+#include "light_component.h"
 
 using namespace lowlevelsys;
 
 namespace wizm {
-    class directionallight_component : public lowlevelsys::core_component {
+    class directionallight_component : public light_component {
     public:
         directionallight_component(
             glm::vec3 ambient = glm::vec3(0.05f, 0.05f, 0.05f),
@@ -17,6 +16,7 @@ namespace wizm {
         void component_preupdate();
         void component_update();
         void component_postupdate();
+
         std::shared_ptr<core_component> _copy() const;
 
 
@@ -75,12 +75,5 @@ namespace wizm {
  
 
         }
-
-    public:
-        std::shared_ptr<core_gl_shader> shader;
-
-        glm::vec3 m_ambient;
-        glm::vec3 m_diffuse;
-        glm::vec3 m_specular;
     };
 }

@@ -1,11 +1,9 @@
 #include "entity sys/components/directionallight_component.h"
 
 wizm::directionallight_component::directionallight_component( glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular)
+	:light_component(ambient, diffuse, specular)
 {
 		m_component_type = eDirectionalLight;
-		m_ambient = ambient;
-		m_diffuse = diffuse;
-		m_specular = specular;
 }
 
 wizm::directionallight_component::~directionallight_component()

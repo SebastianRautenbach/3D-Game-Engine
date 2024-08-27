@@ -8,6 +8,7 @@
 #include "layers/gui_cntx.h"
 #include "layers/layerstack.h"
 #include "layers/layers_define.h"
+#include "system/billboard_manager.h"
 
 
 // DELETE
@@ -36,6 +37,7 @@ namespace wizm {
 		gui_layer* base_layer;
 		core_framebuffer* m_framebuffer;
 		layer_stack* m_layer_stack;
+		billboard_manager* m_billboard_manager;
 
 		// testing
 		asset_manager* m_asset_manager;

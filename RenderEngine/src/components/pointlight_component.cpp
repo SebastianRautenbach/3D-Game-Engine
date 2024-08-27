@@ -1,6 +1,7 @@
 #include "entity sys/components/pointlight_component.h"
 
 wizm::pointlight_component::pointlight_component(float constant, float linear, float quadratic, float radius, glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular)
+    :light_component(ambient, diffuse, specular)
 {
     m_component_type = ePointLight;
 
