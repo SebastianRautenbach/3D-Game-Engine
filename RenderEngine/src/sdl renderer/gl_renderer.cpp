@@ -128,11 +128,6 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 	
 
 
-
-
-
-
-
 	glm::mat4 view = glm::mat4(1.0f);
 	glm::mat4 projection = glm::mat4(1.0f);
 	glm::mat4 perspective = glm::mat4(1.f);
@@ -152,6 +147,8 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		shdr->setMat4("perspective", perspective);
 		shdr->setVec3("camPos", camera->GetPosition());
 	}
+
+
 	glUseProgram(0);
 }
 
@@ -180,6 +177,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		std::vector<std::shared_ptr<pointlight_component>> point_lights;
 		std::vector<std::shared_ptr<directionallight_component>> directional_lights;
+		std::vector<std::shared_ptr<spotlight_component>> spot_lights;
 		std::vector<std::shared_ptr<light_component>> all_lights;
 		std::vector<std::shared_ptr<staticmesh_component>> meshes;
 		
@@ -205,7 +203,19 @@ void lowlevelsys::gl_renderer::update_draw_data()
 					all_lights.push_back(directional_comps);
 				}
 
+				auto spotlight_comps = std::dynamic_pointer_cast<spotlight_component>(per_ent);
+				if (spotlight_comps) {
+				
+					spot_lights.push_back(spotlight_comps);
+					all_lights.push_back(spotlight_comps);
+				}
+
 			}
+		}
+
+		for (int i = 0; i < spot_lights.size(); i++) {
+			spot_lights[i]->shader = m_shdrs[0];
+			spot_lights[i]->light_index = i;
 		}
 
 		for (int i = 0; i < point_lights.size(); i++)
@@ -258,6 +268,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 
 		m_shdrs[0]->setInt("ammount_of_pointlights", point_lights.size());
+		m_shdrs[0]->setInt("ammount_of_spotlights", spot_lights.size());
 
 
 

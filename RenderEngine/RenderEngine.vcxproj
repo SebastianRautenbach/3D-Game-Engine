@@ -157,12 +157,14 @@
     <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
     <ClCompile Include="include\entity sys\components\directionallight_component.h" />
+    <ClCompile Include="include\entity sys\components\spotlight_component.h" />
     <ClCompile Include="include\entity sys\components\staticmesh_component.h" />
     <ClCompile Include="include\layers\viewport_layer.h" />
     <ClCompile Include="include\other utils\strconvr.h" />
     <ClCompile Include="include\system\3d_core_camera.h" />
     <ClCompile Include="src\components\boxvolume_component.cpp" />
     <ClCompile Include="src\components\light_component.cpp" />
+    <ClCompile Include="src\components\spotlight_component.cpp" />
     <ClCompile Include="src\systems\billboard_manager.cpp" />
     <ClCompile Include="src\systems\core_renderable.cpp" />
     <ClCompile Include="include\system\mouse_picking.h" />

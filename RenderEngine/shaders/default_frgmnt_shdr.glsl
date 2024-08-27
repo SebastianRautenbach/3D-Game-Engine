@@ -48,12 +48,14 @@ struct SpotLight {
 };
 
 
-#define MAX_POINT_LIGHTS 50
+#define MAX_POINT_LIGHTS 100
 
 uniform DirLight dirLight;
-uniform SpotLight spotLight;
 uniform PointLight pointLights[MAX_POINT_LIGHTS];
+uniform SpotLight spotLights[MAX_POINT_LIGHTS];
+
 uniform int ammount_of_pointlights;
+uniform int ammount_of_spotlights;
 
 uniform Material material;
 
@@ -86,6 +88,11 @@ void main()
         if(length(pointLights[i].position - FragPos) < pointLights[i].radius)
             result += CalcPointLight(pointLights[i], norm, FragPos, viewDir); 
      }
+
+    for(int i = 0; i < ammount_of_spotlights; i++) {
+        result += CalcSpotLight(spotLights[i], norm, FragPos, viewDir);
+    }
+
 
     FragColor = vec4(result, 1.0);
 
@@ -153,4 +160,5 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
     diffuse *= attenuation * intensity;
     specular *= attenuation * intensity;
     return (ambient + diffuse + specular);
+
 }

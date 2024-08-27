@@ -171,6 +171,12 @@
     <ClCompile Include="src\systems\billboard_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\entity sys\components\spotlight_component.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\spotlight_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\update_manager.h">

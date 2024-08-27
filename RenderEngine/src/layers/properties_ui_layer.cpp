@@ -198,6 +198,9 @@ void wizm::properties_ui_layer::update(float delta_time)
 			case eDirectionalLight:
 				comp_type = "DirectionalLight";
 				break;
+			case eSpotLight:
+				comp_type = "SpotLight";
+				break;
 
 			default:
 				break;
@@ -294,7 +297,7 @@ void wizm::properties_ui_layer::component_add_popup(std::shared_ptr<core_entity>
 			
 		}
 		if (ImGui::MenuItem("Spot Light")) {
-			
+			select_ent->add_component(std::make_shared<spotlight_component>());
 		}
 		if (ImGui::MenuItem("Directional Light")) {
 			select_ent->add_component(std::make_shared<directionallight_component>());

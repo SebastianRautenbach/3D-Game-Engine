@@ -81,7 +81,19 @@ namespace wizm {
 			else {																							
 				return get_scale();																			
 			}																								
-		}																									
+		}		
+
+
+		glm::vec3 get_world_forward_vector() {		
+			glm::mat4 combined_transform = get_transform();
+			if (m_parent_node) {
+				combined_transform = m_parent_node->get_transform() * combined_transform;
+			}
+			glm::quat world_rotation = glm::quat_cast(combined_transform);
+			glm::vec3 forward = world_rotation * glm::vec3(0.0f, 0.0f, -1.0f);
+			return glm::normalize(forward);
+		}
+
 
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {}
 		void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) override {};
