@@ -184,6 +184,16 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
+
+		//--- SPOT LIGHT
+
+		if (i.first.find("spotlight") != -1) {
+			auto c = add_component(std::make_shared<spotlight_component>());
+			c->read_saved_data(m_ent_ID, i.first, save_t);
+		}
+
+		
+
 	}
 }
 

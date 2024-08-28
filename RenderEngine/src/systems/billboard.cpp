@@ -14,8 +14,9 @@ wizm::billboard_core::billboard_core(std::shared_ptr<core_gl_shader> shader)
 	vertex_buffer->create_attrib_arr(1, 2, sizeof(vertex_data), offsetof(vertex_data, TexCoords));
 	vertex_buffer->create_buffer();
 
-	texture_atlas[eLight] = std::make_shared<core_gl_texture>("resources/images/light.png");
-	texture_atlas[eDirLight] = std::make_shared<core_gl_texture>("resources/images/dirlight.png");
+	texture_atlas[eLightB] = std::make_shared<core_gl_texture>("resources/images/light.png");
+	texture_atlas[eDirLightB] = std::make_shared<core_gl_texture>("resources/images/dirlight.png");
+	texture_atlas[eSpotLightB] = std::make_shared<core_gl_texture>("resources/images/spotlight.png");
 }
 
 wizm::billboard_core::~billboard_core()

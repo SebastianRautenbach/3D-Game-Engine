@@ -9,9 +9,10 @@ namespace wizm {
 
 
 	enum eBillboardType {
-		eLight,
-		eDirLight,
-		ePartical
+		eLightB,
+		eDirLightB,
+		eSpotLightB,
+		eParticalB
 	};
 
 	struct billboard_s {

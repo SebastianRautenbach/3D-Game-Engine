@@ -778,6 +778,62 @@ light(1)(1)(1){
 		scale:1.000000,1.000000,1.000000;
 	}
 }
+light(1)(1)(1)(1){
+	spotlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_outerCutOff:0.965926;
+			m_cutOff:0.984808;
+			m_ambient:0.000000,0.000000,0.000000;
+			m_diffuse:1.000000,0.000000,0.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			spotlightindex:;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:1.551434,3.524542,-3.084216;
+		rotation:-0.935921,0.000000,0.000000;
+		scale:1.000000,1.000033,1.000013;
+	}
+}
+light(1)(1)(1)(1)(1){
+	spotlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_outerCutOff:0.965926;
+			m_cutOff:0.984808;
+			m_ambient:0.000000,0.000000,0.000000;
+			m_diffuse:0.529182,0.000000,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			spotlightindex:;
+			light_index:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-0.750674,2.544793,0.270722;
+		rotation:-1.254884,0.000000,0.000000;
+		scale:1.000000,1.000028,1.000007;
+	}
+}
 sun{
 	directionallight0{
 		light{

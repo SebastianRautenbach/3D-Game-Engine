@@ -60,5 +60,24 @@ void wizm::spotlight_component::component_postupdate()
 
 std::shared_ptr<core_component> wizm::spotlight_component::_copy() const
 {
-	return std::shared_ptr<core_component>();
+    auto new_sc_comp = std::make_shared<spotlight_component>();
+
+    new_sc_comp->set_position(this->get_position());
+    new_sc_comp->set_rotation(this->get_rotation());
+    new_sc_comp->set_scale(this->get_scale());
+
+    new_sc_comp->light_index = this->light_index + 1;
+    new_sc_comp->m_ambient = this->m_ambient;
+    new_sc_comp->m_constant = this->m_constant;
+    new_sc_comp->m_diffuse = this->m_diffuse;
+    new_sc_comp->m_is_active = this->m_is_active;
+    new_sc_comp->m_is_visible = this->m_is_visible;
+    new_sc_comp->m_linear = this->m_linear;
+    new_sc_comp->m_quadratic = this->m_quadratic;
+    new_sc_comp->m_specular = this->m_specular;
+    new_sc_comp->m_outerCutOff = this->m_outerCutOff;
+    new_sc_comp->m_cutOff = this->m_cutOff;
+    new_sc_comp->shader = this->shader;
+
+    return new_sc_comp;
 }

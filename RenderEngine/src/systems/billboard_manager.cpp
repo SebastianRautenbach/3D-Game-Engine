@@ -15,14 +15,19 @@ void wizm::billboard_manager::render()
 			
 			auto point_light = std::dynamic_pointer_cast<pointlight_component>(comp);
 			auto directional_light = std::dynamic_pointer_cast<directionallight_component>(comp);
+			auto spot_light = std::dynamic_pointer_cast<spotlight_component>(comp);
 			
 			if (point_light) {
 			//	std::cout << ent->m_ent_ID << ":" << point_light->m_diffuse.x << "," << point_light->m_diffuse.y << "," << point_light->m_diffuse.z << std::endl;
-				m_billboard_core->draw(comp->get_transform(), eLight, point_light->m_diffuse);
+				m_billboard_core->draw(comp->get_transform(), eLightB, point_light->m_diffuse);
 			}
 			else if (directional_light)
 			{
-				m_billboard_core->draw(comp->get_transform(), eDirLight, directional_light->m_ambient);
+				m_billboard_core->draw(comp->get_transform(), eDirLightB, directional_light->m_ambient);
+			}
+			else if (spot_light)
+			{
+				m_billboard_core->draw(comp->get_transform(), eSpotLightB, spot_light->m_diffuse);
 			}
 		}
 	}

@@ -352,6 +352,16 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 		directionallight->m_ambient = glm::vec3(test[0], test[1], test[2]);
 	}
 
+	if (type == "SpotLight")
+	{
+		auto spotlight = std::dynamic_pointer_cast<spotlight_component>(component);
+
+		float test[3] = { spotlight->m_diffuse.x, spotlight->m_diffuse.y, spotlight->m_diffuse.z };
+
+		ImGui::ColorPicker3("testS", test);
+		spotlight->m_diffuse = glm::vec3(test[0], test[1], test[2]);
+	}
+
 
 	if (type == "StaticMesh")
 	{
