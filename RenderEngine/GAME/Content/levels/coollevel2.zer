@@ -19,7 +19,7 @@ Entity Name{
 		scale:1.000000,1.000000,1.000000;
 	}
 }
-Entity Name(1){
+Entity Name(1)(1)(1){
 	staticmesh0{
 		asset id:18410409422620930561;
 		material{
@@ -35,12 +35,12 @@ Entity Name(1){
 	tags{
 	}
 	transform{
-		position:-5.408082,0.000000,-2.923828;
-		rotation:0.000000,0.259582,0.000000;
-		scale:0.330000,0.330000,3.367107;
+		position:-9.931745,0.000000,-3.346192;
+		rotation:0.000000,0.000000,0.000000;
+		scale:0.330000,0.990000,3.367107;
 	}
 }
-Entity Name(1)(1){
+Entity Name(1)(1)(1)(1){
 	staticmesh0{
 		asset id:18410409422620930561;
 		material{
@@ -56,9 +56,51 @@ Entity Name(1)(1){
 	tags{
 	}
 	transform{
-		position:-11.271816,0.000000,0.000000;
+		position:-4.176134,0.000000,-3.346192;
 		rotation:0.000000,0.000000,0.000000;
-		scale:0.330000,0.330000,3.367226;
+		scale:0.330000,0.990000,3.367107;
+	}
+}
+Entity Name(1)(1)(1)(1)(1){
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:15546425226244383279;
+			specular_asset_id:18302487994969663584;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-7.183794,0.000000,-6.116355;
+		rotation:0.000000,-1.556657,0.000000;
+		scale:0.330000,0.990000,3.367104;
+	}
+}
+Entity Name(1)(1)(1)(1)(1)(1){
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:15546425226244383279;
+			specular_asset_id:18302487994969663584;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-7.104348,0.000000,-0.498078;
+		rotation:0.000000,-1.556657,0.000000;
+		scale:0.330000,0.990000,3.367104;
 	}
 }
 light{
@@ -89,17 +131,18 @@ light{
 	}
 }
 light(1){
-	pointlight0{
+	spotlight0{
 		light{
 			m_constant:1.000000;
 			linear:0.090000;
 			m_quadratic:0.032000;
-			m_radius:30.000000;
-			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:1.000000,0.999990,0.999990;
+			m_outerCutOff:0.965926;
+			m_cutOff:0.984808;
+			m_ambient:0.000000,0.000000,0.000000;
+			m_diffuse:1.000000,1.000000,1.000000;
 			m_specular:1.000000,1.000000,1.000000;
-			pointlightindex:;
-			light_index:1;
+			spotlightindex:;
+			light_index:0;
 		}
 		transform{
 			position:0.000000,0.000000,0.000000;
@@ -110,9 +153,9 @@ light(1){
 	tags{
 	}
 	transform{
-		position:-3.459073,0.000000,-0.363159;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
+		position:-7.251359,-0.000002,-5.707244;
+		rotation:-0.013749,0.014299,0.028087;
+		scale:1.000000,0.999989,0.999992;
 	}
 }
 light(1)(1){
@@ -126,7 +169,7 @@ light(1)(1){
 			m_diffuse:1.000000,0.999990,0.999990;
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
-			light_index:2;
+			light_index:1;
 		}
 		transform{
 			position:0.000000,0.000000,0.000000;
@@ -153,7 +196,7 @@ light(1)(1)(1){
 			m_diffuse:1.000000,0.999990,0.999990;
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
-			light_index:3;
+			light_index:2;
 		}
 		transform{
 			position:0.000000,0.000000,0.000000;

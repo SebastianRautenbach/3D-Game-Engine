@@ -146,6 +146,7 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		shdr->setMat4("projection", projection);
 		shdr->setMat4("perspective", perspective);
 		shdr->setVec3("camPos", camera->GetPosition());
+		shdr->setVec3("camFront", camera->get_front_view());
 	}
 
 

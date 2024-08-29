@@ -36,19 +36,21 @@ void wizm::spotlight_component::component_update()
     const std::string linear_property = base_index + ".linear";
     const std::string quadratic_property = base_index + ".quadratic";
 
-    const glm::vec3 world_position = get_world_position();
+    glm::vec3 initial_direction(0.0f, -1.0f, 0.0f);
 
-    const glm::vec3 world_direction = get_world_forward_vector();
-
+    glm::vec3 world_position = get_world_position();
+    glm::vec3 world_rotation = get_world_rotation();
+    glm::quat rotation_quat = glm::quat(glm::vec3(glm::radians(world_rotation.x), glm::radians(world_rotation.y), glm::radians(world_rotation.z)));
+    glm::vec3 rotated_direction = glm::normalize(rotation_quat * initial_direction);
 
     shader->setVec3(position_property, world_position);
+    shader->setVec3(direction_property, rotated_direction);
     shader->setVec3(ambient_property, m_ambient);
     shader->setVec3(diffuse_property, m_diffuse);
     shader->setVec3(specular_property, m_specular);
     shader->setFloat(constant_property, m_constant);
     shader->setFloat(linear_property, m_linear);
     shader->setFloat(quadratic_property, m_quadratic);
-    shader->setVec3(direction_property, world_direction);
     shader->setFloat(direction_cutOff, m_cutOff);
     shader->setFloat(direction_outerCutOff, m_outerCutOff);
     

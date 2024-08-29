@@ -83,16 +83,7 @@ namespace wizm {
 			}																								
 		}		
 
-
-		glm::vec3 get_world_forward_vector() {		
-			glm::mat4 combined_transform = get_transform();
-			if (m_parent_node) {
-				combined_transform = m_parent_node->get_transform() * combined_transform;
-			}
-			glm::quat world_rotation = glm::quat_cast(combined_transform);
-			glm::vec3 forward = world_rotation * glm::vec3(0.0f, 0.0f, -1.0f);
-			return glm::normalize(forward);
-		}
+		
 
 
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {}
@@ -108,7 +99,19 @@ namespace wizm {
 	private:
 		core_node* m_parent_node = nullptr;
 		std::vector<core_node*> m_child_nodes;
+	
+	public:
+		inline glm::vec3 rotate_direction(const glm::vec3& direction, const glm::vec3& axis, float angle_degrees) const {
+			float angle_radians = glm::radians(angle_degrees);
+			glm::mat4 rotation_matrix = glm::rotate(glm::mat4(1.0f), angle_radians, axis);
+			glm::vec4 rotated_direction = rotation_matrix * glm::vec4(direction, 0.0f);
+			return glm::vec3(rotated_direction);
+		}
+	
+	
 	};
+
+	
 
 
 }
