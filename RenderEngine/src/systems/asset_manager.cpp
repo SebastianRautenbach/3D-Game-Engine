@@ -44,6 +44,7 @@ void wizm::asset_manager::assign_assets()
 						}
 					}					
 				}
+				mesh_comps.reset();
 			}
 		}
 

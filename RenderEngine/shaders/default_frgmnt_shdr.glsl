@@ -37,6 +37,7 @@ struct SpotLight {
     vec3 direction;
     float cutOff;
     float outerCutOff;
+    float distance;
   
     float constant;
     float linear;
@@ -91,7 +92,8 @@ void main()
      }
 
     for(int i = 0; i < ammount_of_spotlights; i++) {
-        result += CalcSpotLight(spotLights[i], norm, FragPos, viewDir);
+        if(length(spotLights[i].position - FragPos) < spotLights[i].distance)
+            result += CalcSpotLight(spotLights[i], norm, FragPos, viewDir);
     }
 
 

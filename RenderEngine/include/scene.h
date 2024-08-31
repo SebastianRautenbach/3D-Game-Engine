@@ -32,7 +32,9 @@ namespace wizm {
 			return m_selected_entity ? m_selected_entity : nullptr;
 		}
 
-		void set_crnt_entity(std::shared_ptr<core_entity> ent) { m_selected_entity = ent; };
+		void set_crnt_entity(std::shared_ptr<core_entity> ent) { 
+			m_selected_entity = ent; 
+		};
 
 
 	private:

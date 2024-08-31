@@ -12,6 +12,7 @@ namespace wizm {
             float quadratic = 0.032f,
             float cutOff = glm::cos(glm::radians(10.0f)),
             float outerCutOff = glm::cos(glm::radians(15.0f)),
+            float distance = 10,
             glm::vec3 ambient = glm::vec3(0.00f, 0.00f, 0.0f),
             glm::vec3 diffuse = glm::vec3(1.0f, 1.0f, 1.0f),
             glm::vec3 specular = glm::vec3(1.0f, 1.0f, 1.0f)
@@ -73,6 +74,8 @@ namespace wizm {
 
             spotlightindex = save_t[parent_name][index]["light"].get_string("spotlightindex")[0];
 
+            m_distance = save_t[parent_name][index]["light"].get_float("m_distance")[0];
+
             light_index = static_cast<unsigned int>(save_t[parent_name][index]["light"].get_int("light_index")[0]);
         }
 
@@ -92,6 +95,7 @@ namespace wizm {
             save_t[parent_name]["spotlight" + index]["light"].set_float("m_ambient", { m_ambient.x,m_ambient.y,m_ambient.z });
             save_t[parent_name]["spotlight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
             save_t[parent_name]["spotlight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
+            save_t[parent_name]["spotlight" + index]["light"].set_float("m_distance", { m_distance });
             save_t[parent_name]["spotlight" + index]["light"].set_string("spotlightindex", { spotlightindex });
             save_t[parent_name]["spotlight" + index]["light"].set_int("light_index", { static_cast<int>(light_index) });
         }
@@ -107,6 +111,7 @@ namespace wizm {
         glm::vec3 m_direction;
         float m_cutOff;
         float m_outerCutOff;
+        float m_distance;
 
 
 

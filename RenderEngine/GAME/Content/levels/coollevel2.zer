@@ -35,7 +35,7 @@ Entity Name(1)(1)(1){
 	tags{
 	}
 	transform{
-		position:-9.931745,0.000000,-3.346192;
+		position:-9.931745,0.001475,-3.346192;
 		rotation:0.000000,0.000000,0.000000;
 		scale:0.330000,0.990000,3.367107;
 	}
@@ -98,23 +98,17 @@ Entity Name(1)(1)(1)(1)(1)(1){
 	tags{
 	}
 	transform{
-		position:-7.104348,0.000000,-0.498078;
+		position:-7.100986,0.000000,-0.260616;
 		rotation:0.000000,-1.556657,0.000000;
 		scale:0.330000,0.990000,3.367104;
 	}
 }
-light{
-	pointlight0{
-		light{
-			m_constant:1.000000;
-			linear:0.090000;
-			m_quadratic:0.032000;
-			m_radius:30.000000;
-			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:1.000000,0.999990,0.999990;
-			m_specular:1.000000,1.000000,1.000000;
-			pointlightindex:;
-			light_index:0;
+Entity Name(1)(1)(1)(1)(1)(1)(1){
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:15546425226244383279;
+			specular_asset_id:18302487994969663584;
 		}
 		transform{
 			position:0.000000,0.000000,0.000000;
@@ -125,22 +119,23 @@ light{
 	tags{
 	}
 	transform{
-		position:-0.002469,0.000000,1.529477;
+		position:-6.445506,-1.071751,-3.346192;
 		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
+		scale:57.644688,0.143182,30.974360;
 	}
 }
-light(1){
+Entity Names{
 	spotlight0{
 		light{
 			m_constant:1.000000;
 			linear:0.090000;
 			m_quadratic:0.032000;
-			m_outerCutOff:0.965926;
-			m_cutOff:0.984808;
-			m_ambient:0.000000,0.000000,0.000000;
+			m_outerCutOff:0.725374;
+			m_cutOff:0.776046;
+			m_ambient:1.000000,0.999990,0.999990;
 			m_diffuse:1.000000,1.000000,1.000000;
 			m_specular:1.000000,1.000000,1.000000;
+			m_distance:18.700033;
 			spotlightindex:;
 			light_index:0;
 		}
@@ -153,61 +148,7 @@ light(1){
 	tags{
 	}
 	transform{
-		position:-7.251359,-0.000002,-5.707244;
-		rotation:-0.013749,0.014299,0.028087;
-		scale:1.000000,0.999989,0.999992;
-	}
-}
-light(1)(1){
-	pointlight0{
-		light{
-			m_constant:1.000000;
-			linear:0.090000;
-			m_quadratic:0.032000;
-			m_radius:30.000000;
-			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:1.000000,0.999990,0.999990;
-			m_specular:1.000000,1.000000,1.000000;
-			pointlightindex:;
-			light_index:1;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	tags{
-	}
-	transform{
-		position:-0.381096,0.000000,-3.248351;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
-	}
-}
-light(1)(1)(1){
-	pointlight0{
-		light{
-			m_constant:1.000000;
-			linear:0.090000;
-			m_quadratic:0.032000;
-			m_radius:30.000000;
-			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:1.000000,0.999990,0.999990;
-			m_specular:1.000000,1.000000,1.000000;
-			pointlightindex:;
-			light_index:2;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	tags{
-	}
-	transform{
-		position:3.280967,0.000000,-0.712353;
+		position:-6.956943,5.648388,-2.568489;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}

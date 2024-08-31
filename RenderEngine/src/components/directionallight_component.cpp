@@ -10,6 +10,7 @@ wizm::directionallight_component::~directionallight_component()
 {
 	// the light doesnt actually get deleted
 	// we fake it by blacking everything.
+	shader->use_shader();
 	shader->setVec3("dirLight.ambient", glm::vec3(0));
 	shader->setVec3("dirLight.diffuse", glm::vec3(0));
 	shader->setVec3("dirLight.specular", glm::vec3(0));

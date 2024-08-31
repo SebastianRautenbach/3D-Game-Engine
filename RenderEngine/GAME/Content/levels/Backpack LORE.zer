@@ -786,9 +786,10 @@ light(1)(1)(1)(1){
 			m_quadratic:0.032000;
 			m_outerCutOff:0.965926;
 			m_cutOff:0.984808;
-			m_ambient:0.000000,0.000000,0.000000;
+			m_ambient:1.000000,0.999990,0.999990;
 			m_diffuse:1.000000,0.000000,0.000000;
 			m_specular:1.000000,1.000000,1.000000;
+			m_distance:15.900023;
 			spotlightindex:;
 			light_index:0;
 		}
@@ -802,8 +803,8 @@ light(1)(1)(1)(1){
 	}
 	transform{
 		position:1.551434,3.524542,-3.084216;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000033,1.000013;
+		rotation:0.774012,-0.640834,-0.144526;
+		scale:1.000000,1.000029,1.000010;
 	}
 }
 light(1)(1)(1)(1)(1){
@@ -812,11 +813,12 @@ light(1)(1)(1)(1)(1){
 			m_constant:1.000000;
 			linear:0.090000;
 			m_quadratic:0.032000;
-			m_outerCutOff:0.965926;
+			m_outerCutOff:0.925871;
 			m_cutOff:0.984808;
-			m_ambient:0.000000,0.000000,0.000000;
+			m_ambient:1.000000,0.999990,0.999990;
 			m_diffuse:0.529182,0.000000,1.000000;
-			m_specular:1.000000,1.000000,1.000000;
+			m_specular:0.968872,0.968862,0.968862;
+			m_distance:10.000000;
 			spotlightindex:;
 			light_index:1;
 		}
