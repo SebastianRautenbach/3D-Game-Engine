@@ -25,6 +25,7 @@ namespace wizm {
 		void get_mouse_pick();
 		void properties_mouse_pick();
 		std::shared_ptr<core_entity> get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos);
+		std::shared_ptr<core_entity> get_ent_pick_angle(glm::vec3 ray_dir, glm::vec3 ray_pos);
 
 	private:
 		unsigned int m_fbID;

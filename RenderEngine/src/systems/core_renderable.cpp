@@ -51,7 +51,7 @@ void wizm::core_renderable::update_boundingvolume(const glm::vec3& world_pos, co
 
 
 /*
-    Might use later to aproximate if there will be collision at all between two
+    Might aproximate if there will be collision at all between two
     bounding volumes
 */
 
