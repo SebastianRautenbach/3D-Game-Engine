@@ -216,7 +216,7 @@ void wizm::viewport_layer::get_mouse_pick()
     glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
     glm::vec3 ray_pos = ray::ray_origin(m_camera->GetViewMatrix());
 
-    m_scene->set_crnt_entity(get_ent_pick_angle(ray_dir, ray_pos));
+    m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
 }
 
 void wizm::viewport_layer::properties_mouse_pick()
@@ -233,7 +233,7 @@ void wizm::viewport_layer::properties_mouse_pick()
     glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
     glm::vec3 ray_pos = ray::ray_origin(m_camera->GetViewMatrix());
 
-    m_scene->set_crnt_entity(get_ent_pick_angle(ray_dir, ray_pos));
+    m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
     if (m_scene->get_crnt_entity() != nullptr) { ImGui::OpenPopup("ModEnt"); }
 
    
@@ -241,80 +241,98 @@ void wizm::viewport_layer::properties_mouse_pick()
 
 
 
-/*
-    This function is deprecated
-*/
+
 
 std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos)
 {
-    std::vector<std::shared_ptr<core_entity>> touched_ents;
+    std::vector<std::pair<float, std::shared_ptr<core_entity>>> touched_entities;
 
     for (const auto& ent : m_scene->m_entities) {
         for (const auto& comp : ent->m_components_list) {
             auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
             auto li_comp = std::dynamic_pointer_cast<light_component>(comp);
-            if (sm_comp) {        
+
+            glm::vec3 intersection_point;
+
+            if (sm_comp) {
                 sm_comp->m_model->update_boundingvolume(ent->get_position(), ent->get_rotation(), ent->get_scale());
-                if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos)) 
-                    touched_ents.emplace_back(ent);
-                
+
+                if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos, intersection_point)) {
+                   
+                    float distance = glm::length(intersection_point - m_camera->GetPosition());
+                    touched_entities.emplace_back(distance, ent);
+                }
             }
-            if (li_comp)
-            {
-                li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0), glm::vec3(1.0));
-                if (li_comp->ray_intersect(ray_dir, ray_pos))
-                    touched_ents.emplace_back(ent);
+            else if (li_comp) {
+                li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
+                if (li_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
+                   
+                    float distance = glm::length(intersection_point - m_camera->GetPosition());
+                    touched_entities.emplace_back(distance, ent);
+                }
             }
         }
     }
-    
 
-    if (touched_ents.empty())
+   
+    if (touched_entities.empty())
         return nullptr;
 
-
-
-    auto close_ent = touched_ents[0];
-    for(const auto ent : touched_ents) {
-        float distance = glm::distance(close_ent->get_position(), m_camera->GetPosition());
-        float crnt_distnace = glm::distance(ent->get_position(), m_camera->GetPosition());
-        if (distance > crnt_distnace) {
-            close_ent = ent;
+   
+    auto closest_entity_it = std::min_element(
+        touched_entities.begin(), touched_entities.end(),
+        [](const auto& a, const auto& b) {
+            return a.first < b.first;
         }
+    );
+
+    if (closest_entity_it != touched_entities.end()) {
+        return closest_entity_it->second; 
     }
 
-    if (close_ent)
-        return close_ent;
-    else
-        return nullptr;
+    return nullptr;
+
 }
+
+/*
+    This function is deprecated
+*/
 
 std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick_angle(glm::vec3 ray_dir, glm::vec3 ray_pos)
 {
     std::vector<std::shared_ptr<core_entity>> touched_ents;
 
-    for (const auto& ent : m_scene->m_entities) {
-        for (const auto& comp : ent->m_components_list) {
-            auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
-            auto li_comp = std::dynamic_pointer_cast<light_component>(comp);
-            if (sm_comp) {
-                sm_comp->m_model->update_boundingvolume(ent->get_position(), ent->get_rotation(), ent->get_scale());
-                if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos))
-                    touched_ents.emplace_back(ent);
+   // for (const auto& ent : m_scene->m_entities) {
+   //     for (const auto& comp : ent->m_components_list) {
+   //         auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
+   //         auto li_comp = std::dynamic_pointer_cast<light_component>(comp);
+   //         if (sm_comp) {
+   //             sm_comp->m_model->update_boundingvolume(ent->get_position(), ent->get_rotation(), ent->get_scale());
+   //             if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos))
+   //                 touched_ents.emplace_back(ent);
+   //
+   //         }
+   //         else if (li_comp)
+   //         {
+   //             li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0), glm::vec3(1.0));
+   //             if (li_comp->ray_intersect(ray_dir, ray_pos))
+   //                 touched_ents.emplace_back(ent);
+   //         }
+   //     }
+   // }
 
-            }
-            if (li_comp)
-            {
-                li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0), glm::vec3(1.0));
-                if (li_comp->ray_intersect(ray_dir, ray_pos))
-                    touched_ents.emplace_back(ent);
-            }
-        }
-    }
+    if (touched_ents.empty())
+        return nullptr;
 
     float smallest_angle = 180.0f;
-
     auto close_ent = touched_ents[0];
+
+    {
+        glm::vec3 camera_to_entity = glm::normalize(close_ent->get_position() - m_camera->GetPosition());
+        float dot_angle = glm::dot(camera_to_entity, m_camera->get_front_view());
+        smallest_angle = glm::degrees(glm::acos(dot_angle));
+    }
+
 
     for (const auto& ent : touched_ents) {
         glm::vec3 camera_to_entity = glm::normalize(ent->get_position() - m_camera->GetPosition());

@@ -232,14 +232,14 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		for (auto& i : all_lights) {
 			std::vector<vertex_data> cube = {
-					vertex_data(glm::vec3(-.2,-.2,-.2)),
-					vertex_data(glm::vec3(-.2,-.2,.2)),
-					vertex_data(glm::vec3(-.2,.2,-.2)),
-					vertex_data(glm::vec3(-.2,.2,.2)),
-					vertex_data(glm::vec3(.2,-.2,-.2)),
-					vertex_data(glm::vec3(.2,-.2,.2)),
-					vertex_data(glm::vec3(.2,.2,-.2)),
-					vertex_data(glm::vec3(.2,.2,.2))
+					vertex_data(glm::vec3(-.4,-.4,-.4)),
+					vertex_data(glm::vec3(-.4,-.4,.4)),
+					vertex_data(glm::vec3(-.4,.4,-.4)),
+					vertex_data(glm::vec3(-.4,.4,.4)),
+					vertex_data(glm::vec3(.4,-.4,-.4)),
+					vertex_data(glm::vec3(.4,-.4,.4)),
+					vertex_data(glm::vec3(.4,.4,-.4)),
+					vertex_data(glm::vec3(.4,.4,.4))
 			};
 
 			i->init_boundingvolume(cube);

@@ -33,44 +33,65 @@ namespace wizm
             return max_point - min_point;
         }
 
-        bool ray_intersect(glm::vec3 ray_dir, glm::vec3 ray_origin) const {
+        /*
+            This function not only checks for a hit but also returns the intersection point if it did intersect
+        */
+
+        bool ray_intersect(glm::vec3 ray_dir, glm::vec3 ray_origin, glm::vec3& intersection_point) const {
             
             float tmin = -FLT_MAX;
             float tmax = FLT_MAX;
-            
-            
+            bool is_inside = true;
+
+
+            // test for inside the box :( not working sorta
             for (int i = 0; i < 3; ++i) {
-               
+                float axis_dot_origin = glm::dot(axes[i], ray_origin - center);
+
+             
+                if (axis_dot_origin < -extents[i] || axis_dot_origin > extents[i]) {
+                    is_inside = false;
+                    break; 
+                }
+            }
+
+           
+            if (is_inside) {
+                return false;
+            }
+
+
+            for (int i = 0; i < 3; ++i) {
+
                 float axis_dot_ray_dir = glm::dot(axes[i], ray_dir);
                 float axis_dot_origin = glm::dot(axes[i], ray_origin - center);
-            
+
                 if (glm::epsilonNotEqual(axis_dot_ray_dir, 0.0f, glm::epsilon<float>())) {
-                 
+
                     float t1 = (-axis_dot_origin - extents[i]) / axis_dot_ray_dir;
                     float t2 = (-axis_dot_origin + extents[i]) / axis_dot_ray_dir;
-            
-                    
+
+
                     if (t1 > t2) std::swap(t1, t2);
-            
-                    
+
                     tmin = glm::max(tmin, t1);
                     tmax = glm::min(tmax, t2);
-            
-                    
+
                     if (tmin > tmax) {
                         return false;
                     }
                 }
                 else {
-                    
+
                     if (axis_dot_origin < -extents[i] || axis_dot_origin > extents[i]) {
                         return false;
                     }
                 }
             }
 
-            
+            intersection_point = ray_origin + tmin * ray_dir;
             return true;
+
 
 
 
