@@ -2,7 +2,7 @@
 #include "system/assets.h"
 #include "system/core_model.h"
 #include "system/core_renderable.h"
-
+#include <filesystem>
 
 using namespace lowlevelsys;
 
@@ -17,7 +17,12 @@ namespace wizm {
 		
 		void load(const std::string& path) override {
 			if(!path.empty())
+			{
+				std::filesystem::path file_path(path);
+
 				m_model = new core_model(path.c_str());
+				file_name = file_path.filename().string();
+			}
 		}
 		void draw() {
 			m_model->render_model();
@@ -49,6 +54,9 @@ namespace wizm {
 
 	private:
 		core_model* m_model;
+
+	public:
+		std::string file_name;
 	};
 
 }

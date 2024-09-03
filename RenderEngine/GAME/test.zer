@@ -20,18 +20,6 @@ Entity Name(1)(1)(1)(1)(1)(1)(1){
 	}
 }
 Entity Names{
-	directionallight1{
-		light{
-			m_ambient:0.385214,0.385210,0.385210;
-			m_diffuse:0.400000,0.400000,0.400000;
-			m_specular:0.500000,0.500000,0.500000;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
 	spotlight0{
 		light{
 			m_constant:1.000000;
@@ -55,7 +43,65 @@ Entity Names{
 	tags{
 	}
 	transform{
-		position:-4.999291,5.648388,0.000000;
+		position:-4.999291,3.123352,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+Entity Names(1){
+	spotlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_outerCutOff:0.725374;
+			m_cutOff:0.776046;
+			m_ambient:0.249027,1.000000,0.000000;
+			m_diffuse:1.000000,1.000000,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			m_distance:10.000000;
+			spotlightindex:;
+			light_index:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-4.999291,3.123352,-5.370049;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+Entity Names(1)(1){
+	spotlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_outerCutOff:0.725374;
+			m_cutOff:0.776046;
+			m_ambient:0.000000,0.500023,1.000000;
+			m_diffuse:1.000000,1.000000,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			m_distance:10.000000;
+			spotlightindex:;
+			light_index:2;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.714361,3.123352,0.000000;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}

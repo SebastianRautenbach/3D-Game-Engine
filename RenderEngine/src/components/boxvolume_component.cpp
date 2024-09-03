@@ -1,6 +1,7 @@
 #include "entity sys/components/boxvolume_component.h"
 
-wizm::boxvolume::boxvolume(const glm::vec3& center, const glm::vec3& extents, const glm::vec3 axes[3])
+wizm::boxvolume::boxvolume(const glm::vec3& center, const glm::vec3& extents, const glm::vec3 axes[3], glm::mat4 obj_mtx)
+   : m_obj_mtx(obj_mtx)
 {
 
     glm::vec3 corners[8];
@@ -21,8 +22,9 @@ wizm::boxvolume::boxvolume(const glm::vec3& center, const glm::vec3& extents, co
     std::vector<vertex_data> vertices;
     for (const auto& corner : corners) {
         vertices.emplace_back(corner);
+        std::cout << "x:" << corner.x << ", y:" <<  corner.y << ", z:" << corner.z << "\n";
     }
-
+    
 
     vertex_buffer = new core_arr_vertex_buffer(vertices, indices);
     vertex_buffer->bind_buffer();
@@ -42,10 +44,10 @@ void wizm::boxvolume::component_preupdate()
 
 void wizm::boxvolume::component_update()
 {
-	m_shader->use_shader();
 	
+	m_shader->use_shader();
     glLineWidth(5.f);
-    m_shader->setMat4("model", glm::mat4(1));
+    m_shader->setMat4("model", glm::mat4(1.0));
     vertex_buffer->bind_buffer();
     glDrawElements(GL_LINES, indices.size(), GL_UNSIGNED_INT, 0);
     vertex_buffer->unbind_buffer();

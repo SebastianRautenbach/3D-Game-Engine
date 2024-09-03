@@ -3,6 +3,7 @@
 #include "input.h"
 #include "other utils/strconvr.h"
 #include "system/mouse_picking.h"
+#include "IconsFontAwesome5.h"
 
 wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, gl_renderer* renderer)
     : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene), m_renderer(renderer)
@@ -52,28 +53,46 @@ void wizm::viewport_layer::update(float delta_time)
     }
 
 
-    ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize(" [T] ").x, 25); 
-    ImVec2 buttonPosition = ImVec2((0 + buttonSize.x), (0 + buttonSize.y));
+    ImVec2 button_size = ImVec2(ImGui::CalcTextSize(" [T] ").x, 25);
+    ImVec2 button_pos = ImVec2((0 + button_size.x), (30));
 
     static int guizmo_type = ImGuizmo::OPERATION::TRANSLATE;
     
-    ImGui::SetCursorPos(buttonPosition);
-    if (ImGui::Button("[T]", buttonSize))
+    ImGui::SetCursorPos(button_pos);
+    if (ImGui::Button(ICON_FA_ARROWS_ALT "", button_size))
     {
         guizmo_type = ImGuizmo::OPERATION::TRANSLATE;
         m_snap_value = 0.5f;
     }
     ImGui::SameLine();
-    if (ImGui::Button("[R]", buttonSize))
+    if (ImGui::Button(ICON_FA_REDO "", button_size))
     {
         guizmo_type = ImGuizmo::OPERATION::ROTATE;
         m_snap_value = 45.0f;
     }
     ImGui::SameLine();
-    if (ImGui::Button("[S]", buttonSize))
+    if (ImGui::Button(ICON_FA_EXPAND "", button_size))
     {
         guizmo_type = ImGuizmo::OPERATION::SCALE;
         m_snap_value = 0.5f;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_GLOBE "", button_size))
+    {
+        is_global_gizmo = true;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_CUBE "", button_size))
+    {
+        is_global_gizmo = false;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_MAGNET "", button_size))
+    {
+        if (m_should_snap)
+            m_should_snap = false;
+        else
+            m_should_snap = true;
     }
 
     
@@ -81,7 +100,17 @@ void wizm::viewport_layer::update(float delta_time)
     if(m_scene->get_crnt_entity())
     {
         auto ent = m_scene->get_crnt_entity();
-        glm::mat4 mat = ent->get_transform();
+        glm::mat4 mat;
+
+        if (is_global_gizmo) {
+            glm::mat4 rotation = glm::mat4_cast(glm::quat(glm::vec3(0.0)));
+
+            mat = glm::translate(glm::mat4(1.0f), ent->get_position()) * rotation *
+                glm::scale(glm::mat4(1.0f), ent->get_scale());
+        }
+        else {
+            mat = ent->get_transform();
+        }
 
 
         ImGuizmo::SetOrthographic(false);
@@ -97,7 +126,7 @@ void wizm::viewport_layer::update(float delta_time)
         
         glm::mat4 projectionMatrix = m_camera->GetProjectionMatrix();
 
-        m_should_snap = false;
+
         if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_CONTROL))
             m_should_snap = true;
 
@@ -107,6 +136,8 @@ void wizm::viewport_layer::update(float delta_time)
         ImGuizmo::Manipulate(glm::value_ptr(viewMatrix), glm::value_ptr(projectionMatrix),
             (ImGuizmo::OPERATION)guizmo_type,
             ImGuizmo::LOCAL, glm::value_ptr(mat), nullptr, m_should_snap ? snapvals : nullptr);
+
+        
 
         if (ImGuizmo::IsUsing())
         {
@@ -119,8 +150,11 @@ void wizm::viewport_layer::update(float delta_time)
             lowlevelsys::decompose_transform(mat, position, rotation, scale);
             glm::vec3 deltaRot = glm::vec3(0);
 
+            if(!is_global_gizmo)
+                deltaRot = rotation - ent->get_rotation();
+            else
+                deltaRot = (rotation );
 
-            deltaRot = rotation - ent->get_rotation();
             ent->set_position(position);        
             ent->add_rotation(deltaRot);
             ent->set_scale(scale);

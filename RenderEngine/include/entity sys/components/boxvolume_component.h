@@ -9,7 +9,7 @@ namespace wizm {
 	class boxvolume : public lowlevelsys::core_component {
 	public:
 
-		boxvolume(const glm::vec3& center, const glm::vec3& extents, const glm::vec3 axes[3]);
+		boxvolume(const glm::vec3& center, const glm::vec3& extents, const glm::vec3 axes[3], glm::mat4 obj_mtx);
 		~boxvolume();
 		
 		
@@ -21,6 +21,7 @@ namespace wizm {
 
 
 	public:
+		glm::mat4 m_obj_mtx;
 		std::shared_ptr<core_gl_shader> m_shader;
 		std::vector<glm::vec3> m_corners;
 		core_arr_vertex_buffer* vertex_buffer;

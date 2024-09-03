@@ -216,20 +216,20 @@ void wizm::properties_ui_layer::update(float delta_time)
 
 					ImGui::Text("Position:");
 					float pos[3] = { comps->get_position().x, comps->get_position().y, comps->get_position().z };
-					std::string trans_id = m_scene->get_crnt_entity()->m_ent_ID + "c pos" + std::to_string(comps->m_component_type) + std::to_string(i);
+					std::string trans_id = "##" + m_scene->get_crnt_entity()->m_ent_ID + "c pos" + std::to_string(comps->m_component_type) + std::to_string(i);
 					if (ImGui::DragFloat3(trans_id.c_str(), pos, 0.01))
 						comps->set_position(glm::vec3(pos[0], pos[1], pos[2]));
 
 					ImGui::Text("Rotation:");
 					float rot[3] = { comps->get_rotation().x, comps->get_rotation().y, comps->get_rotation().z };
-					trans_id = m_scene->get_crnt_entity()->m_ent_ID + "c rot" + std::to_string(comps->m_component_type) + std::to_string(i);
+					trans_id = "##" + m_scene->get_crnt_entity()->m_ent_ID + "c rot" + std::to_string(comps->m_component_type) + std::to_string(i);
 					if (ImGui::DragFloat3(trans_id.c_str(), rot, 0.1))
 						comps->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
 
 
 					ImGui::Text("Scale:");
 					float sca[3] = { comps->get_scale().x, comps->get_scale().y, comps->get_scale().z };
-					trans_id = m_scene->get_crnt_entity()->m_ent_ID + "c sca" + std::to_string(comps->m_component_type) + std::to_string(i);
+					trans_id = "##" + m_scene->get_crnt_entity()->m_ent_ID + "c sca" + std::to_string(comps->m_component_type) + std::to_string(i);
 					if (ImGui::DragFloat3(trans_id.c_str(), sca, 0.01))
 						comps->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
 
@@ -303,20 +303,6 @@ void wizm::properties_ui_layer::component_add_popup()
 		if (ImGui::MenuItem("Sound")) {
 			
 		}
-		if (ImGui::MenuItem("box volume")) {
-			
-			for (const auto& comp : m_scene->get_crnt_entity()->m_components_list) {
-				auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
-				if (sm_comp) {
-					auto box = std::dynamic_pointer_cast<boxvolume>(m_scene->get_crnt_entity()->add_component(std::make_shared<boxvolume>(sm_comp->m_model->center, sm_comp->m_model->extents, sm_comp->m_model->axes)));
-					box->m_shader = sm_comp->m_material->m_shader;
-					break;
-				}
-			}
-
-			
-		}
-
 		ImGui::EndPopup();
 	}
 }
@@ -384,9 +370,34 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	if (type == "StaticMesh")
 	{
 		auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(component);
+		std::string staticmeshfilename, diffusetexturefilename, speculartexturefilename;
+		
+		{
+			if (staticmesh->m_model)
+				staticmeshfilename = staticmesh->m_model->file_name;
+			else
+				staticmeshfilename = "Drag and Drop";
+		}
+		{
+			size_t texture_count = staticmesh->m_material->m_texture_n.size();
+
+			diffusetexturefilename = (texture_count > 0 && staticmesh->m_material->m_texture_n[0])
+				? staticmesh->m_material->m_texture_n[0]->file_name
+				: "Drag and Drop";
+
+			speculartexturefilename = (texture_count > 1 && staticmesh->m_material->m_texture_n[1])
+				? staticmesh->m_material->m_texture_n[1]->file_name
+				: (texture_count > 0 ? "Drag and Drop" : diffusetexturefilename);
+
+		}
+
+
+
+
+
 		
 		ImGui::Text("Change Mesh");
-		ImGui::Button("Drag and Drop", ImVec2(125, 125));
+		ImGui::Button(staticmeshfilename.c_str(), ImVec2(125, 125));
 		if (ImGui::BeginDragDropTarget()) {
 		
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
@@ -404,7 +415,8 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 			ImGui::EndDragDropTarget();
 		}
 		ImGui::Text("Change Diffuse Texture");
-		ImGui::Button("Drag and Drop", ImVec2(125, 125));
+		
+		ImGui::Button(diffusetexturefilename.c_str(), ImVec2(125, 125));
 		if (ImGui::BeginDragDropTarget()) {
 
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
@@ -423,7 +435,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 		}
 
 		ImGui::Text("Change Specular Texture");
-		ImGui::Button("Drag and Drop", ImVec2(125, 125));
+		ImGui::Button(speculartexturefilename.c_str(), ImVec2(125, 125));
 		if (ImGui::BeginDragDropTarget()) {
 
 			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {

@@ -30,7 +30,8 @@ void wizm::scene_ui_layer::update(float delta_time)
 
 	ImGui::Begin("scene view");
 
-
+	if (ImGui::Button("Add Entity"))
+		ImGui::OpenPopup("AddEntityPopup");
 
 	for (auto ents : m_scene->m_entities)
 	{
@@ -106,8 +107,8 @@ void wizm::scene_ui_layer::update(float delta_time)
 
 	//---------------------------------------------------------------------------------------------------------
 	
-	if (ImGui::Button("Add Entity"))
-		ImGui::OpenPopup("AddEntityPopup");
+	
+	
 
 	if (ImGui::BeginPopup("AddEntityPopup")) {
 		ImGui::Text("Add Entity");

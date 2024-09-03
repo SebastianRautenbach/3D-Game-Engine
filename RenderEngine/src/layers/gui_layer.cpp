@@ -1,5 +1,6 @@
 #include "layers/gui_cntx.h"
 #include "scene.h"
+#include "IconsFontAwesome5.h"
 
 wizm::gui_layer::gui_layer(GLFWwindow* window, core_scene* scene)
     : core_layer("gui_layer"), m_scene(scene)
@@ -21,8 +22,17 @@ void wizm::gui_layer::OnAttach()
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;     
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;        
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;      
-   
-   
+
+    
+  
+
+    io.Fonts->AddFontDefault();
+
+    static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 }; 
+    ImFontConfig icons_config;
+    icons_config.MergeMode = true; 
+    icons_config.PixelSnapH = true;
+    io.Fonts->AddFontFromFileTTF("resources/fonts/fa-solid-900.ttf", 16.0f, &icons_config, icons_ranges);
 
    
     ImGui::StyleColorsDark();
@@ -32,6 +42,40 @@ void wizm::gui_layer::OnAttach()
     ImGuiStyle& style = ImGui::GetStyle();
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
+        style.Colors[ImGuiCol_WindowBg] = winCol;
+        style.Colors[ImGuiCol_Border] = ImColor(0, 0, 0, 0);
+        style.Colors[ImGuiCol_Button] = bgCol;
+        style.Colors[ImGuiCol_ButtonActive] = btnActiveCol;
+        style.Colors[ImGuiCol_ButtonHovered] = btnHoverCol;
+        style.Colors[ImGuiCol_FrameBg] = bgCol;
+        style.Colors[ImGuiCol_FrameBgActive] = frameCol;
+        style.Colors[ImGuiCol_FrameBgHovered] = hoverCol;
+        style.Colors[ImGuiCol_Text] = textCol;
+        style.Colors[ImGuiCol_ChildBg] = childCol;
+        style.Colors[ImGuiCol_CheckMark] = itemActiveCol;
+        style.Colors[ImGuiCol_SliderGrab] = itemCol;
+        style.Colors[ImGuiCol_SliderGrabActive] = itemActiveCol;
+        style.Colors[ImGuiCol_Header] = itemActiveCol;
+        style.Colors[ImGuiCol_HeaderHovered] = itemCol;
+        style.Colors[ImGuiCol_HeaderActive] = itemActiveCol;
+        style.Colors[ImGuiCol_ResizeGrip] = resizeGripCol;
+        style.Colors[ImGuiCol_ResizeGripHovered] = resizeGripHoverCol;
+        style.Colors[ImGuiCol_ResizeGripActive] = itemActiveCol;
+        style.Colors[ImGuiCol_SeparatorHovered] = resizeGripHoverCol;
+        style.Colors[ImGuiCol_SeparatorActive] = itemActiveCol;
+        style.Colors[ImGuiCol_TitleBgActive] = itemActiveCol;
+
+        style.WindowRounding = 6;
+        style.ChildRounding = 6;
+        style.FrameRounding = 2;
+        style.GrabRounding = 2;
+        style.PopupRounding = 2;
+
+        style.ScrollbarSize = 9;
+        style.FramePadding = ImVec2(6, 3);
+        style.ItemSpacing = ImVec2(4, 4);
+
+
         style.WindowRounding = 0.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
@@ -78,6 +122,7 @@ void wizm::gui_layer::begin()
 
     if (ImGui::BeginMenuBar())
     {
+   
         if (ImGui::BeginMenu("File"))
         {
             if (ImGui::MenuItem("Save-as"))
@@ -88,20 +133,41 @@ void wizm::gui_layer::begin()
             {
                 m_scene->save_map_data("");
             }
+            if (ImGui::MenuItem("Open")) {
+                // open blah
+            }
             ImGui::EndMenu();
         }
+        ImGui::SameLine(0, 20); 
+       
         if (ImGui::BeginMenu("Edit"))
         {
             ImGui::EndMenu();
         }
+        ImGui::SameLine(0, 20);
+        
         if (ImGui::BeginMenu("Tools"))
         {
             ImGui::EndMenu();
         }
+        ImGui::SameLine(0, 20);
+        
         if (ImGui::BeginMenu("Window"))
         {
             ImGui::EndMenu();
         }
+
+        
+       
+        float menu_bar_width = ImGui::GetContentRegionAvail().x;
+        float button_width = ImGui::CalcTextSize("play").x + ImGui::GetStyle().FramePadding.x * 2.0f;
+        ImVec2 button_pos = ImVec2((menu_bar_width - button_width) / 2.0f, 0.0f);
+
+        ImGui::SetCursorPosX(button_pos.x);
+        
+        if (ImGui::Button(ICON_FA_PLAY "")) {}
+        if (ImGui::Button(ICON_FA_PAUSE "")) {}
+        if (ImGui::Button(ICON_FA_STEP_FORWARD "")) {}
         ImGui::EndMenuBar();
     }
     ImGui::PopStyleVar();
@@ -162,4 +228,9 @@ void wizm::gui_layer::end()
     }
 
 
+}
+
+ImVec4 wizm::gui_layer::rgbaToVec4(float r, float g, float b, float a)
+{
+    return ImVec4(r / 255.f, g / 255.f, b / 255.f, a / 255.f);;
 }

@@ -33,6 +33,7 @@ namespace wizm {
 		float m_snap_value = 0.5f;
 		bool m_should_snap = false;
 		gl_renderer* m_renderer;
+		bool is_global_gizmo = false;
 
 		// needs to be a better way :(
 		core_scene* m_scene;
