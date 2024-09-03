@@ -1,5 +1,5 @@
 ![Wizm logo](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/res/Picture1.png 'Wizm logo')
-
+![ScreenShot1](https://github.com/SebastianRautenbach/3D-Game-Engine/blob/main/RenderEngine/res/screenshot2.png)
 
 **Current state**
 The engine is still in it's very early state but it is "functional". The engine does feature a component based entity system similar to Unity and Unreal. The engine has a basic renderer capable to render 3D and lighting.
