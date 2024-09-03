@@ -200,6 +200,9 @@ void wizm::properties_ui_layer::update(float delta_time)
 			case eSpotLight:
 				comp_type = "SpotLight";
 				break;
+			case eCamera:
+				comp_type = "Camera";
+				break;
 
 			default:
 				break;
@@ -302,6 +305,9 @@ void wizm::properties_ui_layer::component_add_popup()
 		}
 		if (ImGui::MenuItem("Sound")) {
 			
+		}
+		if (ImGui::MenuItem("Camera")) {
+			m_scene->get_crnt_entity()->add_component(std::make_shared<camera_component>());
 		}
 		ImGui::EndPopup();
 	}

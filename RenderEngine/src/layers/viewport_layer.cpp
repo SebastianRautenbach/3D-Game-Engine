@@ -77,16 +77,24 @@ void wizm::viewport_layer::update(float delta_time)
         m_snap_value = 0.5f;
     }
     ImGui::SameLine();
+    ImVec4 global_color = is_global_gizmo ? ImVec4(173 / 255.f, 55 / 255.f, 65 / 255.f, 1.f) : ImGui::GetStyle().Colors[ImGuiCol_Button];
+    ImGui::PushStyleColor(ImGuiCol_Button, global_color);
     if (ImGui::Button(ICON_FA_GLOBE "", button_size))
     {
         is_global_gizmo = true;
     }
+    ImGui::PopStyleColor();
     ImGui::SameLine();
+    ImVec4 local_color = is_global_gizmo ?  ImGui::GetStyle().Colors[ImGuiCol_Button] : ImVec4(173 / 255.f, 55 / 255.f, 65 / 255.f, 1.f);
+    ImGui::PushStyleColor(ImGuiCol_Button, local_color);
     if (ImGui::Button(ICON_FA_CUBE "", button_size))
     {
         is_global_gizmo = false;
     }
-    ImGui::SameLine();
+    ImGui::PopStyleColor();
+    ImGui::SameLine(); 
+    ImVec4 magnet_color = m_should_snap ? ImVec4(173 / 255.f, 55 / 255.f, 65 / 255.f,  1.f) : ImGui::GetStyle().Colors[ImGuiCol_Button];
+    ImGui::PushStyleColor(ImGuiCol_Button, magnet_color);
     if (ImGui::Button(ICON_FA_MAGNET "", button_size))
     {
         if (m_should_snap)
@@ -94,7 +102,7 @@ void wizm::viewport_layer::update(float delta_time)
         else
             m_should_snap = true;
     }
-
+    ImGui::PopStyleColor();
     
 
     if(m_scene->get_crnt_entity())
@@ -126,9 +134,6 @@ void wizm::viewport_layer::update(float delta_time)
         
         glm::mat4 projectionMatrix = m_camera->GetProjectionMatrix();
 
-
-        if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_CONTROL))
-            m_should_snap = true;
 
         float snapvals[3] = { m_snap_value, m_snap_value , m_snap_value };
 
@@ -285,6 +290,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
         for (const auto& comp : ent->m_components_list) {
             auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
             auto li_comp = std::dynamic_pointer_cast<light_component>(comp);
+            auto camera_comp = std::dynamic_pointer_cast<camera_component>(comp);
 
             glm::vec3 intersection_point;
 
@@ -301,6 +307,14 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
                 li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
                 if (li_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
                    
+                    float distance = glm::length(intersection_point - m_camera->GetPosition());
+                    touched_entities.emplace_back(distance, ent);
+                }
+            }
+            else if (camera_comp) {
+                camera_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
+                if (camera_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
+
                     float distance = glm::length(intersection_point - m_camera->GetPosition());
                     touched_entities.emplace_back(distance, ent);
                 }

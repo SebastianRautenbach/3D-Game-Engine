@@ -181,7 +181,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		std::vector<std::shared_ptr<spotlight_component>> spot_lights;
 		std::vector<std::shared_ptr<light_component>> all_lights;
 		std::vector<std::shared_ptr<staticmesh_component>> meshes;
-		
+		std::shared_ptr <camera_component> camera_comp;
 
 		for (auto& i : m_scene->m_entities) {
 			for (auto& per_ent : i->m_components_list)
@@ -209,6 +209,22 @@ void lowlevelsys::gl_renderer::update_draw_data()
 				
 					spot_lights.push_back(spotlight_comps);
 					all_lights.push_back(spotlight_comps);
+				}
+				
+				auto camera_comp_c = std::dynamic_pointer_cast<camera_component>(per_ent);
+				if (camera_comp_c) {
+					std::vector<vertex_data> cube = {
+					vertex_data(glm::vec3(-.4,-.4,-.4)),
+					vertex_data(glm::vec3(-.4,-.4,.4)),
+					vertex_data(glm::vec3(-.4,.4,-.4)),
+					vertex_data(glm::vec3(-.4,.4,.4)),
+					vertex_data(glm::vec3(.4,-.4,-.4)),
+					vertex_data(glm::vec3(.4,-.4,.4)),
+					vertex_data(glm::vec3(.4,.4,-.4)),
+					vertex_data(glm::vec3(.4,.4,.4))
+					};
+					camera_comp = camera_comp_c;
+					camera_comp->init_boundingvolume(cube);
 				}
 
 			}
@@ -244,6 +260,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 			i->init_boundingvolume(cube);
 		}
+
 
 
 		for (auto& i : meshes) {

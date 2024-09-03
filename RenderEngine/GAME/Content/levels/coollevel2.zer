@@ -148,7 +148,36 @@ Entity Names{
 	tags{
 	}
 	transform{
-		position:-6.956943,5.648388,-2.568489;
+		position:-6.956943,5.647914,-2.568489;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+Entity Names(1){
+	spotlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_outerCutOff:0.725374;
+			m_cutOff:0.776046;
+			m_ambient:1.000000,0.999990,0.999990;
+			m_diffuse:1.000000,1.000000,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			m_distance:10.000000;
+			spotlightindex:;
+			light_index:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.337853,3.123544,-0.218478;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}

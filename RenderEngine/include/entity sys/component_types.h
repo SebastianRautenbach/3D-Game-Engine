@@ -8,7 +8,8 @@ namespace wizm {
 		eSprite,
 		ePointLight,
 		eSpotLight,
-		eDirectionalLight
+		eDirectionalLight,
+		eCamera
 	};
 
 }

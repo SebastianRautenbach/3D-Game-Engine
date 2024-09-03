@@ -17,6 +17,7 @@ wizm::billboard_core::billboard_core(std::shared_ptr<core_gl_shader> shader)
 	texture_atlas[eLightB] = std::make_shared<core_gl_texture>("resources/images/light.png");
 	texture_atlas[eDirLightB] = std::make_shared<core_gl_texture>("resources/images/dirlight.png");
 	texture_atlas[eSpotLightB] = std::make_shared<core_gl_texture>("resources/images/spotlight.png");
+	texture_atlas[eCameraB] = std::make_shared<core_gl_texture>("resources/images/camera.png");
 }
 
 wizm::billboard_core::~billboard_core()

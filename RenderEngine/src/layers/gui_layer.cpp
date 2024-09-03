@@ -232,5 +232,5 @@ void wizm::gui_layer::end()
 
 ImVec4 wizm::gui_layer::rgbaToVec4(float r, float g, float b, float a)
 {
-    return ImVec4(r / 255.f, g / 255.f, b / 255.f, a / 255.f);;
+    return ImVec4(r / 255.f, g / 255.f, b / 255.f, a / 255.f);
 }
