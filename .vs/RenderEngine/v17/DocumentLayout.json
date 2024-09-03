@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\viewport_layer.cpp",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\viewport_layer.cpp",
               "RelativeToolTip": "RenderEngine\\src\\layers\\viewport_layer.cpp",
-              "ViewState": "AQIAACQBAAAAAAAAAAAAACsBAAAkAAAA",
+              "ViewState": "AQIAACQBAAAAAAAAAAAAACkBAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-03T15:44:59.207Z",
               "EditorCaption": ""
@@ -63,8 +63,7 @@
               "RelativeToolTip": "RenderEngine\\src\\layers\\scene_viewport_layer.cpp",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-03T15:43:46.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-03T15:43:46.096Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "RenderEngine\\src\\systems\\billboard.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-03T15:42:16.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-03T15:42:16.516Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "RenderEngine\\src\\systems\\billboard_manager.cpp",
               "ViewState": "AQIAAAwAAAAAAAAAAAAAACIAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-03T15:40:55.236Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-03T15:40:55.236Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
               "ViewState": "AQIAAMkAAAAAAAAAAAAAAOUAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-03T15:37:24.459Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-03T15:37:24.459Z"
             },
             {
               "$type": "Document",
@@ -127,8 +123,7 @@
               "RelativeToolTip": "RenderEngine\\include\\entity sys\\components\\camera_component.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-03T15:00:15.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-03T15:00:15.784Z"
             }
           ]
         }
