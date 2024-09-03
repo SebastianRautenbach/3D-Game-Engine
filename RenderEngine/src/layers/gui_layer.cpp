@@ -2,8 +2,8 @@
 #include "scene.h"
 #include "IconsFontAwesome5.h"
 
-wizm::gui_layer::gui_layer(GLFWwindow* window, core_scene* scene)
-    : core_layer("gui_layer"), m_scene(scene)
+wizm::gui_layer::gui_layer(GLFWwindow* window, core_scene* scene, std::shared_ptr<camera_manager> camera_manager)
+    : core_layer("gui_layer"), m_scene(scene), m_camera_manager(camera_manager)
 {
     m_window = window;
 }
@@ -165,8 +165,12 @@ void wizm::gui_layer::begin()
 
         ImGui::SetCursorPosX(button_pos.x);
         
-        if (ImGui::Button(ICON_FA_PLAY "")) {}
-        if (ImGui::Button(ICON_FA_PAUSE "")) {}
+        if (ImGui::Button(ICON_FA_PLAY "")) {
+            m_camera_manager->update_crnt_camera(true);
+        }
+        if (ImGui::Button(ICON_FA_PAUSE "")) {
+            m_camera_manager->update_crnt_camera(false);
+        }
         if (ImGui::Button(ICON_FA_STEP_FORWARD "")) {}
         ImGui::EndMenuBar();
     }

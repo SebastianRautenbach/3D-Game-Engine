@@ -9,13 +9,14 @@
 #include "system/draw_ray.h"
 #include "gl renderer/gl_renderer.h"
 #include "layers/UI/popup_window.h"
+#include "system/camera_manager.h"
 
 namespace wizm {
 
 
 	class viewport_layer : public core_layer {
 	public:
-		viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, gl_renderer* renderer);
+		viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, core_scene* scene, gl_renderer* renderer);
 		~viewport_layer();
 
 		virtual void OnAttach() override;
@@ -29,7 +30,7 @@ namespace wizm {
 
 	private:
 		unsigned int m_fbID;
-		std::shared_ptr<core_3d_camera> m_camera;
+		std::shared_ptr<camera_manager> m_camera_manager;
 		float m_snap_value = 0.5f;
 		bool m_should_snap = false;
 		gl_renderer* m_renderer;

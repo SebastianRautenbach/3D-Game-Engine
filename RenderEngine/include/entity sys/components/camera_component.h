@@ -26,6 +26,7 @@ namespace wizm {
 
 
 	public:
-		core_3d_camera* m_camera;
+		std::shared_ptr<core_3d_camera> m_camera;
+		bool is_main_camera;
 	};
 }

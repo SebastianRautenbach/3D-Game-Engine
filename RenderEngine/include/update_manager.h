@@ -9,7 +9,7 @@
 #include "layers/layerstack.h"
 #include "layers/layers_define.h"
 #include "system/billboard_manager.h"
-
+#include "system/camera_manager.h"
 
 // DELETE
 #include "system/draw_ray.h"
@@ -38,6 +38,7 @@ namespace wizm {
 		core_framebuffer* m_framebuffer;
 		layer_stack* m_layer_stack;
 		billboard_manager* m_billboard_manager;
+		std::shared_ptr<camera_manager> m_camera_manager;
 
 		// testing
 		asset_manager* m_asset_manager;

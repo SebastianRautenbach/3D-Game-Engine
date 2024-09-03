@@ -5,8 +5,8 @@
 #include "system/mouse_picking.h"
 #include "IconsFontAwesome5.h"
 
-wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<core_3d_camera> camera, core_scene* scene, gl_renderer* renderer)
-    : core_layer("viewport_layer"), m_fbID(fbID), m_camera(camera), m_scene(scene), m_renderer(renderer)
+wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, core_scene* scene, gl_renderer* renderer)
+    : core_layer("viewport_layer"), m_fbID(fbID), m_camera_manager(camera_manager), m_scene(scene), m_renderer(renderer)
 {
 }
 
@@ -30,7 +30,7 @@ void wizm::viewport_layer::update(float delta_time)
     
     ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
     ImVec2 mSize = { viewportPanelSize.x, viewportPanelSize.y };
-    m_camera->SetAspect(mSize.x / mSize.y);
+    m_camera_manager->m_viewport_camera->SetAspect(mSize.x / mSize.y);
 
 
     ImGui::Image(reinterpret_cast<void*>(m_fbID), ImVec2{ mSize.x, mSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
@@ -130,9 +130,9 @@ void wizm::viewport_layer::update(float delta_time)
 
 
 
-        glm::mat4 viewMatrix = m_camera->GetViewMatrix();
+        glm::mat4 viewMatrix = m_camera_manager->m_viewport_camera->GetViewMatrix();
         
-        glm::mat4 projectionMatrix = m_camera->GetProjectionMatrix();
+        glm::mat4 projectionMatrix = m_camera_manager->m_viewport_camera->GetProjectionMatrix();
 
 
         float snapvals[3] = { m_snap_value, m_snap_value , m_snap_value };
@@ -252,8 +252,8 @@ void wizm::viewport_layer::get_mouse_pick()
     glm::vec2 norm_mouse_pos(rel_mouse_pos.x / window_size.x, rel_mouse_pos.y / window_size.y);
 
 
-    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
-    glm::vec3 ray_pos = ray::ray_origin(m_camera->GetViewMatrix());
+    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->GetProjectionMatrix(), m_camera_manager->m_viewport_camera->GetViewMatrix());
+    glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->GetViewMatrix());
 
     m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
 }
@@ -269,8 +269,8 @@ void wizm::viewport_layer::properties_mouse_pick()
     glm::vec2 norm_mouse_pos(rel_mouse_pos.x / window_size.x, rel_mouse_pos.y / window_size.y);
 
 
-    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera->GetProjectionMatrix(), m_camera->GetViewMatrix());
-    glm::vec3 ray_pos = ray::ray_origin(m_camera->GetViewMatrix());
+    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->GetProjectionMatrix(), m_camera_manager->m_viewport_camera->GetViewMatrix());
+    glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->GetViewMatrix());
 
     m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
     if (m_scene->get_crnt_entity() != nullptr) { ImGui::OpenPopup("ModEnt"); }
@@ -299,7 +299,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
 
                 if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos, intersection_point)) {
                    
-                    float distance = glm::length(intersection_point - m_camera->GetPosition());
+                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->GetPosition());
                     touched_entities.emplace_back(distance, ent);
                 }
             }
@@ -307,7 +307,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
                 li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
                 if (li_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
                    
-                    float distance = glm::length(intersection_point - m_camera->GetPosition());
+                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->GetPosition());
                     touched_entities.emplace_back(distance, ent);
                 }
             }
@@ -315,7 +315,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
                 camera_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
                 if (camera_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
 
-                    float distance = glm::length(intersection_point - m_camera->GetPosition());
+                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->GetPosition());
                     touched_entities.emplace_back(distance, ent);
                 }
             }
@@ -369,29 +369,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick_angle(glm::vec3 
    //     }
    // }
 
-    if (touched_ents.empty())
-        return nullptr;
-
-    float smallest_angle = 180.0f;
-    auto close_ent = touched_ents[0];
-
-    {
-        glm::vec3 camera_to_entity = glm::normalize(close_ent->get_position() - m_camera->GetPosition());
-        float dot_angle = glm::dot(camera_to_entity, m_camera->get_front_view());
-        smallest_angle = glm::degrees(glm::acos(dot_angle));
-    }
-
-
-    for (const auto& ent : touched_ents) {
-        glm::vec3 camera_to_entity = glm::normalize(ent->get_position() - m_camera->GetPosition());
-        float dot_angle = glm::dot(camera_to_entity, m_camera->get_front_view());
-        float angle = glm::degrees(glm::acos(dot_angle));
-
-        if (angle > smallest_angle) {
-            close_ent = ent;
-        }
-    }
-    return close_ent;
+    return NULL;
 
 
 }

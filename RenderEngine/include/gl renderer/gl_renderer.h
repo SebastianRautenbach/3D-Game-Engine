@@ -10,14 +10,16 @@
 #include "system/3d_core_camera.h"
 #include "other utils/grid2d.h"
 #include "scene.h"
+#include "system/camera_manager.h"
 
 
 using namespace wizm;
 
 namespace lowlevelsys {
+
 	class gl_renderer {
 	public:
-		void setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene);
+		void setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene, std::shared_ptr<camera_manager> camera_manager);
 		
 		void pre_render(bool& is_running, float deltaTime);
 		void render(float deltaTime);
@@ -31,12 +33,10 @@ namespace lowlevelsys {
 		input_manager* m_input_manager;
 		
 		std::vector<std::shared_ptr<core_gl_shader>> m_shdrs;
-		//core_gl_shader* shdr;
 
 		core_grid* grid2d;
-		std::shared_ptr<core_3d_camera> camera = nullptr;
 		core_scene* m_scene;
-		
+		std::shared_ptr<camera_manager> m_camera_manager;
 		
 
 	public:

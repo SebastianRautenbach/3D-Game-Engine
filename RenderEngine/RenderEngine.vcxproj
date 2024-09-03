@@ -156,6 +156,7 @@
     <ClCompile Include="include\dependencies\imgui\imgui_tables.cpp" />
     <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
+    <ClCompile Include="src\systems\camera_manager.cpp" />
     <ClCompile Include="src\components\camera_component.cpp" />
     <ClCompile Include="include\entity sys\components\directionallight_component.h" />
     <ClCompile Include="include\entity sys\components\spotlight_component.h" />
@@ -252,6 +253,7 @@
     <ClInclude Include="include\system\asset_importer.h" />
     <ClInclude Include="include\system\asset_manager.h" />
     <ClInclude Include="include\system\billboard.h" />
+    <ClInclude Include="include\system\camera_manager.h" />
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />
     <ClInclude Include="include\system\core_renderable.h" />

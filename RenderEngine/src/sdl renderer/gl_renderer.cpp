@@ -3,10 +3,13 @@
 
 
 
-void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene)
+void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene, std::shared_ptr<camera_manager> camera_manager)
 {
 	w_width = window_size_x;
 	w_height = window_size_y;
+
+
+	m_camera_manager = camera_manager;
 
 
 	glfwInit();
@@ -39,15 +42,18 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	m_input_manager = new input_manager(window, static_cast<float>(w_width), static_cast<float>(w_height));
 
 
+	
+	m_camera_manager->m_viewport_camera = std::make_shared<core_3d_camera>(w_width, w_height);
+	m_camera_manager->m_viewport_camera->SetPosition(glm::vec3(-1.76043, 1.11876, 1.69863));
+	m_camera_manager->m_viewport_camera->SetPitch(-0.438943);
+	m_camera_manager->m_viewport_camera->SetYaw(-0.769122);
+	m_camera_manager->m_crnt_camera = m_camera_manager->m_viewport_camera;
 
-
-	camera = std::make_shared<core_3d_camera>(w_width, w_height);
-	camera->SetPosition(glm::vec3(-1.76043, 1.11876, 1.69863));
-	camera->SetPitch(-0.438943);
-	camera->SetYaw(-0.769122);
-
-	//shdr = new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl");
-
+	
+	/*
+	*	I should consider making a shader manager
+	*	but for now this will do
+	*/
 	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/ray_vrtx.glsl", "shaders/ray_frgmnt.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/billboard_vrtx.glsl", "shaders/billboard_frgment.glsl"));
@@ -95,28 +101,28 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 	{		
 		m_input_manager->set_hide_mouse_cursor(true);
 		
-		camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * .01);
-		camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * .01);
+		m_camera_manager->m_viewport_camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * .01);
+		m_camera_manager->m_viewport_camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * .01);
 
 
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_W))
-			camera->MoveForward(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->MoveForward(2 * deltaTime);
 		
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_S))
-			camera->MoveForward(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->MoveForward(-2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_D))
-			camera->MoveRight(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->MoveRight(2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_A))
-			camera->MoveRight(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->MoveRight(-2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_E))
-			camera->MoveUp(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->MoveUp(2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
-			camera->MoveUp(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->MoveUp(-2 * deltaTime);
 
 	
 	}
@@ -133,9 +139,9 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 	glm::mat4 perspective = glm::mat4(1.f);
 
 
-	view = camera->GetViewMatrix();
-	projection = camera->GetProjectionMatrix();
-	perspective = camera->GetViewMatrix();
+	view = m_camera_manager->m_crnt_camera->GetViewMatrix();
+	projection = m_camera_manager->m_crnt_camera->GetProjectionMatrix();
+	perspective = m_camera_manager->m_crnt_camera->GetViewMatrix();
 
 
 	for(const auto& shdr : m_shdrs)
@@ -145,8 +151,8 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
 		shdr->setMat4("projection", projection);
 		shdr->setMat4("perspective", perspective);
-		shdr->setVec3("camPos", camera->GetPosition());
-		shdr->setVec3("camFront", camera->get_front_view());
+		shdr->setVec3("camPos", m_camera_manager->m_crnt_camera->GetPosition());
+		shdr->setVec3("camFront", m_camera_manager->m_crnt_camera->get_front_view());
 	}
 
 
@@ -268,7 +274,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			i->m_material->on_change_material();
 			
 			if (i->m_model) {
-				i->m_model->m_camera = camera;
+				i->m_model->m_camera = m_camera_manager->m_crnt_camera;
 				if(!i->m_model->has_boundvolume)
 				{
 					i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());

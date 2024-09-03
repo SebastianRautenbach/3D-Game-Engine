@@ -2,7 +2,7 @@
 #include "imgui/imgui.h"
 #include "imgui/backends/imgui_impl_glfw.h"
 #include "imgui/backends/imgui_impl_opengl3.h"
-#include "system/3d_core_camera.h"
+#include "system/camera_manager.h"
 #include "layer.h"
 #include "ImGuizmo/ImGuizmo.h"
 
@@ -13,7 +13,7 @@ namespace wizm {
 	class gui_layer : public core_layer
 	{
 	public:
-		gui_layer(GLFWwindow* window, core_scene* scene);
+		gui_layer(GLFWwindow* window, core_scene* scene, std::shared_ptr<camera_manager> camera_manager);
 		~gui_layer();
 
 		virtual void OnAttach() override;
@@ -49,6 +49,7 @@ namespace wizm {
 		ImVec2 m_window_size;
 		GLFWwindow* m_window;
 		core_scene* m_scene;
+		std::shared_ptr<camera_manager> m_camera_manager;
 	};
 
 
