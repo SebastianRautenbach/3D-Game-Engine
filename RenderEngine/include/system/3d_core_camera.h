@@ -16,6 +16,7 @@ namespace wizm {
 
 		const glm::vec3& GetPosition()const { return mvPosition; }
 		void SetPosition(const glm::vec3& avPos);
+	
 
 		/**
 		 * Get the front vector that the camera is looking at
@@ -78,6 +79,9 @@ namespace wizm {
 		void AddPitch(float afAngle);
 		void AddYaw(float afAngle);
 		void AddRoll(float afAngle);
+
+		void SetRotation(const glm::quat& rotation);
+
 
 		float GetPitch() const { return mfPitch; }
 		float GetYaw() const { return mfYaw; }

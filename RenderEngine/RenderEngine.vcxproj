@@ -167,7 +167,6 @@
     <ClCompile Include="src\components\boxvolume_component.cpp" />
     <ClCompile Include="src\components\light_component.cpp" />
     <ClCompile Include="src\components\spotlight_component.cpp" />
-    <ClCompile Include="src\layers\scene_viewport_layer.cpp" />
     <ClCompile Include="src\systems\billboard_manager.cpp" />
     <ClCompile Include="src\systems\core_renderable.cpp" />
     <ClCompile Include="include\system\mouse_picking.h" />
@@ -234,7 +233,6 @@
     <ClInclude Include="include\layers\layers_define.h" />
     <ClInclude Include="include\layers\performance_ui_layer.h" />
     <ClInclude Include="include\layers\properties_ui_layer.h" />
-    <ClInclude Include="include\layers\scene_viewport_layer.h" />
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />

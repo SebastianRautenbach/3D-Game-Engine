@@ -47,7 +47,6 @@ namespace wizm {
 	//-----------------------------------------------------------------------
 
 	
-	
 	void core_3d_camera::SetPosition(const glm::vec3& avPos)
 	{
 		mvPosition = avPos;
@@ -77,6 +76,20 @@ namespace wizm {
 		glm::vec3 up = glm::cross(right, forward); 
 		return glm::normalize(up);
 	}
+
+
+	void core_3d_camera::SetRotation(const glm::quat& rotation)
+	{
+		glm::vec3 euler = glm::eulerAngles(rotation);
+
+		mfPitch = (euler.x);
+		mfYaw = (euler.y);
+		mfRoll = (euler.z);
+
+		mbViewUpdated = true;
+		mbMoveUpdated = true;
+	}
+
 
 
 
@@ -147,7 +160,7 @@ namespace wizm {
 		mbViewUpdated = true; mbMoveUpdated = true;
 	}
 
-	
+
 
 
 	void core_3d_camera::SetRoll(float afAngle)

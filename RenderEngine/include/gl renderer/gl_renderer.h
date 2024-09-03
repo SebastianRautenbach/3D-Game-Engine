@@ -26,7 +26,6 @@ namespace lowlevelsys {
 		void post_render(float deltaTime);
 		void update_draw_data();
 		void on_exit();
-		void set_camera_aspect(float x, float y);
 
 	public:
 		GLFWwindow* window;

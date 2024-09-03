@@ -201,7 +201,7 @@ void wizm::properties_ui_layer::update(float delta_time)
 				comp_type = "SpotLight";
 				break;
 			case eCamera:
-				comp_type = "Camera";
+				comp_type = "CameraComponent";
 				break;
 
 			default:
@@ -370,6 +370,10 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 		spotlight->m_cutOff = glm::cos(glm::radians(cutOffDeg));
 		spotlight->m_outerCutOff = glm::cos(glm::radians(outerCutOffDeg));
+	}
+
+	if (type == "CameraComponent") {
+	
 	}
 
 

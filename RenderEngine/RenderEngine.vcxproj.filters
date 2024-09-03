@@ -177,9 +177,6 @@
     <ClCompile Include="src\components\spotlight_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\layers\scene_viewport_layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\components\camera_component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -387,9 +384,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\system\billboard_manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\layers\scene_viewport_layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\entity sys\components\camera_component.h">

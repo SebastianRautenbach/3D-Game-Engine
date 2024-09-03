@@ -168,7 +168,7 @@ void wizm::gui_layer::begin()
         if (ImGui::Button(ICON_FA_PLAY "")) {
             m_camera_manager->update_crnt_camera(true);
         }
-        if (ImGui::Button(ICON_FA_PAUSE "")) {
+        if (ImGui::Button(ICON_FA_SQUARE "")) {
             m_camera_manager->update_crnt_camera(false);
         }
         if (ImGui::Button(ICON_FA_STEP_FORWARD "")) {}

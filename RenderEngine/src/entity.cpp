@@ -192,7 +192,12 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
-		
+		//--- CAMERA COMPONENT
+
+		if (i.first.find("cameracomponent") != -1) {
+			auto c = add_component(std::make_shared<camera_component>());
+			c->read_saved_data(m_ent_ID, i.first, save_t);
+		}
 
 	}
 }
