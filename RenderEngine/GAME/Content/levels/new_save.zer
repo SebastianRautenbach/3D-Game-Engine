@@ -63,6 +63,9 @@ Entity(1){
 }
 Entity(1)(1){
 	cameracomponent0{
+		settings{
+			is_main_camera:1;
+		}
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -72,7 +75,7 @@ Entity(1)(1){
 	tags{
 	}
 	transform{
-		position:-3.133598,-0.032571,0.627161;
+		position:-0.447965,0.128144,3.495352;
 		rotation:0.000000,0.000000,0.000000;
 		scale:0.260000,0.260000,0.260000;
 	}

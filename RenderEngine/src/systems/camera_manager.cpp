@@ -1,4 +1,5 @@
 #include "system/camera_manager.h"
+#include "system/camera_3d.h"
 
 wizm::camera_manager::camera_manager(core_scene* scene)
 	:m_scene(scene)
@@ -9,8 +10,9 @@ wizm::camera_manager::~camera_manager()
 {
 }
 
-void wizm::camera_manager::update_crnt_camera(bool simulate)
+bool wizm::camera_manager::update_crnt_camera(bool simulate)
 {
+	did_change_cam = false;
 	if(simulate)
 	{
 		for (const auto& ent : m_scene->m_entities)
@@ -23,6 +25,7 @@ void wizm::camera_manager::update_crnt_camera(bool simulate)
 					if (m_cam_comp->is_main_camera) {
 
 						m_crnt_camera = m_cam_comp->m_camera;
+						did_change_cam = true;
 					}
 				}
 			}
@@ -31,5 +34,8 @@ void wizm::camera_manager::update_crnt_camera(bool simulate)
 	else
 	{
 		m_crnt_camera = m_viewport_camera;
+		did_change_cam = true;
 	}
+
+	return did_change_cam;
 }

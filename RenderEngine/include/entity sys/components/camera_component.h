@@ -6,7 +6,7 @@ using namespace lowlevelsys;
 
 namespace wizm {
 
-	class core_3d_camera;
+	class camera_core_3d;
 
 	class camera_component : public core_component, public core_renderable {
 
@@ -37,17 +37,20 @@ namespace wizm {
 				save_t[parent_name][index]["transform"].get_float("scale")[1],
 				save_t[parent_name][index]["transform"].get_float("scale")[2]
 			));
+
+			is_main_camera = save_t[parent_name][index]["settings"].get_int("is_main_camera")[0];
 		
 		}
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {
 			save_t[parent_name]["cameracomponent" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
 			save_t[parent_name]["cameracomponent" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
 			save_t[parent_name]["cameracomponent" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
+			save_t[parent_name]["cameracomponent" + index]["settings"].set_int("is_main_camera", { is_main_camera });
 		}
 
 
 	public:
-		std::shared_ptr<core_3d_camera> m_camera;
-		bool is_main_camera;
+		std::shared_ptr<camera_core_3d> m_camera;
+		bool is_main_camera = false;
 	};
 }

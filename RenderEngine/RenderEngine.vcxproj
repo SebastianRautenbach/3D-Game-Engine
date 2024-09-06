@@ -156,6 +156,7 @@
     <ClCompile Include="include\dependencies\imgui\imgui_tables.cpp" />
     <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
+    <ClCompile Include="src\systems\camera_3d.cpp" />
     <ClCompile Include="src\systems\camera_manager.cpp" />
     <ClCompile Include="src\components\camera_component.cpp" />
     <ClCompile Include="include\entity sys\components\directionallight_component.h" />
@@ -163,7 +164,6 @@
     <ClCompile Include="include\entity sys\components\staticmesh_component.h" />
     <ClCompile Include="include\layers\viewport_layer.h" />
     <ClCompile Include="include\other utils\strconvr.h" />
-    <ClCompile Include="include\system\3d_core_camera.h" />
     <ClCompile Include="src\components\boxvolume_component.cpp" />
     <ClCompile Include="src\components\light_component.cpp" />
     <ClCompile Include="src\components\spotlight_component.cpp" />
@@ -177,9 +177,7 @@
     <ClCompile Include="src\components\pointlight_component.cpp" />
     <ClCompile Include="src\components\staticmesh_component.cpp" />
     <ClCompile Include="src\core shader.cpp" />
-    <ClCompile Include="src\3d_core_camera.cpp" />
     <ClCompile Include="src\entity.cpp" />
-    <ClCompile Include="src\grid2d.cpp" />
     <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\layers\content_browser_layer.cpp" />
     <ClCompile Include="src\layers\gui_layer.cpp" />
@@ -234,7 +232,6 @@
     <ClInclude Include="include\layers\performance_ui_layer.h" />
     <ClInclude Include="include\layers\properties_ui_layer.h" />
     <ClInclude Include="include\other utils\extra_utils.h" />
-    <ClInclude Include="include\other utils\grid2d.h" />
     <ClInclude Include="include\entity sys\component.h" />
     <ClInclude Include="include\other utils\IDGEN.h" />
     <ClInclude Include="include\other utils\matrix_math.h" />
@@ -270,6 +267,7 @@
     <ClInclude Include="include\system\node.h" />
     <ClInclude Include="include\layers\UI\popup_window.h" />
     <ClInclude Include="include\entity sys\components\light_component.h" />
+    <ClInclude Include="include\system\camera_3d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

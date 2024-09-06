@@ -373,7 +373,11 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	}
 
 	if (type == "CameraComponent") {
-	
+		auto camera = std::dynamic_pointer_cast<camera_component>(component);
+		ImGui::Separator();
+		ImGui::Text("Main camera?");
+		ImGui::SameLine();
+		ImGui::Checkbox("##maincamera", &camera->is_main_camera);
 	}
 
 

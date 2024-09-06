@@ -1,6 +1,6 @@
 #include "gl renderer/gl_renderer.h"
 #include <vector>
-
+#include "system/camera_3d.h"
 
 
 void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene, std::shared_ptr<camera_manager> camera_manager)
@@ -42,11 +42,9 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	m_input_manager = new input_manager(window, static_cast<float>(w_width), static_cast<float>(w_height));
 
 
-	
-	m_camera_manager->m_viewport_camera = std::make_shared<core_3d_camera>(w_width, w_height);
-	m_camera_manager->m_viewport_camera->SetPosition(glm::vec3(-1.76043, 1.11876, 1.69863));
-	m_camera_manager->m_viewport_camera->SetPitch(-0.438943);
-	m_camera_manager->m_viewport_camera->SetYaw(-0.769122);
+	m_camera_manager->m_viewport_camera = std::make_shared<camera_core_3d>(w_width, w_height);
+	m_camera_manager->m_viewport_camera->set_position(glm::vec3(-1.76043, 1.11876, 1.69863));
+	m_camera_manager->m_viewport_camera->set_rotation(-0.438943, -0.769122, 0.0);
 	m_camera_manager->m_crnt_camera = m_camera_manager->m_viewport_camera;
 
 	
@@ -101,28 +99,28 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 	{		
 		m_input_manager->set_hide_mouse_cursor(true);
 		
-		m_camera_manager->m_viewport_camera->AddYaw(m_input_manager->get_mouse_offset_new().x_offset * .01);
-		m_camera_manager->m_viewport_camera->AddPitch(m_input_manager->get_mouse_offset_new().y_offset * .01);
+		m_camera_manager->m_viewport_camera->add_yaw(m_input_manager->get_mouse_offset_new().x_offset * .02);
+		m_camera_manager->m_viewport_camera->add_pitch(m_input_manager->get_mouse_offset_new().y_offset * .02);
 
 
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_W))
-			m_camera_manager->m_viewport_camera->MoveForward(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_forward(2 * deltaTime);
 		
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_S))
-			m_camera_manager->m_viewport_camera->MoveForward(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_forward(-2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_D))
-			m_camera_manager->m_viewport_camera->MoveRight(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_right(2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_A))
-			m_camera_manager->m_viewport_camera->MoveRight(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_right(-2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_E))
-			m_camera_manager->m_viewport_camera->MoveUp(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_up(2 * deltaTime);
 
 		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
-			m_camera_manager->m_viewport_camera->MoveUp(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_up(-2 * deltaTime);
 
 	
 	}
@@ -139,20 +137,20 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 	glm::mat4 perspective = glm::mat4(1.f);
 
 
-	view = m_camera_manager->m_crnt_camera->GetViewMatrix();
-	projection = m_camera_manager->m_crnt_camera->GetProjectionMatrix();
-	perspective = m_camera_manager->m_crnt_camera->GetViewMatrix();
+	view = m_camera_manager->m_crnt_camera->get_view_matrix();
+	projection = m_camera_manager->m_crnt_camera->get_projection_matrix();
+	perspective = view;
 
 
 	for(const auto& shdr : m_shdrs)
 	{
 		shdr->use_shader();
-		unsigned int viewLoc = glGetUniformLocation(shdr->get_shader_id(), "view");
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+		unsigned int view_loc = glGetUniformLocation(shdr->get_shader_id(), "view");
+		glUniformMatrix4fv(view_loc, 1, GL_FALSE, &view[0][0]);
 		shdr->setMat4("projection", projection);
 		shdr->setMat4("perspective", perspective);
-		shdr->setVec3("camPos", m_camera_manager->m_crnt_camera->GetPosition());
-		shdr->setVec3("camFront", m_camera_manager->m_crnt_camera->get_front_view());
+		shdr->setVec3("camPos", m_camera_manager->m_crnt_camera->get_position());
+		shdr->setVec3("camFront", m_camera_manager->m_crnt_camera->get_forward_vector());
 	}
 
 

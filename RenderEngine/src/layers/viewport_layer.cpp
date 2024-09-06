@@ -4,6 +4,7 @@
 #include "other utils/strconvr.h"
 #include "system/mouse_picking.h"
 #include "IconsFontAwesome5.h"
+#include "system/camera_3d.h"
 
 wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, core_scene* scene, gl_renderer* renderer)
     : core_layer("viewport_layer"), m_fbID(fbID), m_camera_manager(camera_manager), m_scene(scene), m_renderer(renderer)
@@ -30,8 +31,7 @@ void wizm::viewport_layer::update(float delta_time)
     
     ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
     ImVec2 mSize = { viewportPanelSize.x, viewportPanelSize.y };
-    m_camera_manager->m_viewport_camera->SetAspect(mSize.x / mSize.y);
-
+    m_camera_manager->m_viewport_camera->set_window_size(mSize.x, mSize.y);
 
     ImGui::Image(reinterpret_cast<void*>(m_fbID), ImVec2{ mSize.x, mSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
     if (ImGui::BeginDragDropTarget()) {
@@ -43,6 +43,7 @@ void wizm::viewport_layer::update(float delta_time)
             {
                 m_scene->read_map_data(wstring_to_string(id));
                 m_scene->m_reloaded = true;
+                m_camera_manager->update_crnt_camera(false);
             }
 
 
@@ -130,9 +131,9 @@ void wizm::viewport_layer::update(float delta_time)
 
 
 
-        glm::mat4 viewMatrix = m_camera_manager->m_viewport_camera->GetViewMatrix();
+        glm::mat4 viewMatrix = m_camera_manager->m_viewport_camera->get_view_matrix();
         
-        glm::mat4 projectionMatrix = m_camera_manager->m_viewport_camera->GetProjectionMatrix();
+        glm::mat4 projectionMatrix = m_camera_manager->m_viewport_camera->get_projection_matrix();
 
 
         float snapvals[3] = { m_snap_value, m_snap_value , m_snap_value };
@@ -252,8 +253,8 @@ void wizm::viewport_layer::get_mouse_pick()
     glm::vec2 norm_mouse_pos(rel_mouse_pos.x / window_size.x, rel_mouse_pos.y / window_size.y);
 
 
-    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->GetProjectionMatrix(), m_camera_manager->m_viewport_camera->GetViewMatrix());
-    glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->GetViewMatrix());
+    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->get_projection_matrix(), m_camera_manager->m_viewport_camera->get_view_matrix());
+    glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->get_view_matrix());
 
     m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
 }
@@ -269,8 +270,8 @@ void wizm::viewport_layer::properties_mouse_pick()
     glm::vec2 norm_mouse_pos(rel_mouse_pos.x / window_size.x, rel_mouse_pos.y / window_size.y);
 
 
-    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->GetProjectionMatrix(), m_camera_manager->m_viewport_camera->GetViewMatrix());
-    glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->GetViewMatrix());
+    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->get_projection_matrix(), m_camera_manager->m_viewport_camera->get_view_matrix());
+    glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->get_view_matrix());
 
     m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
     if (m_scene->get_crnt_entity() != nullptr) { ImGui::OpenPopup("ModEnt"); }
@@ -299,7 +300,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
 
                 if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos, intersection_point)) {
                    
-                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->GetPosition());
+                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->get_position());
                     touched_entities.emplace_back(distance, ent);
                 }
             }
@@ -307,7 +308,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
                 li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
                 if (li_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
                    
-                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->GetPosition());
+                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->get_position());
                     touched_entities.emplace_back(distance, ent);
                 }
             }
@@ -315,7 +316,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
                 camera_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
                 if (camera_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
 
-                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->GetPosition());
+                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->get_position());
                     touched_entities.emplace_back(distance, ent);
                 }
             }

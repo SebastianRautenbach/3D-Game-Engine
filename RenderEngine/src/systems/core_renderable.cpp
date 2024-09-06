@@ -1,5 +1,4 @@
 #include "system/core_renderable.h"
-#include "system/3d_core_camera.h"
 #include <array>
 #include <iostream>
 

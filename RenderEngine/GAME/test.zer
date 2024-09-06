@@ -108,6 +108,9 @@ Entity Names(1)(1)(1)(1){
 }
 camera{
 	cameracomponent0{
+		settings{
+			is_main_camera:1;
+		}
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;

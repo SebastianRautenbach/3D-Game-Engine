@@ -39,15 +39,6 @@
     <ClCompile Include="src\timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\3d_core_camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="include\system\3d_core_camera.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\grid2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\tag.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -183,6 +174,9 @@
     <ClCompile Include="src\systems\camera_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\systems\camera_3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\update_manager.h">
@@ -210,9 +204,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\gl core\core_camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\other utils\grid2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\entity sys\entity.h">
@@ -390,6 +381,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\system\camera_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\camera_3d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,7 +6,7 @@
 
 namespace wizm {
 
-	class core_3d_camera;
+	class camera_core_3d;
 
 	class core_renderable : public bounding_volume {
 
@@ -19,7 +19,7 @@ namespace wizm {
      
     public:
         bool has_boundvolume = false;
-        std::shared_ptr<wizm::core_3d_camera> m_camera = nullptr;
+        std::shared_ptr<wizm::camera_core_3d> m_camera = nullptr;
       
 	};
 }

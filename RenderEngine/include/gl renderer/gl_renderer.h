@@ -7,8 +7,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "system/3d_core_camera.h"
-#include "other utils/grid2d.h"
 #include "scene.h"
 #include "system/camera_manager.h"
 
@@ -33,7 +31,6 @@ namespace lowlevelsys {
 		
 		std::vector<std::shared_ptr<core_gl_shader>> m_shdrs;
 
-		core_grid* grid2d;
 		core_scene* m_scene;
 		std::shared_ptr<camera_manager> m_camera_manager;
 		

@@ -117,6 +117,7 @@ void wizm::gui_layer::begin()
     ImGui::PopStyleVar(3);
 
     static bool show_save_popup = false;
+    static bool show_cam_error = false;
     static char map_name[128] = "GAME/new_save.zer";
 
 
@@ -166,7 +167,9 @@ void wizm::gui_layer::begin()
         ImGui::SetCursorPosX(button_pos.x);
         
         if (ImGui::Button(ICON_FA_PLAY "")) {
-            m_camera_manager->update_crnt_camera(true);
+            if (!m_camera_manager->update_crnt_camera(true)) {
+                show_cam_error = true;
+            }
         }
         if (ImGui::Button(ICON_FA_SQUARE "")) {
             m_camera_manager->update_crnt_camera(false);
@@ -178,6 +181,20 @@ void wizm::gui_layer::begin()
 
     if (show_save_popup) {
         ImGui::OpenPopup("Save Map As");
+    }
+
+    if (show_cam_error) {
+        ImGui::OpenPopup("No camera found!");
+    }
+
+    if (ImGui::BeginPopupModal("No camera found!", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
+        ImGui::Text("No main camera found in scene!");
+        auto btnsize = ImGui::GetItemRectSize();
+        if (ImGui::Button("OK", ImVec2(btnsize.x, 0))) {
+            show_cam_error = false;
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::EndPopup();
     }
 
 

@@ -1,6 +1,5 @@
 #pragma once
 #include "layer.h"
-#include "system/3d_core_camera.h"
 #include "imgui/imgui.h"
 #include "imgui/backends/imgui_impl_glfw.h"
 #include "imgui/backends/imgui_impl_opengl3.h"
