@@ -1,6 +1,7 @@
 #include "layers/gui_cntx.h"
 #include "scene.h"
 #include "IconsFontAwesome5.h"
+#include "other utils/common.h"
 
 wizm::gui_layer::gui_layer(GLFWwindow* window, core_scene* scene, std::shared_ptr<camera_manager> camera_manager)
     : core_layer("gui_layer"), m_scene(scene), m_camera_manager(camera_manager)
@@ -21,10 +22,9 @@ void wizm::gui_layer::OnAttach()
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;    
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;     
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;        
-    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;      
+    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;    
 
-    
-  
+   
 
     io.Fonts->AddFontDefault();
 
@@ -170,9 +170,17 @@ void wizm::gui_layer::begin()
             if (!m_camera_manager->update_crnt_camera(true)) {
                 show_cam_error = true;
             }
+            else
+                engine_status = RUNTIME_STATUS;
         }
         if (ImGui::Button(ICON_FA_SQUARE "")) {
             m_camera_manager->update_crnt_camera(false);
+            
+            
+            if(engine_status != EDITOR_STATUS) {
+                m_scene->read_map_data(m_scene->current_scene);
+                engine_status = EDITOR_STATUS;
+            }
         }
         if (ImGui::Button(ICON_FA_STEP_FORWARD "")) {}
         ImGui::EndMenuBar();
@@ -220,6 +228,7 @@ void wizm::gui_layer::begin()
             ImGui::CloseCurrentPopup();
         }
 
+
         ImGui::EndPopup();
     }
 
@@ -227,7 +236,6 @@ void wizm::gui_layer::begin()
     ImGui::DockSpace(dockSpaceId, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None);
 
     ImGui::End();
-
 
 }
 

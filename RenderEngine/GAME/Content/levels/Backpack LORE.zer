@@ -1,3 +1,22 @@
+CAMERA{
+	cameracomponent0{
+		settings{
+			is_main_camera:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-1.770787,3.092893,7.478662;
+		rotation:-0.263932,-0.068789,0.018572;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 Entity Nama{
 	staticmesh0{
 		asset id:9061207173737292744;

@@ -57,7 +57,7 @@ Entity Names(1)(1)(1){
 			m_outerCutOff:0.725374;
 			m_cutOff:0.776046;
 			m_ambient:1.000000,0.999990,0.999990;
-			m_diffuse:1.000000,1.000000,1.000000;
+			m_diffuse:1.000000,0.000000,0.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			m_distance:10.000000;
 			spotlightindex:;
@@ -106,7 +106,7 @@ Entity Names(1)(1)(1)(1){
 		scale:1.000000,1.000000,1.000000;
 	}
 }
-camera{
+camera(1){
 	cameracomponent0{
 		settings{
 			is_main_camera:1;
@@ -120,7 +120,7 @@ camera{
 	tags{
 	}
 	transform{
-		position:0.000000,0.000000,0.000000;
+		position:-3.838379,0.000000,-1.429811;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}

@@ -52,6 +52,7 @@ void wizm::camera_core_3d::set_rotation_matrix(const glm::mat4& rotation_matrix)
 }
 
 
+
 void wizm::camera_core_3d::set_window_size(int width, int height)
 {
     m_window_width = width;

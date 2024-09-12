@@ -5,6 +5,7 @@
 #include "system/mouse_picking.h"
 #include "IconsFontAwesome5.h"
 #include "system/camera_3d.h"
+#include "other utils/common.h"
 
 wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, core_scene* scene, gl_renderer* renderer)
     : core_layer("viewport_layer"), m_fbID(fbID), m_camera_manager(camera_manager), m_scene(scene), m_renderer(renderer)
@@ -17,7 +18,7 @@ wizm::viewport_layer::~viewport_layer()
 
 void wizm::viewport_layer::OnAttach()
 {
-
+    
 }
 
 void wizm::viewport_layer::OnDetach()
@@ -30,11 +31,11 @@ void wizm::viewport_layer::update(float delta_time)
      
     
     ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-    ImVec2 mSize = { viewportPanelSize.x, viewportPanelSize.y };
+    mSize = { viewportPanelSize.x, viewportPanelSize.y };
     m_camera_manager->m_viewport_camera->set_window_size(mSize.x, mSize.y);
 
     ImGui::Image(reinterpret_cast<void*>(m_fbID), ImVec2{ mSize.x, mSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
-    if (ImGui::BeginDragDropTarget()) {
+    if (ImGui::BeginDragDropTarget() && engine_status == EDITOR_STATUS) {
 
         if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
 
@@ -56,8 +57,6 @@ void wizm::viewport_layer::update(float delta_time)
 
     ImVec2 button_size = ImVec2(ImGui::CalcTextSize(" [T] ").x, 25);
     ImVec2 button_pos = ImVec2((0 + button_size.x), (30));
-
-    static int guizmo_type = ImGuizmo::OPERATION::TRANSLATE;
     
     ImGui::SetCursorPos(button_pos);
     if (ImGui::Button(ICON_FA_ARROWS_ALT "", button_size))
@@ -93,6 +92,7 @@ void wizm::viewport_layer::update(float delta_time)
         is_global_gizmo = false;
     }
     ImGui::PopStyleColor();
+    
     ImGui::SameLine(); 
     ImVec4 magnet_color = m_should_snap ? ImVec4(173 / 255.f, 55 / 255.f, 65 / 255.f,  1.f) : ImGui::GetStyle().Colors[ImGuiCol_Button];
     ImGui::PushStyleColor(ImGuiCol_Button, magnet_color);
@@ -104,9 +104,27 @@ void wizm::viewport_layer::update(float delta_time)
             m_should_snap = true;
     }
     ImGui::PopStyleColor();
-    
 
-    if(m_scene->get_crnt_entity())
+    ImGui::SameLine();
+    ImVec4 screen_shot = ImGui::GetStyle().Colors[ImGuiCol_Button];
+    ImGui::PushStyleColor(ImGuiCol_Button, screen_shot);
+    if (ImGui::Button(ICON_FA_PHOTO_VIDEO "", button_size))
+    {
+        //take_screenshot(mSize.x, mSize.y, m_fbID);
+    }
+    ImGui::PopStyleColor();
+
+
+    
+    if(engine_status == EDITOR_STATUS)
+        scene_viewport_func();
+
+    ImGui::End();
+}
+
+void wizm::viewport_layer::scene_viewport_func()
+{
+    if (m_scene->get_crnt_entity())
     {
         auto ent = m_scene->get_crnt_entity();
         glm::mat4 mat;
@@ -124,7 +142,7 @@ void wizm::viewport_layer::update(float delta_time)
 
         ImGuizmo::SetOrthographic(false);
         ImGuizmo::SetDrawlist();
-    
+
         float windowWidth = (float)ImGui::GetWindowWidth();
         float windowHeight = (float)ImGui::GetWindowHeight();
         ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
@@ -132,7 +150,7 @@ void wizm::viewport_layer::update(float delta_time)
 
 
         glm::mat4 viewMatrix = m_camera_manager->m_viewport_camera->get_view_matrix();
-        
+
         glm::mat4 projectionMatrix = m_camera_manager->m_viewport_camera->get_projection_matrix();
 
 
@@ -143,7 +161,7 @@ void wizm::viewport_layer::update(float delta_time)
             (ImGuizmo::OPERATION)guizmo_type,
             ImGuizmo::LOCAL, glm::value_ptr(mat), nullptr, m_should_snap ? snapvals : nullptr);
 
-        
+
 
         if (ImGuizmo::IsUsing())
         {
@@ -152,38 +170,38 @@ void wizm::viewport_layer::update(float delta_time)
             glm::vec3 scale = glm::vec3(0);
 
 
-         
+
             lowlevelsys::decompose_transform(mat, position, rotation, scale);
             glm::vec3 deltaRot = glm::vec3(0);
 
-            if(!is_global_gizmo)
+            if (!is_global_gizmo)
                 deltaRot = rotation - ent->get_rotation();
             else
-                deltaRot = (rotation );
+                deltaRot = (rotation);
 
-            ent->set_position(position);        
+            ent->set_position(position);
             ent->add_rotation(deltaRot);
             ent->set_scale(scale);
         }
 
     }
 
-    if(!ImGuizmo::IsUsing() && ImGui::IsWindowHovered())
+    if (!ImGuizmo::IsUsing() && ImGui::IsWindowHovered())
     {
         static ImVec2 rectStart(-1, -1);
         static ImVec2 rectEnd(-1, -1);
 
- 
+
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
-            
-            
-            
+
+
+
             get_mouse_pick();
-            
+
             rectStart = ImGui::GetMousePos();
-            rectEnd = rectStart;             
-        
-           
+            rectEnd = rectStart;
+
+
         }
 
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Right)) {
@@ -191,13 +209,13 @@ void wizm::viewport_layer::update(float delta_time)
         }
 
         if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
-            rectEnd = ImGui::GetMousePos(); 
+            rectEnd = ImGui::GetMousePos();
         }
 
-       
+
         if (rectStart.x >= 0 && rectStart.y >= 0 && rectEnd.x >= 0 && rectEnd.y >= 0) {
             ImDrawList* draw_list = ImGui::GetWindowDrawList();
-            draw_list->AddRectFilled(rectStart, rectEnd, IM_COL32(0, 0, 255, 100)); 
+            draw_list->AddRectFilled(rectStart, rectEnd, IM_COL32(0, 0, 255, 100));
         }
 
 
@@ -206,15 +224,15 @@ void wizm::viewport_layer::update(float delta_time)
             rectEnd = ImVec2(-1, -1);
         }
     }
-    
-    
-    
-    
+
+
+
+
     if (ImGui::BeginPopup("ModEnt") && m_scene->get_crnt_entity() != nullptr) {
 
         ImGui::Text("Modify Entity");
         ImGui::Separator();
-        
+
         if (ImGui::MenuItem("Delete")) {
             m_scene->m_entities.erase(std::find(m_scene->m_entities.begin(), m_scene->m_entities.end(), m_scene->get_crnt_entity()));
 
@@ -238,8 +256,6 @@ void wizm::viewport_layer::update(float delta_time)
 
         ImGui::EndPopup();
     }
-
-    ImGui::End();
 }
 
 void wizm::viewport_layer::get_mouse_pick()

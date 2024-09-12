@@ -12,7 +12,6 @@
 
 namespace wizm {
 
-
 	class viewport_layer : public core_layer {
 	public:
 		viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, core_scene* scene, gl_renderer* renderer);
@@ -21,6 +20,8 @@ namespace wizm {
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void update(float delta_time) override;
+
+		void scene_viewport_func();
 
 		void get_mouse_pick();
 		void properties_mouse_pick();
@@ -34,6 +35,8 @@ namespace wizm {
 		bool m_should_snap = false;
 		gl_renderer* m_renderer;
 		bool is_global_gizmo = false;
+		int guizmo_type = 0;
+		ImVec2 mSize;
 
 		// needs to be a better way :(
 		core_scene* m_scene;

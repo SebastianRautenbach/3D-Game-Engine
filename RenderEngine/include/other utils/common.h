@@ -1,0 +1,15 @@
+#pragma once
+
+#ifndef GLOBALS_H
+#define GLOBALS_H
+
+#define EDITOR_STATUS 0x001
+#define RUNTIME_STATUS 0x002
+#define CLIENT_PACKAGED_STATUS 0x003
+#define SERVER_PACKAGED_STATUS 0x004
+
+extern int engine_status;
+
+#endif // GLOBALS_H
+
+

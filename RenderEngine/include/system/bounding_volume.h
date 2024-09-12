@@ -43,51 +43,57 @@ namespace wizm
             float tmax = FLT_MAX;
             bool is_inside = true;
 
-
-            // test for inside the box :( not working sorta
+            // check if they ray isnt inside the actual object
             for (int i = 0; i < 3; ++i) {
                 float axis_dot_origin = glm::dot(axes[i], ray_origin - center);
 
-             
+
                 if (axis_dot_origin < -extents[i] || axis_dot_origin > extents[i]) {
                     is_inside = false;
-                    break; 
+                    break;
                 }
             }
 
-           
+
             if (is_inside) {
                 return false;
             }
 
 
-            for (int i = 0; i < 3; ++i) {
 
+            for (int i = 0; i < 3; ++i) {
+            
+            
                 float axis_dot_ray_dir = glm::dot(axes[i], ray_dir);
                 float axis_dot_origin = glm::dot(axes[i], ray_origin - center);
-
+            
                 if (glm::epsilonNotEqual(axis_dot_ray_dir, 0.0f, glm::epsilon<float>())) {
-
+            
                     float t1 = (-axis_dot_origin - extents[i]) / axis_dot_ray_dir;
                     float t2 = (-axis_dot_origin + extents[i]) / axis_dot_ray_dir;
-
-
+            
+            
                     if (t1 > t2) std::swap(t1, t2);
-
+            
                     tmin = glm::max(tmin, t1);
                     tmax = glm::min(tmax, t2);
-
+            
                     if (tmin > tmax) {
                         return false;
                     }
                 }
                 else {
-
+            
                     if (axis_dot_origin < -extents[i] || axis_dot_origin > extents[i]) {
                         return false;
                     }
                 }
             }
+            
+            if (tmin < 0.0f) {
+                return false;
+            }
+
 
             intersection_point = ray_origin + tmin * ray_dir;
             return true;
@@ -97,6 +103,10 @@ namespace wizm
 
 
         }
+
+        /*
+            Handeling physics
+        */
 
         bool intersects(const bounding_volume& other) const {
             return (min_point.x <= other.max_point.x && max_point.x >= other.min_point.x) &&

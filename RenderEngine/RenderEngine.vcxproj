@@ -156,6 +156,7 @@
     <ClCompile Include="include\dependencies\imgui\imgui_tables.cpp" />
     <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
+    <ClCompile Include="src\other utils\common.cpp" />
     <ClCompile Include="src\systems\camera_3d.cpp" />
     <ClCompile Include="src\systems\camera_manager.cpp" />
     <ClCompile Include="src\components\camera_component.cpp" />
@@ -189,6 +190,7 @@
     <ClCompile Include="src\material.cpp" />
     <ClCompile Include="src\systems\billboard.cpp" />
     <ClCompile Include="src\systems\node.cpp" />
+    <ClCompile Include="src\systems\scene_manager.cpp" />
     <ClCompile Include="src\update_manager.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
@@ -231,6 +233,7 @@
     <ClInclude Include="include\layers\layers_define.h" />
     <ClInclude Include="include\layers\performance_ui_layer.h" />
     <ClInclude Include="include\layers\properties_ui_layer.h" />
+    <ClInclude Include="include\other utils\common.h" />
     <ClInclude Include="include\other utils\extra_utils.h" />
     <ClInclude Include="include\entity sys\component.h" />
     <ClInclude Include="include\other utils\IDGEN.h" />
@@ -256,6 +259,7 @@
     <ClInclude Include="include\system\filewatcher.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
+    <ClInclude Include="include\system\scene_manager.h" />
     <ClInclude Include="include\system\tag.h" />
     <ClInclude Include="include\system\timer.h" />
     <ClInclude Include="include\update_manager.h" />

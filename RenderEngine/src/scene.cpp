@@ -2,7 +2,7 @@
 
 
 namespace wizm {
-	
+
 	void core_scene::scene_preupdate()
 	{
 		for (auto& i : m_entities)
