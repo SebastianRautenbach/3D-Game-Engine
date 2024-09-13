@@ -1,9 +1,10 @@
 #include "gl renderer/gl_renderer.h"
 #include <vector>
 #include "system/camera_3d.h"
+#include "system/scene_manager.h"
 
 
-void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene, std::shared_ptr<camera_manager> camera_manager)
+void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, std::shared_ptr<camera_manager> camera_manager)
 {
 	w_width = window_size_x;
 	w_height = window_size_y;
@@ -55,8 +56,6 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/ray_vrtx.glsl", "shaders/ray_frgmnt.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/billboard_vrtx.glsl", "shaders/billboard_frgment.glsl"));
-
-	m_scene = scene;
 
 
 	
@@ -178,7 +177,7 @@ void lowlevelsys::gl_renderer::post_render(float deltaTime)
 void lowlevelsys::gl_renderer::update_draw_data()
 {
 
-	if (m_scene->total_component_count() != shader_count || m_scene->m_reloaded) {
+	if (global_scene->total_component_count() != shader_count || global_scene->m_reloaded) {
 
 		std::vector<std::shared_ptr<pointlight_component>> point_lights;
 		std::vector<std::shared_ptr<directionallight_component>> directional_lights;
@@ -187,7 +186,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		std::vector<std::shared_ptr<staticmesh_component>> meshes;
 		std::shared_ptr <camera_component> camera_comp;
 
-		for (auto& i : m_scene->m_entities) {
+		for (auto& i : global_scene->m_entities) {
 			for (auto& per_ent : i->m_components_list)
 			{
 				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(per_ent);
@@ -294,7 +293,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 
 
-		shader_count = m_scene->total_component_count();
+		shader_count = global_scene->total_component_count();
 		
 	}
 }

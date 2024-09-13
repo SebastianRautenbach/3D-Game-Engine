@@ -1,7 +1,8 @@
 #include "layers/scene_ui_layer.h"
+#include "system/scene_manager.h"
 
-wizm::scene_ui_layer::scene_ui_layer(core_scene* scene, gl_renderer* renderer)
-	:core_layer("scene ui layer"), m_scene(scene), m_renderer(renderer)
+wizm::scene_ui_layer::scene_ui_layer( gl_renderer* renderer)
+	:core_layer("scene ui layer"), m_renderer(renderer)
 {
 }
 
@@ -33,7 +34,7 @@ void wizm::scene_ui_layer::update(float delta_time)
 	if (ImGui::Button("Add Entity"))
 		ImGui::OpenPopup("AddEntityPopup");
 
-	for (auto ents : m_scene->m_entities)
+	for (auto ents : global_scene->m_entities)
 	{
 		if (ImGui::TreeNodeEx(ents->m_ent_ID.c_str(), 
 			ImGuiTreeNodeFlags_OpenOnArrow 
@@ -46,12 +47,12 @@ void wizm::scene_ui_layer::update(float delta_time)
 		}
 		if (ImGui::IsItemClicked(ImGuiMouseButton_Right))
 		{
-			m_scene->set_crnt_entity(ents);
+			global_scene->set_crnt_entity(ents);
 			ImGui::OpenPopup("ModEnt");
 		}
 		if (ImGui::IsItemClicked())
 		{
-			m_scene->set_crnt_entity(ents);
+			global_scene->set_crnt_entity(ents);
 		}
 
 	}
@@ -63,37 +64,37 @@ void wizm::scene_ui_layer::update(float delta_time)
 		
 		
 		char entity_name[256];
-		strncpy_s(entity_name, sizeof(entity_name), m_scene->get_crnt_entity()->m_ent_ID.c_str(), _TRUNCATE);
+		strncpy_s(entity_name, sizeof(entity_name), global_scene->get_crnt_entity()->m_ent_ID.c_str(), _TRUNCATE);
 
 
 
 		if (ImGui::InputText("##name", entity_name, IM_ARRAYSIZE(entity_name)))
-			m_scene->get_crnt_entity()->m_ent_ID = entity_name;
+			global_scene->get_crnt_entity()->m_ent_ID = entity_name;
 
 
 		if (ImGui::MenuItem("Delete")) {
-			m_scene->m_entities.erase(std::find(m_scene->m_entities.begin(), m_scene->m_entities.end(), m_scene->get_crnt_entity()));
+			global_scene->m_entities.erase(std::find(global_scene->m_entities.begin(), global_scene->m_entities.end(), global_scene->get_crnt_entity()));
 			
 			m_renderer->update_draw_data();
 			
-			for (auto ents : m_scene->m_entities)
-				m_scene->set_crnt_entity(ents);
+			for (auto ents : global_scene->m_entities)
+				global_scene->set_crnt_entity(ents);
 			
-			if (m_scene->m_entities.empty())
-				m_scene->set_crnt_entity(nullptr);
+			if (global_scene->m_entities.empty())
+				global_scene->set_crnt_entity(nullptr);
 		}
 		if (ImGui::MenuItem("Duplicate")) {
 			
-			auto name = m_scene->get_crnt_entity()->m_ent_ID;
+			auto name = global_scene->get_crnt_entity()->m_ent_ID;
 			
-			while (m_scene->does_ent_name_exist(name)) {
+			while (global_scene->does_ent_name_exist(name)) {
 				name += "(1)";
 			}
 			
 
-			auto crnt = m_scene->get_crnt_entity()->copy_(name);
-			m_scene->add_entity(crnt);
-			m_scene->set_crnt_entity(crnt);
+			auto crnt = global_scene->get_crnt_entity()->copy_(name);
+			global_scene->add_entity(crnt);
+			global_scene->set_crnt_entity(crnt);
 		}
 
 		ImGui::EndPopup();
@@ -127,7 +128,7 @@ void wizm::scene_ui_layer::update(float delta_time)
 			std::string _ent_str;
 			_ent_str = enity_name;
 			bool does_ent_name_exist = false;
-			for (const auto y : m_scene->m_entities)
+			for (const auto y : global_scene->m_entities)
 			{
 				if (_ent_str == y->m_ent_ID)
 				{
@@ -137,7 +138,7 @@ void wizm::scene_ui_layer::update(float delta_time)
 			}
 			if (!does_ent_name_exist)
 			{
-				m_scene->add_entity(_ent_str);
+				global_scene->add_entity(_ent_str);
 			}
 		}
 		

@@ -1,9 +1,8 @@
 #include "system/asset_manager.h"
-#include "scene.h"
+#include "system/scene_manager.h"
 #include "system/assets/texture_asset.h"
 
-wizm::asset_manager::asset_manager(core_scene* scene)
-	:	m_scene(scene)
+wizm::asset_manager::asset_manager()
 {
 	load_assets_db();
 }
@@ -15,9 +14,9 @@ wizm::asset_manager::asset_manager(core_scene* scene)
 
 void wizm::asset_manager::assign_assets()
 {
-	if(total_entities < m_scene->m_entities.size() || m_scene->m_reloaded)
+	if(total_entities < global_scene->m_entities.size() || global_scene->m_reloaded)
 	{
-		for (auto& ent : m_scene->m_entities) {
+		for (auto& ent : global_scene->m_entities) {
 			for (auto& comp : ent->m_components_list)
 			{
 				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(comp);
@@ -48,7 +47,7 @@ void wizm::asset_manager::assign_assets()
 			}
 		}
 
-		total_entities = m_scene->m_entities.size();
+		total_entities = global_scene->m_entities.size();
 	}
 
 

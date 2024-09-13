@@ -17,7 +17,7 @@ namespace lowlevelsys {
 	public:
 
 		virtual void component_preupdate() = 0;
-		virtual void component_update() = 0;
+		virtual void component_update(float delta_time) = 0;
 		virtual void component_postupdate() = 0;
 		virtual std::shared_ptr<core_component> _copy() const = 0;
 		

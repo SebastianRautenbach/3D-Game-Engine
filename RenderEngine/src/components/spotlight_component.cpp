@@ -22,7 +22,7 @@ void wizm::spotlight_component::component_preupdate()
 {
 }
 
-void wizm::spotlight_component::component_update()
+void wizm::spotlight_component::component_update(float delta_time)
 {
     const std::string base_index = "spotLights[" + std::to_string(light_index) + "]";
 

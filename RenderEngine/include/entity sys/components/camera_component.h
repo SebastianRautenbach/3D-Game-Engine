@@ -2,6 +2,7 @@
 #include "entity sys/component.h"
 #include "system/core_renderable.h"
 
+
 using namespace lowlevelsys;
 
 namespace wizm {
@@ -16,7 +17,7 @@ namespace wizm {
 
 	public:
 		void component_preupdate() override;
-		void component_update() override;
+		void component_update(float delta_time) override;
 		void component_postupdate() override;
 		std::shared_ptr<core_component> _copy() const;
 

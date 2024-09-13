@@ -76,14 +76,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,8 +95,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -103,7 +105,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,14 +114,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\imgui\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\angelscript\include;$(SolutionDir)RenderEngine\include\dependencies\imgui\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,8 +133,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\karat\Documents\GitHub\RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,10 +143,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\dependencies\add_on\scriptarray\scriptarray.cpp" />
+    <ClCompile Include="include\dependencies\add_on\scriptbuilder\scriptbuilder.cpp" />
+    <ClCompile Include="include\dependencies\add_on\scriptstdstring\scriptstdstring.cpp" />
+    <ClCompile Include="include\dependencies\add_on\scriptstdstring\scriptstdstring_utils.cpp" />
     <ClCompile Include="include\dependencies\glad.c" />
     <ClCompile Include="include\dependencies\ImGuizmo\ImCurveEdit.cpp" />
     <ClCompile Include="include\dependencies\ImGuizmo\ImGradient.cpp" />
@@ -156,6 +164,7 @@
     <ClCompile Include="include\dependencies\imgui\imgui_tables.cpp" />
     <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
+    <ClCompile Include="src\components\scripting_component.cpp" />
     <ClCompile Include="src\other utils\common.cpp" />
     <ClCompile Include="src\systems\camera_3d.cpp" />
     <ClCompile Include="src\systems\camera_manager.cpp" />
@@ -202,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core_application.h" />
+    <ClInclude Include="include\dependencies\add_on\scriptarray\scriptarray.h" />
+    <ClInclude Include="include\dependencies\add_on\scriptbuilder\scriptbuilder.h" />
+    <ClInclude Include="include\dependencies\add_on\scriptstdstring\scriptstdstring.h" />
     <ClInclude Include="include\dependencies\filetypes.h" />
     <ClInclude Include="include\dependencies\ImGuizmo\ImCurveEdit.h" />
     <ClInclude Include="include\dependencies\ImGuizmo\ImGradient.h" />
@@ -221,6 +233,7 @@
     <ClInclude Include="include\entity sys\components\boxvolume_component.h" />
     <ClInclude Include="include\entity sys\components\camera_component.h" />
     <ClInclude Include="include\entity sys\components\pointlight_component.h" />
+    <ClInclude Include="include\entity sys\components\scripting_component.h" />
     <ClInclude Include="include\entity sys\component_types.h" />
     <ClInclude Include="include\entity sys\entity.h" />
     <ClInclude Include="include\gl core\core shader.h" />

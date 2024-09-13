@@ -16,7 +16,7 @@ void wizm::camera_component::component_preupdate()
 {
 }
 
-void wizm::camera_component::component_update()
+void wizm::camera_component::component_update(float delta_time)
 {
 	m_camera->set_position(get_world_position());
 	auto rot = get_rotation_matrix();
@@ -30,7 +30,7 @@ void wizm::camera_component::component_postupdate()
 {
 }
 
-std::shared_ptr<core_component> wizm::camera_component::_copy() const
+std::shared_ptr<lowlevelsys::core_component> wizm::camera_component::_copy() const
 {
 	auto new_cam_comp = std::make_shared<camera_component>();
 	new_cam_comp->set_position(this->get_position());

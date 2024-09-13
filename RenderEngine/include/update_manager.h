@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "gl renderer/gl_renderer.h"
-#include "scene.h"
 #include "system/timer.h"
 #include "input.h"
 #include "system/asset_manager.h"
@@ -32,7 +31,6 @@ namespace wizm {
 	public:
 		bool is_running = true;
 		lowlevelsys::gl_renderer* m_gl_renderer;
-		core_scene* m_scene;
 		core_timer* m_timer;
 		gui_layer* base_layer;
 		core_framebuffer* m_framebuffer;

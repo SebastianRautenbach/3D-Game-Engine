@@ -5,10 +5,8 @@
 #include "system/assets/mesh_asset.h"
 #include "system/asset_manager.h"
 
-using namespace lowlevelsys;
-
 namespace wizm {
-	class staticmesh_component : public core_component {
+	class staticmesh_component : public lowlevelsys::core_component {
 	
 	public:
 		
@@ -17,7 +15,7 @@ namespace wizm {
 		~staticmesh_component();
 		
 		void component_preupdate() override;
-		void component_update() override;
+		void component_update(float delta_time) override;
 		void component_postupdate() override;
 		std::shared_ptr<core_component> _copy() const;
 

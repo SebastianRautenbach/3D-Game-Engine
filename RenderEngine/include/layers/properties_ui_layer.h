@@ -4,8 +4,9 @@
 #include "imgui/imgui.h"
 #include "imgui/backends/imgui_impl_glfw.h"
 #include "imgui/backends/imgui_impl_opengl3.h"
-#include "scene.h"
+#include "entity sys/component.h"
 
+using namespace lowlevelsys;
 
 namespace wizm {
 
@@ -14,7 +15,7 @@ namespace wizm {
 	class properties_ui_layer : public core_layer {
 
 	public:
-		properties_ui_layer(core_scene* scene, gl_renderer* renderer, asset_manager* manager);
+		properties_ui_layer( gl_renderer* renderer, asset_manager* manager);
 		~properties_ui_layer();
 
 		virtual void OnAttach() override;
@@ -27,7 +28,6 @@ namespace wizm {
 		void modify_component_attrib(std::string& type, std::shared_ptr<core_component> component);
 
 	private:
-		core_scene* m_scene;
 		gl_renderer* m_renderer;
 		asset_manager* m_asset_manager;
 	};

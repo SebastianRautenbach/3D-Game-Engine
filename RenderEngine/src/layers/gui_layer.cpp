@@ -1,10 +1,11 @@
 #include "layers/gui_cntx.h"
 #include "scene.h"
 #include "IconsFontAwesome5.h"
+#include "system/scene_manager.h"
 #include "other utils/common.h"
 
-wizm::gui_layer::gui_layer(GLFWwindow* window, core_scene* scene, std::shared_ptr<camera_manager> camera_manager)
-    : core_layer("gui_layer"), m_scene(scene), m_camera_manager(camera_manager)
+wizm::gui_layer::gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager)
+    : core_layer("gui_layer"), m_camera_manager(camera_manager)
 {
     m_window = window;
 }
@@ -132,7 +133,7 @@ void wizm::gui_layer::begin()
             }
             if (ImGui::MenuItem("Save"))
             {
-                m_scene->save_map_data("");
+                global_scene->save_map_data("");
             }
             if (ImGui::MenuItem("Open")) {
                 // open blah
@@ -178,7 +179,7 @@ void wizm::gui_layer::begin()
             
             
             if(engine_status != EDITOR_STATUS) {
-                m_scene->read_map_data(m_scene->current_scene);
+                global_scene->read_map_data(global_scene->current_scene);
                 engine_status = EDITOR_STATUS;
             }
         }
@@ -213,7 +214,7 @@ void wizm::gui_layer::begin()
         if (ImGui::Button("OK", ImVec2(120, 0))) {
 
 
-            m_scene->save_map_data(map_name);
+            global_scene->save_map_data(map_name);
 
             show_save_popup = false;
 

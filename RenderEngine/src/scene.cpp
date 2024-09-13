@@ -13,13 +13,13 @@ namespace wizm {
 		
 	}
 	
-	void core_scene::scene_update()
+	void core_scene::scene_update(float delta_time)
 	{
 		m_reloaded = false;
 
 		for (auto& i : m_entities)
 		{
-			i->entity_update();
+			i->entity_update(delta_time);
 		}
 	}
 	

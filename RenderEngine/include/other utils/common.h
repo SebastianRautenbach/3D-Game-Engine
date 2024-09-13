@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef GLOBALS_H
-#define GLOBALS_H
+#ifndef GLOBALS_COMMON_H
+#define GLOBALS_COMMON_H
 
 #define EDITOR_STATUS 0x001
 #define RUNTIME_STATUS 0x002

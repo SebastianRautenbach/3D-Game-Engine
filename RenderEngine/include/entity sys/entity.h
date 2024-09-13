@@ -27,7 +27,7 @@ namespace wizm {
 		core_entity* get_entity() { return this; }
 
 		void entity_preupdate();
-		void entity_update();
+		void entity_update(float delta_time);
 		void entity_postupdate();
 
 

@@ -16,15 +16,12 @@
 
 namespace wizm {
 
-    class core_scene;
-
 	class asset_manager {
     private:
         std::unordered_map<std::string, std::shared_ptr<core_asset>> m_assets;
-        core_scene* m_scene;
 
     public:
-        asset_manager(core_scene* scene);
+        asset_manager();
 
 
     public:

@@ -7,17 +7,19 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "scene.h"
 #include "system/camera_manager.h"
+#include <memory>
+#include <vector>
 
 
 using namespace wizm;
+class core_gl_shader;
 
 namespace lowlevelsys {
 
 	class gl_renderer {
 	public:
-		void setup(int window_size_x, int window_size_y, const char* window_name, core_scene* scene, std::shared_ptr<camera_manager> camera_manager);
+		void setup(int window_size_x, int window_size_y, const char* window_name, std::shared_ptr<camera_manager> camera_manager);
 		
 		void pre_render(bool& is_running, float deltaTime);
 		void render(float deltaTime);
@@ -31,7 +33,6 @@ namespace lowlevelsys {
 		
 		std::vector<std::shared_ptr<core_gl_shader>> m_shdrs;
 
-		core_scene* m_scene;
 		std::shared_ptr<camera_manager> m_camera_manager;
 		
 

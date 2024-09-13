@@ -6,9 +6,11 @@
 #include "IconsFontAwesome5.h"
 #include "system/camera_3d.h"
 #include "other utils/common.h"
+#include "system/scene_manager.h"
 
-wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, core_scene* scene, gl_renderer* renderer)
-    : core_layer("viewport_layer"), m_fbID(fbID), m_camera_manager(camera_manager), m_scene(scene), m_renderer(renderer)
+
+wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer)
+    : core_layer("viewport_layer"), m_fbID(fbID), m_camera_manager(camera_manager),  m_renderer(renderer)
 {
 }
 
@@ -42,8 +44,8 @@ void wizm::viewport_layer::update(float delta_time)
             const wchar_t* id = (const wchar_t*)payload->Data;
             if(wstring_to_string(id).find(".zer") != -1)
             {
-                m_scene->read_map_data(wstring_to_string(id));
-                m_scene->m_reloaded = true;
+                global_scene->read_map_data(wstring_to_string(id));
+                global_scene->m_reloaded = true;
                 m_camera_manager->update_crnt_camera(false);
             }
 
@@ -124,9 +126,9 @@ void wizm::viewport_layer::update(float delta_time)
 
 void wizm::viewport_layer::scene_viewport_func()
 {
-    if (m_scene->get_crnt_entity())
+    if (global_scene->get_crnt_entity())
     {
-        auto ent = m_scene->get_crnt_entity();
+        auto ent = global_scene->get_crnt_entity();
         glm::mat4 mat;
 
         if (is_global_gizmo) {
@@ -228,30 +230,30 @@ void wizm::viewport_layer::scene_viewport_func()
 
 
 
-    if (ImGui::BeginPopup("ModEnt") && m_scene->get_crnt_entity() != nullptr) {
+    if (ImGui::BeginPopup("ModEnt") && global_scene->get_crnt_entity() != nullptr) {
 
         ImGui::Text("Modify Entity");
         ImGui::Separator();
 
         if (ImGui::MenuItem("Delete")) {
-            m_scene->m_entities.erase(std::find(m_scene->m_entities.begin(), m_scene->m_entities.end(), m_scene->get_crnt_entity()));
+            global_scene->m_entities.erase(std::find(global_scene->m_entities.begin(), global_scene->m_entities.end(), global_scene->get_crnt_entity()));
 
             m_renderer->update_draw_data();
 
-            m_scene->set_crnt_entity(nullptr);
+            global_scene->set_crnt_entity(nullptr);
         }
         if (ImGui::MenuItem("Duplicate")) {
 
-            auto name = m_scene->get_crnt_entity()->m_ent_ID;
+            auto name = global_scene->get_crnt_entity()->m_ent_ID;
 
-            while (m_scene->does_ent_name_exist(name)) {
+            while (global_scene->does_ent_name_exist(name)) {
                 name += "(1)";
             }
 
 
-            auto crnt = m_scene->get_crnt_entity()->copy_(name);
-            m_scene->add_entity(crnt);
-            m_scene->set_crnt_entity(crnt);
+            auto crnt = global_scene->get_crnt_entity()->copy_(name);
+            global_scene->add_entity(crnt);
+            global_scene->set_crnt_entity(crnt);
         }
 
         ImGui::EndPopup();
@@ -272,7 +274,7 @@ void wizm::viewport_layer::get_mouse_pick()
     glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->get_projection_matrix(), m_camera_manager->m_viewport_camera->get_view_matrix());
     glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->get_view_matrix());
 
-    m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
+    global_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
 }
 
 void wizm::viewport_layer::properties_mouse_pick()
@@ -289,8 +291,8 @@ void wizm::viewport_layer::properties_mouse_pick()
     glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->get_projection_matrix(), m_camera_manager->m_viewport_camera->get_view_matrix());
     glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->get_view_matrix());
 
-    m_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
-    if (m_scene->get_crnt_entity() != nullptr) { ImGui::OpenPopup("ModEnt"); }
+    global_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
+    if (global_scene->get_crnt_entity() != nullptr) { ImGui::OpenPopup("ModEnt"); }
 
    
 }
@@ -303,7 +305,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
 {
     std::vector<std::pair<float, std::shared_ptr<core_entity>>> touched_entities;
 
-    for (const auto& ent : m_scene->m_entities) {
+    for (const auto& ent : global_scene->m_entities) {
         for (const auto& comp : ent->m_components_list) {
             auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
             auto li_comp = std::dynamic_pointer_cast<light_component>(comp);

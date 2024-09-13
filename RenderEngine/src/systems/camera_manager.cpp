@@ -1,8 +1,8 @@
 #include "system/camera_manager.h"
 #include "system/camera_3d.h"
+#include "system/scene_manager.h"
 
-wizm::camera_manager::camera_manager(core_scene* scene)
-	:m_scene(scene)
+wizm::camera_manager::camera_manager()
 {
 }
 
@@ -15,7 +15,7 @@ bool wizm::camera_manager::update_crnt_camera(bool simulate)
 	did_change_cam = false;
 	if(simulate)
 	{
-		for (const auto& ent : m_scene->m_entities)
+		for (const auto& ent : global_scene->m_entities)
 		{
 			for (const auto& comp : ent->m_components_list) {
 

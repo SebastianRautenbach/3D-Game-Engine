@@ -4,17 +4,20 @@
 #include "imgui/backends/imgui_impl_glfw.h"
 #include "imgui/backends/imgui_impl_opengl3.h"
 #include "ImGuizmo/ImGuizmo.h"
-#include "scene.h"
 #include "system/draw_ray.h"
-#include "gl renderer/gl_renderer.h"
 #include "layers/UI/popup_window.h"
 #include "system/camera_manager.h"
+#include "gl renderer/gl_renderer.h"
+
+using namespace lowlevelsys;
 
 namespace wizm {
 
+	class core_entity;
+
 	class viewport_layer : public core_layer {
 	public:
-		viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, core_scene* scene, gl_renderer* renderer);
+		viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer);
 		~viewport_layer();
 
 		virtual void OnAttach() override;
@@ -37,9 +40,6 @@ namespace wizm {
 		bool is_global_gizmo = false;
 		int guizmo_type = 0;
 		ImVec2 mSize;
-
-		// needs to be a better way :(
-		core_scene* m_scene;
 	};
 
 }

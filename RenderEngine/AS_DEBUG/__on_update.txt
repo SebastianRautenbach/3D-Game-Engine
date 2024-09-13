@@ -1,0 +1,34 @@
+void on_update(float)
+
+Temps: 10, 20
+
+Variables: 
+ 000: float delta_time
+ 010: string 
+ 020: string 
+
+
+- 6,5 -
+               VarDecl  0
+    0  20 *    SUSPEND
+    1  20 *    PGA      0x1bdcba20          (str:DT:)
+    4  22 *    PSF      v10
+    5  24 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v10, 1
+    7  20 *    PshV4    v0
+    8  21 *    PSF      v20
+    9  23 *    PSF      v10
+   10  25 *    CALLSYS  38           (string string::opAdd(float) const)
+               ObjInfo  v20, 1
+   12  20 *    PSF      v10
+   13  22 *    CALLSYS  21           (string::~string())
+               ObjInfo  v10, 0
+   15  20 *    PSF      v20
+   16  22 *    CALLSYS  67           (void print(const string&in))
+   18  20 *    PSF      v20
+   19  22 *    CALLSYS  21           (string::~string())
+- 7,2 -
+               ObjInfo  v20, 0
+   21  20 *    SUSPEND
+            0:
+   22  20 *    RET      1

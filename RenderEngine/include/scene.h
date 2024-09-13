@@ -11,7 +11,7 @@ namespace wizm {
 		
 		// default scene updates
 		void scene_preupdate();
-		void scene_update();
+		void scene_update(float delta_time);
 		void scene_postupdate();
 		unsigned int total_component_count();
 		bool does_ent_name_exist(std::string name);

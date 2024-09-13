@@ -1,7 +1,8 @@
 #include "layers/performance_ui_layer.h"
+#include "system/scene_manager.h"
 
-wizm::performace_ui_layer::performace_ui_layer(core_scene* scene)
-	:core_layer("performance layer"), m_scene(scene)
+wizm::performace_ui_layer::performace_ui_layer()
+	:core_layer("performance layer")
 {
 }
 
@@ -28,7 +29,7 @@ void wizm::performace_ui_layer::update(float delta_time)
 	if(ImGui::Button("Get total triangles in scene"))
 	{
 		amm_verts = 0;
-		for (const auto& ent : m_scene->m_entities)
+		for (const auto& ent : global_scene->m_entities)
 		{
 			for (const auto& comp : ent->m_components_list)
 			{

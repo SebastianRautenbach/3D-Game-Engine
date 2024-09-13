@@ -22,7 +22,7 @@ void wizm::staticmesh_component::component_preupdate()
 {
 }
 
-void wizm::staticmesh_component::component_update()
+void wizm::staticmesh_component::component_update(float delta_time)
 {
 	if (m_model) {
 		m_material->update_material();

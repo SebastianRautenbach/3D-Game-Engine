@@ -21,7 +21,7 @@ void wizm::directionallight_component::component_preupdate()
 
 }
 
-void wizm::directionallight_component::component_update()
+void wizm::directionallight_component::component_update(float delta_time)
 {
 	
 	shader->setVec3("dirLight.direction", get_world_rotation());

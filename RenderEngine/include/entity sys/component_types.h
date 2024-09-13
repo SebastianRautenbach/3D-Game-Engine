@@ -9,7 +9,8 @@ namespace wizm {
 		ePointLight,
 		eSpotLight,
 		eDirectionalLight,
-		eCamera
+		eCamera,
+		eScripting
 	};
 
 }

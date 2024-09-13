@@ -14,7 +14,7 @@ namespace wizm {
         ~directionallight_component();
 
         void component_preupdate();
-        void component_update();
+        void component_update(float delta_time);
         void component_postupdate();
 
         std::shared_ptr<core_component> _copy() const;

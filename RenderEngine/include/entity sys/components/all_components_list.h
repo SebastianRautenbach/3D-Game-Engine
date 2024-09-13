@@ -5,3 +5,4 @@
 #include "staticmesh_component.h"
 #include "boxvolume_component.h"
 #include "spotlight_component.h"
+#include "scripting_component.h"

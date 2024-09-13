@@ -42,7 +42,7 @@ void wizm::boxvolume::component_preupdate()
 {
 }
 
-void wizm::boxvolume::component_update()
+void wizm::boxvolume::component_update(float delta_time)
 {
 	
 	m_shader->use_shader();

@@ -22,7 +22,7 @@ void wizm::pointlight_component::component_preupdate()
 
 }
 
-void wizm::pointlight_component::component_update()
+void wizm::pointlight_component::component_update(float delta_time)
 {
     
     const std::string base_index = "pointLights[" + std::to_string(light_index) + "]";

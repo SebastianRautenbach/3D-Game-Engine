@@ -1,6 +1,7 @@
 #include "system/scene_manager.h"
-#include "scene.h"
 
+/*
+	This will be a global var just to make things easier
+*/
 
-
-wizm::core_scene m_scene = nullptr;
+wizm::core_scene* global_scene = NULL;

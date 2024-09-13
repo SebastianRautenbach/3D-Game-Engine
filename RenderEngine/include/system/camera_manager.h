@@ -1,6 +1,5 @@
 #pragma once
-#include "scene.h"
-
+#include <memory>
 
 namespace wizm {
 
@@ -8,15 +7,14 @@ namespace wizm {
 
 	class camera_manager {
 	public:
-		camera_manager(core_scene* scene);
+		camera_manager();
 		~camera_manager();
 
 		bool update_crnt_camera(bool simulate);
 
 
 	public:
-		core_scene* m_scene;
-
+	
 		std::shared_ptr<camera_core_3d> m_crnt_camera, m_viewport_camera;
 
 	private:

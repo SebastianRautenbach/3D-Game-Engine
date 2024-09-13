@@ -1,0 +1,15 @@
+void on_start()
+
+Temps: 
+
+Variables: 
+
+
+- 2,5 -
+    0   0 *    SUSPEND
+    1   0 *    PGA      0x1bdc9d20          (str:Script started)
+    4   2 *    CALLSYS  67           (void print(const string&in))
+- 3,2 -
+    6   0 *    SUSPEND
+            0:
+    7   0 *    RET      0
