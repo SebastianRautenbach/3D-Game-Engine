@@ -32,6 +32,13 @@ namespace wizm {
 			return m_selected_entity ? m_selected_entity : nullptr;
 		}
 
+		std::shared_ptr<core_entity> get_entity_name(std::string name) {
+			for (auto& ent : m_entities) {
+				if (ent->m_ent_ID == name)
+					return ent;
+			}
+		}
+
 		void set_crnt_entity(std::shared_ptr<core_entity> ent) { 
 			m_selected_entity = ent; 
 		};

@@ -198,6 +198,9 @@
     <ClCompile Include="include\dependencies\add_on\scriptarray\scriptarray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\systems\scripting\script_controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\update_manager.h">
@@ -423,6 +426,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\dependencies\add_on\scriptarray\scriptarray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\scripting\scripting_objects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\assets\script_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\scripting\script_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\scripting\scripting_functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

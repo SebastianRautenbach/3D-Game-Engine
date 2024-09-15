@@ -1,16 +1,19 @@
 
 Total count
-PshV4      : 527
-PSF        : 3162
-RET        : 528
-CALLSYS    : 2636
-SUSPEND    : 1056
-PGA        : 528
+PshC4      : 8676
+PshV4      : 4338
+PSF        : 17356
+RET        : 4339
+CALLSYS    : 13017
+SUSPEND    : 8678
+ALLOC      : 4339
+GETOBJ     : 4339
+PGA        : 4339
+VAR        : 4339
 
 Never executed
 PopPtr    
 PshGPtr   
-PshC4     
 SwapPtr   
 NOT       
 PshG4     
@@ -67,11 +70,9 @@ PopRPtr
 PshRPtr   
 STR       
 CALLBND   
-ALLOC     
 FREE      
 LOADOBJ   
 STOREOBJ  
-GETOBJ    
 REFCPY    
 CHKREF    
 GETOBJREF 
@@ -102,7 +103,6 @@ RDR8
 LDG       
 LDV       
 CmpPtr    
-VAR       
 iTOf      
 fTOi      
 uTOf      
@@ -205,15 +205,21 @@ POWu64
 Thiscall1 
 
 Sequences
-PshV4     , PSF        : 527
-PSF       , PSF        : 527
-PSF       , CALLSYS    : 2635
-RET       , SUSPEND    : 527
-CALLSYS   , PshV4      : 527
-CALLSYS   , PSF        : 1581
-CALLSYS   , SUSPEND    : 528
-SUSPEND   , RET        : 528
-SUSPEND   , PGA        : 528
-PGA       , PSF        : 527
-PGA       , CALLSYS    : 1
+PshC4     , PshC4      : 4338
+PshC4     , PSF        : 4338
+PshV4     , PshC4      : 4338
+PSF       , CALLSYS    : 8678
+PSF       , ALLOC      : 4339
+PSF       , PGA        : 4339
+RET       , SUSPEND    : 4338
+CALLSYS   , PSF        : 4339
+CALLSYS   , SUSPEND    : 4339
+CALLSYS   , VAR        : 4339
+SUSPEND   , PshV4      : 4338
+SUSPEND   , PSF        : 1
+SUSPEND   , RET        : 4339
+ALLOC     , PSF        : 4339
+GETOBJ    , CALLSYS    : 4339
+PGA       , PSF        : 4339
+VAR       , GETOBJ     : 4339
 LABEL     , SUSPEND    : 1

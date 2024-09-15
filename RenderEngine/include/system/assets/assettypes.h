@@ -3,3 +3,4 @@
 #define tTEXTURE "texture"
 #define tSOUND "sound"
 #define tMAP "map"
+#define tSCRIPT "script"

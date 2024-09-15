@@ -1,10 +1,7 @@
 #pragma once
 #include "entity sys/component.h"
-#include "angelscript/include/angelscript.h"
-#include "add_on/scriptbuilder/scriptbuilder.h"
-#include "add_on/scriptstdstring/scriptstdstring.h"
-
 #include "other utils/common.h"
+#include "system/assets/script_asset.h"
 
 using namespace lowlevelsys;
 
@@ -24,31 +21,38 @@ namespace wizm {
 		void component_postupdate() override;
 		std::shared_ptr<core_component> _copy() const;
 
-		void apply_script(std::string path);
 
-	public:
-		
-		
-		
-		void on_start();
-		void on_update(float delta_time);
-		static void print(const std::string& in);
+		void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) override {
+			set_position(glm::vec3(
+				save_t[parent_name][index]["transform"].get_float("position")[0],
+				save_t[parent_name][index]["transform"].get_float("position")[1],
+				save_t[parent_name][index]["transform"].get_float("position")[2]
+			));
+			set_rotation(glm::vec3(
+				save_t[parent_name][index]["transform"].get_float("rotation")[0],
+				save_t[parent_name][index]["transform"].get_float("rotation")[1],
+				save_t[parent_name][index]["transform"].get_float("rotation")[2]
+			));
+			set_scale(glm::vec3(
+				save_t[parent_name][index]["transform"].get_float("scale")[0],
+				save_t[parent_name][index]["transform"].get_float("scale")[1],
+				save_t[parent_name][index]["transform"].get_float("scale")[2]
+			));
 
-
-
-		static void MessageCallback(const asSMessageInfo* msg) {
-			std::cerr << "AngelScript: " << msg->message << std::endl;
+			script_asset_id = save_t[parent_name][index].get_string("script_asset_id")[0];
 		}
 
+		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {
+			save_t[parent_name]["ScriptingComponent" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+			save_t[parent_name]["ScriptingComponent" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+			save_t[parent_name]["ScriptingComponent" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 
+			save_t[parent_name]["ScriptingComponent" + index].set_string("script_asset_id", { script_asset_id });
+		}		
 
-	private:
-		asIScriptFunction* m_onupdate_func = nullptr;
-		asIScriptFunction* m_onstart_func = nullptr;
-		asIScriptEngine* m_script_engine = nullptr;
-		asIScriptContext* m_context = nullptr;
-
-		bool m_initiated_scripts = false;
+	public:
+		std::string script_asset_id;
+		std::shared_ptr<script_asset> m_script_asset = nullptr;
 
 	};
 

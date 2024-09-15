@@ -51,6 +51,12 @@ public:
                 ai.add_to_database(asset_details(p, "", tTEXTURE));
                 continue;
             }
+
+            if (is_script_file(e))
+            {
+                ai.add_to_database(asset_details(p, "", tSCRIPT));
+                continue;
+            }
         }
     }
 

@@ -479,16 +479,36 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 
 	if (type == "ScriptingComponent") {
-		auto script_component = std::dynamic_pointer_cast<scripting_component>(component);
-		if (script_component) {
-			static char file_path[255];
 
-			ImGui::InputText("##scriptpath", file_path, 255);
-			ImGui::SameLine();
-			if (ImGui::Button("apply to scripting"))
-			{
-				script_component->apply_script(file_path);
+		std::string path;
+		auto script_component = std::dynamic_pointer_cast<scripting_component>(component);
+
+		if (script_component) {
+
+			if(script_component->m_script_asset)
+				path = script_component->m_script_asset->file_name;
+
+			if (path.empty())
+				path = "Change script";
+
+		}
+
+		ImGui::Button(path.c_str(), ImVec2(125, 125));
+		if (ImGui::BeginDragDropTarget()) {
+
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+
+				const wchar_t* id = (const wchar_t*)payload->Data;
+
+				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tSCRIPT)
+				{
+					script_component->script_asset_id = wstring_to_string(id);
+					m_asset_manager->assign_assets();
+					global_scene->m_reloaded = true;
+				}
 			}
+
+			ImGui::EndDragDropTarget();
 		}
 	}
 }

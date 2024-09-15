@@ -1,34 +1,35 @@
 void on_update(float)
 
-Temps: 10, 20
+Temps: 1, 2, 12, 14
 
 Variables: 
  000: float delta_time
- 010: string 
- 020: string 
+ 001: int 
+ 002: int 
+ 012: string 
+ 014: (heap) string 
 
 
 - 6,5 -
                VarDecl  0
-    0  20 *    SUSPEND
-    1  20 *    PGA      0x1bdcba20          (str:DT:)
-    4  22 *    PSF      v10
-    5  24 *    CALLSYS  20           (string::string(const string&in))
-               ObjInfo  v10, 1
-    7  20 *    PshV4    v0
-    8  21 *    PSF      v20
-    9  23 *    PSF      v10
-   10  25 *    CALLSYS  38           (string string::opAdd(float) const)
-               ObjInfo  v20, 1
-   12  20 *    PSF      v10
-   13  22 *    CALLSYS  21           (string::~string())
-               ObjInfo  v10, 0
-   15  20 *    PSF      v20
-   16  22 *    CALLSYS  67           (void print(const string&in))
-   18  20 *    PSF      v20
-   19  22 *    CALLSYS  21           (string::~string())
+    0  14 *    SUSPEND
+    1  14 *    PshV4    v0
+    2  15 *    PshC4    0x0          (i:0, f:0)
+    4  16 *    PshC4    0x0          (i:0, f:0)
+    6  17 *    PSF      v14
+    7  19 *    PGA      0x8bc003e0          (str:entity1)
+   10  21 *    PSF      v12
+   11  23 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v12, 1
+   13  19 *    PSF      v12
+   14  21 *    ALLOC    0x1c08ba2a4d0, 20             (type:string, string::string(const string&in))
+   18  17 *    PSF      v12
+   19  19 *    CALLSYS  21           (string::~string())
+               ObjInfo  v12, 0
+   21  17 *    VAR      v14
+   22  19 *    GETOBJ   0
+   23  19 *    CALLSYS  70           (void add_entity_rotation(string, float, float, float))
 - 7,2 -
-               ObjInfo  v20, 0
-   21  20 *    SUSPEND
+   25  14 *    SUSPEND
             0:
-   22  20 *    RET      1
+   26  14 *    RET      1

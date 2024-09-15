@@ -200,6 +200,7 @@
     <ClCompile Include="src\systems\billboard.cpp" />
     <ClCompile Include="src\systems\node.cpp" />
     <ClCompile Include="src\systems\scene_manager.cpp" />
+    <ClCompile Include="src\systems\scripting\script_controller.cpp" />
     <ClCompile Include="src\update_manager.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\sdl renderer\gl_renderer.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assets.h" />
     <ClInclude Include="include\system\assets\assettypes.h" />
+    <ClInclude Include="include\system\assets\script_asset.h" />
     <ClInclude Include="include\system\billboard_manager.h" />
     <ClInclude Include="include\system\bounding_volume.h" />
     <ClInclude Include="include\system\assets\mesh_asset.h" />
@@ -273,6 +275,9 @@
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
     <ClInclude Include="include\system\scene_manager.h" />
+    <ClInclude Include="include\system\scripting\scripting_functions.h" />
+    <ClInclude Include="include\system\scripting\scripting_objects.h" />
+    <ClInclude Include="include\system\scripting\script_controller.h" />
     <ClInclude Include="include\system\tag.h" />
     <ClInclude Include="include\system\timer.h" />
     <ClInclude Include="include\update_manager.h" />

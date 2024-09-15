@@ -1,6 +1,7 @@
 #include "system/asset_manager.h"
 #include "system/scene_manager.h"
 #include "system/assets/texture_asset.h"
+#include "system/assets/script_asset.h"
 
 wizm::asset_manager::asset_manager()
 {
@@ -44,6 +45,12 @@ void wizm::asset_manager::assign_assets()
 					}					
 				}
 				mesh_comps.reset();
+
+				auto script_comp = std::dynamic_pointer_cast<scripting_component>(comp);
+				if (script_comp) {
+					script_comp->m_script_asset = load<script_asset>(script_comp->script_asset_id, "");
+				}
+				script_comp.reset();
 			}
 		}
 
@@ -61,8 +68,11 @@ void wizm::asset_manager::load_assets_db()
 		if (asset.type == tMESH) {
 			load<staticmesh_asset>(asset.id, asset.path);
 		}
-		if (asset.type == tTEXTURE) {
+		else if (asset.type == tTEXTURE) {
 			load<texture_asset>(asset.id, asset.path);
+		}
+		else if (asset.type == tSCRIPT) {
+			load<script_asset>(asset.id, asset.path);
 		}
 	}
 }

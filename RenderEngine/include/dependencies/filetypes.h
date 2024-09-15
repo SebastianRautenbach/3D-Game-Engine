@@ -5,6 +5,7 @@
 const std::unordered_set<std::string> MESH_FILE_EXTENSIONS = { ".obj", ".fbx" };
 const std::unordered_set<std::string> SOUND_FILE_EXTENSION = { ".wav" };
 const std::unordered_set<std::string> TEXTURE_FILE_EXTENSION = { ".jpg", ".png" };
+const std::unordered_set<std::string> SCRIPT_FILE_EXTENSION = { ".as" };
 
 
 
@@ -38,4 +39,10 @@ inline bool is_sound_file(const std::string& filename) {
 inline bool is_texture_file(const std::string& filename) {
     std::string ext = get_extension(filename);
     return TEXTURE_FILE_EXTENSION.find(ext) != TEXTURE_FILE_EXTENSION.end();
+}
+
+inline bool is_script_file(const std::string& filename) {
+
+    std::string ext = get_extension(filename);
+    return SCRIPT_FILE_EXTENSION.find(ext) != SCRIPT_FILE_EXTENSION.end();
 }
