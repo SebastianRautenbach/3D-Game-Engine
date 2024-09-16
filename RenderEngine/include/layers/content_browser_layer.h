@@ -32,11 +32,13 @@ namespace wizm {
 		asset_manager* m_asset_manager;
 		std::vector<asset_details> assets;
 		std::filesystem::path current_directory = "GAME";
+
 		core_gl_texture* folder_file_texture;
 		core_gl_texture* mesh_file_icon;
 		core_gl_texture* file_texture;
 		core_gl_texture* image_file_icon;
 		core_gl_texture* map_file_icon;
+		core_gl_texture* script_file_icon;
 	}; 
 
 

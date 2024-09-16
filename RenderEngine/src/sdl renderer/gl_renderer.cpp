@@ -2,6 +2,7 @@
 #include <vector>
 #include "system/camera_3d.h"
 #include "system/scene_manager.h"
+#include "system/input_manager.h"
 
 
 void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, std::shared_ptr<camera_manager> camera_manager)
@@ -40,7 +41,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 	// manage input --------------------------------------------------------------------- /
-	m_input_manager = new input_manager(window, static_cast<float>(w_width), static_cast<float>(w_height));
+	global_input_manager = new input_manager(window, static_cast<float>(w_width), static_cast<float>(w_height));
 
 
 	m_camera_manager->m_viewport_camera = std::make_shared<camera_core_3d>(w_width, w_height);
@@ -94,39 +95,39 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 void lowlevelsys::gl_renderer::render(float deltaTime)
 {
 
-	if (m_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
+	if (global_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
 	{		
-		m_input_manager->set_hide_mouse_cursor(true);
+		global_input_manager->set_hide_mouse_cursor(true);
 		
-		m_camera_manager->m_viewport_camera->add_yaw(m_input_manager->get_mouse_offset_new().x_offset * .02);
-		m_camera_manager->m_viewport_camera->add_pitch(m_input_manager->get_mouse_offset_new().y_offset * .02);
+		m_camera_manager->m_viewport_camera->add_yaw(global_input_manager->get_mouse_offset_new().x_offset * .02);
+		m_camera_manager->m_viewport_camera->add_pitch(global_input_manager->get_mouse_offset_new().y_offset * .02);
 
 
 
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_W))
+		if (global_input_manager->has_key_been_pressed(GLFW_KEY_W))
 			m_camera_manager->m_viewport_camera->move_forward(2 * deltaTime);
 		
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_S))
+		if (global_input_manager->has_key_been_pressed(GLFW_KEY_S))
 			m_camera_manager->m_viewport_camera->move_forward(-2 * deltaTime);
 
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_D))
+		if (global_input_manager->has_key_been_pressed(GLFW_KEY_D))
 			m_camera_manager->m_viewport_camera->move_right(2 * deltaTime);
 
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_A))
+		if (global_input_manager->has_key_been_pressed(GLFW_KEY_A))
 			m_camera_manager->m_viewport_camera->move_right(-2 * deltaTime);
 
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_E))
+		if (global_input_manager->has_key_been_pressed(GLFW_KEY_E))
 			m_camera_manager->m_viewport_camera->move_up(2 * deltaTime);
 
-		if (m_input_manager->has_key_been_pressed(GLFW_KEY_Q))
+		if (global_input_manager->has_key_been_pressed(GLFW_KEY_Q))
 			m_camera_manager->m_viewport_camera->move_up(-2 * deltaTime);
 
 	
 	}
 	else
 	{
-		m_input_manager->set_hide_mouse_cursor(false);
-		m_input_manager->mouse_stop_move();
+		global_input_manager->set_hide_mouse_cursor(false);
+		global_input_manager->mouse_stop_move();
 	}
 	
 

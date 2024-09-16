@@ -198,6 +198,7 @@
     <ClCompile Include="src\layers\viewport_layer.cpp" />
     <ClCompile Include="src\material.cpp" />
     <ClCompile Include="src\systems\billboard.cpp" />
+    <ClCompile Include="src\systems\input_manager.cpp" />
     <ClCompile Include="src\systems\node.cpp" />
     <ClCompile Include="src\systems\scene_manager.cpp" />
     <ClCompile Include="src\systems\scripting\script_controller.cpp" />
@@ -272,6 +273,7 @@
     <ClInclude Include="include\system\core_renderable.h" />
     <ClInclude Include="include\system\draw_ray.h" />
     <ClInclude Include="include\system\filewatcher.h" />
+    <ClInclude Include="include\system\input_manager.h" />
     <ClInclude Include="include\system\material.h" />
     <ClInclude Include="include\system\material_types.h" />
     <ClInclude Include="include\system\scene_manager.h" />

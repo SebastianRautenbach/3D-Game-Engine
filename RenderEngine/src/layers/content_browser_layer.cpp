@@ -14,6 +14,7 @@ wizm::content_browser_layer::content_browser_layer(asset_manager* p_asset_manage
     mesh_file_icon = new core_gl_texture("resources/images/mesh_file_icon.png");
     image_file_icon = new core_gl_texture("resources/images/image_file_icon.png");
     map_file_icon = new core_gl_texture("resources/images/map_file_icon.png");
+    script_file_icon = new core_gl_texture("resources/images/script_icon.png");
 }
 
 wizm::content_browser_layer::~content_browser_layer()
@@ -23,6 +24,7 @@ wizm::content_browser_layer::~content_browser_layer()
     delete mesh_file_icon;
     delete image_file_icon;
     delete map_file_icon;
+    delete script_file_icon;
 }
 
 void wizm::content_browser_layer::OnAttach()
@@ -95,6 +97,8 @@ void wizm::content_browser_layer::update(float delta_time)
                 final_texture_icon = (ImTextureID)image_file_icon->texture_id;
             else if (is_map_file(file_name))
                 final_texture_icon = (ImTextureID)map_file_icon->texture_id;
+            else if(is_script_file(file_name))
+                final_texture_icon = (ImTextureID)script_file_icon->texture_id;
 
                
 

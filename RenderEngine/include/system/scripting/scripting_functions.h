@@ -10,6 +10,7 @@
 #include <iostream>
 #include "system/scene_manager.h"
 #include "system/asset_importer.h"
+#include "system/input_manager.h"
 
 /*
 	These following function are copied from the hpl1 engine on github https://github.com/FrictionalGames/HPL1Engine/blob/5e441bbb247a7473e75cc0f05ca8a5b62c6ec64c/include/system/Script.h#L42
@@ -221,8 +222,16 @@ namespace engine_scripting
 	static void __stdcall print(std::string& msg) {
 		std::cout << msg << "\n";
 	}
-	SCRIPT_DEFINE_FUNC_1(void, print, string)
+	SCRIPT_DEFINE_FUNC_1(void, print, string);
 
+
+	//------------------------------------------------- STATIC INPUT
+	//--------------------------------------------------------------
+
+	static bool has_key_pressed(int key) {
+		return global_input_manager->has_key_been_pressed(key);
+	}
+	SCRIPT_DEFINE_FUNC_1(bool, has_key_pressed, int);
 
 	
 	//-------------------------------------------------- STATIC MESH
@@ -249,7 +258,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 		entity->set_rotation(glm::vec3(p, y, r));
 	}
-	SCRIPT_DEFINE_FUNC_4(void, set_entity_rotation, string, float, float, float)
+	SCRIPT_DEFINE_FUNC_4(void, set_entity_rotation, string, float, float, float);
 	
 	//-----------------------------------------------------------------------
 	
@@ -257,7 +266,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 		entity->add_rotation(glm::vec3(p, y, r));
 	}
-	SCRIPT_DEFINE_FUNC_4(void, add_entity_rotation, string, float, float, float)
+	SCRIPT_DEFINE_FUNC_4(void, add_entity_rotation, string, float, float, float);
 	
 	//-----------------------------------------------------------------------
 	
@@ -266,7 +275,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 		entity->set_position(glm::vec3(x, y, z));
 	}
-	SCRIPT_DEFINE_FUNC_4(void, set_entity_position, string, float, float, float)
+	SCRIPT_DEFINE_FUNC_4(void, set_entity_position, string, float, float, float);
 	
 	//-----------------------------------------------------------------------
 	
@@ -274,7 +283,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 		entity->add_position(glm::vec3(x, y, z));
 	}
-	SCRIPT_DEFINE_FUNC_4(void, add_entity_position, string, float, float, float)
+	SCRIPT_DEFINE_FUNC_4(void, add_entity_position, string, float, float, float);
 	
 	
 	//-----------------------------------------------------------------------
@@ -284,7 +293,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 		entity->set_scale(glm::vec3(x, y, z));
 	}
-	SCRIPT_DEFINE_FUNC_4(void, set_entity_scale, string, float, float, float)
+	SCRIPT_DEFINE_FUNC_4(void, set_entity_scale, string, float, float, float);
 	
 	//-----------------------------------------------------------------------
 	
@@ -293,7 +302,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 		entity->add_scale(glm::vec3(x, y, z));
 	}
-	SCRIPT_DEFINE_FUNC_4(void, add_entity_scale, string, float, float, float)
+	SCRIPT_DEFINE_FUNC_4(void, add_entity_scale, string, float, float, float);
 	
 	// component
 	
@@ -305,7 +314,7 @@ namespace engine_scripting
 			comp->set_rotation(glm::vec3(p, y, r));
 		}
 	}
-	SCRIPT_DEFINE_FUNC_5(void, set_component_rotation, string, int, float, float, float)
+	SCRIPT_DEFINE_FUNC_5(void, set_component_rotation, string, int, float, float, float);
 	
 	//-----------------------------------------------------------------------
 	
@@ -317,7 +326,7 @@ namespace engine_scripting
 			comp->add_rotation(glm::vec3(p, y, r));
 		}
 	}
-	SCRIPT_DEFINE_FUNC_5(void, add_component_rotation, string, int, float, float, float)
+	SCRIPT_DEFINE_FUNC_5(void, add_component_rotation, string, int, float, float, float);
 	
 	//-----------------------------------------------------------------------
 	
@@ -330,7 +339,7 @@ namespace engine_scripting
 			comp->set_position(glm::vec3(x, y, z));
 		}
 	}
-	SCRIPT_DEFINE_FUNC_5(void, set_component_position, string, int, float, float, float)
+	SCRIPT_DEFINE_FUNC_5(void, set_component_position, string, int, float, float, float);
 	
 	
 	//-----------------------------------------------------------------------
@@ -344,7 +353,7 @@ namespace engine_scripting
 			comp->add_position(glm::vec3(x, y, z));
 		}
 	}
-	SCRIPT_DEFINE_FUNC_5(void, add_component_position, string, int, float, float, float)
+	SCRIPT_DEFINE_FUNC_5(void, add_component_position, string, int, float, float, float);
 	
 	
 	//-----------------------------------------------------------------------
@@ -358,7 +367,7 @@ namespace engine_scripting
 			comp->set_scale(glm::vec3(x, y, z));
 		}
 	}
-	SCRIPT_DEFINE_FUNC_5(void, set_component_scale, string, int, float, float, float)
+	SCRIPT_DEFINE_FUNC_5(void, set_component_scale, string, int, float, float, float);
 	
 	
 	//-----------------------------------------------------------------------
@@ -371,7 +380,12 @@ namespace engine_scripting
 			comp->add_scale(glm::vec3(x, y, z));
 		}
 	}
-	SCRIPT_DEFINE_FUNC_5(void, add_component_scale, string, int, float, float, float)
+	SCRIPT_DEFINE_FUNC_5(void, add_component_scale, string, int, float, float, float);
+
+
+	//-----------------------------------------------------------------------
+
+
 
 
 
@@ -393,6 +407,7 @@ public:
 	void init_scripts(asIScriptEngine* script_engine) {
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(print));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(has_key_pressed));
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_mesh));
 		

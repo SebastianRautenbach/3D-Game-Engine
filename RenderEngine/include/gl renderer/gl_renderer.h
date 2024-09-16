@@ -2,7 +2,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include "input.h"
 #include "gl core/vertex_buffer.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -29,7 +28,6 @@ namespace lowlevelsys {
 
 	public:
 		GLFWwindow* window;
-		input_manager* m_input_manager;
 		
 		std::vector<std::shared_ptr<core_gl_shader>> m_shdrs;
 

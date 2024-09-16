@@ -1,6 +1,6 @@
 void on_update(float)
 
-Temps: 1, 2, 12, 14
+Temps: 1, 2, 12, 14, 15
 
 Variables: 
  000: float delta_time
@@ -8,28 +8,191 @@ Variables:
  002: int 
  012: string 
  014: (heap) string 
+ 015: int 
 
 
-- 6,5 -
+- 12,5 -
                VarDecl  0
-    0  14 *    SUSPEND
-    1  14 *    PshV4    v0
-    2  15 *    PshC4    0x0          (i:0, f:0)
-    4  16 *    PshC4    0x0          (i:0, f:0)
-    6  17 *    PSF      v14
-    7  19 *    PGA      0x8bc003e0          (str:entity1)
-   10  21 *    PSF      v12
-   11  23 *    CALLSYS  20           (string::string(const string&in))
+    0  15 *    SUSPEND
+    1  15 *    PshV4    v0
+    2  16 *    PshC4    0x0          (i:0, f:0)
+    4  17 *    PshC4    0x0          (i:0, f:0)
+    6  18 *    PSF      v14
+    7  20 *    PGA      0x3f019a0          (str:entity1)
+   10  22 *    PSF      v12
+   11  24 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v12, 1
-   13  19 *    PSF      v12
-   14  21 *    ALLOC    0x1c08ba2a4d0, 20             (type:string, string::string(const string&in))
-   18  17 *    PSF      v12
-   19  19 *    CALLSYS  21           (string::~string())
+   13  20 *    PSF      v12
+   14  22 *    ALLOC    0x26003ba0da0, 20             (type:string, string::string(const string&in))
+   18  18 *    PSF      v12
+   19  20 *    CALLSYS  21           (string::~string())
                ObjInfo  v12, 0
-   21  17 *    VAR      v14
-   22  19 *    GETOBJ   0
-   23  19 *    CALLSYS  70           (void add_entity_rotation(string, float, float, float))
-- 7,2 -
-   25  14 *    SUSPEND
+   21  18 *    VAR      v14
+   22  20 *    GETOBJ   0
+   23  20 *    CALLSYS  71           (void add_entity_rotation(string, float, float, float))
+- 14,5 -
+   25  15 *    SUSPEND
+   26  15 *    PshC4    0x45          (i:69, f:9.66896e-44)
+   28  16 *    CALLSYS  68           (bool has_key_pressed(int))
+   30  15 *    JLowZ    +25              (d:57)
+- 15,9 -
+            {
+   32  15 *    SUSPEND
+   33  15 *    PshC4    0x0          (i:0, f:0)
+   35  16 *    PshC4    0x0          (i:0, f:0)
+   37  17 *    PshV4    v0
+   38  18 *    PSF      v14
+   39  20 *    PGA      0x157596a0          (str:scary)
+   42  22 *    PSF      v12
+   43  24 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v12, 1
+   45  20 *    PSF      v12
+   46  22 *    ALLOC    0x26003ba0da0, 20             (type:string, string::string(const string&in))
+   50  18 *    PSF      v12
+   51  20 *    CALLSYS  21           (string::~string())
+               ObjInfo  v12, 0
+   53  18 *    VAR      v14
+   54  20 *    GETOBJ   0
+   55  20 *    CALLSYS  73           (void add_entity_position(string, float, float, float))
+- 18,5 -
+            }
+            1:
+   57  15 *    SUSPEND
+   58  15 *    PshC4    0x51          (i:81, f:1.13505e-43)
+   60  16 *    CALLSYS  68           (bool has_key_pressed(int))
+   62  15 *    JLowZ    +28              (d:92)
+- 19,9 -
+            {
+   64  15 *    SUSPEND
+   65  15 *    PshC4    0x0          (i:0, f:0)
+   67  16 *    PshC4    0x0          (i:0, f:0)
+   69  17 *    CpyVtoV4 v1, v0
+   71  17 *    NEGf     v1
+   72  17 *    PshV4    v1
+   73  18 *    PSF      v14
+   74  20 *    PGA      0x157596a0          (str:scary)
+   77  22 *    PSF      v12
+   78  24 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v12, 1
+   80  20 *    PSF      v12
+   81  22 *    ALLOC    0x26003ba0da0, 20             (type:string, string::string(const string&in))
+   85  18 *    PSF      v12
+   86  20 *    CALLSYS  21           (string::~string())
+               ObjInfo  v12, 0
+   88  18 *    VAR      v14
+   89  20 *    GETOBJ   0
+   90  20 *    CALLSYS  73           (void add_entity_position(string, float, float, float))
+- 22,5 -
+            }
+            2:
+   92  15 *    SUSPEND
+   93  15 *    PshC4    0x44          (i:68, f:9.52883e-44)
+   95  16 *    CALLSYS  68           (bool has_key_pressed(int))
+   97  15 *    JLowZ    +25              (d:124)
+- 23,9 -
+            {
+   99  15 *    SUSPEND
+  100  15 *    PshC4    0x0          (i:0, f:0)
+  102  16 *    PshV4    v0
+  103  17 *    PshC4    0x0          (i:0, f:0)
+  105  18 *    PSF      v14
+  106  20 *    PGA      0x157596a0          (str:scary)
+  109  22 *    PSF      v12
+  110  24 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v12, 1
+  112  20 *    PSF      v12
+  113  22 *    ALLOC    0x26003ba0da0, 20             (type:string, string::string(const string&in))
+  117  18 *    PSF      v12
+  118  20 *    CALLSYS  21           (string::~string())
+               ObjInfo  v12, 0
+  120  18 *    VAR      v14
+  121  20 *    GETOBJ   0
+  122  20 *    CALLSYS  73           (void add_entity_position(string, float, float, float))
+- 26,5 -
+            }
+            3:
+  124  15 *    SUSPEND
+  125  15 *    PshC4    0x41          (i:65, f:9.10844e-44)
+  127  16 *    CALLSYS  68           (bool has_key_pressed(int))
+  129  15 *    JLowZ    +28              (d:159)
+- 27,9 -
+            {
+  131  15 *    SUSPEND
+  132  15 *    PshC4    0x0          (i:0, f:0)
+  134  16 *    CpyVtoV4 v15, v0
+  136  16 *    NEGf     v15
+  137  16 *    PshV4    v15
+  138  17 *    PshC4    0x0          (i:0, f:0)
+  140  18 *    PSF      v14
+  141  20 *    PGA      0x157596a0          (str:scary)
+  144  22 *    PSF      v12
+  145  24 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v12, 1
+  147  20 *    PSF      v12
+  148  22 *    ALLOC    0x26003ba0da0, 20             (type:string, string::string(const string&in))
+  152  18 *    PSF      v12
+  153  20 *    CALLSYS  21           (string::~string())
+               ObjInfo  v12, 0
+  155  18 *    VAR      v14
+  156  20 *    GETOBJ   0
+  157  20 *    CALLSYS  73           (void add_entity_position(string, float, float, float))
+- 30,5 -
+            }
+            4:
+  159  15 *    SUSPEND
+  160  15 *    PshC4    0x57          (i:87, f:1.21913e-43)
+  162  16 *    CALLSYS  68           (bool has_key_pressed(int))
+  164  15 *    JLowZ    +25              (d:191)
+- 31,9 -
+            {
+  166  15 *    SUSPEND
+  167  15 *    PshV4    v0
+  168  16 *    PshC4    0x0          (i:0, f:0)
+  170  17 *    PshC4    0x0          (i:0, f:0)
+  172  18 *    PSF      v14
+  173  20 *    PGA      0x157596a0          (str:scary)
+  176  22 *    PSF      v12
+  177  24 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v12, 1
+  179  20 *    PSF      v12
+  180  22 *    ALLOC    0x26003ba0da0, 20             (type:string, string::string(const string&in))
+  184  18 *    PSF      v12
+  185  20 *    CALLSYS  21           (string::~string())
+               ObjInfo  v12, 0
+  187  18 *    VAR      v14
+  188  20 *    GETOBJ   0
+  189  20 *    CALLSYS  73           (void add_entity_position(string, float, float, float))
+- 34,5 -
+            }
+            5:
+  191  15 *    SUSPEND
+  192  15 *    PshC4    0x53          (i:83, f:1.16308e-43)
+  194  16 *    CALLSYS  68           (bool has_key_pressed(int))
+  196  15 *    JLowZ    +28              (d:226)
+- 35,9 -
+            {
+  198  15 *    SUSPEND
+  199  15 *    CpyVtoV4 v15, v0
+  201  15 *    NEGf     v15
+  202  15 *    PshV4    v15
+  203  16 *    PshC4    0x0          (i:0, f:0)
+  205  17 *    PshC4    0x0          (i:0, f:0)
+  207  18 *    PSF      v14
+  208  20 *    PGA      0x157596a0          (str:scary)
+  211  22 *    PSF      v12
+  212  24 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v12, 1
+  214  20 *    PSF      v12
+  215  22 *    ALLOC    0x26003ba0da0, 20             (type:string, string::string(const string&in))
+  219  18 *    PSF      v12
+  220  20 *    CALLSYS  21           (string::~string())
+               ObjInfo  v12, 0
+  222  18 *    VAR      v14
+  223  20 *    GETOBJ   0
+  224  20 *    CALLSYS  73           (void add_entity_position(string, float, float, float))
+- 39,2 -
+            }
+            6:
+  226  15 *    SUSPEND
             0:
-   26  14 *    RET      1
+  227  15 *    RET      1

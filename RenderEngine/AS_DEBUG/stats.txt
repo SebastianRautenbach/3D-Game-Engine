@@ -1,15 +1,18 @@
 
 Total count
-PshC4      : 8676
-PshV4      : 4338
-PSF        : 17356
-RET        : 4339
-CALLSYS    : 13017
-SUSPEND    : 8678
-ALLOC      : 4339
-GETOBJ     : 4339
-PGA        : 4339
-VAR        : 4339
+PshC4      : 114508
+PshV4      : 19811
+PSF        : 79252
+RET        : 12483
+NEGf       : 5087
+CALLSYS    : 134325
+SUSPEND    : 107182
+ALLOC      : 19813
+GETOBJ     : 19813
+CpyVtoV4   : 5087
+PGA        : 19813
+VAR        : 19813
+JLowZ      : 74886
 
 Never executed
 PopPtr    
@@ -33,7 +36,6 @@ TNS
 TP        
 TNP       
 NEGi      
-NEGf      
 NEGd      
 INCi16    
 INCi8     
@@ -84,7 +86,6 @@ TYPEID
 SetV4     
 SetV8     
 ADDSi     
-CpyVtoV4  
 CpyVtoV8  
 CpyVtoR4  
 CpyVtoR8  
@@ -189,7 +190,6 @@ MODu64
 LoadRObjR 
 LoadVObjR 
 RefCpyV   
-JLowZ     
 JLowNZ    
 AllocMem  
 SetListSiz
@@ -205,21 +205,31 @@ POWu64
 Thiscall1 
 
 Sequences
-PshC4     , PshC4      : 4338
-PshC4     , PSF        : 4338
-PshV4     , PshC4      : 4338
-PSF       , CALLSYS    : 8678
-PSF       , ALLOC      : 4339
-PSF       , PGA        : 4339
-RET       , SUSPEND    : 4338
-CALLSYS   , PSF        : 4339
-CALLSYS   , SUSPEND    : 4339
-CALLSYS   , VAR        : 4339
-SUSPEND   , PshV4      : 4338
-SUSPEND   , PSF        : 1
-SUSPEND   , RET        : 4339
-ALLOC     , PSF        : 4339
-GETOBJ    , CALLSYS    : 4339
-PGA       , PSF        : 4339
-VAR       , GETOBJ     : 4339
+PshC4     , PshC4      : 18574
+PshC4     , PshV4      : 1212
+PshC4     , PSF        : 17045
+PshC4     , CALLSYS    : 74886
+PshC4     , CpyVtoV4   : 2791
+PshV4     , PshC4      : 17045
+PshV4     , PSF        : 2766
+PSF       , CALLSYS    : 39626
+PSF       , ALLOC      : 19813
+PSF       , PGA        : 19813
+RET       , SUSPEND    : 12482
+NEGf      , PshV4      : 5087
+CALLSYS   , PSF        : 19813
+CALLSYS   , SUSPEND    : 19813
+CALLSYS   , VAR        : 19813
+CALLSYS   , JLowZ      : 74886
+SUSPEND   , PshC4      : 78889
+SUSPEND   , PshV4      : 13512
+SUSPEND   , PSF        : 2
+SUSPEND   , RET        : 12483
+SUSPEND   , CpyVtoV4   : 2296
+ALLOC     , PSF        : 19813
+GETOBJ    , CALLSYS    : 19813
+CpyVtoV4  , NEGf       : 5087
+PGA       , PSF        : 19813
+VAR       , GETOBJ     : 19813
+JLowZ     , SUSPEND    : 74886
 LABEL     , SUSPEND    : 1
