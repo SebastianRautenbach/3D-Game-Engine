@@ -10,12 +10,12 @@ Variables:
 - 3,5 -
     0  12 *    SUSPEND
     1  12 *    PSF      v12
-    2  14 *    PGA      0xd3fb11c0          (str:Script started)
+    2  14 *    PGA      0xddac9b50          (str:Script started yipee)
     5  16 *    PSF      v10
     6  18 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v10, 1
     8  14 *    PSF      v10
-    9  16 *    ALLOC    0x27ed3ddff60, 20             (type:string, string::string(const string&in))
+    9  16 *    ALLOC    0x298dd919100, 20             (type:string, string::string(const string&in))
    13  12 *    PSF      v10
    14  14 *    CALLSYS  21           (string::~string())
                ObjInfo  v10, 0

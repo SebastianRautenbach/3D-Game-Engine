@@ -1,0 +1,32 @@
+
+void on_start() {
+    print("Script started yipee");
+}
+
+void on_update(float delta_time) {
+
+	delta_time *= 2;
+	
+    add_entity_rotation("entity1", 0, 0, delta_time);
+
+    if(has_key_pressed(key_codes::eKEY_W)) {
+        add_entity_position("scary", 0, 0, -delta_time);
+    }
+
+    if(has_key_pressed(key_codes::eKEY_S)) {
+        add_entity_position("scary", 0, 0, delta_time);
+    }
+
+    if(has_key_pressed(key_codes::eKEY_A)) {
+        add_entity_position("scary", -delta_time, 0, 0);
+    }
+
+    if(has_key_pressed(key_codes::eKEY_D)) {
+        add_entity_position("scary", delta_time, 0, 0);
+    }
+
+    if(has_key_pressed(key_codes::eKEY_SPACE)) {
+         add_entity_position("scary", 0, delta_time, 0);
+    }
+
+}

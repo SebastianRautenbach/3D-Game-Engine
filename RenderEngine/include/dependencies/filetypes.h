@@ -5,7 +5,7 @@
 const std::unordered_set<std::string> MESH_FILE_EXTENSIONS = { ".obj", ".fbx" };
 const std::unordered_set<std::string> SOUND_FILE_EXTENSION = { ".wav" };
 const std::unordered_set<std::string> TEXTURE_FILE_EXTENSION = { ".jpg", ".png" };
-const std::unordered_set<std::string> SCRIPT_FILE_EXTENSION = { ".as" };
+const std::unordered_set<std::string> SCRIPT_FILE_EXTENSION = { ".as", ".wizs"};
 
 
 
