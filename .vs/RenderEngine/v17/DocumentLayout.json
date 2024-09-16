@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\sdl renderer\\gl_renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\scripting_functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\system\\scripting\\scripting_functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\script_controller.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\system\\scripting\\script_controller.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\scripting\\script_controller.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\systems\\scripting\\script_controller.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +22,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "gl_renderer.cpp",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
-              "RelativeDocumentMoniker": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
-              "RelativeToolTip": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAACIAAAACAAAA",
+              "DocumentIndex": 2,
+              "Title": "script_controller.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\scripting\\script_controller.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\systems\\scripting\\script_controller.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\scripting\\script_controller.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\systems\\scripting\\script_controller.cpp",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-16T08:58:27.338Z",
+              "WhenOpened": "2024-09-16T10:48:12.836Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "script_controller.h",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\script_controller.h",
+              "RelativeDocumentMoniker": "RenderEngine\\include\\system\\scripting\\script_controller.h",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\script_controller.h",
+              "RelativeToolTip": "RenderEngine\\include\\system\\scripting\\script_controller.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-16T10:48:10.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "scripting_functions.h",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\scripting_functions.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\system\\scripting\\scripting_functions.h",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\scripting_functions.h",
               "RelativeToolTip": "RenderEngine\\include\\system\\scripting\\scripting_functions.h",
-              "ViewState": "AQIAANgAAAAAAAAAAAAAAOYAAAAmAAAA",
+              "ViewState": "AQIAAFsBAAAAAAAAAAAAANEBAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-16T07:14:22.173Z",
               "EditorCaption": ""

@@ -13,6 +13,7 @@ script_controller::script_controller(std::string path)
 	RegisterStdString(m_script_engine);
 
 	engine_scripting::scripting_functions sf;
+	sf.init_variables(m_script_engine);
 	sf.init_scripts(m_script_engine);
 
 	reload_script(path);

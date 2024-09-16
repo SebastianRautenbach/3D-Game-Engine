@@ -97,7 +97,7 @@ camera(1){
 	}
 }
 entity1{
-	ScriptingComponent0{
+	ScriptingComponent1{
 		script_asset_id:11303434565683584224;
 		transform{
 			position:0.000000,0.000000,0.000000;
@@ -105,7 +105,7 @@ entity1{
 			scale:1.000000,1.000000,1.000000;
 		}
 	}
-	spotlight1{
+	spotlight0{
 		light{
 			m_constant:1.000000;
 			linear:0.090000;

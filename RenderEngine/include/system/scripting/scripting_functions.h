@@ -11,9 +11,10 @@
 #include "system/scene_manager.h"
 #include "system/asset_importer.h"
 #include "system/input_manager.h"
+#include "system/scripting/scripting_objects.h"
 
 /*
-	These following function are copied from the hpl1 engine on github https://github.com/FrictionalGames/HPL1Engine/blob/5e441bbb247a7473e75cc0f05ca8a5b62c6ec64c/include/system/Script.h#L42
+	These following MACROS are copied from the hpl1 engine on github https://github.com/FrictionalGames/HPL1Engine/blob/5e441bbb247a7473e75cc0f05ca8a5b62c6ec64c/include/system/Script.h#L42
 	I just like the way they did it and I am also to lazy XD
 */
 
@@ -191,9 +192,15 @@
 #define SCRIPT_RETURN_string std::string _ret
 #define SCRIPT_RETURN_CALL_string _ret =
 #define SCRIPT_SET_RETURN_string gen->SetReturnObject(&_ret)
+
+#define SCRIPT_RETURN_vec3 wizm_script::vec3 _ret
+#define SCRIPT_RETURN_CALL_vec3 _ret = 
+#define SCRIPT_SET_RETURN_vec3 gen->SetReturnObject(&_ret)
+
 #define SCRIPT_RETURN_bool bool _ret
 #define SCRIPT_RETURN_CALL_bool _ret =
 #define SCRIPT_SET_RETURN_bool gen->SetReturnDWord(_ret ? -1 : 0)
+
 #define SCRIPT_RETURN_int int _ret
 #define SCRIPT_RETURN_CALL_int _ret =
 #define SCRIPT_SET_RETURN_int gen->SetReturnDWord(_ret)
@@ -385,7 +392,11 @@ namespace engine_scripting
 
 	//-----------------------------------------------------------------------
 
-
+	static wizm_script::vec3 get_entity_rotation(std::string entity_name) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		return wizm_script::vec3(entity->get_rotation().x, entity->get_rotation().y, entity->get_rotation().z);
+	}
+	SCRIPT_DEFINE_FUNC_1(vec3, get_entity_rotation, string);
 
 
 
@@ -428,6 +439,36 @@ public:
 		
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_component_scale));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(add_component_scale));
+
+		//add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_entity_rotation));
+	}
+
+
+	void init_variables(asIScriptEngine* script_engine) {
+		//---------------------------------------------------------------------------------------------------- ENUMS
+		//----------------------------------------------------------------------------------------------------------
+		script_engine->RegisterEnum("key_codes");
+		script_engine->RegisterEnumValue("key_codes", "eKEY_W", eKEY_W);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_S", eKEY_S);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_A", eKEY_A);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_D", eKEY_D);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_SPACE", eKEY_SPACE);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_ENTER", eKEY_ENTER);
+
+		//----------------------------------------------------------------------------------------------------- VEC2
+		//----------------------------------------------------------------------------------------------------------
+
+		script_engine->RegisterObjectType("vec2", sizeof(wizm_script::vec2), asOBJ_VALUE | asOBJ_POD);
+		script_engine->RegisterObjectProperty("vec2", "float x", offsetof(wizm_script::vec2, x));
+		script_engine->RegisterObjectProperty("vec2", "float y", offsetof(wizm_script::vec2, y)); 
+
+		//----------------------------------------------------------------------------------------------------- VEC3
+		//----------------------------------------------------------------------------------------------------------
+
+		script_engine->RegisterObjectType("vec3", sizeof(wizm_script::vec3), asOBJ_VALUE | asOBJ_POD);
+		script_engine->RegisterObjectProperty("vec3", "float x", offsetof(wizm_script::vec3, x)); 
+		script_engine->RegisterObjectProperty("vec3", "float y", offsetof(wizm_script::vec3, y)); 
+		script_engine->RegisterObjectProperty("vec3", "float z", offsetof(wizm_script::vec3, z)); 
 	}
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <GLFW/glfw3.h>
 #include <unordered_set>
-#include "input_types.h"
+//#include "input_types.h"
 #include <unordered_map>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
