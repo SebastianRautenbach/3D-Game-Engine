@@ -37,6 +37,8 @@ namespace wizm {
 
         void assign_assets();
 
+        std::unordered_map<std::string, std::shared_ptr<core_asset>> get_all_assets() { return m_assets; }
+
         void load_assets_db();
 
         template <typename T>

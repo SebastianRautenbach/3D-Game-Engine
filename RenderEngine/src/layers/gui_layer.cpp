@@ -4,8 +4,8 @@
 #include "system/scene_manager.h"
 #include "other utils/common.h"
 
-wizm::gui_layer::gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager)
-    : core_layer("gui_layer"), m_camera_manager(camera_manager)
+wizm::gui_layer::gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager, asset_manager* p_asset_manager)
+    : core_layer("gui_layer"), m_camera_manager(camera_manager), m_asset_manager(p_asset_manager)
 {
     m_window = window;
 }
@@ -125,18 +125,21 @@ void wizm::gui_layer::begin()
     if (ImGui::BeginMenuBar())
     {
    
-        if (ImGui::BeginMenu("File"))
+        if (ImGui::BeginMenu("File") )
         {
-            if (ImGui::MenuItem("Save-as"))
+            if(engine_status == EDITOR_STATUS)
             {
-                show_save_popup = true;
-            }
-            if (ImGui::MenuItem("Save"))
-            {
-                global_scene->save_map_data("");
-            }
-            if (ImGui::MenuItem("Open")) {
-                // open blah
+                if (ImGui::MenuItem("Save-as"))
+                {
+                    show_save_popup = true;
+                }
+                if (ImGui::MenuItem("Save"))
+                {
+                    global_scene->save_map_data("");
+                }
+                if (ImGui::MenuItem("Open")) {
+                    // open blah
+                }
             }
             ImGui::EndMenu();
         }
@@ -166,6 +169,11 @@ void wizm::gui_layer::begin()
         ImVec2 button_pos = ImVec2((menu_bar_width - button_width) / 2.0f, 0.0f);
 
         ImGui::SetCursorPosX(button_pos.x);
+
+        /*
+            ------------------------------------------------------------------------------------------START RUNTIME
+            -------------------------------------------------------------------------------------------------------
+        */
         
         if (ImGui::Button(ICON_FA_PLAY "")) {
             if (!m_camera_manager->update_crnt_camera(true)) {
@@ -174,6 +182,12 @@ void wizm::gui_layer::begin()
             else
                 engine_status = RUNTIME_STATUS;
         }
+
+        /*
+            -------------------------------------------------------------------------------------------STOP RUNTIME
+            -------------------------------------------------------------------------------------------------------
+        */
+
         if (ImGui::Button(ICON_FA_SQUARE "")) {
             m_camera_manager->update_crnt_camera(false);
             
@@ -183,7 +197,22 @@ void wizm::gui_layer::begin()
                 engine_status = EDITOR_STATUS;
             }
         }
-        if (ImGui::Button(ICON_FA_STEP_FORWARD "")) {}
+
+        /*
+            ---------------------------------------------------------------------------------------------DEBUG CODE
+            -------------------------------------------------------------------------------------------------------
+        */
+
+        if (ImGui::Button(ICON_FA_BUG "")) {
+            auto assets = m_asset_manager->get_all_assets();
+            for (const auto& asset : assets) {
+                auto script = std::dynamic_pointer_cast<script_asset>(asset.second);
+                if (script) {
+                    std::string temp_path = m_asset_manager->get_asset_details_from_id(asset.first).path;
+                    script->sc->reload_script(temp_path);
+                }
+            }
+        }
         ImGui::EndMenuBar();
     }
     ImGui::PopStyleVar();

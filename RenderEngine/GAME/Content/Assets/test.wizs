@@ -4,8 +4,6 @@ void on_start() {
 }
 
 void on_update(float delta_time) {
-
-	delta_time *= 2;
 	
     add_entity_rotation("entity1", 0, 0, delta_time);
 

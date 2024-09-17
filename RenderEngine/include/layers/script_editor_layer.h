@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <unordered_set>
 
 namespace wizm {
 
@@ -23,10 +24,12 @@ namespace wizm {
 		bool write_script(const std::string& filepath, const char* buffer);
 		bool load_script(const std::string& filepath, char* buffer, size_t bufferSize);
 
+
 	private:
 		asset_manager* m_asset_manager;
 		std::string crnt_script_asset_id; 
 		std::string crnt_script_asset_path;
+
 
 	};
 

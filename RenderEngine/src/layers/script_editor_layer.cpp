@@ -24,13 +24,17 @@ void wizm::script_editor_layer::OnDetach()
 void wizm::script_editor_layer::update(float delta_time)
 {
 
+
+
 	ImGui::Begin("script editor");
-	if(engine_status == EDITOR_STATUS)
+
+	
+	if (engine_status == EDITOR_STATUS)
 	{
 		static char char_buffer[20000];
 
 		if (ImGui::Button("BUILD")) {
-			if(!crnt_script_asset_path.empty())
+			if (!crnt_script_asset_path.empty())
 			{
 				write_script(crnt_script_asset_path, char_buffer);
 				auto asset = m_asset_manager->load<script_asset>(crnt_script_asset_id, "");
@@ -40,7 +44,7 @@ void wizm::script_editor_layer::update(float delta_time)
 
 		float window_hieght = ImGui::GetWindowHeight() - 75;
 
-		
+
 
 		ImGuiInputTextFlags flags = ImGuiInputTextFlags_AllowTabInput;
 		ImGui::InputTextMultiline("##crnt_script_work", char_buffer, sizeof(char_buffer), ImVec2(-FLT_MIN, window_hieght), flags);
@@ -63,6 +67,8 @@ void wizm::script_editor_layer::update(float delta_time)
 	{
 		ImGui::Text("CAN'T EDIT DURING RUNTIME");
 	}
+	
+
 
 	ImGui::End();
 }
@@ -105,3 +111,5 @@ bool wizm::script_editor_layer::load_script(const std::string& filepath, char* b
 
 
 }
+
+

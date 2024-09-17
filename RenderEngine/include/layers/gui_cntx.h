@@ -5,7 +5,7 @@
 #include "system/camera_manager.h"
 #include "layer.h"
 #include "ImGuizmo/ImGuizmo.h"
-
+#include "system/asset_manager.h"
 
 
 namespace wizm {
@@ -14,7 +14,7 @@ namespace wizm {
 	class gui_layer : public core_layer
 	{
 	public:
-		gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager);
+		gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager, asset_manager* p_asset_manager);
 		~gui_layer();
 
 		virtual void OnAttach() override;
@@ -50,6 +50,7 @@ namespace wizm {
 		ImVec2 m_window_size;
 		GLFWwindow* m_window;
 		std::shared_ptr<camera_manager> m_camera_manager;
+		asset_manager* m_asset_manager;
 	};
 
 
