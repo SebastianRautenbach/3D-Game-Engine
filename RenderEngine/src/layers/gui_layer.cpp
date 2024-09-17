@@ -180,7 +180,11 @@ void wizm::gui_layer::begin()
                 show_cam_error = true;
             }
             else
+            {
                 engine_status = RUNTIME_STATUS;
+                // save level just just before the runtime
+                global_scene->save_map_data("");
+            }
         }
 
         /*
@@ -204,6 +208,7 @@ void wizm::gui_layer::begin()
         */
 
         if (ImGui::Button(ICON_FA_BUG "")) {
+            global_console_out = "console:";
             auto assets = m_asset_manager->get_all_assets();
             for (const auto& asset : assets) {
                 auto script = std::dynamic_pointer_cast<script_asset>(asset.second);

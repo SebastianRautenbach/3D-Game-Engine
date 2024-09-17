@@ -114,7 +114,7 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
                 textureChannelCount++;
             }
         }
-        std::cout << "mat:" << i << "; texture count" << textureChannelCount << "\n";
+        // ----- mat updates
     }
 
     return core_mesh(vertices, indices, textures);

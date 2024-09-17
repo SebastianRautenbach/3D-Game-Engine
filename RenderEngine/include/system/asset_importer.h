@@ -95,7 +95,7 @@ private:
             return;
         }
         else {
-            std::cout << "Opened database successfully" << std::endl;
+    
         }
 
         const char* sql = "CREATE TABLE IF NOT EXISTS assets ("
@@ -108,7 +108,7 @@ private:
             sqlite3_free(zErrMsg);
         }
         else {
-            std::cout << "Table created successfully" << std::endl;
+         
         }
     }
 };

@@ -44,5 +44,14 @@ void wizm::scripting_component::component_postupdate()
 
 std::shared_ptr<core_component> wizm::scripting_component::_copy() const
 {
-	return std::shared_ptr<core_component>();
+	auto new_sc_comp = std::make_shared<scripting_component>();
+	new_sc_comp->set_position(this->get_position());
+	new_sc_comp->set_rotation(this->get_rotation());
+	new_sc_comp->set_scale(this->get_scale());
+	new_sc_comp->script_asset_id = this->script_asset_id;
+	new_sc_comp->m_is_active = this->m_is_active;
+	new_sc_comp->m_script_asset = this->m_script_asset;
+
+
+	return new_sc_comp;
 }

@@ -165,6 +165,7 @@
     <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
     <ClCompile Include="src\components\scripting_component.cpp" />
+    <ClCompile Include="src\layers\script_debug_layer.cpp" />
     <ClCompile Include="src\layers\script_editor_layer.cpp" />
     <ClCompile Include="src\other utils\common.cpp" />
     <ClCompile Include="src\systems\camera_3d.cpp" />
@@ -249,6 +250,7 @@
     <ClInclude Include="include\layers\layers_define.h" />
     <ClInclude Include="include\layers\performance_ui_layer.h" />
     <ClInclude Include="include\layers\properties_ui_layer.h" />
+    <ClInclude Include="include\layers\script_debug_layer.h" />
     <ClInclude Include="include\layers\script_editor_layer.h" />
     <ClInclude Include="include\other utils\common.h" />
     <ClInclude Include="include\other utils\extra_utils.h" />

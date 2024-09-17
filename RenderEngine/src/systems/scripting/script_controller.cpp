@@ -1,5 +1,6 @@
 #include "system/scripting/script_controller.h"
 #include "system/scripting/scripting_functions.h"
+#include "other utils/common.h"
 
 script_controller::script_controller(std::string path)
 {
@@ -81,4 +82,10 @@ void script_controller::on_update(float delta_time)
 
 		}
 	}
+}
+
+void script_controller::MessageCallback(const asSMessageInfo* msg)
+{
+	global_console_out = "console: ";
+	global_console_out += msg->message;
 }

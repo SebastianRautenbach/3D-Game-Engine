@@ -6,6 +6,7 @@
 #include "other utils/IDGEN.h"
 #include <iostream>
 
+
 class script_controller {
 
 public:
@@ -17,9 +18,7 @@ public:
 	void on_start();
 	void on_update(float delta_time);
 
-	static void MessageCallback(const asSMessageInfo* msg) {
-		std::cerr << "AngelScript: " << msg->message << std::endl;
-	}
+	static void MessageCallback(const asSMessageInfo* msg);
 
 private:
 	std::string module_id = "";

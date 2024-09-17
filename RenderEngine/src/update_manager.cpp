@@ -2,7 +2,6 @@
 #include "system/mouse_picking.h"
 #include "system/scene_manager.h"
 
-
 using namespace wizm;
 
 
@@ -36,7 +35,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 
 	m_billboard_manager = new billboard_manager(m_gl_renderer->m_shdrs[2]);
 
-	//m_layer_stack->PushLayer(new script_editor_layer(m_asset_manager));
+	m_layer_stack->PushLayer(new script_debug_layer());
 	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer->buffer_id , m_camera_manager, m_gl_renderer));
 	m_layer_stack->PushLayer(new scene_ui_layer( m_gl_renderer));
 	m_layer_stack->PushLayer(new performace_ui_layer());
