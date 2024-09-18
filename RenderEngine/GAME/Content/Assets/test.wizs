@@ -3,6 +3,8 @@ void on_start() {
     print("Script started yipee");
 }
 
+
+
 void on_update(float delta_time) {
 
     add_entity_rotation("entity1", 0, 0, delta_time);
@@ -26,5 +28,4 @@ void on_update(float delta_time) {
     if(has_key_pressed(key_codes::eKEY_SPACE)) {
          add_entity_position("scary", 0, delta_time, 0);
     }
-
 }

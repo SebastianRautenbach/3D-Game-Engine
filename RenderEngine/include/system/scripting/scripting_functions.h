@@ -226,7 +226,7 @@ namespace engine_scripting
 	
 
 
-	static void __stdcall print(std::string& msg) {
+	static void print(std::string& msg) {
 		std::cout << msg << "\n";
 	}
 	SCRIPT_DEFINE_FUNC_1(void, print, string);
@@ -454,6 +454,43 @@ public:
 		script_engine->RegisterEnumValue("key_codes", "eKEY_D", eKEY_D);
 		script_engine->RegisterEnumValue("key_codes", "eKEY_SPACE", eKEY_SPACE);
 		script_engine->RegisterEnumValue("key_codes", "eKEY_ENTER", eKEY_ENTER);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_ESCAPE", eKEY_ESCAPE);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_LEFT", eKEY_LEFT);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_RIGHT", eKEY_RIGHT);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_UP", eKEY_UP);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_DOWN", eKEY_DOWN);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_TAB", eKEY_TAB);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_BACKSPACE", eKEY_BACKSPACE);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_DELETE", eKEY_DELETE);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_LEFT_SHIFT", eKEY_LEFT_SHIFT);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_RIGHT_SHIFT", eKEY_RIGHT_SHIFT);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_LEFT_CTRL", eKEY_LEFT_CTRL);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_RIGHT_CTRL", eKEY_RIGHT_CTRL);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_LEFT_ALT", eKEY_LEFT_ALT);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_RIGHT_ALT", eKEY_RIGHT_ALT);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F1", eKEY_F1);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F2", eKEY_F2);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F3", eKEY_F3);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F4", eKEY_F4);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F5", eKEY_F5);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F6", eKEY_F6);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F7", eKEY_F7);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F8", eKEY_F8);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F9", eKEY_F9);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F10", eKEY_F10);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F11", eKEY_F11);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F12", eKEY_F12);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_0", eKEY_0);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_1", eKEY_1);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_2", eKEY_2);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_3", eKEY_3);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_4", eKEY_4);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_5", eKEY_5);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_6", eKEY_6);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_7", eKEY_7);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_8", eKEY_8);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_9", eKEY_9);
+
 
 		//----------------------------------------------------------------------------------------------------- VEC2
 		//----------------------------------------------------------------------------------------------------------
