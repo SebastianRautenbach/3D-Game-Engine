@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Debug\\mouse_picking.h.obj",
+            "outputs": [
+                "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\Debug\\vc143.pdb",
+                "Debug\\",
+                "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\Debug\\mouse_picking.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "include\\system\\mouse_picking.h",
+                    "source-path": "c:\\users\\karat\\documents\\github\\3d-game-engine\\renderengine\\include\\system\\mouse_picking.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

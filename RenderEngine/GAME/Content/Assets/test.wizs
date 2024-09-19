@@ -28,4 +28,12 @@ void on_update(float delta_time) {
     if(has_key_pressed(key_codes::eKEY_SPACE)) {
          add_entity_position("scary", 0, delta_time, 0);
     }
+
+    if(has_key_pressed(key_codes::eKEY_DELETE)) {
+        
+        vec3 rot = get_entity_rotation("floor");
+        print("x:" + rot.x + " y:" + rot.y + " z:" + rot.z);
+    }
+
+
 }

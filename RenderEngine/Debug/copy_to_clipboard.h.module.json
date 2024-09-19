@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Debug\\copy_to_clipboard.h.obj",
+            "outputs": [
+                "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\Debug\\vc143.pdb",
+                "Debug\\",
+                "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\Debug\\copy_to_clipboard.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "include\\other utils\\copy_to_clipboard.h",
+                    "source-path": "c:\\users\\karat\\documents\\github\\3d-game-engine\\renderengine\\include\\other utils\\copy_to_clipboard.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

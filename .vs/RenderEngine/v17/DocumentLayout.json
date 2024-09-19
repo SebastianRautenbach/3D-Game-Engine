@@ -1,12 +1,53 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\scripting_functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\system\\scripting\\scripting_functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "scripting_functions.h",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\scripting_functions.h",
+              "RelativeDocumentMoniker": "RenderEngine\\include\\system\\scripting\\scripting_functions.h",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\scripting\\scripting_functions.h",
+              "RelativeToolTip": "RenderEngine\\include\\system\\scripting\\scripting_functions.h",
+              "ViewState": "AQIAAJkCAAAAAAAAAAAAAJ8CAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-19T09:50:24.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "scene.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\scene.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\scene.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\scene.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\scene.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-18T17:11:05.376Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -19,6 +19,11 @@ namespace wizm_script
 
 		vec3(float px, float py, float pz) : x(px), y(py), z(pz) {}
 		vec3() : x(0.0f), y(0.0f), z(0.0f) {}
+
+		vec3 operator+(const vec3& other) const {
+			return vec3(x + other.x, y + other.y, z + other.z);
+		}
+
 	};
 }
 

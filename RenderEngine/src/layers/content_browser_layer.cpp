@@ -2,6 +2,8 @@
 #include "other utils/strconvr.h"
 #include "IconsFontAwesome5.h"
 #include "filetypes.h"
+#include "system/scripting/compose_script.h"
+#include "system/compose_level.h"
 
 wizm::content_browser_layer::content_browser_layer(asset_manager* p_asset_manager)
     :m_asset_manager(p_asset_manager)
@@ -47,16 +49,34 @@ void wizm::content_browser_layer::update(float delta_time)
 	
 	if (ImGui::Button("refresh")) {
 		
-        watcher->refresh();
-        m_asset_manager->load_assets_db();
-		assets = asset_import.retrieve_all_assets();
+        refresh_assets();
         
 	}
+
+    ImGui::SameLine();
+ 
+    ImGui::SetCursorPosX(ImGui::GetWindowWidth() - (ImGui::CalcTextSize("Add Asset").x + 30));
+    if (ImGui::BeginMenu("Add Asset")) {
+        
+        if (ImGui::MenuItem("Create new script")) {
+            engine_scripting::create_script(current_directory.string(), "new_script.wizs");
+            refresh_assets();
+        }
+
+        if (ImGui::MenuItem("Create new level")) {
+            create_level(current_directory.string(), "new_level.zer");
+            refresh_assets();
+        }
+ 
+        ImGui::EndMenu();
+    }
+    ImGui::SetCursorPosX(0);
 
 	if (ImGui::Button("...##back")) {
 		if(current_directory != "GAME")
 			current_directory = current_directory.parent_path();
 	}
+
 
 	float thumdnail_size = 256;
 	float panel_width = ImGui::GetContentRegionAvail().x / thumdnail_size * 2;
@@ -191,6 +211,13 @@ void wizm::content_browser_layer::update(float delta_time)
     update_add_content_ui(current_directory);
 
 	ImGui::End();
+}
+
+void wizm::content_browser_layer::refresh_assets()
+{
+    watcher->refresh();
+    m_asset_manager->load_assets_db();
+    assets = asset_import.retrieve_all_assets();
 }
 
 void wizm::content_browser_layer::update_add_content_ui(const std::filesystem::path& path) {

@@ -5,6 +5,9 @@ namespace wizm {
 
 	void core_scene::scene_preupdate()
 	{
+
+		delete_enity();
+
 		for (auto& i : m_entities)
 		{
 			i->entity_preupdate();
@@ -52,6 +55,7 @@ namespace wizm {
 		return does_exist;
 	}
 
+
 	std::shared_ptr<core_entity> core_scene::add_entity(std::shared_ptr<core_entity> entity) {
 		m_entities.push_back(entity);
 		return entity;
@@ -62,6 +66,22 @@ namespace wizm {
 		auto ptr = std::make_shared<core_entity>(entity_name);
 		m_entities.push_back(ptr);
 		return ptr;
+	}
+
+	void core_scene::delete_enity()
+	{
+		if (m_destroy_list.empty())
+			return;
+
+		for (const auto& destroy_entity : m_destroy_list) {
+			auto entity = get_entity_name(destroy_entity);
+			if (entity)
+			{
+				m_entities.erase(std::find(m_entities.begin(), m_entities.end(), entity));
+				m_reloaded;
+			}
+		}
+		m_destroy_list.clear();
 	}
 
 	void core_scene::clear_entities()

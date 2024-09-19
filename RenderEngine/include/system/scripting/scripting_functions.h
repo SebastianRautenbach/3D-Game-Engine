@@ -188,6 +188,7 @@
 #define SCRIPT_ARG_float(n) float _arg##n = gen->GetArgFloat(n)
 #define SCRIPT_ARG_int(n) int _arg##n = gen->GetArgDWord(n)
 #define SCRIPT_ARG_bool(n) bool _arg##n = gen->GetArgDWord(n)
+
 // Return Value Macros
 #define SCRIPT_RETURN_string std::string _ret
 #define SCRIPT_RETURN_CALL_string _ret =
@@ -253,7 +254,36 @@ namespace engine_scripting
 			global_scene->m_reloaded = true;
 		}
 	}
-	SCRIPT_DEFINE_FUNC_3(void, change_mesh, string, int, string)
+	SCRIPT_DEFINE_FUNC_3(void, change_mesh, string, int, string);
+
+	//--------------------------------------------------	  ENTITY
+	//--------------------------------------------------------------
+
+	void destroy(std::string entity_name) {
+		global_scene->m_destroy_list.emplace_back(entity_name);
+	}
+	SCRIPT_DEFINE_FUNC_1(void, destroy ,string);
+
+
+	//--------------------------------------------------    TEXTURES
+	//--------------------------------------------------------------
+
+
+	static void change_texture(std::string entity_name, int component_index, int texture_type ,std::string asset_id) {
+		auto entity = global_scene->get_entity_name(entity_name);
+
+		if (entity->m_components_list.size() > component_index) {
+			auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(entity->m_components_list[component_index]);
+			
+			if(texture_type == 0)
+				sm_comp->m_material->diffuse_asset_id = asset_id;
+			else if(texture_type == 1)
+				sm_comp->m_material->specular_asset_id = asset_id;
+
+			global_scene->m_reloaded = true;
+		}
+	}
+	SCRIPT_DEFINE_FUNC_4(void, change_texture, string, int, int ,string);
 	
 	
 	
@@ -274,6 +304,18 @@ namespace engine_scripting
 		entity->add_rotation(glm::vec3(p, y, r));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_rotation, string, float, float, float);
+
+
+	//-----------------------------------------------------------------------
+
+	static wizm_script::vec3 get_entity_rotation(const std::string entity_name) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+			return wizm_script::vec3(entity->get_rotation().x, entity->get_rotation().y, entity->get_rotation().z);
+		else
+			return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_1(vec3, get_entity_rotation, string);
 	
 	//-----------------------------------------------------------------------
 	
@@ -291,6 +333,18 @@ namespace engine_scripting
 		entity->add_position(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_position, string, float, float, float);
+
+
+	//-----------------------------------------------------------------------
+
+	static wizm_script::vec3 get_entity_position(const std::string entity_name) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+			return wizm_script::vec3(entity->get_position().x, entity->get_position().y, entity->get_position().z);
+		else
+			return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_1(vec3, get_entity_position, string);
 	
 	
 	//-----------------------------------------------------------------------
@@ -310,6 +364,21 @@ namespace engine_scripting
 		entity->add_scale(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_scale, string, float, float, float);
+
+
+	//-----------------------------------------------------------------------
+
+	static wizm_script::vec3 get_entity_scale(const std::string entity_name) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+			return wizm_script::vec3(entity->get_scale().x, entity->get_scale().y, entity->get_scale().z);
+		else
+			return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_1(vec3, get_entity_scale, string);
+
+	//-----------------------------------------------------------------------
+
 	
 	// component
 	
@@ -335,6 +404,39 @@ namespace engine_scripting
 	}
 	SCRIPT_DEFINE_FUNC_5(void, add_component_rotation, string, int, float, float, float);
 	
+	//-----------------------------------------------------------------------
+
+
+	static wizm_script::vec3 get_component_rotation(const std::string entity_name, int component_index) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+		{
+			if (component_index < entity->m_components_list.size()) {
+				const auto& vec = entity->m_components_list[0]->get_rotation();
+				return wizm_script::vec3(vec.x, vec.y, vec.z);
+			}
+		}
+
+		return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_2(vec3, get_component_rotation, string, int);
+
+
+	static wizm_script::vec3 get_component_world_rotation(const std::string entity_name, int component_index) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+		{
+			if (component_index < entity->m_components_list.size()) {
+				const auto& vec = entity->m_components_list[0]->get_world_rotation();
+				return wizm_script::vec3(vec.x, vec.y, vec.z);
+			}
+		}
+
+		return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_2(vec3, get_component_world_rotation, string, int);
+
+
 	//-----------------------------------------------------------------------
 	
 	
@@ -364,6 +466,38 @@ namespace engine_scripting
 	
 	
 	//-----------------------------------------------------------------------
+
+	static wizm_script::vec3 get_component_position(const std::string entity_name, int component_index) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+		{
+			if (component_index < entity->m_components_list.size()) {
+				const auto& vec = entity->m_components_list[0]->get_position();
+				return wizm_script::vec3(vec.x, vec.y, vec.z);
+			}
+		}
+
+		return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_2(vec3, get_component_position, string, int);
+
+
+	static wizm_script::vec3 get_component_world_position(const std::string entity_name, int component_index) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+		{
+			if (component_index < entity->m_components_list.size()) {
+				const auto& vec = entity->m_components_list[0]->get_world_position();
+				return wizm_script::vec3(vec.x, vec.y, vec.z);
+			}
+		}
+
+		return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_2(vec3, get_component_world_position, string, int);
+	
+	
+	//-----------------------------------------------------------------------
 	
 	
 	static void set_component_scale(std::string entity_name, int component_index, float x, float y, float z) {
@@ -389,14 +523,46 @@ namespace engine_scripting
 	}
 	SCRIPT_DEFINE_FUNC_5(void, add_component_scale, string, int, float, float, float);
 
+	//-----------------------------------------------------------------------
+
+
+	static wizm_script::vec3 get_component_scale(const std::string entity_name, int component_index) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+		{
+			if (component_index < entity->m_components_list.size()) {
+				const auto& vec = entity->m_components_list[0]->get_scale();
+				return wizm_script::vec3(vec.x, vec.y, vec.z);
+			}
+		}
+
+		return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_2(vec3, get_component_scale, string, int);
+
+
+	static wizm_script::vec3 get_component_world_scale(const std::string entity_name, int component_index) {
+		auto entity = global_scene->get_entity_name(entity_name);
+		if (entity)
+		{
+			if (component_index < entity->m_components_list.size()) {
+				const auto& vec = entity->m_components_list[0]->get_world_scale();
+				return wizm_script::vec3(vec.x, vec.y, vec.z);
+			}
+		}
+
+		return wizm_script::vec3();
+	}
+	SCRIPT_DEFINE_FUNC_2(vec3, get_component_world_scale, string, int);
+
 
 	//-----------------------------------------------------------------------
 
-	static wizm_script::vec3 get_entity_rotation(std::string entity_name) {
-		auto entity = global_scene->get_entity_name(entity_name);
-		return wizm_script::vec3(entity->get_rotation().x, entity->get_rotation().y, entity->get_rotation().z);
-	}
-	SCRIPT_DEFINE_FUNC_1(vec3, get_entity_rotation, string);
+	
+	//--------------------------------------------------	  LIGHTS
+	//--------------------------------------------------------------
+
+
 
 
 
@@ -421,6 +587,10 @@ public:
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(has_key_pressed));
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_mesh));
+
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(destroy));
+
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_texture));
 		
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_entity_rotation));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(add_entity_rotation));
@@ -440,13 +610,29 @@ public:
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_component_scale));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(add_component_scale));
 
-		//add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_entity_rotation));
-	}
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_entity_rotation));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_entity_position));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_entity_scale));
 
+
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_rotation));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_position));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_scale));
+
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_world_rotation));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_world_position));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_world_scale));
+	}
+	
 
 	void init_variables(asIScriptEngine* script_engine) {
 		//---------------------------------------------------------------------------------------------------- ENUMS
 		//----------------------------------------------------------------------------------------------------------
+
+		script_engine->RegisterEnum("texture_codes");
+		script_engine->RegisterEnumValue("texture_codes", "eDiffuseTex", 0);
+		script_engine->RegisterEnumValue("texture_codes", "eSpecularTex", 1);
+
 		script_engine->RegisterEnum("key_codes");
 		script_engine->RegisterEnumValue("key_codes", "eKEY_W", eKEY_W);
 		script_engine->RegisterEnumValue("key_codes", "eKEY_S", eKEY_S);
@@ -495,17 +681,20 @@ public:
 		//----------------------------------------------------------------------------------------------------- VEC2
 		//----------------------------------------------------------------------------------------------------------
 
-		script_engine->RegisterObjectType("vec2", sizeof(wizm_script::vec2), asOBJ_VALUE | asOBJ_POD);
+		script_engine->RegisterObjectType("vec2", sizeof(wizm_script::vec2), asOBJ_VALUE | asOBJ_POD | asOBJ_APP_CLASS_CDAK);
 		script_engine->RegisterObjectProperty("vec2", "float x", offsetof(wizm_script::vec2, x));
 		script_engine->RegisterObjectProperty("vec2", "float y", offsetof(wizm_script::vec2, y)); 
 
 		//----------------------------------------------------------------------------------------------------- VEC3
 		//----------------------------------------------------------------------------------------------------------
 
-		script_engine->RegisterObjectType("vec3", sizeof(wizm_script::vec3), asOBJ_VALUE | asOBJ_POD);
+		script_engine->RegisterObjectType("vec3", sizeof(wizm_script::vec3), asOBJ_VALUE | asOBJ_POD | asOBJ_APP_CLASS_CDAK);
 		script_engine->RegisterObjectProperty("vec3", "float x", offsetof(wizm_script::vec3, x)); 
 		script_engine->RegisterObjectProperty("vec3", "float y", offsetof(wizm_script::vec3, y)); 
-		script_engine->RegisterObjectProperty("vec3", "float z", offsetof(wizm_script::vec3, z)); 
+		script_engine->RegisterObjectProperty("vec3", "float z", offsetof(wizm_script::vec3, z));
+		script_engine->RegisterObjectBehaviour("vec3", asBEHAVE_CONSTRUCT, "void f()", asFUNCTIONPR([](void* memory) { new(memory) wizm_script::vec3(); }, (void*), void), asCALL_CDECL_OBJFIRST);
+		script_engine->RegisterObjectBehaviour("vec3", asBEHAVE_CONSTRUCT, "void f(float, float, float)", asFUNCTIONPR([](void* memory, float x, float y, float z) { new(memory) wizm_script::vec3(x, y, z); }, (void*, float, float, float), void), asCALL_CDECL_OBJFIRST);
+
 	}
 };
 

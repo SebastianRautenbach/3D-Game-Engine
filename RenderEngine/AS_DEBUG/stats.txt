@@ -1,18 +1,28 @@
 
 Total count
+PopPtr     : 32
+PshC4      : 21072
+PshV4      : 2730
+PSF        : 11408
+RET        : 2636
+COPY       : 32
+CALLSYS    : 24256
+SUSPEND    : 21140
+ALLOC      : 2700
+GETOBJ     : 2700
+RDR4       : 96
+PGA        : 2764
+VAR        : 2700
+LoadVObjR  : 96
+JLowZ      : 15804
 
 Never executed
-PopPtr    
 PshGPtr   
-PshC4     
-PshV4     
-PSF       
 SwapPtr   
 NOT       
 PshG4     
 LdGRdR4   
 CALL      
-RET       
 JMP       
 JZ        
 JNZ       
@@ -48,7 +58,6 @@ BXOR
 BSLL      
 BSRL      
 BSRA      
-COPY      
 PshC8     
 PshVPtr   
 RDSPtr    
@@ -63,14 +72,10 @@ JMPP
 PopRPtr   
 PshRPtr   
 STR       
-CALLSYS   
 CALLBND   
-SUSPEND   
-ALLOC     
 FREE      
 LOADOBJ   
 STOREOBJ  
-GETOBJ    
 REFCPY    
 CHKREF    
 GETOBJREF 
@@ -96,13 +101,10 @@ WRTV4
 WRTV8     
 RDR1      
 RDR2      
-RDR4      
 RDR8      
 LDG       
 LDV       
-PGA       
 CmpPtr    
-VAR       
 iTOf      
 fTOi      
 uTOf      
@@ -187,9 +189,7 @@ MODu
 DIVu64    
 MODu64    
 LoadRObjR 
-LoadVObjR 
 RefCpyV   
-JLowZ     
 JLowNZ    
 AllocMem  
 SetListSiz
@@ -205,3 +205,36 @@ POWu64
 Thiscall1 
 
 Sequences
+PopPtr    , SUSPEND    : 32
+PshC4     , PshC4      : 2634
+PshC4     , PSF        : 2634
+PshC4     , CALLSYS    : 15804
+PshV4     , PshC4      : 2634
+PshV4     , PSF        : 96
+PSF       , PSF        : 192
+PSF       , COPY       : 32
+PSF       , CALLSYS    : 5752
+PSF       , ALLOC      : 2700
+PSF       , GETOBJ     : 32
+PSF       , PGA        : 2700
+RET       , SUSPEND    : 2635
+COPY      , PopPtr     : 32
+CALLSYS   , PSF        : 2924
+CALLSYS   , SUSPEND    : 2668
+CALLSYS   , PGA        : 64
+CALLSYS   , VAR        : 2700
+CALLSYS   , LoadVObjR  : 96
+CALLSYS   , JLowZ      : 15804
+SUSPEND   , PshC4      : 15804
+SUSPEND   , PshV4      : 2634
+SUSPEND   , PSF        : 66
+SUSPEND   , RET        : 2636
+ALLOC     , PSF        : 2700
+GETOBJ    , CALLSYS    : 2700
+RDR4      , PshV4      : 96
+PGA       , PSF        : 2764
+VAR       , PSF        : 32
+VAR       , GETOBJ     : 2668
+LoadVObjR , RDR4       : 96
+JLowZ     , SUSPEND    : 15804
+LABEL     , SUSPEND    : 1

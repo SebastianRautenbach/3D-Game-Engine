@@ -21,6 +21,8 @@ namespace wizm {
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void update(float delta_time) override;
+
+		void refresh_assets();
 		
 		void update_add_content_ui(const std::filesystem::path& path);
 		std::vector<std::filesystem::path> get_directory_content(const std::filesystem::path& path);

@@ -179,7 +179,7 @@ void wizm::gui_layer::begin()
             if (!m_camera_manager->update_crnt_camera(true)) {
                 show_cam_error = true;
             }
-            else
+            else if(engine_status != RUNTIME_STATUS)
             {
                 engine_status = RUNTIME_STATUS;
                 // save level just just before the runtime

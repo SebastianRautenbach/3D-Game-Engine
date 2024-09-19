@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Debug\\spotlight_component.h.obj",
+            "outputs": [
+                "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\Debug\\vc143.pdb",
+                "Debug\\",
+                "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\Debug\\spotlight_component.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "include\\entity sys\\components\\spotlight_component.h",
+                    "source-path": "c:\\users\\karat\\documents\\github\\3d-game-engine\\renderengine\\include\\entity sys\\components\\spotlight_component.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

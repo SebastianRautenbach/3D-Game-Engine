@@ -24,6 +24,7 @@ namespace wizm {
 		// entity related 
 		std::shared_ptr<core_entity> add_entity(std::shared_ptr<core_entity> entity);
 		std::shared_ptr<core_entity> add_entity(std::string entity_name);
+		void delete_enity();
 
 
 		// modifying only one entity
@@ -52,6 +53,7 @@ namespace wizm {
 
 	public:
 		std::vector<std::shared_ptr<core_entity>> m_entities;
+		std::vector<std::string> m_destroy_list;
 		bool m_reloaded = false;
 		std::string current_scene = "";
 

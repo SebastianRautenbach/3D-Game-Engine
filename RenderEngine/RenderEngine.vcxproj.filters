@@ -210,6 +210,12 @@
     <ClCompile Include="src\layers\script_debug_layer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\layers\asset_viewer_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\other utils\copy_to_clipboard.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\update_manager.h">
@@ -456,6 +462,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\layers\script_debug_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\layers\asset_viewer_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\scripting\compose_script.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\compose_level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

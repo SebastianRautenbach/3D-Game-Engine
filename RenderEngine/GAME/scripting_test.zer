@@ -1,24 +1,3 @@
-Entity Name(1)(1)(1)(1)(1)(1)(1){
-	staticmesh0{
-		asset id:18410409422620930561;
-		material{
-			diffuse_asset_id:15546425226244383279;
-			specular_asset_id:18302487994969663584;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	tags{
-	}
-	transform{
-		position:-6.445506,-1.071751,-3.346192;
-		rotation:0.000000,0.000000,0.000000;
-		scale:57.644688,0.143182,30.974360;
-	}
-}
 Entity Names{
 	spotlight0{
 		light{
@@ -129,8 +108,29 @@ entity1{
 	}
 	transform{
 		position:-4.999291,2.861001,-4.000000;
-		rotation:0.000000,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.374336;
 		scale:1.000000,1.000000,1.000000;
+	}
+}
+floor{
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:15546425226244383279;
+			specular_asset_id:18302487994969663584;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-6.445506,-1.071751,-3.346192;
+		rotation:0.000000,0.000000,0.000000;
+		scale:57.644688,0.143182,30.974360;
 	}
 }
 scary{
