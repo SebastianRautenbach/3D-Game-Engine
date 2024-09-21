@@ -10,29 +10,11 @@ void on_update(float delta_time) {
     add_entity_rotation("entity1", 0, 0, delta_time);
 
     if(has_key_pressed(key_codes::eKEY_W)) {
-        add_entity_position("scary", 0, 0, -delta_time);
+       set_light_brightness("entity1", 1, 10);
     }
     
     if(has_key_pressed(key_codes::eKEY_S)) {
-        add_entity_position("scary", 0, 0, delta_time);
-    }
-
-    if(has_key_pressed(key_codes::eKEY_A)) {
-        add_entity_position("scary", -delta_time, 0, 0);
-    }
-
-    if(has_key_pressed(key_codes::eKEY_D)) {
-        add_entity_position("scary", delta_time, 0, 0);
-    }
-
-    if(has_key_pressed(key_codes::eKEY_SPACE)) {
-         add_entity_position("scary", 0, delta_time, 0);
-    }
-
-    if(has_key_pressed(key_codes::eKEY_DELETE)) {
-        
-        vec3 rot = get_entity_rotation("floor");
-        print("x:" + rot.x + " y:" + rot.y + " z:" + rot.z);
+        set_light_brightness("entity1", 1, 0);
     }
 
 

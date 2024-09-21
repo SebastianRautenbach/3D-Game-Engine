@@ -42,7 +42,7 @@ void wizm::pointlight_component::component_update(float delta_time)
 
     
     shader->setVec3(position_property, world_position);
-    shader->setVec3(ambient_property, m_ambient);
+    shader->setVec3(ambient_property, m_ambient * glm::vec3(m_brightness));
     shader->setVec3(diffuse_property, m_diffuse);
     shader->setVec3(specular_property, m_specular);
     shader->setFloat(constant_property, m_constant);

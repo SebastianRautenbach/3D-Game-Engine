@@ -22,7 +22,6 @@ void wizm::scripting_component::component_update(float delta_time)
 	if (engine_status == RUNTIME_STATUS) {
 
 		if (m_script_asset->m_initiated_script) {
-
 			m_script_asset->on_update(delta_time);
 		}
 		else

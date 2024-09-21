@@ -136,6 +136,7 @@ Entity Names{
 			m_diffuse:1.000000,1.000000,1.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			m_distance:18.700033;
+			m_brightness:1.000000;
 			spotlightindex:;
 			light_index:0;
 		}
@@ -165,6 +166,7 @@ Entity Names(1){
 			m_diffuse:1.000000,1.000000,1.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			m_distance:10.000000;
+			m_brightness:1.000000;
 			spotlightindex:;
 			light_index:1;
 		}

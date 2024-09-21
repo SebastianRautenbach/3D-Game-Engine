@@ -10,6 +10,7 @@ Entity Names{
 			m_diffuse:1.000000,1.000000,1.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			m_distance:18.700033;
+			m_brightness:1.000000;
 			spotlightindex:;
 			light_index:0;
 		}
@@ -39,6 +40,7 @@ Entity Names(1)(1)(1){
 			m_diffuse:1.000000,0.000000,0.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			m_distance:10.000000;
+			m_brightness:1.000000;
 			spotlightindex:;
 			light_index:1;
 		}
@@ -91,10 +93,11 @@ entity1{
 			m_quadratic:0.032000;
 			m_outerCutOff:0.725374;
 			m_cutOff:0.776046;
-			m_ambient:1.000000,0.999990,0.999990;
+			m_ambient:1.000000,0.000000,0.000000;
 			m_diffuse:1.000000,1.000000,1.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			m_distance:10.000000;
+			m_brightness:1.000000;
 			spotlightindex:;
 			light_index:2;
 		}

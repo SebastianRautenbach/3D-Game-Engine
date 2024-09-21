@@ -33,7 +33,7 @@ void wizm::asset_viewer_layer::update(float delta_time)
 		}
 	}
 	for (const auto& asset : m_assets) {
-		std::string id_ = "copy##" + asset.id;
+		std::string id_ = "copy id##" + asset.id;
 		if (ImGui::Button(id_.c_str())) {
 			copy_to_clipboard(asset.id);
 		}

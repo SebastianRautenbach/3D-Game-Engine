@@ -25,7 +25,7 @@ void wizm::directionallight_component::component_update(float delta_time)
 {
 	
 	shader->setVec3("dirLight.direction", get_world_rotation());
-	shader->setVec3("dirLight.ambient", m_ambient);
+	shader->setVec3("dirLight.ambient", m_ambient * glm::vec3(m_brightness));
 	shader->setVec3("dirLight.diffuse", m_diffuse);
 	shader->setVec3("dirLight.specular", m_specular);
 }

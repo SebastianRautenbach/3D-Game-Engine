@@ -58,6 +58,8 @@ namespace wizm {
                 save_t[parent_name][index]["light"].get_float("m_specular")[2]
             );
         
+
+            m_brightness = save_t[parent_name][index]["light"].get_float("m_brightness")[0];
         };
 
 
@@ -71,6 +73,7 @@ namespace wizm {
             save_t[parent_name]["directionallight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
             save_t[parent_name]["directionallight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
 
+            save_t[parent_name]["directionallight" + index]["light"].set_float("m_brightness", { m_brightness });
 
  
 

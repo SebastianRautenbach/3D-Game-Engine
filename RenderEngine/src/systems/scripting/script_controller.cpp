@@ -86,6 +86,6 @@ void script_controller::on_update(float delta_time)
 
 void script_controller::MessageCallback(const asSMessageInfo* msg)
 {
-	global_console_out = "console: ";
+	global_console_out += "\nCode:";
 	global_console_out += msg->message;
 }

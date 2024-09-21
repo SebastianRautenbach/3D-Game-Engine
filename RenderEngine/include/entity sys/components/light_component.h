@@ -22,7 +22,7 @@ namespace wizm {
 
 		std::shared_ptr<core_gl_shader> shader;
 
-
+		float m_brightness = 1.0f;
 		glm::vec3 m_ambient;
 		glm::vec3 m_diffuse;
 		glm::vec3 m_specular;

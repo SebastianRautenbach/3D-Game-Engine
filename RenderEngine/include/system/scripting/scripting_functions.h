@@ -562,8 +562,22 @@ namespace engine_scripting
 	//--------------------------------------------------	  LIGHTS
 	//--------------------------------------------------------------
 
+	// I needa fix this
+	void set_light_brightness(const std::string entity_name, int component_index, float brightness) {
+		auto entity = global_scene->get_entity_name(entity_name);
+
+		if (entity->m_components_list.size() > component_index) {
+			auto light_comp = std::dynamic_pointer_cast<light_component>(entity->m_components_list[component_index]);
+			if(light_comp)
+				light_comp->m_brightness = brightness;
+		}
+	}
+	SCRIPT_DEFINE_FUNC_3(void, set_light_brightness, string, int, float);
 
 
+
+
+	//-----------------------------------------------------------------------
 
 
 bool add_script_func(asIScriptEngine* script_engine, const std::string& func_decl, void* function, int call_conv) {
@@ -622,6 +636,10 @@ public:
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_world_rotation));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_world_position));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_component_world_scale));
+
+
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_light_brightness));
+
 	}
 	
 
@@ -638,6 +656,28 @@ public:
 		script_engine->RegisterEnumValue("key_codes", "eKEY_S", eKEY_S);
 		script_engine->RegisterEnumValue("key_codes", "eKEY_A", eKEY_A);
 		script_engine->RegisterEnumValue("key_codes", "eKEY_D", eKEY_D);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_Q", eKEY_Q);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_E", eKEY_E);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_R", eKEY_R);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_T", eKEY_T);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_Y", eKEY_Y);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_U", eKEY_U);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_I", eKEY_I);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_O", eKEY_O);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_P", eKEY_P);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_F", eKEY_F);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_G", eKEY_G);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_H", eKEY_H);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_J", eKEY_J);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_K", eKEY_K);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_L", eKEY_L);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_Z", eKEY_Z);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_X", eKEY_X);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_C", eKEY_C);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_V", eKEY_V);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_B", eKEY_B);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_N", eKEY_N);
+		script_engine->RegisterEnumValue("key_codes", "eKEY_M", eKEY_M);
 		script_engine->RegisterEnumValue("key_codes", "eKEY_SPACE", eKEY_SPACE);
 		script_engine->RegisterEnumValue("key_codes", "eKEY_ENTER", eKEY_ENTER);
 		script_engine->RegisterEnumValue("key_codes", "eKEY_ESCAPE", eKEY_ESCAPE);
