@@ -13,6 +13,14 @@
 extern int engine_status;
 extern std::string global_console_out;
 
+namespace wizm {
+	
+	inline void add_console_line(std::string msg) {
+		global_console_out += "\n" + msg;
+	}
+	
+}
+
 #endif // GLOBALS_H
 
 

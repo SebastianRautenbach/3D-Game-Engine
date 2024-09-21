@@ -29,35 +29,38 @@ script_controller::~script_controller()
 
 void script_controller::reload_script(std::string path)
 {
+	bool cont = true;
 	CScriptBuilder builder;
 	int r = builder.StartNewModule(m_script_engine, module_id.c_str());
 	if (r < 0) {
-		return;
+		cont=0;
 	}
 
 	r = builder.AddSectionFromFile(path.c_str());
 	if (r < 0) {
-		return;
+		cont = 0;
 	}
 
 
 
 	r = builder.BuildModule();
 	if (r < 0) {
-		return;
+		cont = 0;
 	}
+
+	
 
 	asIScriptModule* mod = m_script_engine->GetModule(module_id.c_str());
 	m_onstart_func = mod->GetFunctionByDecl("void on_start()");
 	m_onupdate_func = mod->GetFunctionByDecl("void on_update(float)");
 
 	if (!m_onstart_func || !m_onupdate_func) {
-		return;
+		
 	}
 
 	m_context = m_script_engine->CreateContext();
 	if (!m_context) {
-		return;
+		
 	}
 }
 
@@ -86,6 +89,9 @@ void script_controller::on_update(float delta_time)
 
 void script_controller::MessageCallback(const asSMessageInfo* msg)
 {
-	global_console_out += "\nCode:";
-	global_console_out += msg->message;
+	std::string error;
+	error += msg->section;
+	error += " ";
+	error += msg->message;
+	wizm::add_console_line(error);
 }

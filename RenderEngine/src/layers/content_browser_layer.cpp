@@ -4,6 +4,7 @@
 #include "filetypes.h"
 #include "system/scripting/compose_script.h"
 #include "system/compose_level.h"
+#include "other utils/copy_to_clipboard.h"
 
 wizm::content_browser_layer::content_browser_layer(asset_manager* p_asset_manager)
     :m_asset_manager(p_asset_manager)
@@ -139,6 +140,17 @@ void wizm::content_browser_layer::update(float delta_time)
                 if (ImGui::MenuItem("Rename")) {
                     
                     ImGui::SetKeyboardFocusHere();
+                }
+                if (ImGui::MenuItem("Copy ID")) {
+                    for (const auto& asset : assets) {
+                        auto asset_path = std::filesystem::directory_entry(asset.path).path().string();
+                        std::replace(asset_path.begin(), asset_path.end(), '/', '\\');
+                        auto entry_path = entry.string();
+
+                        if (asset_path == entry_path) {
+                            copy_to_clipboard(asset.id);
+                        }
+                    }
                 }
 
                

@@ -18,12 +18,6 @@ void wizm::scene_ui_layer::OnDetach()
 {
 }
 
-/*
-
-
-				THIS IS ONLY TESTING PURPOSES
-
-*/
 
 void wizm::scene_ui_layer::update(float delta_time)
 {
