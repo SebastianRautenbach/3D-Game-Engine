@@ -21,6 +21,7 @@ namespace wizm
 		level_file <<					"m_ambient:0.119048,0.119046,0.119046;\n";
 		level_file <<					"m_diffuse:0.400000,0.400000,0.400000;\n";
 		level_file <<					"m_specular:0.500000,0.500000,0.500000;\n";
+		level_file <<					"m_brightness:1.0;\n";
 		level_file <<				"}\n";
 		level_file <<				"transform{\n";
 		level_file <<					"position:0.000000,0.000000,0.000000;\n";

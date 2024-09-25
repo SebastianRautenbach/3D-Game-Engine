@@ -93,5 +93,6 @@ void script_controller::MessageCallback(const asSMessageInfo* msg)
 	error += msg->section;
 	error += " ";
 	error += msg->message;
-	wizm::add_console_line(error);
+
+	wizm::add_console_line(error, msg->type);
 }

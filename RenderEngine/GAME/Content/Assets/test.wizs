@@ -1,21 +1,9 @@
-
 void on_start() {
     print("Script started yipee");
 }
 
 
-
 void on_update(float delta_time) {
-
-    add_entity_rotation("entity1", 0, 0, delta_time);
-
-    if(has_key_pressed(key_codes::eKEY_W)) {
-       set_light_brightness("entity1", 1, 10);
-    }
-    
-    if(has_key_pressed(key_codes::eKEY_S)) {
-        set_light_brightness("entity1", 1, 0);
-    }
-
-
+    vec2 mouse_pos = get_mouse_pos();
+    print(""+mouse_pos.x);
 }

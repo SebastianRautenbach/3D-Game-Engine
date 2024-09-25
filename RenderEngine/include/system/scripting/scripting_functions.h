@@ -188,6 +188,8 @@
 #define SCRIPT_ARG_float(n) float _arg##n = gen->GetArgFloat(n)
 #define SCRIPT_ARG_int(n) int _arg##n = gen->GetArgDWord(n)
 #define SCRIPT_ARG_bool(n) bool _arg##n = gen->GetArgDWord(n)
+#define SCRIPT_ARG_vec3(n) wizm_script::vec3 _arg##n = *(wizm_script::vec3*)gen->GetArgObject(n)
+#define SCRIPT_ARG_vec2(n) wizm_script::vec2 _arg##n = *(wizm_script::vec2*)gen->GetArgObject(n)
 
 // Return Value Macros
 #define SCRIPT_RETURN_string std::string _ret
@@ -197,6 +199,12 @@
 #define SCRIPT_RETURN_vec3 wizm_script::vec3 _ret
 #define SCRIPT_RETURN_CALL_vec3 _ret = 
 #define SCRIPT_SET_RETURN_vec3 gen->SetReturnObject(&_ret)
+
+
+#define SCRIPT_RETURN_vec2 wizm_script::vec2 _ret
+#define SCRIPT_RETURN_CALL_vec2 _ret = 
+#define SCRIPT_SET_RETURN_vec2 gen->SetReturnObject(&_ret)
+
 
 #define SCRIPT_RETURN_bool bool _ret
 #define SCRIPT_RETURN_CALL_bool _ret =
@@ -240,6 +248,13 @@ namespace engine_scripting
 		return global_input_manager->has_key_been_pressed(key);
 	}
 	SCRIPT_DEFINE_FUNC_1(bool, has_key_pressed, int);
+
+	static wizm_script::vec2 get_mouse_pos() {
+		double x, y;
+		global_input_manager->get_mouse_pos(x, y);
+		return wizm_script::vec2(x,y);
+	}
+	SCRIPT_DEFINE_FUNC(vec2, get_mouse_pos);
 
 	
 	//-------------------------------------------------- STATIC MESH
@@ -575,6 +590,17 @@ namespace engine_scripting
 	SCRIPT_DEFINE_FUNC_3(void, set_light_brightness, string, int, float);
 
 
+	void set_light_ambient(const std::string entity_name, int component_index,wizm_script::vec3 ambient) {
+		auto entity = global_scene->get_entity_name(entity_name);
+
+		if (entity->m_components_list.size() > component_index) {
+			auto light_comp = std::dynamic_pointer_cast<light_component>(entity->m_components_list[component_index]);
+			if (light_comp)
+				light_comp->m_ambient = glm::vec3(ambient.x, ambient.y, ambient.z);
+		}
+	}
+	SCRIPT_DEFINE_FUNC_3(void, set_light_ambient, string, int, vec3);
+
 
 
 	//-----------------------------------------------------------------------
@@ -599,6 +625,7 @@ public:
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(print));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(has_key_pressed));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_mouse_pos));
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_mesh));
 
@@ -639,6 +666,7 @@ public:
 
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_light_brightness));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_light_ambient));
 
 	}
 	
@@ -724,6 +752,8 @@ public:
 		script_engine->RegisterObjectType("vec2", sizeof(wizm_script::vec2), asOBJ_VALUE | asOBJ_POD | asOBJ_APP_CLASS_CDAK);
 		script_engine->RegisterObjectProperty("vec2", "float x", offsetof(wizm_script::vec2, x));
 		script_engine->RegisterObjectProperty("vec2", "float y", offsetof(wizm_script::vec2, y)); 
+		script_engine->RegisterObjectBehaviour("vec2", asBEHAVE_CONSTRUCT, "void f()", asFUNCTIONPR([](void* memory) { new(memory) wizm_script::vec2(); }, (void*), void), asCALL_CDECL_OBJFIRST);
+		script_engine->RegisterObjectBehaviour("vec2", asBEHAVE_CONSTRUCT, "void f(float, float)", asFUNCTIONPR([](void* memory, float x, float y) { new(memory) wizm_script::vec2(x, y); }, (void*, float, float), void), asCALL_CDECL_OBJFIRST);
 
 		//----------------------------------------------------------------------------------------------------- VEC3
 		//----------------------------------------------------------------------------------------------------------

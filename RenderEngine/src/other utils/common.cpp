@@ -2,4 +2,4 @@
 
 
 int engine_status = EDITOR_STATUS;
-std::string global_console_out = "Console:";
+std::vector<wizm::console_out_s> wizm::global_console_out = {};

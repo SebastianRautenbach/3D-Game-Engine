@@ -7,22 +7,22 @@ Variables:
  012: (heap) string 
 
 
-- 3,5 -
+- 2,5 -
     0  12 *    SUSPEND
     1  12 *    PSF      v12
-    2  14 *    PGA      0x5830c7b0          (str:Script started yipee)
+    2  14 *    PGA      0x6c9e37b0          (str:Script started yipee)
     5  16 *    PSF      v10
     6  18 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v10, 1
     8  14 *    PSF      v10
-    9  16 *    ALLOC    0x22658143750, 20             (type:string, string::string(const string&in))
+    9  16 *    ALLOC    0x2536c6786d0, 20             (type:string, string::string(const string&in))
    13  12 *    PSF      v10
    14  14 *    CALLSYS  21           (string::~string())
                ObjInfo  v10, 0
    16  12 *    VAR      v12
    17  14 *    GETOBJ   0
-   18  14 *    CALLSYS  69           (void print(string))
-- 4,2 -
+   18  14 *    CALLSYS  71           (void print(string))
+- 3,2 -
    20  12 *    SUSPEND
             0:
    21  12 *    RET      0

@@ -209,7 +209,7 @@ void wizm::gui_layer::begin()
         */
 
         if (ImGui::Button(ICON_FA_BUG "")) {
-            global_console_out = "console:";
+            global_console_out.clear();
             auto assets = m_asset_manager->get_all_assets();
             for (const auto& asset : assets) {
                 auto script = std::dynamic_pointer_cast<script_asset>(asset.second);
