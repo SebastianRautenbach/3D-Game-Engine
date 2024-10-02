@@ -30,7 +30,7 @@ Variables:
 - 8,5 -
    12  27 *    SUSPEND
    13  27 *    PSF      v27
-   14  29 *    PGA      0x6c9e5430          (str:)
+   14  29 *    PGA      0x833e5dc0          (str:)
    17  31 *    PSF      v14
    18  33 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v14, 1
@@ -45,7 +45,7 @@ Variables:
    30  31 *    CALLSYS  21           (string::~string())
                ObjInfo  v14, 0
    32  29 *    PSF      v25
-   33  31 *    ALLOC    0x2536c6786d0, 20             (type:string, string::string(const string&in))
+   33  31 *    ALLOC    0x23d83105ec0, 20             (type:string, string::string(const string&in))
    37  27 *    PSF      v25
    38  29 *    CALLSYS  21           (string::~string())
                ObjInfo  v25, 0

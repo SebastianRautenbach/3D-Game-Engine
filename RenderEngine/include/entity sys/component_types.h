@@ -13,4 +13,8 @@ namespace wizm {
 		eScripting
 	};
 
+	inline bool is_light_component(eCompType type) {
+		return type == ePointLight || type == eSpotLight || type == eDirectionalLight;
+	}
+
 }

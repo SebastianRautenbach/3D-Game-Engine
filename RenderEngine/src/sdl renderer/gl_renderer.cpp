@@ -54,14 +54,10 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	*	I should consider making a shader manager
 	*	but for now this will do
 	*/
+
 	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/ray_vrtx.glsl", "shaders/ray_frgmnt.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/billboard_vrtx.glsl", "shaders/billboard_frgment.glsl"));
-
-
-	
-
-
 
 
 	glEnable(GL_DEPTH_TEST);

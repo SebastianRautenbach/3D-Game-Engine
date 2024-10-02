@@ -10,7 +10,12 @@ namespace wizm {
 
 		for (auto& i : m_entities)
 		{
-			i->entity_preupdate();
+			for (auto comp : i->m_components_list) {
+
+				if (!is_light_component(comp->m_component_type)) {
+					comp->component_preupdate();
+				}
+			}
 		}
 
 		
@@ -22,7 +27,12 @@ namespace wizm {
 
 		for (auto& i : m_entities)
 		{
-			i->entity_update(delta_time);
+			for (auto comp : i->m_components_list) {
+
+				if (!is_light_component(comp->m_component_type)) {
+					comp->component_update(delta_time);
+				}
+			}
 		}
 	}
 	
@@ -30,10 +40,13 @@ namespace wizm {
 	{
 		for (auto& i : m_entities)
 		{
-			i->entity_postupdate();
+			for (auto comp : i->m_components_list) {
+
+				if (!is_light_component(comp->m_component_type)) {
+					comp->component_postupdate();
+				}
+			}
 		}
-
-
 	}
 
 	unsigned int core_scene::total_component_count()
@@ -84,6 +97,8 @@ namespace wizm {
 		m_destroy_list.clear();
 	}
 
+	
+
 	void core_scene::clear_entities()
 	{
 		m_reloaded = true;
@@ -122,5 +137,51 @@ namespace wizm {
 		}
 		else
 			read.save_file(read, current_scene);
+	}
+
+
+
+
+
+
+
+
+	void core_scene::pre_update_light_components()
+	{
+		for (auto& i : m_entities)
+		{
+			for (auto& comp : i->m_components_list) {
+
+				if (is_light_component(comp->m_component_type)) {
+					comp->component_preupdate();
+				}
+			}
+		}
+	}
+
+	void core_scene::update_light_components(float delta_time)
+	{
+		for (auto& i : m_entities)
+		{
+			for (auto& comp : i->m_components_list) {
+			
+				if (is_light_component(comp->m_component_type)) {
+					comp->component_update(delta_time);
+				}
+			}
+		}
+	}
+
+	void core_scene::post_update_light_components()
+	{
+		for (auto& i : m_entities)
+		{
+			for (auto& comp : i->m_components_list) {
+
+				if (is_light_component(comp->m_component_type)) {
+					comp->component_postupdate();
+				}
+			}
+		}
 	}
 }

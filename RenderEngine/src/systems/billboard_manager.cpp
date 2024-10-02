@@ -17,24 +17,18 @@ void wizm::billboard_manager::render()
 
 				m_shader->setVec3("tint", glm::vec3(1.0f));
 
-				auto point_light = std::dynamic_pointer_cast<pointlight_component>(comp);
-				auto directional_light = std::dynamic_pointer_cast<directionallight_component>(comp);
-				auto spot_light = std::dynamic_pointer_cast<spotlight_component>(comp);
-				auto camera_comp = std::dynamic_pointer_cast<camera_component>(comp);
-
-				if (point_light) {
-					//	std::cout << ent->m_ent_ID << ":" << point_light->m_diffuse.x << "," << point_light->m_diffuse.y << "," << point_light->m_diffuse.z << std::endl;
-					m_billboard_core->draw(comp->get_transform(), eLightB, point_light->m_diffuse);
+				if (comp->m_component_type == ePointLight) {
+					m_billboard_core->draw(comp->get_transform(), eLightB);
 				}
-				else if (directional_light)
+				else if (comp->m_component_type == eDirectionalLight)
 				{
-					m_billboard_core->draw(comp->get_transform(), eDirLightB, directional_light->m_ambient);
+					m_billboard_core->draw(comp->get_transform(), eDirLightB);
 				}
-				else if (spot_light)
+				else if (comp->m_component_type == eSpotLight)
 				{
-					m_billboard_core->draw(comp->get_transform(), eSpotLightB, spot_light->m_diffuse);
+					m_billboard_core->draw(comp->get_transform(), eSpotLightB);
 				}
-				else if (camera_comp)
+				else if (comp->m_component_type == eCamera)
 				{
 					m_billboard_core->draw(comp->get_transform(), eCameraB);
 				}

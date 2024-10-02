@@ -6,6 +6,120 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+enum class framebuffer_texture_format {
+	None = 0,
+	RGBA8,
+	RGBA16,
+	RED_INTEGER,
+	DEPTH24STENCIL8,
+	Depth = DEPTH24STENCIL8
+};
+
+struct framebuffer_texture_sepc {
+	framebuffer_texture_sepc() = default;
+	framebuffer_texture_sepc(framebuffer_texture_format format)
+		: texture_format(format) {}
+
+	framebuffer_texture_format texture_format;
+
+};
+
+struct framebuffer_attachment_spec {
+	framebuffer_attachment_spec() = default;
+	framebuffer_attachment_spec(const std::initializer_list<framebuffer_texture_sepc> specs)
+		: attachments(specs) {}
+	std::vector<framebuffer_texture_sepc> attachments;
+};
+
+struct framebuffer_spec
+{
+	uint32_t Width = 0, Height = 0;
+	framebuffer_attachment_spec attachment;
+	uint32_t Samples = 1;
+
+	bool SwapChainTarget = false;
+};
+
+
+namespace lowlevelsys {
+
+	/*
+		These function were created by Cherno
+	*/
+
+	static bool is_depth_format(framebuffer_texture_format format)
+	{
+		switch (format)
+		{
+		case framebuffer_texture_format::DEPTH24STENCIL8:  return true;
+		}
+
+		return false;
+	}
+
+	static GLenum texture_target(bool multisampled)
+	{
+		return multisampled ? GL_TEXTURE_2D_MULTISAMPLE : GL_TEXTURE_2D;
+	}
+
+
+	static void create_texture(bool multisampled, uint32_t* outID, uint32_t count)
+	{
+		glCreateTextures(texture_target(multisampled), count, outID);
+	}
+
+	static void bind_texture(bool multisampled, uint32_t id)
+	{
+		glBindTexture(texture_target(multisampled), id);
+	}
+
+
+	static void attach_color_texture(uint32_t id, int samples, GLenum internalFormat, GLenum format, uint32_t width, uint32_t height, int index)
+	{
+		bool multisampled = samples > 1;
+		if (multisampled)
+		{
+			glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, internalFormat, width, height, GL_FALSE);
+		}
+		else
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_UNSIGNED_BYTE, nullptr);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		}
+
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + index, texture_target(multisampled), id, 0);
+	}
+
+
+
+	static void attach_depth_texture(uint32_t id, int samples, GLenum format, GLenum attachmentType, uint32_t width, uint32_t height)
+	{
+		bool multisampled = samples > 1;
+		if (multisampled)
+		{
+			glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, samples, format, width, height, GL_FALSE);
+		}
+		else
+		{
+			glTexStorage2D(GL_TEXTURE_2D, 1, format, width, height);
+
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		}
+
+		glFramebufferTexture2D(GL_FRAMEBUFFER, attachmentType, texture_target(multisampled), id, 0);
+	}
+
+}
+
 
 struct attrib_info {
 	unsigned int layout;
@@ -93,12 +207,13 @@ public:
 
 class core_framebuffer : public core_buffer_object {
 public:
-	core_framebuffer(int32_t width, int32_t height);
+	core_framebuffer(framebuffer_spec spec);
 	~core_framebuffer();
 
 	unsigned int get_tex_id() { return m_tex_id; }
 
-	void create_fbuffer(int32_t width, int32_t height);
+	void create_fbuffer();
+	void resize(unsigned int width, unsigned int height);
 
 	void gen_buffer() override;
 	void bind_buffer() override;
@@ -106,9 +221,17 @@ public:
 	void destroy_buffer() override;
 
 private:
-	int32_t m_width;
-	int32_t m_height;
 	unsigned int m_tex_id;
 	unsigned int m_depth_id;
+
+	/*
+		I like how Cherno did his
+	*/
+	framebuffer_spec m_spec;
+	std::vector<framebuffer_texture_sepc> m_color_attachment_spec;
+	framebuffer_texture_sepc m_depth_attachment_spec = framebuffer_texture_format::None;
+
+	std::vector<unsigned int> m_color_attachments;
+	unsigned int m_depth_attachment = 0;
 
 };

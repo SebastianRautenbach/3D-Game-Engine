@@ -49,7 +49,7 @@ struct SpotLight {
 };
 
 
-#define MAX_POINT_LIGHTS 100
+#define MAX_POINT_LIGHTS 32
 
 uniform DirLight dirLight;
 uniform PointLight pointLights[MAX_POINT_LIGHTS];
@@ -67,9 +67,7 @@ in vec3 FragPos;
 in vec3 Normal; 
 in vec2 oTexture;
 
-uniform vec3 lightPos;
 uniform vec3 camPos;
-uniform vec3 camFront;
 
 
 vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir);

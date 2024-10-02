@@ -33,13 +33,17 @@ namespace wizm {
 		lowlevelsys::gl_renderer* m_gl_renderer;
 		core_timer* m_timer;
 		gui_layer* base_layer;
+
 		core_framebuffer* m_framebuffer;
+		
+		
+		
+		
 		layer_stack* m_layer_stack;
 		billboard_manager* m_billboard_manager;
 		std::shared_ptr<camera_manager> m_camera_manager;
-
-		// testing
 		asset_manager* m_asset_manager;
+
 	};
 
 

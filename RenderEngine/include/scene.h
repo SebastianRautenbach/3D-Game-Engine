@@ -45,6 +45,12 @@ namespace wizm {
 		};
 
 
+		// temporarly
+		void pre_update_light_components();
+		void update_light_components(float delta_time);
+		void post_update_light_components();
+
+
 	private:
 
 		// remove all entities

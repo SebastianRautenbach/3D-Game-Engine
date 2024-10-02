@@ -313,7 +313,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
 
             glm::vec3 intersection_point;
 
-            if (sm_comp) {
+            if (sm_comp && sm_comp->m_model) {
                 sm_comp->m_model->update_boundingvolume(ent->get_position(), ent->get_rotation(), ent->get_scale());
 
                 if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos, intersection_point)) {
