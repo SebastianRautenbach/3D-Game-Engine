@@ -10,6 +10,10 @@
 #include <memory>
 #include <vector>
 
+#define SHADER_ZPREPASS
+#define SHADER_DEFAULT
+#define SHADER_BILLBOARD
+
 
 using namespace wizm;
 class core_gl_shader;

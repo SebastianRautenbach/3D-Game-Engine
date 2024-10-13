@@ -215,6 +215,8 @@ public:
 	void create_fbuffer();
 	void resize(unsigned int width, unsigned int height);
 
+	framebuffer_spec& get_specs() { return m_spec; }
+
 	void gen_buffer() override;
 	void bind_buffer() override;
 	void unbind_buffer() override;

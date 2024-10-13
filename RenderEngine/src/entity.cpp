@@ -48,7 +48,7 @@ void wizm::core_entity::entity_update(float delta_time)
 {
 	for (auto& i : m_components_list)
 	{
-		i->component_update(delta_time);
+		//i->component_update(delta_time);
 	}
 }
 

@@ -22,7 +22,7 @@ void wizm::spotlight_component::component_preupdate()
 {
 }
 
-void wizm::spotlight_component::component_update(float delta_time)
+void wizm::spotlight_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
     const std::string base_index = "spotLights[" + std::to_string(light_index) + "]";
 
@@ -81,7 +81,6 @@ std::shared_ptr<core_component> wizm::spotlight_component::_copy() const
     new_sc_comp->m_specular = this->m_specular;
     new_sc_comp->m_outerCutOff = this->m_outerCutOff;
     new_sc_comp->m_cutOff = this->m_cutOff;
-    new_sc_comp->shader = this->shader;
 
     return new_sc_comp;
 }

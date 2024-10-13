@@ -19,9 +19,7 @@ namespace wizm {
 
 		
 	public:
-
-		std::shared_ptr<core_gl_shader> shader;
-
+		std::shared_ptr<core_gl_shader> m_shader;
 		float m_brightness = 1.0f;
 		glm::vec3 m_ambient;
 		glm::vec3 m_diffuse;

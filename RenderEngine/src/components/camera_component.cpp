@@ -16,7 +16,7 @@ void wizm::camera_component::component_preupdate()
 {
 }
 
-void wizm::camera_component::component_update(float delta_time)
+void wizm::camera_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
 	m_camera->set_position(get_world_position());
 	auto rot = get_rotation_matrix();

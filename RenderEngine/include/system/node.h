@@ -106,6 +106,7 @@ namespace wizm {
 		glm::vec3 m_scale;
 		glm::mat4 m_transform;
 
+
 	private:
 		core_node* m_parent_node = nullptr;
 		std::vector<core_node*> m_child_nodes;

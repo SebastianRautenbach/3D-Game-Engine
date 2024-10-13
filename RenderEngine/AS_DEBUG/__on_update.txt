@@ -1,59 +1,62 @@
 void on_update(float)
 
-Temps: 4, 14, 15, 25, 27
+Temps: 4, 5, 6, 7, 8, 18, 20
 
 Variables: 
  000: float delta_time
  002: vec2 mouse_pos
  004: vec2 
- 014: string 
- 015: int 
- 025: string 
- 027: (heap) string 
+ 005: int 
+ 006: int 
+ 007: int 
+ 008: int 
+ 018: string 
+ 020: (heap) string 
 
 
 - 7,5 -
                VarDecl  0
-    0  27 *    SUSPEND
+    0  20 *    SUSPEND
                VarDecl  1
-    1  27 *    PSF      v2
-    2  29 *    CALLSYS  67           (vec2::vec2())
+    1  20 *    PSF      v2
+    2  22 *    CALLSYS  67           (vec2::vec2())
                ObjInfo  v2, 1
-    4  27 *    PSF      v4
-    5  29 *    CALLSYS  73           (vec2 get_mouse_pos())
+    4  20 *    PSF      v4
+    5  22 *    CALLSYS  73           (vec2 get_mouse_pos())
                ObjInfo  v4, 1
-    7  27 *    PSF      v4
-    8  29 *    PSF      v2
-    9  31 *    COPY     v2, 67108879
+    7  20 *    PSF      v4
+    8  22 *    PSF      v2
+    9  24 *    COPY     v2, 67108879
                ObjInfo  v4, 0
-   11  29 *    PopPtr
+   11  22 *    PopPtr
 - 8,5 -
-   12  27 *    SUSPEND
-   13  27 *    PSF      v27
-   14  29 *    PGA      0x833e5dc0          (str:)
-   17  31 *    PSF      v14
-   18  33 *    CALLSYS  20           (string::string(const string&in))
-               ObjInfo  v14, 1
-   20  29 *    LoadVObjR v2, v0, 67108879
-   23  29 *    RDR4     v15
-   24  29 *    PshV4    v15
-   25  30 *    PSF      v25
-   26  32 *    PSF      v14
-   27  34 *    CALLSYS  38           (string string::opAdd(float) const)
-               ObjInfo  v25, 1
-   29  29 *    PSF      v14
-   30  31 *    CALLSYS  21           (string::~string())
-               ObjInfo  v14, 0
-   32  29 *    PSF      v25
-   33  31 *    ALLOC    0x23d83105ec0, 20             (type:string, string::string(const string&in))
-   37  27 *    PSF      v25
-   38  29 *    CALLSYS  21           (string::~string())
-               ObjInfo  v25, 0
-   40  27 *    VAR      v27
-   41  29 *    GETOBJ   0
-   42  29 *    CALLSYS  71           (void print(string))
+   12  20 *    SUSPEND
+   13  20 *    PshC4    0x0          (i:0, f:0)
+   15  21 *    LoadVObjR v2, v4, 67108879
+   18  21 *    RDR4     v5
+   19  21 *    SetV4    v6, 0x43480000          (i:1128792064, f:200)
+   21  21 *    DIVf     v5, v5, v6
+   23  21 *    PshV4    v5
+   24  22 *    LoadVObjR v2, v0, 67108879
+   27  22 *    RDR4     v6
+   28  22 *    SetV4    v7, 0x43480000          (i:1128792064, f:200)
+   30  22 *    DIVf     v6, v6, v7
+   32  22 *    PshV4    v6
+   33  23 *    PSF      v20
+   34  25 *    PGA      0xfe548c60          (str:floor)
+   37  27 *    PSF      v18
+   38  29 *    CALLSYS  20           (string::string(const string&in))
+               ObjInfo  v18, 1
+   40  25 *    PSF      v18
+   41  27 *    ALLOC    0x1c6fe2682e0, 20             (type:string, string::string(const string&in))
+   45  23 *    PSF      v18
+   46  25 *    CALLSYS  21           (string::~string())
+               ObjInfo  v18, 0
+   48  23 *    VAR      v20
+   49  25 *    GETOBJ   0
+   50  25 *    CALLSYS  77           (void set_entity_rotation(string, float, float, float))
 - 9,2 -
-   44  27 *    SUSPEND
+   52  20 *    SUSPEND
                ObjInfo  v2, 0
             0:
-   45  27 *    RET      1
+   53  20 *    RET      1

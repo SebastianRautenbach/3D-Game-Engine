@@ -9,6 +9,7 @@
 #include "layers/layers_define.h"
 #include "system/billboard_manager.h"
 #include "system/camera_manager.h"
+#include "system/compute_cluster_test.h"
 
 // DELETE
 #include "system/draw_ray.h"
@@ -35,10 +36,10 @@ namespace wizm {
 		gui_layer* base_layer;
 
 		core_framebuffer* m_framebuffer;
-		
-		
-		
-		
+
+		compute_cluster* compute_cluster_test;
+
+
 		layer_stack* m_layer_stack;
 		billboard_manager* m_billboard_manager;
 		std::shared_ptr<camera_manager> m_camera_manager;

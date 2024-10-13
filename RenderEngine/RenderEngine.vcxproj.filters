@@ -473,5 +473,8 @@
     <ClInclude Include="include\system\compose_level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\system\compute_cluster_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

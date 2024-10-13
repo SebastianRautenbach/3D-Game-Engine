@@ -276,6 +276,7 @@
     <ClInclude Include="include\system\billboard.h" />
     <ClInclude Include="include\system\camera_manager.h" />
     <ClInclude Include="include\system\compose_level.h" />
+    <ClInclude Include="include\system\compute_cluster_test.h" />
     <ClInclude Include="include\system\core_mesh.h" />
     <ClInclude Include="include\system\core_model.h" />
     <ClInclude Include="include\system\core_renderable.h" />

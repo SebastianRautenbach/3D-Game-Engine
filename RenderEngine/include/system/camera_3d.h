@@ -55,6 +55,9 @@ namespace wizm {
 		void move_right(float distance);
 		void move_forward(float distance);
 
+		float get_near() { return m_near_plane; }
+		float get_far() { return m_far_plane; }
+
 		/*
 			Updates
 		*/

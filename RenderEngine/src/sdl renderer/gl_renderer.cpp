@@ -28,7 +28,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 	glfwMakeContextCurrent(window);
-	
+
 
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -37,7 +37,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 		return;
 	}
 
-	
+
 
 
 	// manage input --------------------------------------------------------------------- /
@@ -49,7 +49,22 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	m_camera_manager->m_viewport_camera->set_rotation(-0.438943, -0.769122, 0.0);
 	m_camera_manager->m_crnt_camera = m_camera_manager->m_viewport_camera;
 
-	
+
+
+
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	//glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
+	glEnable(GL_MULTISAMPLE);
+
+
 	/*
 	*	I should consider making a shader manager
 	*	but for now this will do
@@ -58,11 +73,11 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/ray_vrtx.glsl", "shaders/ray_frgmnt.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/billboard_vrtx.glsl", "shaders/billboard_frgment.glsl"));
+	m_shdrs.emplace_back(new core_gl_shader("shaders/Z Pre-pass_vrtx_shdr.glsl", "shaders/Z Pre-pass_frgmnt_shdr.glsl"));
+	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_comp_shdr.glsl"));
 
 
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
 
 }
 
@@ -79,8 +94,6 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 	glClearColor(0.77f, 0.839f, 0.968f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-	
 }
 
 
@@ -92,9 +105,9 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 {
 
 	if (global_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
-	{		
+	{
 		global_input_manager->set_hide_mouse_cursor(true);
-		
+
 		m_camera_manager->m_viewport_camera->add_yaw(global_input_manager->get_mouse_offset_new().x_offset * .02);
 		m_camera_manager->m_viewport_camera->add_pitch(global_input_manager->get_mouse_offset_new().y_offset * .02);
 
@@ -102,7 +115,7 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_W))
 			m_camera_manager->m_viewport_camera->move_forward(2 * deltaTime);
-		
+
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_S))
 			m_camera_manager->m_viewport_camera->move_forward(-2 * deltaTime);
 
@@ -118,14 +131,14 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_Q))
 			m_camera_manager->m_viewport_camera->move_up(-2 * deltaTime);
 
-	
+
 	}
 	else
 	{
 		global_input_manager->set_hide_mouse_cursor(false);
 		global_input_manager->mouse_stop_move();
 	}
-	
+
 
 
 	glm::mat4 view = glm::mat4(1.0f);
@@ -138,7 +151,7 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 	perspective = view;
 
 
-	for(const auto& shdr : m_shdrs)
+	for (const auto& shdr : m_shdrs)
 	{
 		shdr->use_shader();
 		unsigned int view_loc = glGetUniformLocation(shdr->get_shader_id(), "view");
@@ -206,11 +219,11 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 				auto spotlight_comps = std::dynamic_pointer_cast<spotlight_component>(per_ent);
 				if (spotlight_comps) {
-				
+
 					spot_lights.push_back(spotlight_comps);
 					all_lights.push_back(spotlight_comps);
 				}
-				
+
 				auto camera_comp_c = std::dynamic_pointer_cast<camera_component>(per_ent);
 				if (camera_comp_c) {
 					std::vector<vertex_data> cube = {
@@ -230,21 +243,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			}
 		}
 
-		for (int i = 0; i < spot_lights.size(); i++) {
-			spot_lights[i]->shader = m_shdrs[0];
-			spot_lights[i]->light_index = i;
-		}
 
-		for (int i = 0; i < point_lights.size(); i++)
-		{
-			point_lights[i]->shader = m_shdrs[0];
-			point_lights[i]->light_index = i;
-
-		}
-
-		for (auto& i : directional_lights) {
-			i->shader = m_shdrs[0];
-		}
 
 		for (auto& i : all_lights) {
 			std::vector<vertex_data> cube = {
@@ -264,12 +263,10 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 
 		for (auto& i : meshes) {
-			i->m_material->m_shader = m_shdrs[0];
-			i->m_material->on_change_material();
-			
+
 			if (i->m_model) {
 				i->m_model->m_camera = m_camera_manager->m_crnt_camera;
-				if(!i->m_model->has_boundvolume)
+				if (!i->m_model->has_boundvolume)
 				{
 					i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());
 				}
@@ -280,7 +277,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		* This will be updated because luckly for now only one object can be copied so only the last mesh will be updated
 		* this is bad because if later there is a way to paste multiple meshes this will only update the last one
 		*/
-		if(!meshes.empty() && meshes[meshes.size() - 1]->m_model)
+		if (!meshes.empty() && meshes[meshes.size() - 1]->m_model)
 			meshes[meshes.size() - 1]->m_model->init_boundingvolume(meshes[meshes.size() - 1]->m_model->retrieve_all_vertices());
 
 
@@ -291,7 +288,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 
 		shader_count = global_scene->total_component_count();
-		
+
 	}
 }
 
@@ -303,7 +300,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 void lowlevelsys::gl_renderer::on_exit()
 {
 	glfwTerminate();
-	
+
 }
 
 //-----------------------------------------------------------------------

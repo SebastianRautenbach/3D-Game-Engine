@@ -22,8 +22,14 @@ void wizm::staticmesh_component::component_preupdate()
 {
 }
 
-void wizm::staticmesh_component::component_update(float delta_time)
+void wizm::staticmesh_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
+	if (m_material->m_shader != shader)
+	{
+		m_material->m_shader = shader;
+		m_material->on_change_material();
+	}
+
 	if (m_model) {
 		m_material->update_material();
 

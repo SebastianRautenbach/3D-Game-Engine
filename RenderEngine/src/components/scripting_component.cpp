@@ -13,7 +13,7 @@ void wizm::scripting_component::component_preupdate()
 {
 }
 
-void wizm::scripting_component::component_update(float delta_time)
+void wizm::scripting_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
 	if(!m_script_asset) {
 		return;

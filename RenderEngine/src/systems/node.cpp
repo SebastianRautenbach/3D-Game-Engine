@@ -41,21 +41,25 @@ wizm::core_node::~core_node()
 
 void wizm::core_node::set_position(const glm::vec3& position)
 {
+
     m_translation = position;
 }
 
 void wizm::core_node::add_position(const glm::vec3& offset)
 {
+
     m_translation += offset;
 }
 
 void wizm::core_node::set_rotation(const glm::vec3& rotation)
 {
+
     m_rotation = rotation;
 }
 
 void wizm::core_node::add_rotation(const glm::vec3& deltaRotation)
 {
+
     m_rotation += deltaRotation;
 }
 

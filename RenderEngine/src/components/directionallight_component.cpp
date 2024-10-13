@@ -10,10 +10,10 @@ wizm::directionallight_component::~directionallight_component()
 {
 	// the light doesnt actually get deleted
 	// we fake it by blacking everything.
-	shader->use_shader();
-	shader->setVec3("dirLight.ambient", glm::vec3(0));
-	shader->setVec3("dirLight.diffuse", glm::vec3(0));
-	shader->setVec3("dirLight.specular", glm::vec3(0));
+	m_shader->use_shader();
+	m_shader->setVec3("dirLight.ambient", glm::vec3(0));
+	m_shader->setVec3("dirLight.diffuse", glm::vec3(0));
+	m_shader->setVec3("dirLight.specular", glm::vec3(0));
 }
 
 void wizm::directionallight_component::component_preupdate()
@@ -21,9 +21,11 @@ void wizm::directionallight_component::component_preupdate()
 
 }
 
-void wizm::directionallight_component::component_update(float delta_time)
+void wizm::directionallight_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
-	
+	if (m_shader != shader)
+		m_shader = shader;
+
 	shader->setVec3("dirLight.direction", get_world_rotation());
 	shader->setVec3("dirLight.ambient", m_ambient * glm::vec3(m_brightness));
 	shader->setVec3("dirLight.diffuse", m_diffuse);
@@ -47,7 +49,6 @@ std::shared_ptr<core_component> wizm::directionallight_component::_copy() const
 	new_dl_comp->m_is_active = this->m_is_active;
 	new_dl_comp->m_is_visible = this->m_is_visible;
 	new_dl_comp->m_specular = this->m_specular;
-	new_dl_comp->shader = this->shader;
 
 	return new_dl_comp;
 }

@@ -17,7 +17,7 @@ namespace lowlevelsys {
 	public:
 
 		virtual void component_preupdate() = 0;
-		virtual void component_update(float delta_time) = 0;
+		virtual void component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader) = 0;
 		virtual void component_postupdate() = 0;
 		virtual std::shared_ptr<core_component> _copy() const = 0;
 		
@@ -35,6 +35,7 @@ namespace lowlevelsys {
 
 		bool m_is_active;
 		bool m_is_visible;
+		
 
 		wizm::core_tag* component_tags;
 	};

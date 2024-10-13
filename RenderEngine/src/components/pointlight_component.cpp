@@ -22,7 +22,7 @@ void wizm::pointlight_component::component_preupdate()
 
 }
 
-void wizm::pointlight_component::component_update(float delta_time)
+void wizm::pointlight_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
     
     const std::string base_index = "pointLights[" + std::to_string(light_index) + "]";
@@ -75,7 +75,6 @@ std::shared_ptr<lowlevelsys::core_component> wizm::pointlight_component::_copy()
     new_pc_comp->m_quadratic = this->m_quadratic;
     new_pc_comp->m_radius = this->m_radius;
     new_pc_comp->m_specular = this->m_specular;
-    new_pc_comp->shader = this->shader;
 
     return new_pc_comp;
 }

@@ -11,7 +11,7 @@ namespace wizm {
 		
 		// default scene updates
 		void scene_preupdate();
-		void scene_update(float delta_time);
+		void scene_update(float delta_time, std::shared_ptr<core_gl_shader>& shader);
 		void scene_postupdate();
 		unsigned int total_component_count();
 		bool does_ent_name_exist(std::string name);
@@ -47,7 +47,7 @@ namespace wizm {
 
 		// temporarly
 		void pre_update_light_components();
-		void update_light_components(float delta_time);
+		void update_light_components(float delta_time, std::shared_ptr<core_gl_shader>& shader);
 		void post_update_light_components();
 
 
@@ -65,6 +65,8 @@ namespace wizm {
 
 	private:
 		std::shared_ptr<core_entity> m_selected_entity;
+		// might move
+		bool m_frustum_loaded = false;
 	};
 
 

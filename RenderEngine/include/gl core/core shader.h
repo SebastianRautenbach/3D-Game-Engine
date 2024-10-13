@@ -14,6 +14,7 @@
 class core_gl_shader {
 public:
 	core_gl_shader(const char* vertex_file_path, const char* fragment_file_path);
+	core_gl_shader(const char* compute_file_path);
 	void use_shader();
 	unsigned int get_shader_id() { return shader_id; }
 
@@ -78,7 +79,16 @@ public:
 	{
 		glUniformMatrix4fv(glGetUniformLocation(shader_id, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 	}
-
+	// ------------------------------------------------------------------------
+	void setUVec3(std::string name, const glm::uvec3& value)
+	{
+		glUniform3ui(glGetUniformLocation(shader_id, name.c_str()), value.x, value.y, value.z);
+	}
+	// ------------------------------------------------------------------------
+	void setUVec2(std::string name, const glm::uvec2& value)
+	{
+		glUniform2ui(glGetUniformLocation(shader_id, name.c_str()), value.x, value.y);
+	}
 
 
 private:

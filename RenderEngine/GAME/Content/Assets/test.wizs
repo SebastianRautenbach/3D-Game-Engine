@@ -1,9 +1,9 @@
 void on_start() {
-    print("Script started yipee");
+    
 }
 
 
 void on_update(float delta_time) {
     vec2 mouse_pos = get_mouse_pos();
-    print(""+mouse_pos.x);
+    set_entity_rotation("floor", mouse_pos.x / 200, mouse_pos.y / 200, 0);
 }
