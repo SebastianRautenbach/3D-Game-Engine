@@ -75,6 +75,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	m_shdrs.emplace_back(new core_gl_shader("shaders/billboard_vrtx.glsl", "shaders/billboard_frgment.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/Z Pre-pass_vrtx_shdr.glsl", "shaders/Z Pre-pass_frgmnt_shdr.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_comp_shdr.glsl"));
+	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_cull_comp_shdr.glsl"));
 
 
 	

@@ -22,7 +22,12 @@ namespace wizm {
 		compute_cluster(std::shared_ptr<core_gl_shader>& shader, std::shared_ptr<camera_core_3d> camera, framebuffer_spec& spec)
 			: m_shader(shader), m_camera(camera), m_spec(spec)
 		{
-			
+			glGenBuffers(1, &clusterGridSSBO);
+			glBindBuffer(GL_SHADER_STORAGE_BUFFER, clusterGridSSBO);
+
+			glBufferData(GL_SHADER_STORAGE_BUFFER, sizeof(Cluster) * numClusters, nullptr, GL_STATIC_COPY);
+			glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 1, clusterGridSSBO);
+
 		}
 
 	public:
