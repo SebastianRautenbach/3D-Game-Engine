@@ -12,6 +12,7 @@ I am busy with the asset management system allowing for more efficient memory al
 I want the engine to support a layer system where all scenes can be layered on top of each other making it more modular.
 
 **Resources Used**
+
 Clustered Forward rendering:
 - https://www.aortiz.me/2018/12/21/CG.html#forward-shading
 - https://www.adriancourreges.com/blog/2016/09/09/doom-2016-graphics-study/#clustered-forward-rendering-of-opaque-objects
