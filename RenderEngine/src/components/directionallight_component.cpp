@@ -23,13 +23,13 @@ void wizm::directionallight_component::component_preupdate()
 
 void wizm::directionallight_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
-	if (m_shader != shader)
-		m_shader = shader;
-
-	shader->setVec3("dirLight.direction", get_world_rotation());
-	shader->setVec3("dirLight.ambient", m_ambient * glm::vec3(m_brightness));
-	shader->setVec3("dirLight.diffuse", m_diffuse);
-	shader->setVec3("dirLight.specular", m_specular);
+	//if (m_shader != shader)
+	//	m_shader = shader;
+	//
+	//shader->setVec3("dirLight.direction", get_world_rotation());
+	//shader->setVec3("dirLight.ambient", m_ambient * glm::vec3(m_brightness));
+	//shader->setVec3("dirLight.diffuse", m_diffuse);
+	//shader->setVec3("dirLight.specular", m_specular);
 }
 
 void wizm::directionallight_component::component_postupdate()

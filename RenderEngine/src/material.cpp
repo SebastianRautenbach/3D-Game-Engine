@@ -17,9 +17,12 @@ namespace wizm {
 	
 	void core_material::on_change_material()
 	{
-		m_shader->use_shader();
-		m_shader->setInt("material.diffuse", 0);
-		m_shader->setInt("material.specular", 1);
+		if(m_shader)
+		{
+			m_shader->use_shader();
+			m_shader->setInt("material.diffuse", 0);
+			m_shader->setInt("material.specular", 1);
+		}
 	}
 
 	void core_material::update_material()

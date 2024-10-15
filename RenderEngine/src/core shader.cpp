@@ -50,6 +50,7 @@ core_gl_shader::core_gl_shader(const char* vertex_file_path, const char* fragmen
 
 core_gl_shader::core_gl_shader(const char* compute_file_path)
 {
+	is_compute = true;
 	std::string CShaderFF = read_file_to_str(compute_file_path);
 	const char* compute_shader_source = CShaderFF.c_str();
 

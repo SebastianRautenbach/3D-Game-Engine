@@ -6,7 +6,8 @@ struct Cluster
     vec4 minPoint;
     vec4 maxPoint;
     uint count;
-    uint lightIndices[100];
+    uint pointLightIndices[50];
+    uint spotLightIndices[50];
 };
 
 

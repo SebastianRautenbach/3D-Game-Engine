@@ -1,29 +1,18 @@
 
 Total count
-PopPtr     : 1911
-PshC4      : 1911
-PshV4      : 3822
-PSF        : 15288
-RET        : 1912
-COPY       : 1911
-CALLSYS    : 9555
-SUSPEND    : 5734
-ALLOC      : 1911
-GETOBJ     : 1911
-SetV4      : 3822
-RDR4       : 3822
-PGA        : 1911
-VAR        : 1911
-DIVf       : 3822
-LoadVObjR  : 3822
 
 Never executed
+PopPtr    
 PshGPtr   
+PshC4     
+PshV4     
+PSF       
 SwapPtr   
 NOT       
 PshG4     
 LdGRdR4   
 CALL      
+RET       
 JMP       
 JZ        
 JNZ       
@@ -59,6 +48,7 @@ BXOR
 BSLL      
 BSRL      
 BSRA      
+COPY      
 PshC8     
 PshVPtr   
 RDSPtr    
@@ -73,10 +63,14 @@ JMPP
 PopRPtr   
 PshRPtr   
 STR       
+CALLSYS   
 CALLBND   
+SUSPEND   
+ALLOC     
 FREE      
 LOADOBJ   
 STOREOBJ  
+GETOBJ    
 REFCPY    
 CHKREF    
 GETOBJREF 
@@ -85,6 +79,7 @@ PshNull
 ClrVPtr   
 OBJTYPE   
 TYPEID    
+SetV4     
 SetV8     
 ADDSi     
 CpyVtoV4  
@@ -101,10 +96,13 @@ WRTV4
 WRTV8     
 RDR1      
 RDR2      
+RDR4      
 RDR8      
 LDG       
 LDV       
+PGA       
 CmpPtr    
+VAR       
 iTOf      
 fTOi      
 uTOf      
@@ -127,6 +125,7 @@ MODi
 ADDf      
 SUBf      
 MULf      
+DIVf      
 MODf      
 ADDd      
 SUBd      
@@ -188,6 +187,7 @@ MODu
 DIVu64    
 MODu64    
 LoadRObjR 
+LoadVObjR 
 RefCpyV   
 JLowZ     
 JLowNZ    
@@ -205,29 +205,3 @@ POWu64
 Thiscall1 
 
 Sequences
-PopPtr    , SUSPEND    : 1911
-PshC4     , LoadVObjR  : 1911
-PshV4     , PSF        : 1911
-PshV4     , LoadVObjR  : 1911
-PSF       , PSF        : 1911
-PSF       , COPY       : 1911
-PSF       , CALLSYS    : 7644
-PSF       , ALLOC      : 1911
-PSF       , PGA        : 1911
-RET       , SUSPEND    : 1911
-COPY      , PopPtr     : 1911
-CALLSYS   , PSF        : 5733
-CALLSYS   , SUSPEND    : 1911
-CALLSYS   , VAR        : 1911
-SUSPEND   , PshC4      : 1911
-SUSPEND   , PSF        : 1911
-SUSPEND   , RET        : 1912
-ALLOC     , PSF        : 1911
-GETOBJ    , CALLSYS    : 1911
-SetV4     , DIVf       : 3822
-RDR4      , SetV4      : 3822
-PGA       , PSF        : 1911
-VAR       , GETOBJ     : 1911
-DIVf      , PshV4      : 3822
-LoadVObjR , RDR4       : 3822
-LABEL     , SUSPEND    : 1

@@ -29,7 +29,8 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	specs.Height = window_size_y;
 	m_framebuffer = new core_framebuffer(specs);
 
-	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs[4], m_camera_manager->m_crnt_camera, m_framebuffer->get_specs());
+	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs, m_gl_renderer->m_shdrs[4], m_gl_renderer->m_shdrs[5],  m_camera_manager->m_crnt_camera, m_framebuffer->get_specs());
+	
 
 	m_asset_manager = new asset_manager();
 
@@ -62,6 +63,7 @@ void update_manager::pre_render()
 	global_scene->scene_preupdate();
 	m_asset_manager->assign_assets();
 	m_gl_renderer->update_draw_data();
+	compute_cluster_test->update_lights();
 	m_gl_renderer->pre_render(is_running, m_timer->get_delta_time());
 }
 
@@ -95,7 +97,7 @@ void update_manager::render()
 	m_gl_renderer->m_shdrs[0]->use_shader();
 	glDepthMask(GL_TRUE);  
 	global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
-	global_scene->update_light_components(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
+	//global_scene->update_light_components(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
 	m_billboard_manager->render();
 
 

@@ -70,14 +70,12 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	*	but for now this will do
 	*/
 
-	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr.glsl"));
+	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr_new.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/ray_vrtx.glsl", "shaders/ray_frgmnt.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/billboard_vrtx.glsl", "shaders/billboard_frgment.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/Z Pre-pass_vrtx_shdr.glsl", "shaders/Z Pre-pass_frgmnt_shdr.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_comp_shdr.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_cull_comp_shdr.glsl"));
-
-
 	
 
 }
@@ -197,6 +195,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		std::vector<std::shared_ptr<staticmesh_component>> meshes;
 		std::shared_ptr <camera_component> camera_comp;
 
+
 		for (auto& i : global_scene->m_entities) {
 			for (auto& per_ent : i->m_components_list)
 			{
@@ -262,8 +261,9 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		}
 
 
-
 		for (auto& i : meshes) {
+
+			i->m_material->on_change_material();
 
 			if (i->m_model) {
 				i->m_model->m_camera = m_camera_manager->m_crnt_camera;
@@ -280,7 +280,6 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		*/
 		if (!meshes.empty() && meshes[meshes.size() - 1]->m_model)
 			meshes[meshes.size() - 1]->m_model->init_boundingvolume(meshes[meshes.size() - 1]->m_model->retrieve_all_vertices());
-
 
 
 		m_shdrs[0]->setInt("ammount_of_pointlights", point_lights.size());

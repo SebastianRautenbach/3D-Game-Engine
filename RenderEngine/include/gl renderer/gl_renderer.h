@@ -9,6 +9,7 @@
 #include "system/camera_manager.h"
 #include <memory>
 #include <vector>
+#include "system/compute_cluster_test.h"
 
 #define SHADER_ZPREPASS
 #define SHADER_DEFAULT
@@ -35,8 +36,7 @@ namespace lowlevelsys {
 		
 		std::vector<std::shared_ptr<core_gl_shader>> m_shdrs;
 
-		std::shared_ptr<camera_manager> m_camera_manager;
-		
+		std::shared_ptr<camera_manager> m_camera_manager; 
 
 	public:
 		int w_width, w_height;

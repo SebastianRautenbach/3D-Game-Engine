@@ -38,7 +38,8 @@ struct Cluster
     vec4 minPoint;
     vec4 maxPoint;
     uint count;
-    uint lightIndices[100];
+    uint pointLightIndices[50];
+    uint spotLightIndices[50];
 };
 
 layout(std430, binding = 1) restrict buffer clusterSSBO
@@ -77,7 +78,7 @@ void main()
     {
         if (test_pointlightAABB(i, cluster) && cluster.count < 100)
         {
-            cluster.lightIndices[cluster.count] = i;
+            cluster.pointLightIndices[cluster.count] = i;
             cluster.count++;
         }
     }
@@ -86,7 +87,7 @@ void main()
     {
         if (testSpotlightAABB(i, cluster) && cluster.count < 100)
         {
-            cluster.lightIndices[cluster.count] = i + 1000; // Offset the index for spotlights.
+            cluster.spotLightIndices[cluster.count] = i + 1000; // Offset the index for spotlights.
             cluster.count++;
         }
     }

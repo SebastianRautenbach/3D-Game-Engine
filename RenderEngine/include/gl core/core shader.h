@@ -19,6 +19,7 @@ public:
 	unsigned int get_shader_id() { return shader_id; }
 
 public:
+	bool is_compute = false;
 	unsigned int shader_id;
 
 
