@@ -71,47 +71,90 @@ namespace wizm {
 
 	public:
 
-		void update_lights() {
+		void update_lights() { 
 		
+			static std::vector<std::pair<unsigned int, unsigned int>> light_indexes;
+			static size_t previous_shader_count = 0;
+			static GLuint pointLightSSBO = 0;
 
-			if (global_scene->total_component_count() != shader_count || global_scene->m_reloaded) {
-				std::vector<PointLight> point_lights_list;
 
-				for (auto& i : global_scene->m_entities) {
-					for (auto& per_ent : i->m_components_list) {
-						if (is_light_component(per_ent->m_component_type)) {
-							auto light_comps = std::dynamic_pointer_cast<pointlight_component>(per_ent);
-							if (light_comps) {
-								PointLight temp;
-								temp.position = glm::vec4(light_comps->get_world_position(), 1.0);
-								temp.constant = light_comps->m_constant;
-								temp.linear = light_comps->m_linear;
-								temp.quadratic = light_comps->m_quadratic;
-								
-								temp.ambient = glm::vec4(light_comps->m_ambient, 1.0);
-								temp.diffuse = glm::vec4(light_comps->m_diffuse, 1.0);
-								temp.specular = glm::vec4(light_comps->m_specular, 1.0);
+			if (global_scene->total_component_count() != previous_shader_count || global_scene->m_reloaded) {
+				
+				light_indexes.clear();
+				previous_shader_count = global_scene->total_component_count();
 
-								temp.radius = light_comps->m_radius;
-								
-								point_lights_list.emplace_back(temp);
-							}
+				if (pointLightSSBO) {
+					glDeleteBuffers(1, &pointLightSSBO);
+					pointLightSSBO = 0;
+				}
+
+				// Rebuild the list of light indexes
+				for (unsigned int ent_i = 0; ent_i < global_scene->m_entities.size(); ent_i++) {
+					for (unsigned int comp_i = 0; comp_i < global_scene->m_entities[ent_i]->m_components_list.size(); comp_i++) {
+						if (is_light_component(global_scene->m_entities[ent_i]->m_components_list[comp_i]->m_component_type)) {
+							light_indexes.emplace_back(ent_i, comp_i);
 						}
 					}
 				}
 
-				if (pointLightSSBO) {
-					glDeleteBuffers(1, &pointLightSSBO);
-				}
-
-				glGenBuffers(1, &pointLightSSBO);
-				glBindBuffer(GL_SHADER_STORAGE_BUFFER, pointLightSSBO);
-				glBufferData(GL_SHADER_STORAGE_BUFFER, point_lights_list.size() * sizeof(PointLight), point_lights_list.data(), GL_DYNAMIC_DRAW);
-				glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 2, pointLightSSBO);
-
-				shader_count = global_scene->total_component_count();
-
 			}
+
+			
+			std::vector<PointLight> point_lights_list;
+			point_lights_list.reserve(light_indexes.size());
+
+			// Gather point light data
+			for (auto& index_pair : light_indexes) {
+				const auto& [ent_i, comp_i] = index_pair;
+				auto light_comps = std::dynamic_pointer_cast<pointlight_component>(
+					global_scene->m_entities[ent_i]->m_components_list[comp_i]);
+
+				if (light_comps) {
+					PointLight temp;
+					temp.position = glm::vec4(light_comps->get_world_position(), 1.0f);
+					temp.constant = light_comps->m_constant;
+					temp.linear = light_comps->m_linear;
+					temp.quadratic = light_comps->m_quadratic;
+					temp.ambient = glm::vec4(light_comps->m_ambient, 1.0f);
+					temp.diffuse = glm::vec4(light_comps->m_diffuse, 1.0f);
+					temp.specular = glm::vec4(light_comps->m_specular, 1.0f);
+					temp.radius = light_comps->m_radius;
+
+					point_lights_list.emplace_back(temp);
+				}
+			}
+
+	
+			size_t buffer_size = point_lights_list.size() * sizeof(PointLight);
+			if (pointLightSSBO == 0) {
+				glGenBuffers(1, &pointLightSSBO);
+			}
+
+			glBindBuffer(GL_SHADER_STORAGE_BUFFER, pointLightSSBO);
+
+	
+			GLint current_buffer_size = 0;
+			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_buffer_size);
+
+			if (current_buffer_size != static_cast<GLint>(buffer_size) || point_lights_list.empty()) {
+				if (point_lights_list.empty()) {
+					glBufferData(GL_SHADER_STORAGE_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
+				}
+				else {
+					glBufferData(GL_SHADER_STORAGE_BUFFER, buffer_size, point_lights_list.data(), GL_DYNAMIC_DRAW);
+				}
+			}
+			else {				
+				glBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, buffer_size, point_lights_list.data());
+			}
+
+
+	
+			glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 2, pointLightSSBO);
+
+	
+			glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
+
 		}
 
 		void update() {
