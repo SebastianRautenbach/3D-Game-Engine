@@ -6,7 +6,7 @@ wizm::camera_core_3d::camera_core_3d(int window_width, int window_height)
     :m_window_width(window_width), m_window_height(window_height)
 {
     m_fov = 60.f;
-    m_far_plane = 500.0f;
+    m_far_plane = 1000.0f;
     m_near_plane = 0.05f;
 
     update_aspect_ratio();

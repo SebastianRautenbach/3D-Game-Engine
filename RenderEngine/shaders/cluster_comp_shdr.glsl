@@ -6,8 +6,8 @@ struct Cluster
     vec4 minPoint;
     vec4 maxPoint;
     uint count;
-    uint pointLightIndices[50];
-    uint spotLightIndices[50];
+    uint pointLightIndices[100];
+    uint spotLightIndices[100];
 };
 
 
@@ -33,11 +33,9 @@ void main()
             (gl_WorkGroupID.z * gridSize.x * gridSize.y);
     vec2 tileSize = screenDimensions / gridSize.xy;
 
-    // tile in screen-space
     vec2 minTile_screenspace = gl_WorkGroupID.xy * tileSize;
     vec2 maxTile_screenspace = (gl_WorkGroupID.xy + 1) * tileSize;
 
-    // convert tile to view space sitting on the near plane
     vec3 minTile = screenToView(minTile_screenspace);
     vec3 maxTile = screenToView(maxTile_screenspace);
 
@@ -46,8 +44,6 @@ void main()
     float planeFar =
         zNear * pow(zFar / zNear, (gl_WorkGroupID.z + 1) / float(gridSize.z));
 
-    // the line goes from the eye position in view space (0, 0, 0)
-    // through the min/max points of a tile to intersect with a given cluster's near-far planes
     vec3 minPointNear =
         lineIntersectionWithZPlane(vec3(0, 0, 0), minTile, planeNear);
     vec3 minPointFar =
@@ -64,18 +60,13 @@ void main()
 vec3 lineIntersectionWithZPlane(vec3 startPoint, vec3 endPoint, float zDistance)
 {
     vec3 direction = endPoint - startPoint;
-    vec3 normal = vec3(0.0, 0.0, -1.0); // plane normal
-
-    // skip check if the line is parallel to the plane.
+    vec3 normal = vec3(0.0, 0.0, -1.0);
 
     float t = (zDistance - dot(normal, startPoint)) / dot(normal, direction);
-    return startPoint + t * direction; // the parametric form of the line equation
+    return startPoint + t * direction;
 }
 vec3 screenToView(vec2 screenCoord)
 {
-    // normalize screenCoord to [-1, 1] and
-    // set the NDC depth of the coordinate to be on the near plane. This is -1 by
-    // default in OpenGL
     vec4 ndc = vec4(screenCoord / screenDimensions * 2.0 - 1.0, -1.0, 1.0);
 
     vec4 viewCoord = inverseProjection * ndc;

@@ -137,32 +137,6 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		global_input_manager->set_hide_mouse_cursor(false);
 		global_input_manager->mouse_stop_move();
 	}
-
-
-
-	glm::mat4 view = glm::mat4(1.0f);
-	glm::mat4 projection = glm::mat4(1.0f);
-	glm::mat4 perspective = glm::mat4(1.f);
-
-
-	view = m_camera_manager->m_crnt_camera->get_view_matrix();
-	projection = m_camera_manager->m_crnt_camera->get_projection_matrix();
-	perspective = view;
-
-
-	for (const auto& shdr : m_shdrs)
-	{
-		shdr->use_shader();
-		unsigned int view_loc = glGetUniformLocation(shdr->get_shader_id(), "view");
-		glUniformMatrix4fv(view_loc, 1, GL_FALSE, &view[0][0]);
-		shdr->setMat4("projection", projection);
-		shdr->setMat4("perspective", perspective);
-		shdr->setVec3("camPos", m_camera_manager->m_crnt_camera->get_position());
-		shdr->setVec3("camFront", m_camera_manager->m_crnt_camera->get_forward_vector());
-	}
-
-
-	glUseProgram(0);
 }
 
 

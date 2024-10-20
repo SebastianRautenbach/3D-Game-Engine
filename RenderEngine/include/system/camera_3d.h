@@ -50,6 +50,8 @@ namespace wizm {
 		void add_pitch(float pitch);
 		void add_roll(float roll);
 
+		glm::vec2 get_window_size() { return glm::vec2(m_window_width, m_window_height); }
+
 
 		void move_up(float distance);
 		void move_right(float distance);

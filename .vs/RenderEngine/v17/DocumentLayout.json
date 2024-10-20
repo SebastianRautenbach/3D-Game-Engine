@@ -32,9 +32,9 @@
               "RelativeDocumentMoniker": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
               "RelativeToolTip": "RenderEngine\\src\\sdl renderer\\gl_renderer.cpp",
-              "ViewState": "AQIAAIAAAAAAAAAAAADwv5gAAAAhAAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAAiwDgAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-14T16:24:29.743Z"
+              "WhenOpened": "2024-10-19T22:23:03.082Z"
             },
             {
               "$type": "Document",
@@ -44,9 +44,9 @@
               "RelativeDocumentMoniker": "RenderEngine\\include\\system\\compute_cluster_test.h",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\compute_cluster_test.h",
               "RelativeToolTip": "RenderEngine\\include\\system\\compute_cluster_test.h",
-              "ViewState": "AQIAAFIAAAAAAAAAAAAiwFkAAAAEAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-10-14T10:02:31.725Z",
+              "WhenOpened": "2024-10-19T22:16:46.938Z",
               "EditorCaption": ""
             },
             {
@@ -57,9 +57,10 @@
               "RelativeDocumentMoniker": "RenderEngine\\src\\update_manager.cpp",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\update_manager.cpp",
               "RelativeToolTip": "RenderEngine\\src\\update_manager.cpp",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAjwCQAAABWAAAA",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAiwFMAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-13T19:13:23.025Z"
+              "WhenOpened": "2024-10-19T19:36:27.634Z",
+              "EditorCaption": ""
             }
           ]
         }
