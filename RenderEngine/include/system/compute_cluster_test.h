@@ -38,6 +38,16 @@ namespace wizm {
 	};
 
 
+	struct alignas(16) PointLightPre {
+
+		glm::vec4 position;
+		glm::vec4 color;
+		float intensity;
+		float radius;
+
+	};
+
+
 	struct alignas(16) SpotLight
 	{
 		glm::vec4 position;
@@ -213,8 +223,10 @@ namespace wizm {
 		std::shared_ptr<camera_core_3d> m_camera;
 		unsigned int clusterGridSSBO, pointLightSSBO, spotLightSSBO, shader_count = 0;
 
-		unsigned int gridSizeX = 16;
-		unsigned int gridSizeY = 8;
+
+		
+		unsigned int gridSizeX = 12;
+		unsigned int gridSizeY = 12;
 		unsigned int gridSizeZ = 24;
 		unsigned int numClusters = gridSizeX * gridSizeY * gridSizeZ;
 

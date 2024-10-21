@@ -119,10 +119,12 @@ void main()
     }
 
 
-    //if (lightCount < 95) {
-    // FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);
-    // return;
-    //}
+    if (lightCount > 95) {
+     //getting close to limit. Output red color and dip
+     FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+     return;
+ }
+
 
 
     FragColor = vec4(result, 1.0);

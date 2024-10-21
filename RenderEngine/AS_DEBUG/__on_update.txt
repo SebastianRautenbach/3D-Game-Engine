@@ -43,12 +43,12 @@ Variables:
    30  22 *    DIVf     v6, v6, v7
    32  22 *    PshV4    v6
    33  23 *    PSF      v20
-   34  25 *    PGA      0xcd6b9e20          (str:floor)
+   34  25 *    PGA      0x4cbc1980          (str:floor)
    37  27 *    PSF      v18
    38  29 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v18, 1
    40  25 *    PSF      v18
-   41  27 *    ALLOC    0x215c704d910, 20             (type:string, string::string(const string&in))
+   41  27 *    ALLOC    0x2ce465ec6a0, 20             (type:string, string::string(const string&in))
    45  23 *    PSF      v18
    46  25 *    CALLSYS  21           (string::~string())
                ObjInfo  v18, 0
