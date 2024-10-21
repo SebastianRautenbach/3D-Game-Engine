@@ -23,8 +23,9 @@ uniform uvec3 gridSize;
 uniform uvec2 screenDimensions;
 
 
+vec4 clipToView(vec4 clip);
 vec3 screenToView(vec2 screenCoord);
-vec3 lineIntersectionWithZPlane(vec3 startPoint, vec3 endPoint, float zDistance);
+
 
 
 void main()
@@ -39,38 +40,29 @@ void main()
     vec3 minTile = screenToView(minTile_screenspace);
     vec3 maxTile = screenToView(maxTile_screenspace);
 
-    float planeNear =
-        zNear * pow(zFar / zNear, gl_WorkGroupID.z / float(gridSize.z));
-    float planeFar =
-        zNear * pow(zFar / zNear, (gl_WorkGroupID.z + 1) / float(gridSize.z));
+    float planeNear = zNear * pow(zFar / zNear, gl_WorkGroupID.z / float(gridSize.z));
+    float planeFar =  zNear * pow(zFar / zNear, (gl_WorkGroupID.z + 1) / float(gridSize.z));
 
-    vec3 minPointNear =
-        lineIntersectionWithZPlane(vec3(0, 0, 0), minTile, planeNear);
-    vec3 minPointFar =
-        lineIntersectionWithZPlane(vec3(0, 0, 0), minTile, planeFar);
-    vec3 maxPointNear =
-        lineIntersectionWithZPlane(vec3(0, 0, 0), maxTile, planeNear);
-    vec3 maxPointFar =
-        lineIntersectionWithZPlane(vec3(0, 0, 0), maxTile, planeFar);
+    vec3 minNear = minTile * planeNear / minTile.z;
+    vec3 minFar  = minTile * planeFar  / minTile.z;
+    vec3 maxNear = maxTile * planeNear / maxTile.z;
+    vec3 maxFar  = maxTile * planeFar  / maxTile.z;
 
-    clusters[tileIndex].minPoint = vec4(min(minPointNear, minPointFar), 0.0);
-    clusters[tileIndex].maxPoint = vec4(max(maxPointNear, maxPointFar), 0.0);
+    vec3 minPointAABB = min(min(minNear, minFar),min(maxNear, maxFar));
+    vec3 maxPointAABB = max(max(minNear, minFar),max(maxNear, maxFar));
+
+    clusters[2 * tileIndex + 0].minPoint = vec4(minPointAABB, 1.0);
+    clusters[2 * tileIndex + 1].maxPoint = vec4(maxPointAABB, 1.0);
 }
 
-vec3 lineIntersectionWithZPlane(vec3 startPoint, vec3 endPoint, float zDistance)
-{
-    vec3 direction = endPoint - startPoint;
-    vec3 normal = vec3(0.0, 0.0, -1.0);
-
-    float t = (zDistance - dot(normal, startPoint)) / dot(normal, direction);
-    return startPoint + t * direction;
-}
 vec3 screenToView(vec2 screenCoord)
 {
     vec4 ndc = vec4(screenCoord / screenDimensions * 2.0 - 1.0, -1.0, 1.0);
-
-    vec4 viewCoord = inverseProjection * ndc;
-    viewCoord /= viewCoord.w;
-    return viewCoord.xyz;
+    return clipToView(ndc);
 }
 
+vec4 clipToView(vec4 clip){
+    vec4 view = inverseProjection * clip;
+    view = view / view.w;
+    return view;
+}

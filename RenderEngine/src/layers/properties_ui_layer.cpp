@@ -331,6 +331,10 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 		ImGui::InputFloat(trans_id.c_str(), &pointlight->m_radius);
 
+
+		trans_id = "Intensity ##" + global_scene->get_crnt_entity()->m_ent_ID + std::to_string(component->m_component_type);
+		ImGui::InputFloat(trans_id.c_str(), &pointlight->m_intensity);
+
 		float test[3] = { pointlight->m_diffuse.x, pointlight->m_diffuse.y, pointlight->m_diffuse.z };
 
 		ImGui::ColorPicker3("test", test);

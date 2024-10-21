@@ -5,18 +5,10 @@ layout(local_size_x = LOCAL_SIZE, local_size_y = 1, local_size_z = 1) in;
 
 struct PointLight
 {
-        vec4 position;       
-        float constant; 
-        float linear;        
-        float quadratic;     
-        float padding1;      
-
-        vec4 ambient;        
-        vec4 diffuse;        
-        vec4 specular;       
-
-        float radius;       
-        float padding2[3];
+    vec4  position;
+    vec4  color;
+    float intensity;
+    float radius;
 };
 
 

@@ -701,6 +701,7 @@ light{
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
 			m_brightness:1.000000;
+			m_intensity:1.000000;
 			light_index:0;
 		}
 		transform{
@@ -729,6 +730,7 @@ light(1){
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
 			m_brightness:1.000000;
+			m_intensity:1.000000;
 			light_index:1;
 		}
 		transform{
@@ -757,6 +759,7 @@ light(1)(1){
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
 			m_brightness:1.000000;
+			m_intensity:1.000000;
 			light_index:2;
 		}
 		transform{
@@ -779,12 +782,13 @@ light(1)(1)(1){
 			m_constant:1.000000;
 			linear:0.090000;
 			m_quadratic:0.032000;
-			m_radius:5.000000;
+			m_radius:30.000000;
 			m_ambient:0.050000,0.050000,0.050000;
 			m_diffuse:0.170732,1.000000,0.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
 			m_brightness:1.000000;
+			m_intensity:1.000000;
 			light_index:3;
 		}
 		transform{

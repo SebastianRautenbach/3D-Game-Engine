@@ -256,11 +256,6 @@ void lowlevelsys::gl_renderer::update_draw_data()
 			meshes[meshes.size() - 1]->m_model->init_boundingvolume(meshes[meshes.size() - 1]->m_model->retrieve_all_vertices());
 
 
-		m_shdrs[0]->setInt("ammount_of_pointlights", point_lights.size());
-		m_shdrs[0]->setInt("ammount_of_spotlights", spot_lights.size());
-
-
-
 		shader_count = global_scene->total_component_count();
 
 	}

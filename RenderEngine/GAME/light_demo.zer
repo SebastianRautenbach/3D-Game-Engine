@@ -1,7 +1,7 @@
 directionallight{
 	directionallight0{
 		light{
-			m_ambient:0.119048,0.119046,0.119046;
+			m_ambient:0.422594,0.422590,0.422590;
 			m_diffuse:0.400000,0.400000,0.400000;
 			m_specular:0.500000,0.500000,0.500000;
 			m_brightness:1.000000;
@@ -26,12 +26,13 @@ light1{
 			m_constant:1.000000;
 			linear:0.090000;
 			m_quadratic:0.032000;
-			m_radius:10.000000;
+			m_radius:30.000000;
 			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:0.800000,0.800000,0.800000;
+			m_diffuse:0.000000,0.891582,1.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
 			m_brightness:1.000000;
+			m_intensity:0.500000;
 			light_index:0;
 		}
 		transform{
@@ -43,7 +44,7 @@ light1{
 	tags{
 	}
 	transform{
-		position:-3.627912,3.805903,3.553935;
+		position:2.596645,1.327278,3.839942;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
@@ -54,12 +55,13 @@ light1(1){
 			m_constant:1.000000;
 			linear:0.090000;
 			m_quadratic:0.032000;
-			m_radius:10.000000;
+			m_radius:30.000000;
 			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:0.800000,0.800000,0.800000;
+			m_diffuse:1.000000,0.000000,0.000000;
 			m_specular:1.000000,1.000000,1.000000;
 			pointlightindex:;
 			m_brightness:1.000000;
+			m_intensity:0.500000;
 			light_index:1;
 		}
 		transform{
@@ -71,63 +73,7 @@ light1(1){
 	tags{
 	}
 	transform{
-		position:-2.073864,3.805903,11.215168;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
-	}
-}
-light1(1)(1){
-	pointlight0{
-		light{
-			m_constant:1.000000;
-			linear:0.090000;
-			m_quadratic:0.032000;
-			m_radius:10.000000;
-			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:0.800000,0.800000,0.800000;
-			m_specular:1.000000,1.000000,1.000000;
-			pointlightindex:;
-			m_brightness:1.000000;
-			light_index:2;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	tags{
-	}
-	transform{
-		position:-9.872546,3.805903,6.256197;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
-	}
-}
-light1(1)(1)(1){
-	pointlight0{
-		light{
-			m_constant:1.000000;
-			linear:0.090000;
-			m_quadratic:0.032000;
-			m_radius:10.000000;
-			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:0.800000,0.800000,0.800000;
-			m_specular:1.000000,1.000000,1.000000;
-			pointlightindex:;
-			m_brightness:1.000000;
-			light_index:1;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	tags{
-	}
-	transform{
-		position:-7.672661,3.805903,2.096754;
+		position:-4.663591,1.327278,0.706461;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}

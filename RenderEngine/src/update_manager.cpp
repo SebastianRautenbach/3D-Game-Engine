@@ -29,7 +29,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	specs.Height = window_size_y;
 	m_framebuffer = new core_framebuffer(specs);
 
-	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs, m_gl_renderer->m_shdrs[4], m_gl_renderer->m_shdrs[5],  m_camera_manager->m_viewport_camera);
+	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs, m_gl_renderer->m_shdrs[4], m_gl_renderer->m_shdrs[5],  m_camera_manager);
 	
 
 	m_asset_manager = new asset_manager();
@@ -84,18 +84,19 @@ void update_manager::render()
 	compute_cluster_test->update();
 
 	// depth pass
-	m_gl_renderer->m_shdrs[3]->use_shader();
-	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-	glDepthMask(GL_TRUE);
-	glClear(GL_DEPTH_BUFFER_BIT);
-	global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[3]);
+	//m_gl_renderer->m_shdrs[3]->use_shader();
+	//glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+	//glDepthMask(GL_TRUE);
+	//glClear(GL_DEPTH_BUFFER_BIT);
+	//global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[3]);
 	
 	// Main render pass 
-	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+	//glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
 	m_framebuffer->bind_buffer();
 	m_gl_renderer->m_shdrs[0]->use_shader();
-	glDepthMask(GL_TRUE);  
+	//glDepthMask(GL_TRUE);  
 	global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
+	global_scene->update_light_components(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
 	m_billboard_manager->render();
 
 

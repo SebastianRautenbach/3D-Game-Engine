@@ -79,6 +79,9 @@ namespace wizm {
             light_index = static_cast<unsigned int>(save_t[parent_name][index]["light"].get_int("light_index")[0]);
 
             m_brightness = save_t[parent_name][index]["light"].get_float("m_brightness")[0];
+
+
+            m_intensity = save_t[parent_name][index]["light"].get_float("m_intensity")[0];
         }
 
 
@@ -99,6 +102,7 @@ namespace wizm {
             save_t[parent_name]["pointlight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
             save_t[parent_name]["pointlight" + index]["light"].set_string("pointlightindex", { pointlightindex });
             save_t[parent_name]["pointlight" + index]["light"].set_float("m_brightness", { m_brightness });
+            save_t[parent_name]["pointlight" + index]["light"].set_float("m_intensity", { m_intensity });
             save_t[parent_name]["pointlight" + index]["light"].set_int("light_index", { static_cast<int>(light_index)});
 
 
@@ -114,6 +118,7 @@ namespace wizm {
         float m_linear;
         float m_quadratic;
         float m_radius;
+        float m_intensity = 1;
 
         std::string pointlightindex;
 
