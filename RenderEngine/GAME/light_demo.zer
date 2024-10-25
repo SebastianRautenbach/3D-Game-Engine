@@ -1,3 +1,22 @@
+CAMERA{
+	cameracomponent0{
+		settings{
+			is_main_camera:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-9.521071,3.267369,1.399518;
+		rotation:0.000020,-1.556661,-0.000019;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 directionallight{
 	directionallight0{
 		light{
@@ -16,6 +35,27 @@ directionallight{
 	}
 	transform{
 		position:17.169872,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+floor{
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:8574774509872314517;
+			specular_asset_id:6917228854978984615;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-0.016013,1.275369,-4.399378;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
@@ -50,7 +90,15 @@ light1{
 	}
 }
 light1(1){
-	pointlight0{
+	ScriptingComponent0{
+		script_asset_id:18401669893411993905;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	pointlight1{
 		light{
 			m_constant:1.000000;
 			linear:0.090000;
@@ -74,6 +122,65 @@ light1(1){
 	}
 	transform{
 		position:-4.663591,1.327278,0.706461;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+light1(1)(1){
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:30.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.909091,0.000000,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:0.500000;
+			light_index:2;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:1.579081,1.327278,-6.915877;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+light1(1)(1)(1){
+	spotlight0{
+		light{
+			m_constant:3.321000;
+			linear:1.277000;
+			m_quadratic:1.241000;
+			m_outerCutOff:0.920505;
+			m_cutOff:0.954240;
+			m_ambient:1.000000,0.999990,0.999990;
+			m_diffuse:1.000000,1.000000,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			m_distance:50.000000;
+			m_brightness:1.000000;
+			spotlightindex:;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-2.701852,1.327278,3.839942;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}

@@ -26,20 +26,23 @@ struct PointLight
     float radius;
 };
 
-struct SpotLight {
-    vec3 position;
-    vec3 direction;
-    float cutOff;
+struct SpotLight
+{
+	vec4 position;      
+    vec4 direction;    
+    vec4 ambient;      
+    vec4 diffuse;       
+    vec4 specular;      
+    
+    float cutOff;       
     float outerCutOff;
-    float distance;
-  
-    float constant;
-    float linear;
+    float distance;     
+    float constant;    
+
+    float linear;      
     float quadratic;
-  
-    vec3 ambient;
-    vec3 diffuse;
-    vec3 specular;       
+    uint pad1;
+    uint pad2;
 };
 
 
@@ -47,20 +50,28 @@ struct Cluster
 {
     vec4 minPoint;
     vec4 maxPoint;
-    uint count;
+    uint point_count;
+    uint spot_count;
+    uint pad1;
+    uint pad2;
     uint pointLightIndices[100];
     uint spotLightIndices[100];
 };
 
 
-layout(std430, binding = 1) restrict readonly buffer clusterSSBO
+layout(std430, binding = 1) readonly buffer clusterSSBO
 {
     Cluster clusters[];
 };
 
-layout(std430, binding = 2) restrict readonly buffer pointLightSSBO
+layout(std430, binding = 2) readonly buffer pointLightSSBO
 {
     PointLight pointLight[];
+};
+
+layout(std430, binding = 3) readonly buffer spotLightSSBO
+{
+    SpotLight spotLight[];
 };
 
 uniform DirLight dirLight;
@@ -94,30 +105,30 @@ void main()
 
     vec3 result = CalcDirLight(dirLight, norm, viewDir);
 
-    uint zTile = uint((log(abs(FragPos.z) / zNear) * gridSize.z) / log(zFar / zNear));
+    uint zTile = uint((log(max(abs(FragPos.z), 0.001) / zNear) * gridSize.z) / log(zFar / zNear));
+
 
     vec2 tileSize = screenDimensions / gridSize.xy;
     uvec3 tile = uvec3(gl_FragCoord.xy / tileSize, zTile);
-    uint tileIndex =
-        tile.x + (tile.y * gridSize.x) + (tile.z * gridSize.x * gridSize.y);
+    uint tileIndex = tile.x + (tile.y * gridSize.x) + (tile.z * gridSize.x * gridSize.y);
 
-    uint lightCount = clusters[tileIndex].count;
+    uint pointlightCount = clusters[tileIndex].point_count;
+    uint spotLightCount = clusters[tileIndex].spot_count;
 
-    for (int i = 0; i < lightCount; ++i)
+
+    for (int i = 0; i < pointlightCount; ++i)
     {
         uint lightIndex = clusters[tileIndex].pointLightIndices[i];
         PointLight light = pointLight[lightIndex];
         result += CalcPointLight(light, norm, FragPos, viewDir); 
     }
-
-
-   //if (lightCount > 3) {
-   // //getting close to limit. Output red color and dip
-   //    FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);
-   //    return;
-   //}
-
-
+    
+    for(int i = 0; i < spotLightCount; ++i) 
+    {
+        uint lightIndex = clusters[tileIndex].spotLightIndices[i];
+        SpotLight light = spotLight[lightIndex];
+        result += CalcSpotLight(light, norm, FragPos, viewDir); 
+    }
 
     FragColor = vec4(result, 1.0);
 }
@@ -161,8 +172,8 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 
 vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 {
-    vec3 lightDir = normalize(light.position - fragPos);
-    float theta = dot(lightDir, normalize(-light.direction));
+    vec3 lightDir = normalize(light.position.xyz - fragPos);
+    float theta = dot(lightDir, normalize(-light.direction.xyz));
 
     
     float epsilon = light.cutOff - light.outerCutOff;
@@ -176,13 +187,13 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
 
     
-    float distance = length(light.position - fragPos);
+    float distance = length(light.position.xyz - fragPos);
     float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
 
     
-    vec3 ambient = light.ambient * vec3(texture(material.diffuse, oTexture));
-    vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, oTexture));
-    vec3 specular = light.specular * spec * vec3(texture(material.specular, oTexture));
+    vec3 ambient = light.ambient.xyz * vec3(texture(material.diffuse, oTexture));
+    vec3 diffuse = light.diffuse.xyz * diff * vec3(texture(material.diffuse, oTexture));
+    vec3 specular = light.specular.xyz * spec * vec3(texture(material.specular, oTexture));
     
     ambient *= attenuation * intensity;
     diffuse *= attenuation * intensity;

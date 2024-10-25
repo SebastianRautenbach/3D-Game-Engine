@@ -18,6 +18,9 @@ namespace wizm {
             glm::vec3 specular = glm::vec3(1.0f, 1.0f, 1.0f)
         );
 
+        ~spotlight_component() {
+            glm::vec3 specular;
+        }
 
         void component_preupdate();
         void component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader);

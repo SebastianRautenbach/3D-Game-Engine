@@ -16,7 +16,10 @@ namespace wizm {
 	{
 		glm::vec4 minPoint;
 		glm::vec4 maxPoint;
-		unsigned int count;
+		unsigned int pointcount;
+		unsigned int spotcount;
+		float pad1;
+		float pad2;
 		unsigned int pointLightIndices[100];
 		unsigned int spotLightIndices[100];
 	};
@@ -36,17 +39,19 @@ namespace wizm {
 	{
 		glm::vec4 position;
 		glm::vec4 direction;
-		float cutOff;
-		float outerCutOff;
-		float distance;
-
-		float constant;
-		float linear;
-		float quadratic;
-
 		glm::vec4 ambient;
 		glm::vec4 diffuse;
 		glm::vec4 specular;
+
+		float cutOff;
+		float outerCutOff;
+		float distance;
+		float constant;
+
+		float linear;
+		float quadratic;
+		float pad1;
+		float pad2; 
 	};
 
 
