@@ -104,7 +104,7 @@ namespace wizm {
 	{
 		m_reloaded = true;
 		m_entities.clear();
-		set_crnt_entity(nullptr);
+		clear_selected_entities();
 	}
 
 	//--------------------------------------------------------- SERIALIZATION METHODS

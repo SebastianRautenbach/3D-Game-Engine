@@ -28,14 +28,37 @@ namespace wizm {
 
 
 		// modifying only one entity
-		std::vector<std::shared_ptr<core_entity>> get_entities() {
+		//-------------------------------------------------------------------------------------------------------- NEW SELECTION
+		
+		std::vector<std::shared_ptr<core_entity>> get_selected_entities() {
 			return m_selected_entities;
 		}
-		
+
+		void add_selected_entity(std::shared_ptr<core_entity> ent) {
+			for (auto& e : m_selected_entities) {
+				if (e == ent) { return; }
+			}
+			m_selected_entities.emplace_back(ent);
+		}
+
+		void remove_selected_entity(std::shared_ptr<core_entity> ent) {
+			m_selected_entities.erase(std::find(m_selected_entities.begin(), m_selected_entities.end(), ent));
+		}
+
+		void clear_selected_entities() {
+			m_selected_entities.clear();
+		}
+
 
 		std::shared_ptr<core_entity> get_crnt_entity() {
-			return m_selected_entity ? m_selected_entity : nullptr;
+			if (m_selected_entities.empty()) { return nullptr; }
+			return m_selected_entities[m_selected_entities.size() - 1] ? m_selected_entities[m_selected_entities.size() - 1] : nullptr;
 		}
+
+		//-------------------------------------------------------------------------------------------------------- NEW SELECTION
+
+
+		
 
 		std::shared_ptr<core_entity> get_entity_name(std::string name) {
 			for (auto& ent : m_entities) {
@@ -44,9 +67,9 @@ namespace wizm {
 			}
 		}
 
-		void set_crnt_entity(std::shared_ptr<core_entity> ent) { 
-			m_selected_entity = ent; 
-		};
+		//void set_crnt_entity(std::shared_ptr<core_entity> ent) { 
+		//	m_selected_entity = ent; 
+		//};
 
 
 		// temporarly

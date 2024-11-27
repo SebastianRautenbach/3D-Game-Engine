@@ -7,6 +7,7 @@
 #include "system/camera_3d.h"
 #include "other utils/common.h"
 #include "system/scene_manager.h"
+#include "system/input_manager.h"
 
 
 wizm::viewport_layer::viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer)
@@ -126,21 +127,84 @@ void wizm::viewport_layer::update(float delta_time)
 
 void wizm::viewport_layer::scene_viewport_func()
 {
-    if (global_scene->get_crnt_entity())
+    //if (global_scene->get_crnt_entity())
+    //{
+    //    auto ent = global_scene->get_crnt_entity();
+    //    glm::mat4 mat;
+    //
+    //    if (is_global_gizmo) {
+    //        glm::mat4 rotation = glm::mat4_cast(glm::quat(glm::vec3(0.0)));
+    //
+    //        mat = glm::translate(glm::mat4(1.0f), ent->get_position()) * rotation *
+    //            glm::scale(glm::mat4(1.0f), ent->get_scale());
+    //    }
+    //    else {
+    //        mat = ent->get_transform();
+    //    }
+    //
+    //
+    //    ImGuizmo::SetOrthographic(false);
+    //    ImGuizmo::SetDrawlist();
+    //
+    //    float windowWidth = (float)ImGui::GetWindowWidth();
+    //    float windowHeight = (float)ImGui::GetWindowHeight();
+    //    ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
+    //
+    //
+    //
+    //    glm::mat4 viewMatrix = m_camera_manager->m_viewport_camera->get_view_matrix();
+    //
+    //    glm::mat4 projectionMatrix = m_camera_manager->m_viewport_camera->get_projection_matrix();
+    //
+    //
+    //    float snapvals[3] = { m_snap_value, m_snap_value , m_snap_value };
+    //
+    //
+    //    ImGuizmo::Manipulate(glm::value_ptr(viewMatrix), glm::value_ptr(projectionMatrix),
+    //        (ImGuizmo::OPERATION)guizmo_type,
+    //        ImGuizmo::LOCAL, glm::value_ptr(mat), nullptr, m_should_snap ? snapvals : nullptr);
+    //
+    //
+    //
+    //    if (ImGuizmo::IsUsing())
+    //    {
+    //        glm::vec3 position = glm::vec3(0);
+    //        glm::vec3 rotation = glm::vec3(0);
+    //        glm::vec3 scale = glm::vec3(0);
+    //
+    //
+    //
+    //        lowlevelsys::decompose_transform(mat, position, rotation, scale);
+    //        glm::vec3 deltaRot = glm::vec3(0);
+    //
+    //        if (!is_global_gizmo)
+    //            deltaRot = rotation - ent->get_rotation();
+    //        else
+    //            deltaRot = (rotation);
+    //
+    //        ent->set_position(position);
+    //        ent->add_rotation(deltaRot);
+    //        ent->set_scale(scale);
+    //    }
+    //
+    //}
+
+
+#if 1
+    if(global_scene->get_crnt_entity())
     {
-        auto ent = global_scene->get_crnt_entity();
+        auto pivot = global_scene->get_crnt_entity();
         glm::mat4 mat;
 
         if (is_global_gizmo) {
             glm::mat4 rotation = glm::mat4_cast(glm::quat(glm::vec3(0.0)));
 
-            mat = glm::translate(glm::mat4(1.0f), ent->get_position()) * rotation *
-                glm::scale(glm::mat4(1.0f), ent->get_scale());
+            mat = glm::translate(glm::mat4(1.0f), pivot->get_position()) * rotation *
+                glm::scale(glm::mat4(1.0f), pivot->get_scale());
         }
         else {
-            mat = ent->get_transform();
+            mat = pivot->get_transform();
         }
-
 
         ImGuizmo::SetOrthographic(false);
         ImGuizmo::SetDrawlist();
@@ -163,8 +227,6 @@ void wizm::viewport_layer::scene_viewport_func()
             (ImGuizmo::OPERATION)guizmo_type,
             ImGuizmo::LOCAL, glm::value_ptr(mat), nullptr, m_should_snap ? snapvals : nullptr);
 
-
-
         if (ImGuizmo::IsUsing())
         {
             glm::vec3 position = glm::vec3(0);
@@ -174,19 +236,36 @@ void wizm::viewport_layer::scene_viewport_func()
 
 
             lowlevelsys::decompose_transform(mat, position, rotation, scale);
-            glm::vec3 deltaRot = glm::vec3(0);
 
-            if (!is_global_gizmo)
-                deltaRot = rotation - ent->get_rotation();
-            else
-                deltaRot = (rotation);
+            glm::vec3 diff = - pivot->get_position() + position;
 
-            ent->set_position(position);
-            ent->add_rotation(deltaRot);
-            ent->set_scale(scale);
+            for (auto e : global_scene->get_selected_entities()) {
+                if (e != nullptr) {
+
+
+                    glm::vec3 currentRotation = e->get_rotation();
+                    glm::vec3 currentScale = e->get_scale();
+
+                    glm::vec3 rotationDelta = rotation;
+                    if (!is_global_gizmo) {
+                        rotationDelta = rotation - pivot->get_rotation();
+                    }
+                    glm::vec3 scaleDelta = scale / pivot->get_scale();
+                  
+
+                    e->add_position(diff);
+                    e->add_rotation(rotationDelta);
+                    e->set_scale(currentScale * scaleDelta);
+                }
+            }
         }
 
+
+       
     }
+#endif
+
+    
 
     if (!ImGuizmo::IsUsing() && ImGui::IsWindowHovered())
     {
@@ -194,11 +273,14 @@ void wizm::viewport_layer::scene_viewport_func()
         static ImVec2 rectEnd(-1, -1);
 
 
-        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+        if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && global_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_CONTROL)) {
+            get_mouse_pick(true);
+        }
+        else if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
 
 
 
-            get_mouse_pick();
+            get_mouse_pick(false);
 
             rectStart = ImGui::GetMousePos();
             rectEnd = rectStart;
@@ -206,8 +288,10 @@ void wizm::viewport_layer::scene_viewport_func()
 
         }
 
+        
+
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Right)) {
-            properties_mouse_pick();
+            properties_mouse_pick(false);
         }
 
         if (ImGui::IsMouseDown(ImGuiMouseButton_Left)) {
@@ -240,7 +324,7 @@ void wizm::viewport_layer::scene_viewport_func()
 
             m_renderer->update_draw_data();
 
-            global_scene->set_crnt_entity(nullptr);
+            global_scene->clear_selected_entities();            
         }
         if (ImGui::MenuItem("Duplicate")) {
 
@@ -253,14 +337,14 @@ void wizm::viewport_layer::scene_viewport_func()
 
             auto crnt = global_scene->get_crnt_entity()->copy_(name);
             global_scene->add_entity(crnt);
-            global_scene->set_crnt_entity(crnt);
+            global_scene->add_selected_entity(crnt);       
         }
 
         ImGui::EndPopup();
     }
 }
 
-void wizm::viewport_layer::get_mouse_pick()
+void wizm::viewport_layer::get_mouse_pick(bool multi_select)
 {
     ImVec2 crnt_mouse_pos = ImGui::GetMousePos();
     ImVec2 window_pos = ImGui::GetWindowPos();
@@ -274,10 +358,13 @@ void wizm::viewport_layer::get_mouse_pick()
     glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->get_projection_matrix(), m_camera_manager->m_viewport_camera->get_view_matrix());
     glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->get_view_matrix());
 
-    global_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
+    if(!multi_select)
+        global_scene->clear_selected_entities();
+
+    global_scene->add_selected_entity(get_ent_pick(ray_dir, ray_pos));
 }
 
-void wizm::viewport_layer::properties_mouse_pick()
+void wizm::viewport_layer::properties_mouse_pick(bool multi_select)
 {
     ImVec2 crnt_mouse_pos = ImGui::GetMousePos();
     ImVec2 window_pos = ImGui::GetWindowPos();
@@ -291,7 +378,12 @@ void wizm::viewport_layer::properties_mouse_pick()
     glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->get_projection_matrix(), m_camera_manager->m_viewport_camera->get_view_matrix());
     glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->get_view_matrix());
 
-    global_scene->set_crnt_entity(get_ent_pick(ray_dir, ray_pos));
+    if(!multi_select)
+        global_scene->clear_selected_entities();
+    
+    
+    global_scene->add_selected_entity(get_ent_pick(ray_dir, ray_pos));
+
     if (global_scene->get_crnt_entity() != nullptr) { ImGui::OpenPopup("ModEnt"); }
 
    

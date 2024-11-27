@@ -41,12 +41,14 @@ void wizm::scene_ui_layer::update(float delta_time)
 		}
 		if (ImGui::IsItemClicked(ImGuiMouseButton_Right))
 		{
-			global_scene->set_crnt_entity(ents);
+			global_scene->clear_selected_entities();
+			global_scene->add_selected_entity(ents);			
 			ImGui::OpenPopup("ModEnt");
 		}
 		if (ImGui::IsItemClicked())
 		{
-			global_scene->set_crnt_entity(ents);
+			global_scene->clear_selected_entities();
+			global_scene->add_selected_entity(ents);
 		}
 
 	}
@@ -72,10 +74,15 @@ void wizm::scene_ui_layer::update(float delta_time)
 			m_renderer->update_draw_data();
 			
 			for (auto ents : global_scene->m_entities)
-				global_scene->set_crnt_entity(ents);
+			{
+				global_scene->clear_selected_entities();
+				global_scene->add_selected_entity(ents);
+			}
 			
 			if (global_scene->m_entities.empty())
-				global_scene->set_crnt_entity(nullptr);
+			{
+				global_scene->clear_selected_entities();				
+			}
 		}
 		if (ImGui::MenuItem("Duplicate")) {
 			
@@ -88,7 +95,8 @@ void wizm::scene_ui_layer::update(float delta_time)
 
 			auto crnt = global_scene->get_crnt_entity()->copy_(name);
 			global_scene->add_entity(crnt);
-			global_scene->set_crnt_entity(crnt);
+			global_scene->clear_selected_entities();
+			global_scene->add_selected_entity(crnt);
 		}
 
 		ImGui::EndPopup();
