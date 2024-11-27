@@ -159,6 +159,9 @@ void wizm::gui_layer::begin()
         
         if (ImGui::BeginMenu("Window"))
         {
+            if (ImGui::MenuItem("Reset layout")) {
+               
+            }
             ImGui::EndMenu();
         }
 
@@ -209,15 +212,22 @@ void wizm::gui_layer::begin()
         */
 
         if (ImGui::Button(ICON_FA_BUG "")) {
-            global_console_out.clear();
+            bool build_success;
+            wizm::add_console_line("------------------------- BUILDING", CONSOLE_GENERAL_LOG);
             auto assets = m_asset_manager->get_all_assets();
             for (const auto& asset : assets) {
                 auto script = std::dynamic_pointer_cast<script_asset>(asset.second);
                 if (script) {
                     std::string temp_path = m_asset_manager->get_asset_details_from_id(asset.first).path;
-                    script->sc->reload_script(temp_path);
+                    build_success = script->sc->reload_script(temp_path);
                 }
             }
+
+            if (build_success)
+                wizm::add_console_line("------------------------- BUILDING SUCCESS", CONSOLE_GENERAL_LOG);            
+            else
+                wizm::add_console_line("------------------------- BUILDING FAILED", CONSOLE_GENERAL_LOG);
+
         }
         ImGui::EndMenuBar();
     }

@@ -15,9 +15,10 @@
 
         vec3 billboard_center = vec3(model[3]);
 
-        vec3 vertex_position = billboard_center +
-                           aPos.x * camera_right + // Align the quad horizontally
-                           aPos.y * camera_up;
+        vec3 vertex_position = billboard_center + 
+                       aPos.x * -camera_right + 
+                       aPos.y * camera_up;
+
 
         gl_Position = projection * view * vec4(vertex_position , 1.0);
 

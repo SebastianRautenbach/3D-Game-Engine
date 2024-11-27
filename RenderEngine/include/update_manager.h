@@ -37,6 +37,11 @@ namespace wizm {
 
 		core_framebuffer* m_framebuffer;
 
+		//shadow test
+		core_framebuffer* m_framebuffer_depth;
+		unsigned int depthMap, depthMapFBO;
+
+
 		compute_cluster* compute_cluster_test;
 
 

@@ -1,4 +1,4 @@
-#include "compute_cluster_test.h"
+#include "system/compute_cluster_test.h"
 #include "system/camera_3d.h"
 
 
@@ -86,8 +86,10 @@ void wizm::compute_cluster::update_lights()
 			temp.position = glm::vec4(spotlight_comp->get_world_position(), 1.0f);
 
 			glm::vec3 world_rotation = spotlight_comp->get_world_rotation();
-			glm::quat rotation_quat = glm::quat(glm::vec3(glm::radians(world_rotation.x), glm::radians(world_rotation.y), glm::radians(world_rotation.z)));
+			glm::quat rotation_quat = glm::quat(glm::vec3(glm::radians(world_rotation.x), 
+				glm::radians(world_rotation.y), glm::radians(world_rotation.z)));
 			glm::vec3 rotated_direction = glm::normalize(rotation_quat * glm::vec3(0.0f, -1.0f, 0.0f));
+			
 			temp.direction = glm::vec4(rotated_direction, 1.0f);
 			temp.cutOff = spotlight_comp->m_cutOff;
 			temp.outerCutOff = spotlight_comp->m_outerCutOff;

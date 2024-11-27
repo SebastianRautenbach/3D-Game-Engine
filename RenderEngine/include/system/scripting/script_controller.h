@@ -13,7 +13,7 @@ public:
 	script_controller(std::string path);
 	~script_controller();
 	
-	void reload_script(std::string path);
+	bool reload_script(std::string path);
 
 	void on_start();
 	void on_update(float delta_time);

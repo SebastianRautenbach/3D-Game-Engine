@@ -1,10 +1,7 @@
 #version 460 core
 
-in float depth;
 
 void main() {
-  
-   if (depth >= gl_FragCoord.z) {
-      discard;
-   }
+    //gl_FragDepth = vec4(1.0);
+    //FragColor = vec4(1.0);
 }

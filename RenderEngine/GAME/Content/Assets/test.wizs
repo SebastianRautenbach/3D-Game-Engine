@@ -6,4 +6,5 @@ void on_start() {
 void on_update(float delta_time) {
     vec2 mouse_pos = get_mouse_pos();
     set_entity_rotation("floor", mouse_pos.x / 200, mouse_pos.y / 200, 0);
+    set_entity_rotation("floor(1)", mouse_pos.x / 200, mouse_pos.y / 200, 0);
 }

@@ -216,7 +216,7 @@
     <ClCompile Include="include\other utils\copy_to_clipboard.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="include\system\compute_cluster_test.cpp">
+    <ClCompile Include="src\systems\compute_cluster_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

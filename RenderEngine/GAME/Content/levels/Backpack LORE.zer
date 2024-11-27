@@ -868,7 +868,7 @@ light(1)(1)(1)(1)(1){
 sun{
 	directionallight0{
 		light{
-			m_ambient:0.422727,0.422723,0.422723;
+			m_ambient:0.147959,0.147958,0.147958;
 			m_diffuse:0.400000,0.400000,0.400000;
 			m_specular:0.500000,0.500000,0.500000;
 			m_brightness:1.000000;

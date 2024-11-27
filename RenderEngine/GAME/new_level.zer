@@ -1,0 +1,43 @@
+directionallight{
+	directionallight0{
+		light{
+			m_ambient:0.008264,0.008264,0.008264;
+			m_diffuse:0.400000,0.400000,0.400000;
+			m_specular:0.500000,0.500000,0.500000;
+			m_brightness:1.000000;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:2.987385,1.032010,1.215116;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+mesh{
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:6917228854978984615;
+			specular_asset_id:17825215692104819701;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,-3.230848,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:27.253799,0.209196,28.197739;
+	}
+}

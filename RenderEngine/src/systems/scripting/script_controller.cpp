@@ -27,9 +27,10 @@ script_controller::~script_controller()
 	m_context->Release();
 }
 
-void script_controller::reload_script(std::string path)
+bool script_controller::reload_script(std::string path)
 {
 	bool cont = true;
+
 	CScriptBuilder builder;
 	int r = builder.StartNewModule(m_script_engine, module_id.c_str());
 	if (r < 0) {
@@ -55,13 +56,20 @@ void script_controller::reload_script(std::string path)
 	m_onupdate_func = mod->GetFunctionByDecl("void on_update(float)");
 
 	if (!m_onstart_func || !m_onupdate_func) {
-		
+		cont = 0;
 	}
 
 	m_context = m_script_engine->CreateContext();
 	if (!m_context) {
-		
+		cont = 0;
 	}
+
+	if (cont)
+		wizm::add_console_line("Successfully compiled scripts!", CONSOLE_SUCCESS_LOG);
+
+	
+
+	return cont;
 }
 
 void script_controller::on_start()

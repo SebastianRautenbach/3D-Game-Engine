@@ -131,6 +131,11 @@ void wizm::content_browser_layer::update(float delta_time)
                 new_file_name = file_name;
             }
 
+            if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0)) {
+                // this is for now
+                ShellExecute(NULL, L"open", entry.c_str(), NULL, NULL, SW_SHOWNORMAL);
+            }
+
             if (ImGui::BeginPopup("FilePopup")) {
                 if (ImGui::MenuItem("Delete")) {
                    

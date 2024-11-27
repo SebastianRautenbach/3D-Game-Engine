@@ -28,6 +28,10 @@ namespace wizm {
 
 
 		// modifying only one entity
+		std::vector<std::shared_ptr<core_entity>> get_entities() {
+			return m_selected_entities;
+		}
+		
 
 		std::shared_ptr<core_entity> get_crnt_entity() {
 			return m_selected_entity ? m_selected_entity : nullptr;
@@ -64,7 +68,8 @@ namespace wizm {
 		std::string current_scene = "";
 
 	private:
-		std::shared_ptr<core_entity> m_selected_entity;
+		std::vector<std::shared_ptr<core_entity>> m_selected_entities;
+		//std::shared_ptr<core_entity> m_selected_entity;
 		// might move
 		bool m_frustum_loaded = false;
 	};

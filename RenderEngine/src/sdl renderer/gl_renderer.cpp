@@ -54,7 +54,7 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 
 
@@ -77,7 +77,6 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_comp_shdr.glsl"));
 	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_cull_comp_shdr.glsl"));
 	
-
 }
 
 

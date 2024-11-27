@@ -23,14 +23,16 @@ void wizm::script_debug_layer::update(float delta_time)
     ImVec4 bg_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
     ImVec4 warning_text_color = ImVec4(1, 1, 0, 1);
     ImVec4 error_text_color = ImVec4(1, 0, 0, 1);
+    ImVec4 success_text_color = ImVec4(0.3f, 0.686f, 0.314f, 1.f);
     ImVec4 crnt_color = ImVec4(1, 1, 1, 1);
 
     ImGui::BeginChild("Console", ImVec2(0, 0), true, ImGuiWindowFlags_AlwaysVerticalScrollbar);
 
     ImDrawList* draw_list = ImGui::GetWindowDrawList();
     ImVec2 pos = ImGui::GetCursorScreenPos();
-    ImVec2 size = ImGui::GetContentRegionAvail();
-    draw_list->AddRectFilled(pos, ImVec2(pos.x + size.x, pos.y + size.y), ImGui::GetColorU32(bg_color));
+    ImVec2 size = ImGui::GetContentRegionAvail(); 
+    float scroll_x = ImGui::GetScrollX(), scroll_y = ImGui::GetScrollY(); 
+    draw_list->AddRectFilled(pos, ImVec2(pos.x + size.x + scroll_x, pos.y + size.y + scroll_y), ImGui::GetColorU32(bg_color));
 
     
     for (const auto& msg : global_console_out) {
@@ -39,6 +41,8 @@ void wizm::script_debug_layer::update(float delta_time)
             crnt_color = error_text_color;
         else if (msg.log_type == CONSOLE_WARNING_LOG)
             crnt_color = warning_text_color;
+        else if (msg.log_type == CONSOLE_SUCCESS_LOG)
+            crnt_color = success_text_color;
         else
             crnt_color = ImVec4(1.0, 1.0, 1.0, 1.0);
 

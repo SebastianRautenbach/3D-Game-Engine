@@ -14,6 +14,7 @@
 #define CONSOLE_ERROR_LOG 0x000
 #define CONSOLE_WARNING_LOG 0x001
 #define CONSOLE_GENERAL_LOG 0x002
+#define CONSOLE_SUCCESS_LOG 0x003
 
 extern int engine_status;
 

@@ -74,6 +74,9 @@ layout(std430, binding = 3) readonly buffer spotLightSSBO
     SpotLight spotLight[];
 };
 
+
+// UNIFORMS ------------------------------------------------------------------
+
 uniform DirLight dirLight;
 uniform Material material;
 
@@ -81,21 +84,27 @@ uniform float zNear;
 uniform float zFar;
 uniform uvec3 gridSize;
 uniform uvec2 screenDimensions;
+uniform vec3 camPos;
+uniform sampler2D shadowMap;
 
 
-// UNiforms ------------------------------------------------------------------
 
 
 in vec3 FragPos;
 in vec3 Normal; 
 in vec2 oTexture;
+in vec4 FragPosLightSpace;
+float gamma = 2.2;
 
-uniform vec3 camPos;
+
+
 
 
 vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir);
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
 vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
+float ShadowCalculation(vec4 fragPosLightSpace);
+
 
 
 void main()
@@ -130,7 +139,8 @@ void main()
         result += CalcSpotLight(light, norm, FragPos, viewDir); 
     }
 
-    FragColor = vec4(result, 1.0);
+
+    FragColor = vec4(pow(result , vec3(1.0/gamma)), 1.0);
 }
 
 
@@ -144,8 +154,11 @@ vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)
     vec3 ambient = light.ambient * vec3(texture(material.diffuse, oTexture));
     vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse, oTexture));
     vec3 specular = light.specular * spec * vec3(texture(material.specular, oTexture));
-    return (ambient + diffuse + specular);
+    
+    float shadow = ShadowCalculation(FragPosLightSpace);
 
+
+    return (ambient + (1.0 - shadow) * (diffuse + specular)); 
 }
 
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
@@ -200,4 +213,15 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
     specular *= attenuation * intensity;
     
     return (ambient + diffuse + specular);
+}
+
+
+float ShadowCalculation(vec4 fragPosLightSpace)
+{
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    projCoords = projCoords * 0.5 + 0.5;
+    float closestDepth = texture(shadowMap, projCoords.xy).r; 
+    float currentDepth = projCoords.z;
+    float shadow = currentDepth > closestDepth  ? 1.0 : 0.0;
+    return shadow;
 }

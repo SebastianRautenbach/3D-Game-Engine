@@ -12,7 +12,7 @@ CAMERA{
 	tags{
 	}
 	transform{
-		position:-9.521071,3.267369,1.399518;
+		position:-7.235394,3.267369,1.367208;
 		rotation:0.000020,-1.556661,-0.000019;
 		scale:1.000000,1.000000,1.000000;
 	}
@@ -20,7 +20,7 @@ CAMERA{
 directionallight{
 	directionallight0{
 		light{
-			m_ambient:0.422594,0.422590,0.422590;
+			m_ambient:0.017094,0.017094,0.017094;
 			m_diffuse:0.400000,0.400000,0.400000;
 			m_specular:0.500000,0.500000,0.500000;
 			m_brightness:1.000000;
@@ -34,13 +34,34 @@ directionallight{
 	tags{
 	}
 	transform{
-		position:17.169872,0.000000,0.000000;
+		position:2.000000,2.631233,4.000000;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }
 floor{
-	staticmesh0{
+	spotlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_outerCutOff:0.814116;
+			m_cutOff:0.984808;
+			m_ambient:1.000000,0.000000,0.000000;
+			m_diffuse:1.000000,1.000000,1.000000;
+			m_specular:1.000000,0.999990,0.999990;
+			m_distance:30.000000;
+			m_brightness:1.000000;
+			spotlightindex:;
+			light_index:0;
+		}
+		transform{
+			position:-1.330000,0.000000,0.000000;
+			rotation:0.000000,0.000000,-1.500000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	staticmesh1{
 		asset id:18410409422620930561;
 		material{
 			diffuse_asset_id:8574774509872314517;
@@ -55,8 +76,50 @@ floor{
 	tags{
 	}
 	transform{
-		position:-0.016013,1.275369,-4.399378;
-		rotation:0.000000,0.000000,0.000000;
+		position:-0.016013,1.275369,-4.403002;
+		rotation:0.000000,0.988182,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+floor(1){
+	spotlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_outerCutOff:0.814116;
+			m_cutOff:0.984808;
+			m_ambient:1.000000,0.000000,0.000000;
+			m_diffuse:1.000000,1.000000,1.000000;
+			m_specular:1.000000,0.999990,0.999990;
+			m_distance:10.000000;
+			m_brightness:1.000000;
+			spotlightindex:;
+			light_index:1;
+		}
+		transform{
+			position:0.000000,1.200000,0.000000;
+			rotation:0.000000,0.000000,-3.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	staticmesh1{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:8574774509872314517;
+			specular_asset_id:6917228854978984615;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-1.079497,1.293307,6.524275;
+		rotation:0.000000,0.938182,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }
@@ -155,36 +218,6 @@ light1(1)(1){
 		scale:1.000000,1.000000,1.000000;
 	}
 }
-light1(1)(1)(1){
-	spotlight0{
-		light{
-			m_constant:3.321000;
-			linear:1.277000;
-			m_quadratic:1.241000;
-			m_outerCutOff:0.920505;
-			m_cutOff:0.954240;
-			m_ambient:1.000000,0.999990,0.999990;
-			m_diffuse:1.000000,1.000000,1.000000;
-			m_specular:1.000000,1.000000,1.000000;
-			m_distance:50.000000;
-			m_brightness:1.000000;
-			spotlightindex:;
-			light_index:0;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	tags{
-	}
-	transform{
-		position:-2.701852,1.327278,3.839942;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
-	}
-}
 mesh{
 	staticmesh0{
 		asset id:18410409422620930561;
@@ -225,5 +258,68 @@ mesh(1){
 		position:-0.016013,0.000000,0.008691;
 		rotation:0.000000,0.000000,0.000000;
 		scale:3.189309,6.127151,1.453682;
+	}
+}
+mesh(1)(1)(1){
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:6917228854978984615;
+			specular_asset_id:6917228854978984615;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-0.016013,2.945549,12.173777;
+		rotation:0.000000,0.000000,0.000000;
+		scale:8.037185,3.897255,0.135687;
+	}
+}
+mesh(1)(1)(1)(1){
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:6917228854978984615;
+			specular_asset_id:6917228854978984615;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-0.016013,2.945549,-12.326223;
+		rotation:0.000000,0.000000,0.000000;
+		scale:8.037185,3.897255,0.135687;
+	}
+}
+mesh(1)(1)(1)(1)(1){
+	staticmesh0{
+		asset id:18410409422620930561;
+		material{
+			diffuse_asset_id:6917228854978984615;
+			specular_asset_id:6917228854978984615;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:7.660024,2.945534,0.066455;
+		rotation:0.000070,-1.556640,-0.000071;
+		scale:12.487232,3.897255,0.135687;
 	}
 }

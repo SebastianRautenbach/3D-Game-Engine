@@ -83,6 +83,8 @@ bool test_spotlightAABB(uint i, Cluster cluster)
     if (spotLight[i].outerCutOff <= PI_DIV_4) {
         radius = spotLight[i].distance * 0.5f / pow(cos(spotLight[i].outerCutOff), 2.0f);
     }
+
+    radius += radius * 5;
  
     vec3 position = vec3(viewMatrix * spotLight[i].position);
  
@@ -100,7 +102,7 @@ bool test_pointlightAABB(uint i, Cluster cluster) {
     vec3 aabbMin = cluster.minPoint.xyz;
     vec3 aabbMax = cluster.maxPoint.xyz;
 
-    return sphereAABBIntersection(center, pointLight[i].radius, aabbMin, aabbMax);
+    return sphereAABBIntersection(center, 65, aabbMin, aabbMax);
 }
 
 void main() {

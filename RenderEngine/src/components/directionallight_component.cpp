@@ -23,9 +23,37 @@ void wizm::directionallight_component::component_preupdate()
 
 void wizm::directionallight_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+
+
 	if (m_shader != shader)
 		m_shader = shader;
-	
+
+
+	glm::mat4 lightProjection, lightView;
+	glm::mat4 light_matrix;
+
+	glm::vec3 pos = get_world_position();
+
+	light_matrix = lightProjection = lightView = glm::mat4(1.0);
+
+
+	float near_plane = 1.0f, far_plane = 7.5f;
+	lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
+	lightView = glm::lookAt(pos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
+	light_matrix = lightProjection * lightView;
+	shader->setMat4("light_matrix", light_matrix);
+
+
 	shader->setVec3("dirLight.direction", get_world_rotation());
 	shader->setVec3("dirLight.ambient", m_ambient * glm::vec3(m_brightness));
 	shader->setVec3("dirLight.diffuse", m_diffuse);

@@ -58,7 +58,7 @@ void wizm::viewport_layer::update(float delta_time)
 
 
     ImVec2 button_size = ImVec2(ImGui::CalcTextSize(" [T] ").x, 25);
-    ImVec2 button_pos = ImVec2((0 + button_size.x), (30));
+    ImVec2 button_pos = ImVec2((0 + button_size.x), (33));
     
     ImGui::SetCursorPos(button_pos);
     if (ImGui::Button(ICON_FA_ARROWS_ALT "", button_size))
@@ -112,7 +112,7 @@ void wizm::viewport_layer::update(float delta_time)
     ImGui::PushStyleColor(ImGuiCol_Button, screen_shot);
     if (ImGui::Button(ICON_FA_PHOTO_VIDEO "", button_size))
     {
-        //take_screenshot(mSize.x, mSize.y, m_fbID);
+        
     }
     ImGui::PopStyleColor();
 
