@@ -2,8 +2,10 @@
 #include "system/scene_manager.h"
 #include "system/assets/texture_asset.h"
 #include "system/assets/script_asset.h"
+#include "system/assets/sound_asset.h"
 
-wizm::asset_manager::asset_manager()
+wizm::asset_manager::asset_manager(audio_manager* audio_manager)
+	: m_auio_manager(audio_manager)
 {
 	load_assets_db();
 }
@@ -20,7 +22,7 @@ void wizm::asset_manager::assign_assets()
 		for (auto& ent : global_scene->m_entities) {
 			for (auto& comp : ent->m_components_list)
 			{
-				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(comp);
+				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(comp);		//------------------------------------ STATIC MESH ASSET & TEXTURE ASSIGNMENT
 				if (mesh_comps)
 				{
 					if (m_assets[mesh_comps->m_asset_id])
@@ -46,11 +48,17 @@ void wizm::asset_manager::assign_assets()
 				}
 				mesh_comps.reset();
 
-				auto script_comp = std::dynamic_pointer_cast<scripting_component>(comp);
+				auto script_comp = std::dynamic_pointer_cast<scripting_component>(comp);		//------------------------------------ SCRIPTING ASSET ASSIGNMENT
 				if (script_comp) {
-					script_comp->m_script_asset = load<script_asset>(script_comp->script_asset_id, "");
+					script_comp->m_script_asset = load<script_asset>(script_comp->script_asset_id, ""); 
 				}
 				script_comp.reset();
+
+				auto sound_comp = std::dynamic_pointer_cast<sound_component>(comp);				//------------------------------------ SOUND ASSET ASSIGNMENT		
+				if (sound_comp) {
+					sound_comp->m_sound_asset = load<sound_asset>(sound_comp->asset_id, "");
+				}
+				sound_comp.reset();
 			}
 		}
 
@@ -73,6 +81,12 @@ void wizm::asset_manager::load_assets_db()
 		}
 		else if (asset.type == tSCRIPT) {
 			load<script_asset>(asset.id, asset.path);
+		}
+		else if (asset.type == tSOUND) {
+			auto _asset = load<sound_asset>(asset.id, asset.path);
+			_asset->m_system = m_auio_manager->system;
+			_asset->setup();
+			
 		}
 	}
 }

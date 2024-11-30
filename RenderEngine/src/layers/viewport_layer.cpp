@@ -337,6 +337,7 @@ void wizm::viewport_layer::scene_viewport_func()
 
             auto crnt = global_scene->get_crnt_entity()->copy_(name);
             global_scene->add_entity(crnt);
+            global_scene->clear_selected_entities();
             global_scene->add_selected_entity(crnt);       
         }
 
@@ -399,9 +400,12 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
 
     for (const auto& ent : global_scene->m_entities) {
         for (const auto& comp : ent->m_components_list) {
+            /*
+                Only reason we doing the static mesh component different from the rest is because
+                its bounding volume is determined by its asset and not as the component itself
+            */
             auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
-            auto li_comp = std::dynamic_pointer_cast<light_component>(comp);
-            auto camera_comp = std::dynamic_pointer_cast<camera_component>(comp);
+            auto renderable = std::dynamic_pointer_cast<core_renderable>(comp);
 
             glm::vec3 intersection_point;
 
@@ -414,21 +418,14 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
                     touched_entities.emplace_back(distance, ent);
                 }
             }
-            else if (li_comp) {
-                li_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
-                if (li_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
-                   
-                    float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->get_position());
-                    touched_entities.emplace_back(distance, ent);
-                }
-            }
-            else if (camera_comp) {
-                camera_comp->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
-                if (camera_comp->ray_intersect(ray_dir, ray_pos, intersection_point)) {
+            else if (renderable) {
+                renderable->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
+                if (renderable->ray_intersect(ray_dir, ray_pos, intersection_point)) {
 
                     float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->get_position());
                     touched_entities.emplace_back(distance, ent);
                 }
+
             }
         }
     }

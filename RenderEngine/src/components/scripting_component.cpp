@@ -1,5 +1,6 @@
 #include "entity sys/components/scripting_component.h"
 
+
 wizm::scripting_component::scripting_component()
 {
 	m_component_type = eScripting;

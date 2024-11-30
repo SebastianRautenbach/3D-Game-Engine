@@ -10,6 +10,8 @@
 #include "system/billboard_manager.h"
 #include "system/camera_manager.h"
 #include "system/compute_cluster_test.h"
+#include "system/audio_listener.h"
+
 
 // DELETE
 #include "system/draw_ray.h"
@@ -24,10 +26,8 @@ namespace wizm {
 		void render();
 		void post_render();
 
+		~update_manager();
 
-		inline update_manager* get_renderer() {
-			return this;
-		}
 
 	public:
 		bool is_running = true;
@@ -43,12 +43,18 @@ namespace wizm {
 
 
 		compute_cluster* compute_cluster_test;
+		
 
 
 		layer_stack* m_layer_stack;
 		billboard_manager* m_billboard_manager;
 		std::shared_ptr<camera_manager> m_camera_manager;
 		asset_manager* m_asset_manager;
+
+		// SOUND
+
+		audio_listener* m_listener_manager;
+		audio_manager* m_audio_manager;
 
 	};
 

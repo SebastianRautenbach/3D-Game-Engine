@@ -13,7 +13,8 @@ namespace wizm {
 		eDirLightB,
 		eSpotLightB,
 		eParticalB,
-		eCameraB
+		eCameraB,
+		eSoundB
 	};
 
 	struct billboard_s {

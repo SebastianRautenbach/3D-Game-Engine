@@ -32,6 +32,10 @@ void wizm::billboard_manager::render()
 				{
 					m_billboard_core->draw(comp->get_transform(), eCameraB);
 				}
+				else if (comp->m_component_type == eSound3D) 
+				{
+					m_billboard_core->draw(comp->get_transform(), eSoundB);
+				}
 			}
 		}
 	}

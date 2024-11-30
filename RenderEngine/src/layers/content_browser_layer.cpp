@@ -18,6 +18,7 @@ wizm::content_browser_layer::content_browser_layer(asset_manager* p_asset_manage
     image_file_icon = new core_gl_texture("resources/images/image_file_icon.png");
     map_file_icon = new core_gl_texture("resources/images/map_file_icon.png");
     script_file_icon = new core_gl_texture("resources/images/script_icon.png");
+    sound_file_icon = new core_gl_texture("resources/images/sound_file_icon.png");
 }
 
 wizm::content_browser_layer::~content_browser_layer()
@@ -112,14 +113,16 @@ void wizm::content_browser_layer::update(float delta_time)
             //---------------------------------------------------------------------------------------------------------------	FILE
             ImTextureID final_texture_icon = (ImTextureID)file_texture->texture_id;
             
-            if(is_mesh_file(file_name))
+            if (is_mesh_file(file_name))
                 final_texture_icon = (ImTextureID)mesh_file_icon->texture_id;
-            else if(is_texture_file(file_name))
+            else if (is_texture_file(file_name))
                 final_texture_icon = (ImTextureID)image_file_icon->texture_id;
             else if (is_map_file(file_name))
                 final_texture_icon = (ImTextureID)map_file_icon->texture_id;
-            else if(is_script_file(file_name))
+            else if (is_script_file(file_name))
                 final_texture_icon = (ImTextureID)script_file_icon->texture_id;
+            else if (is_sound_file(file_name))
+                final_texture_icon = (ImTextureID)sound_file_icon->texture_id;
 
                
 

@@ -10,6 +10,7 @@ namespace wizm {
 	public:
 		virtual ~core_asset() = default;
 		virtual void load(const std::string& path) = 0;
+		std::string file_name;
 	};
 
 

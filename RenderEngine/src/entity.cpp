@@ -206,6 +206,13 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
+		//--- SCRIPTING SOUND
+
+		if (i.first.find("sound_component") != -1) {
+			auto c = add_component(std::make_shared<sound_component>());
+			c->read_saved_data(m_ent_ID, i.first, save_t);
+		}
+
 	}
 }
 

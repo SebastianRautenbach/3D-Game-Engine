@@ -1,10 +1,78 @@
-void on_start() {
-    
+
+const float PI = 3.141592653589793;
+string name = "floor";
+
+
+float sin(float rad) {
+    float result = 0.0f;
+    float term = rad;
+    int n = 1;
+
+    for (int i = 1; i <= 10; i++) {
+        result += term;
+        n += 2;
+        term *= -1 * rad * rad / (n * (n - 1));
+    }
+    return result;
 }
 
 
+float cos(float rad) {
+    float result = 0.0f;
+    float term = 1.0f;
+    int n = 0;
+
+    for (int i = 1; i <= 10; i++) { 
+        result += term;
+        n += 2;
+        term *= -1 * rad * rad / (n * (n - 1));
+    }
+    return result;
+}
+
+float length(vec3 v) {
+    return sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+}
+
+
+float sqrt(float value) {
+    if (value <= 0) return 0.0f; 
+    float x = value; 
+    for (int i = 0; i < 10; i++) { 
+        x = 0.5f * (x + value / x);
+    }
+    return x;
+}
+
+
+float radians(float degrees) {
+    return degrees * (PI / 180.0f);
+}
+
+
+vec3 pivot = vec3(0, 3.02, 0);
+float rotation_speed = 90.0f; 
+float current_angle = 0.0f; 
+
+void on_start() {
+    set_entity_rotation(name, 0, 0, 0);
+    add_entity_position(name, 0, 0, 0);
+}
+
 void on_update(float delta_time) {
-    vec2 mouse_pos = get_mouse_pos();
-    set_entity_rotation("floor", mouse_pos.x / 200, mouse_pos.y / 200, 0);
-    set_entity_rotation("floor(1)", mouse_pos.x / 200, mouse_pos.y / 200, 0);
+    vec3 entity_pos = get_entity_position(name);
+
+    current_angle += rotation_speed * delta_time;
+    if (current_angle >= 360.0f) current_angle -= 360.0f;
+    float rad_angle = radians(current_angle);
+
+    vec3 lenth = vec3(entity_pos.x - pivot.x, entity_pos.y - pivot.y, entity_pos.z - pivot.z);
+    float radius = length(lenth);
+    vec3 new_pos;
+    new_pos.x = pivot.x + radius * cos(rad_angle);
+    new_pos.y = pivot.y + radius * sin(rad_angle);
+    new_pos.z = entity_pos.z;
+
+    set_entity_rotation(name, 0, 0, current_angle);
+    add_entity_position(name, new_pos.x - entity_pos.x, new_pos.y - entity_pos.y, 0);
 }

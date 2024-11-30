@@ -40,7 +40,8 @@ namespace wizm {
 		core_gl_texture* file_texture;
 		core_gl_texture* image_file_icon;
 		core_gl_texture* map_file_icon;
-		core_gl_texture* script_file_icon;
+		core_gl_texture* script_file_icon; 
+		core_gl_texture* sound_file_icon;
 	}; 
 
 

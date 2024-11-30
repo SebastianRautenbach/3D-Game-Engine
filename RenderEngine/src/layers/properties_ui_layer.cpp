@@ -207,6 +207,9 @@ void wizm::properties_ui_layer::update(float delta_time)
 			case eScripting:
 				comp_type = "ScriptingComponent";
 				break;
+			case eSound3D:
+				comp_type = "SoundComponent";
+				break;
 
 			default:
 				break;
@@ -304,11 +307,10 @@ void wizm::properties_ui_layer::component_add_popup()
 			global_scene->get_crnt_entity()->add_component(std::make_shared<spotlight_component>());
 		}
 		if (ImGui::MenuItem("Directional Light")) {
-			global_scene->get_crnt_entity()->add_component(std::make_shared<directionallight_component>());
-			
+			global_scene->get_crnt_entity()->add_component(std::make_shared<directionallight_component>());			
 		}
 		if (ImGui::MenuItem("Sound")) {
-			
+			global_scene->get_crnt_entity()->add_component(std::make_shared<sound_component>());
 		}
 		if (ImGui::MenuItem("Camera")) {
 			global_scene->get_crnt_entity()->add_component(std::make_shared<camera_component>());
@@ -507,6 +509,37 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tSCRIPT)
 				{
 					script_component->script_asset_id = wstring_to_string(id);
+					m_asset_manager->assign_assets();
+					global_scene->m_reloaded = true;
+				}
+			}
+
+			ImGui::EndDragDropTarget();
+		}
+	}
+
+
+	if (type == "SoundComponent") {
+		std::string path;
+		auto _sound_component = std::dynamic_pointer_cast<sound_component>(component);
+		if (_sound_component) {
+			if (_sound_component->m_sound_asset)
+				path = _sound_component->m_sound_asset->file_name;
+
+			if (path.empty())
+				path = "Change script";
+		}
+
+		ImGui::Button(path.c_str(), ImVec2(125, 125));
+		if (ImGui::BeginDragDropTarget()) {
+
+			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+
+				const wchar_t* id = (const wchar_t*)payload->Data;
+
+				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tSOUND)
+				{
+					_sound_component->asset_id = wstring_to_string(id);
 					m_asset_manager->assign_assets();
 					global_scene->m_reloaded = true;
 				}

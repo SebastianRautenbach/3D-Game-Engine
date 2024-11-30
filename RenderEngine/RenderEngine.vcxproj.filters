@@ -219,6 +219,9 @@
     <ClCompile Include="src\systems\compute_cluster_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\sound_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\update_manager.h">
@@ -477,6 +480,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\system\compute_cluster_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\audio_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entity sys\components\sound_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\assets\sound_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\audio_listener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

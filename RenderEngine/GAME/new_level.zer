@@ -1,3 +1,22 @@
+Entity Name{
+	cameracomponent0{
+		settings{
+			is_main_camera:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 directionallight{
 	directionallight0{
 		light{
@@ -37,6 +56,24 @@ mesh{
 	}
 	transform{
 		position:0.000000,-3.230848,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:27.253799,0.209196,28.197739;
+	}
+}
+mesh(1){
+	tags{
+	}
+	transform{
+		position:0.000000,-1.169464,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:27.253799,0.209196,28.197739;
+	}
+}
+mesh(1)(1){
+	tags{
+	}
+	transform{
+		position:-1.590880,-1.555274,-2.488268;
 		rotation:0.000000,0.000000,0.000000;
 		scale:27.253799,0.209196,28.197739;
 	}

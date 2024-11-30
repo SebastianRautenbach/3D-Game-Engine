@@ -11,7 +11,7 @@
 #include "system/assets.h"
 #include "asset_importer.h"
 #include "system/assets/assettypes.h"
-
+#include "system/audio_manager.h"
 
 
 namespace wizm {
@@ -21,7 +21,7 @@ namespace wizm {
         std::unordered_map<std::string, std::shared_ptr<core_asset>> m_assets;
 
     public:
-        asset_manager();
+        asset_manager(audio_manager* audio_manager);
 
 
     public:
@@ -57,6 +57,7 @@ namespace wizm {
     private:
         unsigned int total_entities = 0;
         asset_importer asset_import;
+        audio_manager* m_auio_manager;
 
 	};
 }

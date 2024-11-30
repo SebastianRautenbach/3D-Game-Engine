@@ -17,7 +17,7 @@ namespace wizm {
 	
 		std::shared_ptr<camera_core_3d> m_crnt_camera, m_viewport_camera;
 
-	private:
+	public:
 		bool did_change_cam = false;
 	};
 

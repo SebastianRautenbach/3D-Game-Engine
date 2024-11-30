@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\fmod;$(SolutionDir)RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -84,7 +84,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -95,7 +95,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\fmod;$(SolutionDir)RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -105,7 +105,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -114,7 +114,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\angelscript\include;$(SolutionDir)RenderEngine\include\dependencies\imgui\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\fmod;$(SolutionDir)RenderEngine\include\dependencies\angelscript\include;$(SolutionDir)RenderEngine\include\dependencies\imgui\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -122,7 +122,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\RenderEngine\include\dependencies\imgui;$(SolutionDir)RenderEngine\include\dependencies;$(SolutionDir)RenderEngine\include;$(SolutionDir)RenderEngine\include\dependencies\fmod;$(SolutionDir)RenderEngine\include\dependencies\angelscript\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -143,7 +143,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)RenderEngine\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;assimp-vc143-mtd.lib;angelscript64d.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -165,6 +165,7 @@
     <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
     <ClCompile Include="include\other utils\copy_to_clipboard.h" />
+    <ClCompile Include="src\components\sound_component.cpp" />
     <ClCompile Include="src\systems\compute_cluster_test.cpp" />
     <ClCompile Include="src\components\scripting_component.cpp" />
     <ClCompile Include="src\layers\asset_viewer_layer.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="include\entity sys\components\camera_component.h" />
     <ClInclude Include="include\entity sys\components\pointlight_component.h" />
     <ClInclude Include="include\entity sys\components\scripting_component.h" />
+    <ClInclude Include="include\entity sys\components\sound_component.h" />
     <ClInclude Include="include\entity sys\component_types.h" />
     <ClInclude Include="include\entity sys\entity.h" />
     <ClInclude Include="include\gl core\core shader.h" />
@@ -266,6 +268,8 @@
     <ClInclude Include="include\system\assets.h" />
     <ClInclude Include="include\system\assets\assettypes.h" />
     <ClInclude Include="include\system\assets\script_asset.h" />
+    <ClInclude Include="include\system\assets\sound_asset.h" />
+    <ClInclude Include="include\system\audio_listener.h" />
     <ClInclude Include="include\system\billboard_manager.h" />
     <ClInclude Include="include\system\bounding_volume.h" />
     <ClInclude Include="include\system\assets\mesh_asset.h" />
@@ -303,6 +307,7 @@
     <ClInclude Include="include\layers\UI\popup_window.h" />
     <ClInclude Include="include\entity sys\components\light_component.h" />
     <ClInclude Include="include\system\camera_3d.h" />
+    <ClInclude Include="include\system\audio_manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
