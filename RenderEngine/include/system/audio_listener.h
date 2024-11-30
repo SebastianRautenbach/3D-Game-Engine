@@ -23,10 +23,12 @@ namespace wizm {
 				listener_pos.x = pos.x;
 				listener_pos.y = pos.y;
 				listener_pos.z = pos.z;
-				
-				listener_up.x = up.x;
-				listener_up.y = up.y;
-				listener_up.z = up.z;
+
+
+				// reverse the UP vector because some reason this mixes the left and right hearing direction
+				listener_up.x = -up.x;
+				listener_up.y = -up.y;
+				listener_up.z = -up.z;
 				
 				listener_forward.x = forward.x;
 				listener_forward.y = forward.y;

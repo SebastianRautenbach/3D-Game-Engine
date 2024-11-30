@@ -71,7 +71,7 @@ void wizm::sound_component::on_update()
 
 void wizm::sound_component::play()
 {
-	m_sound_asset->play(m_loop, &m_channel, true);
+	m_sound_asset->play(m_loop, &m_channel, m_is3d);
 }
 
 void wizm::sound_component::stop()

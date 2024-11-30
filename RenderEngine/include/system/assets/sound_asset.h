@@ -20,7 +20,7 @@ namespace wizm {
 		}
 
 		void setup() {
-			auto result = m_system->createSound(m_filepath.c_str(), FMOD_3D, nullptr, &m_sound);
+			auto result = m_system->createSound(m_filepath.c_str(), FMOD_DEFAULT, nullptr, &m_sound);
 		}
 
 		void stop(FMOD::Channel* channel) {

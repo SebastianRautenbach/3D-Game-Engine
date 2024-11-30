@@ -7,20 +7,12 @@
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\components\\sound_component.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\update_manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\update_manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\properties_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\properties_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\update_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\update_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\content_browser_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\content_browser_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\assets\\sound_asset.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\system\\assets\\sound_asset.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\entity sys\\components\\sound_component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\entity sys\\components\\sound_component.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\audio_listener.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -29,6 +21,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\audio_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\system\\audio_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\update_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\update_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +34,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "properties_ui_layer.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\properties_ui_layer.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\properties_ui_layer.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\properties_ui_layer.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\layers\\properties_ui_layer.cpp",
+              "ViewState": "AQIAABMCAAAAAAAAAAAAABcCAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-30T19:56:59.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "sound_component.h",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\entity sys\\components\\sound_component.h",
+              "RelativeDocumentMoniker": "RenderEngine\\include\\entity sys\\components\\sound_component.h",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\entity sys\\components\\sound_component.h",
+              "RelativeToolTip": "RenderEngine\\include\\entity sys\\components\\sound_component.h",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-30T19:43:16.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "update_manager.h",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\update_manager.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\update_manager.h",
@@ -50,49 +72,24 @@
               "RelativeToolTip": "RenderEngine\\include\\update_manager.h",
               "ViewState": "AQIAAAkAAAAAAAAAAAAkwBwAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-29T14:46:09.721Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-29T14:46:09.721Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "content_browser_layer.cpp",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\content_browser_layer.cpp",
-              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\content_browser_layer.cpp",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\content_browser_layer.cpp",
-              "RelativeToolTip": "RenderEngine\\src\\layers\\content_browser_layer.cpp",
-              "ViewState": "AQIAAH4AAAAAAAAAAAAAAHsAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-29T14:13:38.302Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "audio_listener.h",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\audio_listener.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\system\\audio_listener.h",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\audio_listener.h",
               "RelativeToolTip": "RenderEngine\\include\\system\\audio_listener.h",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACYAAAADAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-29T10:35:39.156Z"
+              "WhenOpened": "2024-11-29T10:35:39.156Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "sound_asset.h",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\assets\\sound_asset.h",
-              "RelativeDocumentMoniker": "RenderEngine\\include\\system\\assets\\sound_asset.h",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\assets\\sound_asset.h",
-              "RelativeToolTip": "RenderEngine\\include\\system\\assets\\sound_asset.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-29T08:58:17.97Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "audio_manager.h",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\audio_manager.h",
               "RelativeDocumentMoniker": "RenderEngine\\include\\system\\audio_manager.h",
@@ -100,19 +97,7 @@
               "RelativeToolTip": "RenderEngine\\include\\system\\audio_manager.h",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAMAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-29T07:44:57.125Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "update_manager.cpp",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\update_manager.cpp",
-              "RelativeDocumentMoniker": "RenderEngine\\src\\update_manager.cpp",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\update_manager.cpp",
-              "RelativeToolTip": "RenderEngine\\src\\update_manager.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-29T08:48:46.282Z",
+              "WhenOpened": "2024-11-29T07:44:57.125Z",
               "EditorCaption": ""
             },
             {
@@ -123,7 +108,7 @@
               "RelativeDocumentMoniker": "RenderEngine\\src\\components\\sound_component.cpp",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\components\\sound_component.cpp",
               "RelativeToolTip": "RenderEngine\\src\\components\\sound_component.cpp",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAAoAAAABAAAA",
+              "ViewState": "AQIAADgAAAAAAAAAAAAkwD8AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-29T07:27:44.03Z",
               "EditorCaption": ""

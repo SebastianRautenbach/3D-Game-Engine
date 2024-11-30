@@ -547,5 +547,13 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 			ImGui::EndDragDropTarget();
 		}
+
+		ImGui::Text("3D sound:");
+		ImGui::SameLine();
+		ImGui::Checkbox("##3dsound", &_sound_component->m_is3d);
+
+		ImGui::Text("Looping?:");
+		ImGui::SameLine();
+		ImGui::Checkbox("##looping", &_sound_component->m_loop);
 	}
 }
