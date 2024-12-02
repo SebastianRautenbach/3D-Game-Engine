@@ -5,6 +5,8 @@
 #include "system/scripting/compose_script.h"
 #include "system/compose_level.h"
 #include "other utils/copy_to_clipboard.h"
+#include "other utils/common.h"
+
 
 wizm::content_browser_layer::content_browser_layer(asset_manager* p_asset_manager)
     :m_asset_manager(p_asset_manager)
@@ -47,6 +49,11 @@ void wizm::content_browser_layer::OnDetach()
 void wizm::content_browser_layer::update(float delta_time)
 {
 	ImGui::Begin("Content Browser");
+
+    if (engine_status != EDITOR_STATUS) {
+        ImGui::End();
+        return;
+    }
 	
 	
 	if (ImGui::Button("refresh")) {

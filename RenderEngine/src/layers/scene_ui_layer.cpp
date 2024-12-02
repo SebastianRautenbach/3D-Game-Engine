@@ -25,6 +25,11 @@ void wizm::scene_ui_layer::update(float delta_time)
 
 	ImGui::Begin("scene view");
 
+	if (engine_status != EDITOR_STATUS) {
+		ImGui::End();
+		return;
+	}
+
 	if (ImGui::Button("Add Entity"))
 		ImGui::OpenPopup("AddEntityPopup");
 

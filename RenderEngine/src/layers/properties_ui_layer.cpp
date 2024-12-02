@@ -22,6 +22,11 @@ void wizm::properties_ui_layer::OnDetach()
 void wizm::properties_ui_layer::update(float delta_time)
 {
 	ImGui::Begin("Properties");
+
+	if (engine_status != EDITOR_STATUS) {
+		ImGui::End();
+		return;
+	}
 	
 	if (global_scene->get_crnt_entity() != nullptr)
 	{
