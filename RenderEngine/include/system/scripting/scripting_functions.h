@@ -606,6 +606,67 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 
 
+	//--------------------------------------------------	  SOUNDS
+	//--------------------------------------------------------------
+
+	void play_component_sound(const std::string entity_name, int component_index) {
+		auto entity = global_scene->get_entity_name(entity_name);
+
+		if (entity->m_components_list.size() > component_index) {
+			auto s_comp = std::dynamic_pointer_cast<sound_component>(entity->m_components_list[component_index]);
+			if(s_comp)
+			{
+				//s_comp->stop();
+				s_comp->play();
+			}
+		}
+	}
+	SCRIPT_DEFINE_FUNC_2(void, play_component_sound, string, int);
+
+	//-----------------------------------------------------------------------
+
+	void stop_component_sound(const std::string entity_name, int component_index) {
+		auto entity = global_scene->get_entity_name(entity_name);
+
+		if (entity->m_components_list.size() > component_index) {
+			auto s_comp = std::dynamic_pointer_cast<sound_component>(entity->m_components_list[component_index]);
+			if (s_comp)
+				s_comp->stop();
+		}
+	}
+	SCRIPT_DEFINE_FUNC_2(void, stop_component_sound, string, int);
+
+	//-----------------------------------------------------------------------
+
+	void set_component_sound_loop(const std::string entity_name, int component_index, bool should_loop) {
+		auto entity = global_scene->get_entity_name(entity_name);
+
+		if (entity->m_components_list.size() > component_index) {
+			auto s_comp = std::dynamic_pointer_cast<sound_component>(entity->m_components_list[component_index]);
+			if (s_comp)
+				s_comp->m_loop = should_loop;
+		}
+	}
+	SCRIPT_DEFINE_FUNC_3(void, set_component_sound_loop, string, int, bool);
+
+	//-----------------------------------------------------------------------
+
+	void set_component_sound_3D(const std::string entity_name, int component_index, bool is_3d) {
+		auto entity = global_scene->get_entity_name(entity_name);
+
+		if (entity->m_components_list.size() > component_index) {
+			auto s_comp = std::dynamic_pointer_cast<sound_component>(entity->m_components_list[component_index]);
+			if (s_comp)
+				s_comp->m_is3d = is_3d;
+		}
+	}
+	SCRIPT_DEFINE_FUNC_3(void, set_component_sound_3D, string, int, bool);
+
+
+	//-----------------------------------------------------------------------
+
+
+
 bool add_script_func(asIScriptEngine* script_engine, const std::string& func_decl, void* function, int call_conv) {
 
 	if (script_engine->RegisterGlobalFunction(func_decl.c_str(),
@@ -667,6 +728,13 @@ public:
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_light_brightness));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_light_ambient));
+
+
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(play_component_sound));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(stop_component_sound));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_component_sound_loop));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_component_sound_3D));
+
 
 	}
 	

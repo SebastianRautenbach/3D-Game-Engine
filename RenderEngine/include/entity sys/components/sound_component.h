@@ -41,6 +41,7 @@ namespace wizm {
 			asset_id = save_t[parent_name][index].get_string("asset id")[0];
 			m_loop = save_t[parent_name][index].get_int("m_loop")[0];
 			m_is3d = save_t[parent_name][index].get_int("m_is3d")[0];
+			m_play_on_start = save_t[parent_name][index].get_int("m_play_on_start")[0];
 			
 		}
 
@@ -52,6 +53,7 @@ namespace wizm {
 			save_t[parent_name]["sound_component" + index].set_string("asset id", { asset_id });
 			save_t[parent_name]["sound_component" + index].set_int("m_loop", { m_loop });
 			save_t[parent_name]["sound_component" + index].set_int("m_is3d", { m_is3d });
+			save_t[parent_name]["sound_component" + index].set_int("m_play_on_start", { m_play_on_start });
 		}
 
 		void on_start();
@@ -62,8 +64,10 @@ namespace wizm {
 	public:
 		bool m_loop = false;
 		bool m_is3d = false;
+		bool m_play_on_start = true;
 		std::shared_ptr<sound_asset> m_sound_asset;
 		std::string asset_id;
+
 
 	private:
 		bool on_runtime = false;

@@ -57,7 +57,10 @@ void wizm::sound_component::on_start()
 {
 	stopped = false;
 	on_runtime = true;
-	play();
+
+	if(m_play_on_start)
+		play();
+	
 }
 
 void wizm::sound_component::on_update()

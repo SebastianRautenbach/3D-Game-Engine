@@ -300,6 +300,11 @@ namespace filedata
 					makeup_var += i;
 				}
 			}
+
+			if (return_val.empty()) {
+				return {0};
+			}
+
 			return return_val;
 		}
 		std::vector<float> get_float(std::string var_name) {
@@ -327,6 +332,10 @@ namespace filedata
 					makeup_var += i;
 				}
 			}
+			if (return_val.empty()) {
+				return { 0.0 };
+			}
+
 			return return_val;
 		}
 		std::vector<std::string> get_string(std::string var_name) {
@@ -355,9 +364,8 @@ namespace filedata
 				}
 			}
 
-			if (return_val.empty())
-			{
-				return return_val;
+			if (return_val.empty()) {
+				return { ""};
 			}
 
 			return return_val;

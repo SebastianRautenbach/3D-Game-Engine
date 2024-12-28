@@ -870,6 +870,7 @@ light(1)(1)(1)(1)(1)(1){
 		asset id:9041996212802914747;
 		m_loop:1;
 		m_is3d:0;
+		m_play_on_start:1;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;

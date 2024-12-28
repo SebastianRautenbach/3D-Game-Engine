@@ -553,6 +553,10 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 			ImGui::EndDragDropTarget();
 		}
 
+		ImGui::Text("Play from start:");
+		ImGui::SameLine();
+		ImGui::Checkbox("##playfromstart", &_sound_component->m_play_on_start);
+
 		ImGui::Text("3D sound:");
 		ImGui::SameLine();
 		ImGui::Checkbox("##3dsound", &_sound_component->m_is3d);

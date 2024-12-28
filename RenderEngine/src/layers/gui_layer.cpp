@@ -185,8 +185,7 @@ void wizm::gui_layer::begin()
             else if(engine_status != RUNTIME_STATUS)
             {
                 engine_status = RUNTIME_STATUS;
-                std::cout << "engine status: " << engine_status << "\n";
-                // save level just just before the runtime
+                           
                 global_scene->save_map_data("");
             }
         }
