@@ -126,7 +126,7 @@ core_gl_texture::core_gl_texture(const char* file_path, bool vert_on_load)
 	}
 	stbi_image_free(data);
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+	unbind_texture();
 
 
 }

@@ -17,22 +17,19 @@ namespace wizm {
 
 	class viewport_layer : public core_layer {
 	public:
-		viewport_layer(unsigned int fbID, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer);
+		viewport_layer(core_framebuffer* fbo, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer);
 		~viewport_layer();
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void update(float delta_time) override;
 
-		void scene_viewport_func();
-
-		void get_mouse_pick(bool multi_select);
+		void scene_viewport_func(float delta_time);
+		void get_mouse_pick(bool multi_select, float delta_time);
 		void properties_mouse_pick(bool multi_select);
 		std::shared_ptr<core_entity> get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos);
-		std::shared_ptr<core_entity> get_ent_pick_angle(glm::vec3 ray_dir, glm::vec3 ray_pos);
 
 	private:
-		unsigned int m_fbID;
 		std::shared_ptr<camera_manager> m_camera_manager;
 		float m_snap_value = 0.5f;
 		bool m_should_snap = false;
@@ -40,6 +37,9 @@ namespace wizm {
 		bool is_global_gizmo = false;
 		int guizmo_type = 0;
 		ImVec2 mSize;
+		glm::vec2 m_viewport_bounds[2];
+
+		core_framebuffer* m_framebuffer, *m_picking_fbo;
 	};
 
 }

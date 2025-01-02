@@ -25,13 +25,11 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 
 	m_timer = new core_timer;
 
-	framebuffer_spec specs;
-
-	specs.attachment = { framebuffer_texture_format::DEPTH24STENCIL8, framebuffer_texture_format::RGBA8 };
-	specs.Width = window_size_x;
-	specs.Height = window_size_y;
-	m_framebuffer = new core_framebuffer(specs);
-
+	framebuffer_spec spec;
+	spec.Width = window_size_x;
+	spec.Height = window_size_y;
+	spec.attachment = { framebuffer_texture_format::RGBA8, framebuffer_texture_format::Depth };
+	m_framebuffer = new core_framebuffer(spec);
 
 	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs, m_gl_renderer->m_shdrs[4], m_gl_renderer->m_shdrs[5],  m_camera_manager);
 	
@@ -47,7 +45,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_billboard_manager = new billboard_manager(m_gl_renderer->m_shdrs[2]);
 
 	m_layer_stack->PushLayer(new script_debug_layer());
-	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer->buffer_id, m_camera_manager, m_gl_renderer));
+	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer, m_camera_manager, m_gl_renderer));
 	m_layer_stack->PushLayer(new scene_ui_layer(m_gl_renderer));
 	m_layer_stack->PushLayer(new performace_ui_layer());
 	m_layer_stack->PushLayer(new properties_ui_layer(m_gl_renderer, m_asset_manager));
@@ -99,18 +97,16 @@ void update_manager::render()
 		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 	
-	// Main render pass 
 	{
 		m_framebuffer->bind_buffer();
 		m_gl_renderer->m_shdrs[0]->use_shader();
-		//glDepthMask(GL_TRUE);
-		//glActiveTexture(GL_TEXTURE3);
-		//glBindTexture(GL_TEXTURE_2D, depthMap);
 		global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
 		global_scene->update_light_components(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
 		m_billboard_manager->render();
 		m_framebuffer->unbind_buffer();
 	}
+
+	
 
 	m_audio_manager->update();
 	m_listener_manager->listener_on_update(m_timer->get_delta_time());
@@ -145,7 +141,7 @@ wizm::update_manager::~update_manager()
 	delete m_audio_manager;
 	delete compute_cluster_test;
 	delete m_framebuffer;
-	delete m_framebuffer_depth;
+	//delete m_framebuffer_depth;
 
 	delete m_gl_renderer;
 	delete m_timer;

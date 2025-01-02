@@ -210,7 +210,7 @@ void wizm::gui_layer::begin()
             -------------------------------------------------------------------------------------------------------
         */
 
-        if (ImGui::Button(ICON_FA_BUG "")) {
+        if (ImGui::Button(ICON_FA_BUG "") && engine_status == EDITOR_STATUS) {
             bool build_success;
             wizm::add_console_line("------------------------- BUILDING", CONSOLE_GENERAL_LOG);
             auto assets = m_asset_manager->get_all_assets();

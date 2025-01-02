@@ -5,12 +5,17 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <iostream>
 
 enum class framebuffer_texture_format {
 	None = 0,
+	
+	// color
 	RGBA8,
 	RGBA16,
 	RED_INTEGER,
+
+	// depth
 	DEPTH24STENCIL8,
 	Depth = DEPTH24STENCIL8
 };
@@ -72,6 +77,18 @@ namespace lowlevelsys {
 	{
 		glBindTexture(texture_target(multisampled), id);
 	}
+
+	static GLenum framebuffer_texture_format_to_gl(framebuffer_texture_format format)
+	{
+		switch (format)
+		{
+		case framebuffer_texture_format::RGBA8:       return GL_RGBA8;
+		case framebuffer_texture_format::RED_INTEGER: return GL_RED_INTEGER;
+		}
+
+		return 0;
+	}
+
 
 
 	static void attach_color_texture(uint32_t id, int samples, GLenum internalFormat, GLenum format, uint32_t width, uint32_t height, int index)
@@ -205,6 +222,26 @@ public:
 	
 };
 
+class core_newframebuffer : public core_buffer_object {
+
+public:
+	core_newframebuffer(int pwidth, int pheight);
+
+	void bind_buffer() override;
+	void unbind_buffer() override;
+	void destroy_buffer() override;
+	void resize(unsigned int new_width, unsigned int new_height);
+
+	void initialize(GLenum color_format = GL_RGB32F, GLenum depth_format = GL_DEPTH_COMPONENT, bool use_depth_buffer = true);
+	unsigned int read_pixel(int x, int y);
+
+public:         
+	GLuint color_texture = 0; 
+	GLuint depth_buffer = 0;  
+	int width;
+	int height;
+};
+
 class core_framebuffer : public core_buffer_object {
 public:
 	core_framebuffer(framebuffer_spec spec);
@@ -212,8 +249,12 @@ public:
 
 	unsigned int get_tex_id() { return m_tex_id; }
 
+	int read_pixel(unsigned int color_attachement_index, int x, int y);
+	void clear_attachment(unsigned int attachment_index, int value);
+
 	void create_fbuffer();
 	void resize(unsigned int width, unsigned int height);
+	void invalidate();
 
 	framebuffer_spec& get_specs() { return m_spec; }
 
@@ -221,6 +262,11 @@ public:
 	void bind_buffer() override;
 	void unbind_buffer() override;
 	void destroy_buffer() override;
+	unsigned int get_color_attachment_render_id(int index = 0) {
+		if(index > m_color_attachments.size())
+			throw std::invalid_argument("index out of range for fbo");
+		return m_color_attachments[index];
+	}
 
 private:
 	unsigned int m_tex_id;
