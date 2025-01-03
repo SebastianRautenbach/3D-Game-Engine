@@ -1,24 +1,3 @@
-Entity{
-	staticmesh0{
-		asset id:9061207173737292744;
-		material{
-			diffuse_asset_id:16151502270264774808;
-			specular_asset_id:17825215692104819701;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	tags{
-	}
-	transform{
-		position:-1.082673,0.000000,0.851215;
-		rotation:0.000000,0.000000,0.000000;
-		scale:0.260000,0.260000,0.260000;
-	}
-}
 Entity Name{
 	directionallight0{
 		light{
@@ -44,10 +23,7 @@ Entity Name{
 Entity(1){
 	staticmesh0{
 		asset id:9061207173737292744;
-		material{
-			diffuse_asset_id:16151502270264774808;
-			specular_asset_id:17825215692104819701;
-		}
+		m_material_asset_ids:12464556249974524193;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -77,27 +53,6 @@ Entity(1)(1){
 	}
 	transform{
 		position:-0.447965,0.128144,3.495352;
-		rotation:0.000000,0.000000,0.000000;
-		scale:0.260000,0.260000,0.260000;
-	}
-}
-Entity(1)(1)(1){
-	staticmesh0{
-		asset id:9061207173737292744;
-		material{
-			diffuse_asset_id:16151502270264774808;
-			specular_asset_id:17825215692104819701;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	tags{
-	}
-	transform{
-		position:-0.341865,-0.000000,1.745231;
 		rotation:0.000000,0.000000,0.000000;
 		scale:0.260000,0.260000,0.260000;
 	}

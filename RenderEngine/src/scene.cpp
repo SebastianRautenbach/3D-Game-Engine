@@ -24,17 +24,13 @@ namespace wizm {
 	void core_scene::scene_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 	{
 		m_reloaded = false;
-		int color_id = 0;
-
 		for (auto& i : m_entities)
 		{
 			for (auto comp : i->m_components_list) {
 				if (!is_light_component(comp->m_component_type)) {
 					comp->component_update(delta_time, shader);
-					shader->setInt("pick_color", color_id);
-					++color_id;
 				}
-			}		
+			}
 		}
 	}
 	

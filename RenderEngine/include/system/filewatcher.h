@@ -57,6 +57,12 @@ public:
                 ai.add_to_database(asset_details(p, "", tSCRIPT));
                 continue;
             }
+
+            if (is_material_file(e))
+            {
+                ai.add_to_database(asset_details(p, "", tMATERIAL));
+                continue;
+            }
         }
     }
 

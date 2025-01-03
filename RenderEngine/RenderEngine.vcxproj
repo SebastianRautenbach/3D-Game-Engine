@@ -267,6 +267,7 @@
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\system\assets.h" />
     <ClInclude Include="include\system\assets\assettypes.h" />
+    <ClInclude Include="include\system\assets\material_asset.h" />
     <ClInclude Include="include\system\assets\script_asset.h" />
     <ClInclude Include="include\system\assets\sound_asset.h" />
     <ClInclude Include="include\system\audio_listener.h" />

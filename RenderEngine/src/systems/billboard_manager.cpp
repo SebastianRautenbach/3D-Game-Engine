@@ -13,6 +13,7 @@ void wizm::billboard_manager::render()
 {
 	if(engine_status == EDITOR_STATUS)
 	{
+		
 		for (const auto& ent : global_scene->m_entities) {
 			for (const auto& comp : ent->m_components_list) {
 

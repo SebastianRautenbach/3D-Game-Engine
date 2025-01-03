@@ -494,5 +494,8 @@
     <ClInclude Include="include\system\audio_listener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\system\assets\material_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

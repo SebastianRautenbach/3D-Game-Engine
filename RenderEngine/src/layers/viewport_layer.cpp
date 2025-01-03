@@ -13,11 +13,7 @@
 wizm::viewport_layer::viewport_layer(core_framebuffer* fbo, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer)
     : core_layer("viewport_layer"), m_framebuffer(fbo), m_camera_manager(camera_manager),  m_renderer(renderer)
 {
-    framebuffer_spec spec;
-    spec.Width = m_renderer->w_width;
-    spec.Height = m_renderer->w_height;
-    spec.attachment = { framebuffer_texture_format::RGBA8, framebuffer_texture_format::Depth};
-    m_picking_fbo = new core_framebuffer(spec);
+ 
 }
 
 wizm::viewport_layer::~viewport_layer()
@@ -44,7 +40,7 @@ void wizm::viewport_layer::update(float delta_time)
     mSize = { viewportPanelSize.x, viewportPanelSize.y };
     m_camera_manager->m_viewport_camera->set_window_size(mSize.x, mSize.y);
 
-    ImGui::Image(reinterpret_cast<void*>(m_picking_fbo->get_color_attachment_render_id()), ImVec2{ mSize.x, mSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+    ImGui::Image(reinterpret_cast<void*>(m_framebuffer->get_color_attachment_render_id()), ImVec2{ mSize.x, mSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
     if (ImGui::BeginDragDropTarget() && engine_status == EDITOR_STATUS) {
 
         if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
@@ -279,13 +275,13 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
 
 
         if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && global_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_CONTROL)) {
-            //get_mouse_pick(true);
+            get_mouse_pick(true);
         }
         else if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
 
 
 
-            get_mouse_pick(false, delta_time);
+            get_mouse_pick(false);
 
             rectStart = ImGui::GetMousePos();
             rectEnd = rectStart;
@@ -350,44 +346,24 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
     }
 }
 
-void wizm::viewport_layer::get_mouse_pick(bool multi_select, float delta_time)
+void wizm::viewport_layer::get_mouse_pick(bool multi_select)
 { 
-    if (auto spec = m_picking_fbo->get_specs();
-        mSize.x > 0.0f && mSize.y > 0.0f && // zero sized framebuffer is invalid
-        (spec.Width != mSize.x || spec.Height != mSize.y))
-    {
-        m_picking_fbo->resize((unsigned int)mSize.x, (unsigned int)mSize.y);
-    }
-    
-    
-    m_picking_fbo->bind_buffer();
+    ImVec2 crnt_mouse_pos = ImGui::GetMousePos();
+    ImVec2 window_pos = ImGui::GetWindowPos();
+    ImVec2 window_size = ImGui::GetWindowSize();
 
 
-    global_scene->scene_update(delta_time, m_renderer->m_shdrs[6]);
+    glm::vec2 rel_mouse_pos(crnt_mouse_pos.x - window_pos.x, crnt_mouse_pos.y - window_pos.y);
+    glm::vec2 norm_mouse_pos(rel_mouse_pos.x / window_size.x, rel_mouse_pos.y / window_size.y);
 
 
-    auto viewportMinRegion = ImGui::GetWindowContentRegionMin();
-    auto viewportMaxRegion = ImGui::GetWindowContentRegionMax();
-    auto viewportOffset = ImGui::GetWindowPos();
+    glm::vec3 ray_dir = ray::ray_cast(norm_mouse_pos, glm::vec2(1.0f, 1.0f), m_camera_manager->m_viewport_camera->get_projection_matrix(), m_camera_manager->m_viewport_camera->get_view_matrix());
+    glm::vec3 ray_pos = ray::ray_origin(m_camera_manager->m_viewport_camera->get_view_matrix());
 
-    m_viewport_bounds[0] = { viewportMinRegion.x + viewportOffset.x, viewportMinRegion.y + viewportOffset.y };
-    m_viewport_bounds[1] = { viewportMaxRegion.x + viewportOffset.x, viewportMaxRegion.y + viewportOffset.y };
+    if (!multi_select)
+        global_scene->clear_selected_entities();
 
-    auto [mx, my] = ImGui::GetMousePos();
-    mx -= m_viewport_bounds[0].x;
-    my -= m_viewport_bounds[0].y;
-    glm::vec2 viewportSize = m_viewport_bounds[1] - m_viewport_bounds[0];
-    my = viewportSize.y - my;
-    int mouseX = (int)mx;
-    int mouseY = (int)my;
-
-    if (mouseX >= 0 && mouseY >= 0 && mouseX < (int)viewportSize.x && mouseY < (int)viewportSize.y)
-    {
-        int pixelData = m_framebuffer->read_pixel(0, mouseX, mouseY);
-        std::cout << "x:" << mouseX << "; y:" << mouseY << "; ID:" << pixelData << "\n";
-    }
-    m_picking_fbo->unbind_buffer();
-
+    global_scene->add_selected_entity(get_ent_pick(ray_dir, ray_pos));
 }
 
 void wizm::viewport_layer::properties_mouse_pick(bool multi_select)
@@ -444,7 +420,7 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
                 }
             }
             else if (renderable) {
-                renderable->update_boundingvolume(ent->get_position(), glm::vec3(0.0f), glm::vec3(1.0f));
+                renderable->update_boundingvolume(comp->get_world_position(), glm::vec3(0.0f), glm::vec3(1.0f));
                 if (renderable->ray_intersect(ray_dir, ray_pos, intersection_point)) {
 
                     float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->get_position());

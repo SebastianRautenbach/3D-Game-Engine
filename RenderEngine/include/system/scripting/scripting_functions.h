@@ -265,7 +265,7 @@ namespace engine_scripting
 		
 		if(entity->m_components_list.size() > component_index) {
 			auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(entity->m_components_list[component_index]);
-			sm_comp->m_asset_id = asset_id;
+			sm_comp->m_mesh_asset_id = asset_id;
 			global_scene->m_reloaded = true;
 		}
 	}
@@ -290,10 +290,10 @@ namespace engine_scripting
 		if (entity->m_components_list.size() > component_index) {
 			auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(entity->m_components_list[component_index]);
 			
-			if(texture_type == 0)
-				sm_comp->m_material->diffuse_asset_id = asset_id;
-			else if(texture_type == 1)
-				sm_comp->m_material->specular_asset_id = asset_id;
+			//if(texture_type == 0)
+			//	sm_comp->m_material->diffuse_asset_id = asset_id;
+			//else if(texture_type == 1)
+			//	sm_comp->m_material->specular_asset_id = asset_id;
 
 			global_scene->m_reloaded = true;
 		}

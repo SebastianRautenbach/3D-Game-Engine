@@ -3,6 +3,7 @@
 #include "system/core_model.h"
 #include "system/material.h"
 #include "system/assets/mesh_asset.h"
+#include "system/assets/material_asset.h"
 #include "system/asset_manager.h"
 
 namespace wizm {
@@ -44,10 +45,8 @@ namespace wizm {
 				save_t[parent_name][index]["transform"].get_float("scale")[2]
 			));
 
-			m_asset_id = save_t[parent_name][index].get_string("asset id")[0];
-			m_material->diffuse_asset_id = save_t[parent_name][index]["material"].get_string("diffuse_asset_id")[0];
-			m_material->specular_asset_id = save_t[parent_name][index]["material"].get_string("specular_asset_id")[0];
-		
+			m_mesh_asset_id = save_t[parent_name][index].get_string("asset id")[0];
+			m_material_asset_ids = save_t[parent_name][index].get_string("m_material_asset_ids");
 		};
 
 
@@ -57,17 +56,16 @@ namespace wizm {
 			save_t[parent_name]["staticmesh" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
 			save_t[parent_name]["staticmesh" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 			
-			save_t[parent_name]["staticmesh" + index].set_string("asset id", { m_asset_id });
-			save_t[parent_name]["staticmesh" + index]["material"].set_string("diffuse_asset_id", { m_material->diffuse_asset_id});
-			save_t[parent_name]["staticmesh" + index]["material"].set_string("specular_asset_id", { m_material->specular_asset_id});
-
+			save_t[parent_name]["staticmesh" + index].set_string("asset id", { m_mesh_asset_id });
+			save_t[parent_name]["staticmesh" + index].set_string("m_material_asset_ids", m_material_asset_ids);
 
 		}
 
 
 	public:
+		std::vector<std::shared_ptr<material_asset>> m_materials;
 		std::shared_ptr<staticmesh_asset> m_model;
-		std::unique_ptr<core_material> m_material;
-		std::string m_asset_id;
+		std::string m_mesh_asset_id;
+		std::vector<std::string> m_material_asset_ids;
 	};
 }

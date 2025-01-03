@@ -219,7 +219,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 		for (auto& i : meshes) {
 
-			i->m_material->on_change_material();
+			//i->m_material->on_change_material();
 
 			if (i->m_model) {
 				i->m_model->m_camera = m_camera_manager->m_crnt_camera;

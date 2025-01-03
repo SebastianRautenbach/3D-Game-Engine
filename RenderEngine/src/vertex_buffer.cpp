@@ -203,12 +203,22 @@ core_framebuffer::~core_framebuffer()
 int core_framebuffer::read_pixel(unsigned int color_attachement_index, int x, int y)
 {
 	glReadBuffer(GL_COLOR_ATTACHMENT0 + color_attachement_index);
-	int pixel;
-	auto& spec = m_color_attachment_spec[color_attachement_index];
-	glReadPixels(x, y, 1, 1, lowlevelsys::framebuffer_texture_format_to_gl(spec.texture_format), GL_INT, &pixel);
 	
+	float r, g, b;
+	float pixels[3];
+	glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, pixels);
+
+	r = pixels[0];
+	g = pixels[1];
+	b = pixels[2];
+
+	int red = static_cast<int>(r * 255.0f);
+	int green = static_cast<int>(g * 255.0f);
+	int blue = static_cast<int>(b * 255.0f);
+
+	int pick_color = (red << 16) | (green << 8) | blue;
 	
-	return pixel;
+	return pick_color;
 }
 
 void core_framebuffer::clear_attachment(unsigned int attachment_index, int value)
@@ -434,7 +444,6 @@ void core_newframebuffer::resize(unsigned int new_width, unsigned int new_height
 unsigned int core_newframebuffer::read_pixel(int x, int y) {
 
 	glBindFramebuffer(GL_FRAMEBUFFER, buffer_id);
-
 	
 	glReadBuffer(GL_COLOR_ATTACHMENT0);
 
@@ -447,9 +456,6 @@ unsigned int core_newframebuffer::read_pixel(int x, int y) {
 		(static_cast<GLuint>(pixels[2]));
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-
-	std::cout << pickID << "\n";
 
 	return pickID;
 }

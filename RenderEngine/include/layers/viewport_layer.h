@@ -25,7 +25,7 @@ namespace wizm {
 		virtual void update(float delta_time) override;
 
 		void scene_viewport_func(float delta_time);
-		void get_mouse_pick(bool multi_select, float delta_time);
+		void get_mouse_pick(bool multi_select);
 		void properties_mouse_pick(bool multi_select);
 		std::shared_ptr<core_entity> get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos);
 
@@ -39,7 +39,7 @@ namespace wizm {
 		ImVec2 mSize;
 		glm::vec2 m_viewport_bounds[2];
 
-		core_framebuffer* m_framebuffer, *m_picking_fbo;
+		core_framebuffer* m_framebuffer;
 	};
 
 }

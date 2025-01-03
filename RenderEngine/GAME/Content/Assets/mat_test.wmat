@@ -1,0 +1,10 @@
+material{
+    shininess:32.000000;
+    roughness:0.000000;
+	textures{
+		albedo:8574774509872314517;
+        normal:8574774509872314517;
+        diffuse:8574774509872314517;
+        specular:8574774509872314517;
+	}
+}

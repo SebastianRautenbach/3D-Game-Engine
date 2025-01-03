@@ -3,6 +3,7 @@
 #include "system/assets/texture_asset.h"
 #include "system/assets/script_asset.h"
 #include "system/assets/sound_asset.h"
+#include "system/assets/material_asset.h"
 
 wizm::asset_manager::asset_manager(audio_manager* audio_manager)
 	: m_auio_manager(audio_manager)
@@ -25,26 +26,29 @@ void wizm::asset_manager::assign_assets()
 				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(comp);		//------------------------------------ STATIC MESH ASSET & TEXTURE ASSIGNMENT
 				if (mesh_comps)
 				{
-					if (m_assets[mesh_comps->m_asset_id])
+					if (m_assets[mesh_comps->m_mesh_asset_id])
 					{
 					
-						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_asset_id, "");
-			
-						
-						if(!mesh_comps->m_material->diffuse_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).type == tTEXTURE &&
-							!get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).path.empty()
-							)
-						{
-							mesh_comps->m_material->m_texture_n[0] = load<texture_asset>(mesh_comps->m_material->diffuse_asset_id, "");
-						}
-							
-						if (!mesh_comps->m_material->specular_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->specular_asset_id).type == tTEXTURE &&
-							!get_asset_details_from_id(mesh_comps->m_material->specular_asset_id).path.empty()
-							)
-						{
-							mesh_comps->m_material->m_texture_n[1] = load<texture_asset>(mesh_comps->m_material->specular_asset_id, "");
-						}
-					}					
+						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_mesh_asset_id, "");
+								
+						//if(!mesh_comps->m_material->diffuse_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).type == tTEXTURE &&
+						//	!get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).path.empty()
+						//	)
+						//{
+						//	mesh_comps->m_material->m_texture_n[0] = load<texture_asset>(mesh_comps->m_material->diffuse_asset_id, "");
+						//}
+						//	
+						//if (!mesh_comps->m_material->specular_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->specular_asset_id).type == tTEXTURE &&
+						//	!get_asset_details_from_id(mesh_comps->m_material->specular_asset_id).path.empty()
+						//	)
+						//{
+						//	mesh_comps->m_material->m_texture_n[1] = load<texture_asset>(mesh_comps->m_material->specular_asset_id, "");
+						// }
+					}
+
+					for (auto& mat : mesh_comps->m_material_asset_ids) {
+						mesh_comps->m_materials.emplace_back(load<material_asset>(mat, ""));
+					}
 				}
 				mesh_comps.reset();
 
@@ -85,8 +89,12 @@ void wizm::asset_manager::load_assets_db()
 		else if (asset.type == tSOUND) {
 			auto _asset = load<sound_asset>(asset.id, asset.path);
 			_asset->m_system = m_auio_manager->system;
-			_asset->setup();
-			
+			_asset->setup();			
+		}
+		else if (asset.type == tMATERIAL) {
+			auto _asset = load<material_asset>(asset.id, asset.path);
+			_asset->m_diffuse_texture = load<texture_asset>(_asset->diffuse_asset_id, "");
+			_asset->m_specular_texture = load<texture_asset>(_asset->specular_asset_id, "");
 		}
 	}
 }

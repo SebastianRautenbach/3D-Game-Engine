@@ -412,15 +412,15 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 				staticmeshfilename = "Drag and Drop";
 		}
 		{
-			size_t texture_count = staticmesh->m_material->m_texture_n.size();
-
-			diffusetexturefilename = (texture_count > 0 && staticmesh->m_material->m_texture_n[0])
-				? staticmesh->m_material->m_texture_n[0]->file_name
-				: "Drag and Drop";
-
-			speculartexturefilename = (texture_count > 1 && staticmesh->m_material->m_texture_n[1])
-				? staticmesh->m_material->m_texture_n[1]->file_name
-				: (texture_count > 0 ? "Drag and Drop" : diffusetexturefilename);
+			//size_t texture_count = staticmesh->m_material->m_texture_n.size();
+			//
+			//diffusetexturefilename = (texture_count > 0 && staticmesh->m_material->m_texture_n[0])
+			//	? staticmesh->m_material->m_texture_n[0]->file_name
+			//	: "Drag and Drop";
+			//
+			//speculartexturefilename = (texture_count > 1 && staticmesh->m_material->m_texture_n[1])
+			//	? staticmesh->m_material->m_texture_n[1]->file_name
+			//	: (texture_count > 0 ? "Drag and Drop" : diffusetexturefilename);
 
 		}
 
@@ -439,7 +439,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tMESH)
 				{
-					staticmesh->m_asset_id = wstring_to_string(id);
+					staticmesh->m_mesh_asset_id = wstring_to_string(id);
 					m_asset_manager->assign_assets();
 					global_scene->m_reloaded = true;
 				}
@@ -449,42 +449,42 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 		}
 		ImGui::Text("Change Diffuse Texture");
 		
-		ImGui::Button(diffusetexturefilename.c_str(), ImVec2(125, 125));
-		if (ImGui::BeginDragDropTarget()) {
-
-			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
-
-				const wchar_t* id = (const wchar_t*)payload->Data;
-
-				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tTEXTURE)
-				{
-					staticmesh->m_material->diffuse_asset_id = wstring_to_string(id);
-					m_asset_manager->assign_assets();
-					global_scene->m_reloaded = true;
-				}
-			}
-
-			ImGui::EndDragDropTarget();
-		}
-
-		ImGui::Text("Change Specular Texture");
-		ImGui::Button(speculartexturefilename.c_str(), ImVec2(125, 125));
-		if (ImGui::BeginDragDropTarget()) {
-
-			if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
-
-				const wchar_t* id = (const wchar_t*)payload->Data;
-
-				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tTEXTURE) {
-					staticmesh->m_material->specular_asset_id = wstring_to_string(id);
-					m_asset_manager->assign_assets();
-					global_scene->m_reloaded = true;
-				}
-				
-			}
-
-			ImGui::EndDragDropTarget();
-		}
+		//ImGui::Button(diffusetexturefilename.c_str(), ImVec2(125, 125));
+		//if (ImGui::BeginDragDropTarget()) {
+		//
+		//	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+		//
+		//		const wchar_t* id = (const wchar_t*)payload->Data;
+		//
+		//		if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tTEXTURE)
+		//		{
+		//			staticmesh->m_material->diffuse_asset_id = wstring_to_string(id);
+		//			m_asset_manager->assign_assets();
+		//			global_scene->m_reloaded = true;
+		//		}
+		//	}
+		//
+		//	ImGui::EndDragDropTarget();
+		//}
+		//
+		//ImGui::Text("Change Specular Texture");
+		//ImGui::Button(speculartexturefilename.c_str(), ImVec2(125, 125));
+		//if (ImGui::BeginDragDropTarget()) {
+		//
+		//	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+		//
+		//		const wchar_t* id = (const wchar_t*)payload->Data;
+		//
+		//		if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tTEXTURE) {
+		//			staticmesh->m_material->specular_asset_id = wstring_to_string(id);
+		//			m_asset_manager->assign_assets();
+		//			global_scene->m_reloaded = true;
+		//		}
+		//		
+		//	}
+		//
+		//	ImGui::EndDragDropTarget();
+		//}
 		
 	}
 

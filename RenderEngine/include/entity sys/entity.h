@@ -61,6 +61,8 @@ namespace wizm {
 
 		std::string m_ent_ID;
 
+		int entity_color_id;
+
 		core_tag* entity_tags;
 		std::vector<std::shared_ptr<core_component>> m_components_list;
 

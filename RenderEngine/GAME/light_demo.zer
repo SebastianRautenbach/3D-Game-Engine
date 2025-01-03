@@ -41,11 +41,8 @@ directionallight{
 }
 floor{
 	staticmesh0{
-		asset id:18410409422620930561;
-		material{
-			diffuse_asset_id:8574774509872314517;
-			specular_asset_id:6917228854978984615;
-		}
+		asset id:8498221831225348062;
+		m_material_asset_ids:12464556249974524193;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -84,10 +81,6 @@ floor(1)s{
 	}
 	staticmesh1{
 		asset id:18410409422620930561;
-		material{
-			diffuse_asset_id:8574774509872314517;
-			specular_asset_id:6917228854978984615;
-		}
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -209,10 +202,7 @@ light1(1)(1)(1){
 mesh{
 	staticmesh0{
 		asset id:18410409422620930561;
-		material{
-			diffuse_asset_id:6917228854978984615;
-			specular_asset_id:6917228854978984615;
-		}
+		m_material_asset_ids:;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -230,10 +220,7 @@ mesh{
 mesh(1)(1)(1){
 	staticmesh0{
 		asset id:18410409422620930561;
-		material{
-			diffuse_asset_id:6917228854978984615;
-			specular_asset_id:6917228854978984615;
-		}
+		m_material_asset_ids:;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -251,10 +238,7 @@ mesh(1)(1)(1){
 mesh(1)(1)(1)(1){
 	staticmesh0{
 		asset id:18410409422620930561;
-		material{
-			diffuse_asset_id:6917228854978984615;
-			specular_asset_id:6917228854978984615;
-		}
+		m_material_asset_ids:;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -272,10 +256,7 @@ mesh(1)(1)(1)(1){
 mesh(1)(1)(1)(1)(1){
 	staticmesh0{
 		asset id:18410409422620930561;
-		material{
-			diffuse_asset_id:6917228854978984615;
-			specular_asset_id:6917228854978984615;
-		}
+		m_material_asset_ids:;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;

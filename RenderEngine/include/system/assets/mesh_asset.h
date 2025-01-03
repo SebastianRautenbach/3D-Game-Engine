@@ -24,8 +24,9 @@ namespace wizm {
 				file_name = file_path.filename().string();
 			}
 		}
-		void draw() {
-			m_model->render_model();
+		void draw(unsigned int index) {
+			if(index < m_model->meshes.size())
+				m_model->meshes[index].draw_mesh();
 		}
 
 		unsigned int get_triangles() {
