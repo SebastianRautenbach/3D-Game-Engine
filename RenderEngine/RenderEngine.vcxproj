@@ -164,8 +164,10 @@
     <ClCompile Include="include\dependencies\imgui\imgui_tables.cpp" />
     <ClCompile Include="include\dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\dependencies\sqlite3.c" />
+    <ClCompile Include="include\dependencies\tinyfiledialogs.c" />
     <ClCompile Include="include\other utils\copy_to_clipboard.h" />
     <ClCompile Include="src\components\sound_component.cpp" />
+    <ClCompile Include="src\layers\material_editor_layer.cpp" />
     <ClCompile Include="src\systems\compute_cluster_test.cpp" />
     <ClCompile Include="src\components\scripting_component.cpp" />
     <ClCompile Include="src\layers\asset_viewer_layer.cpp" />
@@ -254,6 +256,7 @@
     <ClInclude Include="include\layers\gui_cntx.h" />
     <ClInclude Include="include\layers\layerstack.h" />
     <ClInclude Include="include\layers\layers_define.h" />
+    <ClInclude Include="include\layers\material_editor_layer.h" />
     <ClInclude Include="include\layers\performance_ui_layer.h" />
     <ClInclude Include="include\layers\properties_ui_layer.h" />
     <ClInclude Include="include\layers\script_debug_layer.h" />

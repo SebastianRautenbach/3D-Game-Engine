@@ -3,8 +3,8 @@
 
 namespace lowlevelsys {
 
-    core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector<unsigned int> indices, std::vector<core_gl_texture> textures)
-        : vertices(std::move(vertices)), indices(std::move(indices)), textures(std::move(textures)) {
+    core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector<unsigned int> indices, std::vector<core_gl_texture> textures, int material_index)
+        : vertices(std::move(vertices)), indices(std::move(indices)), textures(std::move(textures)), m_material_index(material_index){
         setup_mesh();
     }
 
@@ -12,7 +12,9 @@ namespace lowlevelsys {
         : vertices(std::move(other.vertices)),
         indices(std::move(other.indices)),
         textures(std::move(other.textures)),
-        vertex_arr(std::move(other.vertex_arr)) {
+        vertex_arr(std::move(other.vertex_arr)),
+        m_material_index(other.m_material_index)
+    {
     }
 
     core_mesh& core_mesh::operator=(core_mesh&& other) noexcept {
@@ -37,7 +39,7 @@ namespace lowlevelsys {
 
         vertex_arr->draw_buffer(static_cast<unsigned int>(indices.size()));
 
-        glActiveTexture(GL_TEXTURE0);
+        //glActiveTexture(GL_TEXTURE0);
     }
 
     void core_mesh::setup_mesh() {

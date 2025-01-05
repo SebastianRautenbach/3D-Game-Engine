@@ -19,8 +19,8 @@ class asset_importer {
 public:
     std::vector<asset_details> m_all_assets;
 
-    asset_importer() {
-        initialize_db();
+    asset_importer(std::string path = "assets.db") {
+        initialize_db(path);
     }
 
     ~asset_importer() {
@@ -88,8 +88,8 @@ private:
         return 0;
     }
 
-    void initialize_db() {
-        rc = sqlite3_open("assets.db", &db);
+    void initialize_db(std::string path) {
+        rc = sqlite3_open(path.c_str(), &db);
         if (rc) {
             std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
             return;

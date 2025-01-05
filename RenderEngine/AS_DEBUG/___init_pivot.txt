@@ -11,8 +11,8 @@ Variables:
 
 - 53,6 -
     0   6 *    SUSPEND
-    1   6 *    PGA      0x7aac6168          (var:pivot)
-    4   8 *    ALLOC    0x1dd7ae40fe0, 69             (type:vec3, vec3::vec3())
+    1   6 *    PGA      0x9c2d3fd8          (var:pivot)
+    4   8 *    ALLOC    0x2a29c5f9fe0, 69             (type:vec3, vec3::vec3())
     8   6 *    PshC4    0x0          (i:0, f:0)
    10   7 *    PshC4    0x404147ae          (i:1078020014, f:3.02)
    12   8 *    PshC4    0x0          (i:0, f:0)
@@ -20,7 +20,7 @@ Variables:
    15  11 *    CALLSYS  70           (vec3::vec3(float, float, float))
                ObjInfo  v3, 1
    17   6 *    PSF      v3
-   18   8 *    PshGPtr  0x1dd7aac6168          (i:2050757517672, f:1.01321e-311)
+   18   8 *    PshGPtr  0x2a29c2d3fd8          (i:2897428168664, f:1.43152e-311)
    21  10 *    COPY     v3, 67108880
                ObjInfo  v3, 0
    23   6 *    RET      0

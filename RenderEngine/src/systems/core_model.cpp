@@ -24,7 +24,7 @@ void lowlevelsys::core_model::loadModel(std::string path)
     directory = path.substr(0, path.find_last_of('/'));
 
     processNode(scene->mRootNode, scene);
-
+    m_num_materials = scene->mNumMaterials;
     
 }
 
@@ -117,7 +117,8 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
         // ----- mat updates
     }
 
-    return core_mesh(vertices, indices, textures);
+
+    return core_mesh(vertices, indices, textures, mesh->mMaterialIndex);
 }
 
 

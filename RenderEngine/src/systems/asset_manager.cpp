@@ -23,32 +23,27 @@ void wizm::asset_manager::assign_assets()
 		for (auto& ent : global_scene->m_entities) {
 			for (auto& comp : ent->m_components_list)
 			{
-				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(comp);		//------------------------------------ STATIC MESH ASSET & TEXTURE ASSIGNMENT
+				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(comp);		//------------------------------------ STATIC MESH ASSET
 				if (mesh_comps)
 				{
 					if (m_assets[mesh_comps->m_mesh_asset_id])
 					{
-					
-						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_mesh_asset_id, "");
-								
-						//if(!mesh_comps->m_material->diffuse_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).type == tTEXTURE &&
-						//	!get_asset_details_from_id(mesh_comps->m_material->diffuse_asset_id).path.empty()
-						//	)
-						//{
-						//	mesh_comps->m_material->m_texture_n[0] = load<texture_asset>(mesh_comps->m_material->diffuse_asset_id, "");
-						//}
-						//	
-						//if (!mesh_comps->m_material->specular_asset_id.empty() && get_asset_details_from_id(mesh_comps->m_material->specular_asset_id).type == tTEXTURE &&
-						//	!get_asset_details_from_id(mesh_comps->m_material->specular_asset_id).path.empty()
-						//	)
-						//{
-						//	mesh_comps->m_material->m_texture_n[1] = load<texture_asset>(mesh_comps->m_material->specular_asset_id, "");
-						// }
+						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_mesh_asset_id, "");						
 					}
 
-					for (auto& mat : mesh_comps->m_material_asset_ids) {
-						mesh_comps->m_materials.emplace_back(load<material_asset>(mat, ""));
+
+
+					for (int i = 0; i < mesh_comps->m_material_asset_ids.size(); i++) {			//------------------------------------ MATERIAL ASSIGNMENT
+						auto& mat_id = mesh_comps->m_material_asset_ids[i];
+						
+						if ((i + 1) > mesh_comps->m_materials.size())
+							mesh_comps->m_materials.emplace_back();
+						
+						auto& mat = mesh_comps->m_materials[i];
+						
+						mat = load<material_asset>(mat_id, "");
 					}
+
 				}
 				mesh_comps.reset();
 

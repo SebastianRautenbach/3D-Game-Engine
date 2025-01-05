@@ -18,6 +18,7 @@ namespace lowlevelsys {
 		std::string directory;
 		bool gammaCorrection;
 		unsigned int total_triangles = 0;
+		int m_num_materials = 0;
 
 	private:
 

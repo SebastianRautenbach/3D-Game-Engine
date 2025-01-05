@@ -22,15 +22,24 @@ namespace wizm {
 
 		void unbind() {
 			texture->unbind_texture();
+			bounded = false;
 		}
 
 		void draw(core_gl_shader* shader) {
 			texture->bind_texture();
+			bounded = true;
 		}
+
+		bool is_bounded() { return bounded; }
 
 
 	public:
+		
 		core_gl_texture* texture;
 		std::string file_name;
+
+
+	private:
+		bool bounded = false;
 	};
 }

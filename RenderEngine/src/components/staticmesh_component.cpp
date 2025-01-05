@@ -23,22 +23,30 @@ void wizm::staticmesh_component::component_preupdate()
 
 void wizm::staticmesh_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
+	int meshes = m_model->get_mesh()->meshes.size();
+	int materials = m_model->material_count();
+	
+	if (materials > m_materials.size()) {
+		m_materials.emplace_back();
+	}
+	
 
 	if (m_model) {
 
 
-		for (int i = 0; i < m_model->get_mesh()->meshes.size(); i++) {
-						
-			if(i < m_materials.size() && m_materials[i])
-				m_materials[i]->draw(shader);
+		for (int i = 0; i < meshes; i++) {
+
+			int mat_index = m_model->get_mesh()->meshes[i].m_material_index;
+
+			if(m_materials[mat_index])
+				m_materials[mat_index]->draw(shader);
 
 			shader->setMat4("model", get_transform());
 
-
 			m_model->draw(i);
-
-			if (i < m_materials.size() && m_materials[i])
-				m_materials[i]->unbind();
+			
+			if (m_materials[mat_index])
+				m_materials[mat_index]->unbind();
 		}
 	}
 }
@@ -59,6 +67,9 @@ std::shared_ptr<core_component> wizm::staticmesh_component::_copy() const
 	new_sc_comp->m_is_active = this->m_is_active;
 	
 	new_sc_comp->m_model = this->m_model;
+
+	new_sc_comp->m_materials = this->m_materials;
+	new_sc_comp->m_material_asset_ids = this->m_material_asset_ids;
 
 	return new_sc_comp;
 }

@@ -34,6 +34,7 @@ void wizm::billboard_core::draw(glm::mat4 transform, eBillboardType type, glm::v
 
 	m_shader->setVec3("tint", tint);
 	
+	glActiveTexture(GL_TEXTURE0);
 	texture_atlas[type]->bind_texture();
 
 	m_shader->setMat4("model", transform);

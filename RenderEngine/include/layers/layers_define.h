@@ -7,3 +7,4 @@
 #include "script_editor_layer.h"
 #include "script_debug_layer.h"
 #include "asset_viewer_layer.h"
+#include "material_editor_layer.h"

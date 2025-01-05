@@ -42,10 +42,7 @@ directionallight{
 mesh{
 	staticmesh0{
 		asset id:18410409422620930561;
-		material{
-			diffuse_asset_id:6917228854978984615;
-			specular_asset_id:17825215692104819701;
-		}
+		m_material_asset_ids:12464556249974524193;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;

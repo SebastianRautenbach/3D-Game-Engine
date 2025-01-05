@@ -10,20 +10,28 @@ namespace wizm {
 	class material_asset : public core_asset {
 		
 	public:
+		std::string _path;
 		
 		void load(const std::string& path) override {
+			
 			filedata::ZER save_object;
 			save_object.read_file_cntx(path);
 			diffuse_asset_id = save_object["material"]["textures"].get_string("diffuse")[0];
 			specular_asset_id = save_object["material"]["textures"].get_string("specular")[0];
 			m_shininess = save_object["material"].get_float("shininess")[0];
+
+			_path = path;
+			std::filesystem::path file_path(path);
+			file_name = file_path.filename().string();
 		}
 
 		void unbind() {
 			if (m_diffuse_texture) {
+				glActiveTexture(GL_TEXTURE0);
 				m_diffuse_texture->unbind();
 			}
 			if (m_specular_texture) {
+				glActiveTexture(GL_TEXTURE1);
 				m_specular_texture->unbind();
 			}
 		}

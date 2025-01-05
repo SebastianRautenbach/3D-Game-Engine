@@ -14,6 +14,7 @@ namespace wizm {
 
 		void set_mesh(core_model* model) { m_model = model; }
 		core_model* get_mesh() { return m_model; }
+		int material_count() { return m_model->m_num_materials; }
 		
 		void load(const std::string& path) override {
 			if(!path.empty())

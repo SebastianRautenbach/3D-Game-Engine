@@ -403,7 +403,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	if (type == "StaticMesh")
 	{
 		auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(component);
-		std::string staticmeshfilename, diffusetexturefilename, speculartexturefilename;
+		std::string staticmeshfilename, materialassetname;
 		
 		{
 			if (staticmesh->m_model)
@@ -411,21 +411,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 			else
 				staticmeshfilename = "Drag and Drop";
 		}
-		{
-			//size_t texture_count = staticmesh->m_material->m_texture_n.size();
-			//
-			//diffusetexturefilename = (texture_count > 0 && staticmesh->m_material->m_texture_n[0])
-			//	? staticmesh->m_material->m_texture_n[0]->file_name
-			//	: "Drag and Drop";
-			//
-			//speculartexturefilename = (texture_count > 1 && staticmesh->m_material->m_texture_n[1])
-			//	? staticmesh->m_material->m_texture_n[1]->file_name
-			//	: (texture_count > 0 ? "Drag and Drop" : diffusetexturefilename);
-
-		}
-
-
-
+		
 
 
 		
@@ -447,45 +433,38 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 			ImGui::EndDragDropTarget();
 		}
-		ImGui::Text("Change Diffuse Texture");
 		
-		//ImGui::Button(diffusetexturefilename.c_str(), ImVec2(125, 125));
-		//if (ImGui::BeginDragDropTarget()) {
-		//
-		//	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
-		//
-		//		const wchar_t* id = (const wchar_t*)payload->Data;
-		//
-		//		if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tTEXTURE)
-		//		{
-		//			staticmesh->m_material->diffuse_asset_id = wstring_to_string(id);
-		//			m_asset_manager->assign_assets();
-		//			global_scene->m_reloaded = true;
-		//		}
-		//	}
-		//
-		//	ImGui::EndDragDropTarget();
-		//}
-		//
-		//ImGui::Text("Change Specular Texture");
-		//ImGui::Button(speculartexturefilename.c_str(), ImVec2(125, 125));
-		//if (ImGui::BeginDragDropTarget()) {
-		//
-		//	if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
-		//
-		//		const wchar_t* id = (const wchar_t*)payload->Data;
-		//
-		//		if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tTEXTURE) {
-		//			staticmesh->m_material->specular_asset_id = wstring_to_string(id);
-		//			m_asset_manager->assign_assets();
-		//			global_scene->m_reloaded = true;
-		//		}
-		//		
-		//	}
-		//
-		//	ImGui::EndDragDropTarget();
-		//}
+		ImGui::Text("Change Material");
 		
+		for (int i = 0; i < staticmesh->m_materials.size(); i++) {
+			
+			if(i < staticmesh->m_materials.size())
+			{
+
+				materialassetname = staticmesh->m_materials[i] ? staticmesh->m_materials[i]->file_name : "Drag and Drop";
+				materialassetname += "##";
+				materialassetname += i;
+
+				ImGui::Button(materialassetname.c_str(),
+					ImVec2(125, 125));
+				if (ImGui::BeginDragDropTarget()) {
+					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
+						const wchar_t* id = (const wchar_t*)payload->Data;
+						if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tMATERIAL) {
+							
+							if ((i+1) > staticmesh->m_material_asset_ids.size())
+								staticmesh->m_material_asset_ids.emplace_back();
+
+							staticmesh->m_material_asset_ids[i] = wstring_to_string(id);													
+							global_scene->m_reloaded = true;
+							m_asset_manager->assign_assets();
+						}
+					}
+
+					ImGui::EndDragDropTarget();
+				}
+			}
+		}	
 	}
 
 
@@ -514,8 +493,8 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tSCRIPT)
 				{
 					script_component->script_asset_id = wstring_to_string(id);
-					m_asset_manager->assign_assets();
 					global_scene->m_reloaded = true;
+					m_asset_manager->assign_assets();
 				}
 			}
 
@@ -545,8 +524,8 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tSOUND)
 				{
 					_sound_component->asset_id = wstring_to_string(id);
-					m_asset_manager->assign_assets();
 					global_scene->m_reloaded = true;
+					m_asset_manager->assign_assets();
 				}
 			}
 

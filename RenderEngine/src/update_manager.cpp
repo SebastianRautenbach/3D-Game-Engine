@@ -50,6 +50,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_layer_stack->PushLayer(new performace_ui_layer());
 	m_layer_stack->PushLayer(new properties_ui_layer(m_gl_renderer, m_asset_manager));
 	m_layer_stack->PushLayer(new content_browser_layer(m_asset_manager));
+	m_layer_stack->PushLayer(new material_editor_layer(m_asset_manager, m_gl_renderer));
 }
 
 

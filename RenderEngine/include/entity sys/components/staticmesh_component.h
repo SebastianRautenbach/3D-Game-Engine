@@ -58,7 +58,6 @@ namespace wizm {
 			
 			save_t[parent_name]["staticmesh" + index].set_string("asset id", { m_mesh_asset_id });
 			save_t[parent_name]["staticmesh" + index].set_string("m_material_asset_ids", m_material_asset_ids);
-
 		}
 
 
