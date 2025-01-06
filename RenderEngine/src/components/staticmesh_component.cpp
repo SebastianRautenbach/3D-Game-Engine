@@ -23,31 +23,31 @@ void wizm::staticmesh_component::component_preupdate()
 
 void wizm::staticmesh_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
+	if (!m_model) { return; }
+
 	int meshes = m_model->get_mesh()->meshes.size();
 	int materials = m_model->material_count();
 	
-	if (materials > m_materials.size()) {
+	
+	while (materials > m_materials.size()) {
 		m_materials.emplace_back();
 	}
-	
 
-	if (m_model) {
+	shader->setMat4("model", get_transform());
 
+	for (int i = 0; i < meshes; i++) {
 
-		for (int i = 0; i < meshes; i++) {
+		int mat_index = m_model->get_mesh()->meshes[i].m_material_index;
 
-			int mat_index = m_model->get_mesh()->meshes[i].m_material_index;
+		if (m_materials[mat_index])
+			m_materials[mat_index]->draw(shader);
 
-			if(m_materials[mat_index])
-				m_materials[mat_index]->draw(shader);
+		
 
-			shader->setMat4("model", get_transform());
-
-			m_model->draw(i);
-			
-			if (m_materials[mat_index])
-				m_materials[mat_index]->unbind();
-		}
+		m_model->draw(i);
+		
+		if (m_materials[mat_index])
+			m_materials[mat_index]->unbind();
 	}
 }
 

@@ -67,9 +67,6 @@ namespace wizm {
 			}
 		}
 
-		//void set_crnt_entity(std::shared_ptr<core_entity> ent) { 
-		//	m_selected_entity = ent; 
-		//};
 
 
 		// temporarly

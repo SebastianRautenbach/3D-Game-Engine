@@ -93,7 +93,7 @@ public:
 
 
 private:
-	void checkCompileErrors(GLuint shader, std::string type)
+	void checkCompileErrors(GLuint shader, std::string type, std::string path)
 	{
 		GLint success;
 		GLchar infoLog[1024];
@@ -103,6 +103,7 @@ private:
 			if (!success)
 			{
 				glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+				std::cout << "path::" << path << "\n";
 				std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 			}
 		}
@@ -112,6 +113,7 @@ private:
 			if (!success)
 			{
 				glGetProgramInfoLog(shader, 1024, NULL, infoLog);
+				std::cout << "path::" << path << "\n";
 				std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 			}
 		}

@@ -16,13 +16,15 @@ public:
     void refresh() {
 
         asset_importer ai;
-        auto paths = get_files_in_dir("GAME/Content/Assets");
+        std::vector<std::string> paths;
+        get_files_in_dir("GAME", paths);
 
         /*
             Remove all non existing files from the database
         */
 
-        for (auto f : ai.retrieve_all_assets()) {
+        auto all_assets = ai.retrieve_all_assets();
+        for (auto f : all_assets) {
             if (!std::filesystem::exists(f.path))
                 ai.remove_from_database(f.id);
         }
@@ -69,13 +71,14 @@ public:
 private:
 
 
+    
 
-    std::vector<std::string> get_files_in_dir(const std::string& directoryPath) {
-        std::vector<std::string> files;
+
+    void get_files_in_dir(const std::string& directoryPath, std::vector<std::string>& paths) {
         try {
             for (const auto& entry : std::filesystem::recursive_directory_iterator(directoryPath)) {
                 if (entry.is_regular_file()) {
-                    files.push_back(entry.path().string());
+                    paths.push_back(entry.path().string());
                 }
             }
         }
@@ -85,7 +88,6 @@ private:
         catch (const std::exception& e) {
             std::cerr << "Error: " << e.what() << std::endl;
         }
-        return files;
     }
 
 

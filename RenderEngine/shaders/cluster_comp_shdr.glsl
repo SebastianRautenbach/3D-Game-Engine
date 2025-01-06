@@ -53,17 +53,6 @@ void main()
     float planeNear = zNear * pow(zFar / zNear, gl_WorkGroupID.z / float(gridSize.z));
     float planeFar =  zNear * pow(zFar / zNear, (gl_WorkGroupID.z + 1) / float(gridSize.z));
 
-    //vec3 minNear = minTile * planeNear / minTile.z;
-    //vec3 minFar  = minTile * planeFar  / minTile.z;
-    //vec3 maxNear = maxTile * planeNear / maxTile.z;
-    //vec3 maxFar  = maxTile * planeFar  / maxTile.z;
-
-    //vec3 minPointAABB = min(min(minNear, minFar),min(maxNear, maxFar));
-    //vec3 maxPointAABB = max(max(minNear, minFar),max(maxNear, maxFar));
-
-    //clusters[2 * tileIndex + 0].minPoint = vec4(minPointAABB, 1.0);
-    //clusters[2 * tileIndex + 1].maxPoint = vec4(maxPointAABB, 1.0);
-
     vec3 minPointNear = lineIntersectionWithZPlane(vec3(0, 0, 0), minTile, planeNear);
     vec3 minPointFar = lineIntersectionWithZPlane(vec3(0, 0, 0), minTile, planeFar);
     vec3 maxPointNear = lineIntersectionWithZPlane(vec3(0, 0, 0), maxTile, planeNear);

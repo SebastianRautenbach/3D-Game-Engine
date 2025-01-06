@@ -11,6 +11,14 @@ namespace wizm {
 		
 	public:
 		std::string _path;
+
+		void save() {
+			filedata::ZER save_t;
+			save_t.read_file_cntx(this->_path);
+			save_t["material"]["textures"].set_string("diffuse", { this->diffuse_asset_id });
+			save_t["material"]["textures"].set_string("specular", { this->specular_asset_id });
+			save_t.save_file(save_t, this->_path);
+		}
 		
 		void load(const std::string& path) override {
 			

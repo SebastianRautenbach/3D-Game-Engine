@@ -511,7 +511,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 				path = _sound_component->m_sound_asset->file_name;
 
 			if (path.empty())
-				path = "Change script";
+				path = "Change sound";
 		}
 
 		ImGui::Button(path.c_str(), ImVec2(125, 125));

@@ -506,5 +506,8 @@
     <ClInclude Include="include\layers\material_editor_layer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\system\compose_material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

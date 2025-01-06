@@ -40,7 +40,7 @@ void wizm::scene_ui_layer::update(float delta_time)
 			| ImGuiTreeNodeFlags_OpenOnDoubleClick 
 			| ImGuiTreeNodeFlags_SpanAvailWidth)) 
 		{
-			
+			std::cout << ents->m_ent_ID << "\n";
 			// open next list _>> BLAH BLAH
 			ImGui::TreePop();
 		}
@@ -55,6 +55,7 @@ void wizm::scene_ui_layer::update(float delta_time)
 			global_scene->clear_selected_entities();
 			global_scene->add_selected_entity(ents);
 		}
+		
 
 	}
 
@@ -102,6 +103,12 @@ void wizm::scene_ui_layer::update(float delta_time)
 			global_scene->add_entity(crnt);
 			global_scene->clear_selected_entities();
 			global_scene->add_selected_entity(crnt);
+		}
+
+		// delete this because this is very temporary
+
+		if (ImGui::MenuItem("ADD PARENT")) {
+			global_scene->get_selected_entities()[0]->add_parent((core_node*)global_scene->m_entities[0].get());
 		}
 
 		ImGui::EndPopup();

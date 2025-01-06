@@ -3,6 +3,8 @@
 #include "IconsFontAwesome5.h"
 #include "filetypes.h"
 #include "system/scripting/compose_script.h"
+#include "system/compose_material.h"
+
 #include "system/compose_level.h"
 #include "other utils/copy_to_clipboard.h"
 #include "other utils/common.h"
@@ -70,14 +72,26 @@ void wizm::content_browser_layer::update(float delta_time)
     if (ImGui::BeginMenu("Add Asset")) {
         
         if (ImGui::MenuItem("Create new script")) {
-            engine_scripting::create_script(current_directory.string(), "new_script.wizs");
+            auto all_files_in_dir = get_directory_content(current_directory.string());
+            std::string unique_name = generate_unique_name(all_files_in_dir, "new_script", ".wizs");
+            engine_scripting::create_script(current_directory.string(), unique_name);
             refresh_assets();
         }
 
         if (ImGui::MenuItem("Create new level")) {
-            create_level(current_directory.string(), "new_level.zer");
+            auto all_files_in_dir = get_directory_content(current_directory.string());
+            std::string unique_name = generate_unique_name(all_files_in_dir, "new_level", ".zer");
+            create_level(current_directory.string(), unique_name);
             refresh_assets();
         }
+
+        if (ImGui::MenuItem("Create new material")) {
+            auto all_files_in_dir = get_directory_content(current_directory.string());
+            std::string unique_name = generate_unique_name(all_files_in_dir, "new_material", ".wmat");
+            create_material(current_directory.string(), unique_name);
+            refresh_assets();
+        }
+
  
         ImGui::EndMenu();
     }
@@ -147,7 +161,30 @@ void wizm::content_browser_layer::update(float delta_time)
 
             if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(0)) {
                 // this is for now
-                ShellExecute(NULL, L"open", entry.c_str(), NULL, NULL, SW_SHOWNORMAL);
+
+                if (is_material_file(file_name)) {
+
+
+                    window_open.open = true;
+                    window_open.window_type = MATERIAL_EDITOR_WINDOW;
+                    
+                    for (const auto& asset : assets) {
+                        auto asset_path = std::filesystem::directory_entry(asset.path).path().string();
+                        std::replace(asset_path.begin(), asset_path.end(), '/', '\\');
+                        auto entry_path = entry.string();
+                    
+                        if (asset_path == entry_path) {
+                            window_open.window_open_with_id = asset.id.c_str();
+                        }
+                    }
+                }
+                else if (is_map_file(file_name)) {
+                    
+                }
+                else {
+                    ShellExecute(NULL, L"open", entry.c_str(), NULL, NULL, SW_SHOWNORMAL);
+                }
+
             }
 
             if (ImGui::BeginPopup("FilePopup")) {
@@ -175,24 +212,42 @@ void wizm::content_browser_layer::update(float delta_time)
                
                 ImGui::InputText("##RenameFile", &new_file_name[0], ImGuiInputTextFlags_EnterReturnsTrue);
                 if (ImGui::IsItemDeactivatedAfterEdit()) {
-                    if (new_file_name.c_str()) {
-                        std::filesystem::path parent_path = entry.parent_path();
-                        std::filesystem::path new_path = parent_path / new_file_name.c_str();                  
-                        if (new_path.extension() == ".zer") {
-                            try {                                
-                                std::filesystem::rename(entry, new_path);
-                                std::cout << "File renamed to: " << new_path << std::endl;
-                            }
-                            catch (const std::filesystem::filesystem_error& e) {
-                                std::cerr << "Error renaming file: " << e.what() << std::endl;
-                            }
+                    std::string asset_id;
+                    for (const auto& asset : assets) {
+                        auto asset_path = std::filesystem::directory_entry(asset.path).path().string();
+                        std::replace(asset_path.begin(), asset_path.end(), '/', '\\');
+                        auto entry_path = entry.string();
+
+                        if (asset_path == entry_path) {
+                            asset_id = asset.id;
                         }
-                        else {
-                            std::cerr << "New file name must end with .zer" << std::endl;
+                    }
+
+                    if (!new_file_name.empty()) {
+                        std::filesystem::path parent_path = entry.parent_path();
+                        std::filesystem::path original_extension = entry.extension();
+                       
+                        std::filesystem::path new_path = parent_path / new_file_name.c_str();
+                        if (new_path.has_extension()) {
+                            new_path.replace_extension(new_path.extension());
+                        }
+                        else {                      
+                            new_path.replace_extension(original_extension);
+                        }
+
+                        try {
+                            std::filesystem::rename(entry, new_path);
+                            asset_import.edit_asset_path(asset_id, new_path.string());
+                            refresh_assets();
+                            std::cout << "File renamed to: " << new_path << std::endl;
+                        }
+                        catch (const std::filesystem::filesystem_error& e) {
+                            std::cerr << "Error renaming file: " << e.what() << std::endl;
                         }
                     }
                     ImGui::CloseCurrentPopup();
                 }
+
 
 
                 ImGui::EndPopup();
@@ -285,4 +340,24 @@ std::vector<std::filesystem::path> wizm::content_browser_layer::get_directory_co
 		contents.push_back(entry.path());
 	}
 	return contents;
+}
+
+std::string wizm::content_browser_layer::generate_unique_name(const std::vector<std::filesystem::path>& all_files_in_dir, const std::string& base_name, const std::string& extension)
+{
+    std::string unique_name = base_name;
+    int counter = 0;
+
+    auto is_name_taken = [&](const std::string& name) {
+        return std::any_of(all_files_in_dir.begin(), all_files_in_dir.end(),
+            [&](const std::filesystem::path& path) {
+                return path.filename().string() == name;
+            });
+        };
+
+    while (is_name_taken(unique_name + extension)) {
+        counter++;
+        unique_name = base_name + std::to_string(counter);
+    }
+
+    return unique_name + extension;
 }

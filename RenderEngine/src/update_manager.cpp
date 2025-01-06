@@ -50,7 +50,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_layer_stack->PushLayer(new performace_ui_layer());
 	m_layer_stack->PushLayer(new properties_ui_layer(m_gl_renderer, m_asset_manager));
 	m_layer_stack->PushLayer(new content_browser_layer(m_asset_manager));
-	m_layer_stack->PushLayer(new material_editor_layer(m_asset_manager, m_gl_renderer));
+	m_layer_stack->PushLayer(new material_editor_layer(m_asset_manager));
 }
 
 
@@ -112,7 +112,7 @@ void update_manager::render()
 	m_audio_manager->update();
 	m_listener_manager->listener_on_update(m_timer->get_delta_time());
 
-	// I want to evolve this to a bigger system but this only handles GUI so far
+	// I want to evolve this to a bigger system but this only handles UI so far
 	base_layer->begin();
 	for (auto layer = m_layer_stack->begin(); layer != m_layer_stack->end(); layer++)
 		(*layer)->update(m_timer->get_delta_time());

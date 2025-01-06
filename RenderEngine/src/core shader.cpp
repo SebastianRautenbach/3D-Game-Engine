@@ -19,14 +19,14 @@ core_gl_shader::core_gl_shader(const char* vertex_file_path, const char* fragmen
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
-	checkCompileErrors(vertexShader, "VERTEX");
+	checkCompileErrors(vertexShader, "VERTEX", vertex_file_path);
 
 
 	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
 	glCompileShader(fragmentShader);
 
-	checkCompileErrors(fragmentShader, "FRAGMENT");
+	checkCompileErrors(fragmentShader, "FRAGMENT", fragment_file_path);
 
 
 	shader_id = glCreateProgram();
@@ -58,7 +58,7 @@ core_gl_shader::core_gl_shader(const char* compute_file_path)
 	glShaderSource(comute_shader, 1, &compute_shader_source, NULL);
 	glCompileShader(comute_shader);
 
-	checkCompileErrors(comute_shader, "COMPUTE");
+	checkCompileErrors(comute_shader, "COMPUTE", compute_file_path);
 
 	shader_id = glCreateProgram();
 	glAttachShader(shader_id, comute_shader);

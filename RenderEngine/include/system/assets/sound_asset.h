@@ -31,6 +31,9 @@ namespace wizm {
 		}
 
 		void play(bool loop, FMOD::Channel** channel, bool is_3d) {
+
+			if (!this) { return; }
+
 			if (m_system && m_sound) {
 				m_sound->setMode((is_3d ? FMOD_3D : FMOD_2D) | (loop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF));
 				if (is_3d) { m_sound->set3DMinMaxDistance(1.0f, 100.0f); }

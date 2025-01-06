@@ -76,17 +76,17 @@ void wizm::core_node::add_scale(const glm::vec3& deltaScale)
 glm::mat4 wizm::core_node::get_transform()
 {
 
-    glm::mat4 rotation = glm::mat4_cast(glm::quat(m_rotation));
-        
-    glm::mat4 localTransform = glm::translate(glm::mat4(1.0f), m_translation) * rotation * 
-        glm::scale(glm::mat4(1.0f), m_scale);
+    static const glm::mat4 identity = glm::mat4(1.0f);
 
-    
-    if (m_parent_node) {
-        glm::mat4 parentTransform = m_parent_node->get_transform();
-        return parentTransform * localTransform;
-    }
-    else {
+    glm::mat4 rotation = glm::mat4_cast(glm::quat(m_rotation));
+    glm::mat4 localTransform = glm::translate(identity, m_translation) *
+        rotation *
+        glm::scale(identity, m_scale);
+
+    if (!m_parent_node) {
         return localTransform;
     }
+
+    return m_parent_node->get_transform() * localTransform;
+
 }

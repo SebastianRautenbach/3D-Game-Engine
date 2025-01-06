@@ -1,18 +1,18 @@
 
 Total count
-PshGPtr    : 1
-PshC4      : 3
-PSF        : 2
-RET        : 6
-COPY       : 1
-CALLSYS    : 1
-SUSPEND    : 6
-ALLOC      : 2
-WRTV1      : 1
-LDG        : 1
-PGA        : 3
-SetG4      : 3
-SetV1      : 1
+PshGPtr    : 2
+PshC4      : 6
+PSF        : 4
+RET        : 12
+COPY       : 2
+CALLSYS    : 2
+SUSPEND    : 12
+ALLOC      : 4
+WRTV1      : 2
+LDG        : 2
+PGA        : 6
+SetG4      : 6
+SetV1      : 2
 
 Never executed
 PopPtr    
@@ -205,23 +205,23 @@ POWu64
 Thiscall1 
 
 Sequences
-PshGPtr   , COPY       : 1
-PshC4     , PshC4      : 2
-PshC4     , PSF        : 1
-PSF       , PshGPtr    : 1
-PSF       , CALLSYS    : 1
-RET       , SUSPEND    : 5
-COPY      , RET        : 1
-CALLSYS   , PSF        : 1
-SUSPEND   , PGA        : 2
-SUSPEND   , SetG4      : 3
-SUSPEND   , SetV1      : 1
-ALLOC     , PshC4      : 1
-ALLOC     , RET        : 1
-WRTV1     , RET        : 1
-LDG       , WRTV1      : 1
-PGA       , ALLOC      : 2
-PGA       , PGA        : 1
-SetG4     , RET        : 3
-SetV1     , LDG        : 1
+PshGPtr   , COPY       : 2
+PshC4     , PshC4      : 4
+PshC4     , PSF        : 2
+PSF       , PshGPtr    : 2
+PSF       , CALLSYS    : 2
+RET       , SUSPEND    : 11
+COPY      , RET        : 2
+CALLSYS   , PSF        : 2
+SUSPEND   , PGA        : 4
+SUSPEND   , SetG4      : 6
+SUSPEND   , SetV1      : 2
+ALLOC     , PshC4      : 2
+ALLOC     , RET        : 2
+WRTV1     , RET        : 2
+LDG       , WRTV1      : 2
+PGA       , ALLOC      : 4
+PGA       , PGA        : 2
+SetG4     , RET        : 6
+SetV1     , LDG        : 2
 LABEL     , SUSPEND    : 1

@@ -27,6 +27,39 @@ public:
         sqlite3_close(db);
     }
 
+    void edit_asset_path(const std::string& id, const std::string& new_path) {
+
+        std::string query = "SELECT id FROM assets WHERE id ='" + id + "';";
+        bool asset_exists = false;
+
+        rc = sqlite3_exec(db, query.c_str(), [](void* exists, int count, char** data, char** columns) -> int {
+            *static_cast<bool*>(exists) = true;
+            return 0;
+            }, &asset_exists, &zErrMsg);
+
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error during check: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+            return;
+        }
+
+        if (!asset_exists) {
+            std::cerr << "Asset with ID '" << id << "' does not exist." << std::endl;
+            return;
+        }
+
+        std::string sql = "UPDATE assets SET path = '" + new_path + "' WHERE id = '" + id + "';";
+        rc = sqlite3_exec(db, sql.c_str(), nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error during update: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+        }
+        else {
+            std::cout << "Asset path updated successfully for ID: " << id << std::endl;
+        }
+    }
+
+
     void remove_from_database(std::string id) {
         std::string sql = "DELETE FROM assets WHERE id ='" + id + "';";
         rc = sqlite3_exec(db, sql.c_str(), nullptr, 0, &zErrMsg);
@@ -37,7 +70,8 @@ public:
     }
 
     void add_to_database(const asset_details& asset) {
-        for (auto a : retrieve_all_assets()) {
+        auto all_assets = retrieve_all_assets();
+        for (auto a : all_assets) {
             if (asset.path == a.path)
                 return;
         }
@@ -54,6 +88,7 @@ public:
     }
 
     std::vector<asset_details> retrieve_all_assets() {
+        rearrange_assets();
         m_all_assets.clear();
         std::string sql = "SELECT id, path, type FROM assets;";
         rc = sqlite3_exec(db, sql.c_str(), callback, this, &zErrMsg);
@@ -63,6 +98,67 @@ public:
         }
         return m_all_assets;
     }
+
+    void rearrange_assets() {
+        sqlite3_exec(db, "BEGIN TRANSACTION;", nullptr, 0, &zErrMsg);
+
+        // Create a temporary table to store the reordered assets
+        std::string create_temp_table =
+            "CREATE TEMP TABLE temp_assets AS "
+            "SELECT * FROM assets ORDER BY "
+            "CASE "
+            "WHEN type = 'texture' THEN 1 "
+            "WHEN type = 'material' THEN 2 "
+            "ELSE 3 END;";
+        rc = sqlite3_exec(db, create_temp_table.c_str(), nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error while creating temp table: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+            sqlite3_exec(db, "ROLLBACK;", nullptr, 0, &zErrMsg);
+            return;
+        }
+
+        // Clear the original table
+        std::string clear_table = "DELETE FROM assets;";
+        rc = sqlite3_exec(db, clear_table.c_str(), nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error while clearing original table: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+            sqlite3_exec(db, "ROLLBACK;", nullptr, 0, &zErrMsg);
+            return;
+        }
+
+        // Reinsert assets from the temporary table into the original table
+        std::string reinsert_assets = "INSERT INTO assets SELECT * FROM temp_assets;";
+        rc = sqlite3_exec(db, reinsert_assets.c_str(), nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error while reinserting from temp table: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+            sqlite3_exec(db, "ROLLBACK;", nullptr, 0, &zErrMsg);
+            return;
+        }
+
+        // Drop the temporary table
+        std::string drop_temp_table = "DROP TABLE temp_assets;";
+        rc = sqlite3_exec(db, drop_temp_table.c_str(), nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error while dropping temp table: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+            sqlite3_exec(db, "ROLLBACK;", nullptr, 0, &zErrMsg);
+            return;
+        }
+
+        sqlite3_exec(db, "COMMIT;", nullptr, 0, &zErrMsg);
+        if (rc != SQLITE_OK) {
+            std::cerr << "SQL error during commit: " << zErrMsg << std::endl;
+            sqlite3_free(zErrMsg);
+        }
+        else {
+            std::cout << "Assets successfully rearranged." << std::endl;
+        }
+    }
+
+
 
 private:
     sqlite3* db;

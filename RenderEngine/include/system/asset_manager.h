@@ -43,6 +43,9 @@ namespace wizm {
 
         template <typename T>
         std::shared_ptr<T> load(const std::string& asset_id, const std::string& path) {
+
+            if (asset_id.empty()) { return nullptr; }
+
             auto it = m_assets.find(asset_id);
             if (it != m_assets.end()) {
                 return std::dynamic_pointer_cast<T>(it->second);

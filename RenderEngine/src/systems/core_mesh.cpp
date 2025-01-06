@@ -38,8 +38,6 @@ namespace lowlevelsys {
         unsigned int heightNr = 1;
 
         vertex_arr->draw_buffer(static_cast<unsigned int>(indices.size()));
-
-        //glActiveTexture(GL_TEXTURE0);
     }
 
     void core_mesh::setup_mesh() {
