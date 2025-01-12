@@ -50,6 +50,7 @@ void wizm::viewport_layer::update(float delta_time)
             {
                 global_scene->read_map_data(wstring_to_string(id));
                 global_scene->m_reloaded = true;
+                m_camera_manager->load_save_viewport_camera(wstring_to_string(id));
                 m_camera_manager->update_crnt_camera(false);
             }
 

@@ -69,6 +69,37 @@ namespace wizm {
 		void update_projection_matrix();
 		void update_view_matrix();
 
+
+		void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) {
+			
+
+			if (m_position.x = save_t[parent_name]["transform"].get_float("position")[0]) {
+
+				m_position.x = save_t[parent_name]["transform"].get_float("position")[0];
+				m_position.y = save_t[parent_name]["transform"].get_float("position")[1];
+				m_position.z = save_t[parent_name]["transform"].get_float("position")[2];
+
+				m_pitch = save_t[parent_name]["transform"].get_float("rotation")[0];
+				m_yaw = save_t[parent_name]["transform"].get_float("rotation")[1];
+				m_roll = save_t[parent_name]["transform"].get_float("rotation")[2];
+
+
+				update_rotation_matrix();
+
+			}
+
+			
+							
+		
+		};
+			
+		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) {
+			save_t[parent_name]["transform"].set_float("position", {m_position.x, m_position.y, m_position.z});
+			save_t[parent_name]["transform"].set_float("rotation", { m_pitch, m_yaw, m_roll });
+			save_t[parent_name]["transform"].set_float("scale", { 1, 1, 1});
+
+		}
+
 	private:
 
 		int m_window_width, m_window_height;

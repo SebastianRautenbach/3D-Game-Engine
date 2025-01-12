@@ -1,0 +1,40 @@
+Entity Name{
+	tags{
+	}
+	transform{
+		position:0.000000,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+directionallight{
+	directionallight0{
+		light{
+			m_ambient:0.119048,0.119046,0.119046;
+			m_diffuse:0.400000,0.400000,0.400000;
+			m_specular:0.500000,0.500000,0.500000;
+			m_brightness:1.000000;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+viewport_camera{
+	tags{
+	}
+	transform{
+		position:-0.035149,1.138822,4.316883;
+		rotation:-12.738943,25.030880,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <string>
 
 namespace wizm {
 
@@ -12,6 +13,9 @@ namespace wizm {
 
 		bool update_crnt_camera(bool simulate);
 
+
+		void save_viewport_camera(std::string crnt_save_path);
+		void load_save_viewport_camera(std::string crnt_save_path);
 
 	public:
 	

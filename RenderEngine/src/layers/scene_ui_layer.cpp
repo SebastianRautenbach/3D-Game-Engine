@@ -1,5 +1,6 @@
 #include "layers/scene_ui_layer.h"
 #include "system/scene_manager.h"
+#include <functional>
 
 wizm::scene_ui_layer::scene_ui_layer( gl_renderer* renderer)
 	:core_layer("scene ui layer"), m_renderer(renderer)
@@ -35,26 +36,38 @@ void wizm::scene_ui_layer::update(float delta_time)
 
 	for (auto ents : global_scene->m_entities)
 	{
-		if (ImGui::TreeNodeEx(ents->m_ent_ID.c_str(), 
-			ImGuiTreeNodeFlags_OpenOnArrow 
-			| ImGuiTreeNodeFlags_OpenOnDoubleClick 
-			| ImGuiTreeNodeFlags_SpanAvailWidth)) 
-		{
-			std::cout << ents->m_ent_ID << "\n";
-			// open next list _>> BLAH BLAH
-			ImGui::TreePop();
-		}
-		if (ImGui::IsItemClicked(ImGuiMouseButton_Right))
-		{
-			global_scene->clear_selected_entities();
-			global_scene->add_selected_entity(ents);			
-			ImGui::OpenPopup("ModEnt");
-		}
-		if (ImGui::IsItemClicked())
-		{
-			global_scene->clear_selected_entities();
-			global_scene->add_selected_entity(ents);
-		}
+		
+
+		std::function<void(std::shared_ptr<core_entity>)> renderEntity = [&](std::shared_ptr<core_entity> entity) {
+			
+			if (ImGui::TreeNodeEx(entity->m_ent_ID.c_str(),
+				ImGuiTreeNodeFlags_OpenOnArrow
+				| ImGuiTreeNodeFlags_OpenOnDoubleClick
+				| ImGuiTreeNodeFlags_SpanAvailWidth))
+			{
+				// Render children if tree node is open
+				//for (auto child : entity->get_children())
+				//{	
+				//	if(child!=entity)
+				//		renderEntity(std::dynamic_pointer_cast<core_entity>(child));
+				//}
+				ImGui::TreePop();
+			}
+			if (ImGui::IsItemClicked(ImGuiMouseButton_Right))
+			{
+				global_scene->clear_selected_entities();
+				global_scene->add_selected_entity(entity);
+				ImGui::OpenPopup("ModEnt");
+			}
+			if (ImGui::IsItemClicked())
+			{
+				global_scene->clear_selected_entities();
+				global_scene->add_selected_entity(entity);
+			}
+			};
+
+		// Render the root entity and its children
+		renderEntity(ents);
 		
 
 	}

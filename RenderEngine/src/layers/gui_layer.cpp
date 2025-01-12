@@ -136,6 +136,7 @@ void wizm::gui_layer::begin()
                 if (ImGui::MenuItem("Save"))
                 {
                     global_scene->save_map_data("");
+                    m_camera_manager->save_viewport_camera(global_scene->current_scene);
                 }
                 if (ImGui::MenuItem("Open")) {
                     // open blah
