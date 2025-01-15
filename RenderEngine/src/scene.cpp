@@ -157,23 +157,57 @@ namespace wizm {
 
 		clear_entities();
 
-		for (const auto& i : read.class_properties) {
+		std::function<void(filedata::ZER&, core_entity*, const std::string&)> process_entity = [&](filedata::ZER& new_read, core_entity* parent, const std::string& class_name) {
 			
-			if (!read[i.first]["specs"].get_int("is_entity")[0])
-				continue;
+			if (!new_read["specs"].get_int("is_entity")[0])
+				return;
 
-			auto ent = add_entity(i.first);
-			ent->read_saved_data("","", read);
+			auto new_ent = add_entity(class_name);
+			new_ent->read_saved_data("", "", new_read);
+
+			if(parent)
+				new_ent->add_parent(parent);
+			
+			for (auto& r : new_read.class_properties) {
+				process_entity(new_read[r.first], new_ent, r.first);
+			}
+		};
+
+		for (auto& entity : read.class_properties) {
+			process_entity(*entity.second, nullptr, entity.first);
 		}
+
 	}
 
 
 	void core_scene::save_map_data(std::string path) {
+		
+
+		std::function<void(core_entity*, filedata::ZER&)> process_entity = [&](core_entity* entity, filedata::ZER& read) {
+
+			if (!entity) { return; }
+
+			read["specs"].set_int("is_entity", { 1 });
+			entity->save_data("", "", read);
+
+			for (auto& child : entity->get_children()) {
+				
+				auto ent_child = dynamic_cast<core_entity*>(child);
+				if (!ent_child) { continue; }
+				process_entity(ent_child, read[ent_child->m_ent_ID]);
+			}
+		};
+
 		filedata::ZER read;
 
 		for (const auto& e : m_entities) {
-			read[e->m_ent_ID]["specs"].set_int("is_entity", {1});
-			e->save_data("", "", read);
+			
+
+			if(!e->get_parent())
+				process_entity(e, read[e->m_ent_ID]);
+			
+
+			
 		}
 
 		if(current_scene.empty() || !path.empty())

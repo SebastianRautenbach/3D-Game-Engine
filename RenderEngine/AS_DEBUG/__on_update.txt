@@ -28,9 +28,9 @@ Variables:
     2  35 *    CALLSYS  69           (vec3::vec3())
                ObjInfo  v3, 1
     4  33 *    PSF      v5
-    5  35 *    PshGPtr  0x1ed316b8898          (i:2118248007832, f:1.04655e-311)
+    5  35 *    PshGPtr  0x1adea2466f8          (i:1846469224184, f:9.12277e-312)
     8  37 *    CHKREF
-    9  37 *    ALLOC    0x1ed31a3c0a0, 20             (type:string, string::string(const string&in))
+    9  37 *    ALLOC    0x1adea5ae4e0, 20             (type:string, string::string(const string&in))
    13  33 *    VAR      v5
    14  35 *    PSF      v8
    15  37 *    GETOBJ   2
@@ -43,26 +43,26 @@ Variables:
    22  35 *    PopPtr
 - 67,5 -
    23  33 *    SUSPEND
-   24  33 *    CpyGtoV4 v9, 0x1ed316b8528          (i:2118248006952, f:1.04655e-311)
+   24  33 *    CpyGtoV4 v9, 0x1adea246598          (i:1846469223832, f:9.12277e-312)
    27  33 *    MULf     v9, v9, v0
-   29  33 *    LdGRdR4  v10, 0x1ed316b8738          (i:2118248007480, f:1.04655e-311)
+   29  33 *    LdGRdR4  v10, 0x1adea246648          (i:1846469224008, f:9.12277e-312)
    32  33 *    ADDf     v10, v10, v9
    34  33 *    WRTV4    v10
 - 68,5 -
    35  33 *    SUSPEND
-   36  33 *    CpyGtoV4 v9, 0x1ed316b8738          (i:2118248007480, f:1.04655e-311)
+   36  33 *    CpyGtoV4 v9, 0x1adea246648          (i:1846469224008, f:9.12277e-312)
    39  33 *    CMPIf    v9, 360.000000
    41  33 *    JS       +8              (d:51)
 - 68,34 -
    43  33 *    SUSPEND
-   44  33 *    LdGRdR4  v10, 0x1ed316b8738          (i:2118248007480, f:1.04655e-311)
+   44  33 *    LdGRdR4  v10, 0x1adea246648          (i:1846469224008, f:9.12277e-312)
    47  33 *    SUBIf    v10, v10, 360.000000
    50  33 *    WRTV4    v10
 - 69,5 -
             1:
    51  33 *    SUSPEND
                VarDecl  2
-   52  33 *    PshG4    0x1ed316b8738          (i:2118248007480, f:1.04655e-311)
+   52  33 *    PshG4    0x1adea246648          (i:1846469224008, f:9.12277e-312)
    55  34 *    CALL     108           (float radians(float))
    57  33 *    CpyRtoV4 v10
    58  33 *    CpyVtoV4 v11, v10
@@ -74,7 +74,7 @@ Variables:
                ObjInfo  v14, 1
    64  33 *    LoadVObjR v3, v8, 67108880
    67  33 *    RDR4     v9
-   68  33 *    PshGPtr  0x1ed316b8c08          (i:2118248008712, f:1.04655e-311)
+   68  33 *    PshGPtr  0x1adea2448b8          (i:1846469216440, f:9.12277e-312)
    71  35 *    ADDSi    v8, 67108880
    73  35 *    PopRPtr
    74  33 *    RDR4     v10
@@ -82,7 +82,7 @@ Variables:
    77  33 *    PshV4    v9
    78  34 *    LoadVObjR v3, v4, 67108880
    81  34 *    RDR4     v10
-   82  34 *    PshGPtr  0x1ed316b8c08          (i:2118248008712, f:1.04655e-311)
+   82  34 *    PshGPtr  0x1adea2448b8          (i:1846469216440, f:9.12277e-312)
    85  36 *    ADDSi    v4, 67108880
    87  36 *    PopRPtr
    88  34 *    RDR4     v15
@@ -90,7 +90,7 @@ Variables:
    91  34 *    PshV4    v10
    92  35 *    LoadVObjR v3, v0, 67108880
    95  35 *    RDR4     v15
-   96  35 *    PshGPtr  0x1ed316b8c08          (i:2118248008712, f:1.04655e-311)
+   96  35 *    PshGPtr  0x1adea2448b8          (i:1846469216440, f:9.12277e-312)
    99  37 *    ADDSi    v0, 67108880
   101  37 *    PopRPtr
   102  35 *    RDR4     v16
@@ -108,7 +108,7 @@ Variables:
   114  33 *    SUSPEND
                VarDecl  4
   115  33 *    PSF      v19
-  116  35 *    ALLOC    0x1ed31a3acf0, 69             (type:vec3, vec3::vec3())
+  116  35 *    ALLOC    0x1adea5ae710, 69             (type:vec3, vec3::vec3())
   120  33 *    PSF      v14
   121  35 *    PshVPtr  v19
   122  37 *    COPY     v3, 67108880
@@ -126,7 +126,7 @@ Variables:
 - 74,5 -
                ObjInfo  v22, 1
   136  33 *    SUSPEND
-  137  33 *    PshGPtr  0x1ed316b8c08          (i:2118248008712, f:1.04655e-311)
+  137  33 *    PshGPtr  0x1adea2448b8          (i:1846469216440, f:9.12277e-312)
   140  35 *    ADDSi    v0, 67108880
   142  35 *    PopRPtr
   143  33 *    RDR4     v10
@@ -139,7 +139,7 @@ Variables:
   155  33 *    WRTV4    v9
 - 75,5 -
   156  33 *    SUSPEND
-  157  33 *    PshGPtr  0x1ed316b8c08          (i:2118248008712, f:1.04655e-311)
+  157  33 *    PshGPtr  0x1adea2448b8          (i:1846469216440, f:9.12277e-312)
   160  35 *    ADDSi    v4, 67108880
   162  35 *    PopRPtr
   163  33 *    RDR4     v15
@@ -158,13 +158,13 @@ Variables:
   184  33 *    WRTV4    v9
 - 78,5 -
   185  33 *    SUSPEND
-  186  33 *    PshG4    0x1ed316b8738          (i:2118248007480, f:1.04655e-311)
+  186  33 *    PshG4    0x1adea246648          (i:1846469224008, f:9.12277e-312)
   189  34 *    PshC4    0x0          (i:0, f:0)
   191  35 *    PshC4    0x0          (i:0, f:0)
   193  36 *    PSF      v5
-  194  38 *    PshGPtr  0x1ed316b8898          (i:2118248007832, f:1.04655e-311)
+  194  38 *    PshGPtr  0x1adea2466f8          (i:1846469224184, f:9.12277e-312)
   197  40 *    CHKREF
-  198  40 *    ALLOC    0x1ed31a3c0a0, 20             (type:string, string::string(const string&in))
+  198  40 *    ALLOC    0x1adea5ae4e0, 20             (type:string, string::string(const string&in))
   202  36 *    VAR      v5
   203  38 *    GETOBJ   0
   204  38 *    CALLSYS  77           (void set_entity_rotation(string, float, float, float))
@@ -184,15 +184,15 @@ Variables:
   228  35 *    SUBf     v16, v15, v10
   230  35 *    PshV4    v16
   231  36 *    PSF      v5
-  232  38 *    PshGPtr  0x1ed316b8898          (i:2118248007832, f:1.04655e-311)
+  232  38 *    PshGPtr  0x1adea2466f8          (i:1846469224184, f:9.12277e-312)
   235  40 *    CHKREF
-  236  40 *    ALLOC    0x1ed31a3c0a0, 20             (type:string, string::string(const string&in))
+  236  40 *    ALLOC    0x1adea5ae4e0, 20             (type:string, string::string(const string&in))
   240  36 *    VAR      v5
   241  38 *    GETOBJ   0
   242  38 *    CALLSYS  80           (void add_entity_position(string, float, float, float))
 - 81,5 -
   244  33 *    SUSPEND
-  245  33 *    LDG      0x1ed316b87e8          (i:2118248007656, f:1.04655e-311)
+  245  33 *    LDG      0x1adea244968          (i:1846469216616, f:9.12277e-312)
   248  33 *    RDR1     v10
   249  33 *    NOT      v10
   250  33 *    CpyVtoR4 v10
@@ -202,12 +202,12 @@ Variables:
   253  33 *    SUSPEND
   254  33 *    PshC4    0x0          (i:0, f:0)
   256  34 *    PSF      v5
-  257  36 *    PGA      0x3a826240          (str:cool logging error)
+  257  36 *    PGA      0xf30b50d0          (str:cool logging error)
   260  38 *    PSF      v33
   261  40 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v33, 1
   263  36 *    PSF      v33
-  264  38 *    ALLOC    0x1ed31a3c0a0, 20             (type:string, string::string(const string&in))
+  264  38 *    ALLOC    0x1adea5ae4e0, 20             (type:string, string::string(const string&in))
   268  34 *    PSF      v33
   269  36 *    CALLSYS  21           (string::~string())
                ObjInfo  v33, 0
@@ -218,12 +218,12 @@ Variables:
   275  33 *    SUSPEND
   276  33 *    PshC4    0x1          (i:1, f:1.4013e-45)
   278  34 *    PSF      v5
-  279  36 *    PGA      0x3a826840          (str:cool logging warn)
+  279  36 *    PGA      0xf30b5a50          (str:cool logging warn)
   282  38 *    PSF      v33
   283  40 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v33, 1
   285  36 *    PSF      v33
-  286  38 *    ALLOC    0x1ed31a3c0a0, 20             (type:string, string::string(const string&in))
+  286  38 *    ALLOC    0x1adea5ae4e0, 20             (type:string, string::string(const string&in))
   290  34 *    PSF      v33
   291  36 *    CALLSYS  21           (string::~string())
                ObjInfo  v33, 0
@@ -234,12 +234,12 @@ Variables:
   297  33 *    SUSPEND
   298  33 *    PshC4    0x2          (i:2, f:2.8026e-45)
   300  34 *    PSF      v5
-  301  36 *    PGA      0x3a8279c0          (str:cool logging general)
+  301  36 *    PGA      0xf30b56d0          (str:cool logging general)
   304  38 *    PSF      v33
   305  40 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v33, 1
   307  36 *    PSF      v33
-  308  38 *    ALLOC    0x1ed31a3c0a0, 20             (type:string, string::string(const string&in))
+  308  38 *    ALLOC    0x1adea5ae4e0, 20             (type:string, string::string(const string&in))
   312  34 *    PSF      v33
   313  36 *    CALLSYS  21           (string::~string())
                ObjInfo  v33, 0
@@ -250,12 +250,12 @@ Variables:
   319  33 *    SUSPEND
   320  33 *    PshC4    0x3          (i:3, f:4.2039e-45)
   322  34 *    PSF      v5
-  323  36 *    PGA      0x3a808c40          (str:cool logging success)
+  323  36 *    PGA      0xf30b7ad0          (str:cool logging success)
   326  38 *    PSF      v33
   327  40 *    CALLSYS  20           (string::string(const string&in))
                ObjInfo  v33, 1
   329  36 *    PSF      v33
-  330  38 *    ALLOC    0x1ed31a3c0a0, 20             (type:string, string::string(const string&in))
+  330  38 *    ALLOC    0x1adea5ae4e0, 20             (type:string, string::string(const string&in))
   334  34 *    PSF      v33
   335  36 *    CALLSYS  21           (string::~string())
                ObjInfo  v33, 0
@@ -265,7 +265,7 @@ Variables:
 - 86,9 -
   341  33 *    SUSPEND
   342  33 *    SetV1    v16, 0x1
-  344  33 *    LDG      0x1ed316b87e8          (i:2118248007656, f:1.04655e-311)
+  344  33 *    LDG      0x1adea244968          (i:1846469216616, f:9.12277e-312)
   347  33 *    WRTV1    v16
 - 89,2 -
             }

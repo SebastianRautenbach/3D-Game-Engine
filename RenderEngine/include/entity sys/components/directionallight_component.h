@@ -28,52 +28,52 @@ namespace wizm {
         void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) override {
 
             set_position(glm::vec3(
-                save_t[parent_name][index]["transform"].get_float("position")[0],
-                save_t[parent_name][index]["transform"].get_float("position")[1],
-                save_t[parent_name][index]["transform"].get_float("position")[2]
+                save_t[index]["transform"].get_float("position")[0],
+                save_t[index]["transform"].get_float("position")[1],
+                save_t[index]["transform"].get_float("position")[2]
             ));
             set_rotation(glm::vec3(
-                save_t[parent_name][index]["transform"].get_float("rotation")[0],
-                save_t[parent_name][index]["transform"].get_float("rotation")[1],
-                save_t[parent_name][index]["transform"].get_float("rotation")[2]
+                save_t[index]["transform"].get_float("rotation")[0],
+                save_t[index]["transform"].get_float("rotation")[1],
+                save_t[index]["transform"].get_float("rotation")[2]
             ));
             set_scale(glm::vec3(
-                save_t[parent_name][index]["transform"].get_float("scale")[0],
-                save_t[parent_name][index]["transform"].get_float("scale")[1],
-                save_t[parent_name][index]["transform"].get_float("scale")[2]
+                save_t[index]["transform"].get_float("scale")[0],
+                save_t[index]["transform"].get_float("scale")[1],
+                save_t[index]["transform"].get_float("scale")[2]
             ));
         
-            m_ambient = glm::vec3(save_t[parent_name][index]["light"].get_float("m_ambient")[0],
-                save_t[parent_name][index]["light"].get_float("m_ambient")[1],
-                save_t[parent_name][index]["light"].get_float("m_ambient")[2]
+            m_ambient = glm::vec3(save_t[index]["light"].get_float("m_ambient")[0],
+                save_t[index]["light"].get_float("m_ambient")[1],
+                save_t[index]["light"].get_float("m_ambient")[2]
             );
 
-            m_diffuse = glm::vec3(save_t[parent_name][index]["light"].get_float("m_diffuse")[0],
-                save_t[parent_name][index]["light"].get_float("m_diffuse")[1],
-                save_t[parent_name][index]["light"].get_float("m_diffuse")[2]
+            m_diffuse = glm::vec3(save_t[index]["light"].get_float("m_diffuse")[0],
+                save_t[index]["light"].get_float("m_diffuse")[1],
+                save_t[index]["light"].get_float("m_diffuse")[2]
             );
 
-            m_specular = glm::vec3(save_t[parent_name][index]["light"].get_float("m_specular")[0],
-                save_t[parent_name][index]["light"].get_float("m_specular")[1],
-                save_t[parent_name][index]["light"].get_float("m_specular")[2]
+            m_specular = glm::vec3(save_t[index]["light"].get_float("m_specular")[0],
+                save_t[index]["light"].get_float("m_specular")[1],
+                save_t[index]["light"].get_float("m_specular")[2]
             );
         
 
-            m_brightness = save_t[parent_name][index]["light"].get_float("m_brightness")[0];
+            m_brightness = save_t[index]["light"].get_float("m_brightness")[0];
         };
 
 
         void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {
 
-            save_t[parent_name]["directionallight" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
-            save_t[parent_name]["directionallight" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
-            save_t[parent_name]["directionallight" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
+            save_t["directionallight" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+            save_t["directionallight" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+            save_t["directionallight" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 
-            save_t[parent_name]["directionallight" + index]["light"].set_float("m_ambient", { m_ambient.x,m_ambient.y,m_ambient.z });
-            save_t[parent_name]["directionallight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
-            save_t[parent_name]["directionallight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
+            save_t["directionallight" + index]["light"].set_float("m_ambient", { m_ambient.x,m_ambient.y,m_ambient.z });
+            save_t["directionallight" + index]["light"].set_float("m_diffuse", { m_diffuse.x,m_diffuse.y,m_diffuse.z });
+            save_t["directionallight" + index]["light"].set_float("m_specular", { m_specular.x,m_specular.y,m_specular.z });
 
-            save_t[parent_name]["directionallight" + index]["light"].set_float("m_brightness", { m_brightness });
+            save_t["directionallight" + index]["light"].set_float("m_brightness", { m_brightness });
 
  
 

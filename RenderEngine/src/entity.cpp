@@ -146,24 +146,24 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 {
 
 	set_position(glm::vec3(
-		save_t[m_ent_ID]["transform"].get_float("position")[0],
-		save_t[m_ent_ID]["transform"].get_float("position")[1],
-		save_t[m_ent_ID]["transform"].get_float("position")[2]));
+		save_t["transform"].get_float("position")[0],
+		save_t["transform"].get_float("position")[1],
+		save_t["transform"].get_float("position")[2]));
 
 	set_rotation(glm::vec3(
-		save_t[m_ent_ID]["transform"].get_float("rotation")[0],
-		save_t[m_ent_ID]["transform"].get_float("rotation")[1],
-		save_t[m_ent_ID]["transform"].get_float("rotation")[2]));
+		save_t["transform"].get_float("rotation")[0],
+		save_t["transform"].get_float("rotation")[1],
+		save_t["transform"].get_float("rotation")[2]));
 
 	set_scale(glm::vec3(
-		save_t[m_ent_ID]["transform"].get_float("scale")[0],
-		save_t[m_ent_ID]["transform"].get_float("scale")[1],
-		save_t[m_ent_ID]["transform"].get_float("scale")[2]));
+		save_t["transform"].get_float("scale")[0],
+		save_t["transform"].get_float("scale")[1],
+		save_t["transform"].get_float("scale")[2]));
 
 
 
 	//-------------------------------------------------------------------------------- COMPONENTS
-	for (auto& i : save_t[m_ent_ID].class_properties) {
+	for (auto& i : save_t.class_properties) {
 
 		//--- POINT LIGHT
 
@@ -221,15 +221,15 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 void wizm::core_entity::save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const
 {
 
-	save_t[m_ent_ID]["specs"].set_int("is_entity", { true });
+	save_t["specs"].set_int("is_entity", { true });
 
-	save_t[m_ent_ID]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
-	save_t[m_ent_ID]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
-	save_t[m_ent_ID]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
+	save_t["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+	save_t["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+	save_t["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 
 
 
-	save_t[m_ent_ID]["tags"].set_string("tags", entity_tags->tags);
+	save_t["tags"].set_string("tags", entity_tags->tags);
 
 	for (int i = 0; i < m_components_list.size(); i++) {
 		m_components_list[i]->save_data(m_ent_ID, std::to_string(i), save_t);

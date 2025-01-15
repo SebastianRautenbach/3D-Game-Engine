@@ -30,34 +30,34 @@ namespace wizm {
 		
 		
 			set_position(glm::vec3(
-				save_t[parent_name][index]["transform"].get_float("position")[0],
-				save_t[parent_name][index]["transform"].get_float("position")[1],
-				save_t[parent_name][index]["transform"].get_float("position")[2]
+				save_t[index]["transform"].get_float("position")[0],
+				save_t[index]["transform"].get_float("position")[1],
+				save_t[index]["transform"].get_float("position")[2]
 			));
 			set_rotation(glm::vec3(
-				save_t[parent_name][index]["transform"].get_float("rotation")[0],
-				save_t[parent_name][index]["transform"].get_float("rotation")[1],
-				save_t[parent_name][index]["transform"].get_float("rotation")[2]
+				save_t[index]["transform"].get_float("rotation")[0],
+				save_t[index]["transform"].get_float("rotation")[1],
+				save_t[index]["transform"].get_float("rotation")[2]
 			));
 			set_scale(glm::vec3(
-				save_t[parent_name][index]["transform"].get_float("scale")[0],
-				save_t[parent_name][index]["transform"].get_float("scale")[1],
-				save_t[parent_name][index]["transform"].get_float("scale")[2]
+				save_t[index]["transform"].get_float("scale")[0],
+				save_t[index]["transform"].get_float("scale")[1],
+				save_t[index]["transform"].get_float("scale")[2]
 			));
 
-			m_mesh_asset_id = save_t[parent_name][index].get_string("asset id")[0];
-			m_material_asset_ids = save_t[parent_name][index].get_string("m_material_asset_ids");
+			m_mesh_asset_id = save_t[index].get_string("asset id")[0];
+			m_material_asset_ids = save_t[index].get_string("m_material_asset_ids");
 		};
 
 
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {
 
-			save_t[parent_name]["staticmesh" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
-			save_t[parent_name]["staticmesh" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
-			save_t[parent_name]["staticmesh" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
+			save_t["staticmesh" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
+			save_t["staticmesh" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
+			save_t["staticmesh" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
 			
-			save_t[parent_name]["staticmesh" + index].set_string("asset id", { m_mesh_asset_id });
-			save_t[parent_name]["staticmesh" + index].set_string("m_material_asset_ids", m_material_asset_ids);
+			save_t["staticmesh" + index].set_string("asset id", { m_mesh_asset_id });
+			save_t["staticmesh" + index].set_string("m_material_asset_ids", m_material_asset_ids);
 
 			for(auto& mat : m_materials)
 			{
