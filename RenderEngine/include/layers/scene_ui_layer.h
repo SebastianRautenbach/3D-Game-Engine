@@ -21,6 +21,7 @@ namespace wizm {
 
 	private:
 		gl_renderer* m_renderer;
+		bool skip_after_delete = false;
 	};
 
 }

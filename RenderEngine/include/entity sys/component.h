@@ -24,7 +24,7 @@ namespace lowlevelsys {
 		void remove_component();
 		
 		core_component();
-		~core_component();
+		~core_component() override;
 
 		
 

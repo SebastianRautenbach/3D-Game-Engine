@@ -3,18 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\layers\\scene_ui_layer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\src\\scene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\COMMUNITY\\VC\\TOOLS\\MSVC\\14.39.33519\\INCLUDE\\XSTRING||{3B902123-F8A7-4915-9F01-361F908088D0}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|solutionrelative:RenderEngine\\include\\system\\node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D5790B8-9BF0-4D9B-AD57-9DA78A9FA87F}|RenderEngine\\RenderEngine.vcxproj|C:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\COMMUNITY\\VC\\TOOLS\\MSVC\\14.39.33519\\INCLUDE\\VECTOR||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,56 +18,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "xstring",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\xstring",
-              "ViewState": "AQIAALoJAAAAAAAAAIAwwMwJAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-01-15T12:37:06.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "node.h",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\node.h",
-              "RelativeDocumentMoniker": "RenderEngine\\include\\system\\node.h",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\node.h",
-              "RelativeToolTip": "RenderEngine\\include\\system\\node.h",
-              "ViewState": "AQIAABEAAAAAAAAAAIAwwB8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-15T11:50:10.246Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "vector",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\include\\vector",
-              "ViewState": "AQIAAEsDAAAAAAAAAIAwwF0DAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-01-15T11:50:06.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "scene_ui_layer.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp",
+              "RelativeDocumentMoniker": "RenderEngine\\src\\layers\\scene_ui_layer.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\layers\\scene_ui_layer.cpp",
+              "RelativeToolTip": "RenderEngine\\src\\layers\\scene_ui_layer.cpp",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAADoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-15T18:13:19.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "scene.cpp",
               "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\scene.cpp",
               "RelativeDocumentMoniker": "RenderEngine\\src\\scene.cpp",
               "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\scene.cpp",
               "RelativeToolTip": "RenderEngine\\src\\scene.cpp",
-              "ViewState": "AQIAAM4AAAAAAAAAAIAwwLoAAAAAAAAA",
+              "ViewState": "AQIAAD0AAAAAAAAAAADwv2QAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-14T21:12:25.929Z",
               "EditorCaption": ""

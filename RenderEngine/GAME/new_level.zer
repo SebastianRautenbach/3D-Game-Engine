@@ -6,35 +6,47 @@ viewport_camera{
 	}
 }
 x{
-	specs{
-		is_entity:1;
-	}
-	tags{
-	}
-	transform{
-		position:0.000000,0.000000,0.000000;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
-	}
-}
-y{
-	specs{
-		is_entity:1;
-	}
-	staticmesh0{
-		asset id:18401602439556261843;
-		m_material_asset_ids:;
+	Entity Name{
+		specs{
+			is_entity:1;
+		}
+		tags{
+		}
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
 			scale:1.000000,1.000000,1.000000;
 		}
 	}
+	specs{
+		is_entity:1;
+	}
 	tags{
 	}
 	transform{
 		position:0.000000,0.000000,0.000000;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
+	}
+	y{
+		specs{
+			is_entity:1;
+		}
+		staticmesh0{
+			asset id:18401602439556261843;
+			m_material_asset_ids:;
+			transform{
+				position:0.000000,0.000000,0.000000;
+				rotation:0.000000,0.000000,0.000000;
+				scale:1.000000,1.000000,1.000000;
+			}
+		}
+		tags{
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
 	}
 }

@@ -103,6 +103,8 @@ namespace wizm {
 		}
 		
 		m_entities.erase(std::find(m_entities.begin(), m_entities.end(), entity));
+
+		std::cout << "deleting:" << entity << "\n";
 		delete entity;
 	}
 

@@ -60,10 +60,17 @@ void wizm::scene_ui_layer::update(float delta_time)
 			}
 
 			if (nodeOpen) {
-				for (auto child : entity->get_children()) {
-					auto childEntity = dynamic_cast<core_entity*>(child);
-					if (childEntity && childEntity != entity) {
-						renderEntity(childEntity);
+				for (auto& child : entity->get_children()) {
+					try
+					{			
+						if (skip_after_delete) { skip_after_delete = false; break; }
+						auto childEntity = dynamic_cast<core_entity*>(child);
+						if (childEntity && childEntity != entity) {
+							renderEntity(childEntity);
+						}
+					}
+					catch (const std::exception& e) {
+					
 					}
 				}
 				ImGui::TreePop(); 
@@ -88,8 +95,8 @@ void wizm::scene_ui_layer::update(float delta_time)
 
 					global_scene->delete_enity(global_scene->get_crnt_entity());
 					global_scene->clear_selected_entities();
-
 					m_renderer->update_draw_data();
+					skip_after_delete = true;
 				}
 				if (ImGui::MenuItem("Duplicate")) {
 

@@ -21,7 +21,7 @@ namespace wizm {
 	public:
 
 		core_node();
-		~core_node();
+		virtual ~core_node();
 
 
 		//----------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ namespace wizm {
 
 		core_node* get_parent() { return m_parent_node; }
 
-		std::vector<core_node*> get_children() {
+		std::vector<core_node*>& get_children() {
 			return m_child_nodes;
 		}
 

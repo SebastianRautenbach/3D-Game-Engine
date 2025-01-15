@@ -28,10 +28,9 @@ wizm::core_node::core_node()
 
 wizm::core_node::~core_node()
 {
-
-    for (auto child : m_child_nodes) {                      
-        std::cout << "deleting:" << child << "\n";
+    for (auto& child : m_child_nodes) {                      
         delete child;
+        child = nullptr;
     }
     m_child_nodes.clear();
 
