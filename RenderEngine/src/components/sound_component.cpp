@@ -39,9 +39,9 @@ void wizm::sound_component::component_postupdate()
 {
 }
 
-std::shared_ptr<core_component> wizm::sound_component::_copy() const
+core_component* wizm::sound_component::_copy() const
 {
-	auto new_s_comp = std::make_shared<sound_component>();
+	auto new_s_comp = new sound_component();
 	new_s_comp->set_position(this->get_position());
 	new_s_comp->set_rotation(this->get_rotation());
 	new_s_comp->set_scale(this->get_scale());

@@ -35,6 +35,12 @@ namespace wizm {
 			m_child_nodes.emplace_back(child_node);
 		}
 
+		core_node* get_parent() { return m_parent_node; }
+
+		std::vector<core_node*> get_children() {
+			return m_child_nodes;
+		}
+
 
 		//---------------------------------------------------------------------------------- TRANSFORM
 

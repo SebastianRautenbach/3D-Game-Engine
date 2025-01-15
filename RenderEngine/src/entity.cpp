@@ -18,7 +18,6 @@ wizm::core_entity::core_entity(std::string ent_ID)
 wizm::core_entity::~core_entity()
 {
 	destroy_entity();
-	
 }
 
 void wizm::core_entity::remame_entity(std::string name)
@@ -28,9 +27,11 @@ void wizm::core_entity::remame_entity(std::string name)
 
 void wizm::core_entity::destroy_entity()
 {
-	delete entity_tags;
-	m_components_list.clear();
-	entity_tags = nullptr;
+	if(entity_tags && this)
+	{
+		delete entity_tags;
+		entity_tags = nullptr;
+	}
 }
 
 
@@ -67,10 +68,10 @@ void wizm::core_entity::entity_postupdate()
 
 //-----------------------------------------------------------------------
 
-std::shared_ptr<core_entity> wizm::core_entity::copy_(std::string name) const
+core_entity* wizm::core_entity::copy_(std::string name) const
 {
 	std::string new_ent_ID = name;
-	std::shared_ptr<core_entity> new_entity = std::make_shared<core_entity>(new_ent_ID);
+	core_entity* new_entity = new core_entity(new_ent_ID);
 	
 	new_entity->set_position(get_position());
 	new_entity->set_rotation(get_rotation());
@@ -96,7 +97,7 @@ std::shared_ptr<core_entity> wizm::core_entity::copy_(std::string name) const
 
 	//-----------------------------------------------------------------------
 
-std::shared_ptr<core_component> wizm::core_entity::add_component(std::shared_ptr<core_component> component)
+core_component* wizm::core_entity::add_component(core_component* component)
 {
 	component->add_parent(this);
 	m_components_list.push_back(component);
@@ -104,7 +105,7 @@ std::shared_ptr<core_component> wizm::core_entity::add_component(std::shared_ptr
 }
 
 
-std::shared_ptr<core_component> wizm::core_entity::get_component(eCompType comp_type)
+core_component* wizm::core_entity::get_component(eCompType comp_type)
 {
 
 	for (auto& i: m_components_list)
@@ -136,13 +137,14 @@ void wizm::core_entity::remove_component(unsigned int index)
 }
 
 
-void wizm::core_entity::set_component(unsigned int index, std::shared_ptr<core_component> component)
+void wizm::core_entity::set_component(unsigned int index, core_component* component)
 {
 	m_components_list[index] = component;
 }
 
 void wizm::core_entity::read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t)
 {
+
 	set_position(glm::vec3(
 		save_t[m_ent_ID]["transform"].get_float("position")[0],
 		save_t[m_ent_ID]["transform"].get_float("position")[1],
@@ -166,21 +168,21 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 		//--- POINT LIGHT
 
 		if (i.first.find("pointlight") != -1) {
-			auto c = add_component(std::make_shared<pointlight_component>());
+			auto c = add_component(new pointlight_component());
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
 		//--- DIRECTIONAL LIGHT
 
 		if (i.first.find("directionallight") != -1) {
-			auto c = add_component(std::make_shared<directionallight_component>());
+			auto c = add_component(new directionallight_component());
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
 		//--- MESH COMPONENT
 
 		if (i.first.find("staticmesh") != -1) {
-			auto c = add_component(std::make_shared<staticmesh_component>());
+			auto c = add_component(new staticmesh_component());
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
@@ -188,28 +190,28 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 		//--- SPOT LIGHT
 
 		if (i.first.find("spotlight") != -1) {
-			auto c = add_component(std::make_shared<spotlight_component>());
+			auto c = add_component(new spotlight_component());
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
 		//--- CAMERA COMPONENT
 
 		if (i.first.find("cameracomponent") != -1) {
-			auto c = add_component(std::make_shared<camera_component>());
+			auto c = add_component(new camera_component());
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
 		//--- SCRIPTING COMP
 
 		if (i.first.find("ScriptingComponent") != -1) {
-			auto c = add_component(std::make_shared<scripting_component>());
+			auto c = add_component(new scripting_component());
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
 		//--- SCRIPTING SOUND
 
 		if (i.first.find("sound_component") != -1) {
-			auto c = add_component(std::make_shared<sound_component>());
+			auto c = add_component(new sound_component());
 			c->read_saved_data(m_ent_ID, i.first, save_t);
 		}
 
@@ -218,6 +220,8 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 
 void wizm::core_entity::save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const
 {
+
+	save_t[m_ent_ID]["specs"].set_int("is_entity", { true });
 
 	save_t[m_ent_ID]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
 	save_t[m_ent_ID]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });

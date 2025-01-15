@@ -57,7 +57,7 @@ void wizm::boxvolume::component_postupdate()
 {
 }
 
-std::shared_ptr<core_component> wizm::boxvolume::_copy() const
+core_component* wizm::boxvolume::_copy() const
 {
-    return std::shared_ptr<core_component>();
+    return nullptr;
 }

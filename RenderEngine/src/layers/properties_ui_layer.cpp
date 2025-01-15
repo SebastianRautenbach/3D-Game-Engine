@@ -302,39 +302,39 @@ void wizm::properties_ui_layer::component_add_popup()
 		ImGui::Separator();
 
 		if (ImGui::MenuItem("Static Mesh")) {
-			global_scene->get_crnt_entity()->add_component(std::make_shared<staticmesh_component>());
+			global_scene->get_crnt_entity()->add_component(new staticmesh_component());
 		}
 		if (ImGui::MenuItem("Point Light")) {
-			global_scene->get_crnt_entity()->add_component(std::make_shared<pointlight_component>());
+			global_scene->get_crnt_entity()->add_component(new pointlight_component());
 			
 		}
 		if (ImGui::MenuItem("Spot Light")) {
-			global_scene->get_crnt_entity()->add_component(std::make_shared<spotlight_component>());
+			global_scene->get_crnt_entity()->add_component(new spotlight_component());
 		}
 		if (ImGui::MenuItem("Directional Light")) {
-			global_scene->get_crnt_entity()->add_component(std::make_shared<directionallight_component>());			
+			global_scene->get_crnt_entity()->add_component(new directionallight_component());
 		}
 		if (ImGui::MenuItem("Sound")) {
-			global_scene->get_crnt_entity()->add_component(std::make_shared<sound_component>());
+			global_scene->get_crnt_entity()->add_component(new sound_component());
 		}
 		if (ImGui::MenuItem("Camera")) {
-			global_scene->get_crnt_entity()->add_component(std::make_shared<camera_component>());
+			global_scene->get_crnt_entity()->add_component(new camera_component());
 		}
 		if (ImGui::MenuItem("Scripting")) {
-			global_scene->get_crnt_entity()->add_component(std::make_shared<scripting_component>());
+			global_scene->get_crnt_entity()->add_component(new scripting_component());
 		}
 
 		ImGui::EndPopup();
 	}
 }
 
-void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::shared_ptr<core_component> component)
+void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_component* component)
 {
 	std::string trans_id;
 	if (type == "PointLight")
 	{
 		trans_id = "Radius ##" + global_scene->get_crnt_entity()->m_ent_ID + std::to_string(component->m_component_type);
-		auto pointlight = std::dynamic_pointer_cast<pointlight_component>(component);
+		auto pointlight = dynamic_cast<pointlight_component*>(component);
 
 		ImGui::InputFloat(trans_id.c_str(), &pointlight->m_radius);
 
@@ -351,7 +351,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 	if (type == "DirectionalLight")
 	{
-		auto directionallight = std::dynamic_pointer_cast<directionallight_component>(component);
+		auto directionallight = dynamic_cast<directionallight_component*>(component);
 
 		float test[3] = { directionallight->m_ambient.x, directionallight->m_ambient.y, directionallight->m_ambient.z };
 
@@ -361,7 +361,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 	if (type == "SpotLight")
 	{
-		auto spotlight = std::dynamic_pointer_cast<spotlight_component>(component);
+		auto spotlight = dynamic_cast<spotlight_component*>(component);
 
 		float ambient[3] = { spotlight->m_ambient.x, spotlight->m_ambient.y, spotlight->m_ambient.z };
 		ImGui::ColorPicker3("Ambient", ambient);
@@ -392,7 +392,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	}
 
 	if (type == "CameraComponent") {
-		auto camera = std::dynamic_pointer_cast<camera_component>(component);
+		auto camera = dynamic_cast<camera_component*>(component);
 		ImGui::Separator();
 		ImGui::Text("Main camera?");
 		ImGui::SameLine();
@@ -402,7 +402,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 	if (type == "StaticMesh")
 	{
-		auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(component);
+		auto staticmesh = dynamic_cast<staticmesh_component*>(component);
 		std::string staticmeshfilename, materialassetname;
 		
 		{
@@ -471,7 +471,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 	if (type == "ScriptingComponent") {
 
 		std::string path;
-		auto script_component = std::dynamic_pointer_cast<scripting_component>(component);
+		auto script_component = dynamic_cast<scripting_component*>(component);
 
 		if (script_component) {
 
@@ -505,7 +505,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, std::
 
 	if (type == "SoundComponent") {
 		std::string path;
-		auto _sound_component = std::dynamic_pointer_cast<sound_component>(component);
+		auto _sound_component = dynamic_cast<sound_component*>(component);
 		if (_sound_component) {
 			if (_sound_component->m_sound_asset)
 				path = _sound_component->m_sound_asset->file_name;

@@ -16,7 +16,7 @@ namespace wizm {
 		void component_preupdate();
 		void component_update(float delta_time);
 		void component_postupdate();
-		std::shared_ptr<core_component> _copy() const;
+		core_component* _copy() const;
 
 
 

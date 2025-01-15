@@ -27,6 +27,10 @@ namespace wizm {
 			sc->on_update(delta_time);
 		}
 
+		void reset() {
+			sc->reset();
+		}
+
 
 	public:
 		bool m_initiated_script = false;

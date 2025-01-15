@@ -23,7 +23,7 @@ void wizm::asset_manager::assign_assets()
 		for (auto& ent : global_scene->m_entities) {
 			for (auto& comp : ent->m_components_list)
 			{
-				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(comp);		//------------------------------------ STATIC MESH ASSET
+				auto mesh_comps = dynamic_cast<staticmesh_component*>(comp);		//------------------------------------ STATIC MESH ASSET
 				if (mesh_comps)
 				{
 					if (m_assets[mesh_comps->m_mesh_asset_id])
@@ -44,20 +44,17 @@ void wizm::asset_manager::assign_assets()
 						mat = load<material_asset>(mat_id, "");
 					}
 
-				}
-				mesh_comps.reset();
+				}				
 
-				auto script_comp = std::dynamic_pointer_cast<scripting_component>(comp);		//------------------------------------ SCRIPTING ASSET ASSIGNMENT
+				auto script_comp = dynamic_cast<scripting_component*>(comp);		//------------------------------------ SCRIPTING ASSET ASSIGNMENT
 				if (script_comp) {
 					script_comp->m_script_asset = load<script_asset>(script_comp->script_asset_id, ""); 
 				}
-				script_comp.reset();
 
-				auto sound_comp = std::dynamic_pointer_cast<sound_component>(comp);				//------------------------------------ SOUND ASSET ASSIGNMENT		
+				auto sound_comp = dynamic_cast<sound_component*>(comp);				//------------------------------------ SOUND ASSET ASSIGNMENT		
 				if (sound_comp) {
 					sound_comp->m_sound_asset = load<sound_asset>(sound_comp->asset_id, "");
 				}
-				sound_comp.reset();
 			}
 		}
 

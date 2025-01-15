@@ -34,98 +34,102 @@ void wizm::scene_ui_layer::update(float delta_time)
 	if (ImGui::Button("Add Entity"))
 		ImGui::OpenPopup("AddEntityPopup");
 
-	for (auto ents : global_scene->m_entities)
-	{
-		
+	for (auto ents : global_scene->m_entities) {
+		std::function<void(core_entity*)> renderEntity = [&](core_entity* entity) {
+			if (!entity) return;
 
-		std::function<void(std::shared_ptr<core_entity>)> renderEntity = [&](std::shared_ptr<core_entity> entity) {
+		
+			void* treeNodeId = (void*)((intptr_t)entity + std::hash<std::string>{}(entity->m_ent_ID));
+
+		
+			bool nodeOpen = ImGui::TreeNodeEx(treeNodeId,
+				ImGuiTreeNodeFlags_OpenOnArrow |
+				ImGuiTreeNodeFlags_SpanAvailWidth,
+				"%s", entity->m_ent_ID.c_str());
+
+		
+			if (ImGui::IsItemClicked(ImGuiMouseButton_Left) || ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
+
+				global_scene->clear_selected_entities();
+				global_scene->add_selected_entity(entity);
+
+
+				if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
+					ImGui::OpenPopup("ModEnt");
+				}
+			}
+
+			if (nodeOpen) {
+				for (auto child : entity->get_children()) {
+					auto childEntity = dynamic_cast<core_entity*>(child);
+					if (childEntity && childEntity != entity) {
+						renderEntity(childEntity);
+					}
+				}
+				ImGui::TreePop(); 
+			}
+
 			
-			if (ImGui::TreeNodeEx(entity->m_ent_ID.c_str(),
-				ImGuiTreeNodeFlags_OpenOnArrow
-				| ImGuiTreeNodeFlags_OpenOnDoubleClick
-				| ImGuiTreeNodeFlags_SpanAvailWidth))
-			{
-				// Render children if tree node is open
-				//for (auto child : entity->get_children())
-				//{	
-				//	if(child!=entity)
-				//		renderEntity(std::dynamic_pointer_cast<core_entity>(child));
-				//}
-				ImGui::TreePop();
+			if (ImGui::BeginPopup("ModEnt")) {
+				ImGui::Text("Modify Entity");
+				ImGui::Separator();
+
+
+				char entity_name[256];
+				strncpy_s(entity_name, sizeof(entity_name), global_scene->get_crnt_entity()->m_ent_ID.c_str(), _TRUNCATE);
+
+
+
+				if (ImGui::InputText("##name", entity_name, IM_ARRAYSIZE(entity_name)))
+					global_scene->get_crnt_entity()->m_ent_ID = entity_name;
+
+
+				if (ImGui::MenuItem("Delete")) {
+
+					global_scene->delete_enity(global_scene->get_crnt_entity());
+					global_scene->clear_selected_entities();
+
+					m_renderer->update_draw_data();
+				}
+				if (ImGui::MenuItem("Duplicate")) {
+
+					auto name = global_scene->get_crnt_entity()->m_ent_ID;
+
+					while (global_scene->does_ent_name_exist(name)) {
+						name += "(1)";
+					}
+
+
+					auto crnt = global_scene->get_crnt_entity()->copy_(name);
+					global_scene->add_entity(crnt);
+					global_scene->clear_selected_entities();
+					global_scene->add_selected_entity(crnt);
+				}
+
+				// delete this because this is very temporary
+
+				if (ImGui::MenuItem("ADD PARENT")) {
+					global_scene->get_selected_entities()[0]->add_parent(global_scene->m_entities[0]);
+				}
+
+				ImGui::EndPopup();
 			}
-			if (ImGui::IsItemClicked(ImGuiMouseButton_Right))
-			{
-				global_scene->clear_selected_entities();
-				global_scene->add_selected_entity(entity);
-				ImGui::OpenPopup("ModEnt");
-			}
-			if (ImGui::IsItemClicked())
-			{
-				global_scene->clear_selected_entities();
-				global_scene->add_selected_entity(entity);
-			}
+
+
 			};
 
-		// Render the root entity and its children
-		renderEntity(ents);
-		
-
+		// Render the root entities (only those without parents)
+		if (!ents->get_parent()) {
+			renderEntity(ents);
+		}
 	}
 
 
-	if (ImGui::BeginPopup("ModEnt")) {
-		ImGui::Text("Modify Entity");
-		ImGui::Separator();
-		
-		
-		char entity_name[256];
-		strncpy_s(entity_name, sizeof(entity_name), global_scene->get_crnt_entity()->m_ent_ID.c_str(), _TRUNCATE);
 
 
 
-		if (ImGui::InputText("##name", entity_name, IM_ARRAYSIZE(entity_name)))
-			global_scene->get_crnt_entity()->m_ent_ID = entity_name;
 
-
-		if (ImGui::MenuItem("Delete")) {
-			global_scene->m_entities.erase(std::find(global_scene->m_entities.begin(), global_scene->m_entities.end(), global_scene->get_crnt_entity()));
-			
-			m_renderer->update_draw_data();
-			
-			for (auto ents : global_scene->m_entities)
-			{
-				global_scene->clear_selected_entities();
-				global_scene->add_selected_entity(ents);
-			}
-			
-			if (global_scene->m_entities.empty())
-			{
-				global_scene->clear_selected_entities();				
-			}
-		}
-		if (ImGui::MenuItem("Duplicate")) {
-			
-			auto name = global_scene->get_crnt_entity()->m_ent_ID;
-			
-			while (global_scene->does_ent_name_exist(name)) {
-				name += "(1)";
-			}
-			
-
-			auto crnt = global_scene->get_crnt_entity()->copy_(name);
-			global_scene->add_entity(crnt);
-			global_scene->clear_selected_entities();
-			global_scene->add_selected_entity(crnt);
-		}
-
-		// delete this because this is very temporary
-
-		if (ImGui::MenuItem("ADD PARENT")) {
-			global_scene->get_selected_entities()[0]->add_parent((core_node*)global_scene->m_entities[0].get());
-		}
-
-		ImGui::EndPopup();
-	}
+	
 
 	//---------------------------------------------------------------------------------------------------------
 

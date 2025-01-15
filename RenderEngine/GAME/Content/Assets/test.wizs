@@ -79,8 +79,10 @@ void on_update(float delta_time) {
     add_entity_position(name, new_pos.x - entity_pos.x, new_pos.y - entity_pos.y, 0);
 
     if(!stop) {
-        //set_component_sound_3D("mr sound", 0, false);
-        //play_component_sound("mr sound", 0);
+        print("cool logging error", 0);
+        print("cool logging warn", 1);
+        print("cool logging general", 2);
+        print("cool logging success", 3);
         stop = true;
     }
 

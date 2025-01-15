@@ -26,12 +26,19 @@ void wizm::script_debug_layer::update(float delta_time)
     ImVec4 success_text_color = ImVec4(0.3f, 0.686f, 0.314f, 1.f);
     ImVec4 crnt_color = ImVec4(1, 1, 1, 1);
 
+    if (ImGui::Button("clear console")) {
+        global_console_out.clear();
+    }
+    
     ImGui::BeginChild("Console", ImVec2(0, 0), true, ImGuiWindowFlags_AlwaysVerticalScrollbar);
 
     ImDrawList* draw_list = ImGui::GetWindowDrawList();
     ImVec2 pos = ImGui::GetCursorScreenPos();
     ImVec2 size = ImGui::GetContentRegionAvail(); 
     float scroll_x = ImGui::GetScrollX(), scroll_y = ImGui::GetScrollY(); 
+    
+
+    
     draw_list->AddRectFilled(pos, ImVec2(pos.x + size.x + scroll_x, pos.y + size.y + scroll_y), ImGui::GetColorU32(bg_color));
 
     

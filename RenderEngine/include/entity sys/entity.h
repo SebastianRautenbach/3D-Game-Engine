@@ -33,21 +33,21 @@ namespace wizm {
 
 		// duplication
 		
-		std::shared_ptr<core_entity> copy_(std::string name) const;
+		core_entity* copy_(std::string name) const;
 
 
 
 		// component
 		
-		std::shared_ptr<core_component> add_component(std::shared_ptr<core_component> component);
-		std::shared_ptr<core_component> get_component(eCompType comp_type);
-		const std::vector<std::shared_ptr<core_component>>& get_components() const { return m_components_list; }
+		core_component* add_component(core_component* component);
+		core_component* get_component(eCompType comp_type);
+		const std::vector<core_component*>& get_components() const { return m_components_list; }
 		int get_component_index(eCompType comp_type);
 		void remove_component(unsigned int index);
-		void set_component(unsigned int index, std::shared_ptr<core_component> component);
+		void set_component(unsigned int index, core_component* component);
 		
-		std::shared_ptr<core_component> get_selected_comp() { return m_selected_comp; }
-		void set_selected_comp(std::shared_ptr<core_component> component) { m_selected_comp = component; }
+		core_component* get_selected_comp() { return m_selected_comp; }
+		void set_selected_comp(core_component* component) { m_selected_comp = component; }
 
 
 		//////////////////////////////////////////////////
@@ -65,10 +65,10 @@ namespace wizm {
 		int entity_color_id;
 
 		core_tag* entity_tags;
-		std::vector<std::shared_ptr<core_component>> m_components_list;
+		std::vector<core_component*> m_components_list;
 
 	private:
-		std::shared_ptr<core_component> m_selected_comp;
+		core_component* m_selected_comp;
 
 	};
 

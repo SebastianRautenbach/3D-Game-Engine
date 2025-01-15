@@ -26,7 +26,7 @@ namespace wizm {
         void component_preupdate();
         void component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader);
         void component_postupdate();
-        std::shared_ptr<core_component> _copy() const;
+        core_component* _copy() const;
 
 
         //////////////////////////////////////////////////

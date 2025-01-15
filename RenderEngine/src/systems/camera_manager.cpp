@@ -19,7 +19,7 @@ bool wizm::camera_manager::update_crnt_camera(bool simulate)
 		{
 			for (const auto& comp : ent->m_components_list) {
 
-				auto m_cam_comp = std::dynamic_pointer_cast<camera_component>(comp);
+				auto m_cam_comp = dynamic_cast<camera_component*>(comp);
 				if (m_cam_comp) {
 
 					if (m_cam_comp->is_main_camera) {

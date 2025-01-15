@@ -29,6 +29,8 @@ script_controller::~script_controller()
 
 bool script_controller::reload_script(std::string path)
 {
+	m_path = path;
+
 	bool cont = true;
 
 	CScriptBuilder builder;
@@ -48,7 +50,7 @@ bool script_controller::reload_script(std::string path)
 	if (r < 0) {
 		cont = 0;
 	}
-
+	
 	
 
 	asIScriptModule* mod = m_script_engine->GetModule(module_id.c_str());
@@ -70,6 +72,35 @@ bool script_controller::reload_script(std::string path)
 	
 
 	return cont;
+}
+
+void script_controller::reset()
+{
+	if (m_context) {
+		m_context->Release();
+		m_context = nullptr;
+	}
+
+	m_onstart_func = nullptr;
+	m_onupdate_func = nullptr;
+
+	m_script_engine->DiscardModule(module_id.c_str());
+
+
+	m_script_engine = asCreateScriptEngine();
+
+
+	module_id = "module_" + generate_unique_id();
+
+
+	m_script_engine->SetMessageCallback(asFUNCTION(MessageCallback), nullptr, asCALL_CDECL);
+	RegisterStdString(m_script_engine);
+
+	engine_scripting::scripting_functions sf;
+	sf.init_variables(m_script_engine);
+	sf.init_scripts(m_script_engine);
+
+	reload_script(m_path);
 }
 
 void script_controller::on_start()

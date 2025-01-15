@@ -55,9 +55,9 @@ void wizm::staticmesh_component::component_postupdate()
 {
 }
 
-std::shared_ptr<core_component> wizm::staticmesh_component::_copy() const
+core_component* wizm::staticmesh_component::_copy() const
 {
-	auto new_sc_comp = std::make_shared<staticmesh_component>();
+	auto new_sc_comp = new staticmesh_component();
 
 	new_sc_comp->set_position(this->get_position());
 	new_sc_comp->set_rotation(this->get_rotation());

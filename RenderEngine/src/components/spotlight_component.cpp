@@ -31,9 +31,9 @@ void wizm::spotlight_component::component_postupdate()
 {
 }
 
-std::shared_ptr<core_component> wizm::spotlight_component::_copy() const
+core_component* wizm::spotlight_component::_copy() const
 {
-    auto new_sc_comp = std::make_shared<spotlight_component>();
+    auto new_sc_comp = new spotlight_component();
 
     new_sc_comp->set_position(this->get_position());
     new_sc_comp->set_rotation(this->get_rotation());

@@ -64,9 +64,9 @@ void wizm::directionallight_component::component_postupdate()
 {
 }
 
-std::shared_ptr<core_component> wizm::directionallight_component::_copy() const
+core_component* wizm::directionallight_component::_copy() const
 {
-	auto new_dl_comp = std::make_shared<directionallight_component>();
+	auto new_dl_comp = new directionallight_component();
 
 	new_dl_comp->set_position(this->get_position());
 	new_dl_comp->set_rotation(this->get_rotation());

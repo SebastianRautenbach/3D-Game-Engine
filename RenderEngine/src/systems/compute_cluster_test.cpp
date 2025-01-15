@@ -58,7 +58,7 @@ void wizm::compute_cluster::update_lights()
 		
 		const auto& [ent_i, comp_i] = index_pair;
 		
-		auto light_comps = std::dynamic_pointer_cast<pointlight_component>(
+		auto light_comps = dynamic_cast<pointlight_component*>(
 			global_scene->m_entities[ent_i]->m_components_list[comp_i]);
 
 		if (light_comps) {
@@ -78,7 +78,7 @@ void wizm::compute_cluster::update_lights()
 
 		const auto& [ent_i, comp_i] = index_pair;
 	
-		auto spotlight_comp = std::dynamic_pointer_cast<spotlight_component>(
+		auto spotlight_comp = dynamic_cast<spotlight_component*>(
 			global_scene->m_entities[ent_i]->m_components_list[comp_i]);
 
 		if (spotlight_comp) {

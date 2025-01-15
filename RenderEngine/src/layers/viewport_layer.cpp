@@ -396,9 +396,9 @@ void wizm::viewport_layer::properties_mouse_pick(bool multi_select)
 
 
 
-std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos)
+core_entity* wizm::viewport_layer::get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos)
 {
-    std::vector<std::pair<float, std::shared_ptr<core_entity>>> touched_entities;
+    std::vector<std::pair<float, core_entity*>> touched_entities;
 
     for (const auto& ent : global_scene->m_entities) {
         for (const auto& comp : ent->m_components_list) {
@@ -406,8 +406,8 @@ std::shared_ptr<core_entity> wizm::viewport_layer::get_ent_pick(glm::vec3 ray_di
                 Only reason we doing the static mesh component different from the rest is because
                 its bounding volume is determined by its asset and not as the component itself
             */
-            auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(comp);
-            auto renderable = std::dynamic_pointer_cast<core_renderable>(comp);
+            auto sm_comp = dynamic_cast<staticmesh_component*>(comp);
+            auto renderable = dynamic_cast<core_renderable*>(comp);
 
             glm::vec3 intersection_point;
 

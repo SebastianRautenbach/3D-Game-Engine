@@ -14,6 +14,7 @@ public:
 	~script_controller();
 	
 	bool reload_script(std::string path);
+	void reset();
 
 	void on_start();
 	void on_update(float delta_time);
@@ -21,7 +22,7 @@ public:
 	static void MessageCallback(const asSMessageInfo* msg);
 
 private:
-	std::string module_id = "";
+	std::string module_id = "", m_path = "";
 	asIScriptFunction* m_onupdate_func = nullptr;
 	asIScriptFunction* m_onstart_func = nullptr;
 	asIScriptEngine* m_script_engine = nullptr;

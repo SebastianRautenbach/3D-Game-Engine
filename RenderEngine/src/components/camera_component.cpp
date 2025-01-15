@@ -30,9 +30,9 @@ void wizm::camera_component::component_postupdate()
 {
 }
 
-std::shared_ptr<lowlevelsys::core_component> wizm::camera_component::_copy() const
+lowlevelsys::core_component* wizm::camera_component::_copy() const
 {
-	auto new_cam_comp = std::make_shared<camera_component>();
+	auto new_cam_comp = new camera_component();
 	new_cam_comp->set_position(this->get_position());
 	new_cam_comp->set_rotation(this->get_rotation());
 	new_cam_comp->set_scale(this->get_scale());

@@ -33,7 +33,7 @@ void wizm::performace_ui_layer::update(float delta_time)
 		{
 			for (const auto& comp : ent->m_components_list)
 			{
-				auto staticmesh = std::dynamic_pointer_cast<staticmesh_component>(comp);
+				auto staticmesh = dynamic_cast<staticmesh_component*>(comp);
 				if (staticmesh)
 					amm_verts += staticmesh->m_model->get_triangles();
 			}

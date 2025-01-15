@@ -25,7 +25,7 @@ namespace wizm {
 		// properties panel specific
 		
 		void component_add_popup();
-		void modify_component_attrib(std::string& type, std::shared_ptr<core_component> component);
+		void modify_component_attrib(std::string& type, core_component* component);
 
 	private:
 		gl_renderer* m_renderer;

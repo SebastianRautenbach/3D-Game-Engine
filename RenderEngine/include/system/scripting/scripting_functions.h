@@ -235,10 +235,10 @@ namespace engine_scripting
 	
 
 
-	static void print(std::string& msg) {
-		std::cout << msg << "\n";
+	static void print(std::string& msg, int lvl) {
+		add_console_line(msg, lvl);
 	}
-	SCRIPT_DEFINE_FUNC_1(void, print, string);
+	SCRIPT_DEFINE_FUNC_2(void, print, string, int);
 
 
 	//------------------------------------------------- STATIC INPUT
@@ -264,7 +264,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 		
 		if(entity->m_components_list.size() > component_index) {
-			auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(entity->m_components_list[component_index]);
+			auto sm_comp = dynamic_cast<staticmesh_component*>(entity->m_components_list[component_index]);
 			sm_comp->m_mesh_asset_id = asset_id;
 			global_scene->m_reloaded = true;
 		}
@@ -275,7 +275,9 @@ namespace engine_scripting
 	//--------------------------------------------------------------
 
 	void destroy(std::string entity_name) {
-		global_scene->m_destroy_list.emplace_back(entity_name);
+		
+		global_scene->delete_enity(global_scene->get_entity(entity_name));
+		//global_scene->m_destroy_list.emplace_back(entity_name);
 	}
 	SCRIPT_DEFINE_FUNC_1(void, destroy ,string);
 
@@ -288,7 +290,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 
 		if (entity->m_components_list.size() > component_index) {
-			auto sm_comp = std::dynamic_pointer_cast<staticmesh_component>(entity->m_components_list[component_index]);
+			auto sm_comp = dynamic_cast<staticmesh_component*>(entity->m_components_list[component_index]);
 			
 			//if(texture_type == 0)
 			//	sm_comp->m_material->diffuse_asset_id = asset_id;
@@ -582,7 +584,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 
 		if (entity->m_components_list.size() > component_index) {
-			auto light_comp = std::dynamic_pointer_cast<light_component>(entity->m_components_list[component_index]);
+			auto light_comp = dynamic_cast<light_component*>(entity->m_components_list[component_index]);
 			if(light_comp)
 				light_comp->m_brightness = brightness;
 		}
@@ -594,7 +596,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 
 		if (entity->m_components_list.size() > component_index) {
-			auto light_comp = std::dynamic_pointer_cast<light_component>(entity->m_components_list[component_index]);
+			auto light_comp = dynamic_cast<light_component*>(entity->m_components_list[component_index]);
 			if (light_comp)
 				light_comp->m_ambient = glm::vec3(ambient.x, ambient.y, ambient.z);
 		}
@@ -613,7 +615,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 
 		if (entity->m_components_list.size() > component_index) {
-			auto s_comp = std::dynamic_pointer_cast<sound_component>(entity->m_components_list[component_index]);
+			auto s_comp = dynamic_cast<sound_component*>(entity->m_components_list[component_index]);
 			if(s_comp)
 			{
 				//s_comp->stop();
@@ -629,7 +631,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 
 		if (entity->m_components_list.size() > component_index) {
-			auto s_comp = std::dynamic_pointer_cast<sound_component>(entity->m_components_list[component_index]);
+			auto s_comp = dynamic_cast<sound_component*>(entity->m_components_list[component_index]);
 			if (s_comp)
 				s_comp->stop();
 		}
@@ -642,7 +644,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 
 		if (entity->m_components_list.size() > component_index) {
-			auto s_comp = std::dynamic_pointer_cast<sound_component>(entity->m_components_list[component_index]);
+			auto s_comp = dynamic_cast<sound_component*>(entity->m_components_list[component_index]);
 			if (s_comp)
 				s_comp->m_loop = should_loop;
 		}
@@ -655,7 +657,7 @@ namespace engine_scripting
 		auto entity = global_scene->get_entity_name(entity_name);
 
 		if (entity->m_components_list.size() > component_index) {
-			auto s_comp = std::dynamic_pointer_cast<sound_component>(entity->m_components_list[component_index]);
+			auto s_comp = dynamic_cast<sound_component*>(entity->m_components_list[component_index]);
 			if (s_comp)
 				s_comp->m_is3d = is_3d;
 		}

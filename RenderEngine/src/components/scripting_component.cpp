@@ -8,6 +8,7 @@ wizm::scripting_component::scripting_component()
 
 wizm::scripting_component::~scripting_component()
 {
+	m_script_asset->reset();
 }
 
 void wizm::scripting_component::component_preupdate()
@@ -42,9 +43,9 @@ void wizm::scripting_component::component_postupdate()
 {
 }
 
-std::shared_ptr<core_component> wizm::scripting_component::_copy() const
+core_component* wizm::scripting_component::_copy() const
 {
-	auto new_sc_comp = std::make_shared<scripting_component>();
+	auto new_sc_comp = new scripting_component();
 	new_sc_comp->set_position(this->get_position());
 	new_sc_comp->set_rotation(this->get_rotation());
 	new_sc_comp->set_scale(this->get_scale());

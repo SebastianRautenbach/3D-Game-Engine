@@ -15,7 +15,7 @@ namespace wizm {
 			glm::vec3 specular = glm::vec3(1.0f, 1.0f, 1.0f));
 
 
-		virtual std::shared_ptr<core_component> _copy() const = 0;
+		virtual core_component* _copy() const = 0;
 
 		
 	public:

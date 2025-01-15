@@ -162,35 +162,35 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 	if (global_scene->total_component_count() != shader_count || global_scene->m_reloaded) {
 
-		std::vector<std::shared_ptr<pointlight_component>> point_lights;
-		std::vector<std::shared_ptr<directionallight_component>> directional_lights;
-		std::vector<std::shared_ptr<spotlight_component>> spot_lights;
-		std::vector<std::shared_ptr<light_component>> all_lights;
-		std::vector<std::shared_ptr<staticmesh_component>> meshes;
+		std::vector<pointlight_component*> point_lights;
+		std::vector<directionallight_component*> directional_lights;
+		std::vector<spotlight_component*> spot_lights;
+		std::vector<light_component*> all_lights;
+		std::vector<staticmesh_component*> meshes;
 
 
 		for (auto& i : global_scene->m_entities) {
 			for (auto& per_ent : i->m_components_list)
 			{
-				auto mesh_comps = std::dynamic_pointer_cast<staticmesh_component>(per_ent);
+				auto mesh_comps = dynamic_cast<staticmesh_component*>(per_ent);
 				if (mesh_comps)
 					meshes.push_back(mesh_comps);
 
-				auto light_comps = std::dynamic_pointer_cast<pointlight_component>(per_ent);
+				auto light_comps = dynamic_cast<pointlight_component*>(per_ent);
 				if (light_comps)
 				{
 					point_lights.push_back(light_comps);
 					all_lights.push_back(light_comps);
 				}
 
-				auto directional_comps = std::dynamic_pointer_cast<directionallight_component>(per_ent);
+				auto directional_comps = dynamic_cast<directionallight_component*>(per_ent);
 				if (directional_comps)
 				{
 					directional_lights.push_back(directional_comps);
 					all_lights.push_back(directional_comps);
 				}
 
-				auto spotlight_comps = std::dynamic_pointer_cast<spotlight_component>(per_ent);
+				auto spotlight_comps = dynamic_cast<spotlight_component*>(per_ent);
 				if (spotlight_comps) {
 
 					spot_lights.push_back(spotlight_comps);
@@ -198,7 +198,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 				}
 
 
-				auto renderable = std::dynamic_pointer_cast<core_renderable>(per_ent);
+				auto renderable = dynamic_cast<core_renderable*>(per_ent);
 				if (renderable) {
 					std::vector<vertex_data> cube = {
 						vertex_data(glm::vec3(-.4,-.4,-.4)),

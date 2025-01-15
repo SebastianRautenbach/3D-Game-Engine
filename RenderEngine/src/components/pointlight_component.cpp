@@ -31,9 +31,9 @@ void wizm::pointlight_component::component_postupdate()
 {
 }
 
-std::shared_ptr<lowlevelsys::core_component> wizm::pointlight_component::_copy() const
+lowlevelsys::core_component* wizm::pointlight_component::_copy() const
 {
-    auto new_pc_comp = std::make_shared<pointlight_component>();
+    auto new_pc_comp = new pointlight_component();
 
     new_pc_comp->set_position(this->get_position());
     new_pc_comp->set_rotation(this->get_rotation());

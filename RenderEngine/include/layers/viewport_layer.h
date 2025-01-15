@@ -27,7 +27,7 @@ namespace wizm {
 		void scene_viewport_func(float delta_time);
 		void get_mouse_pick(bool multi_select);
 		void properties_mouse_pick(bool multi_select);
-		std::shared_ptr<core_entity> get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos);
+		core_entity* get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray_pos);
 
 	private:
 		std::shared_ptr<camera_manager> m_camera_manager;

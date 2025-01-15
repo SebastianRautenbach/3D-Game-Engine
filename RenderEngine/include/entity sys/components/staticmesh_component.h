@@ -18,7 +18,7 @@ namespace wizm {
 		void component_preupdate() override;
 		void component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader) override;
 		void component_postupdate() override;
-		std::shared_ptr<core_component> _copy() const;
+		core_component* _copy() const;
 
 
 		//////////////////////////////////////////////////

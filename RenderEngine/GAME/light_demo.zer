@@ -9,6 +9,9 @@ CAMERA{
 			scale:1.000000,1.000000,1.000000;
 		}
 	}
+	specs{
+		is_entity:1;
+	}
 	tags{
 	}
 	transform{
@@ -31,6 +34,9 @@ directionallight{
 			scale:1.000000,1.000000,1.000000;
 		}
 	}
+	specs{
+		is_entity:1;
+	}
 	tags{
 	}
 	transform{
@@ -40,6 +46,9 @@ directionallight{
 	}
 }
 floor{
+	specs{
+		is_entity:1;
+	}
 	staticmesh0{
 		asset id:2593510341366371538;
 		m_material_asset_ids:12464556249974524193,8605433296323588649;
@@ -52,12 +61,15 @@ floor{
 	tags{
 	}
 	transform{
-		position:-2.689365,1.275492,0.644026;
+		position:4.740477,1.275492,-0.089514;
 		rotation:0.000000,0.988182,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }
 floor(1)s{
+	specs{
+		is_entity:1;
+	}
 	spotlight0{
 		light{
 			m_constant:1.000000;
@@ -117,6 +129,9 @@ light1{
 			scale:1.000000,1.000000,1.000000;
 		}
 	}
+	specs{
+		is_entity:1;
+	}
 	tags{
 	}
 	transform{
@@ -154,6 +169,9 @@ light1(1){
 			scale:1.000000,1.000000,1.000000;
 		}
 	}
+	specs{
+		is_entity:1;
+	}
 	tags{
 	}
 	transform{
@@ -183,6 +201,9 @@ light1(1)(1){
 			scale:1.000000,1.000000,1.000000;
 		}
 	}
+	specs{
+		is_entity:1;
+	}
 	tags{
 	}
 	transform{
@@ -192,6 +213,9 @@ light1(1)(1){
 	}
 }
 mesh{
+	specs{
+		is_entity:1;
+	}
 	staticmesh0{
 		asset id:9078966489925085488;
 		m_material_asset_ids:8605433296323588649;
@@ -210,6 +234,9 @@ mesh{
 	}
 }
 mesh(1)(1)(1){
+	specs{
+		is_entity:1;
+	}
 	staticmesh0{
 		asset id:9078966489925085488;
 		m_material_asset_ids:8605433296323588649;
@@ -228,6 +255,9 @@ mesh(1)(1)(1){
 	}
 }
 mesh(1)(1)(1)(1){
+	specs{
+		is_entity:1;
+	}
 	staticmesh0{
 		asset id:9078966489925085488;
 		m_material_asset_ids:8605433296323588649;
@@ -246,6 +276,9 @@ mesh(1)(1)(1)(1){
 	}
 }
 mesh(1)(1)(1)(1)(1){
+	specs{
+		is_entity:1;
+	}
 	staticmesh0{
 		asset id:9078966489925085488;
 		m_material_asset_ids:8605433296323588649;
@@ -275,20 +308,14 @@ mr sound{
 			scale:1.000000,1.000000,1.000000;
 		}
 	}
+	specs{
+		is_entity:1;
+	}
 	tags{
 	}
 	transform{
 		position:2.792853,1.327278,-2.926228;
 		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
-	}
-}
-viewport_camera{
-	tags{
-	}
-	transform{
-		position:2.702811,5.996495,7.841683;
-		rotation:-47.578957,25.770880,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }
