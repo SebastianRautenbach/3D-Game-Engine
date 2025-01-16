@@ -79,10 +79,7 @@ void on_update(float delta_time) {
     add_entity_position(name, new_pos.x - entity_pos.x, new_pos.y - entity_pos.y, 0);
 
     if(!stop) {
-        print("cool logging error", 0);
-        print("cool logging warn", 1);
-        print("cool logging general", 2);
-        print("cool logging success", 3);
+        destroy_entity("Entity Name");
         stop = true;
     }
 

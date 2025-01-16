@@ -274,12 +274,10 @@ namespace engine_scripting
 	//--------------------------------------------------	  ENTITY
 	//--------------------------------------------------------------
 
-	void destroy(std::string entity_name) {
-		
+	void destroy_entity(std::string entity_name) {
 		global_scene->delete_enity(global_scene->get_entity(entity_name));
-		//global_scene->m_destroy_list.emplace_back(entity_name);
 	}
-	SCRIPT_DEFINE_FUNC_1(void, destroy ,string);
+	SCRIPT_DEFINE_FUNC_1(void, destroy_entity,string);
 
 
 	//--------------------------------------------------    TEXTURES
@@ -692,7 +690,7 @@ public:
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_mesh));
 
-		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(destroy));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(destroy_entity));
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_texture));
 		

@@ -1,4 +1,51 @@
 Entity Name{
+	cam{
+		cameracomponent0{
+			settings{
+				is_main_camera:1;
+			}
+			transform{
+				position:0.000000,0.000000,0.000000;
+				rotation:0.000000,0.000000,0.000000;
+				scale:1.000000,1.000000,1.000000;
+			}
+		}
+		specs{
+			is_entity:1;
+		}
+		tags{
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	dir{
+		directionallight0{
+			light{
+				m_ambient:0.050000,0.050000,0.050000;
+				m_diffuse:0.400000,0.400000,0.400000;
+				m_specular:0.500000,0.500000,0.500000;
+				m_brightness:1.000000;
+			}
+			transform{
+				position:0.000000,0.000000,0.000000;
+				rotation:0.000000,0.000000,0.000000;
+				scale:1.000000,1.000000,1.000000;
+			}
+		}
+		specs{
+			is_entity:1;
+		}
+		tags{
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
 	specs{
 		is_entity:1;
 	}
@@ -17,37 +64,5 @@ Entity Name{
 		position:0.000000,0.000000,0.000000;
 		rotation:-1.556653,0.000000,0.000000;
 		scale:0.010000,0.010000,0.010000;
-	}
-}
-directionallight{
-	directionallight0{
-		light{
-			m_ambient:0.119048,0.119046,0.119046;
-			m_diffuse:0.400000,0.400000,0.400000;
-			m_specular:0.500000,0.500000,0.500000;
-			m_brightness:1.000000;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	specs{
-		is_entity:1;
-	}
-	tags{
-	}
-	transform{
-		position:0.000000,0.987845,0.000000;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
-	}
-}
-viewport_camera{
-	transform{
-		position:0.000000,3.292418,-2.858092;
-		rotation:-40.198997,210.231094,0.000000;
-		scale:1.000000,1.000000,1.000000;
 	}
 }
