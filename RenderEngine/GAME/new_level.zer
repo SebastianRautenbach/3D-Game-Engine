@@ -1,12 +1,78 @@
+Entity Name123{
+	specs{
+		is_entity:1;
+	}
+	staticmesh0{
+		asset id:17216570880819933766;
+		m_material_asset_ids:;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-2.976170,0.000000,2.699430;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 viewport_camera{
 	transform{
-		position:-1.998215,2.773608,-1.231937;
-		rotation:-53.478973,238.471085,0.000000;
+		position:-3.444987,3.292418,-2.858092;
+		rotation:-40.198997,210.231094,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }
 x{
 	Entity Name{
+		pointlight0{
+			light{
+				m_constant:1.000000;
+				linear:0.090000;
+				m_quadratic:0.032000;
+				m_radius:3.000000;
+				m_ambient:0.050000,0.050000,0.050000;
+				m_diffuse:1.000000,0.999990,0.999990;
+				m_specular:1.000000,1.000000,1.000000;
+				pointlightindex:;
+				m_brightness:1.000000;
+				m_intensity:1.000000;
+				light_index:0;
+			}
+			transform{
+				position:0.000000,0.000000,0.000000;
+				rotation:0.000000,0.000000,0.000000;
+				scale:1.000000,1.000000,1.000000;
+			}
+		}
+		specs{
+			is_entity:1;
+		}
+		tags{
+		}
+		transform{
+			position:-2.112557,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	Entity Name1{
+		directionallight0{
+			light{
+				m_ambient:0.050000,0.050000,0.050000;
+				m_diffuse:0.400000,0.400000,0.400000;
+				m_specular:0.500000,0.500000,0.500000;
+				m_brightness:1.000000;
+			}
+			transform{
+				position:0.000000,0.000000,0.000000;
+				rotation:0.000000,0.000000,0.000000;
+				scale:1.000000,1.000000,1.000000;
+			}
+		}
 		specs{
 			is_entity:1;
 		}
@@ -29,12 +95,44 @@ x{
 		scale:1.000000,1.000000,1.000000;
 	}
 	y{
+		Entity Namess{
+			pointlight0{
+				light{
+					m_constant:1.000000;
+					linear:0.090000;
+					m_quadratic:0.032000;
+					m_radius:3.000000;
+					m_ambient:0.050000,0.050000,0.050000;
+					m_diffuse:0.800000,0.800000,0.800000;
+					m_specular:1.000000,1.000000,1.000000;
+					pointlightindex:;
+					m_brightness:1.000000;
+					m_intensity:1.000000;
+					light_index:0;
+				}
+				transform{
+					position:0.000000,0.000000,0.000000;
+					rotation:0.000000,0.000000,0.000000;
+					scale:1.000000,1.000000,1.000000;
+				}
+			}
+			specs{
+				is_entity:1;
+			}
+			tags{
+			}
+			transform{
+				position:-0.480568,0.000000,-2.131501;
+				rotation:0.000000,0.000000,0.000000;
+				scale:1.000000,1.000000,1.000000;
+			}
+		}
 		specs{
 			is_entity:1;
 		}
 		staticmesh0{
 			asset id:18401602439556261843;
-			m_material_asset_ids:;
+			m_material_asset_ids:18135990598270948645,18135990598270948645;
 			transform{
 				position:0.000000,0.000000,0.000000;
 				rotation:0.000000,0.000000,0.000000;

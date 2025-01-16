@@ -35,108 +35,19 @@ void wizm::scene_ui_layer::update(float delta_time)
 		ImGui::OpenPopup("AddEntityPopup");
 
 	for (auto ents : global_scene->m_entities) {
-		std::function<void(core_entity*)> renderEntity = [&](core_entity* entity) {
-			if (!entity) return;
-
 		
-			void* treeNodeId = (void*)((intptr_t)entity + std::hash<std::string>{}(entity->m_ent_ID));
-
+		if(!ents->get_parent())
+			render_entity_node(ents);
 		
-			bool nodeOpen = ImGui::TreeNodeEx(treeNodeId,
-				ImGuiTreeNodeFlags_OpenOnArrow |
-				ImGuiTreeNodeFlags_SpanAvailWidth,
-				"%s", entity->m_ent_ID.c_str());
-
+		//if (!global_scene->get_selected_entities().empty() && global_scene->get_selected_entities()[0]) {
+		//	ImGui::OpenPopup("Modify Entity");
+		//}
 		
-			if (ImGui::IsItemClicked(ImGuiMouseButton_Left) || ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
-
-				global_scene->clear_selected_entities();
-				global_scene->add_selected_entity(entity);
-
-
-				if (ImGui::IsItemClicked(ImGuiMouseButton_Right)) {
-					ImGui::OpenPopup("ModEnt");
-				}
-			}
-
-			if (nodeOpen) {
-				for (auto& child : entity->get_children()) {
-					try
-					{			
-						if (skip_after_delete) { skip_after_delete = false; break; }
-						auto childEntity = dynamic_cast<core_entity*>(child);
-						if (childEntity && childEntity != entity) {
-							renderEntity(childEntity);
-						}
-					}
-					catch (const std::exception& e) {
-					
-					}
-				}
-				ImGui::TreePop(); 
-			}
-
-			
-			if (ImGui::BeginPopup("ModEnt")) {
-				ImGui::Text("Modify Entity");
-				ImGui::Separator();
-
-
-				char entity_name[256];
-				strncpy_s(entity_name, sizeof(entity_name), global_scene->get_crnt_entity()->m_ent_ID.c_str(), _TRUNCATE);
-
-
-
-				if (ImGui::InputText("##name", entity_name, IM_ARRAYSIZE(entity_name)))
-					global_scene->get_crnt_entity()->m_ent_ID = entity_name;
-
-
-				if (ImGui::MenuItem("Delete")) {
-
-					global_scene->delete_enity(global_scene->get_crnt_entity());
-					global_scene->clear_selected_entities();
-					m_renderer->update_draw_data();
-					skip_after_delete = true;
-				}
-				if (ImGui::MenuItem("Duplicate")) {
-
-					auto name = global_scene->get_crnt_entity()->m_ent_ID;
-
-					while (global_scene->does_ent_name_exist(name)) {
-						name += "(1)";
-					}
-
-
-					auto crnt = global_scene->get_crnt_entity()->copy_(name);
-					global_scene->add_entity(crnt);
-					global_scene->clear_selected_entities();
-					global_scene->add_selected_entity(crnt);
-				}
-
-				// delete this because this is very temporary
-
-				if (ImGui::MenuItem("ADD PARENT")) {
-					global_scene->get_selected_entities()[0]->add_parent(global_scene->m_entities[0]);
-				}
-
-				ImGui::EndPopup();
-			}
-
-
-			};
-
-		// Render the root entities (only those without parents)
-		if (!ents->get_parent()) {
-			renderEntity(ents);
-		}
 	}
-
-
-
-
-
-
 	
+	//render_modify_popup();
+
+
 
 	//---------------------------------------------------------------------------------------------------------
 
@@ -186,4 +97,75 @@ void wizm::scene_ui_layer::update(float delta_time)
 
 
 	ImGui::End();
+}
+
+void wizm::scene_ui_layer::render_entity_node(core_entity* entity)
+{
+	if (!entity) return;
+
+	bool is_selected = false;
+
+	if (!global_scene->get_selected_entities().empty()) {
+		is_selected = (entity == global_scene->get_selected_entities()[0]);
+	}
+
+
+	ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+	if (is_selected) {
+		flags |= ImGuiTreeNodeFlags_Selected;
+	}
+
+
+	bool node_open = ImGui::TreeNodeEx(entity->m_ent_ID.c_str(), flags);
+	if (ImGui::BeginDragDropSource()) {
+		ImGui::SetDragDropPayload("ENTITY_POINTER", &entity, sizeof(core_entity*));
+		ImGui::Text("Dragging: %s", entity->m_ent_ID.c_str());
+		ImGui::EndDragDropSource();
+	}
+
+	if (ImGui::BeginDragDropTarget()) {
+		if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("ENTITY_POINTER")) {
+			
+			core_entity* dropped_entity = *(core_entity**)payload->Data;
+
+			if (dropped_entity != entity) {
+				dropped_entity->add_parent(entity);
+			}
+		}
+		ImGui::EndDragDropTarget();
+	}
+
+
+
+	if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen()) {
+		global_scene->clear_selected_entities();
+		global_scene->add_selected_entity(entity);
+	}
+
+	if (node_open) {
+		for (auto& child : entity->get_children()) {
+			render_entity_node(dynamic_cast<core_entity*>(child)); 
+		}
+		ImGui::TreePop();
+	}
+
+}
+
+void wizm::scene_ui_layer::render_modify_popup()
+{
+	if (ImGui::BeginPopup("Modify Entity")) {
+
+		if (global_scene->get_selected_entities()[0]) {
+			
+			ImGui::Text(global_scene->get_selected_entities()[0]->m_ent_ID.c_str());
+
+			ImGui::SameLine();
+
+			if (ImGui::Button("Cancel")) {
+				ImGui::CloseCurrentPopup();
+			}
+		}
+
+		ImGui::EndPopup();
+	}
 }

@@ -110,34 +110,13 @@ namespace wizm {
 
 	void core_scene::delete_all_entities()
 	{
-		std::vector<core_entity*> deleted_ents;
+		while (!m_entities.empty()) {
+			auto ent = m_entities.back();
 
-		for (auto& ent : m_entities) {
-			bool is_simular = false;
+			m_entities.pop_back();
 
-
-			for (auto& del_ent : deleted_ents) {
-				if (ent == del_ent) {
-					is_simular = true;
-				}
-			}
-
-			if (is_simular) { continue; }
-
-			if (ent->get_children().empty())
-			{
-				delete ent;
-			}
-			else
-			{
-				for(auto& child : ent->get_children())
-					deleted_ents.emplace_back((core_entity*)child);
-				
-				delete ent;
-			}
+			delete ent;
 		}
-		deleted_ents.clear();
-		m_entities.clear();
 	}
 
 	

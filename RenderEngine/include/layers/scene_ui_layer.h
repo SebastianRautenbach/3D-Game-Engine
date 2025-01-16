@@ -19,6 +19,9 @@ namespace wizm {
 		virtual void OnDetach() override;
 		virtual void update(float delta_time) override;
 
+		void render_entity_node(core_entity* entity);
+		void render_modify_popup();
+
 	private:
 		gl_renderer* m_renderer;
 		bool skip_after_delete = false;
