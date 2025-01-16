@@ -27,6 +27,10 @@ namespace wizm {
 		//----------------------------------------------------------------------------------
 
 		void add_parent(core_node* parent_node) {
+			
+			if(m_parent_node)
+				m_parent_node->remove_child(this);
+
 			m_parent_node = parent_node;
 			m_parent_node->add_child(this);
 		}
@@ -39,6 +43,11 @@ namespace wizm {
 
 		std::vector<core_node*>& get_children() {
 			return m_child_nodes;
+		}
+
+		void remove_child(core_node* entity) {
+			if (m_child_nodes.empty()) { return; }
+			m_child_nodes.erase(std::remove(m_child_nodes.begin(), m_child_nodes.end(), entity), m_child_nodes.end());
 		}
 
 

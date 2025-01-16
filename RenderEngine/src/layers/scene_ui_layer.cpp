@@ -38,14 +38,18 @@ void wizm::scene_ui_layer::update(float delta_time)
 		
 		if(!ents->get_parent())
 			render_entity_node(ents);
-		
-		//if (!global_scene->get_selected_entities().empty() && global_scene->get_selected_entities()[0]) {
-		//	ImGui::OpenPopup("Modify Entity");
-		//}
+
+
+		if (open_mod_popup) {
+			open_mod_popup = false;
+			ImGui::OpenPopup("Modify Entity");
+		}
 		
 	}
+
 	
-	//render_modify_popup();
+	
+	render_modify_popup();
 
 
 
@@ -129,6 +133,7 @@ void wizm::scene_ui_layer::render_entity_node(core_entity* entity)
 			core_entity* dropped_entity = *(core_entity**)payload->Data;
 
 			if (dropped_entity != entity) {
+				
 				dropped_entity->add_parent(entity);
 			}
 		}
@@ -141,6 +146,14 @@ void wizm::scene_ui_layer::render_entity_node(core_entity* entity)
 		global_scene->clear_selected_entities();
 		global_scene->add_selected_entity(entity);
 	}
+
+	if (ImGui::IsItemClicked(ImGuiMouseButton_Right) && !ImGui::IsItemToggledOpen()) {
+		global_scene->clear_selected_entities();
+		global_scene->add_selected_entity(entity);
+		open_mod_popup = true;
+	}
+
+
 
 	if (node_open) {
 		for (auto& child : entity->get_children()) {
@@ -155,15 +168,39 @@ void wizm::scene_ui_layer::render_modify_popup()
 {
 	if (ImGui::BeginPopup("Modify Entity")) {
 
-		if (global_scene->get_selected_entities()[0]) {
-			
-			ImGui::Text(global_scene->get_selected_entities()[0]->m_ent_ID.c_str());
+		ImGui::Text("Modify Entity");
+		ImGui::Separator();
 
-			ImGui::SameLine();
 
-			if (ImGui::Button("Cancel")) {
-				ImGui::CloseCurrentPopup();
+		char entity_name[256];
+		strncpy_s(entity_name, sizeof(entity_name), global_scene->get_crnt_entity()->m_ent_ID.c_str(), _TRUNCATE);
+
+
+
+		if (ImGui::InputText("##name", entity_name, IM_ARRAYSIZE(entity_name)))
+			global_scene->get_crnt_entity()->m_ent_ID = entity_name;
+
+
+		if (ImGui::MenuItem("Delete")) {
+
+			global_scene->delete_enity(global_scene->get_crnt_entity());
+			global_scene->clear_selected_entities();
+
+			m_renderer->update_draw_data();
+		}
+		if (ImGui::MenuItem("Duplicate")) {
+
+			auto name = global_scene->get_crnt_entity()->m_ent_ID;
+
+			while (global_scene->does_ent_name_exist(name)) {
+				name += "(1)";
 			}
+
+
+			auto crnt = global_scene->get_crnt_entity()->copy_(name);
+			global_scene->add_entity(crnt);
+			global_scene->clear_selected_entities();
+			global_scene->add_selected_entity(crnt);
 		}
 
 		ImGui::EndPopup();
