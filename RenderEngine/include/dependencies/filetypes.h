@@ -6,7 +6,9 @@ const std::unordered_set<std::string> MESH_FILE_EXTENSIONS = { ".obj", ".fbx" };
 const std::unordered_set<std::string> SOUND_FILE_EXTENSION = { ".wav", ".mp3"};
 const std::unordered_set<std::string> TEXTURE_FILE_EXTENSION = { ".jpg", ".png" };
 const std::unordered_set<std::string> SCRIPT_FILE_EXTENSION = { ".as", ".wizs" };
-const std::unordered_set<std::string> MATERIAL_FILE_EXTENSION = { ".wmat"};
+const std::unordered_set<std::string> MATERIAL_FILE_EXTENSION = { ".wmat" };
+const std::unordered_set<std::string> ENTITY_FILE_EXTENSION = { ".went" };
+const std::unordered_set<std::string> LEVEL_FILE_EXTENSION = { ".wlvl", ".zer"};
 
 
 
@@ -24,7 +26,8 @@ inline std::string get_extension(const std::string& filename) {
 */
 
 inline bool is_map_file(const std::string& filename) {
-    return get_extension(filename).find(".zer") != -1;
+    std::string ext = get_extension(filename);
+    return LEVEL_FILE_EXTENSION.find(ext) != LEVEL_FILE_EXTENSION.end();
 }
 
 inline bool is_mesh_file(const std::string& filename) {
@@ -35,6 +38,11 @@ inline bool is_mesh_file(const std::string& filename) {
 inline bool is_material_file(const std::string& filename) {
     std::string ext = get_extension(filename);
     return MATERIAL_FILE_EXTENSION.find(ext) != MATERIAL_FILE_EXTENSION.end();
+}
+
+inline bool is_entity_file(const std::string& filename) {
+    std::string ext = get_extension(filename);
+    return ENTITY_FILE_EXTENSION.find(ext) != ENTITY_FILE_EXTENSION.end();
 }
 
 inline bool is_sound_file(const std::string& filename) {

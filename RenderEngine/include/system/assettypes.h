@@ -4,5 +4,6 @@ enum eAssetType {
 	eImage,
 	eSound,
 	eMesh,
-	eMaterial
+	eMaterial,
+	eEntity
 };

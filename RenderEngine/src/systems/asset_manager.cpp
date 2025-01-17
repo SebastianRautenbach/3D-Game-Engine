@@ -4,6 +4,7 @@
 #include "system/assets/script_asset.h"
 #include "system/assets/sound_asset.h"
 #include "system/assets/material_asset.h"
+#include "system/assets/entity_asset.h"
 
 wizm::asset_manager::asset_manager(audio_manager* audio_manager)
 	: m_auio_manager(audio_manager)
@@ -87,6 +88,9 @@ void wizm::asset_manager::load_assets_db()
 			auto _asset = load<material_asset>(asset.id, asset.path);
 			_asset->m_diffuse_texture = load<texture_asset>(_asset->diffuse_asset_id, "");
 			_asset->m_specular_texture = load<texture_asset>(_asset->specular_asset_id, "");
+		}
+		else if (asset.type == tENTITY) {
+			load<entity_asset>(asset.id, asset.path);
 		}
 	}
 }

@@ -1,26 +1,4 @@
 Entity Name{
-	cam{
-		cameracomponent0{
-			settings{
-				is_main_camera:1;
-			}
-			transform{
-				position:0.000000,0.000000,0.000000;
-				rotation:0.000000,0.000000,0.000000;
-				scale:1.000000,1.000000,1.000000;
-			}
-		}
-		specs{
-			is_entity:1;
-		}
-		tags{
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
 	specs{
 		is_entity:1;
 	}
@@ -39,6 +17,28 @@ Entity Name{
 		position:0.000000,0.000000,0.000000;
 		rotation:-1.556653,0.000000,0.000000;
 		scale:0.010000,0.010000,0.010000;
+	}
+}
+cam{
+	cameracomponent0{
+		settings{
+			is_main_camera:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,0.000010,145.518723;
+		rotation:-0.000000,-0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
 	}
 }
 dir{
@@ -68,8 +68,8 @@ dir{
 }
 viewport_camera{
 	transform{
-		position:0.000000,1.118760,1.698630;
-		rotation:-0.438943,-0.769122,0.000000;
+		position:0.856915,1.291815,4.250291;
+		rotation:-0.078955,-8.069016,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }

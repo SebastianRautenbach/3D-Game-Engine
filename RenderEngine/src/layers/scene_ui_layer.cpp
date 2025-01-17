@@ -118,7 +118,8 @@ void wizm::scene_ui_layer::render_entity_node(core_entity* entity)
 	if (is_selected) {
 		flags |= ImGuiTreeNodeFlags_Selected;
 	}
-	if (!entity->get_children().empty() && entity->get_children().size() == entity->m_components_list.size()) {
+
+	if ((entity->get_children().size() - entity->m_components_list.size()) == 0) {
 		flags |= ImGuiTreeNodeFlags_Leaf;
 	}
 	else {

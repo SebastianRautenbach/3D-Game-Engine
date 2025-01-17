@@ -5,3 +5,4 @@
 #define tMATERIAL "material"
 #define tMAP "map"
 #define tSCRIPT "script"
+#define tENTITY "entity"

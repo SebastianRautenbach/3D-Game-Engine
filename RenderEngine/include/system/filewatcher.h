@@ -65,6 +65,12 @@ public:
                 ai.add_to_database(asset_details(p, "", tMATERIAL));
                 continue;
             }
+
+            if (is_entity_file(e))
+            {
+                ai.add_to_database(asset_details(p, "", tENTITY));
+                continue;
+            }
         }
     }
 

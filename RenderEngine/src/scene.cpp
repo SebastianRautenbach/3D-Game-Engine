@@ -75,9 +75,42 @@ namespace wizm {
 	
 	core_entity* core_scene::add_entity(std::string entity_name)
 	{
+		// want to maybe do ID's for entity classification 
+		for (auto ent : m_entities) {
+			if (ent->m_ent_ID == entity_name) {
+				return NULL;
+			}
+		}
+
 		auto ptr = new core_entity(entity_name);
 		m_entities.push_back(ptr);
 		return ptr;
+	}
+
+	void core_scene::load_entity(filedata::ZER& entity_save)
+	{
+		for (auto& entity : entity_save.class_properties) {
+			process_entity(*entity.second, nullptr, entity.first);
+		}
+	}
+
+	void core_scene::process_entity(filedata::ZER& new_read, core_entity* parent, const std::string& class_name)
+	{
+		if (!new_read["specs"].get_int("is_entity")[0])
+			return;
+
+		auto new_ent = add_entity(class_name);
+
+		if (new_ent) {
+			new_ent->read_saved_data("", "", new_read);
+
+			if (parent)
+				new_ent->add_parent(parent);
+
+			for (auto& r : new_read.class_properties) {
+				process_entity(new_read[r.first], new_ent, r.first);
+			}
+		}
 	}
 
 
@@ -138,21 +171,6 @@ namespace wizm {
 
 		clear_entities();
 
-		std::function<void(filedata::ZER&, core_entity*, const std::string&)> process_entity = [&](filedata::ZER& new_read, core_entity* parent, const std::string& class_name) {
-			
-			if (!new_read["specs"].get_int("is_entity")[0])
-				return;
-
-			auto new_ent = add_entity(class_name);
-			new_ent->read_saved_data("", "", new_read);
-
-			if(parent)
-				new_ent->add_parent(parent);
-			
-			for (auto& r : new_read.class_properties) {
-				process_entity(new_read[r.first], new_ent, r.first);
-			}
-		};
 
 		for (auto& entity : read.class_properties) {
 			process_entity(*entity.second, nullptr, entity.first);

@@ -8,10 +8,15 @@
 #include "other utils/common.h"
 #include "system/scene_manager.h"
 #include "system/input_manager.h"
+#include "filetypes.h"
+#include "system/assets/entity_asset.h"
 
 
-wizm::viewport_layer::viewport_layer(core_framebuffer* fbo, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer)
-    : core_layer("viewport_layer"), m_framebuffer(fbo), m_camera_manager(camera_manager),  m_renderer(renderer)
+wizm::viewport_layer::viewport_layer(core_framebuffer* fbo,
+    std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer,
+    asset_manager* manager)
+    : core_layer("viewport_layer"), m_framebuffer(fbo), m_camera_manager(camera_manager),  
+    m_renderer(renderer), m_asset_manager(manager)
 {
  
 }
@@ -46,12 +51,17 @@ void wizm::viewport_layer::update(float delta_time)
         if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
 
             const wchar_t* id = (const wchar_t*)payload->Data;
-            if(wstring_to_string(id).find(".zer") != -1)
+            
+            
+            if(is_map_file(wstring_to_string(id)))
             {
                 global_scene->read_map_data(wstring_to_string(id));
                 global_scene->m_reloaded = true;
                 m_camera_manager->load_save_viewport_camera(wstring_to_string(id));
                 m_camera_manager->update_crnt_camera(false);
+            }
+            else if (is_entity_file(m_asset_manager->get_all_assets()[wstring_to_string(id)]->file_name)) {
+                global_scene->load_entity(std::dynamic_pointer_cast<entity_asset>(m_asset_manager->get_all_assets()[wstring_to_string(id)])->data);
             }
 
 

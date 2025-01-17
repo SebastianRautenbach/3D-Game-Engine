@@ -24,6 +24,7 @@ wizm::content_browser_layer::content_browser_layer(asset_manager* p_asset_manage
     script_file_icon = new core_gl_texture("resources/images/script_icon.png");
     sound_file_icon = new core_gl_texture("resources/images/sound_file_icon.png");
     material_file_icon = new core_gl_texture("resources/images/material_file_icon.png");
+    entity_file_icon = new core_gl_texture("resources/images/entity_file_icon.png");
 }
 
 wizm::content_browser_layer::~content_browser_layer()
@@ -35,6 +36,7 @@ wizm::content_browser_layer::~content_browser_layer()
     delete map_file_icon;
     delete script_file_icon;
     delete material_file_icon;
+    delete entity_file_icon;
 }
 
 void wizm::content_browser_layer::OnAttach()
@@ -148,6 +150,8 @@ void wizm::content_browser_layer::update(float delta_time)
                 final_texture_icon = (ImTextureID)sound_file_icon->texture_id;
             else if (is_material_file(file_name))
                 final_texture_icon = (ImTextureID)material_file_icon->texture_id;
+            else if(is_entity_file(file_name))
+                final_texture_icon = (ImTextureID)entity_file_icon->texture_id;
 
                
 

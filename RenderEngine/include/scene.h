@@ -24,6 +24,8 @@ namespace wizm {
 		// entity related 
 		core_entity* add_entity(core_entity* entity);
 		core_entity* add_entity(std::string entity_name);
+		void load_entity(filedata::ZER& entity_save);
+		void process_entity(filedata::ZER& new_read, core_entity* parent, const std::string& class_name);
 
 		core_entity* get_entity(std::string entity_id) { 
 			for (auto& ent : m_entities) { 
