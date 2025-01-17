@@ -77,7 +77,7 @@ void wizm::core_node::add_scale(const glm::vec3& deltaScale)
     m_scale += deltaScale;
 }
 
-glm::mat4 wizm::core_node::get_transform()
+glm::mat4 wizm::core_node::get_world_transform()
 {
 
     static const glm::mat4 identity = glm::mat4(1.0f);
@@ -91,6 +91,6 @@ glm::mat4 wizm::core_node::get_transform()
         return localTransform;
     }
 
-    return m_parent_node->get_transform() * localTransform;
+    return m_parent_node->get_world_transform() * localTransform;
 
 }

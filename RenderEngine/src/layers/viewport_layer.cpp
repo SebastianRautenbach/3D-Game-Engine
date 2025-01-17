@@ -205,7 +205,7 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
                 glm::scale(glm::mat4(1.0f), pivot->get_scale());
         }
         else {
-            mat = pivot->get_transform();
+            mat = pivot->get_world_transform();
         }
 
         ImGuizmo::SetOrthographic(false);
@@ -243,23 +243,31 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
 
             for (auto e : global_scene->get_selected_entities()) {
                 if (e != nullptr) {
+                    glm::mat4 currentWorldTransform = e->get_world_transform();
 
+                    if (e->get_parent()) {
+                        glm::mat4 parentWorldTransform = e->get_parent()->get_world_transform();
+                        glm::mat4 newLocalTransform = glm::inverse(parentWorldTransform) * mat;
 
-                    glm::vec3 currentRotation = e->get_rotation();
-                    glm::vec3 currentScale = e->get_scale();
+                        glm::vec3 localPosition, localRotation, localScale;
+                        lowlevelsys::decompose_transform(newLocalTransform, localPosition, localRotation, localScale);
 
-                    glm::vec3 rotationDelta = rotation;
-                    if (!is_global_gizmo) {
-                        rotationDelta = rotation - pivot->get_rotation();
+                        e->set_position(localPosition);
+                        e->set_rotation(localRotation);
+                        e->set_scale(localScale);
                     }
-                    glm::vec3 scaleDelta = scale / pivot->get_scale();
-                  
+                    else {
+                        glm::vec3 diff = position - pivot->get_position();
+                        glm::vec3 rotationDelta = rotation - pivot->get_rotation();
+                        glm::vec3 scaleDelta = scale / pivot->get_scale();
 
-                    e->add_position(diff);
-                    e->add_rotation(rotationDelta);
-                    e->set_scale(currentScale * scaleDelta);
+                        e->add_position(diff);
+                        e->add_rotation(rotationDelta);
+                        e->set_scale(e->get_scale() * scaleDelta);
+                    }
                 }
             }
+
         }
 
 

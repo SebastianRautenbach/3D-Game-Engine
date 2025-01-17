@@ -46,6 +46,29 @@ directionallight{
 	}
 }
 floor{
+	mr sound{
+		sound_component0{
+			asset id:17982726895264320479;
+			m_loop:1;
+			m_is3d:1;
+			m_play_on_start:1;
+			transform{
+				position:0.000000,0.000000,0.000000;
+				rotation:0.000000,0.000000,0.000000;
+				scale:1.000000,1.000000,1.000000;
+			}
+		}
+		specs{
+			is_entity:1;
+		}
+		tags{
+		}
+		transform{
+			position:-0.000014,0.337206,-2.235577;
+			rotation:-0.000000,0.771115,0.000000;
+			scale:0.991825,1.000000,1.000000;
+		}
+	}
 	specs{
 		is_entity:1;
 	}
@@ -61,8 +84,8 @@ floor{
 	tags{
 	}
 	transform{
-		position:4.740477,1.275492,-0.089514;
-		rotation:0.000000,0.988182,0.000000;
+		position:4.731898,1.263428,-0.099028;
+		rotation:0.000000,0.657614,-0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }
@@ -294,28 +317,5 @@ mesh(1)(1)(1)(1)(1){
 		position:7.660025,2.946651,0.066455;
 		rotation:0.000070,-1.556640,-0.000071;
 		scale:12.487229,3.897255,0.135687;
-	}
-}
-mr sound{
-	sound_component0{
-		asset id:17982726895264320479;
-		m_loop:1;
-		m_is3d:1;
-		m_play_on_start:1;
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
-	specs{
-		is_entity:1;
-	}
-	tags{
-	}
-	transform{
-		position:2.792853,1.327278,-2.926228;
-		rotation:0.000000,0.000000,0.000000;
-		scale:1.000000,1.000000,1.000000;
 	}
 }

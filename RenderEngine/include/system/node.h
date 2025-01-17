@@ -35,6 +35,14 @@ namespace wizm {
 			m_parent_node->add_child(this);
 		}
 
+		void remove_parent() {
+			if (m_parent_node)
+			{
+				m_parent_node->remove_child(this);
+				m_parent_node = nullptr;
+			}
+		}
+
 		void add_child(core_node* child_node) {
 			m_child_nodes.emplace_back(child_node);
 		}
@@ -66,12 +74,13 @@ namespace wizm {
 		const glm::vec3& get_position() const { return m_translation; }		   // <<  These are local transforms
 		const glm::vec3& get_rotation() const { return m_rotation; }		   // <<  These are local transforms
 		const glm::vec3& get_scale() const { return m_scale; }				   // <<  These are local transforms
+		const glm::mat4& get_transform() const { return m_transform; }		   // <<  These are local transforms
 
-		glm::mat4 get_transform();
+		glm::mat4 get_world_transform();
 
 		glm::vec3 get_world_position() {
 			if (m_parent_node)
-				return glm::vec3(m_parent_node->get_transform() * glm::vec4(m_translation, 1.0f));
+				return glm::vec3(m_parent_node->get_world_transform() * glm::vec4(m_translation, 1.0f));
 			else
 				return m_translation;
 		}
@@ -86,7 +95,7 @@ namespace wizm {
 
 
 		glm::vec3 get_world_rotation() {
-			glm::mat3 normal_matrix = glm::mat3(get_transform());
+			glm::mat3 normal_matrix = glm::mat3(get_world_transform());
 			glm::vec3 euler_angles = glm::eulerAngles(glm::quat_cast(glm::mat4(normal_matrix)));
 			return glm::degrees(euler_angles);
 		}
@@ -94,7 +103,7 @@ namespace wizm {
 
 		glm::quat get_world_rotation_quat()
 		{
-			glm::mat3 normal_matrix = glm::mat3(get_transform());
+			glm::mat3 normal_matrix = glm::mat3(get_world_transform());
 			return glm::quat_cast(glm::mat4(normal_matrix));
 		}
 

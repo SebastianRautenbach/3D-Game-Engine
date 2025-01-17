@@ -33,7 +33,7 @@ void wizm::staticmesh_component::component_update(float delta_time, std::shared_
 		m_materials.emplace_back();
 	}
 
-	shader->setMat4("model", get_transform());
+	shader->setMat4("model", get_world_transform());
 
 	for (int i = 0; i < meshes; i++) {
 

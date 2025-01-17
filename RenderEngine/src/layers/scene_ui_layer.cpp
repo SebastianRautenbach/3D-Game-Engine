@@ -114,9 +114,15 @@ void wizm::scene_ui_layer::render_entity_node(core_entity* entity)
 	}
 
 
-	ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+	ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnDoubleClick;
 	if (is_selected) {
 		flags |= ImGuiTreeNodeFlags_Selected;
+	}
+	if (!entity->get_children().empty() && entity->get_children().size() == entity->m_components_list.size()) {
+		flags |= ImGuiTreeNodeFlags_Leaf;
+	}
+	else {
+		flags |= ImGuiTreeNodeFlags_OpenOnArrow;
 	}
 
 
@@ -132,9 +138,12 @@ void wizm::scene_ui_layer::render_entity_node(core_entity* entity)
 			
 			core_entity* dropped_entity = *(core_entity**)payload->Data;
 
-			if (dropped_entity != entity) {
+			if (dropped_entity != entity && dropped_entity->get_parent() != entity) {
 				
 				dropped_entity->add_parent(entity);
+			}
+			else {
+				dropped_entity->remove_parent();
 			}
 		}
 		ImGui::EndDragDropTarget();

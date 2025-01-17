@@ -17,25 +17,26 @@ void wizm::billboard_manager::render()
 		for (const auto& ent : global_scene->m_entities) {
 			for (const auto& comp : ent->m_components_list) {
 
+				auto trans = comp->get_world_transform();
 
 				if (comp->m_component_type == ePointLight) {
-					m_billboard_core->draw(comp->get_transform(), eLightB);
+					m_billboard_core->draw(trans, eLightB);
 				}
 				else if (comp->m_component_type == eDirectionalLight)
 				{
-					m_billboard_core->draw(comp->get_transform(), eDirLightB);
+					m_billboard_core->draw(trans, eDirLightB);
 				}
 				else if (comp->m_component_type == eSpotLight)
 				{
-					m_billboard_core->draw(comp->get_transform(), eSpotLightB);
+					m_billboard_core->draw(trans, eSpotLightB);
 				}
 				else if (comp->m_component_type == eCamera)
 				{
-					m_billboard_core->draw(comp->get_transform(), eCameraB);
+					m_billboard_core->draw(trans, eCameraB);
 				}
 				else if (comp->m_component_type == eSound3D) 
 				{
-					m_billboard_core->draw(comp->get_transform(), eSoundB);
+					m_billboard_core->draw(trans, eSoundB);
 				}
 			}
 		}
