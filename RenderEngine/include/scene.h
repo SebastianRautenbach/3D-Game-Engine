@@ -8,7 +8,7 @@ namespace wizm {
 
 	class core_scene {
 	public:
-		
+		~core_scene();
 		// default scene updates
 		void scene_preupdate();
 		void scene_update(float delta_time, std::shared_ptr<core_gl_shader>& shader);

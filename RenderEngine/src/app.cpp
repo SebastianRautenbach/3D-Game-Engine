@@ -16,7 +16,7 @@ int main(int argc, char* args[]) {
 		updater->render();
 		updater->post_render();
  	}
-	updater->m_gl_renderer->on_exit();
+	delete updater;
 
 	return 0;
 

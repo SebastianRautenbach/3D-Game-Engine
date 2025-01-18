@@ -17,6 +17,7 @@ namespace wizm {
 			save_t.read_file_cntx(this->_path);
 			save_t["material"]["textures"].set_string("diffuse", { this->diffuse_asset_id });
 			save_t["material"]["textures"].set_string("specular", { this->specular_asset_id });
+			save_t["material"].set_float("shininess", { this->m_shininess });
 			save_t.save_file(save_t, this->_path);
 		}
 		

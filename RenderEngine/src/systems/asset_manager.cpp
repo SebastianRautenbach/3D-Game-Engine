@@ -12,6 +12,11 @@ wizm::asset_manager::asset_manager(audio_manager* audio_manager)
 	load_assets_db();
 }
 
+wizm::asset_manager::~asset_manager()
+{
+	m_assets.clear();
+}
+
 /*
 	We basicly check if the component has an asset ID and if it does apply that asset 
 	to the neccasary variable.

@@ -253,6 +253,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 
 void lowlevelsys::gl_renderer::on_exit()
 {
+	m_shdrs.clear();
 	glfwTerminate();
 
 }

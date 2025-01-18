@@ -5,7 +5,7 @@
 
 
 wizm::material_editor_layer::material_editor_layer(asset_manager* asset_manager)
-    :m_asset_manager(asset_manager)
+    :core_layer("material_editor_layer"), m_asset_manager(asset_manager)
 {
     framebuffer_spec spec;
     spec.Width = 150;
@@ -29,10 +29,14 @@ wizm::material_editor_layer::material_editor_layer(asset_manager* asset_manager)
 
 wizm::material_editor_layer::~material_editor_layer()
 {
+    sm_comp->m_model = nullptr;
     delete sm_comp;
-    delete m_asset_manager;
-    delete diffuse_image;
-    delete sepcular_image;
+    sm_comp = NULL;
+
+    if(diffuse_image)
+        delete diffuse_image;
+    if(sepcular_image)
+        delete sepcular_image;
     delete material_fbo;
     delete m_camera;
     delete light;

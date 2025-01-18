@@ -49,7 +49,7 @@ cool cube{
 	}
 	staticmesh0{
 		asset id:2593510341366371538;
-		m_material_asset_ids:12464556249974524193,8605433296323588649;
+		m_material_asset_ids:12464556249974524193,17850291995326238515;
 		transform{
 			position:0.000000,0.000000,0.000000;
 			rotation:0.000000,0.000000,0.000000;
@@ -235,13 +235,6 @@ light1(1)(1){
 		scale:1.000000,1.000000,1.000000;
 	}
 }
-viewport_camera{
-	transform{
-		position:-11.518222,3.628443,7.268926;
-		rotation:-9.098946,-75.209160,0.000000;
-		scale:1.000000,1.000000,1.000000;
-	}
-}
 zWALLS{
 	mesh{
 		specs{
@@ -249,7 +242,7 @@ zWALLS{
 		}
 		staticmesh0{
 			asset id:9078966489925085488;
-			m_material_asset_ids:8605433296323588649;
+			m_material_asset_ids:17850291995326238515;
 			transform{
 				position:0.000000,0.000000,0.000000;
 				rotation:0.000000,0.000000,0.000000;
@@ -270,7 +263,7 @@ zWALLS{
 		}
 		staticmesh0{
 			asset id:9078966489925085488;
-			m_material_asset_ids:8605433296323588649;
+			m_material_asset_ids:17850291995326238515;
 			transform{
 				position:0.000000,0.000000,0.000000;
 				rotation:0.000000,0.000000,0.000000;
@@ -291,7 +284,7 @@ zWALLS{
 		}
 		staticmesh0{
 			asset id:9078966489925085488;
-			m_material_asset_ids:8605433296323588649;
+			m_material_asset_ids:17850291995326238515;
 			transform{
 				position:0.000000,0.000000,0.000000;
 				rotation:0.000000,0.000000,0.000000;
@@ -312,7 +305,7 @@ zWALLS{
 		}
 		staticmesh0{
 			asset id:9078966489925085488;
-			m_material_asset_ids:8605433296323588649;
+			m_material_asset_ids:17850291995326238515;
 			transform{
 				position:0.000000,0.000000,0.000000;
 				rotation:0.000000,0.000000,0.000000;

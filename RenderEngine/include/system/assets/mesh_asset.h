@@ -12,8 +12,11 @@ namespace wizm {
 	class staticmesh_asset : public core_asset, public core_renderable {
 	public:
 
-		void set_mesh(core_model* model) { m_model = model; }
-		core_model* get_mesh() { return m_model; }
+		~staticmesh_asset() override {
+		}
+
+		void set_mesh(std::shared_ptr<core_model> model) { m_model = model; }
+		std::shared_ptr<core_model> get_mesh() { return m_model; }
 		int material_count() { return m_model->m_num_materials; }
 		
 		void load(const std::string& path) override {
@@ -21,7 +24,7 @@ namespace wizm {
 			{
 				std::filesystem::path file_path(path);
 
-				m_model = new core_model(path.c_str());
+				m_model = std::make_unique<core_model>(path.c_str());
 				file_name = file_path.filename().string();
 			}
 		}
@@ -55,7 +58,7 @@ namespace wizm {
 		}
 
 	private:
-		core_model* m_model;
+		std::shared_ptr<core_model> m_model;
 
 	public:
 		std::string file_name;

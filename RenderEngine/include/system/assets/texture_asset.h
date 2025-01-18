@@ -9,7 +9,7 @@ namespace wizm {
 	class texture_asset : public core_asset {
 
 	public:
-		~texture_asset() {
+		~texture_asset() override {
 			texture->delete_texture();
 			delete texture;
 		}

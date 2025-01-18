@@ -3,7 +3,7 @@
 #include "system/scene_manager.h"
 
 wizm::properties_ui_layer::properties_ui_layer( gl_renderer* renderer, asset_manager* manager)
-	: m_renderer(renderer), m_asset_manager(manager)
+	:core_layer("properties_ui_layer"), m_renderer(renderer), m_asset_manager(manager)
 {
 }
 

@@ -12,7 +12,7 @@ wizm::gui_layer::gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> c
 
 wizm::gui_layer::~gui_layer()
 {
-    OnDetach();
+   // OnDetach();
 }
 
 void wizm::gui_layer::OnAttach()

@@ -2,7 +2,10 @@
 #include <functional>
 
 namespace wizm {
-
+	core_scene::~core_scene()
+	{
+		clear_entities();
+	}
 	void core_scene::scene_preupdate()
 	{
 

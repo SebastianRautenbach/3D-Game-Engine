@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <filesystem>
 #include "other utils/IDGEN.h"
 
 
@@ -70,11 +71,18 @@ public:
     }
 
     void add_to_database(const asset_details& asset) {
-        auto all_assets = retrieve_all_assets();
-        for (auto a : all_assets) {
-            if (asset.path == a.path)
-                return;
+        
+        if (!std::filesystem::exists(asset.path)) {
+            throw std::invalid_argument("The asset path does not exist: " + asset.path);
         }
+
+        const auto all_assets = retrieve_all_assets();
+        for (const auto& a : all_assets) {
+            if (std::filesystem::equivalent(std::filesystem::path(asset.path), std::filesystem::path(a.path))) {
+                return;
+            }
+        }
+
         insert_asset(asset);
     }
 

@@ -22,6 +22,7 @@ namespace wizm {
 
     public:
         asset_manager(audio_manager* audio_manager);
+        ~asset_manager();
 
 
     public:

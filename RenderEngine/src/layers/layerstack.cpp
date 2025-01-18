@@ -6,6 +6,7 @@ wizm::layer_stack::~layer_stack()
         layer->OnDetach();
         delete layer;
     }
+  
 }
 
 

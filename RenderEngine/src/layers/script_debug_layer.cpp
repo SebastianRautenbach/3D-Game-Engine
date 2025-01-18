@@ -2,6 +2,7 @@
 #include "other utils/common.h"
 
 wizm::script_debug_layer::script_debug_layer()
+    :   core_layer("script_debug_layer")
 {
 }
 

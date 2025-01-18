@@ -135,19 +135,17 @@ void update_manager::post_render()
 
 wizm::update_manager::~update_manager()
 {
+	m_gl_renderer->on_exit();
 	delete m_layer_stack;
 	delete m_billboard_manager;
-	delete m_asset_manager;
 	delete m_listener_manager;
 	delete m_audio_manager;
 	delete compute_cluster_test;
-	delete m_framebuffer;
-	//delete m_framebuffer_depth;
-
 	delete m_gl_renderer;
 	delete m_timer;
-	delete base_layer;
 	delete m_framebuffer;
+	delete m_asset_manager;
+	delete global_scene;
 }
 
 

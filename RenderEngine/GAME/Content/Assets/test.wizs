@@ -1,6 +1,6 @@
 
 const float PI = 3.141592653589793;
-string name = "floor";
+string name = "cool cube";
 
 
 float sin(float rad) {
@@ -79,7 +79,7 @@ void on_update(float delta_time) {
     add_entity_position(name, new_pos.x - entity_pos.x, new_pos.y - entity_pos.y, 0);
 
     if(!stop) {
-        destroy_entity("Entity Name");
+        destroy_entity("light1");
         stop = true;
     }
 
