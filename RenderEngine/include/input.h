@@ -11,6 +11,7 @@
 struct mouse_info {
 	double x_offset, y_offset;
 	bool mousemoved;
+	float scroll_offset;
 };
 
 
@@ -40,11 +41,13 @@ public:
 
 	void mouse_stop_move() { _mouse_info.mousemoved = false; }
 
+	float get_mouse_scroll_offset() { return _mouse_info.scroll_offset; }
+	void set_mouse_scroll_offset(float offset = 0) { _mouse_info.scroll_offset = offset; }
+
 private:
 	float w_width, w_height;
 	static glm::vec2 last_mouse_pos;
 	static mouse_info _mouse_info;
 	static std::unordered_map<int, bool> keys;
-	static std::unordered_map<int, bool> mouse_wheel;
 	GLFWwindow* m_window = nullptr;
 };

@@ -512,5 +512,8 @@
     <ClInclude Include="include\system\assets\entity_asset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\gl core\engine_shader_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

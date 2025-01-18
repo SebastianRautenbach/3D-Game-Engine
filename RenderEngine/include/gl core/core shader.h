@@ -20,7 +20,7 @@ public:
 
 public:
 	bool is_compute = false;
-	unsigned int shader_id;
+	unsigned int shader_id; // this is opengl specific
 
 
 public:

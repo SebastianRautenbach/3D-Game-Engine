@@ -3,6 +3,7 @@
 #include "system/camera_3d.h"
 #include "system/scene_manager.h"
 #include "system/input_manager.h"
+#include "gl core/engine_shader_types.h"
 
 
 void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, std::shared_ptr<camera_manager> camera_manager)
@@ -70,13 +71,12 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	*	but for now this will do
 	*/
 
-	m_shdrs.emplace_back(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr_new.glsl"));
-	m_shdrs.emplace_back(new core_gl_shader("shaders/ray_vrtx.glsl", "shaders/ray_frgmnt.glsl"));
-	m_shdrs.emplace_back(new core_gl_shader("shaders/billboard_vrtx.glsl", "shaders/billboard_frgment.glsl"));
-	m_shdrs.emplace_back(new core_gl_shader("shaders/Z Pre-pass_vrtx_shdr.glsl", "shaders/Z Pre-pass_frgmnt_shdr.glsl"));
-	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_comp_shdr.glsl"));
-	m_shdrs.emplace_back(new core_gl_shader("shaders/cluster_cull_comp_shdr.glsl"));
-	m_shdrs.emplace_back(new core_gl_shader("shaders/mouse_pick_vrtx.glsl", "shaders/mouse_pick_frgmnt.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_DEFUALT,new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/default_frgmnt_shdr_new.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_BILLBOARD,new core_gl_shader("shaders/billboard_vrtx.glsl", "shaders/billboard_frgment.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_PREPASS,new core_gl_shader("shaders/Z Pre-pass_vrtx_shdr.glsl", "shaders/Z Pre-pass_frgmnt_shdr.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_CLUSTER_COMP,new core_gl_shader("shaders/cluster_comp_shdr.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_CLUSTER_CULL,new core_gl_shader("shaders/cluster_cull_comp_shdr.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_MOUSEPICK,new core_gl_shader("shaders/mouse_pick_vrtx.glsl", "shaders/mouse_pick_frgmnt.glsl"));
 	
 }
 
@@ -102,7 +102,6 @@ void lowlevelsys::gl_renderer::pre_render(bool& is_running, float deltaTime)
 
 void lowlevelsys::gl_renderer::render(float deltaTime)
 {
-
 	if (global_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_ALT))
 	{
 		global_input_manager->set_hide_mouse_cursor(true);
@@ -110,25 +109,29 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		m_camera_manager->m_viewport_camera->add_yaw(global_input_manager->get_mouse_offset_new().x_offset * .02);
 		m_camera_manager->m_viewport_camera->add_pitch(global_input_manager->get_mouse_offset_new().y_offset * .02);
 
+		m_camera_manager->m_viewport_camera->add_speed(global_input_manager->get_mouse_scroll_offset() / 50);
+		m_camera_manager->m_viewport_camera->set_speed(glm::clamp(m_camera_manager->m_viewport_camera->get_speed(), 0.01f, 2.0f));
+		global_input_manager->set_mouse_scroll_offset();
 
+		float speed = m_camera_manager->m_viewport_camera->get_speed();
 
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_W))
-			m_camera_manager->m_viewport_camera->move_forward(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_forward(speed);
 
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_S))
-			m_camera_manager->m_viewport_camera->move_forward(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_forward(-speed);
 
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_D))
-			m_camera_manager->m_viewport_camera->move_right(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_right(speed);
 
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_A))
-			m_camera_manager->m_viewport_camera->move_right(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_right(-speed);
 
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_E))
-			m_camera_manager->m_viewport_camera->move_up(2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_up(speed);
 
 		if (global_input_manager->has_key_been_pressed(GLFW_KEY_Q))
-			m_camera_manager->m_viewport_camera->move_up(-2 * deltaTime);
+			m_camera_manager->m_viewport_camera->move_up(-speed);
 
 
 	}

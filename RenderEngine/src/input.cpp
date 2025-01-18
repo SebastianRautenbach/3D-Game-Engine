@@ -22,6 +22,8 @@ input_manager::input_manager(GLFWwindow* window, float width, float height)
 
 	glfwSetKeyCallback(window, input_manager::keyCallback);
 	glfwSetScrollCallback(window, input_manager::scroll_callback);
+
+	_mouse_info.scroll_offset = 0.0f;
 }
 
 
@@ -49,16 +51,8 @@ void input_manager::keyCallback(GLFWwindow* window, int key, int scancode, int a
 
 void input_manager::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-	if (xoffset == 0)
-		mouse_wheel[0] = false;
-	else
-		mouse_wheel[0] = true;
 
-
-	if (yoffset == 0)
-		mouse_wheel[0] = false;
-	else
-		mouse_wheel[0] = true;
+	_mouse_info.scroll_offset = static_cast<float>(yoffset);
 }
 //-----------------------------------------------------------------------
 
@@ -125,6 +119,5 @@ mouse_info input_manager::get_mouse_offset_new()
 
 
 std::unordered_map<int, bool> input_manager::keys;
-std::unordered_map<int, bool> input_manager::mouse_wheel;
 mouse_info input_manager::_mouse_info;
 glm::vec2 input_manager::last_mouse_pos;

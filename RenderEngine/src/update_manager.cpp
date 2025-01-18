@@ -1,7 +1,7 @@
 #include "update_manager.h"
 #include "system/mouse_picking.h"
 #include "system/scene_manager.h"
-
+#include "gl core/engine_shader_types.h"
 
 using namespace wizm;
 
@@ -31,7 +31,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	spec.attachment = { framebuffer_texture_format::RGBA8, framebuffer_texture_format::Depth };
 	m_framebuffer = new core_framebuffer(spec);
 
-	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs, m_gl_renderer->m_shdrs[4], m_gl_renderer->m_shdrs[5],  m_camera_manager);
+	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs, m_gl_renderer->m_shdrs[ENGINE_SHADER_CLUSTER_COMP], m_gl_renderer->m_shdrs[ENGINE_SHADER_CLUSTER_CULL],  m_camera_manager);
 	
 
 	m_asset_manager = new asset_manager(m_audio_manager);
@@ -42,7 +42,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 
 	m_layer_stack->PushLayer(base_layer);
 
-	m_billboard_manager = new billboard_manager(m_gl_renderer->m_shdrs[2]);
+	m_billboard_manager = new billboard_manager(m_gl_renderer->m_shdrs[ENGINE_SHADER_BILLBOARD]);
 
 	m_layer_stack->PushLayer(new script_debug_layer());
 	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer, m_camera_manager, m_gl_renderer, m_asset_manager));
@@ -100,9 +100,9 @@ void update_manager::render()
 	
 	{
 		m_framebuffer->bind_buffer();
-		m_gl_renderer->m_shdrs[0]->use_shader();
-		global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
-		global_scene->update_light_components(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[0]);
+		m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]->use_shader();
+		global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]);
+		global_scene->update_light_components(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]);
 		m_billboard_manager->render();
 		m_framebuffer->unbind_buffer();
 	}

@@ -2,7 +2,7 @@
 #include "system/camera_3d.h"
 
 
-wizm::compute_cluster::compute_cluster(std::vector<std::shared_ptr<core_gl_shader>>& shaders, std::shared_ptr<core_gl_shader>& com_shader_cluster, std::shared_ptr<core_gl_shader>& com_shader_cull, std::shared_ptr<camera_manager> camera_manager)
+wizm::compute_cluster::compute_cluster(std::map<int, std::shared_ptr<core_gl_shader>>& shaders, std::shared_ptr<core_gl_shader>& com_shader_cluster, std::shared_ptr<core_gl_shader>& com_shader_cull, std::shared_ptr<camera_manager> camera_manager)
 	: m_shader_cluster(com_shader_cluster), m_shader_cull(com_shader_cull), m_camera_manager(camera_manager), m_shaders(shaders)
 {
 	glGenBuffers(1, &clusterGridSSBO);
@@ -169,7 +169,7 @@ void wizm::compute_cluster::update_lights()
 void wizm::compute_cluster::update()
 {
 	for (auto shader : m_shaders) {
-		if (!shader->is_compute)
+		if (!shader.second->is_compute)
 		{
 			glm::mat4 view = glm::mat4(1.0f);
 			glm::mat4 projection = glm::mat4(1.0f);
@@ -177,19 +177,19 @@ void wizm::compute_cluster::update()
 			view = m_camera_manager->m_crnt_camera->get_view_matrix();
 			projection = m_camera_manager->m_crnt_camera->get_projection_matrix();
 
-			shader->use_shader();
-			shader->setFloat("zNear", m_camera_manager->m_crnt_camera->get_near());
-			shader->setFloat("zFar", m_camera_manager->m_crnt_camera->get_far());
-			shader->setMat4("inverseProjection", glm::inverse(m_camera_manager->m_crnt_camera->get_projection_matrix()));
-			shader->setUVec3("gridSize", { gridSizeX, gridSizeY, gridSizeZ });
-			shader->setUVec2("screenDimensions", { m_camera_manager->m_crnt_camera->get_window_size().x, m_camera_manager->m_crnt_camera->get_window_size().y });
+			shader.second->use_shader();
+			shader.second->setFloat("zNear", m_camera_manager->m_crnt_camera->get_near());
+			shader.second->setFloat("zFar", m_camera_manager->m_crnt_camera->get_far());
+			shader.second->setMat4("inverseProjection", glm::inverse(m_camera_manager->m_crnt_camera->get_projection_matrix()));
+			shader.second->setUVec3("gridSize", { gridSizeX, gridSizeY, gridSizeZ });
+			shader.second->setUVec2("screenDimensions", { m_camera_manager->m_crnt_camera->get_window_size().x, m_camera_manager->m_crnt_camera->get_window_size().y });
 
 
-			shader->setMat4("view", view);
-			shader->setMat4("projection", projection);
-			shader->setMat4("perspective", view);
-			shader->setVec3("camPos", m_camera_manager->m_crnt_camera->get_position());
-			shader->setVec3("camFront", m_camera_manager->m_crnt_camera->get_forward_vector());
+			shader.second->setMat4("view", view);
+			shader.second->setMat4("projection", projection);
+			shader.second->setMat4("perspective", view);
+			shader.second->setVec3("camPos", m_camera_manager->m_crnt_camera->get_position());
+			shader.second->setVec3("camFront", m_camera_manager->m_crnt_camera->get_forward_vector());
 		}
 	}
 

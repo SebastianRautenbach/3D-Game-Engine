@@ -249,6 +249,7 @@
     <ClInclude Include="include\entity sys\entity.h" />
     <ClInclude Include="include\gl core\core shader.h" />
     <ClInclude Include="include\gl core\core_camera.h" />
+    <ClInclude Include="include\gl core\engine_shader_types.h" />
     <ClInclude Include="include\input.h" />
     <ClInclude Include="include\input_types.h" />
     <ClInclude Include="include\layers\asset_viewer_layer.h" />

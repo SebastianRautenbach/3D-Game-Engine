@@ -57,8 +57,12 @@ namespace wizm {
 		void move_right(float distance);
 		void move_forward(float distance);
 
+		void set_speed(float speed) { m_speed = speed; }
+		void add_speed(float speed) { m_speed += speed; }
+
 		float get_near() { return m_near_plane; }
 		float get_far() { return m_far_plane; }
+		float get_speed() { return m_speed; }
 
 		/*
 			Updates
@@ -112,6 +116,8 @@ namespace wizm {
 		float m_aspect_ratio;
 		float m_near_plane;
 		float m_far_plane;
+
+		float m_speed = 0.01;
 
 		glm::mat4 m_projection_matrix;
 		glm::mat4 m_rotation_matrix = glm::mat4(1.0f);

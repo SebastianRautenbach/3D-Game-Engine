@@ -22,6 +22,8 @@ namespace wizm {
 		void render_entity_node(core_entity* entity);
 		void render_modify_popup();
 
+		void open_create_ent_menu();
+
 	private:
 		gl_renderer* m_renderer;
 		bool open_mod_popup = false;

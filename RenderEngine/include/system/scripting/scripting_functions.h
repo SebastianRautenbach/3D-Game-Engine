@@ -280,27 +280,24 @@ namespace engine_scripting
 	SCRIPT_DEFINE_FUNC_1(void, destroy_entity,string);
 
 
-	//--------------------------------------------------    TEXTURES
+	//--------------------------------------------------    MATERIAL
 	//--------------------------------------------------------------
 
 
-	static void change_texture(std::string entity_name, int component_index, int texture_type ,std::string asset_id) {
+	void change_material(std::string entity_name, int component_index, std::string asset_id, int material_index) {
 		auto entity = global_scene->get_entity_name(entity_name);
-
 		if (entity->m_components_list.size() > component_index) {
 			auto sm_comp = dynamic_cast<staticmesh_component*>(entity->m_components_list[component_index]);
 			
-			//if(texture_type == 0)
-			//	sm_comp->m_material->diffuse_asset_id = asset_id;
-			//else if(texture_type == 1)
-			//	sm_comp->m_material->specular_asset_id = asset_id;
-
-			global_scene->m_reloaded = true;
+			if(sm_comp->m_material_asset_ids.size() > material_index)
+			{
+				sm_comp->m_material_asset_ids[material_index] = asset_id;
+				global_scene->m_reloaded = true;
+			}
 		}
+
 	}
-	SCRIPT_DEFINE_FUNC_4(void, change_texture, string, int, int ,string);
-	
-	
+	SCRIPT_DEFINE_FUNC_4(void, change_material, string, int, string, int);
 	
 	//--------------------------------------------------   TRANSFORM
 	//--------------------------------------------------------------
@@ -689,10 +686,10 @@ public:
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(get_mouse_pos));
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_mesh));
+		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_material));
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(destroy_entity));
 
-		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(change_texture));
 		
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(set_entity_rotation));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(add_entity_rotation));

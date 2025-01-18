@@ -1,6 +1,7 @@
 #include "layers/scene_ui_layer.h"
 #include "system/scene_manager.h"
 #include <functional>
+#include "tinyfiledialogs.h"
 
 wizm::scene_ui_layer::scene_ui_layer( gl_renderer* renderer)
 	:core_layer("scene ui layer"), m_renderer(renderer)
@@ -212,7 +213,38 @@ void wizm::scene_ui_layer::render_modify_popup()
 			global_scene->clear_selected_entities();
 			global_scene->add_selected_entity(crnt);
 		}
+		if (ImGui::MenuItem("Create entity asset")) {
+			open_create_ent_menu();
+		}
 
 		ImGui::EndPopup();
 	}
+}
+
+void wizm::scene_ui_layer::open_create_ent_menu()
+{
+	auto ent = global_scene->get_selected_entities()[0];
+	
+	std::string default_file = "../GAME/" + ent->m_ent_ID + ".went";
+	
+	
+	const char* filter = "*.went";
+
+	const char* selected_file = tinyfd_saveFileDialog(
+		"Save File",            
+		default_file.c_str(),
+		1,                      
+		&filter,                
+		"Entity asset Files"
+	);
+
+
+	if (!selected_file) { return; }
+
+
+	filedata::ZER save;
+	ent->save_data(ent->m_ent_ID, "", save[ent->m_ent_ID]);
+	save.save_file(save, selected_file);
+
+
 }

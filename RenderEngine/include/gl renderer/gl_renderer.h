@@ -11,11 +11,6 @@
 #include <vector>
 #include "system/compute_cluster_test.h"
 
-#define SHADER_ZPREPASS
-#define SHADER_DEFAULT
-#define SHADER_BILLBOARD
-
-
 using namespace wizm;
 class core_gl_shader;
 
@@ -34,7 +29,7 @@ namespace lowlevelsys {
 	public:
 		GLFWwindow* window;
 		
-		std::vector<std::shared_ptr<core_gl_shader>> m_shdrs;
+		std::map<int, std::shared_ptr<core_gl_shader>> m_shdrs;
 
 		std::shared_ptr<camera_manager> m_camera_manager; 
 
