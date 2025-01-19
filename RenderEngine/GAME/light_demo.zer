@@ -20,6 +20,18 @@ CAMERA{
 		scale:1.000000,1.000000,1.000000;
 	}
 }
+Entity Name{
+	specs{
+		is_entity:1;
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 cool cube{
 	mr sound{
 		sound_component0{

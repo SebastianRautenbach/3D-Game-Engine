@@ -242,8 +242,7 @@ void wizm::scene_ui_layer::open_create_ent_menu()
 	if (!selected_file) { return; }
 
 
-	filedata::ZER save;
-	ent->save_data(ent->m_ent_ID, "", save[ent->m_ent_ID]);
+	filedata::ZER save = global_scene->save_entity(ent);
 	save.save_file(save, selected_file);
 
 

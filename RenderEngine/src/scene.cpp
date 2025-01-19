@@ -9,8 +9,6 @@ namespace wizm {
 	void core_scene::scene_preupdate()
 	{
 
-		//delete_enity(nullptr);
-
 		for (auto& i : m_entities)
 		{
 			for (auto comp : i->m_components_list) {
@@ -114,6 +112,30 @@ namespace wizm {
 				process_entity(new_read[r.first], new_ent, r.first);
 			}
 		}
+	}
+
+	filedata::ZER core_scene::save_entity(core_entity* entity)
+	{
+		std::function<void(core_entity*, filedata::ZER&)> process_entity = [&](core_entity* entity, filedata::ZER& read) {
+
+			if (!entity) { return; }
+
+			read["specs"].set_int("is_entity", { 1 });
+			entity->save_data("", "", read);
+
+			for (auto& child : entity->get_children()) {
+
+				auto ent_child = dynamic_cast<core_entity*>(child);
+				if (!ent_child) { continue; }
+				process_entity(ent_child, read[ent_child->m_ent_ID]);
+			}
+			};
+
+		filedata::ZER read;
+	
+		process_entity(entity, read[entity->m_ent_ID]);
+
+		return read;
 	}
 
 

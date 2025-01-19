@@ -15,9 +15,9 @@ Variables:
     3   6 *    PshC4    0x0          (i:0, f:0)
     5   7 *    PshC4    0x0          (i:0, f:0)
     7   8 *    PSF      v5
-    8  10 *    PshGPtr  0x1ee3a629328          (i:2122693382952, f:1.04875e-311)
+    8  10 *    PshGPtr  0x1696dbba4e8          (i:1552324207848, f:7.6695e-312)
    11  12 *    CHKREF
-   12  12 *    ALLOC    0x1ee3a583620, 20             (type:string, string::string(const string&in))
+   12  12 *    ALLOC    0x1696dca8a20, 20             (type:string, string::string(const string&in))
    16   8 *    VAR      v5
    17  10 *    GETOBJ   0
    18  10 *    CALLSYS  77           (void set_entity_rotation(string, float, float, float))
@@ -27,9 +27,9 @@ Variables:
    23   6 *    PshC4    0x0          (i:0, f:0)
    25   7 *    PshC4    0x0          (i:0, f:0)
    27   8 *    PSF      v5
-   28  10 *    PshGPtr  0x1ee3a629328          (i:2122693382952, f:1.04875e-311)
+   28  10 *    PshGPtr  0x1696dbba4e8          (i:1552324207848, f:7.6695e-312)
    31  12 *    CHKREF
-   32  12 *    ALLOC    0x1ee3a583620, 20             (type:string, string::string(const string&in))
+   32  12 *    ALLOC    0x1696dca8a20, 20             (type:string, string::string(const string&in))
    36   8 *    VAR      v5
    37  10 *    GETOBJ   0
    38  10 *    CALLSYS  80           (void add_entity_position(string, float, float, float))

@@ -430,31 +430,36 @@ core_entity* wizm::viewport_layer::get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray
             glm::vec3 intersection_point;
 
             if (sm_comp && sm_comp->m_model) {
-                sm_comp->m_model->update_boundingvolume(ent->get_position(), ent->get_rotation(), ent->get_scale());
+                
+                sm_comp->m_model->update_boundingvolume(
+                    ent->get_world_position(),
+                    glm::eulerAngles(ent->get_world_rotation_quat()), 
+                    ent->get_world_scale()
+                );
 
                 if (sm_comp->m_model->ray_intersect(ray_dir, ray_pos, intersection_point)) {
-                   
                     float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->get_position());
                     touched_entities.emplace_back(distance, ent);
                 }
             }
             else if (renderable) {
-                renderable->update_boundingvolume(comp->get_world_position(), glm::vec3(0.0f), glm::vec3(1.0f));
-                if (renderable->ray_intersect(ray_dir, ray_pos, intersection_point)) {
+                renderable->update_boundingvolume(
+                    comp->get_world_position(),
+                    glm::vec3(0.0f), 
+                    glm::vec3(1.0f)
+                );
 
+                if (renderable->ray_intersect(ray_dir, ray_pos, intersection_point)) {
                     float distance = glm::length(intersection_point - m_camera_manager->m_viewport_camera->get_position());
                     touched_entities.emplace_back(distance, ent);
                 }
-
             }
         }
     }
 
-   
     if (touched_entities.empty())
         return nullptr;
 
-   
     auto closest_entity_it = std::min_element(
         touched_entities.begin(), touched_entities.end(),
         [](const auto& a, const auto& b) {
@@ -463,10 +468,11 @@ core_entity* wizm::viewport_layer::get_ent_pick(glm::vec3 ray_dir, glm::vec3 ray
     );
 
     if (closest_entity_it != touched_entities.end()) {
-        return closest_entity_it->second; 
+        return closest_entity_it->second;
     }
 
     return nullptr;
+
 
 }
 

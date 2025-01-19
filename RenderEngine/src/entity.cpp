@@ -35,32 +35,6 @@ void wizm::core_entity::destroy_entity()
 }
 
 
-	//-----------------------------------------------------------------------
-
-void wizm::core_entity::entity_preupdate()
-{
-	for (auto& i : m_components_list)
-	{
-		i->component_preupdate();
-	}
-}
-
-void wizm::core_entity::entity_update(float delta_time)
-{
-	for (auto& i : m_components_list)
-	{
-		//i->component_update(delta_time);
-	}
-}
-
-void wizm::core_entity::entity_postupdate()
-{
-	for (auto& i : m_components_list)
-	{
-		i->component_postupdate();
-	}
-}
-
 //////////////////////////////////////////////////////////////////////////
 // COPY
 //////////////////////////////////////////////////////////////////////////

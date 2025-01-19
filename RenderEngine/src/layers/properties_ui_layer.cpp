@@ -451,9 +451,10 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_
 					if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
 						const wchar_t* id = (const wchar_t*)payload->Data;
 						if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tMATERIAL) {
-							
-							if ((i+1) > staticmesh->m_material_asset_ids.size())
-								staticmesh->m_material_asset_ids.emplace_back();
+						
+								while ((i + 1) > staticmesh->m_material_asset_ids.size()) {
+									staticmesh->m_material_asset_ids.emplace_back();
+								}
 
 							staticmesh->m_material_asset_ids[i] = wstring_to_string(id);													
 							global_scene->m_reloaded = true;

@@ -1,5 +1,5 @@
 material{
-	shininess:3.600000;
+	shininess:1.000000;
 	textures{
 		diffuse:17863448751584302019;
 		specular:17863448751584302019;
