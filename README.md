@@ -2,11 +2,12 @@
 ![ScreenShot1](https://github.com/SebastianRautenbach/3D-Game-Engine/blob/main/RenderEngine/res/screenshot2.png)
 
 **Current state**
-The engine is still in it's very early state but it is "functional". The engine does feature a component based entity system similar to Unity and Unreal. The engine has a basic renderer capable to render 3D and lighting.
-It does feature a serializer to save levels.
-
-**In-progress**
-I am busy with the asset management system allowing for more efficient memory allocation and a dynamic garbage collector. Working on gizmos for the light components.
+- *3D Renderer*: Fully supported 3D rendering with clustered forward rendering for optimal performance.
+- *Material Editor*: Intuitive material editor for creating and tweaking materials.
+- *Scripting*: Built-in scripting support using AngelScript for creating game logic.
+- *Asset Manager*: Robust asset manager for handling textures, models, and other game assets.
+- *Sound System*: Comprehensive sound system for creating immersive audio experiences.
+- *Runtime*: Supports runtime loading and unloading of assets, scripts, and other game data.
 
 **Whats to come**
 I want the engine to support a layer system where all scenes can be layered on top of each other making it more modular.
