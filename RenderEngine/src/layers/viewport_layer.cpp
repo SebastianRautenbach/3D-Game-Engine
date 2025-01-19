@@ -51,7 +51,7 @@ void wizm::viewport_layer::update(float delta_time)
         if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM")) {
 
             const wchar_t* id = (const wchar_t*)payload->Data;
-            
+            auto temp = m_asset_manager->get_all_assets()[wstring_to_string(id)];
             
             if(is_map_file(wstring_to_string(id)))
             {
@@ -60,11 +60,23 @@ void wizm::viewport_layer::update(float delta_time)
                 m_camera_manager->load_save_viewport_camera(wstring_to_string(id));
                 m_camera_manager->update_crnt_camera(false);
             }
-            else if (is_entity_file(m_asset_manager->get_all_assets()[wstring_to_string(id)]->file_name)) {
-                global_scene->load_entity(std::dynamic_pointer_cast<entity_asset>(m_asset_manager->get_all_assets()[wstring_to_string(id)])->data);
+            else if (is_entity_file(temp->file_name)) {
+                global_scene->load_entity(std::dynamic_pointer_cast<entity_asset>(temp)->data);
+                global_scene->m_reloaded = true;
+            }
+            else if (is_mesh_file(temp->file_name)) {
+                core_entity* new_ent = new core_entity("new ent");
+                
+                staticmesh_component* mesh = new staticmesh_component();
+                mesh->m_model = std::dynamic_pointer_cast<staticmesh_asset>(temp);
+                
+                new_ent->add_component(mesh);                    
+                global_scene->add_entity(new_ent);
+
+                global_scene->m_reloaded = true;
             }
 
-
+            
             
         }
 
@@ -140,69 +152,7 @@ void wizm::viewport_layer::update(float delta_time)
 
 void wizm::viewport_layer::scene_viewport_func(float delta_time)
 {
-    //if (global_scene->get_crnt_entity())
-    //{
-    //    auto ent = global_scene->get_crnt_entity();
-    //    glm::mat4 mat;
-    //
-    //    if (is_global_gizmo) {
-    //        glm::mat4 rotation = glm::mat4_cast(glm::quat(glm::vec3(0.0)));
-    //
-    //        mat = glm::translate(glm::mat4(1.0f), ent->get_position()) * rotation *
-    //            glm::scale(glm::mat4(1.0f), ent->get_scale());
-    //    }
-    //    else {
-    //        mat = ent->get_transform();
-    //    }
-    //
-    //
-    //    ImGuizmo::SetOrthographic(false);
-    //    ImGuizmo::SetDrawlist();
-    //
-    //    float windowWidth = (float)ImGui::GetWindowWidth();
-    //    float windowHeight = (float)ImGui::GetWindowHeight();
-    //    ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
-    //
-    //
-    //
-    //    glm::mat4 viewMatrix = m_camera_manager->m_viewport_camera->get_view_matrix();
-    //
-    //    glm::mat4 projectionMatrix = m_camera_manager->m_viewport_camera->get_projection_matrix();
-    //
-    //
-    //    float snapvals[3] = { m_snap_value, m_snap_value , m_snap_value };
-    //
-    //
-    //    ImGuizmo::Manipulate(glm::value_ptr(viewMatrix), glm::value_ptr(projectionMatrix),
-    //        (ImGuizmo::OPERATION)guizmo_type,
-    //        ImGuizmo::LOCAL, glm::value_ptr(mat), nullptr, m_should_snap ? snapvals : nullptr);
-    //
-    //
-    //
-    //    if (ImGuizmo::IsUsing())
-    //    {
-    //        glm::vec3 position = glm::vec3(0);
-    //        glm::vec3 rotation = glm::vec3(0);
-    //        glm::vec3 scale = glm::vec3(0);
-    //
-    //
-    //
-    //        lowlevelsys::decompose_transform(mat, position, rotation, scale);
-    //        glm::vec3 deltaRot = glm::vec3(0);
-    //
-    //        if (!is_global_gizmo)
-    //            deltaRot = rotation - ent->get_rotation();
-    //        else
-    //            deltaRot = (rotation);
-    //
-    //        ent->set_position(position);
-    //        ent->add_rotation(deltaRot);
-    //        ent->set_scale(scale);
-    //    }
-    //
-    //}
-
-#if 1
+    
     if(global_scene->get_crnt_entity())
     {
         auto pivot = global_scene->get_crnt_entity();
@@ -283,7 +233,6 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
 
        
     }
-#endif
 
     
 
@@ -339,12 +288,10 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
         ImGui::Text("Modify Entity");
         ImGui::Separator();
 
-        if (ImGui::MenuItem("Delete")) {
-            global_scene->m_entities.erase(std::find(global_scene->m_entities.begin(), global_scene->m_entities.end(), global_scene->get_crnt_entity()));
-
+        if (ImGui::MenuItem("Delete")) {         
+            global_scene->delete_enity(global_scene->get_crnt_entity());
+            global_scene->clear_selected_entities();
             m_renderer->update_draw_data();
-
-            global_scene->clear_selected_entities();            
         }
         if (ImGui::MenuItem("Duplicate")) {
 

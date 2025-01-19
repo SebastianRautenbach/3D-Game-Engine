@@ -1,4 +1,68 @@
-zWALLS{
+dir{
+	directionallight0{
+		light{
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.400000,0.400000,0.400000;
+			m_specular:0.500000,0.500000,0.500000;
+			m_brightness:1.000000;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+light{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.800000,0.800000,0.800000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+	}
+	tags{
+	}
+	transform{
+		position:-1.720106,3.362741,2.761348;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+viewport_camera{
+	transform{
+		position:-10.160493,17.264824,-0.686781;
+		rotation:-43.098831,267.912292,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+zWALLS1{
 	mesh{
 		specs{
 			is_entity:1;
@@ -57,9 +121,9 @@ zWALLS{
 		tags{
 		}
 		transform{
-			position:-0.016013,2.945549,-12.326226;
-			rotation:0.000000,-0.000000,0.000000;
-			scale:8.037182,0.802955,0.135687;
+			position:-0.016013,2.945549,-12.175573;
+			rotation:0.000000,0.000000,0.000000;
+			scale:8.037185,3.897255,0.135687;
 		}
 	}
 	mesh(1)(1)(1)(1)(1){
@@ -78,9 +142,9 @@ zWALLS{
 		tags{
 		}
 		transform{
-			position:7.660025,2.946651,0.066455;
-			rotation:0.000070,-1.556640,-0.000071;
-			scale:12.487229,10.497998,0.135687;
+			position:8.054614,2.945549,0.018075;
+			rotation:0.000000,-1.556666,0.000000;
+			scale:12.494595,3.897255,0.135687;
 		}
 	}
 	specs{

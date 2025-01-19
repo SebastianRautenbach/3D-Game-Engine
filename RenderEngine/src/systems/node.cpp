@@ -28,18 +28,17 @@ wizm::core_node::core_node()
 
 wizm::core_node::~core_node()
 {
-    for (auto& child : m_child_nodes) {      
+    while (!m_child_nodes.empty()) {
+        auto ent = m_child_nodes.back();
 
-        if (child) {
-            delete child;
-            child = nullptr;
-        }
+        m_child_nodes.pop_back();
+
+        delete ent;
     }
-    m_child_nodes.clear();
 
    if (m_parent_node) {
        auto& siblings = m_parent_node->m_child_nodes;
-       siblings.clear();
+       siblings.erase(std::remove(siblings.begin(), siblings.end(), this), siblings.end());
    }
 }
 

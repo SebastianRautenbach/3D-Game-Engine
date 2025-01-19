@@ -68,20 +68,27 @@ namespace wizm {
 		return does_exist;
 	}
 
+	void core_scene::gen_new_name(std::string& name) {
+		
+		if (does_ent_name_exist(name)) {
+			name += "1";
+			gen_new_name(name);
+		}
+
+	}
+
 
 	core_entity* core_scene::add_entity(core_entity* entity) {
+		
+		gen_new_name(entity->m_ent_ID);
+		
 		m_entities.push_back(entity);
 		return entity;
 	}
 	
 	core_entity* core_scene::add_entity(std::string entity_name)
 	{
-		// want to maybe do ID's for entity classification 
-		for (auto ent : m_entities) {
-			if (ent->m_ent_ID == entity_name) {
-				return NULL;
-			}
-		}
+		gen_new_name(entity_name);
 
 		auto ptr = new core_entity(entity_name);
 		m_entities.push_back(ptr);

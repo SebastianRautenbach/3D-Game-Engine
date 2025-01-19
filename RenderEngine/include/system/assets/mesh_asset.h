@@ -59,9 +59,6 @@ namespace wizm {
 
 	private:
 		std::shared_ptr<core_model> m_model;
-
-	public:
-		std::string file_name;
 	};
 
 }
