@@ -24,14 +24,8 @@ namespace wizm {
 
 		void refresh_assets();
 		
-		void update_add_content_ui(const std::filesystem::path& path);
 		std::vector<std::filesystem::path> get_directory_content(const std::filesystem::path& path);
 
-	private:
-		std::string generate_unique_name(
-			const std::vector<std::filesystem::path>& all_files_in_dir,
-			const std::string& base_name,
-			const std::string& extension);
 
 	public:
 
@@ -51,6 +45,11 @@ namespace wizm {
 		core_gl_texture* material_file_icon; 
 		core_gl_texture* entity_file_icon;
 
+	private:
+		std::string generate_unique_name(
+			const std::vector<std::filesystem::path>& all_files_in_dir,
+			const std::string& base_name,
+			const std::string& extension);
 	}; 
 
 

@@ -168,44 +168,41 @@ void wizm::compute_cluster::update_lights()
 
 void wizm::compute_cluster::update()
 {
-	for (auto shader : m_shaders) {
-		if (!shader.second->is_compute)
-		{
-			glm::mat4 view = glm::mat4(1.0f);
-			glm::mat4 projection = glm::mat4(1.0f);
+	auto crnt_camera = m_camera_manager->m_crnt_camera;
+	glm::mat4 view = crnt_camera->get_view_matrix();
+	glm::mat4 projection = crnt_camera->get_projection_matrix();
+	glm::mat4 inverseProjection = glm::inverse(projection);
+	glm::uvec2 screenDimensions = crnt_camera->get_window_size();
+	float zNear = crnt_camera->get_near();
+	float zFar = crnt_camera->get_far();
+	glm::vec3 camPos = crnt_camera->get_position();
+	glm::vec3 camFront = crnt_camera->get_forward_vector();
 
-			view = m_camera_manager->m_crnt_camera->get_view_matrix();
-			projection = m_camera_manager->m_crnt_camera->get_projection_matrix();
-
+	// Configure non-compute shaders
+	for (auto& shader : m_shaders) {
+		if (!shader.second->is_compute) {
 			shader.second->use_shader();
-			shader.second->setFloat("zNear", m_camera_manager->m_crnt_camera->get_near());
-			shader.second->setFloat("zFar", m_camera_manager->m_crnt_camera->get_far());
-			shader.second->setMat4("inverseProjection", glm::inverse(m_camera_manager->m_crnt_camera->get_projection_matrix()));
-			shader.second->setUVec3("gridSize", { gridSizeX, gridSizeY, gridSizeZ });
-			shader.second->setUVec2("screenDimensions", { m_camera_manager->m_crnt_camera->get_window_size().x, m_camera_manager->m_crnt_camera->get_window_size().y });
-
-
 			shader.second->setMat4("view", view);
 			shader.second->setMat4("projection", projection);
-			shader.second->setMat4("perspective", view);
-			shader.second->setVec3("camPos", m_camera_manager->m_crnt_camera->get_position());
-			shader.second->setVec3("camFront", m_camera_manager->m_crnt_camera->get_forward_vector());
+			shader.second->setVec3("camPos", camPos);
+			shader.second->setVec3("camFront", camFront);
 		}
 	}
 
+	// Configure and dispatch cluster update shader
 	m_shader_cluster->use_shader();
-	m_shader_cluster->setFloat("zNear", m_camera_manager->m_crnt_camera->get_near());
-	m_shader_cluster->setFloat("zFar", m_camera_manager->m_crnt_camera->get_far());
-	m_shader_cluster->setMat4("inverseProjection", glm::inverse(m_camera_manager->m_crnt_camera->get_projection_matrix()));
+	m_shader_cluster->setFloat("zNear", zNear);
+	m_shader_cluster->setFloat("zFar", zFar);
+	m_shader_cluster->setMat4("inverseProjection", inverseProjection);
 	m_shader_cluster->setUVec3("gridSize", { gridSizeX, gridSizeY, gridSizeZ });
-	m_shader_cluster->setUVec2("screenDimensions", { m_camera_manager->m_crnt_camera->get_window_size().x, m_camera_manager->m_crnt_camera->get_window_size().y });
+	m_shader_cluster->setUVec2("screenDimensions", screenDimensions);
 
 	glDispatchCompute(gridSizeX, gridSizeY, gridSizeZ);
 	glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
 
-
+	// Configure and dispatch culling shader
 	m_shader_cull->use_shader();
-	m_shader_cull->setMat4("viewMatrix", m_camera_manager->m_crnt_camera->get_view_matrix());
+	m_shader_cull->setMat4("viewMatrix", view);
 
 	glDispatchCompute(27, 1, 1);
 	glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);

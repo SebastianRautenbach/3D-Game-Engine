@@ -7,7 +7,7 @@ Variables:
 
 - 3,8 -
     0   0 *    SUSPEND
-    1   0 *    PGA      0xff21b968          (var:name)
-    4   2 *    PGA      0xfeb79a20          (str:cool cube)
-    7   4 *    ALLOC    0x250f5d90060, 20             (type:string, string::string(const string&in))
+    1   0 *    PGA      0xdf2f7ad8          (var:name)
+    4   2 *    PGA      0x9f583440          (str:cool cube)
+    7   4 *    ALLOC    0x1f69fea9880, 20             (type:string, string::string(const string&in))
    11   0 *    RET      0

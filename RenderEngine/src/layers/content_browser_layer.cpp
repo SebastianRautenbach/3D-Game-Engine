@@ -69,27 +69,26 @@ void wizm::content_browser_layer::update(float delta_time)
 	}
 
     ImGui::SameLine();
+
+    auto all_content = get_directory_content(current_directory.string());
  
     ImGui::SetCursorPosX(ImGui::GetWindowWidth() - (ImGui::CalcTextSize("Add Asset").x + 30));
     if (ImGui::BeginMenu("Add Asset")) {
         
         if (ImGui::MenuItem("Create new script")) {
-            auto all_files_in_dir = get_directory_content(current_directory.string());
-            std::string unique_name = generate_unique_name(all_files_in_dir, "new_script", ".wizs");
+            std::string unique_name = generate_unique_name(all_content, "new_script", ".wizs");
             engine_scripting::create_script(current_directory.string(), unique_name);
             refresh_assets();
         }
 
-        if (ImGui::MenuItem("Create new level")) {
-            auto all_files_in_dir = get_directory_content(current_directory.string());
-            std::string unique_name = generate_unique_name(all_files_in_dir, "new_level", ".zer");
+        if (ImGui::MenuItem("Create new level")) {        
+            std::string unique_name = generate_unique_name(all_content, "new_level", ".zer");
             create_level(current_directory.string(), unique_name);
             refresh_assets();
         }
 
-        if (ImGui::MenuItem("Create new material")) {
-            auto all_files_in_dir = get_directory_content(current_directory.string());
-            std::string unique_name = generate_unique_name(all_files_in_dir, "new_material", ".wmat");
+        if (ImGui::MenuItem("Create new material")) {         
+            std::string unique_name = generate_unique_name(all_content, "new_material", ".wmat");
             create_material(current_directory.string(), unique_name);
             refresh_assets();
         }
@@ -110,13 +109,12 @@ void wizm::content_browser_layer::update(float delta_time)
 
     if (panel_width < 1) { panel_width = 1; }
 
-	auto contents = get_directory_content(current_directory);
 	ImGui::Columns(static_cast<int>(panel_width), 0, false);
 	
     static std::string new_file_name;
     static std::string selected_file_path;
 	
-    for (const auto& entry : get_directory_content(current_directory)) {
+    for (const auto& entry : all_content) {
         auto file_name = entry.filename().string();
         ImGui::PushID(file_name.c_str());
 
@@ -297,9 +295,6 @@ void wizm::content_browser_layer::update(float delta_time)
         ImGui::PopID();
     }
 
-	
-    update_add_content_ui(current_directory);
-
 	ImGui::End();
 }
 
@@ -310,32 +305,6 @@ void wizm::content_browser_layer::refresh_assets()
     assets = asset_import.retrieve_all_assets();
 }
 
-void wizm::content_browser_layer::update_add_content_ui(const std::filesystem::path& path) {
-    //if (ImGui::IsMouseClicked(ImGuiMouseButton_Right) && ImGui::IsWindowHovered(ImGuiHoveredFlags_RootAndChildWindows)) {
-    //    ImGui::OpenPopup("RightClickPopup");
-    //}
-    //
-    //if (ImGui::BeginPopup("RightClickPopup")) {
-    //    if (ImGui::MenuItem("Create Map (.zer)")) {
-    //        // Code to create a file with the ".zer" extension
-    //        std::filesystem::path new_map_path = path / "new_map.zer";
-    //        std::ofstream file(new_map_path);
-    //        if (file.is_open()) {
-    //            // Write initial content to the file if needed
-    //            file.close();
-    //        }
-    //    }
-    //
-    //    // Add more options here as needed
-    //    // if (ImGui::MenuItem("Another Option")) {
-    //    //     // Handle another option
-    //    // }
-    //
-    //    ImGui::EndPopup();
-    //}
-
-
-}
 
 std::vector<std::filesystem::path> wizm::content_browser_layer::get_directory_content(const std::filesystem::path& path)
 {
