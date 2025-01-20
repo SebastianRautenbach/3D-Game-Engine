@@ -1,60 +1,31 @@
 
 Total count
-PopPtr     : 9264
-PshGPtr    : 24711
-PshC4      : 9285
-PshV4      : 24704
-PSF        : 43244
-PshG4      : 6176
-LdGRdR4    : 3090
-CALL       : 15440
-RET        : 18554
-JMP        : 9264
-JS         : 37056
-JP         : 3088
-JNP        : 67936
-IncVi      : 92640
-COPY       : 9269
-PshVPtr    : 3088
-CMPIi      : 101904
-CMPIf      : 6176
-PopRPtr    : 15440
-CALLSYS    : 21623
-SUSPEND    : 592926
-ALLOC      : 12364
-FREE       : 3088
-GETOBJ     : 12354
-CHKREF     : 9266
-SetV4      : 24704
-ADDSi      : 15440
-CpyVtoV4   : 12352
-CpyVtoR4   : 15440
-CpyRtoV4   : 15440
-CpyGtoV4   : 6176
-WRTV4      : 12354
-RDR4       : 58672
-PGA        : 15
-VAR        : 12354
-iTOf       : 61760
-MULi       : 61760
-ADDf       : 108080
-SUBf       : 15440
-MULf       : 142048
-DIVf       : 92640
-ADDIi      : 61760
-SUBIi      : 61760
-SUBIf      : 2
-MULIf      : 95728
-SetG4      : 15
-LoadThisR  : 18528
-LoadVObjR  : 33968
+PshGPtr    : 2
+PshC4      : 6
+PSF        : 4
+RET        : 10
+COPY       : 2
+CALLSYS    : 2
+SUSPEND    : 10
+ALLOC      : 4
+PGA        : 6
+SetG4      : 6
 
 Never executed
+PopPtr    
+PshV4     
 SwapPtr   
 NOT       
+PshG4     
+LdGRdR4   
+CALL      
+JMP       
 JZ        
 JNZ       
+JS        
 JNS       
+JP        
+JNP       
 TZ        
 TNZ       
 TS        
@@ -74,6 +45,7 @@ INCf
 DECf      
 INCd      
 DECd      
+IncVi     
 DecVi     
 BNOT      
 BAND      
@@ -83,39 +55,56 @@ BSLL
 BSRL      
 BSRA      
 PshC8     
+PshVPtr   
 RDSPtr    
 CMPd      
 CMPu      
 CMPf      
 CMPi      
+CMPIi     
+CMPIf     
 CMPIu     
 JMPP      
+PopRPtr   
 PshRPtr   
 STR       
 CALLBND   
+FREE      
 LOADOBJ   
 STOREOBJ  
+GETOBJ    
 REFCPY    
+CHKREF    
 GETOBJREF 
 GETREF    
 PshNull   
 ClrVPtr   
 OBJTYPE   
 TYPEID    
+SetV4     
 SetV8     
+ADDSi     
+CpyVtoV4  
 CpyVtoV8  
+CpyVtoR4  
 CpyVtoR8  
 CpyVtoG4  
+CpyRtoV4  
 CpyRtoV8  
+CpyGtoV4  
 WRTV1     
 WRTV2     
+WRTV4     
 WRTV8     
 RDR1      
 RDR2      
+RDR4      
 RDR8      
 LDG       
 LDV       
 CmpPtr    
+VAR       
+iTOf      
 fTOi      
 uTOf      
 fTOu      
@@ -131,16 +120,25 @@ uTOd
 fTOd      
 ADDi      
 SUBi      
+MULi      
 DIVi      
 MODi      
+ADDf      
+SUBf      
+MULf      
+DIVf      
 MODf      
 ADDd      
 SUBd      
 MULd      
 DIVd      
 MODd      
+ADDIi     
+SUBIi     
 MULIi     
 ADDIf     
+SUBIf     
+MULIf     
 ChkRefS   
 ChkNullV  
 CALLINTF  
@@ -182,12 +180,14 @@ ClrHi
 JitEntry  
 CallPtr   
 FuncPtr   
+LoadThisR 
 PshV8     
 DIVu      
 MODu      
 DIVu64    
 MODu64    
 LoadRObjR 
+LoadVObjR 
 RefCpyV   
 JLowZ     
 JLowNZ    
@@ -205,123 +205,19 @@ POWu64
 Thiscall1 
 
 Sequences
-PopPtr    , SUSPEND    : 6176
-PopPtr    , VAR        : 3088
-PshGPtr   , COPY       : 5
-PshGPtr   , CHKREF     : 9266
-PshGPtr   , ADDSi      : 15440
-PshC4     , PshC4      : 3102
-PshC4     , PSF        : 3095
-PshC4     , LoadVObjR  : 3088
-PshV4     , PSF        : 6176
-PshV4     , CALL       : 9264
-PshV4     , LoadVObjR  : 9264
-PSF       , PshGPtr    : 9271
-PSF       , PSF        : 6176
-PSF       , COPY       : 6176
-PSF       , PshVPtr    : 3088
-PSF       , CALLSYS    : 12357
-PSF       , ALLOC      : 3088
-PSF       , GETOBJ     : 3088
-PshG4     , PshC4      : 3088
-PshG4     , CALL       : 3088
-LdGRdR4   , ADDf       : 3088
-LdGRdR4   , SUBIf      : 2
-CALL      , SUSPEND    : 15440
-RET       , SUSPEND    : 3113
-RET       , CpyRtoV4   : 15440
-JMP       , SUSPEND    : 9264
-JS        , SUSPEND    : 37056
-JP        , SUSPEND    : 3088
-JNP       , SUSPEND    : 67936
-IncVi     , SUSPEND    : 92640
-COPY      , PopPtr     : 9264
-COPY      , RET        : 5
-PshVPtr   , COPY       : 3088
-CMPIi     , JS         : 33968
-CMPIi     , JNP        : 67936
-CMPIf     , JS         : 3088
-CMPIf     , JP         : 3088
-PopRPtr   , RDR4       : 15440
-CALLSYS   , PSF        : 9269
-CALLSYS   , SUSPEND    : 9266
-CALLSYS   , LoadVObjR  : 3088
-SUSPEND   , PshGPtr    : 6176
-SUSPEND   , PshC4      : 3090
-SUSPEND   , PSF        : 12352
-SUSPEND   , PshG4      : 6176
-SUSPEND   , LdGRdR4    : 2
-SUSPEND   , RET        : 3089
-SUSPEND   , IncVi      : 92640
-SUSPEND   , CMPIi      : 101904
-SUSPEND   , CMPIf      : 3088
-SUSPEND   , SUSPEND    : 92640
-SUSPEND   , SetV4      : 24704
-SUSPEND   , CpyVtoV4   : 6176
-SUSPEND   , CpyVtoR4   : 9264
-SUSPEND   , CpyGtoV4   : 6176
-SUSPEND   , PGA        : 10
-SUSPEND   , ADDf       : 61760
-SUSPEND   , DIVf       : 30880
-SUSPEND   , ADDIi      : 61760
-SUSPEND   , MULIf      : 64848
-SUSPEND   , SetG4      : 15
-SUSPEND   , LoadThisR  : 3088
-SUSPEND   , LoadVObjR  : 3088
-ALLOC     , PshC4      : 5
-ALLOC     , PSF        : 3088
-ALLOC     , RET        : 5
-ALLOC     , VAR        : 9266
-FREE      , RET        : 3088
-GETOBJ    , CALL       : 3088
-GETOBJ    , CALLSYS    : 9266
-CHKREF    , ALLOC      : 9266
-SetV4     , JMP        : 9264
-SetV4     , SUSPEND    : 15440
-ADDSi     , PopRPtr    : 15440
-CpyVtoV4  , SUSPEND    : 12352
-CpyVtoR4  , RET        : 12352
-CpyVtoR4  , FREE       : 3088
-CpyRtoV4  , CpyVtoV4   : 6176
-CpyRtoV4  , CpyVtoR4   : 3088
-CpyRtoV4  , MULf       : 6176
-CpyGtoV4  , CMPIf      : 3088
-CpyGtoV4  , MULf       : 3088
-WRTV4     , SUSPEND    : 12354
-RDR4      , PshGPtr    : 9264
-RDR4      , PshV4      : 6176
-RDR4      , SUBf       : 15440
-RDR4      , MULf       : 9264
-RDR4      , LoadThisR  : 9264
-RDR4      , LoadVObjR  : 9264
-PGA       , ALLOC      : 10
-PGA       , PGA        : 5
-VAR       , PSF        : 3088
-VAR       , GETOBJ     : 9266
-iTOf      , DIVf       : 61760
-MULi      , iTOf       : 61760
-ADDf      , PshV4      : 3088
-ADDf      , SUSPEND    : 61760
-ADDf      , WRTV4      : 3088
-ADDf      , MULIf      : 30880
-ADDf      , LoadThisR  : 3088
-ADDf      , LoadVObjR  : 6176
-SUBf      , PshV4      : 15440
-MULf      , LdGRdR4    : 3088
-MULf      , SUSPEND    : 61760
-MULf      , ADDf       : 12352
-MULf      , SUBIi      : 61760
-MULf      , LoadThisR  : 3088
-DIVf      , ADDf       : 30880
-DIVf      , MULf       : 61760
-ADDIi     , SUSPEND    : 61760
-SUBIi     , MULi       : 61760
-SUBIf     , WRTV4      : 2
-MULIf     , SUSPEND    : 30880
-MULIf     , CpyVtoR4   : 3088
-MULIf     , MULf       : 61760
-SetG4     , RET        : 15
-LoadThisR , RDR4       : 18528
-LoadVObjR , WRTV4      : 9264
-LoadVObjR , RDR4       : 24704
+PshGPtr   , COPY       : 2
+PshC4     , PshC4      : 4
+PshC4     , PSF        : 2
+PSF       , PshGPtr    : 2
+PSF       , CALLSYS    : 2
+RET       , SUSPEND    : 9
+COPY      , RET        : 2
+CALLSYS   , PSF        : 2
+SUSPEND   , PGA        : 4
+SUSPEND   , SetG4      : 6
+ALLOC     , PshC4      : 2
+ALLOC     , RET        : 2
+PGA       , ALLOC      : 4
+PGA       , PGA        : 2
+SetG4     , RET        : 6
 LABEL     , SUSPEND    : 1

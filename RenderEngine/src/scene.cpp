@@ -25,9 +25,11 @@ namespace wizm {
 	void core_scene::scene_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 	{
 		m_reloaded = false;
-		for (auto& i : m_entities)
-		{
-			for (auto comp : i->m_components_list) {
+		
+		#pragma omp parallel for
+		for (size_t j = 0; j < m_entities.size(); ++j) {
+			auto& i = m_entities[j];
+			for (auto& comp : i->m_components_list) {
 				if (!is_light_component(comp->m_component_type)) {
 					comp->component_update(delta_time, shader);
 				}

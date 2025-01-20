@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include "system/material_types.h"
-
+#include "other utils/common.h"
 
 
 class core_gl_shader {
@@ -103,8 +103,9 @@ private:
 			if (!success)
 			{
 				glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-				std::cout << "path::" << path << "\n";
-				std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+				wizm::add_console_line("path::" + path, CONSOLE_ERROR_LOG);
+				wizm::add_console_line("ERROR::SHADER_COMPILATION_ERROR of type:" + type + infoLog, CONSOLE_ERROR_LOG);
+
 			}
 		}
 		else
@@ -113,8 +114,8 @@ private:
 			if (!success)
 			{
 				glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-				std::cout << "path::" << path << "\n";
-				std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
+				wizm::add_console_line("path::" + path, CONSOLE_ERROR_LOG);
+				wizm::add_console_line("ERROR::PROGRAM_LINKING_ERROR of type:" + type + infoLog, CONSOLE_ERROR_LOG);
 			}
 		}
 	}

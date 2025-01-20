@@ -40,6 +40,9 @@ namespace wizm {
 	
 	inline void add_console_line(std::string msg, int log_type) {
 		global_console_out.emplace_back("\n" + msg, log_type);
+		if (global_console_out.size() > 50) {
+			global_console_out.erase(global_console_out.begin(), global_console_out.begin() + (global_console_out.size() - 50));
+		}
 	}
 	
 }

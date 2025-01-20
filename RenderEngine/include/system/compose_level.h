@@ -29,6 +29,9 @@ namespace wizm
 		level_file <<					"scale:1.000000,1.000000,1.000000;\n";
 		level_file <<				"}\n";
 		level_file <<			"}\n";
+		level_file <<			"specs{\n";
+		level_file <<				"is_entity:1.000000;\n";
+		level_file <<			"}\n";
 		level_file <<			"tags{\n";
 		level_file <<			"}\n";
 		level_file <<			"transform{\n";

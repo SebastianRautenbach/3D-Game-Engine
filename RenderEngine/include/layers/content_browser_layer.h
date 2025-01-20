@@ -50,6 +50,8 @@ namespace wizm {
 			const std::vector<std::filesystem::path>& all_files_in_dir,
 			const std::string& base_name,
 			const std::string& extension);
+
+		std::vector <std::filesystem::path> all_content;
 	}; 
 
 

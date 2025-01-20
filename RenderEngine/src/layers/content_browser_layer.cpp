@@ -41,7 +41,7 @@ wizm::content_browser_layer::~content_browser_layer()
 
 void wizm::content_browser_layer::OnAttach()
 {
-	
+    all_content = get_directory_content(current_directory.string());
 }
 
 void wizm::content_browser_layer::OnDetach()
@@ -70,7 +70,8 @@ void wizm::content_browser_layer::update(float delta_time)
 
     ImGui::SameLine();
 
-    auto all_content = get_directory_content(current_directory.string());
+  
+    
  
     ImGui::SetCursorPosX(ImGui::GetWindowWidth() - (ImGui::CalcTextSize("Add Asset").x + 30));
     if (ImGui::BeginMenu("Add Asset")) {
@@ -100,7 +101,10 @@ void wizm::content_browser_layer::update(float delta_time)
 
 	if (ImGui::Button("...##back")) {
 		if(current_directory != "GAME")
-			current_directory = current_directory.parent_path();
+        {
+            current_directory = current_directory.parent_path();
+            all_content = get_directory_content(current_directory.string());
+        }
 	}
 
 
@@ -114,7 +118,8 @@ void wizm::content_browser_layer::update(float delta_time)
     static std::string new_file_name;
     static std::string selected_file_path;
 	
-    for (const auto& entry : all_content) {
+    for (auto& entry : all_content) {
+
         auto file_name = entry.filename().string();
         ImGui::PushID(file_name.c_str());
 
@@ -129,6 +134,12 @@ void wizm::content_browser_layer::update(float delta_time)
 
             if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
                 current_directory = entry;
+                all_content = get_directory_content(current_directory.string());
+
+                ImGui::PopStyleColor();
+                ImGui::NextColumn();
+                ImGui::PopID();
+                break;
             }
             ImGui::Text(file_name.c_str());
         }
@@ -193,7 +204,14 @@ void wizm::content_browser_layer::update(float delta_time)
                 if (ImGui::MenuItem("Delete")) {
                    
                     std::filesystem::remove(entry);
-                    std::cout << "File deleted: " << entry << std::endl; 
+                    add_console_line("removed entity:" + entry.string(), CONSOLE_GENERAL_LOG);
+                    refresh_assets();
+
+                    ImGui::EndPopup();
+                    ImGui::PopStyleColor();
+                    ImGui::NextColumn();
+                    ImGui::PopID();
+                    break;
                 }
                 if (ImGui::MenuItem("Rename")) {
                     
@@ -209,6 +227,7 @@ void wizm::content_browser_layer::update(float delta_time)
                             copy_to_clipboard(asset.id);
                         }
                     }
+                    refresh_assets();
                 }
 
                
@@ -303,6 +322,7 @@ void wizm::content_browser_layer::refresh_assets()
     watcher->refresh();
     m_asset_manager->load_assets_db();
     assets = asset_import.retrieve_all_assets();
+    all_content = get_directory_content(current_directory.string());
 }
 
 

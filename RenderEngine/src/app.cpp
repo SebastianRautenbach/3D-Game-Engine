@@ -2,10 +2,10 @@
 #include <string>
 #include "update_manager.h"
 #include "imgui/imgui.h"
+#include <Windows.h>
 
 
-
-int main(int argc, char* args[]) {
+int WINAPI WinMain(HINSTANCE, HINSTANCE, PSTR, int) {
 	
 	wizm::update_manager* updater = new wizm::update_manager;
 	updater->render_setup(1920 , 1080 , "Wizm");
