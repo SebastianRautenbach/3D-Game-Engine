@@ -72,5 +72,6 @@ namespace wizm {
 		std::shared_ptr<staticmesh_asset> m_model;
 		std::string m_mesh_asset_id;
 		std::vector<std::string> m_material_asset_ids;
+
 	};
 }

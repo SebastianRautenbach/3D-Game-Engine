@@ -1,6 +1,6 @@
 void on_update(float)
 
-Temps: 5, 8, 9, 10, 15, 16, 19, 23, 33
+Temps: 5, 8, 9, 10, 15, 16, 19, 23
 
 Variables: 
  000: float delta_time
@@ -17,213 +17,182 @@ Variables:
  016: int 
  019: (heap) vec3 
  023: int 
- 033: string 
 
 
-- 65,5 -
+- 63,5 -
                VarDecl  0
-    0  33 *    SUSPEND
+    0  23 *    SUSPEND
                VarDecl  1
-    1  33 *    PSF      v3
-    2  35 *    CALLSYS  69           (vec3::vec3())
+    1  23 *    PSF      v3
+    2  25 *    CALLSYS  69           (vec3::vec3())
                ObjInfo  v3, 1
-    4  33 *    PSF      v5
-    5  35 *    PshGPtr  0x1cbe2aaf278          (i:1975192842872, f:9.75875e-312)
-    8  37 *    CHKREF
-    9  37 *    ALLOC    0x1cbe2e27a80, 20             (type:string, string::string(const string&in))
-   13  33 *    VAR      v5
-   14  35 *    PSF      v8
-   15  37 *    GETOBJ   2
-   16  37 *    CALLSYS  90           (vec3 get_entity_position(string))
+    4  23 *    PSF      v5
+    5  25 *    PshGPtr  0x250ff21b968          (i:2546901039464, f:1.25834e-311)
+    8  27 *    CHKREF
+    9  27 *    ALLOC    0x250f5d90060, 20             (type:string, string::string(const string&in))
+   13  23 *    VAR      v5
+   14  25 *    PSF      v8
+   15  27 *    GETOBJ   2
+   16  27 *    CALLSYS  90           (vec3 get_entity_position(string))
                ObjInfo  v8, 1
-   18  33 *    PSF      v8
-   19  35 *    PSF      v3
-   20  37 *    COPY     v3, 67108880
+   18  23 *    PSF      v8
+   19  25 *    PSF      v3
+   20  27 *    COPY     v3, 67108880
                ObjInfo  v8, 0
-   22  35 *    PopPtr
+   22  25 *    PopPtr
+- 65,5 -
+   23  23 *    SUSPEND
+   24  23 *    CpyGtoV4 v9, 0x250f2f956d8          (i:2546697066200, f:1.25824e-311)
+   27  23 *    MULf     v9, v9, v0
+   29  23 *    LdGRdR4  v10, 0x250ff21c518          (i:2546901042456, f:1.25834e-311)
+   32  23 *    ADDf     v10, v10, v9
+   34  23 *    WRTV4    v10
+- 66,5 -
+   35  23 *    SUSPEND
+   36  23 *    CpyGtoV4 v9, 0x250ff21c518          (i:2546901042456, f:1.25834e-311)
+   39  23 *    CMPIf    v9, 360.000000
+   41  23 *    JS       +8              (d:51)
+- 66,34 -
+   43  23 *    SUSPEND
+   44  23 *    LdGRdR4  v10, 0x250ff21c518          (i:2546901042456, f:1.25834e-311)
+   47  23 *    SUBIf    v10, v10, 360.000000
+   50  23 *    WRTV4    v10
 - 67,5 -
-   23  33 *    SUSPEND
-   24  33 *    CpyGtoV4 v9, 0x1cbe2aaf698          (i:1975192843928, f:9.75875e-312)
-   27  33 *    MULf     v9, v9, v0
-   29  33 *    LdGRdR4  v10, 0x1cbe2aafed8          (i:1975192846040, f:9.75875e-312)
-   32  33 *    ADDf     v10, v10, v9
-   34  33 *    WRTV4    v10
-- 68,5 -
-   35  33 *    SUSPEND
-   36  33 *    CpyGtoV4 v9, 0x1cbe2aafed8          (i:1975192846040, f:9.75875e-312)
-   39  33 *    CMPIf    v9, 360.000000
-   41  33 *    JS       +8              (d:51)
-- 68,34 -
-   43  33 *    SUSPEND
-   44  33 *    LdGRdR4  v10, 0x1cbe2aafed8          (i:1975192846040, f:9.75875e-312)
-   47  33 *    SUBIf    v10, v10, 360.000000
-   50  33 *    WRTV4    v10
-- 69,5 -
             1:
-   51  33 *    SUSPEND
+   51  23 *    SUSPEND
                VarDecl  2
-   52  33 *    PshG4    0x1cbe2aafed8          (i:1975192846040, f:9.75875e-312)
-   55  34 *    CALL     108           (float radians(float))
-   57  33 *    CpyRtoV4 v10
-   58  33 *    CpyVtoV4 v11, v10
-- 71,5 -
-   60  33 *    SUSPEND
+   52  23 *    PshG4    0x250ff21c518          (i:2546901042456, f:1.25834e-311)
+   55  24 *    CALL     108           (float radians(float))
+   57  23 *    CpyRtoV4 v10
+   58  23 *    CpyVtoV4 v11, v10
+- 69,5 -
+   60  23 *    SUSPEND
                VarDecl  3
-   61  33 *    PSF      v14
-   62  35 *    CALLSYS  69           (vec3::vec3())
+   61  23 *    PSF      v14
+   62  25 *    CALLSYS  69           (vec3::vec3())
                ObjInfo  v14, 1
-   64  33 *    LoadVObjR v3, v8, 67108880
-   67  33 *    RDR4     v9
-   68  33 *    PshGPtr  0x1cbe2ab05b8          (i:1975192847800, f:9.75875e-312)
-   71  35 *    ADDSi    v8, 67108880
-   73  35 *    PopRPtr
-   74  33 *    RDR4     v10
-   75  33 *    SUBf     v9, v9, v10
-   77  33 *    PshV4    v9
-   78  34 *    LoadVObjR v3, v4, 67108880
-   81  34 *    RDR4     v10
-   82  34 *    PshGPtr  0x1cbe2ab05b8          (i:1975192847800, f:9.75875e-312)
-   85  36 *    ADDSi    v4, 67108880
-   87  36 *    PopRPtr
-   88  34 *    RDR4     v15
-   89  34 *    SUBf     v10, v10, v15
-   91  34 *    PshV4    v10
-   92  35 *    LoadVObjR v3, v0, 67108880
-   95  35 *    RDR4     v15
-   96  35 *    PshGPtr  0x1cbe2ab05b8          (i:1975192847800, f:9.75875e-312)
-   99  37 *    ADDSi    v0, 67108880
-  101  37 *    PopRPtr
-  102  35 *    RDR4     v16
-  103  35 *    SUBf     v15, v15, v16
-  105  35 *    PshV4    v15
-  106  36 *    PSF      v8
-  107  38 *    CALLSYS  70           (vec3::vec3(float, float, float))
+   64  23 *    LoadVObjR v3, v8, 67108880
+   67  23 *    RDR4     v9
+   68  23 *    PshGPtr  0x250ff21ceb8          (i:2546901044920, f:1.25834e-311)
+   71  25 *    ADDSi    v8, 67108880
+   73  25 *    PopRPtr
+   74  23 *    RDR4     v10
+   75  23 *    SUBf     v9, v9, v10
+   77  23 *    PshV4    v9
+   78  24 *    LoadVObjR v3, v4, 67108880
+   81  24 *    RDR4     v10
+   82  24 *    PshGPtr  0x250ff21ceb8          (i:2546901044920, f:1.25834e-311)
+   85  26 *    ADDSi    v4, 67108880
+   87  26 *    PopRPtr
+   88  24 *    RDR4     v15
+   89  24 *    SUBf     v10, v10, v15
+   91  24 *    PshV4    v10
+   92  25 *    LoadVObjR v3, v0, 67108880
+   95  25 *    RDR4     v15
+   96  25 *    PshGPtr  0x250ff21ceb8          (i:2546901044920, f:1.25834e-311)
+   99  27 *    ADDSi    v0, 67108880
+  101  27 *    PopRPtr
+  102  25 *    RDR4     v16
+  103  25 *    SUBf     v15, v15, v16
+  105  25 *    PshV4    v15
+  106  26 *    PSF      v8
+  107  28 *    CALLSYS  70           (vec3::vec3(float, float, float))
                ObjInfo  v8, 1
-  109  33 *    PSF      v8
-  110  35 *    PSF      v14
-  111  37 *    COPY     v3, 67108880
+  109  23 *    PSF      v8
+  110  25 *    PSF      v14
+  111  27 *    COPY     v3, 67108880
                ObjInfo  v8, 0
-  113  35 *    PopPtr
-- 72,5 -
-  114  33 *    SUSPEND
+  113  25 *    PopPtr
+- 70,5 -
+  114  23 *    SUSPEND
                VarDecl  4
-  115  33 *    PSF      v19
-  116  35 *    ALLOC    0x1cbe2e28570, 69             (type:vec3, vec3::vec3())
-  120  33 *    PSF      v14
-  121  35 *    PshVPtr  v19
-  122  37 *    COPY     v3, 67108880
-  124  35 *    PopPtr
-  125  33 *    VAR      v19
-  126  35 *    GETOBJ   0
-  127  35 *    CALL     106           (float length(vec3))
-  129  33 *    CpyRtoV4 v16
-  130  33 *    CpyVtoV4 v17, v16
-- 73,5 -
-  132  33 *    SUSPEND
+  115  23 *    PSF      v19
+  116  25 *    ALLOC    0x250f5d90fb0, 69             (type:vec3, vec3::vec3())
+  120  23 *    PSF      v14
+  121  25 *    PshVPtr  v19
+  122  27 *    COPY     v3, 67108880
+  124  25 *    PopPtr
+  125  23 *    VAR      v19
+  126  25 *    GETOBJ   0
+  127  25 *    CALL     106           (float length(vec3))
+  129  23 *    CpyRtoV4 v16
+  130  23 *    CpyVtoV4 v17, v16
+- 71,5 -
+  132  23 *    SUSPEND
                VarDecl  5
-  133  33 *    PSF      v22
-  134  35 *    CALLSYS  69           (vec3::vec3())
-- 74,5 -
+  133  23 *    PSF      v22
+  134  25 *    CALLSYS  69           (vec3::vec3())
+- 72,5 -
                ObjInfo  v22, 1
-  136  33 *    SUSPEND
-  137  33 *    PshGPtr  0x1cbe2ab05b8          (i:1975192847800, f:9.75875e-312)
-  140  35 *    ADDSi    v0, 67108880
-  142  35 *    PopRPtr
-  143  33 *    RDR4     v10
-  144  33 *    PshV4    v11
-  145  34 *    CALL     105           (float cos(float))
-  147  33 *    CpyRtoV4 v9
-  148  33 *    MULf     v16, v17, v9
-  150  33 *    ADDf     v9, v10, v16
-  152  33 *    LoadVObjR v22, v0, 67108880
-  155  33 *    WRTV4    v9
-- 75,5 -
-  156  33 *    SUSPEND
-  157  33 *    PshGPtr  0x1cbe2ab05b8          (i:1975192847800, f:9.75875e-312)
-  160  35 *    ADDSi    v4, 67108880
-  162  35 *    PopRPtr
-  163  33 *    RDR4     v15
-  164  33 *    PshV4    v11
-  165  34 *    CALL     104           (float sin(float))
-  167  33 *    CpyRtoV4 v16
-  168  33 *    MULf     v9, v17, v16
-  170  33 *    ADDf     v16, v15, v9
-  172  33 *    LoadVObjR v22, v4, 67108880
-  175  33 *    WRTV4    v16
+  136  23 *    SUSPEND
+  137  23 *    PshGPtr  0x250ff21ceb8          (i:2546901044920, f:1.25834e-311)
+  140  25 *    ADDSi    v0, 67108880
+  142  25 *    PopRPtr
+  143  23 *    RDR4     v10
+  144  23 *    PshV4    v11
+  145  24 *    CALL     105           (float cos(float))
+  147  23 *    CpyRtoV4 v9
+  148  23 *    MULf     v16, v17, v9
+  150  23 *    ADDf     v9, v10, v16
+  152  23 *    LoadVObjR v22, v0, 67108880
+  155  23 *    WRTV4    v9
+- 73,5 -
+  156  23 *    SUSPEND
+  157  23 *    PshGPtr  0x250ff21ceb8          (i:2546901044920, f:1.25834e-311)
+  160  25 *    ADDSi    v4, 67108880
+  162  25 *    PopRPtr
+  163  23 *    RDR4     v15
+  164  23 *    PshV4    v11
+  165  24 *    CALL     104           (float sin(float))
+  167  23 *    CpyRtoV4 v16
+  168  23 *    MULf     v9, v17, v16
+  170  23 *    ADDf     v16, v15, v9
+  172  23 *    LoadVObjR v22, v4, 67108880
+  175  23 *    WRTV4    v16
+- 74,5 -
+  176  23 *    SUSPEND
+  177  23 *    LoadVObjR v3, v8, 67108880
+  180  23 *    RDR4     v9
+  181  23 *    LoadVObjR v22, v8, 67108880
+  184  23 *    WRTV4    v9
 - 76,5 -
-  176  33 *    SUSPEND
-  177  33 *    LoadVObjR v3, v8, 67108880
-  180  33 *    RDR4     v9
-  181  33 *    LoadVObjR v22, v8, 67108880
-  184  33 *    WRTV4    v9
-- 78,5 -
-  185  33 *    SUSPEND
-  186  33 *    PshG4    0x1cbe2aafed8          (i:1975192846040, f:9.75875e-312)
-  189  34 *    PshC4    0x0          (i:0, f:0)
-  191  35 *    PshC4    0x0          (i:0, f:0)
-  193  36 *    PSF      v5
-  194  38 *    PshGPtr  0x1cbe2aaf278          (i:1975192842872, f:9.75875e-312)
-  197  40 *    CHKREF
-  198  40 *    ALLOC    0x1cbe2e27a80, 20             (type:string, string::string(const string&in))
-  202  36 *    VAR      v5
-  203  38 *    GETOBJ   0
-  204  38 *    CALLSYS  77           (void set_entity_rotation(string, float, float, float))
-- 79,5 -
-  206  33 *    SUSPEND
-  207  33 *    PshC4    0x0          (i:0, f:0)
-  209  34 *    LoadVObjR v22, v4, 67108880
-  212  34 *    RDR4     v10
-  213  34 *    LoadVObjR v3, v4, 67108880
-  216  34 *    RDR4     v15
-  217  34 *    SUBf     v9, v10, v15
-  219  34 *    PshV4    v9
-  220  35 *    LoadVObjR v22, v0, 67108880
-  223  35 *    RDR4     v15
-  224  35 *    LoadVObjR v3, v0, 67108880
-  227  35 *    RDR4     v10
-  228  35 *    SUBf     v16, v15, v10
-  230  35 *    PshV4    v16
-  231  36 *    PSF      v5
-  232  38 *    PshGPtr  0x1cbe2aaf278          (i:1975192842872, f:9.75875e-312)
-  235  40 *    CHKREF
-  236  40 *    ALLOC    0x1cbe2e27a80, 20             (type:string, string::string(const string&in))
-  240  36 *    VAR      v5
-  241  38 *    GETOBJ   0
-  242  38 *    CALLSYS  80           (void add_entity_position(string, float, float, float))
-- 81,5 -
-  244  33 *    SUSPEND
-  245  33 *    LDG      0x1cbe2ab0198          (i:1975192846744, f:9.75875e-312)
-  248  33 *    RDR1     v10
-  249  33 *    NOT      v10
-  250  33 *    CpyVtoR4 v10
-  251  33 *    JLowZ    +27              (d:280)
-- 82,9 -
-            {
-  253  33 *    SUSPEND
-  254  33 *    PSF      v5
-  255  35 *    PGA      0xebbffba0          (str:light1)
-  258  37 *    PSF      v33
-  259  39 *    CALLSYS  20           (string::string(const string&in))
-               ObjInfo  v33, 1
-  261  35 *    PSF      v33
-  262  37 *    ALLOC    0x1cbe2e27a80, 20             (type:string, string::string(const string&in))
-  266  33 *    PSF      v33
-  267  35 *    CALLSYS  21           (string::~string())
-               ObjInfo  v33, 0
-  269  33 *    VAR      v5
-  270  35 *    GETOBJ   0
-  271  35 *    CALLSYS  76           (void destroy_entity(string))
-- 83,9 -
-  273  33 *    SUSPEND
-  274  33 *    SetV1    v16, 0x1
-  276  33 *    LDG      0x1cbe2ab0198          (i:1975192846744, f:9.75875e-312)
-  279  33 *    WRTV1    v16
-- 86,2 -
-            }
-            2:
-  280  33 *    SUSPEND
+  185  23 *    SUSPEND
+  186  23 *    PshG4    0x250ff21c518          (i:2546901042456, f:1.25834e-311)
+  189  24 *    PshC4    0x0          (i:0, f:0)
+  191  25 *    PshC4    0x0          (i:0, f:0)
+  193  26 *    PSF      v5
+  194  28 *    PshGPtr  0x250ff21b968          (i:2546901039464, f:1.25834e-311)
+  197  30 *    CHKREF
+  198  30 *    ALLOC    0x250f5d90060, 20             (type:string, string::string(const string&in))
+  202  26 *    VAR      v5
+  203  28 *    GETOBJ   0
+  204  28 *    CALLSYS  77           (void set_entity_rotation(string, float, float, float))
+- 77,5 -
+  206  23 *    SUSPEND
+  207  23 *    PshC4    0x0          (i:0, f:0)
+  209  24 *    LoadVObjR v22, v4, 67108880
+  212  24 *    RDR4     v10
+  213  24 *    LoadVObjR v3, v4, 67108880
+  216  24 *    RDR4     v15
+  217  24 *    SUBf     v9, v10, v15
+  219  24 *    PshV4    v9
+  220  25 *    LoadVObjR v22, v0, 67108880
+  223  25 *    RDR4     v15
+  224  25 *    LoadVObjR v3, v0, 67108880
+  227  25 *    RDR4     v10
+  228  25 *    SUBf     v16, v15, v10
+  230  25 *    PshV4    v16
+  231  26 *    PSF      v5
+  232  28 *    PshGPtr  0x250ff21b968          (i:2546901039464, f:1.25834e-311)
+  235  30 *    CHKREF
+  236  30 *    ALLOC    0x250f5d90060, 20             (type:string, string::string(const string&in))
+  240  26 *    VAR      v5
+  241  28 *    GETOBJ   0
+  242  28 *    CALLSYS  80           (void add_entity_position(string, float, float, float))
+- 78,2 -
+  244  23 *    SUSPEND
                ObjInfo  v22, 0
                ObjInfo  v14, 0
                ObjInfo  v3, 0
             0:
-  281  33 *    RET      1
+  245  23 *    RET      1

@@ -59,8 +59,6 @@ void on_start() {
     add_entity_position(name, 0, 0, 0);
 }
 
-bool stop = false;
-
 void on_update(float delta_time) {
     vec3 entity_pos = get_entity_position(name);
 
@@ -77,10 +75,4 @@ void on_update(float delta_time) {
 
     set_entity_rotation(name, 0, 0, current_angle);
     add_entity_position(name, new_pos.x - entity_pos.x, new_pos.y - entity_pos.y, 0);
-
-    if(!stop) {
-        destroy_entity("light1");
-        stop = true;
-    }
-
 }

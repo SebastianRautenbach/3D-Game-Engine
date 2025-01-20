@@ -140,6 +140,12 @@ void lowlevelsys::gl_renderer::render(float deltaTime)
 		global_input_manager->set_hide_mouse_cursor(false);
 		global_input_manager->mouse_stop_move();
 	}
+
+	if (global_input_manager->has_key_been_pressed(GLFW_KEY_LEFT_CONTROL)) {
+		if (global_input_manager->has_key_been_pressed(GLFW_KEY_F)) {
+			m_camera_manager->m_viewport_camera->set_position(glm::vec3(0.0));
+		}
+	}
 }
 
 

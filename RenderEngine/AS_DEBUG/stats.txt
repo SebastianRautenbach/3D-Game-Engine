@@ -3,16 +3,13 @@ Total count
 PshGPtr    : 2
 PshC4      : 6
 PSF        : 4
-RET        : 12
+RET        : 10
 COPY       : 2
 CALLSYS    : 2
-SUSPEND    : 12
+SUSPEND    : 10
 ALLOC      : 4
-WRTV1      : 2
-LDG        : 2
 PGA        : 6
 SetG4      : 6
-SetV1      : 2
 
 Never executed
 PopPtr    
@@ -95,6 +92,7 @@ CpyVtoG4
 CpyRtoV4  
 CpyRtoV8  
 CpyGtoV4  
+WRTV1     
 WRTV2     
 WRTV4     
 WRTV8     
@@ -102,6 +100,7 @@ RDR1
 RDR2      
 RDR4      
 RDR8      
+LDG       
 LDV       
 CmpPtr    
 VAR       
@@ -145,6 +144,7 @@ ChkNullV
 CALLINTF  
 iTOb      
 iTOw      
+SetV1     
 SetV2     
 Cast      
 i64TOi    
@@ -210,18 +210,14 @@ PshC4     , PshC4      : 4
 PshC4     , PSF        : 2
 PSF       , PshGPtr    : 2
 PSF       , CALLSYS    : 2
-RET       , SUSPEND    : 11
+RET       , SUSPEND    : 9
 COPY      , RET        : 2
 CALLSYS   , PSF        : 2
 SUSPEND   , PGA        : 4
 SUSPEND   , SetG4      : 6
-SUSPEND   , SetV1      : 2
 ALLOC     , PshC4      : 2
 ALLOC     , RET        : 2
-WRTV1     , RET        : 2
-LDG       , WRTV1      : 2
 PGA       , ALLOC      : 4
 PGA       , PGA        : 2
 SetG4     , RET        : 6
-SetV1     , LDG        : 2
 LABEL     , SUSPEND    : 1

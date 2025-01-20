@@ -46,11 +46,7 @@ namespace wizm {
 		}
 
 		void draw(std::shared_ptr<core_gl_shader> m_shader) {
-			
-			m_shader->setFloat("material.shininess", m_shininess);			
-			m_shader->setInt("material.diffuse", 0);
-			m_shader->setInt("material.specular", 1);
-			
+		
 			if (m_diffuse_texture) {
 				glActiveTexture(GL_TEXTURE0);
 				m_diffuse_texture->draw(nullptr);
@@ -59,6 +55,14 @@ namespace wizm {
 				glActiveTexture(GL_TEXTURE1);
 				m_specular_texture->draw(nullptr);
 			}
+		}
+
+		void update_mat_specs(std::shared_ptr<core_gl_shader> m_shader) {			
+			
+			if (!this) { return; }
+			m_shader->setFloat("material.shininess", m_shininess);
+
+			// roughness and other cool props will be added
 		}
 		
 		std::string diffuse_asset_id = "";
@@ -69,5 +73,4 @@ namespace wizm {
 
 		float m_shininess = 32.f;
 	};
-
 }
