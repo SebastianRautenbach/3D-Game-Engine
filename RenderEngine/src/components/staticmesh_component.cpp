@@ -29,6 +29,8 @@ void wizm::staticmesh_component::component_update(float delta_time, std::shared_
 	int materials = m_model->material_count();
 	
 	
+	
+	
 	while (materials > m_materials.size()) {
 		m_materials.emplace_back();
 	}
@@ -41,16 +43,17 @@ void wizm::staticmesh_component::component_update(float delta_time, std::shared_
 	for (int i = 0; i < meshes; i++) {
 
 		int mat_index = m_model->get_mesh()->meshes[i].m_material_index;
+		auto material = m_materials[mat_index];
 
-		if (m_materials[mat_index])
-			m_materials[mat_index]->draw(shader);
+		if (material)
+			material->draw(shader);
 
 		
 
 		m_model->draw(i);
 		
-		if (m_materials[mat_index])
-			m_materials[mat_index]->unbind();
+		if (material)
+			material->unbind();
 	}
 }
 
