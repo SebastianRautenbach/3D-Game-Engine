@@ -195,7 +195,7 @@ void wizm::content_browser_layer::update(float delta_time)
                     
                 }
                 else {
-                    ShellExecute(NULL, L"open", entry.c_str(), NULL, NULL, SW_SHOWNORMAL);
+                    ShellExecute(NULL, "open", entry.string().c_str(), NULL, NULL, SW_SHOWNORMAL);
                 }
 
             }
