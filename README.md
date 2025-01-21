@@ -1,6 +1,21 @@
 ![Wizm logo](https://github.com/SebastianRautenbach/WIZM-Game-Engine/blob/main/RenderEngine/res/Picture1.png 'Wizm logo')
 ![ScreenShot1](https://github.com/SebastianRautenbach/3D-Game-Engine/blob/main/RenderEngine/res/screenshot2.png)
 
+Getting Started
+*Step 1: Clone the Repository*
+Clone the repository to your local machine using your preferred Git client or the command line.
+
+*Step 2: Build the Engine*
+1. Navigate to the `out` directory.
+2. Run `cmake` and select the `out` folder as the output directory.
+3. Open the generated project in your preferred IDE.
+4. Build the engine using your IDE's build tools.
+
+*Step 3: Run the Engine*
+1. After successfully building and compiling the code, locate the `DLL` folder.
+2. Copy the required DLLs into the `x64/Debug` or `x64/Release` folder, depending on your build configuration.
+3. Launch the engine and start exploring!
+
 **Current state**
 - *3D Renderer*: Fully supported 3D rendering with clustered forward rendering for optimal performance.
 - *Material Editor*: Intuitive material editor for creating and tweaking materials.
